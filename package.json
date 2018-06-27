@@ -1,6 +1,6 @@
 {
   "name": "contentful-slatejs-adapter",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.umd.js",
@@ -97,7 +97,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.11.1",
-    "semantic-release": "^15.0.0",
+    "semantic-release": "^15.6.0",
     "travis-deploy-once": "^5.0.0",
     "ts-jest": "^22.0.0",
     "ts-node": "^6.0.0",
@@ -106,5 +106,8 @@
     "tslint-config-standard": "^7.0.0",
     "typescript": "^2.6.2",
     "validate-commit-msg": "^2.12.2"
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }
