@@ -1,4 +1,2 @@
 contentful-slatejs-adapter
 =====
-
-
