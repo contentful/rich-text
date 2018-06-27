@@ -12,7 +12,7 @@
   "author": "",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/contentful/contentful-slatejs-adapter.git"
   },
   "license": "MIT",
   "engines": {
