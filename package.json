@@ -60,23 +60,26 @@
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "/test/"
+      "/test/",
+      "/__test__/"
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 90,
-        "functions": 95,
-        "lines": 95,
-        "statements": 95
+        "branches": 74,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
       }
     },
     "collectCoverage": true
   },
   "prettier": {
-    "singleQuote": true
+    "singleQuote": true,
+    "trailingComma": "all"
   },
   "devDependencies": {
     "@types/jest": "^22.0.0",
+    "@types/lodash.flatmap": "^4.5.3",
     "@types/node": "^10.0.3",
     "colors": "^1.1.2",
     "commitizen": "^2.9.6",
@@ -109,5 +112,8 @@
   },
   "publishConfig": {
     "access": "restricted"
+  },
+  "dependencies": {
+    "lodash.flatmap": "^4.5.0"
   }
 }

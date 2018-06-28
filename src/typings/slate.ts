@@ -1,0 +1,35 @@
+namespace Slate {
+  export interface Node {
+    object: 'document' | 'block' | 'inline' | 'text';
+    type?: string;
+  }
+
+  export interface Document extends Node {
+    object: 'document';
+    nodes: Block[];
+  }
+
+  export interface Block extends Node {
+    object: 'block';
+    nodes: Array<Block | Inline | Text>;
+  }
+
+  export interface Inline extends Node {
+    object: 'inline';
+    nodes: Array<Inline | Text>;
+  }
+
+  export interface Text extends Node {
+    object: 'text';
+    leaves: TextLeave[];
+  }
+
+  export interface Mark {
+    type: string;
+  }
+
+  export interface TextLeave {
+    text: string;
+    marks: Mark[];
+  }
+}
