@@ -1,4 +1,4 @@
-import { toContentfulDocument } from '../contentful-slatejs-adapter';
+import toContentfulDocument from '../slatejs-to-contentful-adapter';
 
 import * as slate from './slate-helpers';
 import * as contentful from './contentful-helpers';

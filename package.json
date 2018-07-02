@@ -29,7 +29,6 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
-    "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "travis-deploy-once": "travis-deploy-once --pro",
     "precommit": "lint-staged"
   },
@@ -81,6 +80,7 @@
     "@types/jest": "^22.0.0",
     "@types/lodash.flatmap": "^4.5.3",
     "@types/node": "^10.0.3",
+    "@types/lodash": "^4.14.110",
     "colors": "^1.1.2",
     "commitizen": "^2.9.6",
     "coveralls": "^3.0.0",

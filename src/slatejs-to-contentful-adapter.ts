@@ -1,9 +1,9 @@
 import flatMap from 'lodash.flatmap';
 
-export function toContentfulDocument(slateDocument: Slate.Document): Contentful.Document {
+export default function toContentfulDocument(slateDocument: Slate.Document): Contentful.Document {
   return {
     category: 'document',
-    content: flatMap(slateDocument.nodes, node => convertNode(node)) as Contentful.Block[],
+    content: flatMap(slateDocument.nodes, convertNode) as Contentful.Block[],
   };
 }
 
@@ -13,7 +13,7 @@ function convertNode(node: Slate.Block | Slate.Inline | Slate.Text): Contentful.
     case 'block':
     case 'inline':
       const slateBlock = node as Slate.Block;
-      const content = flatMap(slateBlock.nodes, childNode => convertNode(childNode));
+      const content = flatMap(slateBlock.nodes, convertNode);
       const contentfulBlock = {
         category: slateBlock.object,
         type: slateBlock.type,
