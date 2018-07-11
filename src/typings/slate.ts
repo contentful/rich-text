@@ -29,6 +29,7 @@ namespace Slate {
   }
 
   export interface TextLeave {
+    object: 'leaf';
     text: string;
     marks: Mark[];
   }

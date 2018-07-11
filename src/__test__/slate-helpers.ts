@@ -33,6 +33,7 @@ export function text(...leaves: Slate.TextLeave[]): Slate.Text {
 
 export function leaf(value: string, ...marks: Slate.Mark[]): Slate.TextLeave {
   return {
+    object: 'leaf',
     text: value,
     marks,
   };

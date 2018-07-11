@@ -26,6 +26,7 @@ function convertNode(node: Contentful.Block | Contentful.Inline | Contentful.Tex
         object: 'text',
         leaves: [
           {
+            object: 'leaf',
             text: value,
             marks,
           },
