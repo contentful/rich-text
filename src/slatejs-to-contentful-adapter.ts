@@ -18,6 +18,7 @@ function convertNode(node: Slate.Block | Slate.Inline | Slate.Text): Contentful.
         category: slateBlock.object,
         type: slateBlock.type,
         content,
+        ...slateBlock.data,
       } as Contentful.Block;
       nodes.push(contentfulBlock);
       break;
@@ -38,6 +39,7 @@ function convertText(node: Slate.Text): Contentful.Text[] {
     type: 'text',
     value: leave.text,
     marks: leave.marks,
+    ...node.data,
   }));
 }
 

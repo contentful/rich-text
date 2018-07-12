@@ -2,6 +2,7 @@ namespace Slate {
   export interface Node {
     object: 'document' | 'block' | 'inline' | 'text';
     type?: string;
+    data?: object;
   }
 
   export interface Document extends Node {
@@ -11,6 +12,7 @@ namespace Slate {
 
   export interface Block extends Node {
     object: 'block';
+
     nodes: Array<Block | Inline | Text>;
   }
 

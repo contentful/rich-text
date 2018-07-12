@@ -1,4 +1,6 @@
 import flatmap from 'lodash.flatmap';
+import omit from 'lodash.omit';
+
 export default function toSlatejsDocument(ctfDocument: Contentful.Document): Slate.Document {
   return {
     object: 'document',
@@ -13,15 +15,20 @@ function convertNode(node: Contentful.Block | Contentful.Inline | Contentful.Tex
     case 'inline':
       const contentfulBlock = node as Contentful.Block;
       const childNodes = flatmap(contentfulBlock.content, convertNode);
+      const data = omit(contentfulBlock, ['category', 'type', 'content']);
       const slateBlock = {
         object: contentfulBlock.category,
         type: contentfulBlock.type,
         nodes: childNodes,
       } as Slate.Block;
+      if (Object.keys(data).length > 0) {
+        slateBlock.data = data;
+      }
       nodes.push(slateBlock);
       break;
     case 'text':
       const { marks, value } = node as Contentful.Text;
+      const textData = omit(node, ['category', 'type', 'value', 'marks']);
       const slateText: Slate.Text = {
         object: 'text',
         leaves: [
@@ -32,7 +39,9 @@ function convertNode(node: Contentful.Block | Contentful.Inline | Contentful.Tex
           },
         ],
       };
-
+      if (Object.keys(textData).length > 0) {
+        slateText.data = textData;
+      }
       nodes.push(slateText);
       break;
     default:
@@ -43,5 +52,5 @@ function convertNode(node: Contentful.Block | Contentful.Inline | Contentful.Tex
 }
 
 function assertUnreachable(object: never): never {
-  throw new Error(`Unexpected contentful object ${object}`);
+  throw new Error(`Unexpected contentful object ${JSON.stringify(object)}`);
 }

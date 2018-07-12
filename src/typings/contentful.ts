@@ -2,6 +2,8 @@ namespace Contentful {
   export interface Node {
     category: 'document' | 'block' | 'inline' | 'text';
     type?: string;
+    // tslint:disable-next-line:no-any
+    [k: string]: any;
   }
 
   export interface Document extends Node {
