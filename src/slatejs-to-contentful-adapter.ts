@@ -1,8 +1,10 @@
 import flatMap from 'lodash.flatmap';
+import * as Contentful from '@contentful/structured-text-types';
 
 export default function toContentfulDocument(slateDocument: Slate.Document): Contentful.Document {
   return {
     category: 'document',
+    type: Contentful.BLOCKS.DOCUMENT,
     content: flatMap(slateDocument.nodes, convertNode) as Contentful.Block[],
   };
 }

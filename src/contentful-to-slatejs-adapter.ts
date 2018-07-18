@@ -1,5 +1,6 @@
 import flatmap from 'lodash.flatmap';
 import omit from 'lodash.omit';
+import * as Contentful from '@contentful/structured-text-types';
 
 export default function toSlatejsDocument(ctfDocument: Contentful.Document): Slate.Document {
   return {

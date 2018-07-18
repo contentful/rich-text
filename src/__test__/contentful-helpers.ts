@@ -1,6 +1,9 @@
+import * as Contentful from '@contentful/structured-text-types';
+
 export function document(...content: Contentful.Block[]): Contentful.Document {
   return {
     category: 'document',
+    type: Contentful.BLOCKS.DOCUMENT,
     content,
   };
 }

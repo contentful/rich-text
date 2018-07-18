@@ -12,6 +12,8 @@ notifications:
   email: false
 node_js:
   - node
+before_install:
+  - printf "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 install:
   - npm install
 script:

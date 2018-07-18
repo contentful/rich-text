@@ -1,5 +1,6 @@
 import toSlatejsDocument from '../contentful-to-slatejs-adapter';
 import toContentfulDocument from '../slatejs-to-contentful-adapter';
+import * as Contentful from '@contentful/structured-text-types';
 
 import * as slate from './slate-helpers';
 import * as contentful from './contentful-helpers';
@@ -103,6 +104,7 @@ describe('toSlatejsDocument', () => {
       'data in block',
       {
         category: 'document',
+        type: Contentful.BLOCKS.DOCUMENT,
         content: [
           {
             category: 'block',
@@ -129,6 +131,7 @@ describe('toSlatejsDocument', () => {
       'data in inline',
       {
         category: 'document',
+        type: Contentful.BLOCKS.DOCUMENT,
         content: [
           {
             category: 'block',
@@ -171,6 +174,7 @@ describe('toSlatejsDocument', () => {
       'data in text',
       {
         category: 'document',
+        type: Contentful.BLOCKS.DOCUMENT,
         content: [
           {
             category: 'block',
