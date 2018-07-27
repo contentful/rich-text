@@ -103,14 +103,14 @@ describe('toSlatejsDocument', () => {
     testFactory(
       'data in block',
       {
-        category: 'document',
-        type: Contentful.BLOCKS.DOCUMENT,
+        nodeClass: 'document',
+        nodeType: Contentful.BLOCKS.DOCUMENT,
         content: [
           {
-            category: 'block',
-            type: 'paragraph',
-            a: 1,
+            nodeClass: 'block',
+            nodeType: 'paragraph',
             content: [],
+            data: { a: 1 },
           },
         ],
       },
@@ -130,18 +130,18 @@ describe('toSlatejsDocument', () => {
     testFactory(
       'data in inline',
       {
-        category: 'document',
-        type: Contentful.BLOCKS.DOCUMENT,
+        nodeClass: 'document',
+        nodeType: Contentful.BLOCKS.DOCUMENT,
         content: [
           {
-            category: 'block',
-            type: 'paragraph',
-            a: 1,
+            nodeClass: 'block',
+            nodeType: 'paragraph',
+            data: { a: 1 },
             content: [
               {
-                category: 'inline',
-                type: 'hyperlink',
-                a: 2,
+                nodeClass: 'inline',
+                nodeType: 'hyperlink',
+                data: { a: 2 },
                 content: [],
               },
             ],
@@ -173,25 +173,25 @@ describe('toSlatejsDocument', () => {
     testFactory(
       'data in text',
       {
-        category: 'document',
-        type: Contentful.BLOCKS.DOCUMENT,
+        nodeClass: 'document',
+        nodeType: Contentful.BLOCKS.DOCUMENT,
         content: [
           {
-            category: 'block',
-            type: 'paragraph',
-            a: 1,
+            nodeClass: 'block',
+            nodeType: 'paragraph',
+            data: { a: 1 },
             content: [
               {
-                category: 'inline',
-                type: 'hyperlink',
-                a: 2,
+                nodeClass: 'inline',
+                nodeType: 'hyperlink',
+                data: { a: 2 },
                 content: [],
               },
               {
-                category: 'text',
-                type: 'text',
+                nodeClass: 'text',
+                nodeType: 'text',
                 marks: [],
-                a: 3,
+                data: { a: 3 },
                 value: 'YO',
               },
             ],

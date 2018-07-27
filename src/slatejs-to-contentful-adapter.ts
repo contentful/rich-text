@@ -1,27 +1,28 @@
 import flatMap from 'lodash.flatmap';
 import * as Contentful from '@contentful/structured-text-types';
+import { ContentfulNode, SlateNode } from './types';
 
 export default function toContentfulDocument(slateDocument: Slate.Document): Contentful.Document {
   return {
-    category: 'document',
-    type: Contentful.BLOCKS.DOCUMENT,
+    nodeClass: 'document',
+    nodeType: Contentful.BLOCKS.DOCUMENT,
     content: flatMap(slateDocument.nodes, convertNode) as Contentful.Block[],
   };
 }
 
-function convertNode(node: Slate.Block | Slate.Inline | Slate.Text): Contentful.Node[] {
-  const nodes: Contentful.Node[] = [];
+function convertNode(node: SlateNode): ContentfulNode[] {
+  const nodes: ContentfulNode[] = [];
   switch (node.object) {
     case 'block':
     case 'inline':
       const slateBlock = node as Slate.Block;
       const content = flatMap(slateBlock.nodes, convertNode);
-      const contentfulBlock = {
-        category: slateBlock.object,
-        type: slateBlock.type,
+      const contentfulBlock: Contentful.Block = {
+        nodeClass: slateBlock.object,
+        nodeType: slateBlock.type,
         content,
-        ...slateBlock.data,
-      } as Contentful.Block;
+        data: slateBlock.data,
+      };
       nodes.push(contentfulBlock);
       break;
     case 'text':
@@ -37,11 +38,11 @@ function convertNode(node: Slate.Block | Slate.Inline | Slate.Text): Contentful.
 
 function convertText(node: Slate.Text): Contentful.Text[] {
   return node.leaves.map<Contentful.Text>(leave => ({
-    category: 'text',
-    type: 'text',
+    nodeClass: 'text',
+    nodeType: 'text',
     value: leave.text,
     marks: leave.marks,
-    ...node.data,
+    data: node.data,
   }));
 }
 

@@ -2,38 +2,38 @@ import * as Contentful from '@contentful/structured-text-types';
 
 export function document(...content: Contentful.Block[]): Contentful.Document {
   return {
-    category: 'document',
-    type: Contentful.BLOCKS.DOCUMENT,
+    nodeClass: 'document',
+    nodeType: Contentful.BLOCKS.DOCUMENT,
     content,
   };
 }
 
 export function block(
-  type: string,
+  nodeType: string,
   ...content: Array<Contentful.Block | Contentful.Inline | Contentful.Text>
 ): Contentful.Block {
   return {
-    category: 'block',
-    type,
+    nodeClass: 'block',
+    nodeType,
     content,
   };
 }
 
 export function inline(
-  type: string,
+  nodeType: string,
   ...content: Array<Contentful.Inline | Contentful.Text>
 ): Contentful.Inline {
   return {
-    category: 'inline',
-    type,
+    nodeClass: 'inline',
+    nodeType,
     content,
   };
 }
 
 export function text(value: string, ...marks: Contentful.Mark[]): Contentful.Text {
   return {
-    category: 'text',
-    type: 'text',
+    nodeClass: 'text',
+    nodeType: 'text',
     marks,
     value: value,
   };

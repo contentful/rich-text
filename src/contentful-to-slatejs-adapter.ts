@@ -1,6 +1,7 @@
 import flatmap from 'lodash.flatmap';
 import omit from 'lodash.omit';
 import * as Contentful from '@contentful/structured-text-types';
+import { ContentfulNode, SlateNode } from './types';
 
 export default function toSlatejsDocument(ctfDocument: Contentful.Document): Slate.Document {
   return {
@@ -9,27 +10,26 @@ export default function toSlatejsDocument(ctfDocument: Contentful.Document): Sla
   };
 }
 
-function convertNode(node: Contentful.Block | Contentful.Inline | Contentful.Text): Slate.Node[] {
-  const nodes: Slate.Node[] = [];
-  switch (node.category) {
+function convertNode(node: ContentfulNode): SlateNode[] {
+  const nodes: SlateNode[] = [];
+  switch (node.nodeClass) {
     case 'block':
     case 'inline':
       const contentfulBlock = node as Contentful.Block;
       const childNodes = flatmap(contentfulBlock.content, convertNode);
-      const data = omit(contentfulBlock, ['category', 'type', 'content']);
-      const slateBlock = {
-        object: contentfulBlock.category,
-        type: contentfulBlock.type,
+
+      const slateBlock: Slate.Block = {
+        object: contentfulBlock.nodeClass,
+        type: contentfulBlock.nodeType,
         nodes: childNodes,
-      } as Slate.Block;
-      if (Object.keys(data).length > 0) {
-        slateBlock.data = data;
-      }
+        data: contentfulBlock.data,
+      };
+
       nodes.push(slateBlock);
       break;
     case 'text':
-      const { marks, value } = node as Contentful.Text;
-      const textData = omit(node, ['category', 'type', 'value', 'marks']);
+      const { marks, value, data } = node as Contentful.Text;
+
       const slateText: Slate.Text = {
         object: 'text',
         leaves: [
@@ -39,10 +39,9 @@ function convertNode(node: Contentful.Block | Contentful.Inline | Contentful.Tex
             marks,
           },
         ],
+        data,
       };
-      if (Object.keys(textData).length > 0) {
-        slateText.data = textData;
-      }
+
       nodes.push(slateText);
       break;
     default:

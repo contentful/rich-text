@@ -56,10 +56,14 @@
       "tsx",
       "js"
     ],
+    "testPathIgnorePatterns": [
+      "/dist/"
+    ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/test/",
-      "/__test__/"
+      "/__test__/",
+      "/dist/"
     ],
     "coverageThreshold": {
       "global": {
@@ -114,7 +118,7 @@
     "access": "restricted"
   },
   "dependencies": {
-    "@contentful/structured-text-types": "^1.1.0",
+    "@contentful/structured-text-types": "^2.0.0",
     "lodash.flatmap": "^4.5.0",
     "lodash.omit": "^4.5.0"
   }
