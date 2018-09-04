@@ -1,7 +1,7 @@
 contentful-slatejs-adapter
 =====
 
-The library provides an adapter to convert Slate's Document to Contentful Document.
+The library provides an adapter to convert Slate's Document to Contentful Document and vice-versa.
 
 ```json
 {
