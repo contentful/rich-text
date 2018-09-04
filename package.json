@@ -29,6 +29,7 @@
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once --pro",
+    "commitmsg": "validate-commit-msg",
     "precommit": "lint-staged"
   },
   "lint-staged": {
