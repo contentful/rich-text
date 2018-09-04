@@ -23,7 +23,7 @@ describe('toSlatejsDocument', () => {
     testFactory('empty document', contentful.document(), slate.document());
 
     testFactory(
-      'document with paragraph',
+      'document with block',
       contentful.document(contentful.block('paragraph', contentful.text(''))),
       slate.document(slate.block('paragraph', slate.text(slate.leaf('')))),
     );
@@ -41,7 +41,7 @@ describe('toSlatejsDocument', () => {
     );
 
     testFactory(
-      'text with mark',
+      'text with marks',
       contentful.document(
         contentful.block(
           'paragraph',
@@ -57,6 +57,23 @@ describe('toSlatejsDocument', () => {
         ),
       ),
     );
+
+    it('adds a default value to marks if undefined', () => {
+      const slateDoc = slate.document(
+        slate.block('paragraph', slate.text({ marks: undefined, object: 'leaf', text: 'Hi' })),
+      );
+      const ctflDoc = toContentfulDocument(slateDoc);
+      expect(ctflDoc).toEqual(
+        contentful.document(
+          contentful.block('paragraph', {
+            nodeType: 'text',
+            nodeClass: 'text',
+            marks: [],
+            value: 'Hi',
+          }),
+        ),
+      );
+    });
 
     testFactory(
       'text with multiple marks',

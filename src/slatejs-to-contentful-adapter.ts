@@ -41,7 +41,7 @@ function convertText(node: Slate.Text): Contentful.Text[] {
     nodeClass: 'text',
     nodeType: 'text',
     value: leave.text,
-    marks: leave.marks,
+    marks: leave.marks || [],
     data: node.data,
   }));
 }
