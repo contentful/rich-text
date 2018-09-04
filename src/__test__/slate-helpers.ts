@@ -24,14 +24,14 @@ export function inline(type: string, ...nodes: Array<Slate.Inline | Slate.Text>)
   };
 }
 
-export function text(...leaves: Slate.TextLeave[]): Slate.Text {
+export function text(...leaves: Slate.TextLeaf[]): Slate.Text {
   return {
     object: 'text',
     leaves,
   };
 }
 
-export function leaf(value: string, ...marks: Slate.Mark[]): Slate.TextLeave {
+export function leaf(value: string, ...marks: Slate.Mark[]): Slate.TextLeaf {
   return {
     object: 'leaf',
     text: value,

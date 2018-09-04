@@ -23,14 +23,14 @@ namespace Slate {
 
   export interface Text extends Node {
     object: 'text';
-    leaves: TextLeave[];
+    leaves: TextLeaf[];
   }
 
   export interface Mark {
     type: string;
   }
 
-  export interface TextLeave {
+  export interface TextLeaf {
     object: 'leaf';
     text: string;
     marks?: Mark[];

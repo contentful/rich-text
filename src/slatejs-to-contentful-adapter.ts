@@ -37,11 +37,11 @@ function convertNode(node: SlateNode): ContentfulNode[] {
 }
 
 function convertText(node: Slate.Text): Contentful.Text[] {
-  return node.leaves.map<Contentful.Text>(leave => ({
+  return node.leaves.map<Contentful.Text>(leaf => ({
     nodeClass: 'text',
     nodeType: 'text',
-    value: leave.text,
-    marks: leave.marks || [],
+    value: leaf.text,
+    marks: leaf.marks || [],
     data: node.data,
   }));
 }
