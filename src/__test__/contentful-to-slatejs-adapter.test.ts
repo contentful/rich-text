@@ -5,17 +5,23 @@ import * as Contentful from '@contentful/structured-text-types';
 import * as slate from './slate-helpers';
 import * as contentful from './contentful-helpers';
 
-describe('toSlatejsDocument', () => {
+describe('adapters', () => {
   const testFactory = (
     message: string,
     contentfulDoc: Contentful.Document,
-    expected: Slate.Document,
+    slateDoc: Slate.Document,
   ) => {
-    it(message, () => {
-      const actualSlateDoc = toSlatejsDocument(contentfulDoc);
-      expect(actualSlateDoc).toEqual(expected);
-      const actualContentfulDoc = toContentfulDocument(actualSlateDoc);
-      expect(actualContentfulDoc).toEqual(contentfulDoc);
+    describe('toSlatejsDocument()', () => {
+      it(message, () => {
+        const actualSlateDoc = toSlatejsDocument(contentfulDoc);
+        expect(actualSlateDoc).toEqual(slateDoc);
+      });
+    });
+    describe('toContentfulDocument()', () => {
+      it(message, () => {
+        const actualContentfulDoc = toContentfulDocument(slateDoc);
+        expect(actualContentfulDoc).toEqual(contentfulDoc);
+      });
     });
   };
 
