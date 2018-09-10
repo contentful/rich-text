@@ -6,7 +6,7 @@ import * as slate from './slate-helpers';
 import * as contentful from './contentful-helpers';
 
 describe('adapters', () => {
-  const testFactory = (
+  const testAdapters = (
     message: string,
     contentfulDoc: Contentful.Document,
     slateDoc: Slate.Document,
@@ -26,27 +26,27 @@ describe('adapters', () => {
   };
 
   describe('document', () => {
-    testFactory('empty document', contentful.document(), slate.document());
+    testAdapters('empty document', contentful.document(), slate.document());
 
-    testFactory(
+    testAdapters(
       'document with block',
       contentful.document(contentful.block('paragraph', contentful.text(''))),
       slate.document(slate.block('paragraph', slate.text(slate.leaf('')))),
     );
 
-    testFactory(
+    testAdapters(
       'paragraph with inline',
       contentful.document(contentful.block('paragraph', contentful.inline('hyperlink'))),
       slate.document(slate.block('paragraph', slate.inline('hyperlink'))),
     );
 
-    testFactory(
+    testAdapters(
       'paragraph with text',
       contentful.document(contentful.block('paragraph', contentful.text('hi'))),
       slate.document(slate.block('paragraph', slate.text(slate.leaf('hi')))),
     );
 
-    testFactory(
+    testAdapters(
       'text with marks',
       contentful.document(
         contentful.block(
@@ -81,7 +81,7 @@ describe('adapters', () => {
       );
     });
 
-    testFactory(
+    testAdapters(
       'text with multiple marks',
       contentful.document(
         contentful.block(
@@ -101,7 +101,7 @@ describe('adapters', () => {
       ),
     );
 
-    testFactory(
+    testAdapters(
       'document with nested blocks',
       contentful.document(
         contentful.block(
@@ -123,7 +123,7 @@ describe('adapters', () => {
   });
 
   describe('converts additional data', () => {
-    testFactory(
+    testAdapters(
       'data in block',
       {
         nodeClass: 'document',
@@ -150,7 +150,7 @@ describe('adapters', () => {
       },
     );
 
-    testFactory(
+    testAdapters(
       'data in inline',
       {
         nodeClass: 'document',
@@ -193,7 +193,7 @@ describe('adapters', () => {
       },
     );
 
-    testFactory(
+    testAdapters(
       'data in text',
       {
         nodeClass: 'document',
