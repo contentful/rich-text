@@ -5,42 +5,48 @@ import * as Contentful from '@contentful/structured-text-types';
 import * as slate from './slate-helpers';
 import * as contentful from './contentful-helpers';
 
-describe('toSlatejsDocument', () => {
-  const testFactory = (
+describe('adapters', () => {
+  const testAdapters = (
     message: string,
     contentfulDoc: Contentful.Document,
-    expected: Slate.Document,
+    slateDoc: Slate.Document,
   ) => {
-    it(message, () => {
-      const actualSlateDoc = toSlatejsDocument(contentfulDoc);
-      expect(actualSlateDoc).toEqual(expected);
-      const actualContentfulDoc = toContentfulDocument(actualSlateDoc);
-      expect(actualContentfulDoc).toEqual(contentfulDoc);
+    describe('toSlatejsDocument()', () => {
+      it(message, () => {
+        const actualSlateDoc = toSlatejsDocument(contentfulDoc);
+        expect(actualSlateDoc).toEqual(slateDoc);
+      });
+    });
+    describe('toContentfulDocument()', () => {
+      it(message, () => {
+        const actualContentfulDoc = toContentfulDocument(slateDoc);
+        expect(actualContentfulDoc).toEqual(contentfulDoc);
+      });
     });
   };
 
   describe('document', () => {
-    testFactory('empty document', contentful.document(), slate.document());
+    testAdapters('empty document', contentful.document(), slate.document());
 
-    testFactory(
+    testAdapters(
       'document with block',
       contentful.document(contentful.block('paragraph', contentful.text(''))),
       slate.document(slate.block('paragraph', slate.text(slate.leaf('')))),
     );
 
-    testFactory(
+    testAdapters(
       'paragraph with inline',
       contentful.document(contentful.block('paragraph', contentful.inline('hyperlink'))),
       slate.document(slate.block('paragraph', slate.inline('hyperlink'))),
     );
 
-    testFactory(
+    testAdapters(
       'paragraph with text',
       contentful.document(contentful.block('paragraph', contentful.text('hi'))),
       slate.document(slate.block('paragraph', slate.text(slate.leaf('hi')))),
     );
 
-    testFactory(
+    testAdapters(
       'text with marks',
       contentful.document(
         contentful.block(
@@ -75,7 +81,7 @@ describe('toSlatejsDocument', () => {
       );
     });
 
-    testFactory(
+    testAdapters(
       'text with multiple marks',
       contentful.document(
         contentful.block(
@@ -95,7 +101,7 @@ describe('toSlatejsDocument', () => {
       ),
     );
 
-    testFactory(
+    testAdapters(
       'document with nested blocks',
       contentful.document(
         contentful.block(
@@ -117,7 +123,7 @@ describe('toSlatejsDocument', () => {
   });
 
   describe('converts additional data', () => {
-    testFactory(
+    testAdapters(
       'data in block',
       {
         nodeClass: 'document',
@@ -144,7 +150,7 @@ describe('toSlatejsDocument', () => {
       },
     );
 
-    testFactory(
+    testAdapters(
       'data in inline',
       {
         nodeClass: 'document',
@@ -187,7 +193,7 @@ describe('toSlatejsDocument', () => {
       },
     );
 
-    testFactory(
+    testAdapters(
       'data in text',
       {
         nodeClass: 'document',
