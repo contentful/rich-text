@@ -46,8 +46,10 @@ export function leaf(value: string, ...marks: Slate.Mark[]): Slate.TextLeaf {
   };
 }
 
-export function mark(type: string): Slate.Mark {
+export function mark(type: string, data?: Record<string, any>): Slate.Mark {
   return {
     type,
+    data: data || {},
+    object: 'mark',
   };
 }

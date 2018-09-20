@@ -29,6 +29,8 @@ namespace Slate {
 
   export interface Mark {
     type: string;
+    data: Record<string, any>;
+    object: 'mark';
   }
 
   export interface TextLeaf {

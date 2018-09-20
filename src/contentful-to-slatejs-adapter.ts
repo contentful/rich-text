@@ -55,7 +55,7 @@ function convertNode(node: ContentfulNode, schema: Schema): SlateNode[] {
       nodes.push(slateBlock);
       break;
     case 'text':
-      const { marks, value, data } = node as Contentful.Text;
+      const { marks = [], value, data } = node as Contentful.Text;
 
       const slateText: Slate.Text = {
         object: 'text',
@@ -63,8 +63,12 @@ function convertNode(node: ContentfulNode, schema: Schema): SlateNode[] {
           {
             object: 'leaf',
             text: value,
-            marks,
-          },
+            marks: marks.map(mark => ({
+              ...mark,
+              data: {},
+              object: 'mark',
+            })),
+          } as Slate.TextLeaf,
         ],
         data,
       };

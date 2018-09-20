@@ -63,7 +63,7 @@ describe('adapters', () => {
           'paragraph',
           false,
           slate.text(slate.leaf('this')),
-          slate.text(slate.leaf('is', contentful.mark('bold'))),
+          slate.text(slate.leaf('is', slate.mark('bold'))),
         ),
       ),
     );

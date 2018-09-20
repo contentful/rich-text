@@ -120,7 +120,7 @@
     "access": "restricted"
   },
   "dependencies": {
-    "@contentful/structured-text-types": "^2.0.0",
+    "@contentful/structured-text-types": "^3.2.0",
     "lodash.flatmap": "^4.5.0",
     "lodash.get": "^4.4.2",
     "lodash.omit": "^4.5.0"

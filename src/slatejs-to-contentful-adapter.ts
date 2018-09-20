@@ -41,7 +41,7 @@ function convertText(node: Slate.Text): Contentful.Text[] {
     nodeClass: 'text',
     nodeType: 'text',
     value: leaf.text,
-    marks: leaf.marks || [],
+    marks: leaf.marks ? leaf.marks.map(mark => ({ type: mark.type })) : [],
     data: node.data,
   }));
 }
