@@ -3,6 +3,7 @@ namespace Slate {
     object: 'document' | 'block' | 'inline' | 'text';
     type?: string;
     data?: object;
+    isVoid?: boolean;
   }
 
   export interface Document extends Node {

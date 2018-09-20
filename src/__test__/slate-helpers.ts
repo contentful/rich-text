@@ -7,18 +7,25 @@ export function document(...nodes: Slate.Block[]): Slate.Document {
 
 export function block(
   type: string,
+  isVoid: false,
   ...nodes: Array<Slate.Block | Slate.Inline | Slate.Text>
 ): Slate.Block {
   return {
     object: 'block',
+    isVoid,
     type,
     nodes,
   };
 }
 
-export function inline(type: string, ...nodes: Array<Slate.Inline | Slate.Text>): Slate.Inline {
+export function inline(
+  type: string,
+  isVoid: false,
+  ...nodes: Array<Slate.Inline | Slate.Text>
+): Slate.Inline {
   return {
     object: 'inline',
+    isVoid,
     type,
     nodes,
   };

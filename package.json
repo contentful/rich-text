@@ -83,6 +83,7 @@
   "devDependencies": {
     "@types/jest": "^22.0.0",
     "@types/lodash.flatmap": "^4.5.3",
+    "@types/lodash.get": "^4.4.4",
     "@types/lodash.omit": "^4.5.3",
     "@types/node": "^10.0.3",
     "colors": "^1.1.2",
@@ -121,6 +122,7 @@
   "dependencies": {
     "@contentful/structured-text-types": "^2.0.0",
     "lodash.flatmap": "^4.5.0",
+    "lodash.get": "^4.4.2",
     "lodash.omit": "^4.5.0"
   }
 }

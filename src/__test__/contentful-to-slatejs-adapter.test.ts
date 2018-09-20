@@ -13,7 +13,10 @@ describe('adapters', () => {
   ) => {
     describe('toSlatejsDocument()', () => {
       it(message, () => {
-        const actualSlateDoc = toSlatejsDocument(contentfulDoc);
+        const actualSlateDoc = toSlatejsDocument({
+          document: contentfulDoc,
+          schema: { blocks: { voidnode: { isVoid: true } } },
+        });
         expect(actualSlateDoc).toEqual(slateDoc);
       });
     });
@@ -31,19 +34,19 @@ describe('adapters', () => {
     testAdapters(
       'document with block',
       contentful.document(contentful.block('paragraph', contentful.text(''))),
-      slate.document(slate.block('paragraph', slate.text(slate.leaf('')))),
+      slate.document(slate.block('paragraph', false, slate.text(slate.leaf('')))),
     );
 
     testAdapters(
       'paragraph with inline',
       contentful.document(contentful.block('paragraph', contentful.inline('hyperlink'))),
-      slate.document(slate.block('paragraph', slate.inline('hyperlink'))),
+      slate.document(slate.block('paragraph', false, slate.inline('hyperlink', false))),
     );
 
     testAdapters(
       'paragraph with text',
       contentful.document(contentful.block('paragraph', contentful.text('hi'))),
-      slate.document(slate.block('paragraph', slate.text(slate.leaf('hi')))),
+      slate.document(slate.block('paragraph', false, slate.text(slate.leaf('hi')))),
     );
 
     testAdapters(
@@ -58,6 +61,7 @@ describe('adapters', () => {
       slate.document(
         slate.block(
           'paragraph',
+          false,
           slate.text(slate.leaf('this')),
           slate.text(slate.leaf('is', contentful.mark('bold'))),
         ),
@@ -66,7 +70,11 @@ describe('adapters', () => {
 
     it('adds a default value to marks if undefined', () => {
       const slateDoc = slate.document(
-        slate.block('paragraph', slate.text({ marks: undefined, object: 'leaf', text: 'Hi' })),
+        slate.block(
+          'paragraph',
+          false,
+          slate.text({ marks: undefined, object: 'leaf', text: 'Hi' }),
+        ),
       );
       const ctflDoc = toContentfulDocument(slateDoc);
       expect(ctflDoc).toEqual(
@@ -94,6 +102,7 @@ describe('adapters', () => {
       slate.document(
         slate.block(
           'paragraph',
+          false,
           slate.text(slate.leaf('this')),
           slate.text(slate.leaf('is', slate.mark('bold'))),
           slate.text(slate.leaf('huge', slate.mark('bold'), slate.mark('italic'))),
@@ -114,10 +123,15 @@ describe('adapters', () => {
       slate.document(
         slate.block(
           'paragraph',
+          false,
           slate.text(slate.leaf('this is a test', slate.mark('bold'))),
           slate.text(slate.leaf('paragraph', slate.mark('underline'))),
         ),
-        slate.block('block', slate.block('block', slate.text(slate.leaf('this is it')))),
+        slate.block(
+          'block',
+          false,
+          slate.block('block', false, slate.text(slate.leaf('this is it'))),
+        ),
       ),
     );
   });
@@ -143,6 +157,7 @@ describe('adapters', () => {
           {
             object: 'block',
             type: 'paragraph',
+            isVoid: false,
             data: { a: 1 },
             nodes: [],
           },
@@ -177,11 +192,13 @@ describe('adapters', () => {
           {
             object: 'block',
             type: 'paragraph',
+            isVoid: false,
             data: { a: 1 },
             nodes: [
               {
                 object: 'inline',
                 type: 'hyperlink',
+                isVoid: false,
                 data: {
                   a: 2,
                 },
@@ -227,11 +244,13 @@ describe('adapters', () => {
           {
             object: 'block',
             type: 'paragraph',
+            isVoid: false,
             data: { a: 1 },
             nodes: [
               {
                 object: 'inline',
                 type: 'hyperlink',
+                isVoid: false,
                 data: {
                   a: 2,
                 },
@@ -249,6 +268,36 @@ describe('adapters', () => {
                 ],
               },
             ],
+          },
+        ],
+      },
+    );
+  });
+
+  describe('sets isVoid from schema', () => {
+    testAdapters(
+      'data in block',
+      {
+        nodeClass: 'document',
+        nodeType: Contentful.BLOCKS.DOCUMENT,
+        content: [
+          {
+            nodeClass: 'block',
+            nodeType: 'voidnode',
+            content: [],
+            data: { a: 1 },
+          },
+        ],
+      },
+      {
+        object: 'document',
+        nodes: [
+          {
+            object: 'block',
+            type: 'voidnode',
+            isVoid: true,
+            data: { a: 1 },
+            nodes: [],
           },
         ],
       },
