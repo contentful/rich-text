@@ -1,11 +1,13 @@
 import flatMap from 'lodash.flatmap';
 import * as Contentful from '@contentful/structured-text-types';
 import { ContentfulNode, SlateNode } from './types';
+import { getDataOfDefault } from './helpers';
 
 export default function toContentfulDocument(slateDocument: Slate.Document): Contentful.Document {
   return {
     nodeClass: 'document',
     nodeType: Contentful.BLOCKS.DOCUMENT,
+    data: getDataOfDefault(slateDocument.data),
     content: flatMap(slateDocument.nodes, convertNode) as Contentful.Block[],
   };
 }
@@ -21,7 +23,7 @@ function convertNode(node: SlateNode): ContentfulNode[] {
         nodeClass: slateBlock.object,
         nodeType: slateBlock.type,
         content,
-        data: slateBlock.data,
+        data: getDataOfDefault(slateBlock.data),
       };
       nodes.push(contentfulBlock);
       break;
@@ -42,7 +44,7 @@ function convertText(node: Slate.Text): Contentful.Text[] {
     nodeType: 'text',
     value: leaf.text,
     marks: leaf.marks ? leaf.marks.map(mark => ({ type: mark.type })) : [],
-    data: node.data,
+    data: getDataOfDefault(node.data),
   }));
 }
 

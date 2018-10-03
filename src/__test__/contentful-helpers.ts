@@ -1,8 +1,14 @@
 import * as Contentful from '@contentful/structured-text-types';
 
+export interface NodeProps {
+  isVoid?: boolean;
+  data?: Record<string, any>;
+}
+
 export function document(...content: Contentful.Block[]): Contentful.Document {
   return {
     nodeClass: 'document',
+    data: {},
     nodeType: Contentful.BLOCKS.DOCUMENT,
     content,
   };
@@ -16,6 +22,7 @@ export function block(
     nodeClass: 'block',
     nodeType,
     content,
+    data: {},
   };
 }
 
@@ -27,6 +34,7 @@ export function inline(
     nodeClass: 'inline',
     nodeType,
     content,
+    data: {},
   };
 }
 
@@ -34,6 +42,7 @@ export function text(value: string, ...marks: Contentful.Mark[]): Contentful.Tex
   return {
     nodeClass: 'text',
     nodeType: 'text',
+    data: {},
     marks,
     value: value,
   };

@@ -3,6 +3,7 @@ import omit from 'lodash.omit';
 import get from 'lodash.get';
 import * as Contentful from '@contentful/structured-text-types';
 import { ContentfulNode, SlateNode } from './types';
+import { getDataOfDefault } from './helpers';
 
 export interface SchemaValue {
   isVoid?: boolean;
@@ -24,6 +25,7 @@ export default function toSlatejsDocument({
 }: ToSlatejsDocumentProperties): Slate.Document {
   return {
     object: 'document',
+    data: getDataOfDefault(document.data),
     nodes: flatmap(document.content, node => convertNode(node, schema)) as Slate.Block[],
   };
 }
@@ -49,7 +51,7 @@ function convertNode(node: ContentfulNode, schema: Schema): SlateNode[] {
         type: contentfulBlock.nodeType,
         nodes: childNodes,
         isVoid: getIsVoidValue(contentfulBlock, schema),
-        data: contentfulBlock.data,
+        data: getDataOfDefault(contentfulBlock.data),
       };
 
       nodes.push(slateBlock);
@@ -70,7 +72,7 @@ function convertNode(node: ContentfulNode, schema: Schema): SlateNode[] {
             })),
           } as Slate.TextLeaf,
         ],
-        data,
+        data: getDataOfDefault(data),
       };
 
       nodes.push(slateText);

@@ -1,6 +1,7 @@
 export function document(...nodes: Slate.Block[]): Slate.Document {
   return {
     object: 'document',
+    data: {},
     nodes,
   };
 }
@@ -13,6 +14,7 @@ export function block(
   return {
     object: 'block',
     isVoid,
+    data: {},
     type,
     nodes,
   };
@@ -26,6 +28,7 @@ export function inline(
   return {
     object: 'inline',
     isVoid,
+    data: {},
     type,
     nodes,
   };
@@ -34,6 +37,7 @@ export function inline(
 export function text(...leaves: Slate.TextLeaf[]): Slate.Text {
   return {
     object: 'text',
+    data: {},
     leaves,
   };
 }

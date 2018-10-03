@@ -83,6 +83,7 @@ describe('adapters', () => {
             nodeType: 'text',
             nodeClass: 'text',
             marks: [],
+            data: {},
             value: 'Hi',
           }),
         ),
@@ -142,6 +143,7 @@ describe('adapters', () => {
       {
         nodeClass: 'document',
         nodeType: Contentful.BLOCKS.DOCUMENT,
+        data: {},
         content: [
           {
             nodeClass: 'block',
@@ -153,6 +155,7 @@ describe('adapters', () => {
       },
       {
         object: 'document',
+        data: {},
         nodes: [
           {
             object: 'block',
@@ -170,6 +173,7 @@ describe('adapters', () => {
       {
         nodeClass: 'document',
         nodeType: Contentful.BLOCKS.DOCUMENT,
+        data: {},
         content: [
           {
             nodeClass: 'block',
@@ -188,6 +192,7 @@ describe('adapters', () => {
       },
       {
         object: 'document',
+        data: {},
         nodes: [
           {
             object: 'block',
@@ -215,6 +220,7 @@ describe('adapters', () => {
       {
         nodeClass: 'document',
         nodeType: Contentful.BLOCKS.DOCUMENT,
+        data: {},
         content: [
           {
             nodeClass: 'block',
@@ -240,6 +246,7 @@ describe('adapters', () => {
       },
       {
         object: 'document',
+        data: {},
         nodes: [
           {
             object: 'block',
@@ -280,6 +287,7 @@ describe('adapters', () => {
       {
         nodeClass: 'document',
         nodeType: Contentful.BLOCKS.DOCUMENT,
+        data: {},
         content: [
           {
             nodeClass: 'block',
@@ -291,6 +299,7 @@ describe('adapters', () => {
       },
       {
         object: 'document',
+        data: {},
         nodes: [
           {
             object: 'block',
