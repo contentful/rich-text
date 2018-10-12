@@ -1,39 +1,25 @@
 import flatmap from 'lodash.flatmap';
 import omit from 'lodash.omit';
-import get from 'lodash.get';
+
 import * as Contentful from '@contentful/structured-text-types';
 import { ContentfulNode, SlateNode } from './types';
 import { getDataOfDefault } from './helpers';
+import { SchemaJSON, fromJSON, Schema } from './schema';
 
-export interface SchemaValue {
-  isVoid?: boolean;
-  // tslint:disable-next-line:no-any
-  [k: string]: any;
-}
-export interface Schema {
-  blocks?: Record<string, SchemaValue>;
-  inlines?: Record<string, SchemaValue>;
-}
 export interface ToSlatejsDocumentProperties {
   document: Contentful.Document;
-  schema?: Schema;
+  schema?: SchemaJSON;
 }
 
 export default function toSlatejsDocument({
   document,
-  schema = {},
+  schema,
 }: ToSlatejsDocumentProperties): Slate.Document {
   return {
     object: 'document',
     data: getDataOfDefault(document.data),
-    nodes: flatmap(document.content, node => convertNode(node, schema)) as Slate.Block[],
+    nodes: flatmap(document.content, node => convertNode(node, fromJSON(schema))) as Slate.Block[],
   };
-}
-
-// COMPAT: fixes the issue with void inline blocks in slate < v0.40
-function getIsVoidValue(node: Contentful.Block | Contentful.Inline, schema: Schema) {
-  const root = node.nodeClass === 'block' ? 'blocks' : 'inlines';
-  return get(schema, [root, node.nodeType as string, 'isVoid'], false);
 }
 
 function convertNode(node: ContentfulNode, schema: Schema): SlateNode[] {
@@ -50,7 +36,7 @@ function convertNode(node: ContentfulNode, schema: Schema): SlateNode[] {
         object: contentfulBlock.nodeClass,
         type: contentfulBlock.nodeType,
         nodes: childNodes,
-        isVoid: getIsVoidValue(contentfulBlock, schema),
+        isVoid: schema.isVoid(contentfulBlock),
         data: getDataOfDefault(contentfulBlock.data),
       };
 

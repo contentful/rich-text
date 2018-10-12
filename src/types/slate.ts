@@ -1,6 +1,7 @@
 namespace Slate {
+  export type NodeObject = 'document' | 'block' | 'inline' | 'text';
   export interface Node {
-    object: 'document' | 'block' | 'inline' | 'text';
+    object: NodeObject;
     type?: string;
     data?: object;
     isVoid?: boolean;

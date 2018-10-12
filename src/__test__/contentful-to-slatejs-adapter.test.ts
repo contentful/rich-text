@@ -5,6 +5,8 @@ import * as Contentful from '@contentful/structured-text-types';
 import * as slate from './slate-helpers';
 import * as contentful from './contentful-helpers';
 
+const schema = { blocks: { voidnode: { isVoid: true } } };
+
 describe('adapters', () => {
   const testAdapters = (
     message: string,
@@ -15,14 +17,17 @@ describe('adapters', () => {
       it(message, () => {
         const actualSlateDoc = toSlatejsDocument({
           document: contentfulDoc,
-          schema: { blocks: { voidnode: { isVoid: true } } },
+          schema,
         });
         expect(actualSlateDoc).toEqual(slateDoc);
       });
     });
     describe('toContentfulDocument()', () => {
       it(message, () => {
-        const actualContentfulDoc = toContentfulDocument(slateDoc);
+        const actualContentfulDoc = toContentfulDocument({
+          document: slateDoc,
+          schema,
+        });
         expect(actualContentfulDoc).toEqual(contentfulDoc);
       });
     });
@@ -76,7 +81,9 @@ describe('adapters', () => {
           slate.text({ marks: undefined, object: 'leaf', text: 'Hi' }),
         ),
       );
-      const ctflDoc = toContentfulDocument(slateDoc);
+      const ctflDoc = toContentfulDocument({
+        document: slateDoc,
+      });
       expect(ctflDoc).toEqual(
         contentful.document(
           contentful.block('paragraph', {
@@ -311,5 +318,53 @@ describe('adapters', () => {
         ],
       },
     );
+    test('removes empty text nodes from void nodes content', () => {
+      const contentfulDoc: Contentful.Document = {
+        nodeClass: 'document',
+        nodeType: Contentful.BLOCKS.DOCUMENT,
+        data: {},
+        content: [
+          {
+            nodeClass: 'block',
+            nodeType: 'voidnode',
+            content: [],
+            data: { a: 1 },
+          },
+        ],
+      };
+
+      const slateDoc: Slate.Document = {
+        object: 'document',
+        type: 'document',
+        data: {},
+        nodes: [
+          {
+            object: 'block',
+            type: 'voidnode',
+            isVoid: true,
+            data: { a: 1 },
+            nodes: [
+              {
+                object: 'text',
+                data: {},
+                leaves: [
+                  {
+                    object: 'leaf',
+                    marks: [],
+                    text: '',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      };
+
+      const actualContentfulDoc = toContentfulDocument({
+        document: slateDoc,
+        schema,
+      });
+      expect(actualContentfulDoc).toEqual(contentfulDoc);
+    });
   });
 });

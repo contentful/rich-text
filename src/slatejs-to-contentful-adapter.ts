@@ -2,29 +2,45 @@ import flatMap from 'lodash.flatmap';
 import * as Contentful from '@contentful/structured-text-types';
 import { ContentfulNode, SlateNode } from './types';
 import { getDataOfDefault } from './helpers';
+import { SchemaJSON, Schema, fromJSON } from './schema';
 
-export default function toContentfulDocument(slateDocument: Slate.Document): Contentful.Document {
+export interface ToContentfulDocumentProperties {
+  document: Slate.Document;
+  schema?: SchemaJSON;
+}
+
+export default function toContentfulDocument({
+  document,
+  schema,
+}: ToContentfulDocumentProperties): Contentful.Document {
   return {
     nodeClass: 'document',
     nodeType: Contentful.BLOCKS.DOCUMENT,
-    data: getDataOfDefault(slateDocument.data),
-    content: flatMap(slateDocument.nodes, convertNode) as Contentful.Block[],
+    data: getDataOfDefault(document.data),
+    content: flatMap(
+      document.nodes,
+      node => convertNode(node, fromJSON(schema)) as Contentful.Block[],
+    ),
   };
 }
 
-function convertNode(node: SlateNode): ContentfulNode[] {
+function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
   const nodes: ContentfulNode[] = [];
   switch (node.object) {
     case 'block':
     case 'inline':
-      const slateBlock = node as Slate.Block;
-      const content = flatMap(slateBlock.nodes, convertNode);
+      const slateNode = node as Slate.Block;
+      const content = flatMap(slateNode.nodes, childNode => convertNode(childNode, schema));
       const contentfulBlock: Contentful.Block = {
-        nodeClass: slateBlock.object,
-        nodeType: slateBlock.type,
-        content,
-        data: getDataOfDefault(slateBlock.data),
+        nodeClass: slateNode.object,
+        nodeType: slateNode.type,
+        content: [],
+        data: getDataOfDefault(slateNode.data),
       };
+
+      if (!schema.isVoid(contentfulBlock)) {
+        contentfulBlock.content = content;
+      }
       nodes.push(contentfulBlock);
       break;
     case 'text':
