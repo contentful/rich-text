@@ -1,5 +1,5 @@
 import get from 'lodash.get';
-import * as Contentful from '@contentful/structured-text-types';
+import * as Contentful from '@contentful/rich-text-types';
 import { VoidableNode } from './types';
 
 const defaultSchema: SchemaJSON = {};

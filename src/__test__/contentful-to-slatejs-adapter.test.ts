@@ -1,6 +1,6 @@
 import toSlatejsDocument from '../contentful-to-slatejs-adapter';
 import toContentfulDocument from '../slatejs-to-contentful-adapter';
-import * as Contentful from '@contentful/structured-text-types';
+import * as Contentful from '@contentful/rich-text-types';
 
 import * as slate from './slate-helpers';
 import * as contentful from './contentful-helpers';

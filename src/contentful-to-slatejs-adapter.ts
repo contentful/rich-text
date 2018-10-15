@@ -1,7 +1,7 @@
 import flatmap from 'lodash.flatmap';
 import omit from 'lodash.omit';
 
-import * as Contentful from '@contentful/structured-text-types';
+import * as Contentful from '@contentful/rich-text-types';
 import { ContentfulNode, SlateNode } from './types';
 import { getDataOfDefault } from './helpers';
 import { SchemaJSON, fromJSON, Schema } from './schema';

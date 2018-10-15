@@ -112,7 +112,7 @@
     "access": "restricted"
   },
   "dependencies": {
-    "@contentful/structured-text-types": "^3.4.0",
+    "@contentful/rich-text-types": "^4.1.0",
     "lodash.flatmap": "^4.5.0",
     "lodash.get": "^4.4.2",
     "lodash.omit": "^4.5.0"

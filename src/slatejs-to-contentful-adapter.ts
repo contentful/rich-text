@@ -1,5 +1,5 @@
 import flatMap from 'lodash.flatmap';
-import * as Contentful from '@contentful/structured-text-types';
+import * as Contentful from '@contentful/rich-text-types';
 import { ContentfulNode, SlateNode } from './types';
 import { getDataOfDefault } from './helpers';
 import { SchemaJSON, Schema, fromJSON } from './schema';

@@ -1,4 +1,4 @@
-import * as Contentful from '@contentful/structured-text-types';
+import * as Contentful from '@contentful/rich-text-types';
 
 export interface NodeProps {
   isVoid?: boolean;
