@@ -26,54 +26,73 @@ function convertNode(node: ContentfulNode, schema: Schema): SlateNode[] {
   const nodes: SlateNode[] = [];
 
   if (node.nodeType === 'text') {
-    const { marks = [], value, data } = node as Contentful.Text;
-
-    const slateText: Slate.Text = {
-      object: 'text',
-      leaves: [
-        {
-          object: 'leaf',
-          text: value,
-          marks: marks.map(mark => ({
-            ...mark,
-            data: {},
-            object: 'mark',
-          })),
-        } as Slate.TextLeaf,
-      ],
-      data: getDataOfDefault(data),
-    };
+    const slateText = convertTextNode(node);
 
     nodes.push(slateText);
   } else {
-    const contentfulBlock = node as ContentfulNonTextNodes;
-    const childNodes = flatmap(contentfulBlock.content, childNode =>
-      convertNode(childNode, schema),
-    );
+    const contentfulNode = node as ContentfulNonTextNodes;
+    const childNodes = flatmap(contentfulNode.content, childNode => convertNode(childNode, schema));
 
-    const object = getSlateNodeObjectValue(contentfulBlock.nodeType);
-    let slateBlock: SlateNode;
+    const object = getSlateNodeObjectValue(contentfulNode.nodeType);
+    let slateNode: SlateNode;
     if (object === 'inline') {
-      slateBlock = {
-        object: 'inline',
-        type: contentfulBlock.nodeType,
-        nodes: childNodes,
-        isVoid: schema.isVoid(contentfulBlock),
-        data: getDataOfDefault(contentfulBlock.data),
-      } as Slate.Inline;
+      slateNode = createInlineNode(contentfulNode, childNodes, schema);
+    } else if (object === 'block') {
+      slateNode = createBlockNode(contentfulNode, childNodes, schema);
     } else {
-      slateBlock = {
-        object: 'block',
-        type: contentfulBlock.nodeType,
-        nodes: childNodes,
-        isVoid: schema.isVoid(contentfulBlock),
-        data: getDataOfDefault(contentfulBlock.data),
-      } as Slate.Block;
+      throw new Error(`Unexpected slate object '${object}'`);
     }
-
-    nodes.push(slateBlock);
+    nodes.push(slateNode);
   }
   return nodes;
+}
+
+function createBlockNode(
+  contentfulBlock: ContentfulNonTextNodes,
+  childNodes: SlateNode[],
+  schema: Schema,
+): Slate.Block {
+  return {
+    object: 'block',
+    type: contentfulBlock.nodeType,
+    nodes: childNodes,
+    isVoid: schema.isVoid(contentfulBlock),
+    data: getDataOfDefault(contentfulBlock.data),
+  } as Slate.Block;
+}
+
+function createInlineNode(
+  contentfulBlock: ContentfulNonTextNodes,
+  childNodes: SlateNode[],
+  schema: Schema,
+): Slate.Inline {
+  return {
+    object: 'inline',
+    type: contentfulBlock.nodeType,
+    nodes: childNodes,
+    isVoid: schema.isVoid(contentfulBlock),
+    data: getDataOfDefault(contentfulBlock.data),
+  } as Slate.Inline;
+}
+
+function convertTextNode(node: ContentfulNode): Slate.Text {
+  const { marks = [], value, data } = node as Contentful.Text;
+  const slateText: Slate.Text = {
+    object: 'text',
+    leaves: [
+      {
+        object: 'leaf',
+        text: value,
+        marks: marks.map(mark => ({
+          ...mark,
+          data: {},
+          object: 'mark',
+        })),
+      } as Slate.TextLeaf,
+    ],
+    data: getDataOfDefault(data),
+  };
+  return slateText;
 }
 
 function getSlateNodeObjectValue(nodeType: string): 'inline' | 'block' {
