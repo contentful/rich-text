@@ -14,7 +14,6 @@ export default function toContentfulDocument({
   schema,
 }: ToContentfulDocumentProperties): Contentful.Document {
   return {
-    nodeClass: 'document',
     nodeType: Contentful.BLOCKS.DOCUMENT,
     data: getDataOfDefault(document.data),
     content: flatMap(
@@ -31,8 +30,11 @@ function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
     case 'inline':
       const slateNode = node as Slate.Block;
       const content = flatMap(slateNode.nodes, childNode => convertNode(childNode, schema));
+      if (!slateNode.type) {
+        throw new Error(`Unexpected slate node ${JSON.stringify(slateNode)}`);
+      }
+
       const contentfulBlock: Contentful.Block = {
-        nodeClass: slateNode.object,
         nodeType: slateNode.type,
         content: [],
         data: getDataOfDefault(slateNode.data),
@@ -56,7 +58,6 @@ function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
 
 function convertText(node: Slate.Text): Contentful.Text[] {
   return node.leaves.map<Contentful.Text>(leaf => ({
-    nodeClass: 'text',
     nodeType: 'text',
     value: leaf.text,
     marks: leaf.marks ? leaf.marks.map(mark => ({ type: mark.type })) : [],

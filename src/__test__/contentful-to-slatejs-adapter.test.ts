@@ -5,7 +5,7 @@ import * as Contentful from '@contentful/rich-text-types';
 import * as slate from './slate-helpers';
 import * as contentful from './contentful-helpers';
 
-const schema = { blocks: { voidnode: { isVoid: true } } };
+const schema = { blocks: { [Contentful.BLOCKS.EMBEDDED_ENTRY]: { isVoid: true } } };
 
 describe('adapters', () => {
   const testAdapters = (
@@ -38,34 +38,45 @@ describe('adapters', () => {
 
     testAdapters(
       'document with block',
-      contentful.document(contentful.block('paragraph', contentful.text(''))),
-      slate.document(slate.block('paragraph', false, slate.text(slate.leaf('')))),
+      contentful.document(contentful.block(Contentful.BLOCKS.PARAGRAPH, contentful.text(''))),
+      slate.document(slate.block(Contentful.BLOCKS.PARAGRAPH, false, slate.text(slate.leaf('')))),
     );
 
     testAdapters(
       'paragraph with inline',
-      contentful.document(contentful.block('paragraph', contentful.inline('hyperlink'))),
-      slate.document(slate.block('paragraph', false, slate.inline('hyperlink', false))),
+      contentful.document(
+        contentful.block(
+          Contentful.BLOCKS.PARAGRAPH,
+          contentful.inline(Contentful.INLINES.HYPERLINK),
+        ),
+      ),
+      slate.document(
+        slate.block(
+          Contentful.BLOCKS.PARAGRAPH,
+          false,
+          slate.inline(Contentful.INLINES.HYPERLINK, false),
+        ),
+      ),
     );
 
     testAdapters(
       'paragraph with text',
-      contentful.document(contentful.block('paragraph', contentful.text('hi'))),
-      slate.document(slate.block('paragraph', false, slate.text(slate.leaf('hi')))),
+      contentful.document(contentful.block(Contentful.BLOCKS.PARAGRAPH, contentful.text('hi'))),
+      slate.document(slate.block(Contentful.BLOCKS.PARAGRAPH, false, slate.text(slate.leaf('hi')))),
     );
 
     testAdapters(
       'text with marks',
       contentful.document(
         contentful.block(
-          'paragraph',
+          Contentful.BLOCKS.PARAGRAPH,
           contentful.text('this'),
           contentful.text('is', contentful.mark('bold')),
         ),
       ),
       slate.document(
         slate.block(
-          'paragraph',
+          Contentful.BLOCKS.PARAGRAPH,
           false,
           slate.text(slate.leaf('this')),
           slate.text(slate.leaf('is', slate.mark('bold'))),
@@ -76,7 +87,7 @@ describe('adapters', () => {
     it('adds a default value to marks if undefined', () => {
       const slateDoc = slate.document(
         slate.block(
-          'paragraph',
+          Contentful.BLOCKS.PARAGRAPH,
           false,
           slate.text({ marks: undefined, object: 'leaf', text: 'Hi' }),
         ),
@@ -86,9 +97,8 @@ describe('adapters', () => {
       });
       expect(ctflDoc).toEqual(
         contentful.document(
-          contentful.block('paragraph', {
+          contentful.block(Contentful.BLOCKS.PARAGRAPH, {
             nodeType: 'text',
-            nodeClass: 'text',
             marks: [],
             data: {},
             value: 'Hi',
@@ -101,7 +111,7 @@ describe('adapters', () => {
       'text with multiple marks',
       contentful.document(
         contentful.block(
-          'paragraph',
+          Contentful.BLOCKS.PARAGRAPH,
           contentful.text('this'),
           contentful.text('is', contentful.mark('bold')),
           contentful.text('huge', contentful.mark('bold'), contentful.mark('italic')),
@@ -109,7 +119,7 @@ describe('adapters', () => {
       ),
       slate.document(
         slate.block(
-          'paragraph',
+          Contentful.BLOCKS.PARAGRAPH,
           false,
           slate.text(slate.leaf('this')),
           slate.text(slate.leaf('is', slate.mark('bold'))),
@@ -122,23 +132,26 @@ describe('adapters', () => {
       'document with nested blocks',
       contentful.document(
         contentful.block(
-          'paragraph',
+          Contentful.BLOCKS.PARAGRAPH,
           contentful.text('this is a test', contentful.mark('bold')),
-          contentful.text('paragraph', contentful.mark('underline')),
+          contentful.text(Contentful.BLOCKS.PARAGRAPH, contentful.mark('underline')),
         ),
-        contentful.block('block', contentful.block('block', contentful.text('this is it'))),
+        contentful.block(
+          Contentful.BLOCKS.QUOTE,
+          contentful.block(Contentful.BLOCKS.PARAGRAPH, contentful.text('this is it')),
+        ),
       ),
       slate.document(
         slate.block(
-          'paragraph',
+          Contentful.BLOCKS.PARAGRAPH,
           false,
           slate.text(slate.leaf('this is a test', slate.mark('bold'))),
-          slate.text(slate.leaf('paragraph', slate.mark('underline'))),
+          slate.text(slate.leaf(Contentful.BLOCKS.PARAGRAPH, slate.mark('underline'))),
         ),
         slate.block(
-          'block',
+          Contentful.BLOCKS.QUOTE,
           false,
-          slate.block('block', false, slate.text(slate.leaf('this is it'))),
+          slate.block(Contentful.BLOCKS.PARAGRAPH, false, slate.text(slate.leaf('this is it'))),
         ),
       ),
     );
@@ -148,13 +161,11 @@ describe('adapters', () => {
     testAdapters(
       'data in block',
       {
-        nodeClass: 'document',
         nodeType: Contentful.BLOCKS.DOCUMENT,
         data: {},
         content: [
           {
-            nodeClass: 'block',
-            nodeType: 'paragraph',
+            nodeType: Contentful.BLOCKS.PARAGRAPH,
             content: [],
             data: { a: 1 },
           },
@@ -166,7 +177,7 @@ describe('adapters', () => {
         nodes: [
           {
             object: 'block',
-            type: 'paragraph',
+            type: Contentful.BLOCKS.PARAGRAPH,
             isVoid: false,
             data: { a: 1 },
             nodes: [],
@@ -178,18 +189,15 @@ describe('adapters', () => {
     testAdapters(
       'data in inline',
       {
-        nodeClass: 'document',
         nodeType: Contentful.BLOCKS.DOCUMENT,
         data: {},
         content: [
           {
-            nodeClass: 'block',
-            nodeType: 'paragraph',
+            nodeType: Contentful.BLOCKS.PARAGRAPH,
             data: { a: 1 },
             content: [
               {
-                nodeClass: 'inline',
-                nodeType: 'hyperlink',
+                nodeType: Contentful.INLINES.HYPERLINK,
                 data: { a: 2 },
                 content: [],
               },
@@ -203,13 +211,13 @@ describe('adapters', () => {
         nodes: [
           {
             object: 'block',
-            type: 'paragraph',
+            type: Contentful.BLOCKS.PARAGRAPH,
             isVoid: false,
             data: { a: 1 },
             nodes: [
               {
                 object: 'inline',
-                type: 'hyperlink',
+                type: Contentful.INLINES.HYPERLINK,
                 isVoid: false,
                 data: {
                   a: 2,
@@ -225,23 +233,19 @@ describe('adapters', () => {
     testAdapters(
       'data in text',
       {
-        nodeClass: 'document',
         nodeType: Contentful.BLOCKS.DOCUMENT,
         data: {},
         content: [
           {
-            nodeClass: 'block',
-            nodeType: 'paragraph',
+            nodeType: Contentful.BLOCKS.PARAGRAPH,
             data: { a: 1 },
             content: [
               {
-                nodeClass: 'inline',
-                nodeType: 'hyperlink',
+                nodeType: Contentful.INLINES.HYPERLINK,
                 data: { a: 2 },
                 content: [],
               },
               {
-                nodeClass: 'text',
                 nodeType: 'text',
                 marks: [],
                 data: { a: 3 },
@@ -257,13 +261,13 @@ describe('adapters', () => {
         nodes: [
           {
             object: 'block',
-            type: 'paragraph',
+            type: Contentful.BLOCKS.PARAGRAPH,
             isVoid: false,
             data: { a: 1 },
             nodes: [
               {
                 object: 'inline',
-                type: 'hyperlink',
+                type: Contentful.INLINES.HYPERLINK,
                 isVoid: false,
                 data: {
                   a: 2,
@@ -292,13 +296,11 @@ describe('adapters', () => {
     testAdapters(
       'data in block',
       {
-        nodeClass: 'document',
         nodeType: Contentful.BLOCKS.DOCUMENT,
         data: {},
         content: [
           {
-            nodeClass: 'block',
-            nodeType: 'voidnode',
+            nodeType: Contentful.BLOCKS.EMBEDDED_ENTRY,
             content: [],
             data: { a: 1 },
           },
@@ -310,7 +312,7 @@ describe('adapters', () => {
         nodes: [
           {
             object: 'block',
-            type: 'voidnode',
+            type: Contentful.BLOCKS.EMBEDDED_ENTRY,
             isVoid: true,
             data: { a: 1 },
             nodes: [],
@@ -320,13 +322,11 @@ describe('adapters', () => {
     );
     test('removes empty text nodes from void nodes content', () => {
       const contentfulDoc: Contentful.Document = {
-        nodeClass: 'document',
         nodeType: Contentful.BLOCKS.DOCUMENT,
         data: {},
         content: [
           {
-            nodeClass: 'block',
-            nodeType: 'voidnode',
+            nodeType: Contentful.BLOCKS.EMBEDDED_ENTRY,
             content: [],
             data: { a: 1 },
           },
@@ -340,7 +340,7 @@ describe('adapters', () => {
         nodes: [
           {
             object: 'block',
-            type: 'voidnode',
+            type: Contentful.BLOCKS.EMBEDDED_ENTRY,
             isVoid: true,
             data: { a: 1 },
             nodes: [

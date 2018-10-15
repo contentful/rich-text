@@ -7,7 +7,6 @@ export interface NodeProps {
 
 export function document(...content: Contentful.Block[]): Contentful.Document {
   return {
-    nodeClass: 'document',
     data: {},
     nodeType: Contentful.BLOCKS.DOCUMENT,
     content,
@@ -19,7 +18,6 @@ export function block(
   ...content: Array<Contentful.Block | Contentful.Inline | Contentful.Text>
 ): Contentful.Block {
   return {
-    nodeClass: 'block',
     nodeType,
     content,
     data: {},
@@ -31,7 +29,6 @@ export function inline(
   ...content: Array<Contentful.Inline | Contentful.Text>
 ): Contentful.Inline {
   return {
-    nodeClass: 'inline',
     nodeType,
     content,
     data: {},
@@ -40,7 +37,6 @@ export function inline(
 
 export function text(value: string, ...marks: Contentful.Mark[]): Contentful.Text {
   return {
-    nodeClass: 'text',
     nodeType: 'text',
     data: {},
     marks,
