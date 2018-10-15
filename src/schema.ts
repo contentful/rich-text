@@ -4,13 +4,18 @@ import { VoidableNode } from './types';
 
 const defaultSchema: SchemaJSON = {};
 
-export interface Schema extends SchemaJSON {
-  isVoid(node: VoidableNode): boolean;
-}
-
+/**
+ * SlateJS Schema definition v0.33.x
+ *
+ * @export
+ * @interface SchemaJSON
+ */
 export interface SchemaJSON {
   blocks?: Record<string, SchemaValue>;
   inlines?: Record<string, SchemaValue>;
+}
+export interface Schema extends SchemaJSON {
+  isVoid(node: VoidableNode): boolean;
 }
 
 export interface SchemaValue {
