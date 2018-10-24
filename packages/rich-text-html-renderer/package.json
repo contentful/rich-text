@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-html-renderer",
-  "version": "6.0.0",
+  "version": "0.0.0-determined-by-semantic-release",
   "main": "dist/rich-text-html-renderer.es5.js",
   "typings": "dist/types/rich-text-html-renderer.d.ts",
   "files": [
@@ -24,9 +24,10 @@
     "start": "tsc && rollup -c rollup.config.ts -w"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^6.0.0"
+    "@contentful/rich-text-types": "^0.0.0-determined-by-semantic-release"
   },
   "devDependencies": {
+    "@contentful/rich-text-types": "^0.0.0-determined-by-semantic-release",
     "@types/faker": "^4.1.2",
     "@types/jest": "^22.0.0",
     "@types/lodash.flatmap": "^4.5.3",
