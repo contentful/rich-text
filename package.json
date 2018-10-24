@@ -1,0 +1,78 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/node": "^10.12.0",
+    "cz-lerna-changelog": "^2.0.0",
+    "jest": "^23.6.0",
+    "lerna-get-packages": "^1.0.0",
+    "rollup": "^0.66.6",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.17.2",
+    "typescript": "^2.9.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "tslint -t codeFrame 'packages/**/src/*.ts'",
+    "prebuild": "lerna run prebuild",
+    "build": "lerna run build",
+    "start": "lerna run start",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
+    "report-coverage": "lerna run report-coverage",
+    "commit": "git-cz",
+    "semantic-release": "lerna-semantic-release pre && lerna-semantic-release post && lerna-semantic-release perform",
+    "postinstall": "lerna bootstrap",
+    "travis-deploy-once": "travis-deploy-once --pro"
+  },
+  "husky": {
+    "hooks": {
+      "commitmsg": "validate-commit-msg",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "packages/**/{src,test}/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "@types/faker": "^4.1.4",
+    "commitizen": "^3.0.4",
+    "coveralls": "^3.0.2",
+    "faker": "^4.1.0",
+    "git-cz": "^1.7.1",
+    "husky": "^1.1.2",
+    "lerna-semantic-release": "^9.1.0",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
+    "semantic-release": "^15.10.5",
+    "travis-deploy-once": "^5.0.9",
+    "ts-jest": "^23.10.4",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-config-standard": "^8.0.1",
+    "validate-commit-msg": "^2.14.0"
+  }
+}
