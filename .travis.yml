@@ -5,21 +5,18 @@ branches:
     - /^greenkeeper/.*$/
     - ~/.npm
 cache:
-  yarn: true
   directories:
     - node_modules
 notifications:
   email: false
-node_js:
-  - node
 before_install:
+  - npm i -g npm@^6.4.1
   - printf "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
-after_install:
-  - npm run travis-deploy-once "npm run semantic-release"
 install:
-  - npm install
+  - npm i
 script:
-  - npm run test:prod && npm run build
+  - npm run build && npm run test:prod
+after_success: .ci/after_success.sh
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
