@@ -19,4 +19,4 @@ install:
 script:
   - npm run build && npm run test:prod
 after_success:
-  - lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo
+  - lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo --tag-format='${LERNA_PACKAGE_NAME}-v\\${version}'
