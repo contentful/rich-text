@@ -4,6 +4,8 @@ branches:
     - master
     - /^greenkeeper/.*$/
     - ~/.npm
+  except:
+    - /^v\d+\.\d+\.\d+$/
 cache:
   directories:
     - node_modules
@@ -16,7 +18,5 @@ install:
   - npm i
 script:
   - npm run build && npm run test:prod
-after_success: .travis/after_success.sh
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+after_success:
+  - lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo

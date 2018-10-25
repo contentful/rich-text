@@ -24,10 +24,11 @@
     "start": "tsc && rollup -c rollup.config.js -w"
   },
   "dependencies": {
-    "@contentful/rich-text-types--demo": "^0.0.0-determined-by-semantic-release"
+    "@contentful/rich-text-types--demo": "^0.0.0-determined-by-semantic-release",
+    "semantic-release": "^15.10.5",
+    "semantic-release-monorepo": "^6.1.1"
   },
   "devDependencies": {
-    "@contentful/rich-text-types--demo": "^0.0.0-determined-by-semantic-release",
     "@types/faker": "^4.1.2",
     "@types/jest": "^22.0.0",
     "@types/lodash.flatmap": "^4.5.3",

@@ -61,6 +61,8 @@
     "validate-commit-msg": "^2.14.0"
   },
   "dependencies": {
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "semantic-release": "^15.10.5",
+    "semantic-release-monorepo": "^6.1.1"
   }
 }
