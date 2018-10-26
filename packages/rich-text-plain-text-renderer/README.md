@@ -1,7 +1,9 @@
 # rich-text-plain-text-renderer
+
 Plain text renderer for the Rich Text document.
 
 ## Installation
+
 Using [npm](http://npmjs.org/):
 
 ```javascript
