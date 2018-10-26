@@ -1,5 +1,6 @@
 import {
   Document,
+  Node,
   Mark,
   Text,
   BLOCKS,
@@ -8,9 +9,6 @@ import {
   Block,
   Inline,
 } from '@contentful/rich-text-types';
-
-type NonTextNode = Block | Inline;
-type Node = Text | NonTextNode;
 
 const defaultNodeRenderers: RenderNode = {
   [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
@@ -39,36 +37,46 @@ const defaultMarkRenderers: RenderMark = {
   [MARKS.CODE]: text => `<code>${text}</code>`,
 };
 
-export const defaultInline = (type: string, node: NonTextNode) =>
+const defaultInline = (type: string, node: Inline) =>
   `<span>type: ${type} id: ${node.data.target.sys.id}</span>`;
 
+export type CommonNode = Text | Block | Inline;
+
 export interface Next {
-  (nodes: Node[]): string;
+  (nodes: CommonNode[]): string;
 }
 
 export interface NodeRenderer {
-  (node: NonTextNode, next: Next): string;
+  (node: Block | Inline, next: Next): string;
 }
 
 export interface RenderNode {
   [k: string]: NodeRenderer;
 }
 
-export interface MarkRenderer {
-  (text: string): string;
-}
-
 export interface RenderMark {
-  [k: string]: MarkRenderer;
+  [k: string]: (text: string) => string;
 }
 
 export interface Options {
+  /**
+   * Node renderers
+   */
   renderNode?: RenderNode;
+  /**
+   * Mark renderers
+   */
   renderMark?: RenderMark;
 }
 
-export function documentToHtmlString(doc: Document, options: Partial<Options> = {}): string {
-  return nodeListToHtmlString(doc.content, {
+/**
+ * Serialize a Contentful Rich Text `document` to an html string.
+ */
+export function documentToHtmlString(
+  richTextDocument: Document,
+  options: Partial<Options> = {},
+): string {
+  return nodeListToHtmlString(richTextDocument.content, {
     renderNode: {
       ...defaultNodeRenderers,
       ...options.renderNode,
@@ -80,14 +88,14 @@ export function documentToHtmlString(doc: Document, options: Partial<Options> = 
   });
 }
 
-function nodeListToHtmlString(nodes: Node[], { renderNode, renderMark }: Options): string {
+function nodeListToHtmlString(nodes: CommonNode[], { renderNode, renderMark }: Options): string {
   return nodes.map<string>(node => nodeToHtmlString(node, { renderNode, renderMark })).join('');
 }
 
-function nodeToHtmlString(node: Node, { renderNode = {}, renderMark = {} }: Options): string {
+function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options): string {
   if (isText(node)) {
     if (node.marks.length > 0) {
-      return node.marks.reduce((value: string, mark: Mark): string => {
+      return node.marks.reduce((value: string, mark: Mark) => {
         if (!renderMark[mark.type]) {
           return value;
         }
@@ -102,10 +110,9 @@ function nodeToHtmlString(node: Node, { renderNode = {}, renderMark = {} }: Opti
       // TODO: Figure what to return when passed an unrecognized node.
       return '';
     }
-    return renderNode[node.nodeType](node as NonTextNode, nextNode);
+    return renderNode[node.nodeType](node, nextNode);
   }
 }
-
 function isText(node: Node): node is Text {
   return node.nodeType === 'text';
 }
