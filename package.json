@@ -29,7 +29,7 @@
     "report-coverage": "lerna run report-coverage",
     "commit": "git-cz",
     "postinstall": "lerna bootstrap --hoist --no-ci",
-    "semantic-release": "lerna-semantic-release pre && lerna-semantic-release post && lerna-semantic-release perform",
+    "semantic-release": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo",
     "travis-deploy-once": "travis-deploy-once --pro"
   },
   "husky": {
