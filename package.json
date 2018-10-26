@@ -30,7 +30,7 @@
     "report-coverage": "lerna run report-coverage",
     "commit": "git-cz",
     "postinstall": "lerna bootstrap --hoist --no-ci",
-    "semantic-release": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo",
+    "semantic-release": "lerna exec --concurrency 1 -- \"npx --no-install semantic-release -e semantic-release-monorepo\" && node -e \"require('semantic-release-monorepo-hooks').hookAfterAll()\"",
     "travis-deploy-once": "travis-deploy-once --pro"
   },
   "husky": {
@@ -76,8 +76,9 @@
     "prettier": "^1.14.3",
     "prompt": "^1.0.0",
     "replace-in-file": "^3.4.2",
-    "semantic-release": "^15.10.5",
+    "semantic-release": "^15.6.3",
     "semantic-release-monorepo": "^6.1.1",
+    "semantic-release-monorepo-hooks": "^2.6.1",
     "travis-deploy-once": "^5.0.9",
     "ts-jest": "^23.10.4",
     "ts-node": "^7.0.1",
