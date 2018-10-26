@@ -30,7 +30,7 @@
     "report-coverage": "lerna run report-coverage",
     "commit": "git-cz",
     "postinstall": "lerna bootstrap --hoist --no-ci",
-    "semantic-release": "lerna exec --concurrency 1 -- \"npx --no-install semantic-release -e semantic-release-monorepo\" && node -e \"require('semantic-release-monorepo-hooks').hookAfterAll()\"",
+    "semantic-release": "lerna exec --concurrency 1 -- \"npx --no-install semantic-release -e semantic-release-monorepo\"",
     "travis-deploy-once": "travis-deploy-once --pro"
   },
   "husky": {
