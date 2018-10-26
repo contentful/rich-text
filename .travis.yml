@@ -17,6 +17,6 @@ before_install:
 install:
   - npm i
 script:
-  - npm run build && npm run test:prod
+  - npm run test:ci
 after_success:
   - npm run semantic-release
