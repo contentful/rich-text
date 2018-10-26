@@ -18,7 +18,7 @@ export default {
   LIST_ITEM: 'list-item',
 
   HR: 'hr',
-  QUOTE: 'blockquote',
+  QUOTE: 'block-quote',
 
   EMBEDDED_ENTRY: 'embedded-entry-block',
   EMBEDDED_ASSET: 'embedded-asset-block',

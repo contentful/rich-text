@@ -155,9 +155,9 @@ describe('documentToHtmlString', () => {
     expect(documentToHtmlString(document)).toEqual(expected);
   });
 
-  it('renders blockquotes', () => {
+  it('renders block-quotes', () => {
     const document: Document = quoteDoc;
-    const expected = `<p>hello</p><blockquote>world</blockquote>`;
+    const expected = `<p>hello</p><block-quote>world</block-quote>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
