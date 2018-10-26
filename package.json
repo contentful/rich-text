@@ -81,7 +81,6 @@
     "replace-in-file": "^3.4.2",
     "semantic-release": "15.6.3",
     "semantic-release-monorepo": "^6.1.1",
-    "semantic-release-monorepo-hooks": "^2.6.1",
     "travis-deploy-once": "^5.0.9",
     "ts-jest": "^23.10.4",
     "ts-node": "^7.0.1",
