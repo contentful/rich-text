@@ -59,6 +59,9 @@
     "trailingComma": "all"
   },
   "dependencies": {
+    "@semantic-release/changelog": "^3.0.1",
+    "@semantic-release/git": "^7.0.5",
+    "@semantic-release/npm": "^5.0.5",
     "@types/faker": "^4.1.4",
     "@types/lodash.flatmap": "^4.5.4",
     "@types/lodash.omit": "^4.5.4",
