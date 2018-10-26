@@ -12,7 +12,7 @@ export default {
           marks: [],
         },
         {
-          nodeType: 'hyper-link',
+          nodeType: 'hyperlink',
           content: [
             {
               nodeType: 'text',

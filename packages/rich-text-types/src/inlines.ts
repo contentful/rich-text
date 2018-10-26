@@ -3,8 +3,8 @@
  */
 
 export default {
-  HYPERLINK: 'hyper-link',
-  ENTRY_HYPERLINK: 'entry-hyper-link',
-  ASSET_HYPERLINK: 'asset-hyper-link',
+  HYPERLINK: 'hyperlink',
+  ENTRY_HYPERLINK: 'entry-hyperlink',
+  ASSET_HYPERLINK: 'asset-hyperlink',
   EMBEDDED_ENTRY: 'embedded-entry-inline',
 };

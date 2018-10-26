@@ -22,7 +22,7 @@ export default {
           nodeType: 'text',
         },
       ],
-      nodeType: 'block-quote',
+      nodeType: 'blockquote',
     },
   ],
   nodeType: 'document',

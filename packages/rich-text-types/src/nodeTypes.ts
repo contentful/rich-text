@@ -91,7 +91,7 @@ export interface EntryLinkInline extends Inline {
 }
 
 export interface Hyperlink extends Inline {
-  nodeType: 'hyper-link';
+  nodeType: 'hyperlink';
   data: {
     uri: string;
     title: string;
@@ -99,7 +99,7 @@ export interface Hyperlink extends Inline {
 }
 
 export interface AssetHyperlink extends Inline {
-  nodeType: 'asset-hyper-link';
+  nodeType: 'asset-hyperlink';
   data: {
     target: Link<'Asset'>;
     title: string;
@@ -107,7 +107,7 @@ export interface AssetHyperlink extends Inline {
 }
 
 export interface EntryHyperlink extends Inline {
-  nodeType: 'entry-hyper-link';
+  nodeType: 'entry-hyperlink';
   data: {
     target: Link<'Entry'>;
     title: string;
