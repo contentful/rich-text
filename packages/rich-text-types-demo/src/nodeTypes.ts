@@ -91,7 +91,7 @@ export interface EntryLinkInline extends Inline {
 }
 
 export interface Hyperlink extends Inline {
-  nodeType: 'hyperlink';
+  nodeType: 'hyper-link';
   data: {
     uri: string;
     title: string;
