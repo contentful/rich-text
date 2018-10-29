@@ -1,4 +1,4 @@
-import { Text, Block, Inline } from '@contentful/rich-text-types';
+import { Document, Text, Block, Inline } from '@contentful/rich-text-types';
 
 type NonTextNode = Block | Inline;
 type Node = Text | NonTextNode;
@@ -6,10 +6,13 @@ type Node = Text | NonTextNode;
 /**
  * Returns the text value of a rich text document.
  *
- * Note that this can also be applied to any block node of a structured text
- * document.
+ * NB: This can be applied to any block node of a structured text document,
+ * hence the flexible typing.
  */
-export function documentToPlainTextString(nodeList: Block, blockDivisor: string = ' '): string {
+export function documentToPlainTextString(
+  rootRichTextNode: Document | Block,
+  blockDivisor: string = ' ',
+): string {
   /**
    * Algorithm notes: We only want to apply spacing when a node is part of a
    * sequence. This is tricky because nodes can often be deeply nested within
@@ -62,7 +65,8 @@ export function documentToPlainTextString(nodeList: Block, blockDivisor: string 
    * 'Yet another list item' - the non-semantic HR between the two nodes should
    * not denote an additional space.
    */
-  return nodeList.content.reduce((textValue: string, node: Node, i: number): string => {
+  const childNodeList = (rootRichTextNode as Block).content;
+  return childNodeList.reduce((textValue: string, node: Node, i: number): string => {
     const nodeIsText: boolean = isText(node);
     const nodeTextValue: string = nodeIsText
       ? (node as Text).value
@@ -70,7 +74,7 @@ export function documentToPlainTextString(nodeList: Block, blockDivisor: string 
     if (!nodeIsText && !nodeTextValue.length) {
       return textValue;
     } else {
-      const nextNode: Node = nodeList.content[i + 1];
+      const nextNode: Node = childNodeList[i + 1];
       const nodeIsInBlockSequence: boolean = nextNode && !isText(nextNode);
       const divisor: string = nodeIsInBlockSequence ? blockDivisor : '';
       return textValue + nodeTextValue + divisor;
