@@ -11,6 +11,9 @@ You'll need to use `npm run commit` to create conventional commits.
 
 ## Publishing
 
-We use [Lerna](https://github.com/lerna/lerna) to publish (`lerna publish`) and
-keep dependencies in sync (`lerna bootstrap --hoist`, which gets run as a
-post-install step).
+We use [Lerna](https://github.com/lerna/lerna) to:
+
+- keep dependencies in sync
+  - `lerna bootstrap --hoist`, which gets run as a post-install step
+- publish
+  - `lerna publish`
