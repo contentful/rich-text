@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-html-renderer",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "main": "dist/rich-text-html-renderer.es5.js",
   "typings": "dist/types/rich-text-html-renderer.d.ts",
   "files": [
@@ -23,7 +23,7 @@
     "start": "tsc && rollup -c rollup.config.js -w"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^8.0.1"
+    "@contentful/rich-text-types": "^8.0.2"
   },
   "devDependencies": {
     "@types/jest": "^22.0.0",
