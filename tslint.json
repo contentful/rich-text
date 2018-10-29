@@ -3,6 +3,11 @@
     "tslint-config-standard",
     "tslint-config-prettier"
   ],
+  "linterOptions": {
+    "exclude": [
+      "packages/**/node_modules/**"
+    ]
+  },
   "rules": {
     "ban": false,
     "class-name": true,
