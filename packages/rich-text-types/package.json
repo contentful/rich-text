@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-types",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "main": "dist/rich-text-types.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -34,6 +34,5 @@
     "rollup-plugin-typescript2": "^0.17.2",
     "ts-jest": "^23.10.4",
     "typescript": "^2.9.2"
-  },
-  "dependencies": {}
+  }
 }
