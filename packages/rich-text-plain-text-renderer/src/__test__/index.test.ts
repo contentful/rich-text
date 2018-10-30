@@ -182,7 +182,7 @@ describe('documentToPlainTextString', () => {
       );
     });
 
-    it.only('defers to the user-supplied block divisor', () => {
+    it('defers to the user-supplied block divisor', () => {
       expect(documentToPlainTextString(document, '\n\n')).toEqual(
         [
           'This is text. This is text with some marks. This is text from a bolded hyperlink.',
