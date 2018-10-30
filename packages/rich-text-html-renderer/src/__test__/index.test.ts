@@ -20,6 +20,7 @@ describe('documentToHtmlString', () => {
   it('returns empty string when given an empty document', () => {
     const document: Document = {
       nodeType: 'document',
+      nodeClass: 'block',
       data: {},
       content: [],
     };

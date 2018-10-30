@@ -6,6 +6,7 @@ describe('documentToPlainTextString', () => {
   it('returns empty string when given an empty document', () => {
     const document: Document = {
       nodeType: 'document',
+      nodeClass: 'block',
       data: {},
       content: [],
     };
@@ -16,10 +17,12 @@ describe('documentToPlainTextString', () => {
   it('handles a simple case', () => {
     const document: Document = {
       nodeType: 'document',
+      nodeClass: 'block',
       data: {},
       content: [
         {
           nodeType: BLOCKS.PARAGRAPH,
+          nodeClass: 'block',
           data: {},
           content: [
             {
@@ -51,70 +54,116 @@ describe('documentToPlainTextString', () => {
   describe('rendering deeply nested documents', () => {
     const document: Document = {
       nodeType: 'document',
+      nodeClass: 'block',
       data: {},
       content: [
         {
-          nodeType: BLOCKS.PARAGRAPH,
+          nodeType: 'paragraph',
+          nodeClass: 'block',
           data: {},
           content: [
             {
-              nodeType: BLOCKS.OL_LIST,
+              nodeType: 'text',
+              value: 'This is text. ',
+              data: {},
+              marks: [{ type: 'bold' }],
+            },
+            {
+              nodeType: 'text',
+              value: '',
+              data: {},
+              marks: [],
+            },
+            {
+              nodeType: 'text',
+              value: 'This is text with some marks.',
+              data: {},
+              marks: [{ type: 'italic' }],
+            },
+            {
+              nodeType: 'text',
+              value: ' ',
+              data: {},
+              marks: [],
+            },
+            {
+              nodeType: 'hyperlink',
+              nodeClass: 'inline',
+              content: [
+                {
+                  nodeType: 'text',
+                  value: 'This is text from a bolded hyperlink.',
+                  data: {},
+                  marks: [{ type: 'bold' }],
+                },
+              ],
+              data: {
+                url: 'https://example.com',
+                title: 'qux',
+              },
+            },
+          ],
+        },
+        {
+          nodeType: 'unordered-list',
+          nodeClass: 'block',
+          data: {},
+          content: [
+            {
+              nodeType: 'list-item',
+              nodeClass: 'block',
               data: {},
               content: [
                 {
-                  nodeType: BLOCKS.LIST_ITEM,
+                  nodeType: 'paragraph',
+                  nodeClass: 'block',
                   data: {},
                   content: [
                     {
                       nodeType: 'text',
+                      value: 'This is a list element in a separate block ',
                       data: {},
-                      value: 'Trout is a',
                       marks: [],
                     },
                     {
-                      nodeType: BLOCKS.UL_LIST,
-                      data: {},
+                      nodeType: 'hyperlink',
+                      nodeClass: 'inline',
                       content: [
                         {
-                          nodeType: BLOCKS.LIST_ITEM,
+                          nodeType: 'text',
+                          value: 'with a link with marks.',
                           data: {},
-                          content: [
-                            {
-                              nodeType: 'text',
-                              data: {},
-                              value: 'seafood d',
-                              marks: [{ type: 'italic' }],
-                            },
-                            {
-                              nodeType: 'text',
-                              data: {},
-                              value: 'elicacy.',
-                              marks: [],
-                            },
-                          ],
+                          marks: [],
                         },
                       ],
+                      data: {
+                        url: 'https://google.com',
+                        title: 'woo',
+                      },
                     },
                   ],
                 },
               ],
             },
-          ],
-        },
-        {
-          nodeType: BLOCKS.HR,
-          data: {},
-          content: [],
-        },
-        {
-          nodeType: BLOCKS.PARAGRAPH,
-          data: {},
-          content: [
             {
-              nodeType: 'text',
+              nodeType: 'list-item',
+              nodeClass: 'block',
               data: {},
-              value: 'It is scrumptious.',
-              marks: [],
+              content: [
+                {
+                  nodeType: 'paragraph',
+                  nodeClass: 'block',
+                  data: {},
+                  content: [
+                    {
+                      nodeType: 'text',
+                      value: 'This is a separate list element in the same block.',
+                      data: {},
+                      marks: [],
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
@@ -123,13 +172,23 @@ describe('documentToPlainTextString', () => {
 
     it('handles nested nodes gracefully', () => {
       expect(documentToPlainTextString(document)).toEqual(
-        'Trout is a seafood delicacy. It is scrumptious.',
+        [
+          'This is text.',
+          'This is text with some marks.',
+          'This is text from a bolded hyperlink.',
+          'This is a list element in a separate block with a link with marks.',
+          'This is a separate list element in the same block.',
+        ].join(' '),
       );
     });
 
     it('defers to the user-supplied block divisor', () => {
       expect(documentToPlainTextString(document, '\n\n')).toEqual(
-        'Trout is a seafood delicacy.\n\nIt is scrumptious.',
+        [
+          'This is text. This is text with some marks. This is text from a bolded hyperlink.',
+          'This is a list element in a separate block with a link with marks.',
+          'This is a separate list element in the same block.',
+        ].join('\n\n'),
       );
     });
   });

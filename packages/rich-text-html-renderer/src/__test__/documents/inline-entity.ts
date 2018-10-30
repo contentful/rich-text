@@ -10,6 +10,7 @@ export default function inlineEntity(entry: Object, inlineType: string) {
             marks: [],
             value: '',
             nodeType: 'text',
+            data: {},
           },
           {
             data: entry,
@@ -18,19 +19,25 @@ export default function inlineEntity(entry: Object, inlineType: string) {
                 marks: [],
                 value: '',
                 nodeType: 'text',
+                data: {},
               },
             ],
             nodeType: inlineType,
+            nodeClass: 'inline',
           },
           {
             marks: [],
             value: '',
             nodeType: 'text',
+            data: {},
           },
         ],
         nodeType: 'paragraph',
+        nodeClass: 'block',
       },
     ],
+    data: {},
     nodeType: 'document',
+    nodeClass: 'block',
   } as Document;
 }

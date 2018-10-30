@@ -10,7 +10,7 @@ type Node = Text | NonTextNode;
  * hence the flexible typing.
  */
 export function documentToPlainTextString(
-  rootRichTextNode: Document | Block,
+  rootRichTextNode: Document | NonTextNode,
   blockDivisor: string = ' ',
 ): string {
   /**
@@ -70,12 +70,13 @@ export function documentToPlainTextString(
     const nodeIsText: boolean = isText(node);
     const nodeTextValue: string = nodeIsText
       ? (node as Text).value
-      : documentToPlainTextString(node as NonTextNode);
+      : documentToPlainTextString(node as NonTextNode, blockDivisor);
     if (!nodeIsText && !nodeTextValue.length) {
       return textValue;
     } else {
       const nextNode: Node = childNodeList[i + 1];
-      const nodeIsInBlockSequence: boolean = nextNode && !isText(nextNode);
+      const nodeIsInBlockSequence: boolean =
+        nextNode && !isText(nextNode) && nextNode.nodeClass === 'block';
       const divisor: string = nodeIsInBlockSequence ? blockDivisor : '';
       return textValue + nodeTextValue + divisor;
     }
