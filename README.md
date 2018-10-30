@@ -16,4 +16,4 @@ We use [Lerna](https://github.com/lerna/lerna) to:
 - keep dependencies in sync
   - `lerna bootstrap --hoist`, which gets run as a post-install step
 - publish
-  - `lerna publish`
+  - `NPM_CONFIG_OTP={2fa_otp_goes_here} lerna publish`
