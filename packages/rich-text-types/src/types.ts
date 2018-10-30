@@ -7,14 +7,18 @@ export interface Node {
 }
 
 export interface Document extends Node {
+  nodeType: 'document';
+  nodeClass: 'block';
   content: Block[];
 }
 
 export interface Block extends Node {
+  nodeClass: 'block';
   content: Array<Block | Inline | Text>;
 }
 
 export interface Inline extends Node {
+  nodeClass: 'inline';
   content: Array<Inline | Text>;
 }
 
