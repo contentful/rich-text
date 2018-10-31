@@ -11,7 +11,7 @@
     "lint": "tslint -t codeFrame 'packages/**/src/*.ts'",
     "postinstall": "lerna bootstrap --hoist --progress --no-ci",
     "prebuild": "lerna run prebuild",
-    "publish": "npm run build && lerna run publish",
+    "publish": "npm run build && lerna publish",
     "release": "lerna run release",
     "start": "lerna run start",
     "test": "jest",
