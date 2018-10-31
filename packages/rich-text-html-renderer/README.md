@@ -1,6 +1,6 @@
 # rich-text-html-renderer
 
-HTML renderer for the Rich Text document.
+HTML renderer for the Contentful rich text field type.
 
 ## Installation
 
@@ -166,3 +166,4 @@ The `renderMark` keys should be one of the following `MARKS` properties as defin
 - `ITALIC`
 - `UNDERLINE`
 - `CODE`
+
