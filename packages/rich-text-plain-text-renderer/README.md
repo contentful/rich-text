@@ -47,3 +47,4 @@ const document = {
 
 documentToPlainTextString(document); // -> Hello world!
 ```
+
