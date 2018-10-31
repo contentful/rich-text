@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rich-text-from-markdown should call the fallback function when a node is not supported 1`] = `
+Array [
+  Array [
+    Object {
+      "alt": "image",
+      "position": Position {
+        "end": Object {
+          "column": 46,
+          "line": 1,
+          "offset": 45,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "title": null,
+      "type": "image",
+      "url": "https://image.example.com/image.jpg",
+    },
+  ],
+]
+`;

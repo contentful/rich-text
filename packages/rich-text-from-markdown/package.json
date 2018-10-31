@@ -1,0 +1,51 @@
+{
+  "name": "@contentful/rich-text-from-markdown",
+  "version": "10.0.0",
+  "description": "convert markdown to rich text",
+  "keywords": [
+    "rich-text",
+    "contentful",
+    "markdown"
+  ],
+  "author": "Khaled Garbaya <khaled@contentful.com>",
+  "homepage": "https://github.com/contentful/rich-text#readme",
+  "license": "MIT",
+  "main": "dist/rich-text-from-markdown.es5.js",
+  "directories": {
+    "src": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/contentful/rich-text.git"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc --module commonjs && rollup -c rollup.config.js",
+    "start": "tsc && rollup -c rollup.config.js -w"
+  },
+  "dependencies": {
+    "@contentful/rich-text-types": "^10.0.0",
+    "remark-parse": "^6.0.1",
+    "unified": "^7.0.0"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "jest": "^23.6.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.66.6",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.17.2",
+    "ts-jest": "^23.10.4",
+    "typescript": "^2.9.2"
+  },
+  "bugs": {
+    "url": "https://github.com/contentful/rich-text/issues"
+  }
+}
