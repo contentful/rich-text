@@ -5,7 +5,6 @@ describe('Document', () => {
   it('empty Document', () => {
     const document: Document = {
       nodeType: 'document',
-      nodeClass: 'block',
       data: {},
       content: [],
     };
@@ -14,12 +13,10 @@ describe('Document', () => {
   it('Document with blocks', () => {
     const document: Document = {
       nodeType: 'document',
-      nodeClass: 'block',
       data: {},
       content: [
         {
           nodeType: faker.name.title(),
-          nodeClass: 'block',
           data: {},
           content: [],
         },
@@ -32,7 +29,6 @@ describe('Block', () => {
   it('empty Block', () => {
     const block: Block = {
       nodeType: 'paragraph',
-      nodeClass: 'block',
       data: {},
       content: [],
     };
@@ -41,12 +37,10 @@ describe('Block', () => {
   it('Block with block', () => {
     const block: Block = {
       nodeType: 'paragraph',
-      nodeClass: 'block',
       data: {},
       content: [
         {
           nodeType: faker.name.title(),
-          nodeClass: 'block',
           data: {},
           content: [],
         },
@@ -57,7 +51,6 @@ describe('Block', () => {
   it('Block with text', () => {
     const block: Block = {
       nodeType: 'paragraph',
-      nodeClass: 'block',
       data: {},
       content: [
         {
@@ -75,7 +68,6 @@ describe('Inline', () => {
   it('empty Inline', () => {
     const inline: Inline = {
       nodeType: 'hyperlink',
-      nodeClass: 'inline',
       data: {},
       content: [],
     };
@@ -84,12 +76,10 @@ describe('Inline', () => {
   it('Inline with inline', () => {
     const inline: Inline = {
       nodeType: 'hyperlink',
-      nodeClass: 'inline',
       data: {},
       content: [
         {
           nodeType: faker.name.title(),
-          nodeClass: 'inline',
           data: {},
           content: [],
         },
@@ -100,7 +90,6 @@ describe('Inline', () => {
   it('Inline with text', () => {
     const inline: Inline = {
       nodeType: faker.name.title(),
-      nodeClass: 'inline',
       data: {},
       content: [
         {

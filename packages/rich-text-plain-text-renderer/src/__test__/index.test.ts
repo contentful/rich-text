@@ -6,7 +6,6 @@ describe('documentToPlainTextString', () => {
   it('returns empty string when given an empty document', () => {
     const document: Document = {
       nodeType: 'document',
-      nodeClass: 'block',
       data: {},
       content: [],
     };
@@ -17,12 +16,10 @@ describe('documentToPlainTextString', () => {
   it('handles a simple case', () => {
     const document: Document = {
       nodeType: 'document',
-      nodeClass: 'block',
       data: {},
       content: [
         {
           nodeType: BLOCKS.PARAGRAPH,
-          nodeClass: 'block',
           data: {},
           content: [
             {
@@ -54,12 +51,10 @@ describe('documentToPlainTextString', () => {
   describe('rendering deeply nested documents', () => {
     const document: Document = {
       nodeType: 'document',
-      nodeClass: 'block',
       data: {},
       content: [
         {
           nodeType: 'paragraph',
-          nodeClass: 'block',
           data: {},
           content: [
             {
@@ -88,7 +83,6 @@ describe('documentToPlainTextString', () => {
             },
             {
               nodeType: 'hyperlink',
-              nodeClass: 'inline',
               content: [
                 {
                   nodeType: 'text',
@@ -106,17 +100,14 @@ describe('documentToPlainTextString', () => {
         },
         {
           nodeType: 'unordered-list',
-          nodeClass: 'block',
           data: {},
           content: [
             {
               nodeType: 'list-item',
-              nodeClass: 'block',
               data: {},
               content: [
                 {
                   nodeType: 'paragraph',
-                  nodeClass: 'block',
                   data: {},
                   content: [
                     {
@@ -127,7 +118,6 @@ describe('documentToPlainTextString', () => {
                     },
                     {
                       nodeType: 'hyperlink',
-                      nodeClass: 'inline',
                       content: [
                         {
                           nodeType: 'text',
@@ -147,12 +137,10 @@ describe('documentToPlainTextString', () => {
             },
             {
               nodeType: 'list-item',
-              nodeClass: 'block',
               data: {},
               content: [
                 {
                   nodeType: 'paragraph',
-                  nodeClass: 'block',
                   data: {},
                   content: [
                     {
