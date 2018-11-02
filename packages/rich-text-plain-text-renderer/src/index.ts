@@ -1,16 +1,13 @@
-import { Document, Text, Block, Inline, BLOCKS } from '@contentful/rich-text-types';
-
-type NonTextNode = Block | Inline;
-type Node = Text | NonTextNode;
+import { Block, Node, Inline, helpers } from '@contentful/rich-text-types';
 
 /**
  * Returns the text value of a rich text document.
  *
- * NB: This can be applied to any block node of a structured text document,
+ * NB: This can be applied to non text node of a structured text document,
  * hence the flexible typing.
  */
 export function documentToPlainTextString(
-  rootRichTextNode: Document | NonTextNode,
+  rootNode: Block | Inline,
   blockDivisor: string = ' ',
 ): string {
   /**
@@ -21,37 +18,48 @@ export function documentToPlainTextString(
    *
    * {
    *   nodeType: BLOCKS.UL_LIST,
+   *   data: {},
    *   content: [
    *     {
    *       nodeType: BLOCKS.LIST_ITEM,
-   *       content: [{
-   *         nodeType: BLOCKS.PARAGRAPH,
-   *         content: [
-   *           { nodeType: 'text', value: 'List ', marks: [] },
-   *           { nodeType: 'text', value: 'item', marks: [{ type: 'bold' }] }
-   *         ]
-   *       }]
-   *     },
-   *     {
-   *       nodeType: BLOCKS.OL_LIST,
-   *       content: [{
-   *         nodeType: BLOCKS.PARAGRAPH,
-   *         content: [
-   *           { nodeType: 'text', value: 'Another list item', marks: [] }
-   *         ]
-   *       }]
-   *     },
-   *     {
-   *       nodeType: BLOCKS.HR,
    *       data: {},
-   *       content: [],
-   *     },
-   *     {
-   *       nodeType: BLOCKS.OL_LIST,
    *       content: [{
    *         nodeType: BLOCKS.PARAGRAPH,
+   *         data: {},
    *         content: [
-   *           { nodeType: 'text', value: 'Yet another list item', marks: [] }
+   *           { nodeType: 'text', data: {}, value: 'List ', marks: [] },
+   *           { nodeType: 'text', data: {}, value: 'item', marks: [{ type: 'bold' }] }
+   *         ]
+   *       }]
+   *     },
+   *     {
+   *       nodeType: BLOCKS.LIST_ITEM,
+   *       data: {},
+   *       content: [{
+   *         nodeType: BLOCKS.PARAGRAPH,
+   *         data: {},
+   *         content: [
+   *           { nodeType: 'text', data: {}, value: 'Another list item', marks: [] }
+   *         ]
+   *       }]
+   *     },
+   *     {
+   *       nodeType: BLOCKS.LIST_ITEM,
+   *       data: {},
+   *       content: [{
+   *         nodeType: BLOCKS.HR,
+   *         data: {},
+   *         content: [],
+   *       }]
+   *     },
+   *     {
+   *       nodeType: BLOCKS.LIST_ITEM,
+   *       data: {},
+   *       content: [{
+   *         nodeType: BLOCKS.PARAGRAPH,
+   *         data:
+   *         content: [
+   *           { nodeType: 'text', data: {}, value: 'Yet another list item', marks: [] }
    *         ]
    *       }]
    *     },
@@ -65,27 +73,21 @@ export function documentToPlainTextString(
    * 'Yet another list item' - the non-semantic HR between the two nodes should
    * not denote an additional space.
    */
-  const childNodeList = (rootRichTextNode as Block).content;
-  return childNodeList.reduce((textValue: string, node: Node, i: number): string => {
-    const nodeIsText: boolean = isText(node);
-    const nodeTextValue: string = nodeIsText
-      ? (node as Text).value
-      : documentToPlainTextString(node as NonTextNode, blockDivisor);
-    if (!nodeIsText && !nodeTextValue.length) {
-      return textValue;
-    } else {
-      const nextNode: Node = childNodeList[i + 1];
-      const nodeIsInBlockSequence: boolean = nextNode && !isText(nextNode) && isBlock(nextNode);
-      const divisor: string = nodeIsInBlockSequence ? blockDivisor : '';
-      return textValue + nodeTextValue + divisor;
+  return rootNode.content.reduce((acc: string, node: Node, i: number): string => {
+    let nodeTextValue: string;
+
+    if (helpers.isText(node)) {
+      nodeTextValue = node.value;
+    } else if (helpers.isBlock(node) || helpers.isInline(node)) {
+      nodeTextValue = documentToPlainTextString(node, blockDivisor);
+      if (!nodeTextValue.length) {
+        return acc;
+      }
     }
+
+    const nextNode = rootNode.content[i + 1];
+    const isNextNodeBlock = nextNode && helpers.isBlock(nextNode);
+    const divisor = isNextNodeBlock ? blockDivisor : '';
+    return acc + nodeTextValue + divisor;
   }, '');
-}
-
-function isBlock(node: Node): node is Block {
-  return Object.values(BLOCKS).includes(node.nodeType);
-}
-
-function isText(node: Node): node is Text {
-  return node.nodeType === 'text';
 }
