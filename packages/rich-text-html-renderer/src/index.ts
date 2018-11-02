@@ -1,6 +1,5 @@
 import {
   Document,
-  Node,
   Mark,
   Text,
   BLOCKS,
@@ -8,6 +7,7 @@ import {
   INLINES,
   Block,
   Inline,
+  helpers,
 } from '@contentful/rich-text-types';
 
 const defaultNodeRenderers: RenderNode = {
@@ -93,7 +93,7 @@ function nodeListToHtmlString(nodes: CommonNode[], { renderNode, renderMark }: O
 }
 
 function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options): string {
-  if (isText(node)) {
+  if (helpers.isText(node)) {
     if (node.marks.length > 0) {
       return node.marks.reduce((value: string, mark: Mark) => {
         if (!renderMark[mark.type]) {
@@ -112,7 +112,4 @@ function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options)
     }
     return renderNode[node.nodeType](node, nextNode);
   }
-}
-function isText(node: Node): node is Text {
-  return node.nodeType === 'text';
 }

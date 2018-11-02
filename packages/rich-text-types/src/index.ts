@@ -5,3 +5,6 @@ export { default as MARKS } from './marks';
 export * from './schemaConstraints';
 
 export * from './types';
+
+import * as helpers from './helpers';
+export { helpers };
