@@ -23,7 +23,6 @@ export default function inlineEntity(entry: Object, inlineType: string) {
               },
             ],
             nodeType: inlineType,
-            nodeClass: 'inline',
           },
           {
             marks: [],
@@ -33,11 +32,9 @@ export default function inlineEntity(entry: Object, inlineType: string) {
           },
         ],
         nodeType: 'paragraph',
-        nodeClass: 'block',
       },
     ],
     data: {},
     nodeType: 'document',
-    nodeClass: 'block',
   } as Document;
 }

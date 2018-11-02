@@ -14,7 +14,6 @@ export default {
         },
       ],
       nodeType: 'paragraph',
-      nodeClass: 'block',
     },
     {
       data: {},
@@ -27,9 +26,7 @@ export default {
         },
       ],
       nodeType: 'blockquote',
-      nodeClass: 'block',
     },
   ],
   nodeType: 'document',
-  nodeClass: 'block',
 } as Document;

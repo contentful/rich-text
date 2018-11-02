@@ -1,4 +1,4 @@
-import { Document, Text, Block, Inline } from '@contentful/rich-text-types';
+import { Document, Text, Block, Inline, BLOCKS } from '@contentful/rich-text-types';
 
 type NonTextNode = Block | Inline;
 type Node = Text | NonTextNode;
@@ -75,12 +75,15 @@ export function documentToPlainTextString(
       return textValue;
     } else {
       const nextNode: Node = childNodeList[i + 1];
-      const nodeIsInBlockSequence: boolean =
-        nextNode && !isText(nextNode) && nextNode.nodeClass === 'block';
+      const nodeIsInBlockSequence: boolean = nextNode && !isText(nextNode) && isBlock(nextNode);
       const divisor: string = nodeIsInBlockSequence ? blockDivisor : '';
       return textValue + nodeTextValue + divisor;
     }
   }, '');
+}
+
+function isBlock(node: Node): node is Block {
+  return Object.values(BLOCKS).includes(node.nodeType);
 }
 
 function isText(node: Node): node is Text {

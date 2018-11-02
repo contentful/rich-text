@@ -13,7 +13,6 @@ export default {
       ],
       data: {},
       nodeType: 'paragraph',
-      nodeClass: 'block',
     },
     {
       content: [
@@ -26,7 +25,6 @@ export default {
       ],
       data: {},
       nodeType: 'hr',
-      nodeClass: 'block',
     },
     {
       content: [
@@ -39,10 +37,8 @@ export default {
       ],
       data: {},
       nodeType: 'paragraph',
-      nodeClass: 'block',
     },
   ],
   data: {},
   nodeType: 'document',
-  nodeClass: 'block',
 } as Document;
