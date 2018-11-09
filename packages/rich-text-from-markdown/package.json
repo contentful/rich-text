@@ -22,6 +22,9 @@
     "type": "git",
     "url": "git+https://github.com/contentful/rich-text.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.js",
