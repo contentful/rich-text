@@ -1,37 +1,42 @@
-import { Block, Inline } from './types';
-
-// Custom Types
+import { Block, Node, Inline, Text } from './types';
 
 // BLOCKS
 
 // Heading
 export interface Heading1 extends Block {
   nodeType: 'heading-1';
+  content: Array<Inline | Text>;
 }
 
 export interface Heading2 extends Block {
   nodeType: 'heading-2';
+  content: Array<Inline | Text>;
 }
 
 export interface Heading3 extends Block {
   nodeType: 'heading-3';
+  content: Array<Inline | Text>;
 }
 
 export interface Heading4 extends Block {
   nodeType: 'heading-4';
+  content: Array<Inline | Text>;
 }
 
 export interface Heading5 extends Block {
   nodeType: 'heading-5';
+  content: Array<Inline | Text>;
 }
 
 export interface Heading6 extends Block {
   nodeType: 'heading-6';
+  content: Array<Inline | Text>;
 }
 
 // Paragraph
 export interface Paragraph extends Block {
   nodeType: 'paragraph';
+  content: Array<Inline | Text>;
 }
 // Quote
 export interface Quote extends Block {
@@ -41,6 +46,11 @@ export interface Quote extends Block {
 // Horizontal rule
 export interface Hr extends Block {
   nodeType: 'hr';
+  /**
+   *
+   * @maxItems 0
+   */
+  content: Array<Inline | Text>;
 }
 
 // OL
@@ -56,6 +66,7 @@ export interface UnorderedList extends Block {
 
 export interface ListItem extends Block {
   nodeType: 'list-item';
+  content: Block[];
 }
 
 // taken from graphql schema-generator/contentful-types/link.ts
@@ -72,6 +83,11 @@ export interface EntryLinkBlock extends Block {
   data: {
     target: Link<'Entry'>;
   };
+  /**
+   *
+   * @maxItems 0
+   */
+  content: Array<Inline | Text>;
 }
 
 export interface AssetLinkBlock extends Block {
@@ -79,6 +95,11 @@ export interface AssetLinkBlock extends Block {
   data: {
     target: Link<'Asset'>;
   };
+  /**
+   *
+   * @maxItems 0
+   */
+  content: Array<Inline | Text>;
 }
 
 // INLINE
@@ -88,6 +109,11 @@ export interface EntryLinkInline extends Inline {
   data: {
     target: Link<'Entry'>;
   };
+  /**
+   *
+   * @maxItems 0
+   */
+  content: Array<Text>;
 }
 
 export interface Hyperlink extends Inline {
@@ -96,6 +122,7 @@ export interface Hyperlink extends Inline {
     uri: string;
     title: string;
   };
+  content: Array<Text>;
 }
 
 export interface AssetHyperlink extends Inline {
@@ -104,6 +131,7 @@ export interface AssetHyperlink extends Inline {
     target: Link<'Asset'>;
     title: string;
   };
+  content: Array<Text>;
 }
 
 export interface EntryHyperlink extends Inline {
@@ -112,4 +140,5 @@ export interface EntryHyperlink extends Inline {
     target: Link<'Entry'>;
     title: string;
   };
+  content: Array<Text>;
 }

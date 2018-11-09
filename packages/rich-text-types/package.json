@@ -19,8 +19,9 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.js",
-    "start": "tsc && rollup -c rollup.config.js -w"
+    "build": "npm run generate-json-schema && tsc --module commonjs && rollup -c rollup.config.js",
+    "start": "tsc && rollup -c rollup.config.js -w",
+    "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen"
   },
   "devDependencies": {
     "faker": "^4.1.0",
@@ -28,11 +29,14 @@
     "rimraf": "^2.6.2",
     "rollup": "^0.66.6",
     "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-copy": "^0.2.3",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.17.2",
     "ts-jest": "^23.10.4",
-    "typescript": "^2.9.2"
+    "ts-node": "^7.0.1",
+    "typescript": "^2.9.2",
+    "typescript-json-schema": "^0.33.0"
   }
 }

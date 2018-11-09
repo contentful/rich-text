@@ -1,0 +1,88 @@
+{
+  "$ref": "#/definitions/Hyperlink",
+  "definitions": {
+    "Hyperlink": {
+      "type": "object",
+      "properties": {
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "hyperlink"
+          ]
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "uri": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "uri"
+          ]
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Text"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content",
+        "data",
+        "nodeType"
+      ]
+    },
+    "Text": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "marks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Mark"
+          }
+        },
+        "nodeType": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/Record<string,any>"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "data",
+        "marks",
+        "nodeType",
+        "value"
+      ]
+    },
+    "Mark": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "Record<string,any>": {
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

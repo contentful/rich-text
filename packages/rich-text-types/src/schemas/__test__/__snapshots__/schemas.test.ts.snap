@@ -1,0 +1,2517 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: asset-hyperlink 1`] = `
+Object {
+  "$ref": "#/definitions/AssetHyperlink",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "AssetHyperlink": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Text",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "target": Object {
+              "$ref": "#/definitions/Link<\\"Asset\\">",
+            },
+            "title": Object {
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "target",
+            "title",
+          ],
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "asset-hyperlink",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Link<\\"Asset\\">": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "sys": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "id": Object {
+              "type": "string",
+            },
+            "linkType": Object {
+              "enum": Array [
+                "Asset",
+              ],
+              "type": "string",
+            },
+            "type": Object {
+              "enum": Array [
+                "Link",
+              ],
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "id",
+            "linkType",
+            "type",
+          ],
+          "type": "object",
+        },
+      },
+      "required": Array [
+        "sys",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: blockquote 1`] = `
+Object {
+  "$ref": "#/definitions/Quote",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Paragraph": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "paragraph",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Quote": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Paragraph",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "quote",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: document 1`] = `
+Object {
+  "$ref": "#/definitions/Document",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Block": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Document": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Block",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "document",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: embedded-asset-block 1`] = `
+Object {
+  "$ref": "#/definitions/AssetLinkBlock",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "AssetLinkBlock": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "maxItems": 0,
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "target": Object {
+              "$ref": "#/definitions/Link<\\"Asset\\">",
+            },
+          },
+          "required": Array [
+            "target",
+          ],
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "embedded-asset-block",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Link<\\"Asset\\">": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "sys": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "id": Object {
+              "type": "string",
+            },
+            "linkType": Object {
+              "enum": Array [
+                "Asset",
+              ],
+              "type": "string",
+            },
+            "type": Object {
+              "enum": Array [
+                "Link",
+              ],
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "id",
+            "linkType",
+            "type",
+          ],
+          "type": "object",
+        },
+      },
+      "required": Array [
+        "sys",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: embedded-entry-block 1`] = `
+Object {
+  "$ref": "#/definitions/EntryLinkBlock",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "EntryLinkBlock": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "maxItems": 0,
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "target": Object {
+              "$ref": "#/definitions/Link<\\"Entry\\">",
+            },
+          },
+          "required": Array [
+            "target",
+          ],
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "embedded-entry-block",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Link<\\"Entry\\">": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "sys": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "id": Object {
+              "type": "string",
+            },
+            "linkType": Object {
+              "enum": Array [
+                "Entry",
+              ],
+              "type": "string",
+            },
+            "type": Object {
+              "enum": Array [
+                "Link",
+              ],
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "id",
+            "linkType",
+            "type",
+          ],
+          "type": "object",
+        },
+      },
+      "required": Array [
+        "sys",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: embedded-entry-inline 1`] = `
+Object {
+  "$ref": "#/definitions/EntryLinkInline",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "EntryLinkInline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Text",
+          },
+          "maxItems": 0,
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "target": Object {
+              "$ref": "#/definitions/Link<\\"Entry\\">",
+            },
+          },
+          "required": Array [
+            "target",
+          ],
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "embedded-entry-inline",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Link<\\"Entry\\">": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "sys": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "id": Object {
+              "type": "string",
+            },
+            "linkType": Object {
+              "enum": Array [
+                "Entry",
+              ],
+              "type": "string",
+            },
+            "type": Object {
+              "enum": Array [
+                "Link",
+              ],
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "id",
+            "linkType",
+            "type",
+          ],
+          "type": "object",
+        },
+      },
+      "required": Array [
+        "sys",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: entry-hyperlink 1`] = `
+Object {
+  "$ref": "#/definitions/EntryHyperlink",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "EntryHyperlink": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Text",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "target": Object {
+              "$ref": "#/definitions/Link<\\"Entry\\">",
+            },
+            "title": Object {
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "target",
+            "title",
+          ],
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "entry-hyperlink",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Link<\\"Entry\\">": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "sys": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "id": Object {
+              "type": "string",
+            },
+            "linkType": Object {
+              "enum": Array [
+                "Entry",
+              ],
+              "type": "string",
+            },
+            "type": Object {
+              "enum": Array [
+                "Link",
+              ],
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "id",
+            "linkType",
+            "type",
+          ],
+          "type": "object",
+        },
+      },
+      "required": Array [
+        "sys",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: heading-1 1`] = `
+Object {
+  "$ref": "#/definitions/Heading1",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Heading1": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "heading-1",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: heading-2 1`] = `
+Object {
+  "$ref": "#/definitions/Heading2",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Heading2": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "heading-2",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: heading-3 1`] = `
+Object {
+  "$ref": "#/definitions/Heading3",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Heading3": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "heading-3",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: heading-4 1`] = `
+Object {
+  "$ref": "#/definitions/Heading4",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Heading4": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "heading-4",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: heading-5 1`] = `
+Object {
+  "$ref": "#/definitions/Heading5",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Heading5": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "heading-5",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: heading-6 1`] = `
+Object {
+  "$ref": "#/definitions/Heading6",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Heading6": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "heading-6",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: hr 1`] = `
+Object {
+  "$ref": "#/definitions/Hr",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Hr": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "maxItems": 0,
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "hr",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: hyperlink 1`] = `
+Object {
+  "$ref": "#/definitions/Hyperlink",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Hyperlink": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Text",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "title": Object {
+              "type": "string",
+            },
+            "uri": Object {
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "title",
+            "uri",
+          ],
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "hyperlink",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: list-item 1`] = `
+Object {
+  "$ref": "#/definitions/ListItem",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Block": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItem": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Block",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "list-item",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: ordered-list 1`] = `
+Object {
+  "$ref": "#/definitions/OrderedList",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Block": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItem": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Block",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "list-item",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "OrderedList": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/ListItem",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "ordered-list",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: paragraph 1`] = `
+Object {
+  "$ref": "#/definitions/Paragraph",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Paragraph": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "paragraph",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: text 1`] = `
+Object {
+  "$ref": "#/definitions/Text",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: unordered-list 1`] = `
+Object {
+  "$ref": "#/definitions/UnorderedList",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Block": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItem": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Block",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "list-item",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": false,
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+    "UnorderedList": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/ListItem",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "unordered-list",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;

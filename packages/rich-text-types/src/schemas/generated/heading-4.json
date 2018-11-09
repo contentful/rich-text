@@ -1,0 +1,112 @@
+{
+  "$ref": "#/definitions/Heading4",
+  "definitions": {
+    "Heading4": {
+      "type": "object",
+      "properties": {
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "heading-4"
+          ]
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Inline"
+              },
+              {
+                "$ref": "#/definitions/Text"
+              }
+            ]
+          }
+        },
+        "data": {
+          "$ref": "#/definitions/Record<string,any>"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content",
+        "data",
+        "nodeType"
+      ]
+    },
+    "Inline": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Inline"
+              },
+              {
+                "$ref": "#/definitions/Text"
+              }
+            ]
+          }
+        },
+        "nodeType": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/Record<string,any>"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content",
+        "data",
+        "nodeType"
+      ]
+    },
+    "Text": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "marks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Mark"
+          }
+        },
+        "nodeType": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/Record<string,any>"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "data",
+        "marks",
+        "nodeType",
+        "value"
+      ]
+    },
+    "Mark": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "Record<string,any>": {
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
