@@ -1,14 +1,10 @@
 // tslint:disable-next-line: no-any
 export type NodeData = Record<string, any>;
+const t: string = '1';
 
 export interface Node {
   readonly nodeType: string;
   data: NodeData;
-}
-
-export interface Document extends Node {
-  nodeType: 'document';
-  content: Block[];
 }
 
 export interface Block extends Node {
@@ -19,8 +15,13 @@ export interface Inline extends Node {
   content: Array<Inline | Text>;
 }
 
+export interface Document extends Node {
+  nodeType: 'document';
+  data: NodeData;
+  content: Block[];
+}
+
 export interface Text extends Node {
-  nodeType: 'text';
   value: string;
   marks: Mark[];
 }
