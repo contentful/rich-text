@@ -42,7 +42,7 @@ of that node.
 #### Example: 
 
 ```js
-const richTextFromMarkdown = require('@contentful/rich-text-from-markdown');
+const { richTextFromMarkdown } = require('@contentful/rich-text-from-markdown');
 
 // define your own type for unsupported nodes like asset
 const document = richTextFromMarkdown(
