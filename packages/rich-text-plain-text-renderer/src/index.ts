@@ -10,6 +10,16 @@ export function documentToPlainTextString(
   rootNode: Block | Inline,
   blockDivisor: string = ' ',
 ): string {
+  if (!rootNode || !rootNode.content) {
+    /**
+     * Handles edge cases, such as when the value is not set in the CMA or the
+     * field has not been properly validated, e.g. because of a user extension.
+     * Note that we are nevertheless strictly type-casting `rootNode` as
+     * Block | Inline. Valid rich text documents (and their branch block nodes)
+     * should never lack a Node[] `content` property.
+     */
+    return '';
+  }
   /**
    * Algorithm notes: We only want to apply spacing when a node is part of a
    * sequence. This is tricky because nodes can often be deeply nested within
