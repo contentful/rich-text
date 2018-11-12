@@ -78,6 +78,12 @@
     "Text": {
       "type": "object",
       "properties": {
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "text"
+          ]
+        },
         "value": {
           "type": "string"
         },
@@ -86,9 +92,6 @@
           "items": {
             "$ref": "#/definitions/Mark"
           }
-        },
-        "nodeType": {
-          "type": "string"
         },
         "data": {
           "$ref": "#/definitions/Record<string,any>"
@@ -115,8 +118,8 @@
       ]
     },
     "Record<string,any>": {
-      "type": "object",
-      "additionalProperties": false
+      "additionalProperties": true,
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

@@ -10,6 +10,10 @@
             "heading-5"
           ]
         },
+        "data": {
+          "type": "object",
+          "properties": {}
+        },
         "content": {
           "type": "array",
           "items": {
@@ -22,9 +26,6 @@
               }
             ]
           }
-        },
-        "data": {
-          "$ref": "#/definitions/Record<string,any>"
         }
       },
       "additionalProperties": false,
@@ -37,6 +38,9 @@
     "Inline": {
       "type": "object",
       "properties": {
+        "nodeType": {
+          "$ref": "#/definitions/INLINES"
+        },
         "content": {
           "type": "array",
           "items": {
@@ -50,9 +54,6 @@
             ]
           }
         },
-        "nodeType": {
-          "type": "string"
-        },
         "data": {
           "$ref": "#/definitions/Record<string,any>"
         }
@@ -64,9 +65,25 @@
         "nodeType"
       ]
     },
+    "INLINES": {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink"
+      ],
+      "type": "string"
+    },
     "Text": {
       "type": "object",
       "properties": {
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "text"
+          ]
+        },
         "value": {
           "type": "string"
         },
@@ -75,9 +92,6 @@
           "items": {
             "$ref": "#/definitions/Mark"
           }
-        },
-        "nodeType": {
-          "type": "string"
         },
         "data": {
           "$ref": "#/definitions/Record<string,any>"
@@ -104,8 +118,8 @@
       ]
     },
     "Record<string,any>": {
-      "type": "object",
-      "additionalProperties": false
+      "additionalProperties": true,
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

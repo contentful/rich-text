@@ -1,71 +1,87 @@
-import { Block, Node, Inline, Text } from './types';
+import { Block, Inline, Text } from './types';
+import BLOCKS from './blocks';
+import INLINES from './inlines';
 
+type EmptyNodeData = {};
 // BLOCKS
 
 // Heading
 export interface Heading1 extends Block {
-  nodeType: 'heading-1';
+  nodeType: BLOCKS.HEADING_1;
+  data: EmptyNodeData;
   content: Array<Inline | Text>;
 }
 
 export interface Heading2 extends Block {
-  nodeType: 'heading-2';
+  nodeType: BLOCKS.HEADING_2;
+  data: EmptyNodeData;
   content: Array<Inline | Text>;
 }
 
 export interface Heading3 extends Block {
-  nodeType: 'heading-3';
+  nodeType: BLOCKS.HEADING_3;
+  data: EmptyNodeData;
   content: Array<Inline | Text>;
 }
 
 export interface Heading4 extends Block {
-  nodeType: 'heading-4';
+  nodeType: BLOCKS.HEADING_4;
+  data: EmptyNodeData;
   content: Array<Inline | Text>;
 }
 
 export interface Heading5 extends Block {
-  nodeType: 'heading-5';
+  nodeType: BLOCKS.HEADING_5;
+  data: EmptyNodeData;
   content: Array<Inline | Text>;
 }
 
 export interface Heading6 extends Block {
-  nodeType: 'heading-6';
+  nodeType: BLOCKS.HEADING_6;
+  data: EmptyNodeData;
   content: Array<Inline | Text>;
 }
 
 // Paragraph
 export interface Paragraph extends Block {
-  nodeType: 'paragraph';
+  nodeType: BLOCKS.PARAGRAPH;
+  data: EmptyNodeData;
   content: Array<Inline | Text>;
 }
+
 // Quote
 export interface Quote extends Block {
-  nodeType: 'quote';
+  nodeType: BLOCKS.QUOTE;
+  data: EmptyNodeData;
   content: Paragraph[];
 }
 // Horizontal rule
 export interface Hr extends Block {
-  nodeType: 'hr';
+  nodeType: BLOCKS.HR;
   /**
    *
    * @maxItems 0
    */
+  data: EmptyNodeData;
   content: Array<Inline | Text>;
 }
 
 // OL
 export interface OrderedList extends Block {
-  nodeType: 'ordered-list';
+  nodeType: BLOCKS.OL_LIST;
+  data: EmptyNodeData;
   content: ListItem[];
 }
 // UL
 export interface UnorderedList extends Block {
-  nodeType: 'unordered-list';
+  nodeType: BLOCKS.UL_LIST;
+  data: EmptyNodeData;
   content: ListItem[];
 }
 
 export interface ListItem extends Block {
-  nodeType: 'list-item';
+  nodeType: BLOCKS.LIST_ITEM;
+  data: EmptyNodeData;
   content: Block[];
 }
 
@@ -79,7 +95,7 @@ export interface Link<T extends string = string> {
 }
 
 export interface EntryLinkBlock extends Block {
-  nodeType: 'embedded-entry-block';
+  nodeType: BLOCKS.EMBEDDED_ENTRY;
   data: {
     target: Link<'Entry'>;
   };
@@ -91,7 +107,7 @@ export interface EntryLinkBlock extends Block {
 }
 
 export interface AssetLinkBlock extends Block {
-  nodeType: 'embedded-asset-block';
+  nodeType: BLOCKS.EMBEDDED_ASSET;
   data: {
     target: Link<'Asset'>;
   };
@@ -105,7 +121,7 @@ export interface AssetLinkBlock extends Block {
 // INLINE
 
 export interface EntryLinkInline extends Inline {
-  nodeType: 'embedded-entry-inline';
+  nodeType: INLINES.EMBEDDED_ENTRY;
   data: {
     target: Link<'Entry'>;
   };
@@ -117,7 +133,7 @@ export interface EntryLinkInline extends Inline {
 }
 
 export interface Hyperlink extends Inline {
-  nodeType: 'hyperlink';
+  nodeType: INLINES.HYPERLINK;
   data: {
     uri: string;
     title: string;
@@ -126,7 +142,7 @@ export interface Hyperlink extends Inline {
 }
 
 export interface AssetHyperlink extends Inline {
-  nodeType: 'asset-hyperlink';
+  nodeType: INLINES.ASSET_HYPERLINK;
   data: {
     target: Link<'Asset'>;
     title: string;
@@ -135,7 +151,7 @@ export interface AssetHyperlink extends Inline {
 }
 
 export interface EntryHyperlink extends Inline {
-  nodeType: 'entry-hyperlink';
+  nodeType: INLINES.ENTRY_HYPERLINK;
   data: {
     target: Link<'Entry'>;
     title: string;

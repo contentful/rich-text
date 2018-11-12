@@ -1,11 +1,11 @@
-import { Document, BLOCKS } from '@contentful/rich-text-types';
+import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
 
 import { documentToPlainTextString } from '../index';
 
 describe('documentToPlainTextString', () => {
   it('returns empty string when given an empty document', () => {
     const document: Document = {
-      nodeType: 'document',
+      nodeType: BLOCKS.DOCUMENT,
       data: {},
       content: [],
     };
@@ -15,7 +15,7 @@ describe('documentToPlainTextString', () => {
 
   it('handles a simple case', () => {
     const document: Document = {
-      nodeType: 'document',
+      nodeType: BLOCKS.DOCUMENT,
       data: {},
       content: [
         {
@@ -50,11 +50,11 @@ describe('documentToPlainTextString', () => {
 
   describe('rendering deeply nested documents', () => {
     const document: Document = {
-      nodeType: 'document',
+      nodeType: BLOCKS.DOCUMENT,
       data: {},
       content: [
         {
-          nodeType: 'paragraph',
+          nodeType: BLOCKS.PARAGRAPH,
           data: {},
           content: [
             {
@@ -82,7 +82,7 @@ describe('documentToPlainTextString', () => {
               marks: [],
             },
             {
-              nodeType: 'hyperlink',
+              nodeType: INLINES.HYPERLINK,
               content: [
                 {
                   nodeType: 'text',
@@ -99,15 +99,15 @@ describe('documentToPlainTextString', () => {
           ],
         },
         {
-          nodeType: 'unordered-list',
+          nodeType: BLOCKS.UL_LIST,
           data: {},
           content: [
             {
-              nodeType: 'list-item',
+              nodeType: BLOCKS.LIST_ITEM,
               data: {},
               content: [
                 {
-                  nodeType: 'paragraph',
+                  nodeType: BLOCKS.PARAGRAPH,
                   data: {},
                   content: [
                     {
@@ -117,7 +117,7 @@ describe('documentToPlainTextString', () => {
                       marks: [],
                     },
                     {
-                      nodeType: 'hyperlink',
+                      nodeType: INLINES.HYPERLINK,
                       content: [
                         {
                           nodeType: 'text',
@@ -136,11 +136,11 @@ describe('documentToPlainTextString', () => {
               ],
             },
             {
-              nodeType: 'list-item',
+              nodeType: BLOCKS.LIST_ITEM,
               data: {},
               content: [
                 {
-                  nodeType: 'paragraph',
+                  nodeType: BLOCKS.PARAGRAPH,
                   data: {},
                   content: [
                     {

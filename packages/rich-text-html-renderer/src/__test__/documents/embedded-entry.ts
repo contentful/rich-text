@@ -2,7 +2,7 @@ import { Document, BLOCKS } from '@contentful/rich-text-types';
 
 export default function(entry: Object) {
   return {
-    nodeType: 'document',
+    nodeType: BLOCKS.DOCUMENT,
     data: {},
     content: [
       {
