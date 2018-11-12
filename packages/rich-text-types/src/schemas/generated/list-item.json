@@ -10,14 +10,15 @@
             "list-item"
           ]
         },
+        "data": {
+          "type": "object",
+          "properties": {}
+        },
         "content": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Block"
           }
-        },
-        "data": {
-          "$ref": "#/definitions/Record<string,any>"
         }
       },
       "additionalProperties": false,
@@ -30,6 +31,9 @@
     "Block": {
       "type": "object",
       "properties": {
+        "nodeType": {
+          "$ref": "#/definitions/BLOCKS"
+        },
         "content": {
           "type": "array",
           "items": {
@@ -46,9 +50,6 @@
             ]
           }
         },
-        "nodeType": {
-          "type": "string"
-        },
         "data": {
           "$ref": "#/definitions/Record<string,any>"
         }
@@ -60,9 +61,33 @@
         "nodeType"
       ]
     },
+    "BLOCKS": {
+      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
+      "enum": [
+        "blockquote",
+        "document",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "list-item",
+        "ordered-list",
+        "paragraph",
+        "unordered-list"
+      ],
+      "type": "string"
+    },
     "Inline": {
       "type": "object",
       "properties": {
+        "nodeType": {
+          "$ref": "#/definitions/INLINES"
+        },
         "content": {
           "type": "array",
           "items": {
@@ -76,9 +101,6 @@
             ]
           }
         },
-        "nodeType": {
-          "type": "string"
-        },
         "data": {
           "$ref": "#/definitions/Record<string,any>"
         }
@@ -90,9 +112,25 @@
         "nodeType"
       ]
     },
+    "INLINES": {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink"
+      ],
+      "type": "string"
+    },
     "Text": {
       "type": "object",
       "properties": {
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "text"
+          ]
+        },
         "value": {
           "type": "string"
         },
@@ -101,9 +139,6 @@
           "items": {
             "$ref": "#/definitions/Mark"
           }
-        },
-        "nodeType": {
-          "type": "string"
         },
         "data": {
           "$ref": "#/definitions/Record<string,any>"
@@ -130,8 +165,8 @@
       ]
     },
     "Record<string,any>": {
-      "type": "object",
-      "additionalProperties": false
+      "additionalProperties": true,
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

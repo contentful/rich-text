@@ -19,7 +19,7 @@ import inlineEntity from './documents/inline-entity';
 describe('documentToHtmlString', () => {
   it('returns empty string when given an empty document', () => {
     const document: Document = {
-      nodeType: 'document',
+      nodeType: BLOCKS.DOCUMENT,
       data: {},
       content: [],
     };

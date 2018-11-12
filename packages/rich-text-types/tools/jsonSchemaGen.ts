@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import { writeFile } from 'fs';
 
 import * as TJS from 'typescript-json-schema';
-import { BLOCKS, INLINES } from '../src/index';
+import { INLINES, BLOCKS } from '../src/index';
 
 // optionally pass argument to schema generator
 const settings: TJS.PartialArgs = {
@@ -16,7 +16,7 @@ const settings: TJS.PartialArgs = {
 // optionally pass ts compiler options
 const compilerOptions: TJS.CompilerOptions = {
   strictNullChecks: true,
-  composite: true,
+  // composite: true,
   lib: ['es2015', 'es2016', 'es2017'],
 };
 

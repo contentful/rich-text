@@ -1,8 +1,8 @@
-import { Document } from '@contentful/rich-text-types';
+import { Document, BLOCKS } from '@contentful/rich-text-types';
 
 export default function(heading: string) {
   return {
-    nodeType: 'document',
+    nodeType: BLOCKS.DOCUMENT,
     data: {},
     content: [
       {

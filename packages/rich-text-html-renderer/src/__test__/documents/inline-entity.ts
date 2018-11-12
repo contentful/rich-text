@@ -1,6 +1,6 @@
-import { Document } from '@contentful/rich-text-types';
+import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
 
-export default function inlineEntity(entry: Object, inlineType: string) {
+export default function inlineEntity(entry: Object, inlineType: INLINES) {
   return {
     content: [
       {
@@ -31,10 +31,10 @@ export default function inlineEntity(entry: Object, inlineType: string) {
             data: {},
           },
         ],
-        nodeType: 'paragraph',
+        nodeType: BLOCKS.PARAGRAPH,
       },
     ],
     data: {},
-    nodeType: 'document',
+    nodeType: BLOCKS.DOCUMENT,
   } as Document;
 }

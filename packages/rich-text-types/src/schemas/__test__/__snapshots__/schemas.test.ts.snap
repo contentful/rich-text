@@ -131,6 +131,16 @@ Object {
   "$ref": "#/definitions/Quote",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": Object {
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -151,7 +161,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -220,7 +230,7 @@ Object {
         },
         "nodeType": Object {
           "enum": Array [
-            "quote",
+            "blockquote",
           ],
           "type": "string",
         },
@@ -272,6 +282,27 @@ Object {
   "$ref": "#/definitions/Document",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": Object {
+    "BLOCKS": Object {
+      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
+      "enum": Array [
+        "blockquote",
+        "document",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "list-item",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
+    },
     "Block": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -295,7 +326,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/BLOCKS",
         },
       },
       "required": Array [
@@ -331,6 +362,16 @@ Object {
       ],
       "type": "object",
     },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -351,7 +392,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -456,6 +497,16 @@ Object {
       ],
       "type": "object",
     },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -476,7 +527,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -616,6 +667,16 @@ Object {
       ],
       "type": "object",
     },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -636,7 +697,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -1015,6 +1076,16 @@ Object {
       ],
       "type": "object",
     },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -1035,7 +1106,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -1130,6 +1201,16 @@ Object {
       ],
       "type": "object",
     },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -1150,7 +1231,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -1245,6 +1326,16 @@ Object {
       ],
       "type": "object",
     },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -1265,7 +1356,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -1360,6 +1451,16 @@ Object {
       ],
       "type": "object",
     },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -1380,7 +1481,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -1475,6 +1576,16 @@ Object {
       ],
       "type": "object",
     },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -1495,7 +1606,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -1590,6 +1701,16 @@ Object {
       ],
       "type": "object",
     },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -1610,7 +1731,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -1706,6 +1827,16 @@ Object {
       ],
       "type": "object",
     },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -1726,7 +1857,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -1879,6 +2010,27 @@ Object {
   "$ref": "#/definitions/ListItem",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": Object {
+    "BLOCKS": Object {
+      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
+      "enum": Array [
+        "blockquote",
+        "document",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "list-item",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
+    },
     "Block": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -1902,7 +2054,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/BLOCKS",
         },
       },
       "required": Array [
@@ -1911,6 +2063,16 @@ Object {
         "nodeType",
       ],
       "type": "object",
+    },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
     },
     "Inline": Object {
       "additionalProperties": false,
@@ -1932,7 +2094,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -2020,6 +2182,27 @@ Object {
   "$ref": "#/definitions/OrderedList",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": Object {
+    "BLOCKS": Object {
+      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
+      "enum": Array [
+        "blockquote",
+        "document",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "list-item",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
+    },
     "Block": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -2043,7 +2226,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/BLOCKS",
         },
       },
       "required": Array [
@@ -2052,6 +2235,16 @@ Object {
         "nodeType",
       ],
       "type": "object",
+    },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
     },
     "Inline": Object {
       "additionalProperties": false,
@@ -2073,7 +2266,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -2187,6 +2380,16 @@ Object {
   "$ref": "#/definitions/Paragraph",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": Object {
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
     "Inline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -2207,7 +2410,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [
@@ -2354,6 +2557,27 @@ Object {
   "$ref": "#/definitions/UnorderedList",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": Object {
+    "BLOCKS": Object {
+      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
+      "enum": Array [
+        "blockquote",
+        "document",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "list-item",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
+    },
     "Block": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -2377,7 +2601,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/BLOCKS",
         },
       },
       "required": Array [
@@ -2386,6 +2610,16 @@ Object {
         "nodeType",
       ],
       "type": "object",
+    },
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
     },
     "Inline": Object {
       "additionalProperties": false,
@@ -2407,7 +2641,7 @@ Object {
           "$ref": "#/definitions/Record<string,any>",
         },
         "nodeType": Object {
-          "type": "string",
+          "$ref": "#/definitions/INLINES",
         },
       },
       "required": Array [

@@ -1,4 +1,5 @@
 import { Block, Node, Inline, helpers } from '@contentful/rich-text-types';
+import { isBlock, isInline } from '../node_modules/@contentful/rich-text-types/dist/types/helpers';
 
 /**
  * Returns the text value of a rich text document.
@@ -83,7 +84,7 @@ export function documentToPlainTextString(
    * 'Yet another list item' - the non-semantic HR between the two nodes should
    * not denote an additional space.
    */
-  return rootNode.content.reduce((acc: string, node: Node, i: number): string => {
+  return (rootNode as Block).content.reduce((acc: string, node: Node, i: number): string => {
     let nodeTextValue: string;
 
     if (helpers.isText(node)) {
