@@ -1,4 +1,4 @@
-import { Block, Inline, Text } from './types';
+import { Block, Inline, Text, TopLevelBlock } from './types';
 import BLOCKS from './blocks';
 import INLINES from './inlines';
 
@@ -82,7 +82,7 @@ export interface UnorderedList extends Block {
 export interface ListItem extends Block {
   nodeType: BLOCKS.LIST_ITEM;
   data: EmptyNodeData;
-  content: Block[];
+  content: TopLevelBlock[];
 }
 
 // taken from graphql schema-generator/contentful-types/link.ts

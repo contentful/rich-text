@@ -1,4 +1,4 @@
-import { Document, Node, Block, BLOCKS } from '@contentful/rich-text-types';
+import { Document, Node, Block, BLOCKS, TopLevelBlock } from '@contentful/rich-text-types';
 
 import unified from 'unified';
 import markdown from 'remark-parse';
@@ -154,7 +154,7 @@ const treeToRichTextDocument = (
   return {
     nodeType: BLOCKS.DOCUMENT,
     data: {},
-    content: markdownNodesToRichTextNodes(tree.children, fallback) as Block[],
+    content: markdownNodesToRichTextNodes(tree.children, fallback) as TopLevelBlock[],
   };
 };
 

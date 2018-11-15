@@ -1,6 +1,7 @@
 import { Document, Block, Inline, Text } from '../types';
 import faker from 'faker';
 import { BLOCKS, INLINES } from '..';
+import { TopLevelBlockEnum } from '../schemaConstraints';
 
 describe('Document', () => {
   it('empty Document', () => {
@@ -17,7 +18,7 @@ describe('Document', () => {
       data: {},
       content: [
         {
-          nodeType: faker.name.title() as BLOCKS,
+          nodeType: faker.name.title() as TopLevelBlockEnum,
           data: {},
           content: [],
         },
