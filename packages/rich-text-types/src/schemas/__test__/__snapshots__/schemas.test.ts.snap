@@ -3028,3 +3028,5 @@ Object {
   },
 }
 `;
+
+exports[`getSchemaWithNodeType throws error if no schema found 1`] = `"Schema for nodeType \\"unknown-node-type\\" was not found."`;

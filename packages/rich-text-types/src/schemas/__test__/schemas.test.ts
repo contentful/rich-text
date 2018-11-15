@@ -19,4 +19,8 @@ describe('getSchemaWithNodeType', () => {
 
     matchesSnapshot('text');
   });
+
+  it('throws error if no schema found', () => {
+    expect(() => getSchemaWithNodeType('unknown-node-type')).toThrowErrorMatchingSnapshot();
+  });
 });

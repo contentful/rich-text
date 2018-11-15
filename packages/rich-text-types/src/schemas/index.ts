@@ -38,5 +38,9 @@ export declare type Definition = {
 };
 
 export function getSchemaWithNodeType(nodeType: string): Definition {
-  return require(`./generated/${nodeType}.json`);
+  try {
+    return require(`./generated/${nodeType}.json`);
+  } catch (error) {
+    throw new Error(`Schema for nodeType "${nodeType}" was not found.`);
+  }
 }
