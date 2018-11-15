@@ -1,5 +1,6 @@
 import BLOCKS from './blocks';
 import INLINES from './inlines';
+import { TopLevelBlockEnum } from './schemaConstraints';
 
 /**
  * @additionalProperties true
@@ -21,9 +22,13 @@ export interface Inline extends Node {
   content: Array<Inline | Text>;
 }
 
+export interface TopLevelBlock extends Block {
+  nodeType: TopLevelBlockEnum;
+}
+
 export interface Document extends Node {
   nodeType: BLOCKS.DOCUMENT;
-  content: Block[];
+  content: TopLevelBlock[];
 }
 
 export interface Text extends Node {

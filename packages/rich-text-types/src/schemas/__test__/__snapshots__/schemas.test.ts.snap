@@ -92,7 +92,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -108,6 +108,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -200,7 +203,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -226,7 +230,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -243,7 +248,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -259,6 +264,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -341,7 +349,7 @@ Object {
       "properties": Object {
         "content": Object {
           "items": Object {
-            "$ref": "#/definitions/Block",
+            "$ref": "#/definitions/TopLevelBlock",
           },
           "type": "array",
         },
@@ -415,7 +423,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -431,6 +439,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -444,6 +455,57 @@ Object {
         "value",
       ],
       "type": "object",
+    },
+    "TopLevelBlock": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "$ref": "#/definitions/TopLevelBlockEnum",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "TopLevelBlockEnum": Object {
+      "enum": Array [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
     },
   },
 }
@@ -585,7 +647,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -601,6 +663,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -755,7 +820,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -771,6 +836,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -878,7 +946,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -894,6 +962,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -1004,7 +1075,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -1020,6 +1091,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -1060,7 +1134,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -1129,7 +1204,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -1145,6 +1220,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -1185,7 +1263,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -1254,7 +1333,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -1270,6 +1349,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -1310,7 +1392,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -1379,7 +1462,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -1395,6 +1478,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -1435,7 +1521,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -1504,7 +1591,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -1520,6 +1607,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -1560,7 +1650,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -1629,7 +1720,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -1645,6 +1736,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -1685,7 +1779,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -1754,7 +1849,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -1770,6 +1865,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -1807,11 +1905,12 @@ Object {
               },
             ],
           },
-          "maxItems": 0,
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "maxItems": 0,
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -1880,7 +1979,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -1896,6 +1995,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -1971,7 +2073,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -1987,6 +2089,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -2109,12 +2214,13 @@ Object {
       "properties": Object {
         "content": Object {
           "items": Object {
-            "$ref": "#/definitions/Block",
+            "$ref": "#/definitions/TopLevelBlock",
           },
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -2143,7 +2249,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -2159,6 +2265,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -2172,6 +2281,57 @@ Object {
         "value",
       ],
       "type": "object",
+    },
+    "TopLevelBlock": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "$ref": "#/definitions/TopLevelBlockEnum",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "TopLevelBlockEnum": Object {
+      "enum": Array [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
     },
   },
 }
@@ -2281,12 +2441,13 @@ Object {
       "properties": Object {
         "content": Object {
           "items": Object {
-            "$ref": "#/definitions/Block",
+            "$ref": "#/definitions/TopLevelBlock",
           },
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -2324,7 +2485,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -2341,7 +2503,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -2357,6 +2519,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -2370,6 +2535,57 @@ Object {
         "value",
       ],
       "type": "object",
+    },
+    "TopLevelBlock": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "$ref": "#/definitions/TopLevelBlockEnum",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "TopLevelBlockEnum": Object {
+      "enum": Array [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
     },
   },
 }
@@ -2449,7 +2665,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -2466,7 +2683,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -2482,6 +2699,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -2518,7 +2738,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -2534,6 +2754,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -2656,12 +2879,13 @@ Object {
       "properties": Object {
         "content": Object {
           "items": Object {
-            "$ref": "#/definitions/Block",
+            "$ref": "#/definitions/TopLevelBlock",
           },
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [
@@ -2690,7 +2914,7 @@ Object {
       "type": "object",
     },
     "Record<string,any>": Object {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "type": "object",
     },
     "Text": Object {
@@ -2706,6 +2930,9 @@ Object {
           "type": "array",
         },
         "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
           "type": "string",
         },
         "value": Object {
@@ -2720,6 +2947,57 @@ Object {
       ],
       "type": "object",
     },
+    "TopLevelBlock": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "$ref": "#/definitions/TopLevelBlockEnum",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "TopLevelBlockEnum": Object {
+      "enum": Array [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
+    },
     "UnorderedList": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -2730,7 +3008,8 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "properties": Object {},
+          "type": "object",
         },
         "nodeType": Object {
           "enum": Array [

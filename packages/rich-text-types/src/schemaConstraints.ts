@@ -1,10 +1,25 @@
 import BLOCKS from './blocks';
 
+export type TopLevelBlockEnum =
+  | BLOCKS.PARAGRAPH
+  | BLOCKS.HEADING_1
+  | BLOCKS.HEADING_2
+  | BLOCKS.HEADING_3
+  | BLOCKS.HEADING_4
+  | BLOCKS.HEADING_5
+  | BLOCKS.HEADING_6
+  | BLOCKS.OL_LIST
+  | BLOCKS.UL_LIST
+  | BLOCKS.HR
+  | BLOCKS.QUOTE
+  | BLOCKS.EMBEDDED_ENTRY
+  | BLOCKS.EMBEDDED_ASSET;
+
 /**
  * Array of all top level block types.
  * Only these block types can be the direct children of the document.
  */
-export const TOP_LEVEL_BLOCKS = [
+export const TOP_LEVEL_BLOCKS: TopLevelBlockEnum[] = [
   BLOCKS.PARAGRAPH,
   BLOCKS.HEADING_1,
   BLOCKS.HEADING_2,

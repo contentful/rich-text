@@ -17,7 +17,7 @@
         "content": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Block"
+            "$ref": "#/definitions/TopLevelBlock"
           }
         }
       },
@@ -27,6 +27,57 @@
         "data",
         "nodeType"
       ]
+    },
+    "TopLevelBlock": {
+      "type": "object",
+      "properties": {
+        "nodeType": {
+          "$ref": "#/definitions/TopLevelBlockEnum"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Block"
+              },
+              {
+                "$ref": "#/definitions/Inline"
+              },
+              {
+                "$ref": "#/definitions/Text"
+              }
+            ]
+          }
+        },
+        "data": {
+          "$ref": "#/definitions/Record<string,any>"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content",
+        "data",
+        "nodeType"
+      ]
+    },
+    "TopLevelBlockEnum": {
+      "enum": [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list"
+      ],
+      "type": "string"
     },
     "Block": {
       "type": "object",
