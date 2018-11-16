@@ -114,8 +114,6 @@ const markdwonNodeToRichTextNode = (
       nodeValue = node.content ? node.content[0].value : node.value;
       marks.push({
         type: markTypeFor(node),
-        object: 'mark',
-        data: {},
       });
     }
 
