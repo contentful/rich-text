@@ -75,18 +75,18 @@ describe('Inline', () => {
     };
   });
 
-  it.skip('Inline with inline', () => {
-    // const inline: Inline = {
-    //   nodeType: INLINES.HYPERLINK,
-    //   data: {},
-    //   content: [
-    //     {
-    //       nodeType: faker.name.title() as INLINES,
-    //       data: {},
-    //       content: [],
-    //     },
-    //   ],
-    // };
+  it('Inline with inline', () => {
+    const inline: Inline = {
+      nodeType: INLINES.HYPERLINK,
+      data: {},
+      content: [
+        {
+          nodeType: faker.name.title() as INLINES,
+          data: {},
+          content: [],
+        },
+      ],
+    };
   });
 
   it('Inline with text', () => {
