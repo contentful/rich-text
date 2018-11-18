@@ -8,3 +8,5 @@ export * from './types';
 
 import * as helpers from './helpers';
 export { helpers };
+
+export * from './nodeTypes';
