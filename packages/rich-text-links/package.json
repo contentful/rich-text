@@ -1,8 +1,8 @@
 {
-  "name": "@contentful/rich-text-references",
+  "name": "@contentful/rich-text-links",
   "version": "10.0.5",
-  "main": "dist/rich-text-references.es5.js",
-  "typings": "dist/types/rich-text-references.d.ts",
+  "main": "dist/rich-text-links.es5.js",
+  "typings": "dist/types/rich-text-links.d.ts",
   "files": [
     "dist"
   ],
