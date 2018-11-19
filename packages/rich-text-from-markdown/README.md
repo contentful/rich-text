@@ -4,8 +4,16 @@ A Typescript library that converts markdown to rich text.
 
 ## Installation
 
+Using [npm](http://npmjs.org/):
+
 ```sh
-npm i @contentful/rich-text-from-markdown
+npm install @contentful/rich-text-from-markdown
+```
+
+Using [yarn](https://yarnpkg.com/):
+
+```sh
+yarn add @contentful/rich-text-from-markdown
 ```
 
 ## Usage
@@ -39,7 +47,7 @@ If the markdown content has unsupported nodes like image `![image](url)` you can
 and it will get called everytime an unsupported node is found. The return value of the callback will be the rich text representation
 of that node.
 
-#### Example: 
+#### Example:
 
 ```js
 const { richTextFromMarkdown } = require('@contentful/rich-text-from-markdown');
@@ -62,4 +70,3 @@ const document = richTextFromMarkdown(
   })
 });
 ```
-

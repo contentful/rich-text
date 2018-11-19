@@ -6,13 +6,13 @@ HTML renderer for the Contentful rich text field type.
 
 Using [npm](http://npmjs.org/):
 
-```javascript
+```sh
 npm install @contentful/rich-text-html-renderer
 ```
 
 Using [yarn](https://yarnpkg.com/):
 
-```javascript
+```sh
 yarn add @contentful/rich-text-html-renderer
 ```
 
@@ -166,4 +166,3 @@ The `renderMark` keys should be one of the following `MARKS` properties as defin
 - `ITALIC`
 - `UNDERLINE`
 - `CODE`
-

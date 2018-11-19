@@ -6,12 +6,12 @@ Plain text renderer for the Rich Text document.
 
 Using [npm](http://npmjs.org/):
 
-```javascript
+```sh
 npm install @contentful/rich-text-plain-text-renderer
 ```
 
 Using [yarn](https://yarnpkg.com/):
-```javascript
+```sh
 yarn add @contentful/rich-text-plain-text-renderer
 ```
 
@@ -43,4 +43,3 @@ const document = {
 
 documentToPlainTextString(document); // -> Hello world!
 ```
-
