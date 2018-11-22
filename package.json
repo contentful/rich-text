@@ -7,7 +7,7 @@
   "scripts": {
     "build": "lerna run build",
     "commit": "git-cz",
-    "clean": "lerna exec 'rm -rf node_modules/ && npm prune' && rm -rf node_modules/ && npm prune",
+    "clean": "lerna exec 'rm -rf node_modules/ dist/ && npm prune' && rm -rf node_modules/ && npm prune",
     "lint": "tslint -t codeFrame 'packages/**/src/*.ts'",
     "postinstall": "lerna bootstrap --hoist --progress --no-ci",
     "prebuild": "lerna run prebuild",
