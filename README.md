@@ -16,46 +16,13 @@ text documents.
 - [`rich-text-types`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-html-renderer)
   - Type definitions and constants for the rich text field type
 
-## Useful npm scripts
-
-- `npm run build` builds vendored files in the `dist/` directory of each package
-- `npm run commit` runs git commits with [commitizen](http://commitizen.github.io/cz-cli/)
-- `npm run clean` removes any built files and `node_modules`
-- `npm run lint` runs our TypeScript linter on all `.ts` files in each package
-- `npm run test` runs unit tests for all packages
-- `npm run test:ci` runs unit tests in CI mode (same as would be run by Travis)
-- `npm run test:watch` runs unit tests in "watch" mode (will refresh relevant
-  code paths on save)
-
 ## Get involved
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?maxAge=31557600)](http://makeapullrequest.com)
 
-We appreciate any help on our repositories. For more details on how to
-contribute, see below:
-
-### Contributing
-
-We follow [Angular JS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153#allowed-type)
-to generate a changelog, enforced by [commitizen](http://commitizen.github.io/cz-cli/). You'll need to use `npm run commit` to create
-conventional commits.
-
-We use a common [rollup](https://rollupjs.org/guide/en) config to compile
-packages from TypeScript to ES5.
-
-We use common [TypeScript](https://www.typescriptlang.org/) and [tslint](https://palantir.github.io/tslint/)
-configs.
-
-We use [Jest](https://jestjs.io/) for unit tests.
-
-### Publishing
-
-We use [Lerna](https://github.com/lerna/lerna) to:
-
-- keep dependencies in sync
-  - `lerna bootstrap --hoist` (which is run as a post-install step)
-- publish
-  - `NPM_CONFIG_OTP={2fa_otp_goes_here} npm run publish`
+We appreciate any help on our repositories. For more details about how to
+contribute, see our [CONTRIBUTING.md](https://github.com/contentful/rich-text/blob/master/CONTRIBUTING.md)
+document.
 
 ## Reach out to us
 
