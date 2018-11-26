@@ -3,8 +3,8 @@ declare module 'unified' {
     depth: string;
     type: string;
     ordered: Boolean;
-    children: Array<MarkdownNode>;
-    content: Array<MarkdownNode>;
+    children: MarkdownNode[];
+    content: MarkdownNode[];
     value: string;
   }
 

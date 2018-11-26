@@ -42,24 +42,45 @@ describe('getRichTextEntityLinks', () => {
       ],
     };
 
-    it('works with entry links', () => {
-      expect(getRichTextEntityLinks(document, 'Entry')).toEqual([
-        {
-          linkType: 'Entry',
-          type: 'Link',
-          id: 'foo',
-        },
-      ]);
+    describe('when the link type is "Entry"', () => {
+      it('returns the matching link objects', () => {
+        expect(getRichTextEntityLinks(document, 'Entry')).toEqual([
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'foo',
+          },
+        ]);
+      });
     });
 
-    it('works with asset links', () => {
-      expect(getRichTextEntityLinks(document, 'Asset')).toEqual([
-        {
-          linkType: 'Asset',
-          type: 'Link',
-          id: 'bar',
-        },
-      ]);
+    describe('when the link type is "Asset"', () => {
+      it('returns the matching link objects', () => {
+        expect(getRichTextEntityLinks(document, 'Asset')).toEqual([
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'bar',
+          },
+        ]);
+      });
+    });
+
+    describe('when no link type is provided', () => {
+      it('returns all entity link objects', () => {
+        expect(getRichTextEntityLinks(document)).toEqual([
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'bar',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'foo',
+          },
+        ]);
+      });
     });
   });
 
@@ -159,34 +180,65 @@ describe('getRichTextEntityLinks', () => {
       ],
     };
 
-    it('works with entry links', () => {
-      expect(getRichTextEntityLinks(document, 'Entry')).toEqual([
-        {
-          linkType: 'Entry',
-          type: 'Link',
-          id: 'baz',
-        },
-        {
-          linkType: 'Entry',
-          type: 'Link',
-          id: 'foo',
-        },
-      ]);
+    describe('when the link type is "Entry"', () => {
+      it('returns all unique matching links', () => {
+        expect(getRichTextEntityLinks(document, 'Entry')).toEqual([
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'baz',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'foo',
+          },
+        ]);
+      });
     });
 
-    it('works with asset links', () => {
-      expect(getRichTextEntityLinks(document, 'Asset')).toEqual([
-        {
-          linkType: 'Asset',
-          type: 'Link',
-          id: 'bar',
-        },
-        {
-          linkType: 'Asset',
-          type: 'Link',
-          id: 'quux',
-        },
-      ]);
+    describe('when the link type is "Asset"', () => {
+      it('returns all unique matching links', () => {
+        expect(getRichTextEntityLinks(document, 'Asset')).toEqual([
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'bar',
+          },
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'quux',
+          },
+        ]);
+      });
+    });
+
+    describe('when no link type is provided', () => {
+      it('returns all entity link objects', () => {
+        expect(getRichTextEntityLinks(document)).toEqual([
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'bar',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'baz',
+          },
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'quux',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'foo',
+          },
+        ]);
+      });
     });
   });
 
@@ -294,24 +346,45 @@ describe('getRichTextEntityLinks', () => {
       ],
     };
 
-    it('ignores redundant entry links', () => {
-      expect(getRichTextEntityLinks(document, 'Entry')).toEqual([
-        {
-          linkType: 'Entry',
-          type: 'Link',
-          id: 'foo',
-        },
-      ]);
+    describe('when the link type is "Entry"', () => {
+      it('ignores redundant entry links', () => {
+        expect(getRichTextEntityLinks(document, 'Entry')).toEqual([
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'foo',
+          },
+        ]);
+      });
     });
 
-    it('ignores redundant asset links', () => {
-      expect(getRichTextEntityLinks(document, 'Asset')).toEqual([
-        {
-          linkType: 'Asset',
-          type: 'Link',
-          id: 'bar',
-        },
-      ]);
+    describe('when the link type is "Asset"', () => {
+      it('ignores redundant asset links', () => {
+        expect(getRichTextEntityLinks(document, 'Asset')).toEqual([
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'bar',
+          },
+        ]);
+      });
+    });
+
+    describe('when no link type is provided', () => {
+      it('ignores all redundant links', () => {
+        expect(getRichTextEntityLinks(document)).toEqual([
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'bar',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'foo',
+          },
+        ]);
+      });
     });
   });
 });
