@@ -27,15 +27,17 @@ class Cache {
 }
 
 /**
- * Given a rich text document and an entity type, returns all unique matching
- * entity links.
+ * Given a rich text document and an (optional) entity type, returns all unique
+ * matching entity links.
+ *
+ * If there is no linkType provided, returns all unique entity links.
  */
-export function getRichTextEntityLinks(document: Document, linkType: EntityType): EntityLink[] {
+export function getRichTextEntityLinks(document: Document, linkType?: EntityType): EntityLink[] {
   const links: EntityLink[] = [];
   const linkCache: LinkCache = new Cache();
 
   for (const node of document.content) {
-    addLinksFromRichTextNode(links, node, linkType, linkCache);
+    addLinksFromRichTextNode(links, node, linkCache, linkType);
   }
 
   return links;
@@ -44,8 +46,8 @@ export function getRichTextEntityLinks(document: Document, linkType: EntityType)
 function addLinksFromRichTextNode(
   links: EntityLink[],
   node: Node,
-  linkType: EntityType,
   linkCache: LinkCache,
+  linkType?: EntityType,
 ): EntityLink[] {
   const toCrawl: Node[] = [node];
 
@@ -65,8 +67,14 @@ function addLinksFromRichTextNode(
   return links;
 }
 
-function isMatchingLinkObject(data: NodeData, linkType: EntityType): Boolean {
+function isMatchingLinkObject(data: NodeData, linkType?: EntityType): Boolean {
   const sys = data && (data.target as SysObject) && (data.target.sys as EntityLink);
-
-  return sys && typeof sys.id === 'string' && sys.type === 'Link' && sys.linkType === linkType;
+  const isLinkObject = sys && typeof sys.id === 'string' && sys.type === 'Link';
+  if (!isLinkObject) {
+    return false;
+  }
+  if (linkType) {
+    return sys.linkType === linkType;
+  }
+  return sys.linkType === 'Entry' || sys.linkType === 'Asset';
 }
