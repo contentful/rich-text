@@ -129,7 +129,7 @@ export interface EntryLinkInline extends Inline {
    *
    * @maxItems 0
    */
-  content: Array<Text>;
+  content: Text[];
 }
 
 export interface Hyperlink extends Inline {
@@ -138,7 +138,7 @@ export interface Hyperlink extends Inline {
     uri: string;
     title: string;
   };
-  content: Array<Text>;
+  content: Text[];
 }
 
 export interface AssetHyperlink extends Inline {
@@ -147,7 +147,7 @@ export interface AssetHyperlink extends Inline {
     target: Link<'Asset'>;
     title: string;
   };
-  content: Array<Text>;
+  content: Text[];
 }
 
 export interface EntryHyperlink extends Inline {
@@ -156,5 +156,5 @@ export interface EntryHyperlink extends Inline {
     target: Link<'Entry'>;
     title: string;
   };
-  content: Array<Text>;
+  content: Text[];
 }
