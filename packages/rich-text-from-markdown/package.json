@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-from-markdown",
-  "version": "10.3.0",
+  "version": "11.0.0",
   "description": "convert markdown to rich text",
   "keywords": [
     "rich-text",
@@ -31,7 +31,7 @@
     "start": "tsc && rollup -c rollup.config.js -w"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^10.3.0",
+    "@contentful/rich-text-types": "^11.0.0",
     "remark-parse": "^6.0.1",
     "unified": "^7.0.0"
   },
