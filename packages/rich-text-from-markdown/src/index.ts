@@ -111,7 +111,8 @@ const markdwonNodeToRichTextNode = (
     if (node.type !== 'text') {
       // TODO: this implementation needs to handle arbitrarily nested marks
       // for example: **_Hello_, world!**
-      nodeValue = node.content ? node.content[0].value : node.value;
+      // this a markdown node here that's why we use children
+      nodeValue = node.children ? node.children[0].value : node.value;
       marks.push({
         type: markTypeFor(node),
       });
