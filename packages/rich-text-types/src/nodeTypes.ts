@@ -136,7 +136,6 @@ export interface Hyperlink extends Inline {
   nodeType: INLINES.HYPERLINK;
   data: {
     uri: string;
-    title: string;
   };
   content: Text[];
 }
@@ -145,7 +144,6 @@ export interface AssetHyperlink extends Inline {
   nodeType: INLINES.ASSET_HYPERLINK;
   data: {
     target: Link<'Asset'>;
-    title: string;
   };
   content: Text[];
 }
@@ -154,7 +152,6 @@ export interface EntryHyperlink extends Inline {
   nodeType: INLINES.ENTRY_HYPERLINK;
   data: {
     target: Link<'Entry'>;
-    title: string;
   };
   content: Text[];
 }

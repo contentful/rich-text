@@ -15,14 +15,10 @@
           "properties": {
             "uri": {
               "type": "string"
-            },
-            "title": {
-              "type": "string"
             }
           },
           "additionalProperties": false,
           "required": [
-            "title",
             "uri"
           ]
         },

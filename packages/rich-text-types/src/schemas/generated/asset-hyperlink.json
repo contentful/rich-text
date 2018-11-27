@@ -15,15 +15,11 @@
           "properties": {
             "target": {
               "$ref": "#/definitions/Link<\"Asset\">"
-            },
-            "title": {
-              "type": "string"
             }
           },
           "additionalProperties": false,
           "required": [
-            "target",
-            "title"
+            "target"
           ]
         },
         "content": {

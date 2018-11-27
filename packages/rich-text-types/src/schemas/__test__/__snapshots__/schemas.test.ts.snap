@@ -20,13 +20,9 @@ Object {
             "target": Object {
               "$ref": "#/definitions/Link<\\"Asset\\">",
             },
-            "title": Object {
-              "type": "string",
-            },
           },
           "required": Array [
             "target",
-            "title",
           ],
           "type": "object",
         },
@@ -1003,13 +999,9 @@ Object {
             "target": Object {
               "$ref": "#/definitions/Link<\\"Entry\\">",
             },
-            "title": Object {
-              "type": "string",
-            },
           },
           "required": Array [
             "target",
-            "title",
           ],
           "type": "object",
         },
@@ -2033,15 +2025,11 @@ Object {
         "data": Object {
           "additionalProperties": false,
           "properties": Object {
-            "title": Object {
-              "type": "string",
-            },
             "uri": Object {
               "type": "string",
             },
           },
           "required": Array [
-            "title",
             "uri",
           ],
           "type": "object",
