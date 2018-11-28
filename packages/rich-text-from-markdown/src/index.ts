@@ -52,10 +52,10 @@ const markTypeFor = (node: MarkdownNode) => {
 };
 
 const dataFor = (node: MarkdownLinkNode) => {
-  return node.type === 'link' ? { uri: node.url } : {};
+  return { uri: node.url };
 };
 
-const isLink = (node: MarkdownNode): node is MarkdownLinkNode => {
+const isLink = (node: MarkdownNode): boolean => {
   return node.type === 'link';
 };
 
@@ -88,23 +88,31 @@ const isText = (nodeType: string) => {
   return nodeContainerTypes.get(nodeType) === 'text';
 };
 
-const markdownNodeToRichTextNode = (
+const markdownNodeToRichTextNode = async (
   node: MarkdownNode,
-  fallback: (mdNode: MarkdownNode) => Block,
-) => {
+  fallback: (mdNode: MarkdownNode) => Promise<Block>,
+): Promise<Node> => {
   const nodeType = nodeTypeFor(node);
-  const nodeContent = markdownNodesToRichTextNodes(node.children, fallback);
+  const nodeContent = await markdownNodesToRichTextNodes(node.children, fallback);
+  const filteredNodeContent = nodeContent.filter(node => {
+    return node !== null && node !== undefined;
+  });
   let nodeValue = node.value;
   let nodeData = {};
   if (isLink(node)) {
-    nodeData = dataFor(node);
+    nodeData = dataFor(node as MarkdownLinkNode);
+    return Promise.resolve({
+      nodeType: INLINES.HYPERLINK,
+      data: nodeData,
+      content: filteredNodeContent,
+    });
   }
   if (isBlock(nodeType)) {
-    return {
+    return Promise.resolve({
       nodeType: nodeType,
-      content: nodeContent,
+      content: filteredNodeContent,
       data: nodeData,
-    };
+    });
   } else if (isText(nodeType)) {
     let marks = [];
     if (node.type !== 'text') {
@@ -116,51 +124,78 @@ const markdownNodeToRichTextNode = (
         type: markTypeFor(node),
       });
     }
-
-    return {
+    return Promise.resolve({
       nodeType: nodeType,
       value: nodeValue,
       marks: marks,
       data: {},
-    };
+    });
   }
+  return fallback(node);
 };
 
 const markdownNodesToRichTextNodes = (
   nodes: MarkdownNode[],
-  fallback: (mdNode: MarkdownNode) => Block,
-): Node[] => {
+  fallback: (mdNode: MarkdownNode) => Promise<Block>,
+): Promise<Node[]> => {
   if (!nodes) {
-    return [];
+    return Promise.resolve([]);
   }
-  const richNodes = nodes
-    .map(node => {
-      const richNode = markdownNodeToRichTextNode(node, fallback);
-      if (!richNode) {
-        return fallback(node);
-      }
-      return richNode;
-    })
-    .filter(Boolean);
-  return richNodes;
+  return Promise.all(
+    nodes.map(async node => {
+      return markdownNodeToRichTextNode(node, fallback);
+    }),
+  );
 };
 
-const treeToRichTextDocument = (
+const treeToRichTextDocument = async (
   tree: MarkdownTree,
-  fallback: (mdNode: MarkdownNode) => Block,
-): Document => {
-  return {
+  fallback: (mdNode: MarkdownNode) => Promise<Block>,
+): Promise<Document> => {
+  const richNodePromises = markdownNodesToRichTextNodes(tree.children, fallback) as Promise<
+    TopLevelBlock[]
+  >;
+  const richNodes: TopLevelBlock[] = (await richNodePromises) as TopLevelBlock[];
+  const filteredNodes = richNodes.filter(node => {
+    return node !== null && node !== undefined;
+  });
+
+  // Currently inline markdown images are coming in as markdown paragraphs with
+  // an inline image markdown node as a child...but in rich text, markdown nodes need to be top-level embeds.
+  let hoistedNodes: TopLevelBlock[] = [];
+  for (const node of filteredNodes) {
+    if (node.nodeType === 'paragraph') {
+      const index = node.content.findIndex(child => {
+        return child.nodeType === 'embedded-asset-block';
+      });
+      if (index !== -1) {
+        const embedNode = node.content[index] as TopLevelBlock;
+        hoistedNodes.push(embedNode);
+        // node.content.splice(index, 1);
+        // TODO: push the nodes before and after.
+      } else {
+        hoistedNodes.push(node);
+      }
+    } else {
+      hoistedNodes.push(node);
+    }
+  }
+
+  const output: Document = {
     nodeType: BLOCKS.DOCUMENT,
     data: {},
-    content: markdownNodesToRichTextNodes(tree.children, fallback) as TopLevelBlock[],
+    content: hoistedNodes,
   };
+  // TODO: handle links
+
+  return Promise.resolve(output);
 };
 
-export function richTextFromMarkdown(
+export async function richTextFromMarkdown(
   md: string,
-  fallback: (mdNode: MarkdownNode) => Block = n => null,
-): Document {
+  fallback: (mdNode: MarkdownNode) => Promise<Block> = n => null,
+): Promise<Document> {
   const processor = unified().use(markdown, { commonmark: true });
   const tree = processor.parse(md);
-  return treeToRichTextDocument(tree, fallback);
+  return await treeToRichTextDocument(tree, fallback);
 }
