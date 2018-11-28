@@ -13,7 +13,7 @@ const markdownNodeTypes = new Map<string, string>([
   ['inlineCode', 'text'],
   ['link', 'hyperlink'],
   ['thematicBreak', 'hr'],
-  ['blockquote', 'quote'],
+  ['blockquote', 'blockquote'],
   ['list', 'list'],
   ['listItem', 'list-item'],
 ]);
@@ -36,6 +36,7 @@ interface MarkdownLinkNode extends MarkdownNode {
 }
 const nodeTypeFor = (node: MarkdownNode) => {
   const nodeType: string = markdownNodeTypes.get(node.type);
+
   switch (nodeType) {
     case 'heading':
       return `${nodeType}-${node.depth}`;
@@ -67,14 +68,13 @@ const nodeContainerTypes = new Map([
   ['heading-4', 'block'],
   ['heading-5', 'block'],
   ['heading-6', 'block'],
-  ['listItem', 'block'],
+  ['list-item', 'block'],
+  ['unordered-list', 'block'],
+  ['ordered-list', 'block'],
   ['blockquote', 'block'],
-  ['thematicBreak', 'block'],
-  ['list', 'block'],
+  ['hr', 'block'],
   ['paragraph', 'block'],
-
-  ['link', 'inline'],
-
+  ['hyperlink', 'inline'],
   ['text', 'text'],
   ['emphasis]', 'text'],
   ['strong]', 'text'],
@@ -89,7 +89,7 @@ const isText = (nodeType: string) => {
   return nodeContainerTypes.get(nodeType) === 'text';
 };
 
-const markdwonNodeToRichTextNode = (
+const markdownNodeToRichTextNode = (
   node: MarkdownNode,
   fallback: (mdNode: MarkdownNode) => Block,
 ) => {
@@ -136,7 +136,7 @@ const markdownNodesToRichTextNodes = (
   }
   const richNodes = nodes
     .map(node => {
-      const richNode = markdwonNodeToRichTextNode(node, fallback);
+      const richNode = markdownNodeToRichTextNode(node, fallback);
       if (!richNode) {
         return fallback(node);
       }
