@@ -42,44 +42,22 @@ describe('getRichTextEntityLinks', () => {
       ],
     };
 
-    describe('when the link type is "Entry"', () => {
-      it('returns the matching link objects', () => {
-        expect(getRichTextEntityLinks(document, 'Entry')).toEqual([
+    it('returns all entity link objects', () => {
+      expect(getRichTextEntityLinks(document)).toEqual({
+        Entry: [
           {
             linkType: 'Entry',
             type: 'Link',
             id: 'foo',
           },
-        ]);
-      });
-    });
-
-    describe('when the link type is "Asset"', () => {
-      it('returns the matching link objects', () => {
-        expect(getRichTextEntityLinks(document, 'Asset')).toEqual([
+        ],
+        Asset: [
           {
             linkType: 'Asset',
             type: 'Link',
             id: 'bar',
           },
-        ]);
-      });
-    });
-
-    describe('when no link type is provided', () => {
-      it('returns all entity link objects', () => {
-        expect(getRichTextEntityLinks(document)).toEqual([
-          {
-            linkType: 'Asset',
-            type: 'Link',
-            id: 'bar',
-          },
-          {
-            linkType: 'Entry',
-            type: 'Link',
-            id: 'foo',
-          },
-        ]);
+        ],
       });
     });
   });
@@ -180,9 +158,9 @@ describe('getRichTextEntityLinks', () => {
       ],
     };
 
-    describe('when the link type is "Entry"', () => {
-      it('returns all unique matching links', () => {
-        expect(getRichTextEntityLinks(document, 'Entry')).toEqual([
+    it('returns all entity link objects', () => {
+      expect(getRichTextEntityLinks(document)).toEqual({
+        Entry: [
           {
             linkType: 'Entry',
             type: 'Link',
@@ -193,13 +171,8 @@ describe('getRichTextEntityLinks', () => {
             type: 'Link',
             id: 'foo',
           },
-        ]);
-      });
-    });
-
-    describe('when the link type is "Asset"', () => {
-      it('returns all unique matching links', () => {
-        expect(getRichTextEntityLinks(document, 'Asset')).toEqual([
+        ],
+        Asset: [
           {
             linkType: 'Asset',
             type: 'Link',
@@ -210,34 +183,7 @@ describe('getRichTextEntityLinks', () => {
             type: 'Link',
             id: 'quux',
           },
-        ]);
-      });
-    });
-
-    describe('when no link type is provided', () => {
-      it('returns all entity link objects', () => {
-        expect(getRichTextEntityLinks(document)).toEqual([
-          {
-            linkType: 'Asset',
-            type: 'Link',
-            id: 'bar',
-          },
-          {
-            linkType: 'Entry',
-            type: 'Link',
-            id: 'baz',
-          },
-          {
-            linkType: 'Asset',
-            type: 'Link',
-            id: 'quux',
-          },
-          {
-            linkType: 'Entry',
-            type: 'Link',
-            id: 'foo',
-          },
-        ]);
+        ],
       });
     });
   });
@@ -346,44 +292,22 @@ describe('getRichTextEntityLinks', () => {
       ],
     };
 
-    describe('when the link type is "Entry"', () => {
-      it('ignores redundant entry links', () => {
-        expect(getRichTextEntityLinks(document, 'Entry')).toEqual([
+    it('ignores all redundant links', () => {
+      expect(getRichTextEntityLinks(document)).toEqual({
+        Entry: [
           {
             linkType: 'Entry',
             type: 'Link',
             id: 'foo',
           },
-        ]);
-      });
-    });
-
-    describe('when the link type is "Asset"', () => {
-      it('ignores redundant asset links', () => {
-        expect(getRichTextEntityLinks(document, 'Asset')).toEqual([
+        ],
+        Asset: [
           {
             linkType: 'Asset',
             type: 'Link',
             id: 'bar',
           },
-        ]);
-      });
-    });
-
-    describe('when no link type is provided', () => {
-      it('ignores all redundant links', () => {
-        expect(getRichTextEntityLinks(document)).toEqual([
-          {
-            linkType: 'Asset',
-            type: 'Link',
-            id: 'bar',
-          },
-          {
-            linkType: 'Entry',
-            type: 'Link',
-            id: 'foo',
-          },
-        ]);
+        ],
       });
     });
   });

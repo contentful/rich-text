@@ -99,6 +99,26 @@ repository as a whole.
 We use [Jest](https://jestjs.io/) for unit tests. See **Useful npm scripts**
 above for some relevant npm commands.
 
+### Benchmarks
+
+Some packages may contain benchmark scripts to prevent against performance
+regressions. We use [Benchmark](https://benchmarkjs.com/) for these. Benchmarked
+files should be written in TypeScript with the same code style and formatting
+conventions as the rest of the codebase - we use `ts-node` (anchored to the
+Node version in `./node-version`) to evaluate these.
+
+Benchmarks are stored in the `bin/benchmark` folder of each relevant package.
+To run all benchmarks for a particular package, e.g. `rich-text-links`, you
+can use a Lerna command scoped to that package:
+
+```sh
+lerna exec "npm run benchmark" --scope=@contentful/rich-text-links
+```
+
+Before submitting a pull request for a package with benchmarked code paths,
+please make sure that your changes do not negatively impact performance.
+(Of course, PRs _improving_ performance are always welcome! :smile:)
+
 ## Publishing
 
 We use [Lerna](https://github.com/lerna/lerna) to:
