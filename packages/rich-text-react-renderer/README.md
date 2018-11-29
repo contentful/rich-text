@@ -19,7 +19,7 @@ yarn add @contentful/rich-text-react-renderer
 ## Usage
 
 ```javascript
-import { documentToHtmlString } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponent } from '@contentful/rich-text-react-renderer';
 
 const document = {
   nodeType: 'document',
@@ -37,11 +37,11 @@ const document = {
   ],
 };
 
-documentToHtmlString(document); // -> <p>Hello world!</p>
+documentToReactComponent(document); // -> <p>Hello world!</p>
 ```
 
 ```javascript
-import { documentToHtmlString } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponent } from '@contentful/rich-text-react-renderer';
 
 const document = {
   nodeType: 'document',
@@ -64,14 +64,14 @@ const document = {
   ],
 };
 
-documentToHtmlString(document); // -> <p><b>Hello</b><u> world!</u></p>
+documentToReactComponent(document); // -> <p><b>Hello</b><u> world!</u></p>
 ```
 
 You can also pass custom renderers for both marks and nodes as an optional parameter like so:
 
 ```javascript
 import { BLOCKS.PARAGRAPH, MARKS.BOLD } from '@contentful/rich-text-types';
-import { documentToHtmlString } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponent } from '@contentful/rich-text-react-renderer';
 
 const document = {
   nodeType: 'document',
@@ -103,7 +103,7 @@ const options = {
   }
 }
 
-documentToHtmlString(document, options);
+documentToReactComponent(document, options);
 // -> <custom-paragraph><custom-bold>Hello</custom-bold><u> world!</u></custom-paragraph>
 ```
 
@@ -111,7 +111,7 @@ Last, but not least, you can pass a custom rendering component for an embedded e
 
 ```javascript
 import { BLOCKS.EMBEDDED_ENTRY } from '@contentful/rich-text-types';
-import { documentToHtmlString } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponent } from '@contentful/rich-text-react-renderer';
 
 const document = {
   nodeType: 'document',
@@ -131,7 +131,7 @@ const options = {
   }
 }
 
-documentToHtmlString(document, options);
+documentToReactComponent(document, options);
 // -> <custom-component>(...)Link<'Entry'>(...)</custom-component>
 ```
 
