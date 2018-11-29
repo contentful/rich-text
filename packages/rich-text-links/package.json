@@ -18,14 +18,17 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "rimraf dist",
+    "benchmark": "ts-node -O '{\"module\": \"commonjs\"}' bin/benchmark",
     "build": "tsc --module commonjs && rollup -c rollup.config.js",
+    "prebuild": "rimraf dist",
     "start": "tsc && rollup -c rollup.config.js -w"
   },
   "dependencies": {
     "@contentful/rich-text-types": "^11.0.0"
   },
   "devDependencies": {
+    "@types/benchmark": "^1.0.31",
+    "benchmark": "^2.1.4",
     "jest": "^23.6.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.66.6",
@@ -35,6 +38,7 @@
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.17.2",
     "ts-jest": "^23.10.4",
+    "ts-node": "^7.0.1",
     "typescript": "^2.9.2"
   }
 }
