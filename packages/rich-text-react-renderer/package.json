@@ -1,0 +1,42 @@
+{
+  "name": "@contentful/rich-text-react-renderer",
+  "version": "11.0.0",
+  "main": "dist/rich-text-react-renderer.es5.js",
+  "typings": "dist/types/rich-text-react-renderer.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/contentful/rich-text.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc --module commonjs && rollup -c rollup.config.js",
+    "start": "tsc && rollup -c rollup.config.js -w"
+  },
+  "dependencies": {
+    "@contentful/rich-text-types": "^11.0.0",
+    "react": "^16.6.3"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.8",
+    "jest": "^23.6.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.66.6",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.17.2",
+    "ts-jest": "^23.10.4",
+    "typescript": "^2.9.2"
+  }
+}
