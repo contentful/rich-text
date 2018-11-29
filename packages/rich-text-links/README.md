@@ -59,9 +59,16 @@ const document = {
   ],
 };
 
-getRichTextEntityLinks(document, 'Entry');
-// -> [{ linkType: 'Entry', type: 'Link', id: 'yXmVKmaDBm8tRfQMwA0e' }]
-
-getRichTextEntityLinks(document, 'Asset');
-// -> [{ linkType: 'Asset', type: 'Link', id: 'jNhaW0aSc6Hu74SHVMtq' }]
+getRichTextEntityLinks(document);
+/**
+ * ->
+ * {
+ *   Entry: [
+ *     { linkType: 'Entry', type: 'Link', id: 'yXmVKmaDBm8tRfQMwA0e' }
+ *   ],
+ *   Asset: [
+ *     { linkType: 'Asset', type: 'Link', id: 'jNhaW0aSc6Hu74SHVMtq' }
+ *   ]
+ * }
+ */
 ```

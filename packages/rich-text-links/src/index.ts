@@ -1,80 +1,62 @@
 import { Document, Node, Block, Link, NodeData } from '@contentful/rich-text-types';
 
+export type EntityLinks = { [type in EntityType]: EntityLink[] };
+export type EntityLinkMaps = { [type in EntityType]: Map<string, EntityLink> };
 export type EntityType = 'Entry' | 'Asset';
 export type EntityLink = SysObject['sys'];
 export type SysObject = Link<EntityType>;
-
-type LinkCache = Cache;
-
-/**
- * Implements a subset of the Set API:
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
- */
-class Cache {
-  cache: Record<string, true>;
-
-  constructor() {
-    this.cache = {};
-  }
-
-  add(id: string): void {
-    this.cache[id] = true;
-  }
-
-  has(id: string): Boolean {
-    return this.cache[id] || false;
-  }
-}
+export type EntityLinkNodeData = {
+  target: SysObject;
+};
 
 /**
- * Given a rich text document and an (optional) entity type, returns all unique
- * matching entity links.
- *
- * If there is no linkType provided, returns all unique entity links.
+ * Given a rich text document, returns all entity links.
  */
-export function getRichTextEntityLinks(document: Document, linkType?: EntityType): EntityLink[] {
-  const links: EntityLink[] = [];
-  const linkCache: LinkCache = new Cache();
+export function getRichTextEntityLinks(document: Document): EntityLinks {
+  const entityLinks: EntityLinkMaps = {
+    Entry: new Map(),
+    Asset: new Map(),
+  };
 
-  for (const node of document.content) {
-    addLinksFromRichTextNode(links, node, linkCache, linkType);
+  const content = (document && document.content) || ([] as Node[]);
+  for (const node of content) {
+    addLinksFromRichTextNode(node, entityLinks);
   }
 
-  return links;
+  return {
+    Entry: Array.from(entityLinks.Entry.values()),
+    Asset: Array.from(entityLinks.Asset.values()),
+  };
 }
 
-function addLinksFromRichTextNode(
-  links: EntityLink[],
-  node: Node,
-  linkCache: LinkCache,
-  linkType?: EntityType,
-): EntityLink[] {
+function addLinksFromRichTextNode(node: Node, links: EntityLinkMaps): void {
   const toCrawl: Node[] = [node];
 
   while (toCrawl.length > 0) {
     const { data, content } = toCrawl.pop() as Block;
 
-    if (isMatchingLinkObject(data, linkType) && !linkCache.has(data.target.sys.id)) {
-      links.push(data.target.sys);
-      linkCache.add(data.target.sys.id);
+    if (isLinkObject(data)) {
+      links[data.target.sys.linkType].set(data.target.sys.id, data.target.sys);
     } else if (Array.isArray(content)) {
       for (const childNode of content) {
         toCrawl.push(childNode);
       }
     }
   }
-
-  return links;
 }
 
-function isMatchingLinkObject(data: NodeData, linkType?: EntityType): Boolean {
+function isLinkObject(data: NodeData): data is EntityLinkNodeData {
   const sys = data && (data.target as SysObject) && (data.target.sys as EntityLink);
-  const isLinkObject = sys && typeof sys.id === 'string' && sys.type === 'Link';
-  if (!isLinkObject) {
+  if (!sys) {
     return false;
   }
-  if (linkType) {
-    return sys.linkType === linkType;
+
+  const isValidLinkObject = typeof sys.id === 'string' && sys.type === 'Link';
+  if (!isValidLinkObject) {
+    return false;
   }
-  return sys.linkType === 'Entry' || sys.linkType === 'Asset';
+
+  const isEntityLink = sys.linkType === 'Entry' || sys.linkType === 'Asset';
+
+  return isEntityLink;
 }
