@@ -11,6 +11,7 @@
   "rules": {
     "ban": false,
     "class-name": true,
+    "no-return-await": false,
     "comment-format": [true, "check-space"],
     "curly": true,
     "eofline": false,
