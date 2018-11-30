@@ -17,12 +17,10 @@ const markdownNodeTypes = new Map<string, string>([
   ['list', 'list'],
   ['listItem', BLOCKS.LIST_ITEM],
 ]);
-export interface MarkdownNode {
+export interface MarkdownNode extends MarkdownTree {
   depth: string;
   type: string;
   ordered: Boolean;
-  children: MarkdownNode[];
-  content: MarkdownNode[];
   value: string;
 }
 
@@ -94,9 +92,7 @@ const markdownNodeToRichTextNode = async (
 ): Promise<Node> => {
   const nodeType = nodeTypeFor(node);
   const nodeContent = await markdownNodesToRichTextNodes(node.children, fallback);
-  const filteredNodeContent = nodeContent.filter(node => {
-    return node !== null && node !== undefined;
-  });
+  const filteredNodeContent = nodeContent.filter(Boolean);
   let nodeValue = node.value;
   let nodeData = {};
   if (isLink(node)) {
@@ -156,40 +152,93 @@ const treeToRichTextDocument = async (
     TopLevelBlock[]
   >;
   const richNodes: TopLevelBlock[] = (await richNodePromises) as TopLevelBlock[];
-  const filteredNodes = richNodes.filter(node => {
-    return node !== null && node !== undefined;
-  });
-
-  // Currently inline markdown images are coming in as markdown paragraphs with
-  // an inline image markdown node as a child...but in rich text, markdown nodes need to be top-level embeds.
-  let hoistedNodes: TopLevelBlock[] = [];
-  for (const node of filteredNodes) {
-    if (node.nodeType === 'paragraph') {
-      const index = node.content.findIndex(child => {
-        return child.nodeType === 'embedded-asset-block';
-      });
-      if (index !== -1) {
-        const embedNode = node.content[index] as TopLevelBlock;
-        hoistedNodes.push(embedNode);
-        // node.content.splice(index, 1);
-        // TODO: push the nodes before and after.
-      } else {
-        hoistedNodes.push(node);
-      }
-    } else {
-      hoistedNodes.push(node);
-    }
-  }
+  const filteredNodes = richNodes.filter(Boolean);
 
   const output: Document = {
     nodeType: BLOCKS.DOCUMENT,
     data: {},
-    content: hoistedNodes,
+    content: filteredNodes,
   };
-  // TODO: handle links
-
   return Promise.resolve(output);
 };
+
+function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
+  if (node.type !== 'paragraph') {
+    return [node];
+  }
+  let imageNodeIndices = [];
+  for (let i = 0; i < node.children.length; i++) {
+    if (node.children[i].type === 'image') {
+      imageNodeIndices.push(i);
+    }
+  }
+
+  if (imageNodeIndices.length === 0) {
+    // If no images in children, return.
+    return [node];
+  }
+  let allNodes: MarkdownNode[] = [];
+  let lastIndex = -1;
+  for (let j = 0; j < imageNodeIndices.length; j++) {
+    const index = imageNodeIndices[j];
+    // before
+    if (index !== 0) {
+      const nodesBefore: MarkdownNode[] = node.children.slice(lastIndex + 1, index);
+      let newBeforeParagraph = JSON.parse(JSON.stringify(node));
+      newBeforeParagraph.children = nodesBefore;
+      if (newBeforeParagraph.children.length > 0) {
+        allNodes.push(newBeforeParagraph);
+      }
+    }
+    // image
+    const imageNode = node.children[index];
+    allNodes.push(imageNode);
+
+    // till end
+    let nodesAfter: MarkdownNode[] = [];
+    const rangeEnd =
+      j + 1 < imageNodeIndices.length ? imageNodeIndices[j + 1] : node.children.length;
+    if (index + 1 < rangeEnd && index === imageNodeIndices.slice(-1)[0]) {
+      nodesAfter = node.children.slice(index + 1, rangeEnd);
+      let newAfterParagraph = JSON.parse(JSON.stringify(node));
+      newAfterParagraph.children = nodesAfter;
+      if (newAfterParagraph.children.length > 0) {
+        allNodes.push(newAfterParagraph);
+      }
+    }
+    lastIndex = index;
+  }
+  return allNodes;
+}
+
+// Inline markdown images come in as nested within a MarkdownNode paragraph, so we must hoist them out
+// before transforming to rich text.
+function prepareMdAST(ast: MarkdownTree): MarkdownNode {
+  function prepareASTNodeChildren(node: MarkdownNode): MarkdownNode {
+    if (!node.children) {
+      return node;
+    }
+    const children = node.children;
+
+    let newNode = JSON.parse(JSON.stringify(node));
+    const newChildren = children
+      .map(expandParagraphWithInlineImages)
+      .reduce((a, b) => a.concat(b), []);
+
+    if (newChildren) {
+      newNode.children = newChildren.map(prepareASTNodeChildren);
+    }
+    return newNode;
+  }
+  const treeNode: MarkdownNode = {
+    depth: '0',
+    type: 'root',
+    value: '',
+    ordered: true,
+    children: ast.children,
+  };
+  return prepareASTNodeChildren(treeNode);
+}
 
 export async function richTextFromMarkdown(
   md: string,
@@ -197,5 +246,6 @@ export async function richTextFromMarkdown(
 ): Promise<Document> {
   const processor = unified().use(markdown, { commonmark: true });
   const tree = processor.parse(md);
-  return await treeToRichTextDocument(tree, fallback);
+  const newTree = prepareMdAST(tree);
+  return await treeToRichTextDocument(newTree as MarkdownTree, fallback);
 }
