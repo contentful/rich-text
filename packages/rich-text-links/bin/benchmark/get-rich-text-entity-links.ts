@@ -1,5 +1,5 @@
 import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
-import { getRichTextEntityLinks } from '../../src/index';
+import richTextLinks from '../../src/index';
 
 const richTextField: Document = {
   nodeType: BLOCKS.DOCUMENT,
@@ -184,4 +184,6 @@ const richTextField: Document = {
   ],
 };
 
-export const getRichTextLinks = () => getRichTextEntityLinks(richTextField);
+export const getRichTextEntityLinks = () => (
+  richTextLinks.getRichTextEntityLinks(richTextField)
+);
