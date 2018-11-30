@@ -12,7 +12,7 @@ export type EntityLinkNodeData = {
 /**
  * Given a rich text document, returns all entity links.
  */
-export function getRichTextEntityLinks(document: Document): EntityLinks {
+function getRichTextEntityLinks(document: Document): EntityLinks {
   const entityLinks: EntityLinkMaps = {
     Entry: new Map(),
     Asset: new Map(),
@@ -24,8 +24,8 @@ export function getRichTextEntityLinks(document: Document): EntityLinks {
   }
 
   return {
-    Entry: Array.from(entityLinks.Entry.values()),
-    Asset: Array.from(entityLinks.Asset.values()),
+    Entry: iteratorToArray(entityLinks.Entry.values()),
+    Asset: iteratorToArray(entityLinks.Asset.values()),
   };
 }
 
@@ -60,3 +60,36 @@ function isLinkObject(data: NodeData): data is EntityLinkNodeData {
 
   return isEntityLink;
 }
+
+/**
+ * Used to convert the EntityLink iterators stored by the EntityLinkMap values
+ * into a client-friendly array form.
+ *
+ * Alternately we could do:
+ * 1) Array.from(EntityLinkMap)
+ * 2) [...EntityLinkMap]
+ *
+ * #1, although idiomatic, is about half as slow as #2.
+ *
+ * #2, while faster than #1, requires transpilation of the iterator protocol[1],
+ * which in turn is still only about half as fast as the approach below.
+ *
+ * [1] See https://blog.mariusschulz.com/2017/06/30/typescript-2-3-downlevel-iteration-for-es3-es5.
+ */
+function iteratorToArray<T>(iterator: IterableIterator<T>): T[] {
+  const result = [];
+
+  while (true) {
+    const { value, done } = iterator.next();
+    if (done) {
+      break;
+    }
+    result.push(value);
+  }
+
+  return result;
+}
+
+export default {
+  getRichTextEntityLinks,
+};
