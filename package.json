@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
+    "benchmark": "ts-node -O '{\"module\": \"commonjs\"}' bin/benchmark",
     "build": "lerna run build",
     "commit": "git-cz",
     "clean": "lerna exec 'rm -rf node_modules/ dist/ && npm prune' && rm -rf node_modules/ && npm prune",
@@ -43,8 +44,10 @@
     "trailingComma": "all"
   },
   "devDependencies": {
+    "@types/benchmark": "^1.0.31",
     "@types/faker": "^4.1.4",
     "@types/jest": "^23.3.8",
+    "benchmark": "^2.1.4",
     "commitizen": "^3.0.4",
     "git-cz": "^1.7.1",
     "husky": "^1.1.2",
@@ -58,6 +61,7 @@
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.17.2",
     "ts-jest": "^23.10.4",
+    "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-config-standard": "^8.0.1",

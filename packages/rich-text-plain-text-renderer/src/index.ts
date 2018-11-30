@@ -7,10 +7,7 @@ import { isBlock, isInline } from '../node_modules/@contentful/rich-text-types/d
  * NB: This can be applied to non text node of a structured text document,
  * hence the flexible typing.
  */
-export function documentToPlainTextString(
-  rootNode: Block | Inline,
-  blockDivisor: string = ' ',
-): string {
+function documentToPlainTextString(rootNode: Block | Inline, blockDivisor: string = ' '): string {
   if (!rootNode || !rootNode.content) {
     /**
      * Handles edge cases, such as when the value is not set in the CMA or the
@@ -102,3 +99,7 @@ export function documentToPlainTextString(
     return acc + nodeTextValue + divisor;
   }, '');
 }
+
+export default {
+  documentToPlainTextString,
+};

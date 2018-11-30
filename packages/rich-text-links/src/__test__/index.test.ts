@@ -1,5 +1,5 @@
 import { Document, BLOCKS, INLINES } from '../../node_modules/@contentful/rich-text-types';
-import { getRichTextEntityLinks } from '../index';
+import richTextLinks from '../index';
 
 describe('getRichTextEntityLinks', () => {
   describe('returning top-level rich text links', () => {
@@ -43,7 +43,7 @@ describe('getRichTextEntityLinks', () => {
     };
 
     it('returns all entity link objects', () => {
-      expect(getRichTextEntityLinks(document)).toEqual({
+      expect(richTextLinks.getRichTextEntityLinks(document)).toEqual({
         Entry: [
           {
             linkType: 'Entry',
@@ -159,7 +159,7 @@ describe('getRichTextEntityLinks', () => {
     };
 
     it('returns all entity link objects', () => {
-      expect(getRichTextEntityLinks(document)).toEqual({
+      expect(richTextLinks.getRichTextEntityLinks(document)).toEqual({
         Entry: [
           {
             linkType: 'Entry',
@@ -293,7 +293,7 @@ describe('getRichTextEntityLinks', () => {
     };
 
     it('ignores all redundant links', () => {
-      expect(getRichTextEntityLinks(document)).toEqual({
+      expect(richTextLinks.getRichTextEntityLinks(document)).toEqual({
         Entry: [
           {
             linkType: 'Entry',
