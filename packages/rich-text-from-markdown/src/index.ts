@@ -75,9 +75,9 @@ const nodeContainerTypes = new Map([
   [BLOCKS.PARAGRAPH, 'block'],
   [INLINES.HYPERLINK, 'inline'],
   ['text', 'text'],
-  ['emphasis]', 'text'],
-  ['strong]', 'text'],
-  ['inlineCode]', 'text'],
+  ['emphasis', 'text'],
+  ['strong', 'text'],
+  ['inlineCode', 'text'],
 ]);
 
 const isBlock = (nodeType: string) => {
