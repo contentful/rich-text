@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Process Rich Text content correctly Process generated richtext node correctly Correctly creates a new ContentfulRichText node 1`] = `
+Array [
+  Array [
+    Object {
+      "children": Array [],
+      "id": "uuid-from-gatsby",
+      "internal": Object {
+        "content": "
+        {
+          nodeType: 'document',
+          content: [
+            {
+              nodeType: 'paragraph',
+              content: [
+                {
+                  nodeType: 'text',
+                  value: 'Hello world!',
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        }
+      ",
+        "contentDigest": "5d4fb73642394c2bf3f3cc2203b30783",
+        "type": "ContentfulRichText",
+      },
+      "parent": "whatever",
+    },
+  ],
+]
+`;
+
+exports[`Process Rich Text content correctly Process generated richtext node correctly Correctly creates a new ContentfulRichText node 2`] = `
+Array [
+  Array [
+    Object {
+      "child": Object {
+        "children": Array [],
+        "id": "uuid-from-gatsby",
+        "internal": Object {
+          "content": "
+        {
+          nodeType: 'document',
+          content: [
+            {
+              nodeType: 'paragraph',
+              content: [
+                {
+                  nodeType: 'text',
+                  value: 'Hello world!',
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        }
+      ",
+          "contentDigest": "5d4fb73642394c2bf3f3cc2203b30783",
+          "type": "ContentfulRichText",
+        },
+        "parent": "whatever",
+      },
+      "parent": Object {
+        "children": Array [],
+        "content": "
+        {
+          nodeType: 'document',
+          content: [
+            {
+              nodeType: 'paragraph',
+              content: [
+                {
+                  nodeType: 'text',
+                  value: 'Hello world!',
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        }
+      ",
+        "id": "whatever",
+        "internal": Object {
+          "contentDigest": "whatever",
+          "mediaType": "text/richtext",
+        },
+      },
+    },
+  ],
+]
+`;
