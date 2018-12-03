@@ -2,7 +2,7 @@
   "name": "@contentful/rich-text-html-renderer",
   "version": "12.0.1",
   "main": "dist/rich-text-html-renderer.es5.js",
-  "typings": "dist/types/rich-text-html-renderer.d.ts",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
