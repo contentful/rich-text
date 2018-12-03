@@ -1,23 +1,22 @@
-import { Document, Node, Block, BLOCKS, TopLevelBlock } from '@contentful/rich-text-types';
+import { Document, Node, Block, BLOCKS, TopLevelBlock, INLINES } from '@contentful/rich-text-types';
 
 import unified from 'unified';
 import markdown from 'remark-parse';
 
 const markdownNodeTypes = new Map<string, string>([
-  ['paragraph', 'paragraph'],
+  ['paragraph', BLOCKS.PARAGRAPH],
   ['heading', 'heading'],
   ['text', 'text'],
   ['emphasis', 'text'],
   ['strong', 'text'],
   ['delete', 'text'],
   ['inlineCode', 'text'],
-  ['link', 'hyperlink'],
-  ['thematicBreak', 'hr'],
-  ['blockquote', 'blockquote'],
+  ['link', INLINES.HYPERLINK],
+  ['thematicBreak', BLOCKS.HR],
+  ['blockquote', BLOCKS.QUOTE],
   ['list', 'list'],
-  ['listItem', 'list-item'],
+  ['listItem', BLOCKS.LIST_ITEM],
 ]);
-
 export interface MarkdownNode {
   depth: string;
   type: string;
@@ -62,19 +61,19 @@ const isLink = (node: MarkdownNode): node is MarkdownLinkNode => {
 
 const nodeContainerTypes = new Map([
   ['delete', 'block'],
-  ['heading-1', 'block'],
-  ['heading-2', 'block'],
-  ['heading-3', 'block'],
-  ['heading-4', 'block'],
-  ['heading-5', 'block'],
-  ['heading-6', 'block'],
-  ['list-item', 'block'],
-  ['unordered-list', 'block'],
-  ['ordered-list', 'block'],
-  ['blockquote', 'block'],
-  ['hr', 'block'],
-  ['paragraph', 'block'],
-  ['hyperlink', 'inline'],
+  [BLOCKS.HEADING_1, 'block'],
+  [BLOCKS.HEADING_2, 'block'],
+  [BLOCKS.HEADING_3, 'block'],
+  [BLOCKS.HEADING_4, 'block'],
+  [BLOCKS.HEADING_5, 'block'],
+  [BLOCKS.HEADING_6, 'block'],
+  [BLOCKS.LIST_ITEM, 'block'],
+  [BLOCKS.UL_LIST, 'block'],
+  [BLOCKS.OL_LIST, 'block'],
+  [BLOCKS.QUOTE, 'block'],
+  [BLOCKS.HR, 'block'],
+  [BLOCKS.PARAGRAPH, 'block'],
+  [INLINES.HYPERLINK, 'inline'],
   ['text', 'text'],
   ['emphasis]', 'text'],
   ['strong]', 'text'],
