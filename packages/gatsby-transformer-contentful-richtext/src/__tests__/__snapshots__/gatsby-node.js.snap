@@ -10,21 +10,24 @@ Array [
         "content": "
         {
           nodeType: 'document',
+          data: {},
           content: [
             {
               nodeType: 'paragraph',
+              data: {},
               content: [
                 {
                   nodeType: 'text',
                   value: 'Hello world!',
                   marks: [],
+                  data: {}
                 },
               ],
             },
           ],
         }
       ",
-        "contentDigest": "5d4fb73642394c2bf3f3cc2203b30783",
+        "contentDigest": "3856def316184faeb790f3155e810e42",
         "type": "ContentfulRichText",
       },
       "parent": "whatever",
@@ -44,21 +47,24 @@ Array [
           "content": "
         {
           nodeType: 'document',
+          data: {},
           content: [
             {
               nodeType: 'paragraph',
+              data: {},
               content: [
                 {
                   nodeType: 'text',
                   value: 'Hello world!',
                   marks: [],
+                  data: {}
                 },
               ],
             },
           ],
         }
       ",
-          "contentDigest": "5d4fb73642394c2bf3f3cc2203b30783",
+          "contentDigest": "3856def316184faeb790f3155e810e42",
           "type": "ContentfulRichText",
         },
         "parent": "whatever",
@@ -68,14 +74,17 @@ Array [
         "content": "
         {
           nodeType: 'document',
+          data: {},
           content: [
             {
               nodeType: 'paragraph',
+              data: {},
               content: [
                 {
                   nodeType: 'text',
                   value: 'Hello world!',
                   marks: [],
+                  data: {}
                 },
               ],
             },

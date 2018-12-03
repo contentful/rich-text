@@ -18,6 +18,7 @@ async function queryResult(nodes, fragment, { types = [] } = {}, additionalParam
     nodes,
     types: [...types],
   })
+  
   const extendNodeTypeFields = await extendNodeType(
     {
       type: { name: `ContentfulRichText` },
@@ -37,7 +38,6 @@ async function queryResult(nodes, fragment, { types = [] } = {}, additionalParam
     ...inferredFields,
     ...extendNodeTypeFields,
   }
-
   const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
       name: `RootQueryType`,
@@ -52,6 +52,7 @@ async function queryResult(nodes, fragment, { types = [] } = {}, additionalParam
               })
             ),
             resolve() {
+              console.log(nodes)
               return nodes
             },
           },
@@ -63,11 +64,10 @@ async function queryResult(nodes, fragment, { types = [] } = {}, additionalParam
   const result = await graphql(
     schema,
     `query {
-            listNode {
-                ${fragment}
-            }
-          }
-        `
+      listNode {
+        ${fragment}
+      }
+    }`
   )
   return result
 }
@@ -91,11 +91,12 @@ const bootstrapTest = (label, content, query, test, additionalParameters = {}) =
         [richTextNode],
         query,
         {
-          types: [{ name: `ContentfulRichText` }],
+          types: [{ name: `LISTNODE` }],
         },
         additionalParameters
       ).then(result => {
         try {
+          console.log(result)
           test(result.data.listNode[0])
           done()
         }
@@ -139,7 +140,7 @@ describe(`HTML is generated correctly`, () => {
   }
   bootstrapTest(
     `correctly loads html`,
-    content,
+    JSON.stringify(content),
     `html`,
     (node) => {
       expect(node.html).toEqual('<p>Hello world!</p>')
