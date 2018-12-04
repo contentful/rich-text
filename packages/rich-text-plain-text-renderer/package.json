@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-plain-text-renderer",
-  "version": "12.0.1",
+  "version": "12.0.2",
   "main": "dist/rich-text-plain-text-renderer.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
