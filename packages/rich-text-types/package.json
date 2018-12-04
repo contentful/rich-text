@@ -24,6 +24,7 @@
     "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen"
   },
   "devDependencies": {
+    "core-js": "^2.5.7",
     "faker": "^4.1.0",
     "jest": "^23.6.0",
     "rimraf": "^2.6.2",
