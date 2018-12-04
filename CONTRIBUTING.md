@@ -109,10 +109,16 @@ Node version in `./node-version`) to evaluate these.
 
 Benchmarks are stored in the `bin/benchmark` folder of each relevant package.
 To run all benchmarks for a particular package, e.g. `rich-text-links`, you
-can use a Lerna command scoped to that package:
+can run the npm `benchmark` script scoped to that package:
 
 ```sh
-lerna exec "npm run benchmark" --scope=@contentful/rich-text-links
+npm run benchmark @contentful/rich-text-links
+```
+
+or
+
+```sh
+npm run benchmark rich-text-links
 ```
 
 Before submitting a pull request for a package with benchmarked code paths,

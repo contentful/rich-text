@@ -18,8 +18,8 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.js",
+    "prebuild": "rimraf dist",
     "start": "tsc && rollup -c rollup.config.js -w"
   },
   "dependencies": {
