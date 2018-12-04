@@ -6,6 +6,7 @@
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
     "lint": "eslint --ext .js,.jsx packages/**/src integration-tests/**/src",
+    "prepare": "cross-env NODE_ENV=production npm run build",
     "jest": "jest",
     "test": "npm-run-all -s lint jest",
     "test:coverage": "jest --coverage",
