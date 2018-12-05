@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-links",
-  "version": "12.0.1",
+  "version": "12.0.3",
   "main": "dist/rich-text-links.es5.js",
   "typings": "dist/types/rich-text-links.d.ts",
   "files": [

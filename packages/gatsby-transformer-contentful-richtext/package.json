@@ -1,6 +1,6 @@
 {
   "name": "@contentful/gatsby-transformer-contentful-richtext",
-  "version": "12.0.0",
+  "version": "12.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -42,6 +42,6 @@
   },
   "homepage": "https://github.com/contentful/gatsby-transformer-contentful-richtext#readme",
   "dependencies": {
-    "@contentful/rich-text-html-renderer": "^12.0.0"
+    "@contentful/rich-text-html-renderer": "^12.0.3"
   }
 }
