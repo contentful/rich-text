@@ -16,6 +16,9 @@ text documents.
 - [`rich-text-types`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-html-renderer)
   - Type definitions and constants for the rich text field type
 
+- [`gatsby-transformer-contentful-richtext`](https://github.com/contentful/rich-text/tree/master/packages/gatsby-transformer-contentful-richtext)
+  - Parses Contentful Rich Text document to html in Gatsby
+
 ## Get involved
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?maxAge=31557600)](http://makeapullrequest.com)
