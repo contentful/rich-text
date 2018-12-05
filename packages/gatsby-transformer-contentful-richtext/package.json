@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/contentful/gatsby-transformer-contentful-richtext.git"
+    "url": "git+https://github.com/contentful/rich-text.git"
   },
   "keywords": [
     "gatsby",
@@ -38,9 +38,9 @@
   "author": "contentful <support@contentful.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/contentful/gatsby-transformer-contentful-richtext/issues"
+    "url": "https://github.com/contentful/rich-text/issues"
   },
-  "homepage": "https://github.com/contentful/gatsby-transformer-contentful-richtext#readme",
+  "homepage": "https://github.com/contentful/rich-text#readme",
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^12.0.3"
   }
