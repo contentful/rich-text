@@ -29,12 +29,12 @@ const document = {
         {
           nodeType: 'text',
           value: 'Hello',
-          marks: [{ nodeType: 'bold' }]
+          marks: [{ type: 'bold' }]
         },
         {
           nodeType: 'text',
           value: ' world!',
-          marks: [{ nodeType: 'italic' }]
+          marks: [{ type: 'italic' }]
         },
       ],
     },
