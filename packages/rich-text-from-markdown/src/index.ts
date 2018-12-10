@@ -86,6 +86,10 @@ const isText = (nodeType: string) => {
   return nodeContainerTypes.get(nodeType) === 'text';
 };
 
+const isInline = (nodeType: string) => {
+  return nodeContainerTypes.get(nodeType) === 'inline';
+};
+
 const markdownNodeToRichTextNode = async (
   node: MarkdownNode,
   fallback: (mdNode: MarkdownNode) => Promise<Block>,
@@ -125,6 +129,13 @@ const markdownNodeToRichTextNode = async (
       value: nodeValue,
       marks: marks,
       data: {},
+    });
+  } else if (isInline(nodeType)) {
+    return Promise.resolve({
+      nodeType: nodeType,
+      value: nodeValue,
+      content: nodeContent,
+      data: nodeData,
     });
   }
   return fallback(node);
