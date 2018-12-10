@@ -1,4 +1,4 @@
-import { Text } from '@contentful/rich-text-types';
+import { Hyperlink, Text } from '@contentful/rich-text-types';
 import _ from 'lodash';
 import { richTextFromMarkdown } from '..';
 
@@ -68,5 +68,23 @@ describe('parses complex inline image markdown correctly', () => {
     expect(document.content[2].nodeType).toBe('image');
     expect(document.content[3].nodeType).toBe('paragraph');
     expect(fallback).toBeCalledTimes(2);
+  });
+});
+
+describe('links', () => {
+  test('should correctly convert a link', async () => {
+    const document = await richTextFromMarkdown('[This is a link](https://contentful.com)');
+    const node = document.content[0].content[0] as Hyperlink;
+
+    expect(node.nodeType).toBe('hyperlink');
+    expect(node.data.uri).toBe('https://contentful.com');
+  });
+
+  test('should correctly parse the text', async () => {
+    const document = await richTextFromMarkdown('[This is a link](https://contentful.com)');
+    const node = document.content[0].content[0] as Hyperlink;
+
+    expect(node.content[0].nodeType).toBe('text');
+    expect(node.content[0].value).toBe('This is a link');
   });
 });
