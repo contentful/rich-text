@@ -32,6 +32,8 @@ After adding the plugin you will be able to query the html representation of the
 
 ## Advanced configuration
 
+[![Edit gatsby-starter-default](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/jljrl7z82w)
+
 ```js
 // npm i @contentful/rich-text-types
 const { BLOCKS, MARKS, INLINES } = require('@contentful/rich-text-types')
