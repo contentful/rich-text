@@ -34,31 +34,77 @@ After adding the plugin you will be able to query the html representation of the
 
 ```js
 // npm i @contentful/rich-text-types
-const { BLOCKS, MARKS } = require ('@contentful/rich-text-types')
-
-plugins: [
-  {
-   resolve: `gatsby-transformer-contentful-richtext`,
-   options: {
-      renderOptions: {
-        /*
-        * Defines custom html string for each node type like heading, embedded entries etc..
-        */
-        renderNode: {
-          // Example
-          [BLOCKS.EMBEDDED_ENTRY]: (node) => `<div class='custom-entry'>${customComponentRenderer(node)}</div>`
+const { BLOCKS, MARKS, INLINES } = require('@contentful/rich-text-types')
+module.exports = {
+  siteMetadata: {
+    title: 'Gatsby Default Starter',
+    description:
+      'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
+    author: '@gatsbyjs',
+  },
+  plugins: [
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'gatsby-starter-default',
+        short_name: 'starter',
+        start_url: '/',
+        background_color: '#663399',
+        theme_color: '#663399',
+        display: 'minimal-ui',
+        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: '<space-id>',
+        accessToken:
+          '<access-token>',
+      },
+    },
+    {
+      resolve: '@contentful/gatsby-transformer-contentful-richtext',
+      options: {
+        renderOptions: {
+          /*
+           * Defines custom html string for each node type like heading, embedded entries etc..
+           */
+          renderNode: {
+            // Example
+            [INLINES.ASSET_HYPERLINK]: node => {
+              return `<img class='custom-asset' src="${
+                node.data.target.fields.file['en-US'].url
+              }"/>`
+            },
+            [INLINES.EMBEDDED_ENTRY]: node => {
+              return `<div class='custom-entry' />${
+                node.data.target.fields.name['en-US']
+              }</div>`
+            },
+          },
+          /*
+           * Defines custom html string for each mark type like bold, italic etc..
+           */
+          renderMark: {
+            // Example
+            [MARKS.BOLD]: text => `<custom-bold>${text}<custom-bold>`,
+          },
         },
-        /*
-        * Defines custom html string for each mark type like bold, italic etc..
-        */
-        renderMark: {
-          // Example
-          [MARKS.BOLD]: text => `<custom-bold>${text}<custom-bold>`
-        }
-      }
-   }
-  }
-]
+      },
+    },
+  ],
+}
 ```
 
 The `renderNode` keys should be one of the following `BLOCKS` and `INLINES` properties as defined in [`@contentful/rich-text-types`](https://www.npmjs.com/package/@contentful/rich-text-types):
