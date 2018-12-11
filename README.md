@@ -13,7 +13,7 @@ text documents.
   - Entity (entry and asset) link extraction utilities
 - [`rich-text-plain-text-renderer`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-plain-text-renderer)
   - Converts rich text documents to plain text
-- [`rich-text-types`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-html-renderer)
+- [`rich-text-types`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-types)
   - Type definitions and constants for the rich text field type
 
 - [`gatsby-transformer-contentful-richtext`](https://github.com/contentful/rich-text/tree/master/packages/gatsby-transformer-contentful-richtext)
