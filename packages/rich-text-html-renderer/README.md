@@ -70,7 +70,7 @@ documentToHtmlString(document); // -> <p><b>Hello</b><u> world!</u></p>
 You can also pass custom renderers for both marks and nodes as an optional parameter like so:
 
 ```javascript
-import { BLOCKS.PARAGRAPH, MARKS.BOLD } from '@contentful/rich-text-types';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const document = {
@@ -110,7 +110,7 @@ documentToHtmlString(document, options);
 Last, but not least, you can pass a custom rendering component for an embedded entry:
 
 ```javascript
-import { BLOCKS.EMBEDDED_ENTRY } from '@contentful/rich-text-types';
+import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const document = {
