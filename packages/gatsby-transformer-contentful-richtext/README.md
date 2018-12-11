@@ -34,7 +34,7 @@ After adding the plugin you will be able to query the html representation of the
 
 ```js
 // npm i @contentful/rich-text-types
-const { BLOCKS.EMBEDDED_ENTRY } = require ('@contentful/rich-text-types')
+const { BLOCKS, MARKS } = require ('@contentful/rich-text-types')
 
 plugins: [
   {
