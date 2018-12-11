@@ -137,11 +137,7 @@ const markdownNodesToRichTextNodes = (
   if (!nodes) {
     return Promise.resolve([]);
   }
-  return Promise.all(
-    nodes.map(async node => {
-      return markdownNodeToRichTextNode(node, fallback);
-    }),
-  );
+  return Promise.all(nodes.map(node => markdownNodeToRichTextNode(node, fallback)));
 };
 
 const treeToRichTextDocument = async (
