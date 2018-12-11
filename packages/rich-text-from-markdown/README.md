@@ -68,5 +68,5 @@ const document = richTextFromMarkdown(
       }
     }
   })
-});
+);
 ```
