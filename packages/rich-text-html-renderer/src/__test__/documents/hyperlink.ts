@@ -31,7 +31,7 @@ export default {
         {
           nodeType: 'text',
           value: ' text.',
-          marks: [],
+          marks: null,
           data: {},
         },
       ],
