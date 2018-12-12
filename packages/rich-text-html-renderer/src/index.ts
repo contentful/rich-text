@@ -1,3 +1,4 @@
+import escape from 'escape-html';
 import {
   Document,
   Mark,
@@ -94,16 +95,17 @@ function nodeListToHtmlString(nodes: CommonNode[], { renderNode, renderMark }: O
 
 function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options): string {
   if (helpers.isText(node)) {
+    const nodeValue = escape(node.value);
     if (node.marks.length > 0) {
       return node.marks.reduce((value: string, mark: Mark) => {
         if (!renderMark[mark.type]) {
           return value;
         }
         return renderMark[mark.type](value);
-      }, node.value);
+      }, nodeValue);
     }
 
-    return node.value;
+    return nodeValue;
   } else {
     const nextNode: Next = nodes => nodeListToHtmlString(nodes, { renderMark, renderNode });
     if (!node.nodeType || !renderNode[node.nodeType]) {

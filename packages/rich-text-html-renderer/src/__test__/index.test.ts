@@ -97,6 +97,54 @@ describe('documentToHtmlString', () => {
     expect(documentToHtmlString(document, options)).toEqual(expected);
   });
 
+  it('renders escaped html', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'foo & bar',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+    const expected = '<p>foo &amp; bar</p>';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders escaped html with marks', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'foo & bar',
+              marks: [{ type: MARKS.UNDERLINE }, { type: MARKS.BOLD }],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+    const expected = '<p><b><u>foo &amp; bar</u></b></p>';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
   it('does not render unrecognized marks', () => {
     const document: Document = invalidMarksDoc;
     const expected = '<p>Hello world!</p>';
