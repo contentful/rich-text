@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-links",
-  "version": "12.0.3",
+  "version": "12.1.2",
   "main": "dist/rich-text-links.es5.js",
   "typings": "dist/types/rich-text-links.d.ts",
   "files": [
@@ -23,7 +23,7 @@
     "start": "tsc && rollup -c rollup.config.js -w"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^12.0.1"
+    "@contentful/rich-text-types": "^12.1.2"
   },
   "devDependencies": {
     "jest": "^23.6.0",
