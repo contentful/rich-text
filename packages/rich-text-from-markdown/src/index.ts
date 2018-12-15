@@ -1,7 +1,19 @@
-import { Document, Node, Block, BLOCKS, TopLevelBlock, INLINES } from '@contentful/rich-text-types';
+import {
+  Document,
+  Node,
+  Block,
+  BLOCKS,
+  TopLevelBlock,
+  INLINES,
+  Hyperlink,
+  Text,
+  Inline,
+} from '@contentful/rich-text-types';
 
+import _ from 'lodash';
 import unified from 'unified';
 import markdown from 'remark-parse';
+import { MarkdownNode, MarkdownLinkNode, MarkdownTree } from './types';
 
 const markdownNodeTypes = new Map<string, string>([
   ['paragraph', BLOCKS.PARAGRAPH],
@@ -17,22 +29,9 @@ const markdownNodeTypes = new Map<string, string>([
   ['list', 'list'],
   ['listItem', BLOCKS.LIST_ITEM],
 ]);
-export interface MarkdownNode extends MarkdownTree {
-  depth: string;
-  type: string;
-  ordered: Boolean;
-  value: string;
-}
 
-export interface MarkdownTree {
-  children: MarkdownNode[];
-}
-
-interface MarkdownLinkNode extends MarkdownNode {
-  url: string;
-}
 const nodeTypeFor = (node: MarkdownNode) => {
-  const nodeType: string = markdownNodeTypes.get(node.type);
+  const nodeType = markdownNodeTypes.get(node.type);
 
   switch (nodeType) {
     case 'heading':
@@ -53,7 +52,7 @@ const dataFor = (node: MarkdownLinkNode) => {
   return { uri: node.url };
 };
 
-const isLink = (node: MarkdownNode): boolean => {
+const isLink = (node: MarkdownNode): node is MarkdownLinkNode => {
   return node.type === 'link';
 };
 
@@ -100,19 +99,19 @@ const markdownNodeToRichTextNode = async (
   let nodeValue = node.value;
   let nodeData = {};
   if (isLink(node)) {
-    nodeData = dataFor(node as MarkdownLinkNode);
-    return Promise.resolve({
+    nodeData = dataFor(node);
+    return {
       nodeType: INLINES.HYPERLINK,
       data: nodeData,
       content: filteredNodeContent,
-    });
+    } as Hyperlink;
   }
-  if (isBlock(nodeType)) {
-    return Promise.resolve({
+  if (isBlock(nodeType) || isInline(nodeType)) {
+    return {
       nodeType: nodeType,
       content: filteredNodeContent,
       data: nodeData,
-    });
+    } as Block;
   } else if (isText(nodeType)) {
     let marks = [];
     if (node.type !== 'text') {
@@ -124,19 +123,12 @@ const markdownNodeToRichTextNode = async (
         type: markTypeFor(node),
       });
     }
-    return Promise.resolve({
+    return {
       nodeType: nodeType,
       value: nodeValue,
       marks: marks,
       data: {},
-    });
-  } else if (isInline(nodeType)) {
-    return Promise.resolve({
-      nodeType: nodeType,
-      value: nodeValue,
-      content: nodeContent,
-      data: nodeData,
-    });
+    } as Text;
   }
   return fallback(node);
 };
@@ -151,22 +143,22 @@ const markdownNodesToRichTextNodes = (
   return Promise.all(nodes.map(node => markdownNodeToRichTextNode(node, fallback)));
 };
 
-const treeToRichTextDocument = async (
+const astToRichTextDocument = async (
   tree: MarkdownTree,
   fallback: (mdNode: MarkdownNode) => Promise<Block>,
 ): Promise<Document> => {
-  const richNodePromises = markdownNodesToRichTextNodes(tree.children, fallback) as Promise<
-    TopLevelBlock[]
-  >;
-  const richNodes: TopLevelBlock[] = (await richNodePromises) as TopLevelBlock[];
-  const filteredNodes = richNodes.filter(Boolean);
+  const richNodePromises = (await markdownNodesToRichTextNodes(
+    tree.children,
+    fallback,
+  )) as TopLevelBlock[];
 
-  const output: Document = {
+  const filteredNodes = richNodePromises.filter(Boolean);
+
+  return {
     nodeType: BLOCKS.DOCUMENT,
     data: {},
     content: filteredNodes,
   };
-  return Promise.resolve(output);
 };
 
 function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
@@ -191,7 +183,7 @@ function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
     // before
     if (index !== 0) {
       const nodesBefore: MarkdownNode[] = node.children.slice(lastIndex + 1, index);
-      let newBeforeParagraph = JSON.parse(JSON.stringify(node));
+      const newBeforeParagraph = JSON.parse(JSON.stringify(node));
       newBeforeParagraph.children = nodesBefore;
       if (newBeforeParagraph.children.length > 0) {
         allNodes.push(newBeforeParagraph);
@@ -207,7 +199,7 @@ function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
       j + 1 < imageNodeIndices.length ? imageNodeIndices[j + 1] : node.children.length;
     if (index + 1 < rangeEnd && index === imageNodeIndices.slice(-1)[0]) {
       nodesAfter = node.children.slice(index + 1, rangeEnd);
-      let newAfterParagraph = JSON.parse(JSON.stringify(node));
+      const newAfterParagraph = JSON.parse(JSON.stringify(node));
       newAfterParagraph.children = nodesAfter;
       if (newAfterParagraph.children.length > 0) {
         allNodes.push(newAfterParagraph);
@@ -218,24 +210,19 @@ function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
   return allNodes;
 }
 
-// Inline markdown images come in as nested within a MarkdownNode paragraph, so we must hoist them out
-// before transforming to rich text.
+// Inline markdown images come in as nested within a MarkdownNode paragraph
+// so we must hoist them out before transforming to rich text.
 function prepareMdAST(ast: MarkdownTree): MarkdownNode {
   function prepareASTNodeChildren(node: MarkdownNode): MarkdownNode {
     if (!node.children) {
       return node;
     }
-    const children = node.children;
 
-    let newNode = JSON.parse(JSON.stringify(node));
-    const newChildren = children
-      .map(expandParagraphWithInlineImages)
-      .reduce((a, b) => a.concat(b), []);
+    const children = _.flatMap(node.children, n => expandParagraphWithInlineImages(n)).map(n =>
+      prepareASTNodeChildren(n),
+    );
 
-    if (newChildren) {
-      newNode.children = newChildren.map(prepareASTNodeChildren);
-    }
-    return newNode;
+    return { ...node, children };
   }
   const treeNode: MarkdownNode = {
     depth: '0',
@@ -249,10 +236,10 @@ function prepareMdAST(ast: MarkdownTree): MarkdownNode {
 
 export async function richTextFromMarkdown(
   md: string,
-  fallback: (mdNode: MarkdownNode) => Promise<Block> = n => null,
+  fallback: (mdNode: MarkdownNode) => Promise<Block> = n => Promise.resolve(null),
 ): Promise<Document> {
   const processor = unified().use(markdown, { commonmark: true });
   const tree = processor.parse(md);
-  const newTree = prepareMdAST(tree);
-  return await treeToRichTextDocument(newTree as MarkdownTree, fallback);
+  const ast = prepareMdAST(tree);
+  return await astToRichTextDocument(ast, fallback);
 }
