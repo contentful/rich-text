@@ -48,10 +48,6 @@ const markTypeFor = (node: MarkdownNode) => {
   return markTypes.get(node.type);
 };
 
-const dataFor = (node: MarkdownLinkNode) => {
-  return { uri: node.url };
-};
-
 const isLink = (node: MarkdownNode): node is MarkdownLinkNode => {
   return node.type === 'link';
 };
@@ -89,31 +85,31 @@ const isInline = (nodeType: string) => {
   return nodeContainerTypes.get(nodeType) === 'inline';
 };
 
-const markdownNodeToRichTextNode = async (
-  node: MarkdownNode,
-  fallback: (mdNode: MarkdownNode) => Promise<Block>,
-): Promise<Node> => {
+async function mdToRichTextNode(node: MarkdownNode, fallback: FallbackResolver): Promise<Node> {
   const nodeType = nodeTypeFor(node);
-  const nodeContent = await markdownNodesToRichTextNodes(node.children, fallback);
-  const filteredNodeContent = nodeContent.filter(Boolean);
-  let nodeValue = node.value;
-  let nodeData = {};
+
   if (isLink(node)) {
-    nodeData = dataFor(node);
-    return {
+    const content = (await mdToRichTextNodes(node.children, fallback)) as Text[];
+
+    const hyperlink: Hyperlink = {
       nodeType: INLINES.HYPERLINK,
-      data: nodeData,
-      content: filteredNodeContent,
-    } as Hyperlink;
+      data: { uri: node.url },
+      content,
+    };
+
+    return hyperlink;
   }
   if (isBlock(nodeType) || isInline(nodeType)) {
+    const content = await mdToRichTextNodes(node.children, fallback);
+
     return {
       nodeType: nodeType,
-      content: filteredNodeContent,
-      data: nodeData,
-    } as Block;
+      content,
+      data: {},
+    } as Block | Inline;
   } else if (isText(nodeType)) {
     let marks = [];
+    let nodeValue = node.value;
     if (node.type !== 'text') {
       // TODO: this implementation needs to handle arbitrarily nested marks
       // for example: **_Hello_, world!**
@@ -131,33 +127,29 @@ const markdownNodeToRichTextNode = async (
     } as Text;
   }
   return fallback(node);
-};
+}
 
-const markdownNodesToRichTextNodes = (
+async function mdToRichTextNodes(
   nodes: MarkdownNode[],
-  fallback: (mdNode: MarkdownNode) => Promise<Block>,
-): Promise<Node[]> => {
+  fallback: FallbackResolver,
+): Promise<Node[]> {
   if (!nodes) {
     return Promise.resolve([]);
   }
-  return Promise.all(nodes.map(node => markdownNodeToRichTextNode(node, fallback)));
-};
+  const rtNodes = await Promise.all(nodes.map(node => mdToRichTextNode(node, fallback)));
+
+  return rtNodes.filter(Boolean);
+}
 
 const astToRichTextDocument = async (
   tree: MarkdownTree,
-  fallback: (mdNode: MarkdownNode) => Promise<Block>,
+  fallback: (mdNode: MarkdownNode) => Promise<Node>,
 ): Promise<Document> => {
-  const richNodePromises = (await markdownNodesToRichTextNodes(
-    tree.children,
-    fallback,
-  )) as TopLevelBlock[];
-
-  const filteredNodes = richNodePromises.filter(Boolean);
-
+  const content = await mdToRichTextNodes(tree.children, fallback);
   return {
     nodeType: BLOCKS.DOCUMENT,
     data: {},
-    content: filteredNodes,
+    content: content as TopLevelBlock[],
   };
 };
 
@@ -176,17 +168,19 @@ function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
     // If no images in children, return.
     return [node];
   }
-  let allNodes: MarkdownNode[] = [];
+  const allNodes: MarkdownNode[] = [];
   let lastIndex = -1;
   for (let j = 0; j < imageNodeIndices.length; j++) {
     const index = imageNodeIndices[j];
     // before
     if (index !== 0) {
       const nodesBefore: MarkdownNode[] = node.children.slice(lastIndex + 1, index);
-      const newBeforeParagraph = JSON.parse(JSON.stringify(node));
-      newBeforeParagraph.children = nodesBefore;
-      if (newBeforeParagraph.children.length > 0) {
-        allNodes.push(newBeforeParagraph);
+
+      if (nodesBefore.length > 0) {
+        allNodes.push({
+          ...node,
+          children: nodesBefore,
+        });
       }
     }
     // image
@@ -199,10 +193,12 @@ function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
       j + 1 < imageNodeIndices.length ? imageNodeIndices[j + 1] : node.children.length;
     if (index + 1 < rangeEnd && index === imageNodeIndices.slice(-1)[0]) {
       nodesAfter = node.children.slice(index + 1, rangeEnd);
-      const newAfterParagraph = JSON.parse(JSON.stringify(node));
-      newAfterParagraph.children = nodesAfter;
-      if (newAfterParagraph.children.length > 0) {
-        allNodes.push(newAfterParagraph);
+
+      if (nodesAfter.length > 0) {
+        allNodes.push({
+          ...node,
+          children: nodesAfter,
+        });
       }
     }
     lastIndex = index;
@@ -234,9 +230,11 @@ function prepareMdAST(ast: MarkdownTree): MarkdownNode {
   return prepareASTNodeChildren(treeNode);
 }
 
+export type FallbackResolver = (mdNode: MarkdownNode) => Promise<Node>;
+
 export async function richTextFromMarkdown(
   md: string,
-  fallback: (mdNode: MarkdownNode) => Promise<Block> = n => Promise.resolve(null),
+  fallback: FallbackResolver = () => Promise.resolve(null),
 ): Promise<Document> {
   const processor = unified().use(markdown, { commonmark: true });
   const tree = processor.parse(md);
