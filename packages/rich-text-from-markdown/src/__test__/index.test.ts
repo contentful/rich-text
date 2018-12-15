@@ -1,24 +1,32 @@
-import { Hyperlink, Text } from '@contentful/rich-text-types';
 import _ from 'lodash';
+import { Hyperlink, Text, BLOCKS, INLINES } from '@contentful/rich-text-types';
+import { document, block, text, mark, inline } from './helpers';
 import { richTextFromMarkdown } from '..';
 
 describe('rich-text-from-markdown', () => {
   test('should render some markdown', async () => {
-    const document = await richTextFromMarkdown('# Hello World');
-    const text = _.get(document, ['content', '0', 'content', '0']);
-    expect(text.value).toBe('Hello World');
+    const result = await richTextFromMarkdown('# Hello World');
+    expect(result).toEqual(document({}, block(BLOCKS.HEADING_1, {}, text('Hello World'))));
   });
 
   test('should call the fallback function when a node is not supported', async () => {
     const fakeNode = { nodeType: 'image' };
     const fallback = jest.fn(node => Promise.resolve(fakeNode));
-    const document = await richTextFromMarkdown(
+    const result = await richTextFromMarkdown(
       '![image](https://image.example.com/image.jpg)',
       fallback,
     );
 
-    expect(_.get(document, ['content', '0', 'nodeType'])).toBe('image');
     expect(fallback).toBeCalledTimes(1);
+    expect(result).toEqual({
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: 'image',
+        },
+      ],
+    });
   });
 });
 
@@ -30,10 +38,10 @@ describe.each([
   'The markdown "%s" should be parsed to text with value "%s"',
   (markdown, expected, expectedMark) => {
     test(`${expected}`, async () => {
-      const document = await richTextFromMarkdown(markdown);
-      const parsedText = document.content[0].content[0] as Text;
-      expect(parsedText.value).toBe(expected);
-      expect(parsedText.marks).toEqual([{ type: expectedMark }]);
+      const result = await richTextFromMarkdown(markdown);
+      expect(result).toEqual(
+        document({}, block(BLOCKS.PARAGRAPH, {}, text(expected, mark(expectedMark)))),
+      );
     });
   },
 );
@@ -42,49 +50,74 @@ describe('parses complex inline image markdown correctly', () => {
   test('incoming markdown tree calls fallback twice', async () => {
     const fakeNode = { nodeType: 'image' };
     const fallback = jest.fn(node => Promise.resolve(fakeNode));
-    const document = await richTextFromMarkdown(
+    const result = await richTextFromMarkdown(
       `![image](https://image.example.com/image.jpg)
       ![image](https://image.example.com/image2.jpg)`,
       fallback,
     );
-    expect(document.content.length).toBe(3);
-    expect(document.content[0].nodeType).toBe('image');
-    expect(document.content[1].nodeType).toBe('paragraph');
-    expect(document.content[1].content[0].nodeType).toBe('text');
-    expect(document.content[2].nodeType).toBe('image');
+
     expect(fallback).toBeCalledTimes(2);
+    expect(result).toEqual({
+      nodeType: 'document',
+      data: {},
+      content: [
+        {
+          nodeType: 'image',
+        },
+        block(BLOCKS.PARAGRAPH, {}, text('\n      ')),
+        {
+          nodeType: 'image',
+        },
+      ],
+    });
   });
   test('incoming markdown tree calls fallback twice', async () => {
     const fakeNode = { nodeType: 'image' };
     const fallback = jest.fn(node => Promise.resolve(fakeNode));
-    const document = await richTextFromMarkdown(
+    const result = await richTextFromMarkdown(
       `some text ![image](https://image.example.com/image.jpg)![image](https://image.example.com/image2.jpg) some more text`,
       fallback,
     );
-    expect(document.content.length).toBe(4);
-    expect(document.content[0].nodeType).toBe('paragraph');
-    expect(document.content[0].content[0].nodeType).toBe('text');
-    expect(document.content[1].nodeType).toBe('image');
-    expect(document.content[2].nodeType).toBe('image');
-    expect(document.content[3].nodeType).toBe('paragraph');
+
     expect(fallback).toBeCalledTimes(2);
+    expect(result).toEqual({
+      nodeType: 'document',
+      data: {},
+      content: [
+        block(BLOCKS.PARAGRAPH, {}, text('some text ')),
+        {
+          nodeType: 'image',
+        },
+        {
+          nodeType: 'image',
+        },
+        block(BLOCKS.PARAGRAPH, {}, text(' some more text')),
+      ],
+    });
   });
 });
 
 describe('links', () => {
   test('should correctly convert a link', async () => {
-    const document = await richTextFromMarkdown('[This is a link](https://contentful.com)');
-    const node = document.content[0].content[0] as Hyperlink;
+    const result = await richTextFromMarkdown('[This is a link](https://contentful.com)');
 
-    expect(node.nodeType).toBe('hyperlink');
-    expect(node.data.uri).toBe('https://contentful.com');
-  });
-
-  test('should correctly parse the text', async () => {
-    const document = await richTextFromMarkdown('[This is a link](https://contentful.com)');
-    const node = document.content[0].content[0] as Hyperlink;
-
-    expect(node.content[0].nodeType).toBe('text');
-    expect(node.content[0].value).toBe('This is a link');
+    expect(result).toEqual(
+      document(
+        {},
+        block(
+          BLOCKS.PARAGRAPH,
+          {},
+          inline(
+            INLINES.HYPERLINK,
+            {
+              data: {
+                uri: 'https://contentful.com',
+              },
+            },
+            text('This is a link'),
+          ),
+        ),
+      ),
+    );
   });
 });
