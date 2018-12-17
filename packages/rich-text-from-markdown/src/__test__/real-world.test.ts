@@ -29,7 +29,7 @@ describe('rich-text-from-markdown', () => {
         block(BLOCKS.PARAGRAPH, {}, text('This is bold text', mark('bold'))),
         block(BLOCKS.PARAGRAPH, {}, text('This is italic text', mark('italic'))),
         block(BLOCKS.PARAGRAPH, {}, text('This is italic text', mark('italic'))),
-        block(BLOCKS.PARAGRAPH, {}, text('Strikethrough', mark(undefined))),
+        block(BLOCKS.PARAGRAPH, {}, text('Strikethrough is not supported')),
         block(BLOCKS.HEADING_2, {}, text('Blockquotes')),
         block(BLOCKS.QUOTE, {}, block(BLOCKS.PARAGRAPH, {}, text('Blockquotes'))),
         block(BLOCKS.HEADING_2, {}, text('Lists')),

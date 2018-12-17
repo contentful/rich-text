@@ -24,7 +24,7 @@ __This is bold text__
 
 _This is italic text_
 
-~~Strikethrough~~
+~~Strikethrough is not supported~~
 
 
 ## Blockquotes

@@ -114,9 +114,13 @@ async function mdToRichTextNode(node: MarkdownNode, fallback: FallbackResolver):
       // for example: **_Hello_, world!**
       // this a markdown node here that's why we use children
       nodeValue = node.children ? node.children[0].value : node.value;
-      marks.push({
-        type: markTypeFor(node),
-      });
+
+      const markType = markTypeFor(node);
+      if (markType) {
+        marks.push({
+          type: markTypeFor(node),
+        });
+      }
     }
     return {
       nodeType: nodeType,
