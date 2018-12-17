@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import unified from 'unified';
+import markdown from 'remark-parse';
 import {
   Document,
   Node,
@@ -9,10 +12,6 @@ import {
   Text,
   Inline,
 } from '@contentful/rich-text-types';
-
-import _ from 'lodash';
-import unified from 'unified';
-import markdown from 'remark-parse';
 import { MarkdownNode, MarkdownLinkNode, MarkdownTree } from './types';
 
 const markdownNodeTypes = new Map<string, string>([
@@ -143,7 +142,7 @@ async function mdToRichTextNodes(
 
 const astToRichTextDocument = async (
   tree: MarkdownTree,
-  fallback: (mdNode: MarkdownNode) => Promise<Node>,
+  fallback: FallbackResolver,
 ): Promise<Document> => {
   const content = await mdToRichTextNodes(tree.children, fallback);
   return {

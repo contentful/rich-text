@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Hyperlink, Text, BLOCKS, INLINES } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { document, block, text, mark, inline } from './helpers';
 import { richTextFromMarkdown } from '..';
 
