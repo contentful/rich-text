@@ -11,6 +11,7 @@ import {
   Hyperlink,
   Text,
   Inline,
+  MARKS,
 } from '@contentful/rich-text-types';
 import { MarkdownNode, MarkdownLinkNode, MarkdownTree } from './types';
 
@@ -84,11 +85,15 @@ const isInline = (nodeType: string) => {
   return nodeContainerTypes.get(nodeType) === 'inline';
 };
 
-async function mdToRichTextNode(node: MarkdownNode, fallback: FallbackResolver): Promise<Node> {
+async function mdToRichTextNode(
+  node: MarkdownNode,
+  fallback: FallbackResolver,
+  appliedMarksTypes: string[] = [],
+): Promise<Node[]> {
   const nodeType = nodeTypeFor(node);
 
   if (isLink(node)) {
-    const content = (await mdToRichTextNodes(node.children, fallback)) as Text[];
+    const content = (await mdToRichTextNodes(node.children, fallback, appliedMarksTypes)) as Text[];
 
     const hyperlink: Hyperlink = {
       nodeType: INLINES.HYPERLINK,
@@ -96,52 +101,63 @@ async function mdToRichTextNode(node: MarkdownNode, fallback: FallbackResolver):
       content,
     };
 
-    return hyperlink;
+    return [hyperlink];
   }
   if (isBlock(nodeType) || isInline(nodeType)) {
-    const content = await mdToRichTextNodes(node.children, fallback);
+    const content = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
 
-    return {
-      nodeType: nodeType,
-      content,
-      data: {},
-    } as Block | Inline;
+    return [
+      {
+        nodeType: nodeType,
+        content,
+        data: {},
+      } as Block | Inline,
+    ];
   } else if (isText(nodeType)) {
-    let marks = [];
     let nodeValue = node.value;
+    const markType = markTypeFor(node);
+    const marks = [...appliedMarksTypes];
+    if (markType) {
+      marks.push(markType);
+    }
     if (node.type !== 'text') {
-      // TODO: this implementation needs to handle arbitrarily nested marks
-      // for example: **_Hello_, world!**
-      // this a markdown node here that's why we use children
-      nodeValue = node.children ? node.children[0].value : node.value;
-
-      const markType = markTypeFor(node);
-      if (markType) {
-        marks.push({
-          type: markTypeFor(node),
-        });
+      if (node.children) {
+        return await mdToRichTextNodes(node.children, fallback, marks);
       }
     }
-    return {
-      nodeType: nodeType,
-      value: nodeValue,
-      marks: marks,
-      data: {},
-    } as Text;
+
+    if (node.value) {
+      return [
+        {
+          nodeType: nodeType,
+          value: nodeValue,
+          marks: marks.map(type => ({ type })),
+          data: {},
+        } as Text,
+      ];
+    }
   }
-  return fallback(node);
+  const fallbackResult = await fallback(node);
+
+  if (_.isArray(fallbackResult)) {
+    return fallbackResult;
+  }
+  return [fallbackResult];
 }
 
 async function mdToRichTextNodes(
   nodes: MarkdownNode[],
   fallback: FallbackResolver,
+  appliedMarksTypes: string[] = [],
 ): Promise<Node[]> {
   if (!nodes) {
     return Promise.resolve([]);
   }
-  const rtNodes = await Promise.all(nodes.map(node => mdToRichTextNode(node, fallback)));
+  const rtNodes = await Promise.all(
+    nodes.map(node => mdToRichTextNode(node, fallback, appliedMarksTypes)),
+  );
 
-  return rtNodes.filter(Boolean);
+  return _.flatten(rtNodes).filter(Boolean);
 }
 
 const astToRichTextDocument = async (
@@ -233,7 +249,8 @@ function prepareMdAST(ast: MarkdownTree): MarkdownNode {
   return prepareASTNodeChildren(treeNode);
 }
 
-export type FallbackResolver = (mdNode: MarkdownNode) => Promise<Node>;
+// COMPAT: can resolve with either Node or an array of Nodes for back compatibility.
+export type FallbackResolver = (mdNode: MarkdownNode) => Promise<Node | Node[] | null>;
 
 export async function richTextFromMarkdown(
   md: string,

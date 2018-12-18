@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { BLOCKS, INLINES } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { document, block, text, mark, inline } from './helpers';
 import { richTextFromMarkdown } from '..';
 
@@ -116,6 +116,33 @@ describe('links', () => {
             },
             text('This is a link'),
           ),
+        ),
+      ),
+    );
+  });
+
+  test('should convert link wrapped in a mark', async () => {
+    const result = await richTextFromMarkdown(
+      '*This is a test [Contentful](https://www.contentful.com/). Text text*',
+    );
+
+    expect(result).toEqual(
+      document(
+        {},
+        block(
+          BLOCKS.PARAGRAPH,
+          {},
+          text('This is a test ', mark(MARKS.ITALIC)),
+          inline(
+            INLINES.HYPERLINK,
+            {
+              data: {
+                uri: 'https://www.contentful.com/',
+              },
+            },
+            text('Contentful', mark(MARKS.ITALIC)),
+          ),
+          text('. Text text', mark(MARKS.ITALIC)),
         ),
       ),
     );
