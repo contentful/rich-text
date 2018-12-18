@@ -11,7 +11,6 @@ import {
   Hyperlink,
   Text,
   Inline,
-  MARKS,
 } from '@contentful/rich-text-types';
 import { MarkdownNode, MarkdownLinkNode, MarkdownTree } from './types';
 
@@ -85,6 +84,80 @@ const isInline = (nodeType: string) => {
   return nodeContainerTypes.get(nodeType) === 'inline';
 };
 
+const buildHyperlink = async (
+  node: MarkdownLinkNode,
+  fallback: FallbackResolver,
+  appliedMarksTypes: string[],
+): Promise<Hyperlink[]> => {
+  const content = (await mdToRichTextNodes(node.children, fallback, appliedMarksTypes)) as Text[];
+
+  const hyperlink: Hyperlink = {
+    nodeType: INLINES.HYPERLINK,
+    data: { uri: node.url },
+    content,
+  };
+
+  return [hyperlink];
+};
+
+const buildGenericBlockOrInline = async (
+  node: MarkdownNode,
+  fallback: FallbackResolver,
+  appliedMarksTypes: string[],
+): Promise<Array<Block | Inline>> => {
+  const nodeType = nodeTypeFor(node);
+  const content = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
+
+  return [
+    {
+      nodeType: nodeType,
+      content,
+      data: {},
+    } as Block | Inline,
+  ];
+};
+
+const buildText = async (
+  node: MarkdownNode,
+  fallback: FallbackResolver,
+  appliedMarksTypes: string[],
+): Promise<Array<Inline | Text>> => {
+  const nodeType = nodeTypeFor(node);
+  const markType = markTypeFor(node);
+  const marks = [...appliedMarksTypes];
+  if (markType) {
+    marks.push(markType);
+  }
+
+  if (node.type !== 'text' && node.children) {
+    return (await mdToRichTextNodes(node.children, fallback, marks)) as Array<Inline | Text>;
+  }
+
+  if (node.value) {
+    return [
+      {
+        nodeType: nodeType,
+        value: node.value,
+        marks: marks.map(type => ({ type })),
+        data: {},
+      } as Text,
+    ];
+  }
+};
+
+const buildFallbackNode = async (
+  node: MarkdownNode,
+  fallback: FallbackResolver,
+  appliedMarksTypes: string[],
+): Promise<Node[]> => {
+  const fallbackResult = await fallback(node);
+
+  if (_.isArray(fallbackResult)) {
+    return fallbackResult;
+  }
+  return [fallbackResult];
+};
+
 async function mdToRichTextNode(
   node: MarkdownNode,
   fallback: FallbackResolver,
@@ -93,56 +166,14 @@ async function mdToRichTextNode(
   const nodeType = nodeTypeFor(node);
 
   if (isLink(node)) {
-    const content = (await mdToRichTextNodes(node.children, fallback, appliedMarksTypes)) as Text[];
-
-    const hyperlink: Hyperlink = {
-      nodeType: INLINES.HYPERLINK,
-      data: { uri: node.url },
-      content,
-    };
-
-    return [hyperlink];
-  }
-  if (isBlock(nodeType) || isInline(nodeType)) {
-    const content = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
-
-    return [
-      {
-        nodeType: nodeType,
-        content,
-        data: {},
-      } as Block | Inline,
-    ];
+    return await buildHyperlink(node, fallback, appliedMarksTypes);
+  } else if (isBlock(nodeType) || isInline(nodeType)) {
+    return await buildGenericBlockOrInline(node, fallback, appliedMarksTypes);
   } else if (isText(nodeType)) {
-    let nodeValue = node.value;
-    const markType = markTypeFor(node);
-    const marks = [...appliedMarksTypes];
-    if (markType) {
-      marks.push(markType);
-    }
-    if (node.type !== 'text') {
-      if (node.children) {
-        return await mdToRichTextNodes(node.children, fallback, marks);
-      }
-    }
-
-    if (node.value) {
-      return [
-        {
-          nodeType: nodeType,
-          value: nodeValue,
-          marks: marks.map(type => ({ type })),
-          data: {},
-        } as Text,
-      ];
-    }
+    return await buildText(node, fallback, appliedMarksTypes);
+  } else {
+    return await buildFallbackNode(node, fallback, appliedMarksTypes);
   }
-  const fallbackResult = await fallback(node);
-
-  if (_.isArray(fallbackResult)) {
-    return fallbackResult;
-  }
-  return [fallbackResult];
 }
 
 async function mdToRichTextNodes(
