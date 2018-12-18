@@ -4,7 +4,7 @@ import { document, block, text, mark, inline } from './helpers';
 import { richTextFromMarkdown } from '..';
 
 describe('rich-text-from-markdown', () => {
-  test('should render some markdown', async () => {
+  test('should parse some markdown', async () => {
     const result = await richTextFromMarkdown('# Hello World');
     expect(result).toEqual(document({}, block(BLOCKS.HEADING_1, {}, text('Hello World'))));
   });
@@ -31,16 +31,30 @@ describe('rich-text-from-markdown', () => {
 });
 
 describe.each([
-  ['*This is an italic text*', 'This is an italic text', 'italic'],
-  ['__This a bold text__', 'This a bold text', 'bold'],
-  ['`This is code`', 'This is code', 'code'],
+  ['*This is an italic text*', ['This is an italic text', 'italic']],
+  ['__This a bold text__', ['This a bold text', 'bold']],
+  ['`This is code`', ['This is code', 'code']],
+  [
+    '__This is bold and *this is an italic*__',
+    ['This is bold and ', 'bold'],
+    ['this is an italic', 'bold', 'italic'],
+  ],
 ])(
   'The markdown "%s" should be parsed to text with value "%s"',
-  (markdown, expected, expectedMark) => {
-    test(`${expected}`, async () => {
+  (markdown, ...expectedTextWithMarks) => {
+    test(`${markdown}`, async () => {
       const result = await richTextFromMarkdown(markdown);
       expect(result).toEqual(
-        document({}, block(BLOCKS.PARAGRAPH, {}, text(expected, mark(expectedMark)))),
+        document(
+          {},
+          block(
+            BLOCKS.PARAGRAPH,
+            {},
+            ...expectedTextWithMarks.map(([expectedText, ...expectedMarkTypes]) =>
+              text(expectedText, ...expectedMarkTypes.map(mark)),
+            ),
+          ),
+        ),
       );
     });
   },
