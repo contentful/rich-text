@@ -18,7 +18,7 @@ async function queryResult(nodes, fragment, { types = [] } = {}, additionalParam
     nodes,
     types: [...types],
   })
-  
+
   const extendNodeTypeFields = await extendNodeType(
     {
       type: { name: `ContentfulRichText` },
@@ -119,7 +119,7 @@ const bootstrapTest = (label, content, query, test, additionalParameters = {}) =
     )
   })
 }
-describe(`HTML is generated correctly`, () => {
+describe(`extend-node-type`, () => {
   const content = {
     nodeType: 'document',
     data: {},
@@ -138,12 +138,26 @@ describe(`HTML is generated correctly`, () => {
       },
     ]
   }
-  bootstrapTest(
-    `correctly loads html`,
-    JSON.stringify(content),
-    `html`,
-    (node) => {
-      expect(node.html).toEqual('<p>Hello world!</p>')
-    }
-  )
+
+  describe(`HTML is generated correctly`, () => {
+    bootstrapTest(
+      `correctly loads html`,
+      JSON.stringify(content),
+      `html`,
+      (node) => {
+        expect(node.html).toEqual('<p>Hello world!</p>')
+      }
+    )
+  })
+
+  describe(`timeToRead`, () => {
+    bootstrapTest(
+      `correctly calculate timeToRead`,
+      JSON.stringify(content),
+      `timeToRead`,
+      (node) => {
+        expect(node.timeToRead).toEqual(1)
+      }
+    )
+  })
 })

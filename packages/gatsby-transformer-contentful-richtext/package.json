@@ -42,6 +42,8 @@
   "homepage": "https://github.com/contentful/rich-text#readme",
   "dependencies": {
     "@babel/runtime": "^7.2.0",
-    "@contentful/rich-text-html-renderer": "^12.1.2"
+    "@contentful/rich-text-html-renderer": "^12.1.2",
+    "@contentful/rich-text-plain-text-renderer": "^12.1.2",
+    "lodash.words": "^4.2.0"
   }
 }
