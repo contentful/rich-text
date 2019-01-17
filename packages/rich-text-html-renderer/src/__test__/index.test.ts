@@ -267,4 +267,12 @@ describe('documentToHtmlString', () => {
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
+
+  it('does not crash with empty documents', () => {
+    expect(documentToHtmlString({} as Document)).toEqual('');
+  });
+
+  it('does not crash with undefined documents', () => {
+    expect(documentToHtmlString(undefined as Document)).toEqual('');
+  });
 });
