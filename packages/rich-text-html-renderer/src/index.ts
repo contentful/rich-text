@@ -77,6 +77,10 @@ export function documentToHtmlString(
   richTextDocument: Document,
   options: Partial<Options> = {},
 ): string {
+  if (!richTextDocument || !richTextDocument.content) {
+    return '';
+  }
+
   return nodeListToHtmlString(richTextDocument.content, {
     renderNode: {
       ...defaultNodeRenderers,
