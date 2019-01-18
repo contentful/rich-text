@@ -7,14 +7,18 @@ module.exports = {
   roots: [
     'packages/',
   ],
+  testPathIgnorePatterns: [
+    "/dist/"
+  ],
   moduleFileExtensions: [
     'ts',
     'js',
+    'json'
   ],
   transform: {
     '^.+\\.ts$': 'ts-jest',
   },
   testMatch: [
-    '**/*\.test.ts',
+    '**/*\.test.{ts|js}',
   ]
 };
