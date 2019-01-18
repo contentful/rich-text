@@ -17,7 +17,7 @@ const settings: TJS.PartialArgs = {
 const compilerOptions: TJS.CompilerOptions = {
   strictNullChecks: true,
   // composite: true,
-  lib: ['es2015', 'es2016', 'es2017'],
+  lib: ['es2015', 'es2016', 'es2017', 'dom'],
 };
 
 const createJsonSchema = (symbolName: string, nodeType: string): void => {
