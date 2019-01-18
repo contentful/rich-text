@@ -6,7 +6,10 @@
     "lib": [
       "es2015",
       "es2016",
-      "es2017"
+      "es2017",
+      // otherwise schema generation fails with:
+      // Cannot find name 'Window'
+      "dom"
     ],
     "esModuleInterop": true,
     "strict": true,
