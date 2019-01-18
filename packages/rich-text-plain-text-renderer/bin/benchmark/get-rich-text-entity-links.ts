@@ -1,5 +1,5 @@
 import { BLOCKS, Document, UnorderedList, ListItem, Text, Node } from '@contentful/rich-text-types';
-import richTextPlainTextRenderer from '../../src/index';
+import { documentToPlainTextString as docToString } from '../../src/index';
 
 /**
  * Implements just a subset of _.times since all we're really doing here is
@@ -41,5 +41,5 @@ const richTextField: Document = {
 };
 
 export const documentToPlainTextString = () => (
-  richTextPlainTextRenderer.documentToPlainTextString(richTextField, '')
+  docToString(richTextField, '')
 );

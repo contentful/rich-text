@@ -1,5 +1,4 @@
 import { Block, Node, Inline, helpers } from '@contentful/rich-text-types';
-import { isBlock, isInline } from '../node_modules/@contentful/rich-text-types/dist/types/helpers';
 
 /**
  * Returns the text value of a rich text document.
@@ -7,7 +6,10 @@ import { isBlock, isInline } from '../node_modules/@contentful/rich-text-types/d
  * NB: This can be applied to non text node of a structured text document,
  * hence the flexible typing.
  */
-function documentToPlainTextString(rootNode: Block | Inline, blockDivisor: string = ' '): string {
+export function documentToPlainTextString(
+  rootNode: Block | Inline,
+  blockDivisor: string = ' ',
+): string {
   if (!rootNode || !rootNode.content) {
     /**
      * Handles edge cases, such as when the value is not set in the CMA or the
@@ -99,7 +101,3 @@ function documentToPlainTextString(rootNode: Block | Inline, blockDivisor: strin
     return acc + nodeTextValue + divisor;
   }, '');
 }
-
-export default {
-  documentToPlainTextString,
-};

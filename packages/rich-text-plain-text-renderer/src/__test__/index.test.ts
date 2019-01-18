@@ -1,6 +1,6 @@
 import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
 
-import richTextPlainTextRenderer from '../index';
+import { documentToPlainTextString } from '../index';
 
 describe('documentToPlainTextString', () => {
   it('returns empty string when given an empty document', () => {
@@ -10,7 +10,7 @@ describe('documentToPlainTextString', () => {
       content: [],
     };
 
-    expect(richTextPlainTextRenderer.documentToPlainTextString(document)).toEqual('');
+    expect(documentToPlainTextString(document)).toEqual('');
   });
 
   it('handles a simple case', () => {
@@ -45,9 +45,7 @@ describe('documentToPlainTextString', () => {
       ],
     };
 
-    expect(richTextPlainTextRenderer.documentToPlainTextString(document)).toEqual(
-      'Trout is a seafood delicacy.',
-    );
+    expect(documentToPlainTextString(document)).toEqual('Trout is a seafood delicacy.');
   });
 
   describe('rendering deeply nested documents', () => {
@@ -161,7 +159,7 @@ describe('documentToPlainTextString', () => {
     };
 
     it('handles nested nodes gracefully', () => {
-      expect(richTextPlainTextRenderer.documentToPlainTextString(document)).toEqual(
+      expect(documentToPlainTextString(document)).toEqual(
         [
           'This is text.',
           'This is text with some marks.',
@@ -173,7 +171,7 @@ describe('documentToPlainTextString', () => {
     });
 
     it('defers to the user-supplied block divisor', () => {
-      expect(richTextPlainTextRenderer.documentToPlainTextString(document, '\n\n')).toEqual(
+      expect(documentToPlainTextString(document, '\n\n')).toEqual(
         [
           'This is text. This is text with some marks. This is text from a bolded hyperlink.',
           'This is a list element in a separate block with a link with marks.',
