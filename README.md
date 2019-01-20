@@ -17,7 +17,9 @@ text documents.
   - Type definitions and constants for the rich text field type
 
 - [`gatsby-transformer-contentful-richtext`](https://github.com/contentful/rich-text/tree/master/packages/gatsby-transformer-contentful-richtext)
-  - Parses Contentful Rich Text document to html in Gatsby
+  - Parses a Contentful Rich Text document to HTML in Gatsby
+- [`rich-text-to-jsx`](https://github.com/connor-baer/rich-text-to-jsx) (third-party)
+  - Parses a Contentful Rich Text document to JSX for use in React
 
 ## Get involved
 
