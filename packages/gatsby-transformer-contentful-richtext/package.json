@@ -1,6 +1,6 @@
 {
   "name": "@contentful/gatsby-transformer-contentful-richtext",
-  "version": "12.2.1",
+  "version": "13.0.0",
   "description": "",
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
@@ -38,8 +38,8 @@
   "homepage": "https://github.com/contentful/rich-text#readme",
   "dependencies": {
     "@babel/runtime": "^7.2.0",
-    "@contentful/rich-text-html-renderer": "^12.2.1",
-    "@contentful/rich-text-plain-text-renderer": "^12.1.2",
+    "@contentful/rich-text-html-renderer": "^13.0.0",
+    "@contentful/rich-text-plain-text-renderer": "^13.0.0",
     "lodash.words": "^4.2.0"
   }
 }
