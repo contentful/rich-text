@@ -52,7 +52,6 @@ async function queryResult(nodes, fragment, { types = [] } = {}, additionalParam
               })
             ),
             resolve() {
-              console.log(nodes)
               return nodes
             },
           },
@@ -120,7 +119,7 @@ const bootstrapTest = (label, content, query, test, additionalParameters = {}) =
   })
 }
 describe(`extend-node-type`, () => {
-  const content = {
+  const createContent = (text = 'Hello world!') => ({
     nodeType: 'document',
     data: {},
     content: [
@@ -130,19 +129,19 @@ describe(`extend-node-type`, () => {
         content: [
           {
             nodeType: 'text',
-            value: 'Hello world!',
+            value: text,
             marks: [],
             data: {}
           },
         ],
       },
     ]
-  }
+  })
 
   describe(`HTML is generated correctly`, () => {
     bootstrapTest(
       `correctly loads html`,
-      JSON.stringify(content),
+      JSON.stringify(createContent()),
       `html`,
       (node) => {
         expect(node.html).toEqual('<p>Hello world!</p>')
@@ -152,11 +151,20 @@ describe(`extend-node-type`, () => {
 
   describe(`timeToRead`, () => {
     bootstrapTest(
-      `correctly calculate timeToRead`,
-      JSON.stringify(content),
+      `correctly calculate timeToRead for short text`,
+      JSON.stringify(createContent()),
       `timeToRead`,
       (node) => {
         expect(node.timeToRead).toEqual(1)
+      }
+    )
+
+    bootstrapTest(
+      `correctly calculate timeToRead for long text`,
+      JSON.stringify(createContent('one thousand words text '.repeat(250))),
+      `timeToRead`,
+      (node) => {
+        expect(node.timeToRead).toEqual(5)
       }
     )
   })
