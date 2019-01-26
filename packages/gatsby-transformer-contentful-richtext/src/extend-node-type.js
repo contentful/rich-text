@@ -48,7 +48,7 @@ module.exports = ({ type, cache, pathPrefix }, pluginOptions) => {
         resolve: richTextNode =>
           cacheWrap(ttrCacheKey(richTextNode), () => {
             let plainString = documentToPlainTextString(JSON.parse(richTextNode.internal.content));
-            let wordsCount = words(plainString);
+            let wordsCount = words(plainString).length;
             let avgWPM = 200;
 
             return Math.floor(wordsCount / avgWPM) || 1;
