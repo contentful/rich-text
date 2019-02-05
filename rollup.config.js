@@ -4,13 +4,13 @@ import sourceMaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
 import json from 'rollup-plugin-json';
 
-export default outputFile => ({
-  input: 'src/index.ts',
+export default (outputFile, inputFile = 'src/index.ts') => ({
+  input: inputFile,
   output: [
     {
       file: outputFile,
       format: 'cjs',
-      sourcemap: true
+      sourcemap: true,
     },
   ],
   watch: {
