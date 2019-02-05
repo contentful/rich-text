@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
+import { Document, BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 
 import { documentToReactTree, Options } from '../index';
 
@@ -58,7 +58,7 @@ describe('documentToReactTree', () => {
   });
 
   it('renders multiple marks with default mark renderer', () => {
-    const doc = multiMarkDoc;
+    const doc: Document = multiMarkDoc();
     expect(documentToReactTree(doc)).toMatchSnapshot();
   });
 
