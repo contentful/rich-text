@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declarationDir": "dist/types",
+    "outDir": "dist/lib",
+    "typeRoots": ["../../node_modules/@types", "node_modules/@types", "src/typings"],
+    "jsx": "react"
+  },
+  "include": ["src/**/*"]
+}
