@@ -4,7 +4,7 @@ import sourceMaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
 import json from 'rollup-plugin-json';
 
-export default (outputFile, inputFile = 'src/index.ts') => ({
+export default (outputFile, inputFile = 'src/index.ts', external) => ({
   input: inputFile,
   output: [
     {
@@ -16,6 +16,7 @@ export default (outputFile, inputFile = 'src/index.ts') => ({
   watch: {
     include: 'src/**',
   },
+  external,
   plugins: [
     // Allow json resolution
     json(),
