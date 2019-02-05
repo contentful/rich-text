@@ -22,14 +22,14 @@ import Paragraph from './components/Paragraph';
 import Strong from './components/Strong';
 
 describe('documentToReactTree', () => {
-  it('returns null when given an empty document', () => {
+  it('returns an empty array when given an empty document', () => {
     const document: Document = {
       nodeType: BLOCKS.DOCUMENT,
       data: {},
       content: [],
     };
 
-    expect(documentToReactTree(document)).toBeNull();
+    expect(documentToReactTree(document)).toEqual([]);
   });
 
   it('renders nodes with default node renderer', () => {

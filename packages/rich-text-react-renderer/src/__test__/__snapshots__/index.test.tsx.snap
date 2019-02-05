@@ -3,57 +3,43 @@
 exports[`documentToReactTree does not render unrecognized marks 1`] = `
 Array [
   <p>
-    Hello world!
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders asset hyperlink 1`] = `
 Array [
   <p>
-    
-    <span>
-        type: 
-        asset-hyperlink
-         id: 
-        9mpxT4zsRi6Iwukey8KeM
-    </span>
-    
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders blockquotes 1`] = `
 Array [
   <p>
-    hello
-</p>,
+    [Function]
+  </p>,
   <blockquote>
-    world
-</blockquote>,
+    [Function]
+  </blockquote>,
 ]
 `;
 
 exports[`documentToReactTree renders default entry link block 1`] = `
 Array [
   <div>
-    
-</div>,
+    [Function]
+  </div>,
 ]
 `;
 
 exports[`documentToReactTree renders embedded entry 1`] = `
 Array [
   <p>
-    
-    <span>
-        type: 
-        embedded-entry-inline
-         id: 
-        9mpxT4zsRi6Iwukey8KeM
-    </span>
-    
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
@@ -66,174 +52,129 @@ Array [
 exports[`documentToReactTree renders entry hyperlink 1`] = `
 Array [
   <p>
-    
-    <span>
-        type: 
-        entry-hyperlink
-         id: 
-        9mpxT4zsRi6Iwukey8KeM
-    </span>
-    
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders horizontal rule 1`] = `
 Array [
   <p>
-    hello world
-</p>,
+    [Function]
+  </p>,
   <hr />,
   <p>
-    
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders hyperlink 1`] = `
 Array [
   <p>
-    Some text 
-    <a
-        href="https://url.org"
-    >
-        link
-    </a>
-     text.
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders marks with default mark renderer 1`] = `
 Array [
   <p>
-    <i>
-        hello world
-    </i>
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders marks with default mark renderer 2`] = `
 Array [
   <p>
-    <b>
-        hello world
-    </b>
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders marks with default mark renderer 3`] = `
 Array [
   <p>
-    <u>
-        hello world
-    </u>
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders marks with default mark renderer 4`] = `
 Array [
   <p>
-    <code>
-        hello world
-    </code>
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders marks with the passed custom mark rendered 1`] = `
 Array [
   <p>
-    <Strong>
-        hello world
-    </Strong>
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders multiple marks with default mark renderer 1`] = `
 Array [
   <p>
-    <i>
-        <b>
-            hello world
-        </b>
-    </i>
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders nodes with default node renderer 1`] = `
 Array [
   <p>
-    hello world
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders nodes with default node renderer 2`] = `
 Array [
   <h1>
-    hello world
-</h1>,
+    [Function]
+  </h1>,
 ]
 `;
 
 exports[`documentToReactTree renders nodes with default node renderer 3`] = `
 Array [
   <h2>
-    hello world
-</h2>,
+    [Function]
+  </h2>,
 ]
 `;
 
 exports[`documentToReactTree renders nodes with passed custom node renderer 1`] = `
 Array [
   <Paragraph>
-    hello world
-</Paragraph>,
+    [Function]
+  </Paragraph>,
 ]
 `;
 
 exports[`documentToReactTree renders ordered lists 1`] = `
 Array [
   <ol>
-    <li>
-        <p>
-            Hello
-        </p>
-    </li>
-    <li>
-        <p>
-            world
-        </p>
-    </li>
-</ol>,
+    [Function]
+  </ol>,
   <p>
-    
-</p>,
+    [Function]
+  </p>,
 ]
 `;
 
 exports[`documentToReactTree renders unordered lists 1`] = `
 Array [
   <ul>
-    <li>
-        <p>
-            Hello
-        </p>
-    </li>
-    <li>
-        <p>
-            world
-        </p>
-    </li>
-</ul>,
+    [Function]
+  </ul>,
   <p>
-    
-</p>,
+    [Function]
+  </p>,
 ]
 `;

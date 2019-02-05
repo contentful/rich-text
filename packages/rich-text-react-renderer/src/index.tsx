@@ -83,7 +83,7 @@ export function documentToReactTree(
   options: Partial<Options> = {},
 ): ReactNode {
   if (!richTextDocument || !richTextDocument.content) {
-    return null;
+    return [];
   }
 
   return nodeListToReactTree(richTextDocument.content, {
