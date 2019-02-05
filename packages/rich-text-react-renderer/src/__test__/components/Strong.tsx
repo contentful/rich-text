@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
-export default function Strong({ children }) {
+type StrongProps = {
+  children: ReactNode;
+};
+
+const Strong: FunctionComponent<StrongProps> = ({ children }) => {
   return <strong>{children}</strong>;
-}
+};
+
+export default Strong;
