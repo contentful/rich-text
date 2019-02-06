@@ -1,7 +1,7 @@
 import React from 'react';
 import { Document, BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 
-import { documentToReactTree, Options } from '../index';
+import { documentToReactComponents, Options } from '../index';
 
 import {
   hrDoc,
@@ -21,7 +21,7 @@ import {
 import Paragraph from './components/Paragraph';
 import Strong from './components/Strong';
 
-describe('documentToReactTree', () => {
+describe('documentToReactComponents', () => {
   it('returns an empty array when given an empty document', () => {
     const document: Document = {
       nodeType: BLOCKS.DOCUMENT,
@@ -29,7 +29,7 @@ describe('documentToReactTree', () => {
       content: [],
     };
 
-    expect(documentToReactTree(document)).toEqual([]);
+    expect(documentToReactComponents(document)).toEqual([]);
   });
 
   it('renders nodes with default node renderer', () => {
@@ -40,7 +40,7 @@ describe('documentToReactTree', () => {
     ];
 
     docs.forEach(doc => {
-      expect(documentToReactTree(doc)).toMatchSnapshot();
+      expect(documentToReactComponents(doc)).toMatchSnapshot();
     });
   });
 
@@ -53,13 +53,13 @@ describe('documentToReactTree', () => {
     ];
 
     docs.forEach(doc => {
-      expect(documentToReactTree(doc)).toMatchSnapshot();
+      expect(documentToReactComponents(doc)).toMatchSnapshot();
     });
   });
 
   it('renders multiple marks with default mark renderer', () => {
     const doc: Document = multiMarkDoc();
-    expect(documentToReactTree(doc)).toMatchSnapshot();
+    expect(documentToReactComponents(doc)).toMatchSnapshot();
   });
 
   it('renders nodes with passed custom node renderer', () => {
@@ -69,7 +69,7 @@ describe('documentToReactTree', () => {
       },
     };
     const document: Document = paragraphDoc;
-    expect(documentToReactTree(document, options)).toMatchSnapshot();
+    expect(documentToReactComponents(document, options)).toMatchSnapshot();
   });
 
   it('renders marks with the passed custom mark rendered', () => {
@@ -80,19 +80,19 @@ describe('documentToReactTree', () => {
     };
     const document: Document = marksDoc(MARKS.BOLD);
 
-    expect(documentToReactTree(document, options)).toMatchSnapshot();
+    expect(documentToReactComponents(document, options)).toMatchSnapshot();
   });
 
   it('does not render unrecognized marks', () => {
     const document: Document = invalidMarksDoc;
 
-    expect(documentToReactTree(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
 
   it('renders empty node if type is not recognized', () => {
     const document: Document = invalidTypeDoc;
 
-    expect(documentToReactTree(document as Document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
 
   it('renders default entry link block', () => {
@@ -105,43 +105,43 @@ describe('documentToReactTree', () => {
     };
     const document: Document = embeddedEntryDoc(entrySys);
 
-    expect(documentToReactTree(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
 
   it('renders ordered lists', () => {
     const document: Document = olDoc;
 
-    expect(documentToReactTree(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
 
   it('renders unordered lists', () => {
     const document: Document = ulDoc;
 
-    expect(documentToReactTree(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
 
   it('renders blockquotes', () => {
     const document: Document = quoteDoc;
 
-    expect(documentToReactTree(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
 
   it('renders horizontal rule', () => {
     const document: Document = hrDoc;
 
-    expect(documentToReactTree(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
 
   it('does not crash with inline elements (e.g. hyperlink)', () => {
     const document: Document = hyperlinkDoc;
 
-    expect(documentToReactTree(document)).toBeTruthy();
+    expect(documentToReactComponents(document)).toBeTruthy();
   });
 
   it('renders hyperlink', () => {
     const document: Document = hyperlinkDoc;
 
-    expect(documentToReactTree(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
 
   it('renders asset hyperlink', () => {
@@ -156,7 +156,7 @@ describe('documentToReactTree', () => {
     };
     const document: Document = inlineEntityDoc(asset, INLINES.ASSET_HYPERLINK);
 
-    expect(documentToReactTree(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
   it('renders entry hyperlink', () => {
     const entry = {
@@ -170,7 +170,7 @@ describe('documentToReactTree', () => {
     };
     const document: Document = inlineEntityDoc(entry, INLINES.ENTRY_HYPERLINK);
 
-    expect(documentToReactTree(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
   it('renders embedded entry', () => {
     const entry = {
@@ -184,6 +184,6 @@ describe('documentToReactTree', () => {
     };
     const document: Document = inlineEntityDoc(entry, INLINES.EMBEDDED_ENTRY);
 
-    expect(documentToReactTree(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toMatchSnapshot();
   });
 });
