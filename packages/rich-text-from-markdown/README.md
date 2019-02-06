@@ -1,6 +1,6 @@
 # rich-text-from-markdown
 
-A Typescript library that converts markdown to rich text.
+A library to convert markdown to Rich Text document.
 
 ## Installation
 
@@ -21,9 +21,9 @@ yarn add @contentful/rich-text-from-markdown
 ### Basic
 
 ```js
-const richTextFromMarkdown = require('@contentful/rich-text-from-markdown');
+const { richTextFromMarkdown } = require('@contentful/rich-text-from-markdown');
 
-const document = richTextFromMarkdown('# Hello World')
+const document = await richTextFromMarkdown('# Hello World');
 ```
 
 ### Advanced
@@ -53,7 +53,7 @@ of that node.
 const { richTextFromMarkdown } = require('@contentful/rich-text-from-markdown');
 
 // define your own type for unsupported nodes like asset
-const document = richTextFromMarkdown(
+const document = await richTextFromMarkdown(
   '![image](\'https://example.com/image.jpg\')',
   node => ({
     nodeType: 'embedded-[entry|asset]-[block|inline]',
