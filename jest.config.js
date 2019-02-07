@@ -1,24 +1,21 @@
 module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
-    'packages/**/!(rollup.config).{ts}',
+    'packages/**/!(rollup.config).{js|ts|tsx}',
     '!**/node_modules/**',
+    '!**/__test__/**',
+    '!**/dist/**',
+    '!packages/rich-text-types/tools/**',
+    '!packages/rich-text-plain-text-renderer/bin/**',
+    '!packages/rich-text-links/bin/**',
+    '!packages/rich-text-from-markdow/index.d.ts',
+    '!packages/gatsby-transformer-contentful-richtext/*.js',
   ],
-  roots: [
-    'packages/',
-  ],
-  testPathIgnorePatterns: [
-    "/dist/"
-  ],
-  moduleFileExtensions: [
-    'ts',
-    'js',
-    'json'
-  ],
+  roots: ['packages/'],
+  testPathIgnorePatterns: ['/dist/'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   transform: {
-    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.tsx?$': 'ts-jest',
   },
-  testMatch: [
-    '**/*\.test.{ts|js}',
-  ]
+  testMatch: ['**/*.test.{tsx|ts|js}'],
 };
