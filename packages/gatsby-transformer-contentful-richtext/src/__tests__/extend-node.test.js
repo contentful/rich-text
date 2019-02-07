@@ -1,23 +1,13 @@
-const {
-  graphql,
-  GraphQLObjectType,
-  GraphQLList,
-  GraphQLSchema,
-} = require(`gatsby/graphql`)
-
-const {
-  inferObjectStructureFromNodes,
-} = require(`gatsby/dist/schema/infer-graphql-type`)
-
-const { onCreateNode } = require(`../gatsby-node`)
-
-const extendNodeType = require(`../extend-node-type`)
+const { graphql, GraphQLObjectType, GraphQLList, GraphQLSchema } = require(`gatsby/graphql`);
+const { inferObjectStructureFromNodes } = require(`gatsby/dist/schema/infer-graphql-type`);
+const { onCreateNode } = require(`../gatsby-node`);
+const extendNodeType = require(`../extend-node-type`);
 
 async function queryResult(nodes, fragment, { types = [] } = {}, additionalParameters) {
   const inferredFields = inferObjectStructureFromNodes({
     nodes,
     types: [...types],
-  })
+  });
 
   const extendNodeTypeFields = await extendNodeType(
     {
@@ -31,13 +21,13 @@ async function queryResult(nodes, fragment, { types = [] } = {}, additionalParam
     },
     {
       renderOptions: null,
-    }
-  )
+    },
+  );
 
   const richTextFields = {
     ...inferredFields,
     ...extendNodeTypeFields,
-  }
+  };
   const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
       name: `RootQueryType`,
@@ -49,17 +39,16 @@ async function queryResult(nodes, fragment, { types = [] } = {}, additionalParam
               new GraphQLObjectType({
                 name: `ContentfulRichText`,
                 fields: richTextFields,
-              })
+              }),
             ),
             resolve() {
-              console.log(nodes)
-              return nodes
+              return nodes;
             },
           },
-        }
+        };
       },
     }),
-  })
+  });
 
   const result = await graphql(
     schema,
@@ -67,9 +56,9 @@ async function queryResult(nodes, fragment, { types = [] } = {}, additionalParam
       listNode {
         ${fragment}
       }
-    }`
-  )
-  return result
+    }`,
+  );
+  return result;
 }
 
 const bootstrapTest = (label, content, query, test, additionalParameters = {}) => {
@@ -80,12 +69,12 @@ const bootstrapTest = (label, content, query, test, additionalParameters = {}) =
       contentDigest: `whatever`,
       mediaType: `text/richtext`,
     },
-  }
+  };
   // Make some fake functions its expecting.
-  const loadNodeContent = node => Promise.resolve(node.content)
+  const loadNodeContent = node => Promise.resolve(node.content);
 
-  it(label, async (done) => {
-    node.content = content
+  it(label, async done => {
+    node.content = content;
     const createNode = richTextNode => {
       queryResult(
         [richTextNode],
@@ -93,34 +82,33 @@ const bootstrapTest = (label, content, query, test, additionalParameters = {}) =
         {
           types: [{ name: `LISTNODE` }],
         },
-        additionalParameters
+        additionalParameters,
       ).then(result => {
         try {
-          console.log(result)
-          test(result.data.listNode[0])
-          done()
+          test(result.data.listNode[0]);
+          done();
+        } catch (err) {
+          done.fail(err);
         }
-        catch(err) {
-          done.fail(err)
-        }
-      })
-    }
-    const createParentChildLink = jest.fn()
-    const actions = { createNode, createParentChildLink }
-    const createNodeId = jest.fn()
-    createNodeId.mockReturnValue(`uuid-from-gatsby`)
-    await onCreateNode({
-      node,
-      loadNodeContent,
-      actions,
-      createNodeId,
-    },
-    { ...additionalParameters }
-    )
-  })
-}
+      });
+    };
+    const createParentChildLink = jest.fn();
+    const actions = { createNode, createParentChildLink };
+    const createNodeId = jest.fn();
+    createNodeId.mockReturnValue(`uuid-from-gatsby`);
+    await onCreateNode(
+      {
+        node,
+        loadNodeContent,
+        actions,
+        createNodeId,
+      },
+      { ...additionalParameters },
+    );
+  });
+};
 describe(`extend-node-type`, () => {
-  const content = {
+  const createContent = (text = 'Hello world!') => ({
     nodeType: 'document',
     data: {},
     content: [
@@ -130,34 +118,38 @@ describe(`extend-node-type`, () => {
         content: [
           {
             nodeType: 'text',
-            value: 'Hello world!',
+            value: text,
             marks: [],
-            data: {}
+            data: {},
           },
         ],
       },
-    ]
-  }
+    ],
+  });
 
   describe(`HTML is generated correctly`, () => {
-    bootstrapTest(
-      `correctly loads html`,
-      JSON.stringify(content),
-      `html`,
-      (node) => {
-        expect(node.html).toEqual('<p>Hello world!</p>')
-      }
-    )
-  })
+    bootstrapTest(`correctly loads html`, JSON.stringify(createContent()), `html`, node => {
+      expect(node.html).toEqual('<p>Hello world!</p>');
+    });
+  });
 
   describe(`timeToRead`, () => {
     bootstrapTest(
-      `correctly calculate timeToRead`,
-      JSON.stringify(content),
+      `correctly calculate timeToRead for short text`,
+      JSON.stringify(createContent()),
       `timeToRead`,
-      (node) => {
-        expect(node.timeToRead).toEqual(1)
-      }
-    )
-  })
-})
+      node => {
+        expect(node.timeToRead).toEqual(1);
+      },
+    );
+
+    bootstrapTest(
+      `correctly calculate timeToRead for long text`,
+      JSON.stringify(createContent('one thousand words text '.repeat(250))),
+      `timeToRead`,
+      node => {
+        expect(node.timeToRead).toEqual(5);
+      },
+    );
+  });
+});
