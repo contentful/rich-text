@@ -4,8 +4,8 @@ import sourceMaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
 import json from 'rollup-plugin-json';
 
-export default (outputFile, inputFile = 'src/index.ts', external) => ({
-  input: inputFile,
+export default (outputFile, overrides = {}) => ({
+  input: 'src/index.ts',
   output: [
     {
       file: outputFile,
@@ -16,7 +16,6 @@ export default (outputFile, inputFile = 'src/index.ts', external) => ({
   watch: {
     include: 'src/**',
   },
-  external,
   plugins: [
     // Allow json resolution
     json(),
@@ -35,4 +34,5 @@ export default (outputFile, inputFile = 'src/index.ts', external) => ({
     // Resolve source maps to the original source
     sourceMaps(),
   ],
+  ...overrides,
 });
