@@ -1,6 +1,6 @@
 # rich-text-from-markdown
 
-A library to convert markdown to Rich Text document.
+A library to convert markdown to Contentful Rich Text document format.
 
 ## Installation
 
