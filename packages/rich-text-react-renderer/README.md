@@ -19,7 +19,7 @@ yarn add @contentful/rich-text-react-renderer
 ## Usage
 
 ```javascript
-import { documentToReactTree } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const document = {
   nodeType: 'document',
@@ -37,11 +37,11 @@ const document = {
   ],
 };
 
-documentToReactTree(document); // -> <p>Hello world!</p>
+documentToReactComponents(document); // -> <p>Hello world!</p>
 ```
 
 ```javascript
-import { documentToReactTree } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const document = {
   nodeType: 'document',
@@ -64,14 +64,15 @@ const document = {
   ],
 };
 
-documentToReactTree(document); // -> <p><b>Hello</b><u> world!</u></p>
+documentToReactComponents(document);
+// -> <p><b>Hello</b><u> world!</u></p>
 ```
 
 You can also pass custom renderers for both marks and nodes as an optional parameter like so:
 
 ```javascript
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
-import { documentToReactTree } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const document = {
   nodeType: 'document',
@@ -94,25 +95,28 @@ const document = {
   ],
 };
 
+const Bold = ({ children }) => <p className="bold">{children}</p>;
+
+const Text = ({ children }) => <p className="align-center">{children}</p>;
+
 const options = {
   renderMark: {
-    [MARKS.BOLD]: text => `<custom-bold>${text}<custom-bold>`,
+    [MARKS.BOLD]: text => <Bold>{text}</Bold>,
   },
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, next) =>
-      `<custom-paragraph>${next(node.content)}</custom-paragraph>`,
+    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
   },
 };
 
-documentToReactTree(document, options);
-// -> <custom-paragraph><custom-bold>Hello</custom-bold><u> world!</u></custom-paragraph>
+documentToReactComponents(document, options);
+// -> <p class="align-center"><p class="bold">Hello</p><u> world!</u></p>
 ```
 
 Last, but not least, you can pass a custom rendering component for an embedded entry:
 
 ```javascript
 import { BLOCKS } from '@contentful/rich-text-types';
-import { documentToReactTree } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const document = {
   nodeType: 'document',
@@ -126,14 +130,24 @@ const document = {
   ]
 };
 
+const CustomComponent = ({ title, description }) => (
+  <div>
+    <h2>{title}</h2>
+    <p>{description}</p>
+  </div>
+);
+
 const options = {
   renderNode: {
-    [BLOCKS.EMBEDDED_ENTRY]: (node) => `<custom-component>${customComponentRenderer(node)}</custom-component>`
+    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+      const { title, description } = node.target.fields;
+      return <CustomComponent title={title} description={description} />
+    }
   }
-}
+};
 
-documentToReactTree(document, options);
-// -> <custom-component>(...)Link<'Entry'>(...)</custom-component>
+documentToReactComponents(document, options);
+// -> <div><h2>[title]</h2><p>[description]</p></div>
 ```
 
 The `renderNode` keys should be one of the following `BLOCKS` and `INLINES` properties as defined in [`@contentful/rich-text-types`](https://www.npmjs.com/package/@contentful/rich-text-types):
