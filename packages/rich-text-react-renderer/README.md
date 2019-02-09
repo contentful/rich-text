@@ -182,3 +182,19 @@ The `renderMark` keys should be one of the following `MARKS` properties as defin
 - `ITALIC`
 - `UNDERLINE`
 - `CODE`
+
+#### Note on adding a `key` prop in custom renderers:
+
+It is possible to pass a `key` prop in the components returned by custom renderes. A good use case for this is in embeded entries using the node's `target.sys.id`. It is important not to pass anything that is index-like (e.g. 1 or "1") as it may clash with the default renders which automatically inject a `key` prop using their index in the Contentful rich text AST.
+
+To work around this limitation, just append any non-numeric character to your custom key.
+
+```javascript
+const options = {
+  renderMark: {
+    [MARKS.BOLD]: text => {
+      return <b key={`${text}-key`}>{text}</b>;
+    },
+  },
+};
+```

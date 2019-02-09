@@ -20,7 +20,7 @@ text documents.
 - [`gatsby-transformer-contentful-richtext`](https://github.com/contentful/rich-text/tree/master/packages/gatsby-transformer-contentful-richtext)
   - Parses a Contentful Rich Text document to HTML in Gatsby
 - [`rich-text-react-renderer`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-react-renderer)
-  - Parses a Contentful Rich Text document to JSX for use in React
+  - Parses a Contentful Rich Text document to React components
 
 ### Community made
 

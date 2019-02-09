@@ -1,15 +1,6 @@
-import React, { ReactNode, ReactElement } from 'react';
-import {
-  Document,
-  Mark,
-  Text,
-  BLOCKS,
-  MARKS,
-  INLINES,
-  Block,
-  Inline,
-  helpers,
-} from '@contentful/rich-text-types';
+import React, { ReactNode } from 'react';
+import { Block, BLOCKS, Document, Inline, INLINES, MARKS, Text } from '@contentful/rich-text-types';
+import { nodeListToReactComponents } from './util/nodeListToReactComponents';
 
 const defaultNodeRenderers: RenderNode = {
   [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
@@ -78,6 +69,10 @@ export function documentToReactComponents(
   richTextDocument: Document,
   options: Options = {},
 ): ReactNode {
+  if (!richTextDocument || !richTextDocument.content) {
+    return null;
+  }
+
   return nodeListToReactComponents(richTextDocument.content, {
     renderNode: {
       ...defaultNodeRenderers,
@@ -88,36 +83,4 @@ export function documentToReactComponents(
       ...options.renderMark,
     },
   });
-}
-
-function nodeListToReactComponents(nodes: CommonNode[], options: Options): ReactNode {
-  return nodes.map(
-    (node: CommonNode, index: number): ReactNode => {
-      return appendKeyToValidElement(nodeToReactComponent(node, options), index);
-    },
-  );
-}
-
-function nodeToReactComponent(node: CommonNode, options: Options): ReactNode {
-  const { renderNode, renderMark } = options;
-  if (helpers.isText(node)) {
-    return node.marks.reduce((value: ReactNode, mark: Mark): ReactNode => {
-      if (!renderMark[mark.type]) {
-        return value;
-      }
-      return renderMark[mark.type](value);
-    }, node.value);
-  } else {
-    if (!node.nodeType || !renderNode[node.nodeType]) {
-      return null;
-    }
-    return renderNode[node.nodeType](node, nodeListToReactComponents(node.content, options));
-  }
-}
-
-function appendKeyToValidElement(element: ReactNode, key: number): ReactNode {
-  if (element && React.isValidElement(element) && element.key === null) {
-    return React.cloneElement(element, { key });
-  }
-  return element;
 }

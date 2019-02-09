@@ -1,25 +1,26 @@
 import React from 'react';
-import { Document, BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
+import { BLOCKS, Document, INLINES, MARKS } from '@contentful/rich-text-types';
 
-import { documentToReactComponents, Options } from '../index';
+import { documentToReactComponents, Options } from '..';
 
 import {
+  embeddedEntryDoc,
+  headingDoc,
   hrDoc,
   hyperlinkDoc,
-  paragraphDoc,
+  inlineEntityDoc,
   invalidMarksDoc,
   invalidTypeDoc,
-  headingDoc,
   marksDoc,
   multiMarkDoc,
-  embeddedEntryDoc,
-  inlineEntityDoc,
   olDoc,
-  ulDoc,
+  paragraphDoc,
   quoteDoc,
+  ulDoc,
 } from './documents';
 import Paragraph from './components/Paragraph';
 import Strong from './components/Strong';
+import { appendKeyToValidElement } from '../util/appendKeyToValidElement';
 
 describe('documentToReactComponents', () => {
   it('returns an empty array when given an empty document', () => {
@@ -185,5 +186,36 @@ describe('documentToReactComponents', () => {
     const document: Document = inlineEntityDoc(entry, INLINES.EMBEDDED_ENTRY);
 
     expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+});
+
+describe('appendKeyToValidElement', () => {
+  it('appends keys to default React components', () => {
+    expect(appendKeyToValidElement(<div />, 0)).toHaveProperty('key', '0');
+  });
+
+  it('appends keys to custom React components', () => {
+    expect(appendKeyToValidElement(<Paragraph>hello world</Paragraph>, 0)).toHaveProperty(
+      'key',
+      '0',
+    );
+  });
+
+  it('does not overwrite user specified keys', () => {
+    expect(appendKeyToValidElement(<div key={'xyz'} />, 0)).toHaveProperty('key', 'xyz');
+  });
+
+  it('does not add keys to text nodes', () => {
+    expect(appendKeyToValidElement('hello world', 0)).not.toHaveProperty('key');
+  });
+
+  it('does not add keys to node arrays', () => {
+    expect(appendKeyToValidElement([<div key={0} />, <div key={1} />], 0)).not.toHaveProperty(
+      'key',
+    );
+  });
+
+  it('does not add keys to null', () => {
+    expect(appendKeyToValidElement(null, 0)).toBeNull();
   });
 });

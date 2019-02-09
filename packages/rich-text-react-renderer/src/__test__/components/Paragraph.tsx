@@ -5,7 +5,7 @@ type ParagraphProps = {
 };
 
 const Paragraph: FunctionComponent<ParagraphProps> = ({ children }) => {
-  return <p style={{ color: 'red' }}>{children}</p>;
+  return <p>{children}</p>;
 };
 
 export default Paragraph;
