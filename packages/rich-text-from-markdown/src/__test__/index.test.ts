@@ -10,7 +10,7 @@ describe('rich-text-from-markdown', () => {
   });
 
   test('should call the fallback function when a node is not supported', async () => {
-    const fakeNode = { nodeType: 'image' };
+    const fakeNode = { nodeType: 'image', data: {} };
     const fallback = jest.fn(node => Promise.resolve(fakeNode));
     const result = await richTextFromMarkdown(
       '![image](https://image.example.com/image.jpg)',
@@ -24,6 +24,7 @@ describe('rich-text-from-markdown', () => {
       content: [
         {
           nodeType: 'image',
+          data: {},
         },
       ],
     });
@@ -62,7 +63,7 @@ describe.each([
 
 describe('parses complex inline image markdown correctly', () => {
   test('incoming markdown tree calls fallback twice', async () => {
-    const fakeNode = { nodeType: 'image' };
+    const fakeNode = { nodeType: 'image', data: {} };
     const fallback = jest.fn(node => Promise.resolve(fakeNode));
     const result = await richTextFromMarkdown(
       `![image](https://image.example.com/image.jpg)
@@ -77,16 +78,18 @@ describe('parses complex inline image markdown correctly', () => {
       content: [
         {
           nodeType: 'image',
+          data: {},
         },
         block(BLOCKS.PARAGRAPH, {}, text('\n      ')),
         {
           nodeType: 'image',
+          data: {},
         },
       ],
     });
   });
   test('incoming markdown tree calls fallback twice', async () => {
-    const fakeNode = { nodeType: 'image' };
+    const fakeNode = { nodeType: 'image', data: {} };
     const fallback = jest.fn(node => Promise.resolve(fakeNode));
     const result = await richTextFromMarkdown(
       `some text ![image](https://image.example.com/image.jpg)![image](https://image.example.com/image2.jpg) some more text`,
@@ -101,9 +104,11 @@ describe('parses complex inline image markdown correctly', () => {
         block(BLOCKS.PARAGRAPH, {}, text('some text ')),
         {
           nodeType: 'image',
+          data: {},
         },
         {
           nodeType: 'image',
+          data: {},
         },
         block(BLOCKS.PARAGRAPH, {}, text(' some more text')),
       ],

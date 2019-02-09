@@ -49,7 +49,7 @@
   "devDependencies": {
     "@types/benchmark": "^1.0.31",
     "@types/faker": "^4.1.4",
-    "@types/jest": "^23.3.8",
+    "@types/jest": "^23.3.12",
     "benchmark": "^2.1.4",
     "commitizen": "3.0.4",
     "git-cz": "^1.8.0",
