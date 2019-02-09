@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { helpers, Mark } from '@contentful/rich-text-types';
 import { CommonNode, Options } from '..';
 import { appendKeyToValidElement } from './appendKeyToValidElement';
@@ -21,9 +21,10 @@ export function nodeToReactComponent(node: CommonNode, options: Options): ReactN
       return renderMark[mark.type](value);
     }, node.value);
   } else {
+    const children: ReactNode = nodeListToReactComponents(node.content, options);
     if (!node.nodeType || !renderNode[node.nodeType]) {
-      return null;
+      return <>{children}</>;
     }
-    return renderNode[node.nodeType](node, nodeListToReactComponents(node.content, options));
+    return renderNode[node.nodeType](node, children);
   }
 }

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactNode, ReactNodeArray } from 'react';
 import { BLOCKS, Document, INLINES, MARKS } from '@contentful/rich-text-types';
 
-import { documentToReactComponents, Options } from '..';
+import { CommonNode, documentToReactComponents, Options } from '..';
 
 import {
   embeddedEntryDoc,
@@ -21,6 +21,8 @@ import {
 import Paragraph from './components/Paragraph';
 import Strong from './components/Strong';
 import { appendKeyToValidElement } from '../util/appendKeyToValidElement';
+import { nodeListToReactComponents, nodeToReactComponent } from '../util/nodeListToReactComponents';
+import { render } from 'react-dom';
 
 describe('documentToReactComponents', () => {
   it('returns an empty array when given an empty document', () => {
@@ -217,5 +219,107 @@ describe('appendKeyToValidElement', () => {
 
   it('does not add keys to null', () => {
     expect(appendKeyToValidElement(null, 0)).toBeNull();
+  });
+});
+
+describe('nodeToReactComponent', () => {
+  const options: Options = {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node: CommonNode, children: ReactNode): ReactNode => <p>{children}</p>,
+    },
+    renderMark: {
+      [MARKS.BOLD]: (text: ReactNode): ReactNode => <b>{text}</b>,
+    },
+  };
+
+  const createBlockNode = (nodeType: BLOCKS): CommonNode => ({
+    nodeType,
+    data: {},
+    content: [
+      {
+        nodeType: 'text',
+        value: 'hello world',
+        marks: [],
+        data: {},
+      },
+    ],
+  });
+
+  const createTextNode = (type: string): CommonNode => ({
+    nodeType: 'text',
+    value: 'hello world',
+    marks: [{ type }],
+    data: {},
+  });
+
+  it('renders valid nodes', () => {
+    expect(nodeToReactComponent(createBlockNode(BLOCKS.PARAGRAPH), options)).toMatchSnapshot();
+  });
+
+  it('renders invalid node types in React fragments', () => {
+    expect(nodeToReactComponent(createBlockNode(BLOCKS.HEADING_1), options)).toMatchSnapshot();
+  });
+
+  it('renders valid marks', () => {
+    expect(nodeToReactComponent(createTextNode(MARKS.BOLD), options)).toMatchSnapshot();
+  });
+
+  it('does not add additional tags on invalid marks', () => {
+    expect(nodeToReactComponent(createTextNode(MARKS.ITALIC), options)).toMatchSnapshot();
+  });
+});
+
+describe('nodeListToReactComponents', () => {
+  const options: Options = {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node: CommonNode, children: ReactNode): ReactNode => <p>{children}</p>,
+    },
+    renderMark: {
+      [MARKS.BOLD]: (text: ReactNode): ReactNode => <b>{text}</b>,
+    },
+  };
+
+  const nodes: CommonNode[] = [
+    {
+      nodeType: BLOCKS.PARAGRAPH,
+      data: {},
+      content: [
+        {
+          nodeType: 'text',
+          value: 'hello',
+          marks: [{ type: MARKS.BOLD }],
+          data: {},
+        },
+      ],
+    },
+    {
+      nodeType: 'text',
+      value: ' ',
+      marks: [],
+      data: {},
+    },
+    {
+      nodeType: BLOCKS.PARAGRAPH,
+      data: {},
+      content: [
+        {
+          nodeType: 'text',
+          value: 'world',
+          marks: [],
+          data: {},
+        },
+      ],
+    },
+  ];
+
+  it('renders children as an array with keys from its index', () => {
+    const renderedNodes: ReactNodeArray = nodeListToReactComponents(
+      nodes,
+      options,
+    ) as ReactNodeArray;
+    expect(renderedNodes[0]).toHaveProperty('key', '0');
+    expect(renderedNodes[1]).not.toHaveProperty('key');
+    expect(renderedNodes[2]).toHaveProperty('key', '2');
+    expect(renderedNodes).toMatchSnapshot();
   });
 });

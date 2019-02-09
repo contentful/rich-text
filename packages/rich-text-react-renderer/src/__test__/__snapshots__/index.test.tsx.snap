@@ -57,7 +57,9 @@ Array [
 
 exports[`documentToReactComponents renders empty node if type is not recognized 1`] = `
 Array [
-  null,
+  <React.Fragment>
+    Hello world!
+  </React.Fragment>,
 ]
 `;
 
@@ -234,4 +236,38 @@ Array [
     
   </p>,
 ]
+`;
+
+exports[`nodeListToReactComponents renders children as an array with keys from its index 1`] = `
+Array [
+  <p>
+    <b>
+      hello
+    </b>
+  </p>,
+  " ",
+  <p>
+    world
+  </p>,
+]
+`;
+
+exports[`nodeToReactComponent does not add additional tags on invalid marks 1`] = `"hello world"`;
+
+exports[`nodeToReactComponent renders invalid node types in React fragments 1`] = `
+<React.Fragment>
+  hello world
+</React.Fragment>
+`;
+
+exports[`nodeToReactComponent renders valid marks 1`] = `
+<b>
+  hello world
+</b>
+`;
+
+exports[`nodeToReactComponent renders valid nodes 1`] = `
+<p>
+  hello world
+</p>
 `;
