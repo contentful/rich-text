@@ -1,6 +1,6 @@
 {
   "name": "@contentful/gatsby-transformer-contentful-richtext",
-  "version": "13.0.0",
+  "version": "13.0.1",
   "description": "",
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
