@@ -23,14 +23,17 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const document = {
   nodeType: 'document',
+  data: {},
   content: [
     {
       nodeType: 'paragraph',
+      data: {},
       content: [
         {
           nodeType: 'text',
           value: 'Hello world!',
           marks: [],
+          data: {}
         },
       ],
     },

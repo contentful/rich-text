@@ -75,19 +75,23 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const document = {
   nodeType: 'document',
+  data: {},
   content: [
     {
       nodeType: 'paragraph',
+      data:{},
       content: [
         {
           nodeType: 'text',
           value: 'Hello',
-          marks: [{ type: 'bold' }]
+          marks: [{ type: 'bold' }],
+          data: {}
         },
         {
           nodeType: 'text',
           value: ' world!',
           marks: [{ type: 'italic' }]
+          data: {}
         },
       ],
     },
@@ -115,6 +119,7 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const document = {
   nodeType: 'document',
+  data: {},
   content: [
     {
       nodeType: 'embedded-entry-block',
