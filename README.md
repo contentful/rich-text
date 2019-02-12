@@ -1,7 +1,7 @@
 # rich-text
 
-Monorepo with Typescript libraries for handling and rendering Contentful rich
-text documents.
+Monorepo with Typescript libraries for handling and rendering Contentful Rich
+Text documents.
 
 ## Packages
 
@@ -26,6 +26,12 @@ text documents.
 
 - [`rich-text-to-jsx`](https://github.com/connor-baer/rich-text-to-jsx)
   - Opinionated JSX renderer for the Contentful rich text field type
+
+## About Rich Text
+
+- [Rich Text Concept](https://www.contentful.com/developers/docs/concepts/rich-text/)
+- [Getting Started](https://www.contentful.com/developers/docs/tutorials/general/getting-started-with-rich-text-field-type/)
+- [Migrate content to Rich Text](https://www.contentful.com/developers/docs/tutorials/general/migrate-to-rich-text/)
 
 ## Get involved
 
