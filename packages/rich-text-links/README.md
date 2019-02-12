@@ -24,9 +24,11 @@ import { getRichTextEntityLinks } from '@contentful/rich-text-links';
 
 const document = {
   nodeType: 'document',
+  data: {},
   content: [
     {
       nodeType: 'paragraph',
+      data: {},
       content: [
         {
           nodeType: 'embedded-entry-block',

@@ -22,19 +22,23 @@ import { documentToPlainTextString } from '@contentful/rich-text-plain-text-rend
 
 const document = {
   nodeType: 'document',
+  data: {},
   content: [
     {
       nodeType: 'paragraph',
+      data: {},
       content: [
         {
           nodeType: 'text',
           value: 'Hello',
-          marks: [{ type: 'bold' }]
+          marks: [{ type: 'bold' }],
+          data: {}
         },
         {
           nodeType: 'text',
           value: ' world!',
-          marks: [{ type: 'italic' }]
+          marks: [{ type: 'italic' }],
+          data: {}
         },
       ],
     },
