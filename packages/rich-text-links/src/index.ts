@@ -10,9 +10,18 @@ export type EntityLinkNodeData = {
 };
 
 /**
- * Given a rich text document, returns all entity links.
+ *  Extracts entity links from a Rich Text document.
  */
-function getRichTextEntityLinks(document: Document, type?: string): EntityLinks {
+function getRichTextEntityLinks(
+  /**
+   *  An instance of a Rich Text Document.
+   */
+  document: Document,
+  /**
+   *  Node type. Only the entity links with given node type will be extracted.
+   */
+  type?: string,
+): EntityLinks {
   const entityLinks: EntityLinkMaps = {
     Entry: new Map(),
     Asset: new Map(),
