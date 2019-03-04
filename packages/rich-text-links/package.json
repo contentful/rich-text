@@ -2,7 +2,7 @@
   "name": "@contentful/rich-text-links",
   "version": "13.0.0",
   "main": "dist/rich-text-links.es5.js",
-  "typings": "dist/types/rich-text-links.d.ts",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
