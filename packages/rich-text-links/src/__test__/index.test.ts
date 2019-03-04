@@ -311,4 +311,58 @@ describe('getRichTextEntityLinks', () => {
       });
     });
   });
+
+  describe('filtering links of given type', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.EMBEDDED_ENTRY,
+              data: {
+                target: {
+                  sys: {
+                    linkType: 'Entry',
+                    type: 'Link',
+                    id: 'foo',
+                  },
+                },
+              },
+              content: [],
+            },
+            {
+              nodeType: BLOCKS.EMBEDDED_ASSET,
+              data: {
+                target: {
+                  sys: {
+                    linkType: 'Asset',
+                    type: 'Link',
+                    id: 'bar',
+                  },
+                },
+              },
+              content: [],
+            },
+          ],
+        },
+      ],
+    };
+
+    it('ignores all links of different types', () => {
+      expect(richTextLinks.getRichTextEntityLinks(document, BLOCKS.EMBEDDED_ENTRY)).toEqual({
+        Entry: [
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'foo',
+          },
+        ],
+        Asset: [],
+      });
+    });
+  });
 });

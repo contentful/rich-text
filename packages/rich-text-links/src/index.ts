@@ -10,9 +10,18 @@ export type EntityLinkNodeData = {
 };
 
 /**
- * Given a rich text document, returns all entity links.
+ *  Extracts entity links from a Rich Text document.
  */
-function getRichTextEntityLinks(document: Document): EntityLinks {
+function getRichTextEntityLinks(
+  /**
+   *  An instance of a Rich Text Document.
+   */
+  document: Document,
+  /**
+   *  Node type. Only the entity links with given node type will be extracted.
+   */
+  type?: string,
+): EntityLinks {
   const entityLinks: EntityLinkMaps = {
     Entry: new Map(),
     Asset: new Map(),
@@ -20,7 +29,7 @@ function getRichTextEntityLinks(document: Document): EntityLinks {
 
   const content = (document && document.content) || ([] as Node[]);
   for (const node of content) {
-    addLinksFromRichTextNode(node, entityLinks);
+    addLinksFromRichTextNode(node, entityLinks, type);
   }
 
   return {
@@ -29,13 +38,14 @@ function getRichTextEntityLinks(document: Document): EntityLinks {
   };
 }
 
-function addLinksFromRichTextNode(node: Node, links: EntityLinkMaps): void {
+function addLinksFromRichTextNode(node: Node, links: EntityLinkMaps, type?: string): void {
   const toCrawl: Node[] = [node];
 
   while (toCrawl.length > 0) {
-    const { data, content } = toCrawl.pop() as Block;
+    const { data, content, nodeType } = toCrawl.pop() as Block;
+    const hasRequestedNodeType = !type || nodeType === type;
 
-    if (isLinkObject(data)) {
+    if (hasRequestedNodeType && isLinkObject(data)) {
       links[data.target.sys.linkType].set(data.target.sys.id, data.target.sys);
     } else if (Array.isArray(content)) {
       for (const childNode of content) {
