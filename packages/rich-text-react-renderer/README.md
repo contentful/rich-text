@@ -109,10 +109,11 @@ const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
   },
+  renderText: text => text.replace('!', '?'),
 };
 
 documentToReactComponents(document, options);
-// -> <p class="align-center"><p class="bold">Hello</p><u> world!</u></p>
+// -> <p class="align-center"><p class="bold">Hello</p><u> world?</u></p>
 ```
 
 Last, but not least, you can pass a custom rendering component for an embedded entry:
@@ -186,9 +187,21 @@ The `renderMark` keys should be one of the following `MARKS` properties as defin
 - `UNDERLINE`
 - `CODE`
 
+The `renderText` callback is a function that has a single string argument and returns a React node. Each text node is evaluated individually by this callback. A possible use case for this is to replace instances of `\n` produced by `Shift + Enter` with `<br/>` React elements. This could be accomplished in the following way:
+
+```javascript
+const options = {
+  renderText: text => {
+    return text.split('\n').reduce((children, textSegment, index) => {
+      return [...children, index > 0 && <br key={index} />, textSegment];
+    }, []);
+  },
+};
+```
+
 #### Note on adding a `key` prop in custom renderers:
 
-It is possible to pass a `key` prop in the components returned by custom renderes. A good use case for this is in embeded entries using the node's `target.sys.id`. It is important not to pass anything that is index-like (e.g. 1 or "1") as it may clash with the default renders which automatically inject a `key` prop using their index in the Contentful rich text AST.
+It is possible to pass a `key` prop in the components returned by custom renderers. A good use case for this is in embeded entries using the node's `target.sys.id`. It is important not to pass anything that is index-like (e.g. 1 or "1") as it may clash with the default renderers which automatically inject a `key` prop using their index in the Contentful rich text AST.
 
 To work around this limitation, just append any non-numeric character to your custom key.
 
