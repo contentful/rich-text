@@ -147,9 +147,11 @@ Array [
 exports[`documentToReactComponents renders marks with the passed custom mark rendered 1`] = `
 Array [
   <p>
-    <Strong>
-      hello world
-    </Strong>
+    <i>
+      <Strong>
+        hello world
+      </Strong>
+    </i>
   </p>,
 ]
 `;
@@ -193,8 +195,11 @@ Array [
 exports[`documentToReactComponents renders nodes with passed custom node renderer 1`] = `
 Array [
   <Paragraph>
-    hello world
+    hello
   </Paragraph>,
+  <blockquote>
+    world
+  </blockquote>,
 ]
 `;
 

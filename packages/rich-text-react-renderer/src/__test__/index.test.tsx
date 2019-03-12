@@ -71,7 +71,7 @@ describe('documentToReactComponents', () => {
         [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
       },
     };
-    const document: Document = paragraphDoc;
+    const document: Document = quoteDoc;
     expect(documentToReactComponents(document, options)).toMatchSnapshot();
   });
 
@@ -81,7 +81,7 @@ describe('documentToReactComponents', () => {
         [MARKS.BOLD]: text => <Strong>{text}</Strong>,
       },
     };
-    const document: Document = marksDoc(MARKS.BOLD);
+    const document: Document = multiMarkDoc();
 
     expect(documentToReactComponents(document, options)).toMatchSnapshot();
   });
