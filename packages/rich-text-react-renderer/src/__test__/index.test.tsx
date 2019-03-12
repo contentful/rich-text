@@ -22,7 +22,6 @@ import Paragraph from './components/Paragraph';
 import Strong from './components/Strong';
 import { appendKeyToValidElement } from '../util/appendKeyToValidElement';
 import { nodeListToReactComponents, nodeToReactComponent } from '../util/nodeListToReactComponents';
-import { render } from 'react-dom';
 
 describe('documentToReactComponents', () => {
   it('returns an empty array when given an empty document', () => {
@@ -60,6 +59,12 @@ describe('documentToReactComponents', () => {
     });
   });
 
+  it('renders unaltered text with default text renderer', () => {
+    const document: Document = paragraphDoc;
+
+    expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+
   it('renders multiple marks with default mark renderer', () => {
     const doc: Document = multiMarkDoc();
     expect(documentToReactComponents(doc)).toMatchSnapshot();
@@ -75,13 +80,22 @@ describe('documentToReactComponents', () => {
     expect(documentToReactComponents(document, options)).toMatchSnapshot();
   });
 
-  it('renders marks with the passed custom mark rendered', () => {
+  it('renders marks with the passed custom mark renderer', () => {
     const options: Options = {
       renderMark: {
         [MARKS.BOLD]: text => <Strong>{text}</Strong>,
       },
     };
     const document: Document = multiMarkDoc();
+
+    expect(documentToReactComponents(document, options)).toMatchSnapshot();
+  });
+
+  it('renders text with the passed custom text renderer', () => {
+    const options: Options = {
+      renderText: text => text.replace(/world/, 'Earth')
+    };
+    const document: Document = paragraphDoc;
 
     expect(documentToReactComponents(document, options)).toMatchSnapshot();
   });
@@ -266,6 +280,38 @@ describe('nodeToReactComponent', () => {
 
   it('does not add additional tags on invalid marks', () => {
     expect(nodeToReactComponent(createTextNode(MARKS.ITALIC), options)).toMatchSnapshot();
+  });
+
+  describe('with custom text renderer', () => {
+    const node: CommonNode = {
+      nodeType: BLOCKS.PARAGRAPH,
+      data: {},
+      content: [
+        {
+          nodeType: 'text',
+          value: 'some\nlines\nof\ntext',
+          marks: [{ type: MARKS.BOLD }],
+          data: {},
+        },
+      ],
+    };
+
+    const optionsWithTextRenderer = {
+      ...options,
+      renderText: (text: string): ReactNode => {
+        return text.split('\n').reduce((children, textSegment, index) => {
+          return [...children, index > 0 && <br key={index} />, textSegment];
+        }, []);
+      },
+    };
+
+    it('does not render altered text with default text renderer', () => {
+      expect(nodeToReactComponent(node, options)).toMatchSnapshot();
+    });
+
+    it('renders altered text with custom text renderer', () => {
+      expect(nodeToReactComponent(node, optionsWithTextRenderer)).toMatchSnapshot();
+    });
   });
 });
 

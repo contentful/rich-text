@@ -144,7 +144,7 @@ Array [
 ]
 `;
 
-exports[`documentToReactComponents renders marks with the passed custom mark rendered 1`] = `
+exports[`documentToReactComponents renders marks with the passed custom mark renderer 1`] = `
 Array [
   <p>
     <i>
@@ -223,6 +223,22 @@ Array [
 ]
 `;
 
+exports[`documentToReactComponents renders text with the passed custom text renderer 1`] = `
+Array [
+  <p>
+    hello Earth
+  </p>,
+]
+`;
+
+exports[`documentToReactComponents renders unaltered text with default text renderer 1`] = `
+Array [
+  <p>
+    hello world
+  </p>,
+]
+`;
+
 exports[`documentToReactComponents renders unordered lists 1`] = `
 Array [
   <ul>
@@ -274,5 +290,30 @@ exports[`nodeToReactComponent renders valid marks 1`] = `
 exports[`nodeToReactComponent renders valid nodes 1`] = `
 <p>
   hello world
+</p>
+`;
+
+exports[`nodeToReactComponent with custom text renderer does not render altered text with default text renderer 1`] = `
+<p>
+  <b>
+    some
+lines
+of
+text
+  </b>
+</p>
+`;
+
+exports[`nodeToReactComponent with custom text renderer renders altered text with custom text renderer 1`] = `
+<p>
+  <b>
+    some
+    <br />
+    lines
+    <br />
+    of
+    <br />
+    text
+  </b>
 </p>
 `;

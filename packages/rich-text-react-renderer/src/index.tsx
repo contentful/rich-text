@@ -51,6 +51,10 @@ export interface RenderMark {
   [k: string]: (text: ReactNode) => ReactNode;
 }
 
+export interface RenderText {
+  (text: string): ReactNode;
+}
+
 export interface Options {
   /**
    * Node renderers
@@ -60,6 +64,10 @@ export interface Options {
    * Mark renderers
    */
   renderMark?: RenderMark;
+  /**
+   * Text renderer
+   */
+  renderText?: RenderText;
 }
 
 /**
@@ -82,5 +90,6 @@ export function documentToReactComponents(
       ...defaultMarkRenderers,
       ...options.renderMark,
     },
+    renderText: options.renderText
   });
 }
