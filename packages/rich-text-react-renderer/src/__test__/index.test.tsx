@@ -93,7 +93,7 @@ describe('documentToReactComponents', () => {
 
   it('renders text with the passed custom text renderer', () => {
     const options: Options = {
-      renderText: text => text.replace(/world/, 'Earth')
+      renderText: text => text.replace(/world/, 'Earth'),
     };
     const document: Document = paragraphDoc;
 
@@ -282,36 +282,34 @@ describe('nodeToReactComponent', () => {
     expect(nodeToReactComponent(createTextNode(MARKS.ITALIC), options)).toMatchSnapshot();
   });
 
-  describe('with custom text renderer', () => {
-    const node: CommonNode = {
-      nodeType: BLOCKS.PARAGRAPH,
-      data: {},
-      content: [
-        {
-          nodeType: 'text',
-          value: 'some\nlines\nof\ntext',
-          marks: [{ type: MARKS.BOLD }],
-          data: {},
-        },
-      ],
-    };
-
-    const optionsWithTextRenderer = {
-      ...options,
-      renderText: (text: string): ReactNode => {
-        return text.split('\n').reduce((children, textSegment, index) => {
-          return [...children, index > 0 && <br key={index} />, textSegment];
-        }, []);
+  const customTextNode: CommonNode = {
+    nodeType: BLOCKS.PARAGRAPH,
+    data: {},
+    content: [
+      {
+        nodeType: 'text',
+        value: 'some\nlines\nof\ntext',
+        marks: [{ type: MARKS.BOLD }],
+        data: {},
       },
-    };
+    ],
+  };
 
-    it('does not render altered text with default text renderer', () => {
-      expect(nodeToReactComponent(node, options)).toMatchSnapshot();
-    });
+  it('does not render altered text with default text renderer', () => {
+    expect(nodeToReactComponent(customTextNode, options)).toMatchSnapshot();
+  });
 
-    it('renders altered text with custom text renderer', () => {
-      expect(nodeToReactComponent(node, optionsWithTextRenderer)).toMatchSnapshot();
-    });
+  it('renders altered text with custom text renderer', () => {
+    expect(
+      nodeToReactComponent(customTextNode, {
+        ...options,
+        renderText: (text: string): ReactNode => {
+          return text.split('\n').reduce((children, textSegment, index) => {
+            return [...children, index > 0 && <br key={index} />, textSegment];
+          }, []);
+        },
+      }),
+    ).toMatchSnapshot();
   });
 });
 

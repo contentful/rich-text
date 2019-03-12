@@ -275,6 +275,31 @@ Array [
 
 exports[`nodeToReactComponent does not add additional tags on invalid marks 1`] = `"hello world"`;
 
+exports[`nodeToReactComponent does not render altered text with default text renderer 1`] = `
+<p>
+  <b>
+    some
+lines
+of
+text
+  </b>
+</p>
+`;
+
+exports[`nodeToReactComponent renders altered text with custom text renderer 1`] = `
+<p>
+  <b>
+    some
+    <br />
+    lines
+    <br />
+    of
+    <br />
+    text
+  </b>
+</p>
+`;
+
 exports[`nodeToReactComponent renders invalid node types in React fragments 1`] = `
 <React.Fragment>
   hello world
@@ -290,30 +315,5 @@ exports[`nodeToReactComponent renders valid marks 1`] = `
 exports[`nodeToReactComponent renders valid nodes 1`] = `
 <p>
   hello world
-</p>
-`;
-
-exports[`nodeToReactComponent with custom text renderer does not render altered text with default text renderer 1`] = `
-<p>
-  <b>
-    some
-lines
-of
-text
-  </b>
-</p>
-`;
-
-exports[`nodeToReactComponent with custom text renderer renders altered text with custom text renderer 1`] = `
-<p>
-  <b>
-    some
-    <br />
-    lines
-    <br />
-    of
-    <br />
-    text
-  </b>
 </p>
 `;
