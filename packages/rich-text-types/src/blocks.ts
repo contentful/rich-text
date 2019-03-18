@@ -20,6 +20,7 @@ enum BLOCKS {
   QUOTE = 'blockquote',
 
   EMBEDDED_ENTRY = 'embedded-entry-block',
+  EMBEDDED_ENTRY_INLINE = 'embedded-entry-inline',
   EMBEDDED_ASSET = 'embedded-asset-block',
 }
 
