@@ -1,5 +1,5 @@
 import { Document, BLOCKS, INLINES } from '../../node_modules/@contentful/rich-text-types';
-import richTextLinks from '../index';
+import { getRichTextEntityLinks } from '../index';
 
 describe('getRichTextEntityLinks', () => {
   describe('returning top-level rich text links', () => {
@@ -43,7 +43,7 @@ describe('getRichTextEntityLinks', () => {
     };
 
     it('returns all entity link objects', () => {
-      expect(richTextLinks.getRichTextEntityLinks(document)).toEqual({
+      expect(getRichTextEntityLinks(document)).toEqual({
         Entry: [
           {
             linkType: 'Entry',
@@ -159,7 +159,7 @@ describe('getRichTextEntityLinks', () => {
     };
 
     it('returns all entity link objects', () => {
-      expect(richTextLinks.getRichTextEntityLinks(document)).toEqual({
+      expect(getRichTextEntityLinks(document)).toEqual({
         Entry: [
           {
             linkType: 'Entry',
@@ -293,7 +293,7 @@ describe('getRichTextEntityLinks', () => {
     };
 
     it('ignores all redundant links', () => {
-      expect(richTextLinks.getRichTextEntityLinks(document)).toEqual({
+      expect(getRichTextEntityLinks(document)).toEqual({
         Entry: [
           {
             linkType: 'Entry',
@@ -353,7 +353,7 @@ describe('getRichTextEntityLinks', () => {
     };
 
     it('ignores all links of different types', () => {
-      expect(richTextLinks.getRichTextEntityLinks(document, BLOCKS.EMBEDDED_ENTRY)).toEqual({
+      expect(getRichTextEntityLinks(document, BLOCKS.EMBEDDED_ENTRY)).toEqual({
         Entry: [
           {
             linkType: 'Entry',
