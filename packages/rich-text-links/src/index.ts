@@ -12,7 +12,7 @@ export type EntityLinkNodeData = {
 /**
  *  Extracts entity links from a Rich Text document.
  */
-function getRichTextEntityLinks(
+export function getRichTextEntityLinks(
   /**
    *  An instance of a Rich Text Document.
    */
@@ -99,7 +99,3 @@ function iteratorToArray<T>(iterator: IterableIterator<T>): T[] {
 
   return result;
 }
-
-export default {
-  getRichTextEntityLinks,
-};
