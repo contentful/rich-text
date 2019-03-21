@@ -12,7 +12,7 @@ module.exports = {
     '!packages/gatsby-transformer-contentful-richtext/*.js',
   ],
   roots: ['packages/'],
-  testPathIgnorePatterns: ['/dist/'],
+  testPathIgnorePatterns: ['/dist/', '/gatsby-transformer-contentful-richtext/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
