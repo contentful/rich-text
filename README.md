@@ -26,6 +26,8 @@ Text documents.
 
 - [`rich-text-to-jsx`](https://github.com/connor-baer/rich-text-to-jsx)
   - Opinionated JSX renderer for the Contentful rich text field type
+- [`rich-text-flutter`](https://github.com/Kumanu/contentful-rich-text-flutter)
+  - Flutter renderer for the Contentful rich text field type (work in progress)
 
 ## About Rich Text
 
