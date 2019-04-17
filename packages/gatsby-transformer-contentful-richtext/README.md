@@ -1,5 +1,9 @@
 # DEPRECATED
 
+Please read this resource: ["Using Rich Text with Gatsby"](https://www.contentful.com/developers/docs/tutorials/general/rich-text-and-gatsby/) to get the correct way to render Rich Text content in Gatsby.
+
+====
+
 Package `@contentful/gatsby-transformer-contentful-richtext` no longer maintained and deprecated in favour of `gatsby-source-contentful` and `@contentful/rich-text-react-renderer`.
 
 ## Reasons for deprecation
