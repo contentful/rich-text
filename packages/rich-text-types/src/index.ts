@@ -1,5 +1,5 @@
-import 'core-js/fn/object/values';
-import 'core-js/fn/array/includes';
+import 'core-js/features/object/values';
+import 'core-js/features/array/includes';
 
 export { default as BLOCKS } from './blocks';
 export { default as INLINES } from './inlines';

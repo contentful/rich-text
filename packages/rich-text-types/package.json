@@ -24,22 +24,22 @@
     "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.12",
-    "@types/node": "^10.12.18",
-    "core-js": "^2.5.7",
+    "@types/jest": "^24.0.12",
+    "@types/node": "^11.13.9",
+    "core-js": "^3.0.1",
     "faker": "^4.1.0",
-    "jest": "^23.6.0",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.66.6",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-copy": "^0.2.3",
-    "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
+    "jest": "^24.7.1",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.11.0",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-copy": "^2.0.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^4.2.3",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.17.2",
-    "ts-jest": "^23.10.4",
-    "ts-node": "^7.0.1",
-    "typescript": "^3.2.2",
-    "typescript-json-schema": "^0.33.0"
+    "rollup-plugin-typescript2": "^0.21.0",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5",
+    "typescript-json-schema": "^0.37.0"
   }
 }
