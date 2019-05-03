@@ -31,7 +31,7 @@ describe('rich-text-from-markdown', () => {
   });
 });
 
-describe.each([
+describe.each<[string, string[], string[]?]>([
   ['*This is an italic text*', ['This is an italic text', 'italic']],
   ['__This a bold text__', ['This a bold text', 'bold']],
   ['`This is code`', ['This is code', 'code']],

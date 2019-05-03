@@ -26,15 +26,15 @@
     "@contentful/rich-text-types": "^13.1.0"
   },
   "devDependencies": {
-    "jest": "^23.6.0",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.66.6",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
+    "jest": "^24.7.1",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.11.0",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^4.2.3",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.17.2",
-    "ts-jest": "^23.10.4",
-    "typescript": "^3.2.2"
+    "rollup-plugin-typescript2": "^0.21.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
   }
 }
