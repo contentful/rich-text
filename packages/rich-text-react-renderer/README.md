@@ -144,7 +144,7 @@ const CustomComponent = ({ title, description }) => (
 const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-      const { title, description } = node.target.fields;
+      const { title, description } = node.data.target.fields;
       return <CustomComponent title={title} description={description} />
     }
   }
