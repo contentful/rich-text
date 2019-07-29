@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
 import { Block, BLOCKS, Document, Inline, INLINES, MARKS, Text } from '@contentful/rich-text-types';
-import { nodeListToReactComponents } from './util/nodeListToReactComponents';
+import { nodeToReactComponent } from './util/nodeListToReactComponents';
 
 const defaultNodeRenderers: RenderNode = {
+  [BLOCKS.DOCUMENT]: (node, children) => children,
   [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
   [BLOCKS.HEADING_1]: (node, children) => <h1>{children}</h1>,
   [BLOCKS.HEADING_2]: (node, children) => <h2>{children}</h2>,
@@ -77,11 +78,11 @@ export function documentToReactComponents(
   richTextDocument: Document,
   options: Options = {},
 ): ReactNode {
-  if (!richTextDocument || !richTextDocument.content) {
+  if (!richTextDocument) {
     return null;
   }
 
-  return nodeListToReactComponents(richTextDocument.content, {
+  return nodeToReactComponent(richTextDocument, {
     renderNode: {
       ...defaultNodeRenderers,
       ...options.renderNode,
@@ -90,6 +91,6 @@ export function documentToReactComponents(
       ...defaultMarkRenderers,
       ...options.renderMark,
     },
-    renderText: options.renderText
+    renderText: options.renderText,
   });
 }
