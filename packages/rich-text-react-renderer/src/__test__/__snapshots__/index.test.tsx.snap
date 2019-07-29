@@ -193,14 +193,14 @@ Array [
 `;
 
 exports[`documentToReactComponents renders nodes with passed custom node renderer 1`] = `
-Array [
+<Document>
   <Paragraph>
     hello
-  </Paragraph>,
+  </Paragraph>
   <blockquote>
     world
-  </blockquote>,
-]
+  </blockquote>
+</Document>
 `;
 
 exports[`documentToReactComponents renders ordered lists 1`] = `

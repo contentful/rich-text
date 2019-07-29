@@ -18,6 +18,7 @@ import {
   quoteDoc,
   ulDoc,
 } from './documents';
+import DocumentWrapper from './components/Document';
 import Paragraph from './components/Paragraph';
 import Strong from './components/Strong';
 import { appendKeyToValidElement } from '../util/appendKeyToValidElement';
@@ -73,6 +74,7 @@ describe('documentToReactComponents', () => {
   it('renders nodes with passed custom node renderer', () => {
     const options: Options = {
       renderNode: {
+        [BLOCKS.DOCUMENT]: (node, children) => <DocumentWrapper>{children}</DocumentWrapper>,
         [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
       },
     };
