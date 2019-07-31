@@ -35,6 +35,13 @@ describe('documentToReactComponents', () => {
     expect(documentToReactComponents(document)).toEqual([]);
   });
 
+  it('returns an array of elements when given a populated document', () => {
+    const document: Document = hrDoc;
+
+    expect(documentToReactComponents(document)).toMatchSnapshot();
+    expect(documentToReactComponents(document)).toBeInstanceOf(Array);
+  });
+
   it('renders nodes with default node renderer', () => {
     const docs: Document[] = [
       paragraphDoc,

@@ -259,6 +259,18 @@ Array [
 ]
 `;
 
+exports[`documentToReactComponents returns an array of elements when given a populated document 1`] = `
+Array [
+  <p>
+    hello world
+  </p>,
+  <hr />,
+  <p>
+    
+  </p>,
+]
+`;
+
 exports[`nodeListToReactComponents renders children as an array with keys from its index 1`] = `
 Array [
   <p>
