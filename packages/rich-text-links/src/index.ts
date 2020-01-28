@@ -47,7 +47,9 @@ function addLinksFromRichTextNode(node: Node, links: EntityLinkMaps, type?: stri
 
     if (hasRequestedNodeType && isLinkObject(data)) {
       links[data.target.sys.linkType].set(data.target.sys.id, data.target.sys);
-    } else if (Array.isArray(content)) {
+    }
+
+    if (Array.isArray(content)) {
       for (const childNode of content) {
         toCrawl.push(childNode);
       }

@@ -69,7 +69,15 @@ describe('getRichTextEntityLinks', () => {
       content: [
         {
           nodeType: BLOCKS.PARAGRAPH,
-          data: {},
+          data: {
+            target: {
+              sys: {
+                linkType: 'Entry',
+                type: 'Link',
+                id: 'foo',
+              },
+            },
+          },
           content: [
             {
               nodeType: BLOCKS.EMBEDDED_ENTRY,
@@ -78,7 +86,7 @@ describe('getRichTextEntityLinks', () => {
                   sys: {
                     linkType: 'Entry',
                     type: 'Link',
-                    id: 'foo',
+                    id: 'bar',
                   },
                 },
               },
@@ -147,7 +155,7 @@ describe('getRichTextEntityLinks', () => {
                   sys: {
                     linkType: 'Asset',
                     type: 'Link',
-                    id: 'bar',
+                    id: 'qux',
                   },
                 },
               },
@@ -164,19 +172,24 @@ describe('getRichTextEntityLinks', () => {
           {
             linkType: 'Entry',
             type: 'Link',
+            id: 'foo',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
             id: 'baz',
           },
           {
             linkType: 'Entry',
             type: 'Link',
-            id: 'foo',
+            id: 'bar',
           },
         ],
         Asset: [
           {
             linkType: 'Asset',
             type: 'Link',
-            id: 'bar',
+            id: 'qux',
           },
           {
             linkType: 'Asset',
