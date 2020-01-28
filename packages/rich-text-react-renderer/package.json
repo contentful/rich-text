@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-react-renderer",
-  "version": "13.4.0",
+  "version": "14.0.0",
   "main": "dist/rich-text-react-renderer.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -23,7 +23,7 @@
     "start": "tsc && rollup -c rollup.config.js -w"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^13.4.0"
+    "@contentful/rich-text-types": "^14.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.6",
