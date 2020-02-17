@@ -30,7 +30,7 @@
     "contentful",
     "richtext"
   ],
-  "author": "contentful <support@contentful.com>",
+  "author": "Contentful GmbH",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/contentful/rich-text/issues"

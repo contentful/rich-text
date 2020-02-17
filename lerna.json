@@ -2,6 +2,7 @@
   "lerna": "2.7.2",
   "version": "14.0.1",
   "packages": [
+    "packages/contentful-slatejs-adapter",
     "packages/rich-text-from-markdown",
     "packages/rich-text-html-renderer",
     "packages/rich-text-links",
