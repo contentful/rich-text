@@ -1,5 +1,4 @@
 import flatmap from 'lodash.flatmap';
-import omit from 'lodash.omit';
 
 import * as Contentful from '@contentful/rich-text-types';
 import { ContentfulNode, SlateNode, ContentfulNonTextNodes } from './types';

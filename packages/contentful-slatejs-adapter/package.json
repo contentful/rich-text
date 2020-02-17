@@ -63,7 +63,6 @@
     "@types/jest": "^22.0.0",
     "@types/lodash.flatmap": "^4.5.3",
     "@types/lodash.get": "^4.4.4",
-    "@types/lodash.omit": "^4.5.3",
     "@types/node": "^10.0.3",
     "colors": "^1.1.2",
     "coveralls": "^3.0.0",
