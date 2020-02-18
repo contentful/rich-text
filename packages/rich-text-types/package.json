@@ -21,6 +21,7 @@
     "prebuild": "rimraf dist",
     "build": "npm run generate-json-schema && tsc --module commonjs && rollup -c rollup.config.js",
     "start": "tsc && rollup -c rollup.config.js -w",
+    "lint": "tslint -t codeFrame '@(src|bin)/*.ts'",
     "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen"
   },
   "devDependencies": {
@@ -39,6 +40,7 @@
     "rollup-plugin-typescript2": "^0.21.0",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
     "typescript": "^3.4.5",
     "typescript-json-schema": "^0.37.0"
   }
