@@ -1,6 +1,6 @@
 {
   "name": "@contentful/contentful-slatejs-adapter",
-  "version": "0.0.0-development",
+  "version": "14.1.0",
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
