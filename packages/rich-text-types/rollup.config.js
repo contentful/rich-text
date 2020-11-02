@@ -11,10 +11,12 @@ const customConfig = () => {
     plugins: [
       ...baseConfig.plugins,
       copy({
-        "src/schemas/generated": "dist/lib/schemas/generated"
-      })
-    ]
-  }
-}
+        targets: {
+          'src/schemas/generated': 'dist/lib/schemas/generated',
+        },
+      }),
+    ],
+  };
+};
 
 export default customConfig();
