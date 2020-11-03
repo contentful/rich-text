@@ -7,9 +7,10 @@
       "../../node_modules/@types",
       "node_modules/@types",
       "src/typings"
-    ]
+    ],
+    "importHelpers": true
   },
   "include": [
     "src"
-  ]
+  ],
 }
