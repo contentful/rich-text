@@ -66,6 +66,14 @@ describe('documentToHtmlString', () => {
         doc: marksDoc(MARKS.CODE),
         expected: '<p><code>hello world</code></p>',
       },
+      {
+        doc: marksDoc(MARKS.SUPERSCRIPT),
+        expected: '<p><sup>hello world</sup></p>',
+      },
+      {
+        doc: marksDoc(MARKS.SUBSCRIPT),
+        expected: '<p><sub>hello world</sub></p>',
+      },
     ];
 
     docs.forEach(({ doc, expected }) => {
