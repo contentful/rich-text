@@ -209,7 +209,8 @@ function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
   }
   let imageNodeIndices = [];
   for (let i = 0; i < node.children.length; i++) {
-    if (node.children[i].type === 'image') {
+    const nodeType = node.children[i].type;
+    if (nodeType === 'image' || nodeType === 'html' || nodeType === 'link') {
       imageNodeIndices.push(i);
     }
   }
