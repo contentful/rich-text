@@ -100,8 +100,9 @@ function nodeListToHtmlString(nodes: CommonNode[], { renderNode, renderMark }: O
 function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options): string {
   if (helpers.isText(node)) {
     const nodeValue = escape(node.value);
-    if (node.marks.length > 0) {
-      return node.marks.reduce((value: string, mark: Mark) => {
+    const customMarks = node.marks || []
+    if (customMarks.length > 0) {
+      return customMarks.reduce((value: string, mark: Mark) => {
         if (!renderMark[mark.type]) {
           return value;
         }
