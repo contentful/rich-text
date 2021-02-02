@@ -27,14 +27,14 @@
     "@contentful/rich-text-types": "^14.1.2"
   },
   "peerDependencies": {
-    "react": "^16.8.6",
+    "react": "^17.0.1",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "@types/react": "^16.8.15",
     "@types/react-dom": "^16.8.4",
     "jest": "^24.7.1",
-    "react": "^16.4.1",
+    "react": "17.0.1",
     "react-dom": "^16.4.1",
     "rimraf": "^2.6.3",
     "rollup": "^1.11.0",
