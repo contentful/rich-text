@@ -7,7 +7,7 @@ import { Block, Node, Inline, helpers } from '@contentful/rich-text-types';
  * hence the flexible typing.
  */
 export function documentToPlainTextString(
-  rootNode: Block | Inline,
+  rootNode?: Block | Inline,
   blockDivisor: string = ' ',
 ): string {
   if (!rootNode || !rootNode.content) {
