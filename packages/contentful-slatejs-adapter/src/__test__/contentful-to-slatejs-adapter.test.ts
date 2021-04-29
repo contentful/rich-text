@@ -39,7 +39,14 @@ describe('adapters', () => {
     testAdapters(
       'document with block',
       contentful.document(contentful.block(Contentful.BLOCKS.PARAGRAPH, contentful.text(''))),
-      slate.document(slate.block(Contentful.BLOCKS.PARAGRAPH, false, slate.text(slate.leaf('')))),
+      [
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          children: [
+            { text: '' }
+          ]
+        }
+      ],
     );
 
     testAdapters(
@@ -50,19 +57,27 @@ describe('adapters', () => {
           contentful.inline(Contentful.INLINES.HYPERLINK),
         ),
       ),
-      slate.document(
-        slate.block(
-          Contentful.BLOCKS.PARAGRAPH,
-          false,
-          slate.inline(Contentful.INLINES.HYPERLINK, false),
-        ),
-      ),
+      [
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          children: [
+            { type: Contentful.INLINES.HYPERLINK }
+          ]
+        }
+      ],
     );
 
     testAdapters(
       'paragraph with text',
       contentful.document(contentful.block(Contentful.BLOCKS.PARAGRAPH, contentful.text('hi'))),
-      slate.document(slate.block(Contentful.BLOCKS.PARAGRAPH, false, slate.text(slate.leaf('hi')))),
+      [
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          children: [
+            { text: 'hi' }
+          ]
+        }
+      ],
     );
 
     testAdapters(
@@ -74,24 +89,26 @@ describe('adapters', () => {
           contentful.text('is', contentful.mark('bold')),
         ),
       ),
-      slate.document(
-        slate.block(
-          Contentful.BLOCKS.PARAGRAPH,
-          false,
-          slate.text(slate.leaf('this')),
-          slate.text(slate.leaf('is', slate.mark('bold'))),
-        ),
-      ),
+      [
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          children: [
+            { text: 'this' },
+            { text: 'is', bold: true },
+          ],
+        },
+      ],
     );
 
     it('adds a default value to marks if undefined', () => {
-      const slateDoc = slate.document(
-        slate.block(
-          Contentful.BLOCKS.PARAGRAPH,
-          false,
-          slate.text({ marks: undefined, object: 'leaf', text: 'Hi' }),
-        ),
-      );
+      const slateDoc = [
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          children: [
+            { text: 'Hi' }
+          ]
+        }
+      ];
       const ctflDoc = toContentfulDocument({
         document: slateDoc,
       });
@@ -117,15 +134,16 @@ describe('adapters', () => {
           contentful.text('huge', contentful.mark('bold'), contentful.mark('italic')),
         ),
       ),
-      slate.document(
-        slate.block(
-          Contentful.BLOCKS.PARAGRAPH,
-          false,
-          slate.text(slate.leaf('this')),
-          slate.text(slate.leaf('is', slate.mark('bold'))),
-          slate.text(slate.leaf('huge', slate.mark('bold'), slate.mark('italic'))),
-        ),
-      ),
+      [
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          children: [
+            { text: 'this' },
+            { text: 'is', bold: true },
+            { text: 'huge', bold: true, italic: true },
+          ],
+        },
+      ],
     );
 
     testAdapters(
@@ -134,26 +152,28 @@ describe('adapters', () => {
         contentful.block(
           Contentful.BLOCKS.PARAGRAPH,
           contentful.text('this is a test', contentful.mark('bold')),
-          contentful.text(Contentful.BLOCKS.PARAGRAPH, contentful.mark('underline')),
+          contentful.text('paragraph', contentful.mark('underline')),
         ),
         contentful.block(
           Contentful.BLOCKS.QUOTE,
           contentful.block(Contentful.BLOCKS.PARAGRAPH, contentful.text('this is it')),
         ),
       ),
-      slate.document(
-        slate.block(
-          Contentful.BLOCKS.PARAGRAPH,
-          false,
-          slate.text(slate.leaf('this is a test', slate.mark('bold'))),
-          slate.text(slate.leaf(Contentful.BLOCKS.PARAGRAPH, slate.mark('underline'))),
-        ),
-        slate.block(
-          Contentful.BLOCKS.QUOTE,
-          false,
-          slate.block(Contentful.BLOCKS.PARAGRAPH, false, slate.text(slate.leaf('this is it'))),
-        ),
-      ),
+      [
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          children: [
+            { text: 'this is a test', bold: true },
+            { type: 'paragraph', underline: true },
+          ],
+        },
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          children: [
+            { text: 'this is it' },
+          ],
+        },
+      ],
     );
   });
 
@@ -171,19 +191,12 @@ describe('adapters', () => {
           },
         ],
       },
-      {
-        object: 'document',
-        data: {},
-        nodes: [
-          {
-            object: 'block',
-            type: Contentful.BLOCKS.PARAGRAPH,
-            isVoid: false,
-            data: { a: 1 },
-            nodes: [],
-          },
-        ],
-      },
+      [
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          data: { a: 1 },
+        },
+      ],
     );
 
     testAdapters(
@@ -205,29 +218,18 @@ describe('adapters', () => {
           },
         ],
       },
-      {
-        object: 'document',
-        data: {},
-        nodes: [
-          {
-            object: 'block',
-            type: Contentful.BLOCKS.PARAGRAPH,
-            isVoid: false,
-            data: { a: 1 },
-            nodes: [
-              {
-                object: 'inline',
-                type: Contentful.INLINES.HYPERLINK,
-                isVoid: false,
-                data: {
-                  a: 2,
-                },
-                nodes: [],
-              },
-            ],
-          },
-        ],
-      },
+      [
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          data: { a: 1 },
+          children: [
+            {
+              type: Contentful.INLINES.HYPERLINK,
+              data: { a: 2 },
+            },
+          ],
+        },
+      ],
     );
 
     testAdapters(
@@ -255,40 +257,23 @@ describe('adapters', () => {
           },
         ],
       },
-      {
-        object: 'document',
-        data: {},
-        nodes: [
-          {
-            object: 'block',
-            type: Contentful.BLOCKS.PARAGRAPH,
-            isVoid: false,
-            data: { a: 1 },
-            nodes: [
-              {
-                object: 'inline',
-                type: Contentful.INLINES.HYPERLINK,
-                isVoid: false,
-                data: {
-                  a: 2,
-                },
-                nodes: [],
-              },
-              {
-                object: 'text',
-                data: { a: 3 },
-                leaves: [
-                  {
-                    object: 'leaf',
-                    marks: [],
-                    text: 'YO',
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
+      [
+        {
+          type: Contentful.BLOCKS.PARAGRAPH,
+          data: { a: 1 },
+          children: [
+            {
+              type: Contentful.INLINES.HYPERLINK,
+              data: { a: 2 },
+              children: [
+                {
+                  text: 'YO',
+                  data: { a: 3 },
+              ]
+            },
+          ],
+        },
+      ],
     );
   });
 
@@ -306,20 +291,15 @@ describe('adapters', () => {
           },
         ],
       },
-      {
-        object: 'document',
-        data: {},
-        nodes: [
-          {
-            object: 'block',
-            type: Contentful.BLOCKS.EMBEDDED_ENTRY,
-            isVoid: true,
-            data: { a: 1 },
-            nodes: [],
-          },
-        ],
-      },
+      [
+        {
+          type: Contentful.BLOCKS.EMBEDDED_ENTRY,
+          data: { a: 1 },
+          isVoid: true,
+        },
+      ],
     );
+
     test('removes empty text nodes from void nodes content', () => {
       const contentfulDoc: Contentful.Document = {
         nodeType: Contentful.BLOCKS.DOCUMENT,
@@ -333,32 +313,16 @@ describe('adapters', () => {
         ],
       };
 
-      const slateDoc: Slate.Document = {
-        object: 'document',
-        type: 'document',
-        data: {},
-        nodes: [
-          {
-            object: 'block',
-            type: Contentful.BLOCKS.EMBEDDED_ENTRY,
-            isVoid: true,
-            data: { a: 1 },
-            nodes: [
-              {
-                object: 'text',
-                data: {},
-                leaves: [
-                  {
-                    object: 'leaf',
-                    marks: [],
-                    text: '',
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      };
+      const slateDoc: Slate.Document = [
+        {
+          type: Contentful.BLOCKS.EMBEDDED_ENTRY,
+          data: { a: 1 },
+          isVoid: true,
+          children: [
+            { text: '' },
+          ]
+        },
+      ];
 
       const actualContentfulDoc = toContentfulDocument({
         document: slateDoc,
