@@ -1,11 +1,12 @@
 import flatMap from 'lodash.flatmap';
-import * as Contentful from '@contentful/rich-text-types';
-import { ContentfulNode, SlateNode } from './types';
 import { getDataOfDefault } from './helpers';
 import { SchemaJSON, Schema, fromJSON } from './schema';
 
+import * as Contentful from '@contentful/rich-text-types';
+import { ContentfulNode, SlateNode } from './types';
+
 export interface ToContentfulDocumentProperties {
-  document: Slate.Document;
+  document: SlateNode[];
   schema?: SchemaJSON;
 }
 

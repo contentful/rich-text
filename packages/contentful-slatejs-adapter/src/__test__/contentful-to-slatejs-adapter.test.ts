@@ -1,9 +1,9 @@
 import toSlatejsDocument from '../contentful-to-slatejs-adapter';
 import toContentfulDocument from '../slatejs-to-contentful-adapter';
-import * as Contentful from '@contentful/rich-text-types';
-
-import * as slate from './slate-helpers';
 import * as contentful from './contentful-helpers';
+
+import * as Contentful from '@contentful/rich-text-types';
+import type { SlateNode } from '../types';
 
 const schema = { blocks: { [Contentful.BLOCKS.EMBEDDED_ENTRY]: { isVoid: true } } };
 
@@ -11,7 +11,7 @@ describe('adapters', () => {
   const testAdapters = (
     message: string,
     contentfulDoc: Contentful.Document,
-    slateDoc: Slate.Document,
+    slateDoc: SlateNode[],
   ) => {
     describe('toSlatejsDocument()', () => {
       it(message, () => {
@@ -34,7 +34,7 @@ describe('adapters', () => {
   };
 
   describe('document', () => {
-    testAdapters('empty document', contentful.document(), slate.document());
+    testAdapters('empty document', contentful.document(), []);
 
     testAdapters(
       'document with block',
@@ -269,7 +269,8 @@ describe('adapters', () => {
                 {
                   text: 'YO',
                   data: { a: 3 },
-              ]
+                },
+              ],
             },
           ],
         },
@@ -313,7 +314,7 @@ describe('adapters', () => {
         ],
       };
 
-      const slateDoc: Slate.Document = [
+      const slateDoc = [
         {
           type: Contentful.BLOCKS.EMBEDDED_ENTRY,
           data: { a: 1 },
