@@ -42,10 +42,15 @@ describe('adapters', () => {
       [
         {
           type: Contentful.BLOCKS.PARAGRAPH,
+          data: {},
+          isVoid: false,
           children: [
-            { text: '' }
-          ]
-        }
+            {
+              text: '',
+              data: {},
+            },
+          ],
+        },
       ],
     );
 
@@ -60,8 +65,15 @@ describe('adapters', () => {
       [
         {
           type: Contentful.BLOCKS.PARAGRAPH,
+          data: {},
+          isVoid: false,
           children: [
-            { type: Contentful.INLINES.HYPERLINK }
+            {
+              type: Contentful.INLINES.HYPERLINK,
+              data: {},
+              isVoid: false,
+              children: [],
+            }
           ]
         }
       ],
@@ -73,8 +85,10 @@ describe('adapters', () => {
       [
         {
           type: Contentful.BLOCKS.PARAGRAPH,
+          data: {},
+          isVoid: false,
           children: [
-            { text: 'hi' }
+            { text: 'hi', data: {} }
           ]
         }
       ],
@@ -92,9 +106,11 @@ describe('adapters', () => {
       [
         {
           type: Contentful.BLOCKS.PARAGRAPH,
+          data: {},
+          isVoid: false,
           children: [
-            { text: 'this' },
-            { text: 'is', bold: true },
+            { text: 'this', data: {} },
+            { text: 'is', data: {}, bold: true },
           ],
         },
       ],
@@ -104,8 +120,10 @@ describe('adapters', () => {
       const slateDoc = [
         {
           type: Contentful.BLOCKS.PARAGRAPH,
+          data: {},
+          isVoid: false,
           children: [
-            { text: 'Hi' }
+            { text: 'Hi', data: {} }
           ]
         }
       ];
@@ -137,10 +155,12 @@ describe('adapters', () => {
       [
         {
           type: Contentful.BLOCKS.PARAGRAPH,
+          data: {},
+          isVoid: false,
           children: [
-            { text: 'this' },
-            { text: 'is', bold: true },
-            { text: 'huge', bold: true, italic: true },
+            { text: 'this', data: {} },
+            { text: 'is', data: {}, bold: true },
+            { text: 'huge', data: {}, bold: true, italic: true },
           ],
         },
       ],
@@ -162,15 +182,19 @@ describe('adapters', () => {
       [
         {
           type: Contentful.BLOCKS.PARAGRAPH,
+          data: {},
+          isVoid: false,
           children: [
-            { text: 'this is a test', bold: true },
-            { type: 'paragraph', underline: true },
+            { text: 'this is a test', data: {}, bold: true },
+            { text: 'paragraph', data: {}, underline: true },
           ],
         },
         {
           type: Contentful.BLOCKS.PARAGRAPH,
+          data: {},
+          isVoid: false,
           children: [
-            { text: 'this is it' },
+            { text: 'this is it', data: {} },
           ],
         },
       ],
@@ -195,6 +219,8 @@ describe('adapters', () => {
         {
           type: Contentful.BLOCKS.PARAGRAPH,
           data: { a: 1 },
+          isVoid: false,
+          children: [],
         },
       ],
     );
@@ -222,10 +248,13 @@ describe('adapters', () => {
         {
           type: Contentful.BLOCKS.PARAGRAPH,
           data: { a: 1 },
+          isVoid: false,
           children: [
             {
               type: Contentful.INLINES.HYPERLINK,
               data: { a: 2 },
+              isVoid: false,
+              children: [],
             },
           ],
         },
@@ -261,10 +290,12 @@ describe('adapters', () => {
         {
           type: Contentful.BLOCKS.PARAGRAPH,
           data: { a: 1 },
+          isVoid: false,
           children: [
             {
               type: Contentful.INLINES.HYPERLINK,
               data: { a: 2 },
+              isVoid: false,
               children: [
                 {
                   text: 'YO',
@@ -297,6 +328,7 @@ describe('adapters', () => {
           type: Contentful.BLOCKS.EMBEDDED_ENTRY,
           data: { a: 1 },
           isVoid: true,
+          children: [],
         },
       ],
     );
@@ -320,7 +352,7 @@ describe('adapters', () => {
           data: { a: 1 },
           isVoid: true,
           children: [
-            { text: '' },
+            { text: '', data: {} },
           ]
         },
       ];

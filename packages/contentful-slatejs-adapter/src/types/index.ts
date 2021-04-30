@@ -1,18 +1,30 @@
 import * as Contentful from '@contentful/rich-text-types';
-import type { BaseText } from 'slate';
 
-type SlateText = BaseText & {
+export type SlateText = {
+  text: string;
+  data: object;
+  // This is a workaround for TypeScript's limitations around
+  // index property exclusion. Ideally we'd join the above properties
+  // with something like
+  //
+  // & { [mark: string]: string }
+  //
+  // but TypeScript doesn't allow us to create such objects, only
+  // work around inconsistencies in existing JavaScript.
+  //
+  // In reality Slate's node marks are arbitrary, but for this library
+  // denoting marks used by the tests as optional should be okay.
   bold?: boolean;
   italic?: boolean;
   underline?: boolean;
 };
-type SlateElement = {
+export type SlateElement = {
   type: string;
-  children?: SlateNode[];
-  data?: object;
-  isVoid?: boolean;
+  data: object;
+  isVoid: boolean;
+  children: SlateNode[];
 };
 
-export type ContentfulNode = Contentful.Block | Contentful.Inline | Contentful.Text;
+export type ContentfulElementNode = Contentful.Block | Contentful.Inline;
+export type ContentfulNode = ContentfulElementNode | Contentful.Text;
 export type SlateNode = SlateElement | SlateText;
-export type ContentfulNonTextNodes = Contentful.Block | Contentful.Inline;
