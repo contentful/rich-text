@@ -1,8 +1,6 @@
 import * as Contentful from '@contentful/rich-text-types';
 
-export type SlateText = {
-  text: string;
-  data: object;
+export type SlateMarks = {
   // This is a workaround for TypeScript's limitations around
   // index property exclusion. Ideally we'd join the above properties
   // with something like
@@ -18,6 +16,12 @@ export type SlateText = {
   italic?: boolean;
   underline?: boolean;
 };
+
+export type SlateText = SlateMarks & {
+  text: string;
+  data: object;
+};
+
 export type SlateElement = {
   type: string;
   data: object;

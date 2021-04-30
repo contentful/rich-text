@@ -1,9 +1,8 @@
 import flatmap from 'lodash.flatmap';
 
-import { fromJSON } from './schema';
 import { getDataOrDefault } from './helpers';
 
-import type { Schema, SchemaJSON } from './schema';
+import { fromJSON, Schema, SchemaJSON } from './schema';
 import * as Contentful from '@contentful/rich-text-types';
 import {
   ContentfulNode,
@@ -11,6 +10,7 @@ import {
   SlateNode,
   SlateElement,
   SlateText,
+  SlateMarks,
 } from './types';
 
 export interface ToSlatejsDocumentProperties {
@@ -26,7 +26,7 @@ export default function toSlatejsDocument({
   // We allow adding data to the root document node, but Slate >v0.5.0
   // has no concept of a root document node. We should determine whether
   // this will be a compatibility problem for existing users.
-  return flatmap(document.content, node => convertNode(node, fromJSON(schema)))
+  return flatmap(document.content, node => convertNode(node, fromJSON(schema)));
 }
 
 function convertNode(node: ContentfulNode, schema: Schema): SlateNode {
@@ -61,11 +61,10 @@ function convertTextNode(node: Contentful.Text): SlateText {
   };
 }
 
-type SlateMarks = { [mark: string]: true };
 function convertTextMarks(node: Contentful.Text): SlateMarks {
   const marks: SlateMarks = {};
   for (const mark of node.marks) {
-    marks[mark.type] = true;
+    marks[mark.type as keyof SlateMarks] = true;
   }
   return marks;
 }

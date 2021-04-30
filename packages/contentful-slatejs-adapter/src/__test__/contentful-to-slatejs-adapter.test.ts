@@ -3,7 +3,7 @@ import toContentfulDocument from '../slatejs-to-contentful-adapter';
 import * as contentful from './contentful-helpers';
 
 import * as Contentful from '@contentful/rich-text-types';
-import type { SlateNode } from '../types';
+import { SlateNode } from '../types';
 
 const schema = { blocks: { [Contentful.BLOCKS.EMBEDDED_ENTRY]: { isVoid: true } } };
 
@@ -190,11 +190,18 @@ describe('adapters', () => {
           ],
         },
         {
-          type: Contentful.BLOCKS.PARAGRAPH,
+          type: Contentful.BLOCKS.QUOTE,
           data: {},
           isVoid: false,
           children: [
-            { text: 'this is it', data: {} },
+            {
+              type: Contentful.BLOCKS.PARAGRAPH,
+              data: {},
+              isVoid: false,
+              children: [
+                { text: 'this is it', data: {} },
+              ],
+            },
           ],
         },
       ],
@@ -274,13 +281,14 @@ describe('adapters', () => {
               {
                 nodeType: Contentful.INLINES.HYPERLINK,
                 data: { a: 2 },
-                content: [],
-              },
-              {
-                nodeType: 'text',
-                marks: [],
-                data: { a: 3 },
-                value: 'YO',
+                content: [
+                  {
+                    nodeType: 'text',
+                    marks: [],
+                    data: { a: 3 },
+                    value: 'YO',
+                  },
+                ],
               },
             ],
           },
