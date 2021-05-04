@@ -1,11 +1,19 @@
 import flatMap from 'lodash.flatmap';
-import * as Contentful from '@contentful/rich-text-types';
-import { ContentfulNode, SlateNode } from './types';
-import { getDataOfDefault } from './helpers';
+import { getDataOrDefault } from './helpers';
 import { SchemaJSON, Schema, fromJSON } from './schema';
 
+import * as Contentful from '@contentful/rich-text-types';
+import {
+  ContentfulNode,
+  ContentfulElementNode,
+  SlateNode,
+  SlateElement,
+  SlateText,
+  SlateMarks,
+} from './types';
+
 export interface ToContentfulDocumentProperties {
-  document: Slate.Document;
+  document: SlateNode[];
   schema?: SchemaJSON;
 }
 
@@ -13,58 +21,60 @@ export default function toContentfulDocument({
   document,
   schema,
 }: ToContentfulDocumentProperties): Contentful.Document {
+  // TODO:
+  // We allow adding data to the root document node, but Slate >v0.5.0
+  // has no concept of a root document node. We should determine whether
+  // this will be a compatibility problem for existing users.
   return {
     nodeType: Contentful.BLOCKS.DOCUMENT,
-    data: getDataOfDefault(document.data),
+    data: {},
     content: flatMap(
-      document.nodes,
+      document,
       node => convertNode(node, fromJSON(schema)) as Contentful.Block[],
     ),
   };
 }
 
-function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
+function convertNode(
+  node: SlateNode,
+  schema: Schema
+): ContentfulNode[] {
   const nodes: ContentfulNode[] = [];
-  switch (node.object) {
-    case 'block':
-    case 'inline':
-      const slateNode = node as Slate.Block;
-      const content = flatMap(slateNode.nodes, childNode => convertNode(childNode, schema));
-      if (!slateNode.type) {
-        throw new Error(`Unexpected slate node ${JSON.stringify(slateNode)}`);
-      }
-
-      const contentfulBlock: Contentful.Block = {
-        nodeType: slateNode.type,
-        content: [],
-        data: getDataOfDefault(slateNode.data),
-      };
-
-      if (!schema.isVoid(contentfulBlock)) {
-        contentfulBlock.content = content;
-      }
-      nodes.push(contentfulBlock);
-      break;
-    case 'text':
-      convertText(node as Slate.Text).forEach(childNode => nodes.push(childNode));
-      break;
-    default:
-      assertUnreachable(node);
-      break;
+  if (isSlateElement(node)) {
+    const contentfulElement: ContentfulElementNode = {
+      nodeType: node.type,
+      data: getDataOrDefault(node.data),
+      content: [],
+    };
+    if (!schema.isVoid(contentfulElement)) {
+      contentfulElement.content = flatMap(node.children, childNode => convertNode(childNode, schema));
+    }
+    nodes.push(contentfulElement);
+  } else {
+    const contentfulText = convertText(node);
+    nodes.push(contentfulText);
   }
-
   return nodes;
 }
 
-function convertText(node: Slate.Text): Contentful.Text[] {
-  return node.leaves.map<Contentful.Text>(leaf => ({
+function convertText(node: SlateText): Contentful.Text {
+  const { text, data, ...marks } = node;
+  return {
     nodeType: 'text',
-    value: leaf.text,
-    marks: leaf.marks ? leaf.marks.map(mark => ({ type: mark.type })) : [],
-    data: getDataOfDefault(node.data),
-  }));
+    value: node.text,
+    marks: getMarkList(marks),
+    data: getDataOrDefault(node.data),
+  };
 }
 
-function assertUnreachable(object: never): never {
-  throw new Error(`Unexpected slate object ${object}`);
+function getMarkList(marks: SlateMarks): Contentful.Mark[] {
+  const contentfulMarks: Contentful.Mark[] = [];
+  for (const mark of Object.keys(marks)) {
+    contentfulMarks.push({ type: mark });
+  }
+  return contentfulMarks;
+}
+
+function isSlateElement(node: SlateNode): node is SlateElement {
+  return 'type' in node;
 }
