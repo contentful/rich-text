@@ -1,6 +1,6 @@
 import get from 'lodash.get';
 import * as Contentful from '@contentful/rich-text-types';
-import { ContentfulNonTextNodes } from './types';
+import { ContentfulElementNode } from './types';
 
 const defaultSchema: SchemaJSON = {};
 
@@ -15,7 +15,7 @@ export interface SchemaJSON {
   inlines?: Record<string, SchemaValue>;
 }
 export interface Schema extends SchemaJSON {
-  isVoid(node: ContentfulNonTextNodes): boolean;
+  isVoid(node: ContentfulElementNode): boolean;
 }
 
 export interface SchemaValue {
@@ -36,10 +36,10 @@ export function fromJSON(schema: SchemaJSON = defaultSchema): Schema {
     /**
      * Check if a `node` is void based on the schema rules.
      *
-     * @param {ContentfulNonTextNodes} node
+     * @param {ContentfulElementNode} node
      * @returns
      */
-    isVoid(node: ContentfulNonTextNodes) {
+    isVoid(node: ContentfulElementNode) {
       const root = Object.values(Contentful.BLOCKS).includes(node.nodeType) ? 'blocks' : 'inlines';
       return get(schema, [root, node.nodeType as string, 'isVoid'], false);
     },

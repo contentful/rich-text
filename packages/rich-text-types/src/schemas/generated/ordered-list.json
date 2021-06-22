@@ -102,6 +102,7 @@
         "hr",
         "ordered-list",
         "paragraph",
+        "table",
         "unordered-list"
       ],
       "type": "string"
@@ -156,6 +157,9 @@
         "list-item",
         "ordered-list",
         "paragraph",
+        "table",
+        "table-cell",
+        "table-row",
         "unordered-list"
       ],
       "type": "string"
