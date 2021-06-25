@@ -2857,6 +2857,9 @@ Object {
             "colspan": Object {
               "type": "number",
             },
+            "rowspan": Object {
+              "type": "number",
+            },
           },
           "type": "object",
         },
@@ -3045,6 +3048,9 @@ Object {
             "colspan": Object {
               "type": "number",
             },
+            "rowspan": Object {
+              "type": "number",
+            },
           },
           "type": "object",
         },
@@ -3204,6 +3210,9 @@ Object {
           "additionalProperties": false,
           "properties": Object {
             "colspan": Object {
+              "type": "number",
+            },
+            "rowspan": Object {
               "type": "number",
             },
           },
