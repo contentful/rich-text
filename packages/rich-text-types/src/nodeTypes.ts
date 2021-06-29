@@ -158,7 +158,10 @@ export interface EntryHyperlink extends Inline {
 
 export interface TableCell extends Block {
   nodeType: BLOCKS.TABLE_CELL;
-  data: { colspan?: number };
+  data: {
+    colspan?: number;
+    rowspan?: number;
+  };
   content: Paragraph[];
 }
 
