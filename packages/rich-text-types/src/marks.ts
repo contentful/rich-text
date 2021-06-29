@@ -1,9 +1,11 @@
 /**
  * Map of all Contentful marks.
  */
-export default {
+const MARKS = {
   BOLD: 'bold',
   ITALIC: 'italic',
   UNDERLINE: 'underline',
   CODE: 'code',
-};
+} as const;
+
+export default MARKS;
