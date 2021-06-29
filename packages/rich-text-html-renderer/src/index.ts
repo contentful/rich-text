@@ -36,6 +36,8 @@ const defaultMarkRenderers: RenderMark = {
   [MARKS.ITALIC]: text => `<i>${text}</i>`,
   [MARKS.UNDERLINE]: text => `<u>${text}</u>`,
   [MARKS.CODE]: text => `<code>${text}</code>`,
+  [MARKS.SUPERSCRIPT]: text => `<sup>${text}</sup>`,
+  [MARKS.SUBSCRIPT]: text => `<sub>${text}</sub>`,
 };
 
 const defaultInline = (type: string, node: Inline) =>

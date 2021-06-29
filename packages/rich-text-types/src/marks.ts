@@ -6,4 +6,6 @@ export default {
   ITALIC: 'italic',
   UNDERLINE: 'underline',
   CODE: 'code',
+  SUPERSCRIPT: 'superscript',
+  SUBSCRIPT: 'subscript',
 };
