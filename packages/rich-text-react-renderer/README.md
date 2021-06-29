@@ -33,7 +33,7 @@ const document = {
           nodeType: 'text',
           value: 'Hello world!',
           marks: [],
-          data: {}
+          data: {},
         },
       ],
     },
@@ -116,7 +116,7 @@ documentToReactComponents(document, options);
 // -> <p class="align-center"><p class="bold">Hello</p><u> world?</u></p>
 ```
 
-Last, but not least, you can pass a custom rendering component for an embedded entry:
+Last, but not least, if you use `EMBEDDED_ASSET` or `EMBEDDED_ASSET` you must pass a custom rendering component for render them:
 
 ```javascript
 import { BLOCKS } from '@contentful/rich-text-types';
