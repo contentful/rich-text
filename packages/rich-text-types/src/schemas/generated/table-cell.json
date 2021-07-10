@@ -15,6 +15,9 @@
           "properties": {
             "colspan": {
               "type": "number"
+            },
+            "rowspan": {
+              "type": "number"
             }
           },
           "additionalProperties": false
