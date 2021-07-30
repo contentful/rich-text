@@ -15,6 +15,8 @@ import {
   quoteDoc,
 } from './documents';
 import inlineEntity from './documents/inline-entity';
+import { tableDoc } from '../../../rich-text-react-renderer/src/__test__/documents';
+import { documentToReactComponents } from '../../../rich-text-react-renderer/src';
 
 describe('documentToHtmlString', () => {
   it('returns empty string when given an empty document', () => {
@@ -197,6 +199,17 @@ describe('documentToHtmlString', () => {
   it('renders horizontal rule', () => {
     const document: Document = hrDoc;
     const expected = '<p>hello world</p><hr/><p></p>';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders tables', () => {
+    const document: Document = tableDoc;
+    const expected =
+      '<table><tbody>' +
+      '<tr><td><p>A 1</p></td><td><p>B 1</p></td></tr>' +
+      '<tr><td><p>A 2</p></td><td><p>B 2</p></td></tr>' +
+      '</tbody></table>';
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });

@@ -17,6 +17,7 @@ import {
   paragraphDoc,
   quoteDoc,
   ulDoc,
+  tableDoc,
 } from './documents';
 import DocumentWrapper from './components/Document';
 import Paragraph from './components/Paragraph';
@@ -154,6 +155,12 @@ describe('documentToReactComponents', () => {
 
   it('renders horizontal rule', () => {
     const document: Document = hrDoc;
+
+    expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+
+  it('renders tables', () => {
+    const document: Document = tableDoc;
 
     expect(documentToReactComponents(document)).toMatchSnapshot();
   });
