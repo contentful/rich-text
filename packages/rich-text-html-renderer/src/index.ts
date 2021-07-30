@@ -12,6 +12,8 @@ import {
 } from '@contentful/rich-text-types';
 import React from 'react';
 
+const attributeValue = (value: string) => `"${value.replace(/"/g, '&quot;')}"`;
+
 const defaultNodeRenderers: RenderNode = {
   [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
   [BLOCKS.HEADING_1]: (node, next) => `<h1>${next(node.content)}</h1>`,
@@ -32,7 +34,10 @@ const defaultNodeRenderers: RenderNode = {
   [INLINES.ASSET_HYPERLINK]: node => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
   [INLINES.ENTRY_HYPERLINK]: node => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
   [INLINES.EMBEDDED_ENTRY]: node => defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
-  [INLINES.HYPERLINK]: (node, next) => `<a href="${node.data.uri}">${next(node.content)}</a>`,
+  [INLINES.HYPERLINK]: (node, next) => {
+    const href = typeof node.data.uri === 'string' ? node.data.uri : '';
+    return `<a href=${attributeValue(href)}>${next(node.content)}</a>`;
+  },
 };
 
 const defaultMarkRenderers: RenderMark = {

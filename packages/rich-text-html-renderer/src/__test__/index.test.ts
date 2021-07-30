@@ -1,5 +1,5 @@
-import { Document, BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
-
+import cloneDeep from 'lodash/cloneDeep';
+import { Document, Block, BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import { documentToHtmlString, Options } from '../index';
 import {
   hrDoc,
@@ -223,6 +223,23 @@ describe('documentToHtmlString', () => {
   it('renders hyperlink', () => {
     const document: Document = hyperlinkDoc;
     const expected = '<p>Some text <a href="https://url.org">link</a> text.</p>';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders hyperlink without allowing html injection via `data.uri`', () => {
+    const document: Document = cloneDeep(hyperlinkDoc);
+    (document.content[0].content[1] as Block).data.uri = '">no html injection!<a href="';
+    const expected =
+      '<p>Some text <a href="&quot;>no html injection!<a href=&quot;">link</a> text.</p>';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders hyperlink without invalid non-string `data.uri` values', () => {
+    const document: Document = cloneDeep(hyperlinkDoc);
+    (document.content[0].content[1] as Block).data.uri = 42;
+    const expected = '<p>Some text <a href="">link</a> text.</p>';
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
