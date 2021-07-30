@@ -1,13 +1,48 @@
 {
-  "$ref": "#/definitions/ListItem",
+  "$ref": "#/definitions/TableCell",
   "definitions": {
-    "ListItem": {
+    "TableCell": {
       "type": "object",
       "properties": {
         "nodeType": {
           "type": "string",
           "enum": [
-            "list-item"
+            "table-cell"
+          ]
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "colspan": {
+              "type": "number"
+            },
+            "rowspan": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Paragraph"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content",
+        "data",
+        "nodeType"
+      ]
+    },
+    "Paragraph": {
+      "type": "object",
+      "properties": {
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "paragraph"
           ]
         },
         "data": {
@@ -17,30 +52,7 @@
         "content": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TopLevelBlock"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "TopLevelBlock": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "$ref": "#/definitions/TopLevelBlockEnum"
-        },
-        "content": {
-          "type": "array",
-          "items": {
             "anyOf": [
-              {
-                "$ref": "#/definitions/Block"
-              },
               {
                 "$ref": "#/definitions/Inline"
               },
@@ -49,9 +61,6 @@
               }
             ]
           }
-        },
-        "data": {
-          "$ref": "#/definitions/Record<string,any>"
         }
       },
       "additionalProperties": false,
@@ -60,82 +69,6 @@
         "data",
         "nodeType"
       ]
-    },
-    "TopLevelBlockEnum": {
-      "enum": [
-        "blockquote",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "ordered-list",
-        "paragraph",
-        "table",
-        "unordered-list"
-      ],
-      "type": "string"
-    },
-    "Block": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "$ref": "#/definitions/BLOCKS"
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Block"
-              },
-              {
-                "$ref": "#/definitions/Inline"
-              },
-              {
-                "$ref": "#/definitions/Text"
-              }
-            ]
-          }
-        },
-        "data": {
-          "$ref": "#/definitions/Record<string,any>"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "BLOCKS": {
-      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
-      "enum": [
-        "blockquote",
-        "document",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "list-item",
-        "ordered-list",
-        "paragraph",
-        "table",
-        "table-cell",
-        "table-row",
-        "unordered-list"
-      ],
-      "type": "string"
     },
     "Inline": {
       "type": "object",

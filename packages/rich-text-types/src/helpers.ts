@@ -6,14 +6,14 @@ import INLINES from './inlines';
  * Checks if the node is an instance of Inline.
  */
 export function isInline(node: Node): node is Inline {
-  return Object.values(INLINES).includes(node.nodeType);
+  return Object.values(INLINES).includes(node.nodeType as INLINES);
 }
 
 /**
  * Checks if the node is an instance of Block.
  */
 export function isBlock(node: Node): node is Block {
-  return Object.values(BLOCKS).includes(node.nodeType);
+  return Object.values(BLOCKS).includes(node.nodeType as BLOCKS);
 }
 
 /**

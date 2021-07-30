@@ -155,3 +155,24 @@ export interface EntryHyperlink extends Inline {
   };
   content: Text[];
 }
+
+export interface TableCell extends Block {
+  nodeType: BLOCKS.TABLE_CELL;
+  data: {
+    colspan?: number;
+    rowspan?: number;
+  };
+  content: Paragraph[];
+}
+
+export interface TableRow extends Block {
+  nodeType: BLOCKS.TABLE_ROW;
+  data: EmptyNodeData;
+  content: TableCell[];
+}
+
+export interface Table extends Block {
+  nodeType: BLOCKS.TABLE;
+  data: EmptyNodeData;
+  content: TableRow[];
+}
