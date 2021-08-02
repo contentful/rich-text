@@ -48,7 +48,7 @@ const defaultMarkRenderers: RenderMark = {
 };
 
 const defaultInline = (type: string, node: Inline) =>
-  `<span>type: ${type} id: ${node.data.target.sys.id}</span>`;
+  `<span>type: ${escape(type)} id: ${escape(node.data.target.sys.id)}</span>`;
 
 export type CommonNode = Text | Block | Inline;
 
