@@ -180,7 +180,8 @@ export interface TableRow extends Block {
   content: TableCell[];
 }
 
-export interface TableHeaderRow extends Block {
+// A helper type to allow only all cells in a row to be header cells
+interface TableHeaderRow extends Block {
   nodeType: BLOCKS.TABLE_ROW;
   data: EmptyNodeData;
   content: TableHeaderCell[];
