@@ -2822,10 +2822,26 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "content": Object {
-          "items": Object {
-            "$ref": "#/definitions/TableRow",
-          },
-          "type": "array",
+          "anyOf": Array [
+            Object {
+              "items": Object {
+                "$ref": "#/definitions/TableRow",
+              },
+              "type": "array",
+            },
+            Object {
+              "additionalItems": Object {
+                "$ref": "#/definitions/TableRow",
+              },
+              "items": Array [
+                Object {
+                  "$ref": "#/definitions/TableHeaderRow",
+                },
+              ],
+              "minItems": 1,
+              "type": "array",
+            },
+          ],
         },
         "data": Object {
           "properties": Object {},
@@ -2915,24 +2931,41 @@ Object {
       ],
       "type": "object",
     },
+    "TableHeaderRow": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/TableHeaderCell",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "properties": Object {},
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "table-row",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
     "TableRow": Object {
       "additionalProperties": false,
       "properties": Object {
         "content": Object {
-          "anyOf": Array [
-            Object {
-              "items": Object {
-                "$ref": "#/definitions/TableCell",
-              },
-              "type": "array",
-            },
-            Object {
-              "items": Object {
-                "$ref": "#/definitions/TableHeaderCell",
-              },
-              "type": "array",
-            },
-          ],
+          "items": Object {
+            "$ref": "#/definitions/TableCell",
+          },
+          "type": "array",
         },
         "data": Object {
           "properties": Object {},
@@ -3444,59 +3477,14 @@ Object {
       ],
       "type": "object",
     },
-    "TableHeaderCell": Object {
-      "additionalProperties": false,
-      "properties": Object {
-        "content": Object {
-          "items": Object {
-            "$ref": "#/definitions/Paragraph",
-          },
-          "type": "array",
-        },
-        "data": Object {
-          "additionalProperties": false,
-          "properties": Object {
-            "colspan": Object {
-              "type": "number",
-            },
-            "rowspan": Object {
-              "type": "number",
-            },
-          },
-          "type": "object",
-        },
-        "nodeType": Object {
-          "enum": Array [
-            "table-header-cell",
-          ],
-          "type": "string",
-        },
-      },
-      "required": Array [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
     "TableRow": Object {
       "additionalProperties": false,
       "properties": Object {
         "content": Object {
-          "anyOf": Array [
-            Object {
-              "items": Object {
-                "$ref": "#/definitions/TableCell",
-              },
-              "type": "array",
-            },
-            Object {
-              "items": Object {
-                "$ref": "#/definitions/TableHeaderCell",
-              },
-              "type": "array",
-            },
-          ],
+          "items": Object {
+            "$ref": "#/definitions/TableCell",
+          },
+          "type": "array",
         },
         "data": Object {
           "properties": Object {},

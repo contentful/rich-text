@@ -15,10 +15,26 @@
           "properties": {}
         },
         "content": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/TableRow"
-          }
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TableRow"
+              }
+            },
+            {
+              "type": "array",
+              "items": [
+                {
+                  "$ref": "#/definitions/TableHeaderRow"
+                }
+              ],
+              "minItems": 1,
+              "additionalItems": {
+                "$ref": "#/definitions/TableRow"
+              }
+            }
+          ]
         }
       },
       "additionalProperties": false,
@@ -42,20 +58,10 @@
           "properties": {}
         },
         "content": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/TableCell"
-              }
-            },
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/TableHeaderCell"
-              }
-            }
-          ]
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TableCell"
+          }
         }
       },
       "additionalProperties": false,
@@ -219,6 +225,33 @@
     "Record<string,any>": {
       "additionalProperties": true,
       "type": "object"
+    },
+    "TableHeaderRow": {
+      "type": "object",
+      "properties": {
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "table-row"
+          ]
+        },
+        "data": {
+          "type": "object",
+          "properties": {}
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TableHeaderCell"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content",
+        "data",
+        "nodeType"
+      ]
     },
     "TableHeaderCell": {
       "type": "object",

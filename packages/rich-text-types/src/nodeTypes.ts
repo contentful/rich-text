@@ -177,11 +177,17 @@ export interface TableHeaderCell extends Block {
 export interface TableRow extends Block {
   nodeType: BLOCKS.TABLE_ROW;
   data: EmptyNodeData;
-  content: TableCell[] | TableHeaderCell[];
+  content: TableCell[];
+}
+
+export interface TableHeaderRow extends Block {
+  nodeType: BLOCKS.TABLE_ROW;
+  data: EmptyNodeData;
+  content: TableHeaderCell[];
 }
 
 export interface Table extends Block {
   nodeType: BLOCKS.TABLE;
   data: EmptyNodeData;
-  content: TableRow[];
+  content: TableRow[] | [TableHeaderRow, ...Array<TableRow>];
 }

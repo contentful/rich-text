@@ -15,20 +15,10 @@
           "properties": {}
         },
         "content": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/TableCell"
-              }
-            },
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/TableHeaderCell"
-              }
-            }
-          ]
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TableCell"
+          }
         }
       },
       "additionalProperties": false,
@@ -192,41 +182,6 @@
     "Record<string,any>": {
       "additionalProperties": true,
       "type": "object"
-    },
-    "TableHeaderCell": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "table-header-cell"
-          ]
-        },
-        "data": {
-          "type": "object",
-          "properties": {
-            "colspan": {
-              "type": "number"
-            },
-            "rowspan": {
-              "type": "number"
-            }
-          },
-          "additionalProperties": false
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Paragraph"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"
