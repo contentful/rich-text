@@ -165,10 +165,19 @@ export interface TableCell extends Block {
   content: Paragraph[];
 }
 
+export interface TableHeaderCell extends Block {
+  nodeType: BLOCKS.TABLE_HEADER_CELL;
+  data: {
+    colspan?: number;
+    rowspan?: number;
+  };
+  content: Paragraph[];
+}
+
 export interface TableRow extends Block {
   nodeType: BLOCKS.TABLE_ROW;
   data: EmptyNodeData;
-  content: TableCell[];
+  content: TableCell[] | TableHeaderCell[];
 }
 
 export interface Table extends Block {

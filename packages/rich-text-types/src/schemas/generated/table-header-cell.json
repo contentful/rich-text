@@ -1,77 +1,13 @@
 {
-  "$ref": "#/definitions/Table",
+  "$ref": "#/definitions/TableHeaderCell",
   "definitions": {
-    "Table": {
+    "TableHeaderCell": {
       "type": "object",
       "properties": {
         "nodeType": {
           "type": "string",
           "enum": [
-            "table"
-          ]
-        },
-        "data": {
-          "type": "object",
-          "properties": {}
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/TableRow"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "TableRow": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "table-row"
-          ]
-        },
-        "data": {
-          "type": "object",
-          "properties": {}
-        },
-        "content": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/TableCell"
-              }
-            },
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/TableHeaderCell"
-              }
-            }
-          ]
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "TableCell": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "table-cell"
+            "table-header-cell"
           ]
         },
         "data": {
@@ -219,41 +155,6 @@
     "Record<string,any>": {
       "additionalProperties": true,
       "type": "object"
-    },
-    "TableHeaderCell": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "table-header-cell"
-          ]
-        },
-        "data": {
-          "type": "object",
-          "properties": {
-            "colspan": {
-              "type": "number"
-            },
-            "rowspan": {
-              "type": "number"
-            }
-          },
-          "additionalProperties": false
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Paragraph"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"
