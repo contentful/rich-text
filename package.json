@@ -1,9 +1,16 @@
 {
-  "name": "root",
+  "name": "@contentful/rich-text",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "description": "A monorepo for all NPM packages related to Rich Text",
+  "author": "Contentful GmbH",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/contentful/rich-text.git"
+  },
+  "engines": {
+    "node": ">=14.17.6"
+  },
   "scripts": {
     "benchmark": "ts-node -O '{\"module\": \"commonjs\"}' bin/benchmark",
     "build": "lerna run build",
@@ -13,7 +20,7 @@
     "postinstall": "lerna bootstrap --hoist --progress --no-ci",
     "prebuild": "lerna run prebuild",
     "prepublishOnly": "npm i && npm run build && npm run lint && npm run test",
-    "publish": "lerna publish",
+    "publish": "lerna version --no-private --conventional-commits --create-release github --yes && lerna publish from-git --yes",
     "release": "lerna run release",
     "start": "lerna run start",
     "test": "jest",
@@ -21,6 +28,9 @@
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
     "test:watch": "jest --watch"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "husky": {
     "hooks": {
       "commit-msg": "validate-commit-msg",
@@ -69,5 +79,6 @@
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.4.5",
     "validate-commit-msg": "^2.14.0"
-  }
+  },
+  "dependencies": {}
 }
