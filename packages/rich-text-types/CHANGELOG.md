@@ -1,4 +1,4 @@
-# [15.1.0](https://github.com/contentful/rich-text/compare/v15.2.0...v15.1.0) (2021-09-06)
+# [15.2.0](https://github.com/contentful/rich-text/compare/v15.2.0...v15.1.0) (2021-09-06)
 
 
 ### Bug Fixes
