@@ -17,10 +17,7 @@
     "declarationDir": "dist/types",
     "outDir": "dist/lib",
     "skipLibCheck": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "src/typings"
-    ],
+    "typeRoots": ["../../node_modules/@types", "node_modules/@types", "src/typings"],
     "types": [
       "jest"
     ]
