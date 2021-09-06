@@ -5,12 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [15.3.0](https://github.com/contentful/rich-text/compare/v15.2.0...v15.3.0) (2021-09-06)
 
-**Note:** Version bump only for package @contentful/rich-text-react-renderer
-
-
-
-
-
-## [14.1.3](https://github.com/contentful/rich-text/compare/v14.1.2...v14.1.3) (2021-04-12)
-
-**Note:** Version bump only for package @contentful/rich-text-react-renderer
+**Note:** Version bump only for package @contentful/rich-text-links
