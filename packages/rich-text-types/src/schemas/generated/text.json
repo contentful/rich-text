@@ -20,7 +20,7 @@
           }
         },
         "data": {
-          "$ref": "#/definitions/Record<string,any>"
+          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -43,7 +43,7 @@
         "type"
       ]
     },
-    "Record<string,any>": {
+    "NodeData": {
       "additionalProperties": true,
       "type": "object"
     }
