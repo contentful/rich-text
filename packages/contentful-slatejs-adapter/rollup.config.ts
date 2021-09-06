@@ -6,15 +6,13 @@ import json from 'rollup-plugin-json';
 
 const pkg = require('./package.json');
 
-export default {
+const options = {
   input: `src/index.ts`,
-  output: [
-    { file: pkg.main, format: 'cjs', sourcemap: true }
-  ],
+  output: { file: pkg.main, format: 'cjs', sourcemap: true },
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: ['lodash.flatmap', 'lodash.omit', 'lodash.get', '@contentful/rich-text-types'],
   watch: {
-    include: 'src/**',
+    include: ['src/**'],
   },
   plugins: [
     // Allow json resolution
@@ -32,3 +30,5 @@ export default {
     sourceMaps(),
   ],
 };
+
+export default options;
