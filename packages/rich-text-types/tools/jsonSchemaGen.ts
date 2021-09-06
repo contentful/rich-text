@@ -56,6 +56,7 @@ const blockSymbolsMap = new Map([
   [BLOCKS.TABLE, 'Table'],
   [BLOCKS.TABLE_ROW, 'TableRow'],
   [BLOCKS.TABLE_CELL, 'TableCell'],
+  [BLOCKS.TABLE_HEADER_CELL, 'TableHeaderCell'],
 ]);
 
 const inlineSymbolsMap = new Map([

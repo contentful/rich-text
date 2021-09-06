@@ -305,6 +305,7 @@ Object {
         "paragraph",
         "table",
         "table-cell",
+        "table-header-cell",
         "table-row",
         "unordered-list",
       ],
@@ -2126,6 +2127,7 @@ Object {
         "paragraph",
         "table",
         "table-cell",
+        "table-header-cell",
         "table-row",
         "unordered-list",
       ],
@@ -2357,6 +2359,7 @@ Object {
         "paragraph",
         "table",
         "table-cell",
+        "table-header-cell",
         "table-row",
         "unordered-list",
       ],
@@ -2819,10 +2822,26 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "content": Object {
-          "items": Object {
-            "$ref": "#/definitions/TableRow",
-          },
-          "type": "array",
+          "anyOf": Array [
+            Object {
+              "items": Object {
+                "$ref": "#/definitions/TableRow",
+              },
+              "type": "array",
+            },
+            Object {
+              "additionalItems": Object {
+                "$ref": "#/definitions/TableRow",
+              },
+              "items": Array [
+                Object {
+                  "$ref": "#/definitions/TableHeaderRow",
+                },
+              ],
+              "minItems": 1,
+              "type": "array",
+            },
+          ],
         },
         "data": Object {
           "properties": Object {},
@@ -2866,6 +2885,68 @@ Object {
         "nodeType": Object {
           "enum": Array [
             "table-cell",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "TableHeaderCell": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Paragraph",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "colspan": Object {
+              "type": "number",
+            },
+            "rowspan": Object {
+              "type": "number",
+            },
+          },
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "table-header-cell",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "TableHeaderRow": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/TableHeaderCell",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "properties": Object {},
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "table-row",
           ],
           "type": "string",
         },
@@ -3057,6 +3138,170 @@ Object {
         "nodeType": Object {
           "enum": Array [
             "table-cell",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: table-header-cell 1`] = `
+Object {
+  "$ref": "#/definitions/TableHeaderCell",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "entry-hyperlink",
+        "hyperlink",
+      ],
+      "type": "string",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/Record<string,any>",
+        },
+        "nodeType": Object {
+          "$ref": "#/definitions/INLINES",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "Paragraph": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "properties": Object {},
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "paragraph",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Record<string,any>": Object {
+      "additionalProperties": true,
+      "type": "object",
+    },
+    "TableHeaderCell": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Paragraph",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "colspan": Object {
+              "type": "number",
+            },
+            "rowspan": Object {
+              "type": "number",
+            },
+          },
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "table-header-cell",
           ],
           "type": "string",
         },
@@ -3372,6 +3617,7 @@ Object {
         "paragraph",
         "table",
         "table-cell",
+        "table-header-cell",
         "table-row",
         "unordered-list",
       ],
