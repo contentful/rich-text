@@ -159,6 +159,7 @@
         "paragraph",
         "table",
         "table-cell",
+        "table-header-cell",
         "table-row",
         "unordered-list"
       ],

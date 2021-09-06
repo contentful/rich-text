@@ -165,14 +165,30 @@ export interface TableCell extends Block {
   content: Paragraph[];
 }
 
+export interface TableHeaderCell extends Block {
+  nodeType: BLOCKS.TABLE_HEADER_CELL;
+  data: {
+    colspan?: number;
+    rowspan?: number;
+  };
+  content: Paragraph[];
+}
+
 export interface TableRow extends Block {
   nodeType: BLOCKS.TABLE_ROW;
   data: EmptyNodeData;
   content: TableCell[];
 }
 
+// A helper type to only allow all cells in a row to be header cells
+interface TableHeaderRow extends Block {
+  nodeType: BLOCKS.TABLE_ROW;
+  data: EmptyNodeData;
+  content: TableHeaderCell[];
+}
+
 export interface Table extends Block {
   nodeType: BLOCKS.TABLE;
   data: EmptyNodeData;
-  content: TableRow[];
+  content: TableRow[] | [TableHeaderRow, ...Array<TableRow>];
 }
