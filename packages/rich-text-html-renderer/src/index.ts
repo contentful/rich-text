@@ -10,7 +10,6 @@ import {
   Inline,
   helpers,
 } from '@contentful/rich-text-types';
-import React from 'react';
 
 const attributeValue = (value: string) => `"${value.replace(/"/g, '&quot;')}"`;
 

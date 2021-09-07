@@ -87,7 +87,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -95,7 +95,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -157,7 +157,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -180,6 +180,10 @@ Object {
       "required": Array [
         "type",
       ],
+      "type": "object",
+    },
+    "NodeData": Object {
+      "additionalProperties": true,
       "type": "object",
     },
     "Paragraph": Object {
@@ -243,15 +247,11 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
-      "additionalProperties": true,
-      "type": "object",
-    },
     "Text": Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -331,7 +331,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/BLOCKS",
@@ -354,7 +354,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "enum": Array [
@@ -397,7 +397,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -422,7 +422,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -430,7 +430,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -476,7 +476,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/TopLevelBlockEnum",
@@ -587,7 +587,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -647,7 +647,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -655,7 +655,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -760,7 +760,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -820,7 +820,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -828,7 +828,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -946,7 +946,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -954,7 +954,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -1071,7 +1071,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -1079,7 +1079,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -1175,7 +1175,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -1200,7 +1200,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -1208,7 +1208,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -1304,7 +1304,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -1329,7 +1329,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -1337,7 +1337,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -1433,7 +1433,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -1458,7 +1458,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -1466,7 +1466,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -1562,7 +1562,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -1587,7 +1587,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -1595,7 +1595,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -1691,7 +1691,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -1716,7 +1716,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -1724,7 +1724,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -1820,7 +1820,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -1845,7 +1845,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -1853,7 +1853,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -1950,7 +1950,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -1975,7 +1975,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -1983,7 +1983,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -2065,7 +2065,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -2073,7 +2073,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -2153,7 +2153,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/BLOCKS",
@@ -2193,7 +2193,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -2245,7 +2245,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -2253,7 +2253,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -2299,7 +2299,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/TopLevelBlockEnum",
@@ -2385,7 +2385,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/BLOCKS",
@@ -2425,7 +2425,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -2477,6 +2477,10 @@ Object {
       ],
       "type": "object",
     },
+    "NodeData": Object {
+      "additionalProperties": true,
+      "type": "object",
+    },
     "OrderedList": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -2504,15 +2508,11 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
-      "additionalProperties": true,
-      "type": "object",
-    },
     "Text": Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -2558,7 +2558,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/TopLevelBlockEnum",
@@ -2626,7 +2626,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -2649,6 +2649,10 @@ Object {
       "required": Array [
         "type",
       ],
+      "type": "object",
+    },
+    "NodeData": Object {
+      "additionalProperties": true,
       "type": "object",
     },
     "Paragraph": Object {
@@ -2685,15 +2689,11 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
-      "additionalProperties": true,
-      "type": "object",
-    },
     "Text": Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -2755,7 +2755,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -2778,6 +2778,10 @@ Object {
       "required": Array [
         "type",
       ],
+      "type": "object",
+    },
+    "NodeData": Object {
+      "additionalProperties": true,
       "type": "object",
     },
     "Paragraph": Object {
@@ -2812,10 +2816,6 @@ Object {
         "data",
         "nodeType",
       ],
-      "type": "object",
-    },
-    "Record<string,any>": Object {
-      "additionalProperties": true,
       "type": "object",
     },
     "Table": Object {
@@ -2989,7 +2989,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -3051,7 +3051,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -3074,6 +3074,10 @@ Object {
       "required": Array [
         "type",
       ],
+      "type": "object",
+    },
+    "NodeData": Object {
+      "additionalProperties": true,
       "type": "object",
     },
     "Paragraph": Object {
@@ -3108,10 +3112,6 @@ Object {
         "data",
         "nodeType",
       ],
-      "type": "object",
-    },
-    "Record<string,any>": Object {
-      "additionalProperties": true,
       "type": "object",
     },
     "TableCell": Object {
@@ -3153,7 +3153,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -3215,7 +3215,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -3238,6 +3238,10 @@ Object {
       "required": Array [
         "type",
       ],
+      "type": "object",
+    },
+    "NodeData": Object {
+      "additionalProperties": true,
       "type": "object",
     },
     "Paragraph": Object {
@@ -3272,10 +3276,6 @@ Object {
         "data",
         "nodeType",
       ],
-      "type": "object",
-    },
-    "Record<string,any>": Object {
-      "additionalProperties": true,
       "type": "object",
     },
     "TableHeaderCell": Object {
@@ -3317,7 +3317,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -3379,7 +3379,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -3402,6 +3402,10 @@ Object {
       "required": Array [
         "type",
       ],
+      "type": "object",
+    },
+    "NodeData": Object {
+      "additionalProperties": true,
       "type": "object",
     },
     "Paragraph": Object {
@@ -3436,10 +3440,6 @@ Object {
         "data",
         "nodeType",
       ],
-      "type": "object",
-    },
-    "Record<string,any>": Object {
-      "additionalProperties": true,
       "type": "object",
     },
     "TableCell": Object {
@@ -3508,7 +3508,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -3555,7 +3555,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -3563,7 +3563,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -3643,7 +3643,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/BLOCKS",
@@ -3683,7 +3683,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/INLINES",
@@ -3735,7 +3735,7 @@ Object {
       ],
       "type": "object",
     },
-    "Record<string,any>": Object {
+    "NodeData": Object {
       "additionalProperties": true,
       "type": "object",
     },
@@ -3743,7 +3743,7 @@ Object {
       "additionalProperties": false,
       "properties": Object {
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "marks": Object {
           "items": Object {
@@ -3789,7 +3789,7 @@ Object {
           "type": "array",
         },
         "data": Object {
-          "$ref": "#/definitions/Record<string,any>",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": Object {
           "$ref": "#/definitions/TopLevelBlockEnum",

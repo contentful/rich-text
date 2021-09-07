@@ -20,7 +20,7 @@
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
+    "build": "tsc --module ES2015 && rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -59,46 +59,45 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
+  "dependencies": {
+    "@contentful/rich-text-types": "^5.0.0",
+    "lodash.flatmap": "^4.5.0",
+    "lodash.get": "^4.4.2",
+    "lodash.omit": "^4.5.0"
+  },
   "devDependencies": {
-    "@types/jest": "^22.0.0",
+    "@types/jest": "^27.0.1",
     "@types/lodash.flatmap": "^4.5.3",
     "@types/lodash.get": "^4.4.4",
     "@types/node": "^10.0.3",
+    "@types/rollup-plugin-json": "^3.0.3",
     "colors": "^1.1.2",
     "coveralls": "^3.0.0",
     "cross-env": "^5.0.1",
     "cz-conventional-changelog": "^2.0.0",
     "faker": "^4.1.0",
-    "husky": "^0.14.0",
-    "jest": "^22.0.2",
+    "husky": "^2.7.0",
+    "jest": "^27.1.0",
     "lint-staged": "^7.0.0",
     "lodash.camelcase": "^4.3.0",
-    "prettier": "^1.4.4",
+    "prettier": "^1.19.1",
     "prompt": "^1.0.0",
     "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",
     "rollup": "^0.58.0",
     "rollup-plugin-commonjs": "^9.0.0",
-    "rollup-plugin-json": "^3.0.0",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.11.1",
-    "ts-jest": "^22.0.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^4.2.4",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.5",
     "ts-node": "^6.0.0",
-    "tslint": "^5.8.0",
+    "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.1.0",
     "tslint-config-standard": "^7.0.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.4.2"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@contentful/rich-text-types": "^5.0.0",
-    "jest": "^26.6.3",
-    "lodash.flatmap": "^4.5.0",
-    "lodash.get": "^4.4.2",
-    "lodash.omit": "^4.5.0",
-    "typescript": "^4.2.4"
   }
 }

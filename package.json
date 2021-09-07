@@ -1,9 +1,16 @@
 {
-  "name": "root",
+  "name": "@contentful/rich-text",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "description": "A monorepo for all NPM packages related to Rich Text",
+  "author": "Contentful GmbH",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/contentful/rich-text.git"
+  },
+  "engines": {
+    "node": ">=14.17.6"
+  },
   "scripts": {
     "benchmark": "ts-node -O '{\"module\": \"commonjs\"}' bin/benchmark",
     "build": "lerna run build",
@@ -13,7 +20,7 @@
     "postinstall": "lerna bootstrap --hoist --progress --no-ci",
     "prebuild": "lerna run prebuild",
     "prepublishOnly": "npm i && npm run build && npm run lint && npm run test",
-    "publish": "lerna publish",
+    "publish": "lerna version --no-private --conventional-commits --create-release github --yes && lerna publish from-git --yes",
     "release": "lerna run release",
     "start": "lerna run start",
     "test": "jest",
@@ -21,6 +28,9 @@
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
     "test:watch": "jest --watch"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "husky": {
     "hooks": {
       "commit-msg": "validate-commit-msg",
@@ -47,27 +57,28 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@types/benchmark": "^1.0.31",
-    "@types/faker": "^4.1.5",
-    "@types/jest": "^24.0.12",
+    "@types/benchmark": "^1.0.33",
+    "@types/faker": "^4.1.12",
+    "@types/jest": "^27.0.1",
     "benchmark": "^2.1.4",
-    "commitizen": "^3.1.1",
-    "git-cz": "^3.0.1",
-    "husky": "^2.2.0",
-    "lerna": "^3.13.4",
-    "lint-staged": "^8.1.6",
-    "prettier": "^1.17.0",
-    "rollup": "^1.11.0",
+    "commitizen": "^3.1.2",
+    "git-cz": "^3.3.0",
+    "husky": "^2.7.0",
+    "lerna": "^3.22.1",
+    "lint-staged": "^8.2.1",
+    "prettier": "^1.19.1",
+    "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.21.0",
-    "ts-jest": "^24.0.2",
-    "ts-node": "^8.1.0",
+    "rollup-plugin-node-resolve": "^4.2.4",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^8.10.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.4.5",
+    "typescript": "^4.4.2",
     "validate-commit-msg": "^2.14.0"
-  }
+  },
+  "dependencies": {}
 }
