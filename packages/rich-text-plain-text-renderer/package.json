@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-plain-text-renderer",
-  "version": "15.3.1",
+  "version": "15.3.2",
   "main": "dist/rich-text-plain-text-renderer.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -24,7 +24,7 @@
     "lint": "tslint -t codeFrame '@(src|bin)/*.ts'"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^15.3.1"
+    "@contentful/rich-text-types": "^15.3.2"
   },
   "devDependencies": {
     "jest": "^27.1.0",
