@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [15.3.1](https://github.com/contentful/rich-text/compare/v15.3.0...v15.3.1) (2021-09-07)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+
+
+
+
 # [15.2.0](https://github.com/contentful/rich-text/compare/v15.2.0...v15.1.0) (2021-09-06)
 
 
@@ -46,6 +59,3 @@
 ### Performance Improvements
 
 * ⚡️ Remove lodash.omit dependency ([93b6b76](https://github.com/contentful/rich-text/commit/93b6b765488a6d3e003a832c953ae10c3f68672e))
-
-
-

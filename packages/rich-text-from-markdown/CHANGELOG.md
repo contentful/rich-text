@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.3.1](https://github.com/contentful/rich-text/compare/v15.3.0...v15.3.1) (2021-09-07)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
+
+
+
+
 # [15.3.0](https://github.com/contentful/rich-text/compare/v15.2.0...v15.3.0) (2021-09-06)
 
 **Note:** Version bump only for package @contentful/rich-text-from-markdown
@@ -149,6 +157,3 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **packages:** Add rich text from markdown package ([bc8ec41](https://github.com/contentful/rich-text/commit/bc8ec41f5615eabcc29031ee99da3f9c70b414b3))
-
-
-

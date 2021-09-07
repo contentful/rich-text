@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [15.3.1](https://github.com/contentful/rich-text/compare/v15.3.0...v15.3.1) (2021-09-07)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+
+
+
+
 # [15.2.0](https://github.com/contentful/rich-text/compare/v15.1.0...v15.2.0) (2021-08-16)
 
 
@@ -77,6 +90,3 @@
 ### Features
 
 * 🎸 Initial rich-text-react-renderer implementation ([06dad9b](https://github.com/contentful/rich-text/commit/06dad9b0359325d8fa433438dac997fc9656d13f))
-
-
-
