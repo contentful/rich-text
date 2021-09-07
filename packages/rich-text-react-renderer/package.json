@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-react-renderer",
-  "version": "15.3.2",
+  "version": "15.3.3",
   "main": "dist/rich-text-react-renderer.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -24,7 +24,7 @@
     "lint": "tslint -t codeFrame '@(src|bin)/*.ts'"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^15.3.2"
+    "@contentful/rich-text-types": "^15.3.3"
   },
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0",
