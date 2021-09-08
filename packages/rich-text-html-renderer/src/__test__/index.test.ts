@@ -1,22 +1,21 @@
 import cloneDeep from 'lodash/cloneDeep';
-import { Document, Block, BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+import { Block, BLOCKS, Document, INLINES, MARKS } from '@contentful/rich-text-types';
 import { documentToHtmlString, Options } from '../index';
 import {
+  embeddedEntryDoc,
+  headingDoc,
   hrDoc,
   hyperlinkDoc,
-  paragraphDoc,
   invalidMarksDoc,
   invalidTypeDoc,
-  headingDoc,
   marksDoc,
-  embeddedEntryDoc,
   olDoc,
-  ulDoc,
+  paragraphDoc,
+  tableDoc,
   quoteDoc,
+  ulDoc,
 } from './documents';
 import inlineEntity from './documents/inline-entity';
-import { tableDoc } from '../../../rich-text-react-renderer/src/__test__/documents';
-import { documentToReactComponents } from '../../../rich-text-react-renderer/src';
 
 describe('documentToHtmlString', () => {
   it('returns empty string when given an empty document', () => {
@@ -255,9 +254,7 @@ describe('documentToHtmlString', () => {
       },
     };
     const document: Document = inlineEntity(asset, INLINES.ASSET_HYPERLINK);
-    const expected = `<p><span>type: ${INLINES.ASSET_HYPERLINK} id: ${
-      asset.target.sys.id
-    }</span></p>`;
+    const expected = `<p><span>type: ${INLINES.ASSET_HYPERLINK} id: ${asset.target.sys.id}</span></p>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
@@ -273,9 +270,7 @@ describe('documentToHtmlString', () => {
       },
     };
     const document: Document = inlineEntity(entry, INLINES.ENTRY_HYPERLINK);
-    const expected = `<p><span>type: ${INLINES.ENTRY_HYPERLINK} id: ${
-      entry.target.sys.id
-    }</span></p>`;
+    const expected = `<p><span>type: ${INLINES.ENTRY_HYPERLINK} id: ${entry.target.sys.id}</span></p>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
@@ -291,9 +286,7 @@ describe('documentToHtmlString', () => {
       },
     };
     const document: Document = inlineEntity(entry, INLINES.EMBEDDED_ENTRY);
-    const expected = `<p><span>type: ${INLINES.EMBEDDED_ENTRY} id: ${
-      entry.target.sys.id
-    }</span></p>`;
+    const expected = `<p><span>type: ${INLINES.EMBEDDED_ENTRY} id: ${entry.target.sys.id}</span></p>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
