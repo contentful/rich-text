@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.3.4](https://github.com/contentful/rich-text/compare/v15.3.3...v15.3.4) (2021-09-09)
+
+
+### Bug Fixes
+
+* replace import to fix typings for html-renderer ([#265](https://github.com/contentful/rich-text/issues/265)) ([40c2670](https://github.com/contentful/rich-text/commit/40c267069b18454517b0f4283a7e155cffa410b6))
+
+
+
+
+
 ## [15.3.3](https://github.com/contentful/rich-text/compare/v15.3.2...v15.3.3) (2021-09-07)
 
 **Note:** Version bump only for package @contentful/rich-text
