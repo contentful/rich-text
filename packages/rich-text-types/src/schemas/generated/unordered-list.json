@@ -44,7 +44,7 @@
         "content": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TopLevelBlock"
+            "$ref": "#/definitions/ListItemBlock"
           }
         }
       },
@@ -55,11 +55,11 @@
         "nodeType"
       ]
     },
-    "TopLevelBlock": {
+    "ListItemBlock": {
       "type": "object",
       "properties": {
         "nodeType": {
-          "$ref": "#/definitions/TopLevelBlockEnum"
+          "$ref": "#/definitions/ListItemBlockEnum"
         },
         "content": {
           "type": "array",
@@ -88,7 +88,7 @@
         "nodeType"
       ]
     },
-    "TopLevelBlockEnum": {
+    "ListItemBlockEnum": {
       "enum": [
         "blockquote",
         "embedded-asset-block",
@@ -102,7 +102,6 @@
         "hr",
         "ordered-list",
         "paragraph",
-        "table",
         "unordered-list"
       ],
       "type": "string"
