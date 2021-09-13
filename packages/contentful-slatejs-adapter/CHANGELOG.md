@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.3.5](https://github.com/contentful/rich-text/compare/v15.3.4...v15.3.5) (2021-09-13)
+
+
+### Bug Fixes
+
+* **rich-text-types:** forbid Tables inside ListItem ([#266](https://github.com/contentful/rich-text/issues/266)) ([fc338bf](https://github.com/contentful/rich-text/commit/fc338bf040b8718057717d2681f800d5e26ba59d))
+
+
+
+
+
 ## [15.3.3](https://github.com/contentful/rich-text/compare/v15.3.2...v15.3.3) (2021-09-07)
 
 **Note:** Version bump only for package @contentful/contentful-slatejs-adapter
