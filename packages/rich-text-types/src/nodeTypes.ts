@@ -177,18 +177,25 @@ export interface TableHeaderCell extends Block {
 export interface TableRow extends Block {
   nodeType: BLOCKS.TABLE_ROW;
   data: EmptyNodeData;
-  content: TableCell[];
+  content: TableCell[] | TableHeaderCell[];
 }
 
-// A helper type to only allow all cells in a row to be header cells
+// Helper types to only allow all cells in a first row to be header cells
+
 interface TableHeaderRow extends Block {
   nodeType: BLOCKS.TABLE_ROW;
   data: EmptyNodeData;
   content: TableHeaderCell[];
 }
 
+interface TableNonHeaderRow extends Block {
+  nodeType: BLOCKS.TABLE_ROW;
+  data: EmptyNodeData;
+  content: TableCell[];
+}
+
 export interface Table extends Block {
   nodeType: BLOCKS.TABLE;
   data: EmptyNodeData;
-  content: TableRow[] | [TableHeaderRow, ...Array<TableRow>];
+  content: TableNonHeaderRow[] | [TableHeaderRow, ...Array<TableNonHeaderRow>];
 }

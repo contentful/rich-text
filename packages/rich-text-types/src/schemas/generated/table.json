@@ -19,7 +19,7 @@
             {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/TableRow"
+                "$ref": "#/definitions/TableNonHeaderRow"
               }
             },
             {
@@ -31,7 +31,7 @@
               ],
               "minItems": 1,
               "additionalItems": {
-                "$ref": "#/definitions/TableRow"
+                "$ref": "#/definitions/TableNonHeaderRow"
               }
             }
           ]
@@ -44,7 +44,7 @@
         "nodeType"
       ]
     },
-    "TableRow": {
+    "TableNonHeaderRow": {
       "type": "object",
       "properties": {
         "nodeType": {
