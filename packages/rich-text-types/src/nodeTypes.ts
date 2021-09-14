@@ -157,7 +157,7 @@ export interface EntryHyperlink extends Inline {
 }
 
 export interface TableCell extends Block {
-  nodeType: BLOCKS.TABLE_CELL;
+  nodeType: BLOCKS.TABLE_HEADER_CELL | BLOCKS.TABLE_CELL;
   data: {
     colspan?: number;
     rowspan?: number;
@@ -165,19 +165,14 @@ export interface TableCell extends Block {
   content: Paragraph[];
 }
 
-export interface TableHeaderCell extends Block {
+export interface TableHeaderCell extends TableCell {
   nodeType: BLOCKS.TABLE_HEADER_CELL;
-  data: {
-    colspan?: number;
-    rowspan?: number;
-  };
-  content: Paragraph[];
 }
 
 export interface TableRow extends Block {
   nodeType: BLOCKS.TABLE_ROW;
   data: EmptyNodeData;
-  content: Array<TableCell | TableHeaderCell>;
+  content: Array<TableCell>;
 }
 
 export interface Table extends Block {
