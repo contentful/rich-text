@@ -15,26 +15,10 @@
           "properties": {}
         },
         "content": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/TableNonHeaderRow"
-              }
-            },
-            {
-              "type": "array",
-              "items": [
-                {
-                  "$ref": "#/definitions/TableHeaderRow"
-                }
-              ],
-              "minItems": 1,
-              "additionalItems": {
-                "$ref": "#/definitions/TableNonHeaderRow"
-              }
-            }
-          ]
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TableRow"
+          }
         }
       },
       "additionalProperties": false,
@@ -44,7 +28,7 @@
         "nodeType"
       ]
     },
-    "TableNonHeaderRow": {
+    "TableRow": {
       "type": "object",
       "properties": {
         "nodeType": {
@@ -60,7 +44,14 @@
         "content": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TableCell"
+            "anyOf": [
+              {
+                "$ref": "#/definitions/TableCell"
+              },
+              {
+                "$ref": "#/definitions/TableHeaderCell"
+              }
+            ]
           }
         }
       },
@@ -225,33 +216,6 @@
     "NodeData": {
       "additionalProperties": true,
       "type": "object"
-    },
-    "TableHeaderRow": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "table-row"
-          ]
-        },
-        "data": {
-          "type": "object",
-          "properties": {}
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/TableHeaderCell"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
     },
     "TableHeaderCell": {
       "type": "object",

@@ -15,20 +15,17 @@
           "properties": {}
         },
         "content": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
                 "$ref": "#/definitions/TableCell"
-              }
-            },
-            {
-              "type": "array",
-              "items": {
+              },
+              {
                 "$ref": "#/definitions/TableHeaderCell"
               }
-            }
-          ]
+            ]
+          }
         }
       },
       "additionalProperties": false,
