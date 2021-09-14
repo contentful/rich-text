@@ -2211,7 +2211,7 @@ Object {
       "properties": Object {
         "content": Object {
           "items": Object {
-            "$ref": "#/definitions/TopLevelBlock",
+            "$ref": "#/definitions/ListItemBlock",
           },
           "type": "array",
         },
@@ -2232,6 +2232,57 @@ Object {
         "nodeType",
       ],
       "type": "object",
+    },
+    "ListItemBlock": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/NodeData",
+        },
+        "nodeType": Object {
+          "$ref": "#/definitions/ListItemBlockEnum",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItemBlockEnum": Object {
+      "enum": Array [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
     },
     "Mark": Object {
       "additionalProperties": false,
@@ -2278,58 +2329,6 @@ Object {
         "value",
       ],
       "type": "object",
-    },
-    "TopLevelBlock": Object {
-      "additionalProperties": false,
-      "properties": Object {
-        "content": Object {
-          "items": Object {
-            "anyOf": Array [
-              Object {
-                "$ref": "#/definitions/Block",
-              },
-              Object {
-                "$ref": "#/definitions/Inline",
-              },
-              Object {
-                "$ref": "#/definitions/Text",
-              },
-            ],
-          },
-          "type": "array",
-        },
-        "data": Object {
-          "$ref": "#/definitions/NodeData",
-        },
-        "nodeType": Object {
-          "$ref": "#/definitions/TopLevelBlockEnum",
-        },
-      },
-      "required": Array [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "TopLevelBlockEnum": Object {
-      "enum": Array [
-        "blockquote",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "ordered-list",
-        "paragraph",
-        "table",
-        "unordered-list",
-      ],
-      "type": "string",
     },
   },
 }
@@ -2443,7 +2442,7 @@ Object {
       "properties": Object {
         "content": Object {
           "items": Object {
-            "$ref": "#/definitions/TopLevelBlock",
+            "$ref": "#/definitions/ListItemBlock",
           },
           "type": "array",
         },
@@ -2464,6 +2463,57 @@ Object {
         "nodeType",
       ],
       "type": "object",
+    },
+    "ListItemBlock": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/NodeData",
+        },
+        "nodeType": Object {
+          "$ref": "#/definitions/ListItemBlockEnum",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItemBlockEnum": Object {
+      "enum": Array [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
     },
     "Mark": Object {
       "additionalProperties": false,
@@ -2537,58 +2587,6 @@ Object {
         "value",
       ],
       "type": "object",
-    },
-    "TopLevelBlock": Object {
-      "additionalProperties": false,
-      "properties": Object {
-        "content": Object {
-          "items": Object {
-            "anyOf": Array [
-              Object {
-                "$ref": "#/definitions/Block",
-              },
-              Object {
-                "$ref": "#/definitions/Inline",
-              },
-              Object {
-                "$ref": "#/definitions/Text",
-              },
-            ],
-          },
-          "type": "array",
-        },
-        "data": Object {
-          "$ref": "#/definitions/NodeData",
-        },
-        "nodeType": Object {
-          "$ref": "#/definitions/TopLevelBlockEnum",
-        },
-      },
-      "required": Array [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "TopLevelBlockEnum": Object {
-      "enum": Array [
-        "blockquote",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "ordered-list",
-        "paragraph",
-        "table",
-        "unordered-list",
-      ],
-      "type": "string",
     },
   },
 }
@@ -3746,7 +3744,7 @@ Object {
       "properties": Object {
         "content": Object {
           "items": Object {
-            "$ref": "#/definitions/TopLevelBlock",
+            "$ref": "#/definitions/ListItemBlock",
           },
           "type": "array",
         },
@@ -3767,6 +3765,57 @@ Object {
         "nodeType",
       ],
       "type": "object",
+    },
+    "ListItemBlock": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Block",
+              },
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/NodeData",
+        },
+        "nodeType": Object {
+          "$ref": "#/definitions/ListItemBlockEnum",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItemBlockEnum": Object {
+      "enum": Array [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
     },
     "Mark": Object {
       "additionalProperties": false,
@@ -3813,58 +3862,6 @@ Object {
         "value",
       ],
       "type": "object",
-    },
-    "TopLevelBlock": Object {
-      "additionalProperties": false,
-      "properties": Object {
-        "content": Object {
-          "items": Object {
-            "anyOf": Array [
-              Object {
-                "$ref": "#/definitions/Block",
-              },
-              Object {
-                "$ref": "#/definitions/Inline",
-              },
-              Object {
-                "$ref": "#/definitions/Text",
-              },
-            ],
-          },
-          "type": "array",
-        },
-        "data": Object {
-          "$ref": "#/definitions/NodeData",
-        },
-        "nodeType": Object {
-          "$ref": "#/definitions/TopLevelBlockEnum",
-        },
-      },
-      "required": Array [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "TopLevelBlockEnum": Object {
-      "enum": Array [
-        "blockquote",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "ordered-list",
-        "paragraph",
-        "table",
-        "unordered-list",
-      ],
-      "type": "string",
     },
     "UnorderedList": Object {
       "additionalProperties": false,
