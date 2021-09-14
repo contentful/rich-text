@@ -71,6 +71,13 @@ export const LIST_ITEM_BLOCKS: TopLevelBlockEnum[] = [
   BLOCKS.EMBEDDED_ASSET,
 ];
 
+export const TABLE_BLOCKS = [
+  BLOCKS.TABLE,
+  BLOCKS.TABLE_ROW,
+  BLOCKS.TABLE_CELL,
+  BLOCKS.TABLE_HEADER_CELL,
+];
+
 /**
  * Array of all void block types
  */
