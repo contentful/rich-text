@@ -175,8 +175,28 @@ export interface TableRow extends Block {
   content: Array<TableCell>;
 }
 
+// Helper types to
+// - allow only the first row to be a header row
+// - disallow mixing header and normal cells in one row
+
+interface TableHeaderRow extends Block {
+  nodeType: BLOCKS.TABLE_ROW;
+  data: EmptyNodeData;
+  content: TableHeaderCell[];
+}
+
+interface TableNonHeaderCell extends TableCell {
+  nodeType: BLOCKS.TABLE_CELL;
+}
+
+interface TableNonHeaderRow extends Block {
+  nodeType: BLOCKS.TABLE_ROW;
+  data: EmptyNodeData;
+  content: TableNonHeaderCell[];
+}
+
 export interface Table extends Block {
   nodeType: BLOCKS.TABLE;
   data: EmptyNodeData;
-  content: TableRow[];
+  content: TableNonHeaderRow[] | [TableHeaderRow, ...Array<TableNonHeaderRow>];
 }
