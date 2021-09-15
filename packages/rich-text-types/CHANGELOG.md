@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.3.6](https://github.com/contentful/rich-text/compare/v15.3.5...v15.3.6) (2021-09-15)
+
+
+### Bug Fixes
+
+* allow table-row type to have both cells ([#267](https://github.com/contentful/rich-text/issues/267)) ([ec40598](https://github.com/contentful/rich-text/commit/ec405982109cb1c16e7adf71a541a98270d7f45b))
+
+
+
+
+
 ## [15.3.5](https://github.com/contentful/rich-text/compare/v15.3.4...v15.3.5) (2021-09-13)
 
 
