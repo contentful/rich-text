@@ -169,13 +169,15 @@ export interface TableHeaderCell extends TableCell {
   nodeType: BLOCKS.TABLE_HEADER_CELL;
 }
 
+// An abstract table row can have both table cell types
+
 export interface TableRow extends Block {
   nodeType: BLOCKS.TABLE_ROW;
   data: EmptyNodeData;
   content: Array<TableCell>;
 }
 
-// Helper types to
+// But in the table context we want to
 // - allow only the first row to be a header row
 // - disallow mixing header and normal cells in one row
 
