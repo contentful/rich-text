@@ -5,10 +5,11 @@
       "type": "object",
       "properties": {
         "nodeType": {
-          "type": "string",
           "enum": [
-            "table-cell"
-          ]
+            "table-cell",
+            "table-header-cell"
+          ],
+          "type": "string"
         },
         "data": {
           "type": "object",
