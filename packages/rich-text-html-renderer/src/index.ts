@@ -27,8 +27,9 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.LIST_ITEM]: (node, next) => `<li>${next(node.content)}</li>`,
   [BLOCKS.QUOTE]: (node, next) => `<blockquote>${next(node.content)}</blockquote>`,
   [BLOCKS.HR]: () => '<hr/>',
-  [BLOCKS.TABLE]: (node, next) => `<table><tbody>${next(node.content)}</tbody></table>`,
+  [BLOCKS.TABLE]: (node, next) => `<table>${next(node.content)}</table>`,
   [BLOCKS.TABLE_ROW]: (node, next) => `<tr>${next(node.content)}</tr>`,
+  [BLOCKS.TABLE_HEADER_CELL]: (node, next) => `<th>${next(node.content)}</th>`,
   [BLOCKS.TABLE_CELL]: (node, next) => `<td>${next(node.content)}</td>`,
   [INLINES.ASSET_HYPERLINK]: node => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
   [INLINES.ENTRY_HYPERLINK]: node => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
@@ -102,7 +103,9 @@ export function documentToHtmlString(
 }
 
 function nodeListToHtmlString(nodes: CommonNode[], { renderNode, renderMark }: Options): string {
-  return nodes.map<string>(node => nodeToHtmlString(node, { renderNode, renderMark })).join('');
+  return nodes
+    .map<string>(node => nodeToHtmlString(node, { renderNode, renderMark }))
+    .join('');
 }
 
 function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options): string {
