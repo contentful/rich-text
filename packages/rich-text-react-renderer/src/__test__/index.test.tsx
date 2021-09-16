@@ -18,6 +18,7 @@ import {
   quoteDoc,
   ulDoc,
   tableDoc,
+  tableWithHeaderDoc,
 } from './documents';
 import DocumentWrapper from './components/Document';
 import Paragraph from './components/Paragraph';
@@ -163,6 +164,10 @@ describe('documentToReactComponents', () => {
     const document: Document = tableDoc;
 
     expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+
+  it('renders tables with header', () => {
+    expect(documentToReactComponents(tableWithHeaderDoc)).toMatchSnapshot();
   });
 
   it('does not crash with inline elements (e.g. hyperlink)', () => {

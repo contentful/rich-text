@@ -14,6 +14,7 @@ import {
   tableDoc,
   quoteDoc,
   ulDoc,
+  tableWithHeaderDoc,
 } from './documents';
 import inlineEntity from './documents/inline-entity';
 
@@ -205,12 +206,22 @@ describe('documentToHtmlString', () => {
   it('renders tables', () => {
     const document: Document = tableDoc;
     const expected =
-      '<table><tbody>' +
+      '<table>' +
       '<tr><td><p>A 1</p></td><td><p>B 1</p></td></tr>' +
       '<tr><td><p>A 2</p></td><td><p>B 2</p></td></tr>' +
-      '</tbody></table>';
+      '</table>';
 
     expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders tables with header', () => {
+    const expected =
+      '<table>' +
+      '<tr><th><p>A 1</p></th><th><p>B 1</p></th></tr>' +
+      '<tr><td><p>A 2</p></td><td><p>B 2</p></td></tr>' +
+      '</table>';
+
+    expect(documentToHtmlString(tableWithHeaderDoc)).toEqual(expected);
   });
 
   it('does not crash with inline elements (e.g. hyperlink)', () => {
