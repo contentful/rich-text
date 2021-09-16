@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.4.0](https://github.com/contentful/rich-text/compare/v15.3.6...v15.4.0) (2021-09-16)
+
+
+### Features
+
+* **html+react:** render Table header as <th> ([#269](https://github.com/contentful/rich-text/issues/269)) ([0f82905](https://github.com/contentful/rich-text/commit/0f829059be6d91e042dfc71698009177ae4ab78d))
+
+
+
+
+
 ## [15.3.6](https://github.com/contentful/rich-text/compare/v15.3.5...v15.3.6) (2021-09-15)
 
 **Note:** Version bump only for package @contentful/rich-text-react-renderer
