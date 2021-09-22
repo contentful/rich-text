@@ -1,22 +1,22 @@
 import cloneDeep from 'lodash/cloneDeep';
-import { Document, Block, BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+import { Block, BLOCKS, Document, INLINES, MARKS } from '@contentful/rich-text-types';
 import { documentToHtmlString, Options } from '../index';
 import {
+  embeddedEntryDoc,
+  headingDoc,
   hrDoc,
   hyperlinkDoc,
-  paragraphDoc,
   invalidMarksDoc,
   invalidTypeDoc,
-  headingDoc,
   marksDoc,
-  embeddedEntryDoc,
   olDoc,
-  ulDoc,
+  paragraphDoc,
+  tableDoc,
   quoteDoc,
+  ulDoc,
+  tableWithHeaderDoc,
 } from './documents';
 import inlineEntity from './documents/inline-entity';
-import { tableDoc } from '../../../rich-text-react-renderer/src/__test__/documents';
-import { documentToReactComponents } from '../../../rich-text-react-renderer/src';
 
 describe('documentToHtmlString', () => {
   it('returns empty string when given an empty document', () => {
@@ -206,12 +206,22 @@ describe('documentToHtmlString', () => {
   it('renders tables', () => {
     const document: Document = tableDoc;
     const expected =
-      '<table><tbody>' +
+      '<table>' +
       '<tr><td><p>A 1</p></td><td><p>B 1</p></td></tr>' +
       '<tr><td><p>A 2</p></td><td><p>B 2</p></td></tr>' +
-      '</tbody></table>';
+      '</table>';
 
     expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders tables with header', () => {
+    const expected =
+      '<table>' +
+      '<tr><th><p>A 1</p></th><th><p>B 1</p></th></tr>' +
+      '<tr><td><p>A 2</p></td><td><p>B 2</p></td></tr>' +
+      '</table>';
+
+    expect(documentToHtmlString(tableWithHeaderDoc)).toEqual(expected);
   });
 
   it('does not crash with inline elements (e.g. hyperlink)', () => {
@@ -255,9 +265,7 @@ describe('documentToHtmlString', () => {
       },
     };
     const document: Document = inlineEntity(asset, INLINES.ASSET_HYPERLINK);
-    const expected = `<p><span>type: ${INLINES.ASSET_HYPERLINK} id: ${
-      asset.target.sys.id
-    }</span></p>`;
+    const expected = `<p><span>type: ${INLINES.ASSET_HYPERLINK} id: ${asset.target.sys.id}</span></p>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
@@ -273,9 +281,7 @@ describe('documentToHtmlString', () => {
       },
     };
     const document: Document = inlineEntity(entry, INLINES.ENTRY_HYPERLINK);
-    const expected = `<p><span>type: ${INLINES.ENTRY_HYPERLINK} id: ${
-      entry.target.sys.id
-    }</span></p>`;
+    const expected = `<p><span>type: ${INLINES.ENTRY_HYPERLINK} id: ${entry.target.sys.id}</span></p>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
@@ -291,9 +297,7 @@ describe('documentToHtmlString', () => {
       },
     };
     const document: Document = inlineEntity(entry, INLINES.EMBEDDED_ENTRY);
-    const expected = `<p><span>type: ${INLINES.EMBEDDED_ENTRY} id: ${
-      entry.target.sys.id
-    }</span></p>`;
+    const expected = `<p><span>type: ${INLINES.EMBEDDED_ENTRY} id: ${entry.target.sys.id}</span></p>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });

@@ -1,6 +1,6 @@
-import { Block, Inline, Text, TopLevelBlock } from './types';
 import BLOCKS from './blocks';
 import INLINES from './inlines';
+import { Block, Inline, Text, ListItemBlock } from './types';
 
 type EmptyNodeData = {};
 // BLOCKS
@@ -82,7 +82,7 @@ export interface UnorderedList extends Block {
 export interface ListItem extends Block {
   nodeType: BLOCKS.LIST_ITEM;
   data: EmptyNodeData;
-  content: TopLevelBlock[];
+  content: ListItemBlock[];
 }
 
 // taken from graphql schema-generator/contentful-types/link.ts
@@ -157,7 +157,7 @@ export interface EntryHyperlink extends Inline {
 }
 
 export interface TableCell extends Block {
-  nodeType: BLOCKS.TABLE_CELL;
+  nodeType: BLOCKS.TABLE_HEADER_CELL | BLOCKS.TABLE_CELL;
   data: {
     colspan?: number;
     rowspan?: number;
@@ -165,14 +165,11 @@ export interface TableCell extends Block {
   content: Paragraph[];
 }
 
-export interface TableHeaderCell extends Block {
+export interface TableHeaderCell extends TableCell {
   nodeType: BLOCKS.TABLE_HEADER_CELL;
-  data: {
-    colspan?: number;
-    rowspan?: number;
-  };
-  content: Paragraph[];
 }
+
+// An abstract table row can have both table cell types
 
 export interface TableRow extends Block {
   nodeType: BLOCKS.TABLE_ROW;
@@ -180,15 +177,8 @@ export interface TableRow extends Block {
   content: TableCell[];
 }
 
-// A helper type to only allow all cells in a row to be header cells
-interface TableHeaderRow extends Block {
-  nodeType: BLOCKS.TABLE_ROW;
-  data: EmptyNodeData;
-  content: TableHeaderCell[];
-}
-
 export interface Table extends Block {
   nodeType: BLOCKS.TABLE;
   data: EmptyNodeData;
-  content: TableRow[] | [TableHeaderRow, ...Array<TableRow>];
+  content: TableRow[];
 }

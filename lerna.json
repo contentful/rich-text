@@ -1,6 +1,6 @@
 {
   "lerna": "2.7.2",
-  "version": "15.3.0",
+  "version": "15.4.0",
   "packages": [
     "packages/contentful-slatejs-adapter",
     "packages/rich-text-from-markdown",
@@ -13,6 +13,19 @@
   "command": {
     "bootstrap": {
       "hoist": true
+    },
+    "version": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "message": "chore(release): updated release notes and package versions [ci skip]",
+      "ignoreChanges": [
+        "*.md",
+        "*.mdx",
+        "**/*.spec.*",
+        "**/*.stories.*",
+        "**/__fixtures__/**",
+        "**/__tests__/**"
+      ]
     }
   }
 }

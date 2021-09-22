@@ -44,7 +44,7 @@
         "content": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TopLevelBlock"
+            "$ref": "#/definitions/ListItemBlock"
           }
         }
       },
@@ -55,11 +55,11 @@
         "nodeType"
       ]
     },
-    "TopLevelBlock": {
+    "ListItemBlock": {
       "type": "object",
       "properties": {
         "nodeType": {
-          "$ref": "#/definitions/TopLevelBlockEnum"
+          "$ref": "#/definitions/ListItemBlockEnum"
         },
         "content": {
           "type": "array",
@@ -78,7 +78,7 @@
           }
         },
         "data": {
-          "$ref": "#/definitions/Record<string,any>"
+          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -88,7 +88,7 @@
         "nodeType"
       ]
     },
-    "TopLevelBlockEnum": {
+    "ListItemBlockEnum": {
       "enum": [
         "blockquote",
         "embedded-asset-block",
@@ -102,7 +102,6 @@
         "hr",
         "ordered-list",
         "paragraph",
-        "table",
         "unordered-list"
       ],
       "type": "string"
@@ -130,7 +129,7 @@
           }
         },
         "data": {
-          "$ref": "#/definitions/Record<string,any>"
+          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -185,7 +184,7 @@
           }
         },
         "data": {
-          "$ref": "#/definitions/Record<string,any>"
+          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -224,7 +223,7 @@
           }
         },
         "data": {
-          "$ref": "#/definitions/Record<string,any>"
+          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -247,7 +246,7 @@
         "type"
       ]
     },
-    "Record<string,any>": {
+    "NodeData": {
       "additionalProperties": true,
       "type": "object"
     }
