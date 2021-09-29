@@ -1,18 +1,20 @@
-import { Document, BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
-
+import cloneDeep from 'lodash/cloneDeep';
+import { Block, BLOCKS, Document, INLINES, MARKS } from '@contentful/rich-text-types';
 import { documentToHtmlString, Options } from '../index';
 import {
+  embeddedEntryDoc,
+  headingDoc,
   hrDoc,
   hyperlinkDoc,
-  paragraphDoc,
   invalidMarksDoc,
   invalidTypeDoc,
-  headingDoc,
   marksDoc,
-  embeddedEntryDoc,
   olDoc,
-  ulDoc,
+  paragraphDoc,
+  tableDoc,
   quoteDoc,
+  ulDoc,
+  tableWithHeaderDoc,
 } from './documents';
 import inlineEntity from './documents/inline-entity';
 
@@ -201,6 +203,27 @@ describe('documentToHtmlString', () => {
     expect(documentToHtmlString(document)).toEqual(expected);
   });
 
+  it('renders tables', () => {
+    const document: Document = tableDoc;
+    const expected =
+      '<table>' +
+      '<tr><td><p>A 1</p></td><td><p>B 1</p></td></tr>' +
+      '<tr><td><p>A 2</p></td><td><p>B 2</p></td></tr>' +
+      '</table>';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders tables with header', () => {
+    const expected =
+      '<table>' +
+      '<tr><th><p>A 1</p></th><th><p>B 1</p></th></tr>' +
+      '<tr><td><p>A 2</p></td><td><p>B 2</p></td></tr>' +
+      '</table>';
+
+    expect(documentToHtmlString(tableWithHeaderDoc)).toEqual(expected);
+  });
+
   it('does not crash with inline elements (e.g. hyperlink)', () => {
     const document: Document = hyperlinkDoc;
 
@@ -210,6 +233,23 @@ describe('documentToHtmlString', () => {
   it('renders hyperlink', () => {
     const document: Document = hyperlinkDoc;
     const expected = '<p>Some text <a href="https://url.org">link</a> text.</p>';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders hyperlink without allowing html injection via `data.uri`', () => {
+    const document: Document = cloneDeep(hyperlinkDoc);
+    (document.content[0].content[1] as Block).data.uri = '">no html injection!<a href="';
+    const expected =
+      '<p>Some text <a href="&quot;>no html injection!<a href=&quot;">link</a> text.</p>';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders hyperlink without invalid non-string `data.uri` values', () => {
+    const document: Document = cloneDeep(hyperlinkDoc);
+    (document.content[0].content[1] as Block).data.uri = 42;
+    const expected = '<p>Some text <a href="">link</a> text.</p>';
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
@@ -225,9 +265,7 @@ describe('documentToHtmlString', () => {
       },
     };
     const document: Document = inlineEntity(asset, INLINES.ASSET_HYPERLINK);
-    const expected = `<p><span>type: ${INLINES.ASSET_HYPERLINK} id: ${
-      asset.target.sys.id
-    }</span></p>`;
+    const expected = `<p><span>type: ${INLINES.ASSET_HYPERLINK} id: ${asset.target.sys.id}</span></p>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
@@ -243,9 +281,7 @@ describe('documentToHtmlString', () => {
       },
     };
     const document: Document = inlineEntity(entry, INLINES.ENTRY_HYPERLINK);
-    const expected = `<p><span>type: ${INLINES.ENTRY_HYPERLINK} id: ${
-      entry.target.sys.id
-    }</span></p>`;
+    const expected = `<p><span>type: ${INLINES.ENTRY_HYPERLINK} id: ${entry.target.sys.id}</span></p>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });
@@ -261,9 +297,7 @@ describe('documentToHtmlString', () => {
       },
     };
     const document: Document = inlineEntity(entry, INLINES.EMBEDDED_ENTRY);
-    const expected = `<p><span>type: ${INLINES.EMBEDDED_ENTRY} id: ${
-      entry.target.sys.id
-    }</span></p>`;
+    const expected = `<p><span>type: ${INLINES.EMBEDDED_ENTRY} id: ${entry.target.sys.id}</span></p>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });

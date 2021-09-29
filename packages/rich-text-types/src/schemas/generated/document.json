@@ -17,7 +17,7 @@
           }
         },
         "data": {
-          "$ref": "#/definitions/Record<string,any>"
+          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -50,7 +50,7 @@
           }
         },
         "data": {
-          "$ref": "#/definitions/Record<string,any>"
+          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -74,6 +74,7 @@
         "hr",
         "ordered-list",
         "paragraph",
+        "table",
         "unordered-list"
       ],
       "type": "string"
@@ -101,7 +102,7 @@
           }
         },
         "data": {
-          "$ref": "#/definitions/Record<string,any>"
+          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -128,6 +129,10 @@
         "list-item",
         "ordered-list",
         "paragraph",
+        "table",
+        "table-cell",
+        "table-header-cell",
+        "table-row",
         "unordered-list"
       ],
       "type": "string"
@@ -152,7 +157,7 @@
           }
         },
         "data": {
-          "$ref": "#/definitions/Record<string,any>"
+          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -191,7 +196,7 @@
           }
         },
         "data": {
-          "$ref": "#/definitions/Record<string,any>"
+          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -214,7 +219,7 @@
         "type"
       ]
     },
-    "Record<string,any>": {
+    "NodeData": {
       "additionalProperties": true,
       "type": "object"
     }

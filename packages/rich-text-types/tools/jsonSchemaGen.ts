@@ -53,6 +53,10 @@ const blockSymbolsMap = new Map([
   [BLOCKS.QUOTE, 'Quote'],
   [BLOCKS.EMBEDDED_ENTRY, 'EntryLinkBlock'],
   [BLOCKS.EMBEDDED_ASSET, 'AssetLinkBlock'],
+  [BLOCKS.TABLE, 'Table'],
+  [BLOCKS.TABLE_ROW, 'TableRow'],
+  [BLOCKS.TABLE_CELL, 'TableCell'],
+  [BLOCKS.TABLE_HEADER_CELL, 'TableHeaderCell'],
 ]);
 
 const inlineSymbolsMap = new Map([

@@ -1,0 +1,10 @@
+package:$1:
+  - packages/([^/]+)/.*
+
+tools:
+  - .circleci/**/*
+  - .dependabot/**/*
+  - .github/**/*
+
+tests:
+  - src/**/*.spec.{js,tsx,ts}

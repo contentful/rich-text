@@ -1,6 +1,6 @@
 import BLOCKS from './blocks';
 import INLINES from './inlines';
-import { TopLevelBlockEnum } from './schemaConstraints';
+import { TopLevelBlockEnum, ListItemBlockEnum } from './schemaConstraints';
 
 /**
  * @additionalProperties true
@@ -39,4 +39,8 @@ export interface Text extends Node {
 
 export interface Mark {
   type: string;
+}
+
+export interface ListItemBlock extends Block {
+  nodeType: ListItemBlockEnum;
 }
