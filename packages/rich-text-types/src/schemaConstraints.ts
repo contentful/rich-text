@@ -99,7 +99,7 @@ export const CONTAINERS = {
 };
 
 /**
- * Node types before `tables` release
+ * Node types before `tables` release.
  */
 export const V1_NODE_TYPES = [
   BLOCKS.DOCUMENT,
