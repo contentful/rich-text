@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.5.0](https://github.com/contentful/rich-text/compare/v15.4.0...v15.5.0) (2021-10-25)
+
+
+### Features
+
+* add v1 node types constraints ([#279](https://github.com/contentful/rich-text/issues/279)) ([5026023](https://github.com/contentful/rich-text/commit/5026023610ec1439f24fd32df9977c2cd4c13e86))
+
+
+
+
+
 # [15.4.0](https://github.com/contentful/rich-text/compare/v15.3.6...v15.4.0) (2021-09-16)
 
 
