@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.5.1](https://github.com/contentful/rich-text/compare/v15.5.0...v15.5.1) (2021-10-25)
+
+
+### Bug Fixes
+
+* npm 15.5.0 ([#280](https://github.com/contentful/rich-text/issues/280)) ([e7aeba4](https://github.com/contentful/rich-text/commit/e7aeba49a3074fc9eae6aee569db4e30d1acb8b8))
+
+
+
+
+
 # [15.5.0](https://github.com/contentful/rich-text/compare/v15.4.0...v15.5.0) (2021-10-25)
 
 
