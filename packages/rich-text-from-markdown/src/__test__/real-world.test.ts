@@ -166,20 +166,20 @@ describe('rich-text-from-markdown', () => {
           block(
             BLOCKS.TABLE_ROW,
             {},
-            block(BLOCKS.TABLE_CELL, {}, text('Name')),
-            block(BLOCKS.TABLE_CELL, {}, text('Country')),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Name'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Country'))),
           ),
           block(
             BLOCKS.TABLE_ROW,
             {},
-            block(BLOCKS.TABLE_CELL, {}, text('Contentful')),
-            block(BLOCKS.TABLE_CELL, {}, text('Germany')),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Contentful'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Germany'))),
           ),
           block(
             BLOCKS.TABLE_ROW,
             {},
-            block(BLOCKS.TABLE_CELL, {}, text('Nasa')),
-            block(BLOCKS.TABLE_CELL, {}, text('USA')),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Nasa'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('USA'))),
           ),
         ),
         // Tables with marks
@@ -190,14 +190,30 @@ describe('rich-text-from-markdown', () => {
           block(
             BLOCKS.TABLE_ROW,
             {},
-            block(BLOCKS.TABLE_CELL, {}, text('Bold Header 1', mark(MARKS.BOLD))),
-            block(BLOCKS.TABLE_CELL, {}, text('Bold Header 2', mark(MARKS.BOLD))),
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(BLOCKS.PARAGRAPH, {}, text('Bold Header 1', mark(MARKS.BOLD))),
+            ),
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(BLOCKS.PARAGRAPH, {}, text('Bold Header 2', mark(MARKS.BOLD))),
+            ),
           ),
           block(
             BLOCKS.TABLE_ROW,
             {},
-            block(BLOCKS.TABLE_CELL, {}, text('Italic', mark(MARKS.ITALIC))),
-            block(BLOCKS.TABLE_CELL, {}, text('Code', mark(MARKS.CODE))),
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(BLOCKS.PARAGRAPH, {}, text('Italic', mark(MARKS.ITALIC))),
+            ),
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(BLOCKS.PARAGRAPH, {}, text('Code', mark(MARKS.CODE))),
+            ),
           ),
         ),
       ),
