@@ -70,3 +70,16 @@ Inline `code`
 [link text](https://www.contentful.com)
 
 [link with title](https://www.contentful.com/blog/ "title text!")
+
+## Tables
+
+| Name       | Country |
+| ---------- | ------- |
+| Contentful | Germany |
+| Nasa       | USA     |
+
+## Tables with marks
+
+| **Bold Header 1** | **Bold Header 2** |
+| ----------------- | ----------------- |
+| _Italic_          | `Code`            |

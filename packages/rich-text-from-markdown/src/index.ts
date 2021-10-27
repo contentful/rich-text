@@ -27,6 +27,9 @@ const markdownNodeTypes = new Map<string, string>([
   ['blockquote', BLOCKS.QUOTE],
   ['list', 'list'],
   ['listItem', BLOCKS.LIST_ITEM],
+  ['table', BLOCKS.TABLE],
+  ['tableRow', BLOCKS.TABLE_ROW],
+  ['tableCell', BLOCKS.TABLE_CELL],
 ]);
 
 const nodeTypeFor = (node: MarkdownNode) => {
@@ -42,7 +45,11 @@ const nodeTypeFor = (node: MarkdownNode) => {
   }
 };
 
-const markTypes = new Map([['emphasis', 'italic'], ['strong', 'bold'], ['inlineCode', 'code']]);
+const markTypes = new Map([
+  ['emphasis', 'italic'],
+  ['strong', 'bold'],
+  ['inlineCode', 'code'],
+]);
 const markTypeFor = (node: MarkdownNode) => {
   return markTypes.get(node.type);
 };
@@ -65,6 +72,10 @@ const nodeContainerTypes = new Map([
   [BLOCKS.QUOTE, 'block'],
   [BLOCKS.HR, 'block'],
   [BLOCKS.PARAGRAPH, 'block'],
+  [BLOCKS.TABLE, 'block'],
+  [BLOCKS.TABLE_CELL, 'block'],
+  [BLOCKS.TABLE_HEADER_CELL, 'block'],
+  [BLOCKS.TABLE_ROW, 'block'],
   [INLINES.HYPERLINK, 'inline'],
   ['text', 'text'],
   ['emphasis', 'text'],
