@@ -95,6 +95,10 @@ const isInline = (nodeType: string) => {
   return nodeContainerTypes.get(nodeType) === 'inline';
 };
 
+const isTableCell = (nodeType: string) => {
+  return nodeType === BLOCKS.TABLE_CELL;
+};
+
 const buildHyperlink = async (
   node: MarkdownLinkNode,
   fallback: FallbackResolver,
@@ -125,6 +129,33 @@ const buildGenericBlockOrInline = async (
       content,
       data: {},
     } as Block | Inline,
+  ];
+};
+
+const buildTableCell = async (
+  node: MarkdownNode,
+  fallback: FallbackResolver,
+  appliedMarksTypes: string[],
+): Promise<Array<Block>> => {
+  const content = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
+
+  /**
+   * We should only support texts inside table cells.
+   * Some markdowns might contain html inside tables such as <ul>, <blockquote>, etc
+   * but they are pretty much filtered out by markdownNodeTypes and nodeContainerTypes variables.
+   * so we ended up receiving only `text` nodes.
+   * We can't have table cells with text nodes directly, we must wrap text nodes inside paragraphs.
+   */
+  return [
+    {
+      nodeType: BLOCKS.TABLE_CELL,
+      content: content.map(contentNode => ({
+        nodeType: BLOCKS.PARAGRAPH,
+        data: {},
+        content: [contentNode],
+      })),
+      data: {},
+    } as Block,
   ];
 };
 
@@ -159,7 +190,6 @@ const buildText = async (
 const buildFallbackNode = async (
   node: MarkdownNode,
   fallback: FallbackResolver,
-  appliedMarksTypes: string[],
 ): Promise<Node[]> => {
   const fallbackResult = await fallback(node);
 
@@ -178,13 +208,21 @@ async function mdToRichTextNode(
 
   if (isLink(node)) {
     return await buildHyperlink(node, fallback, appliedMarksTypes);
-  } else if (isBlock(nodeType) || isInline(nodeType)) {
-    return await buildGenericBlockOrInline(node, fallback, appliedMarksTypes);
-  } else if (isText(nodeType)) {
-    return await buildText(node, fallback, appliedMarksTypes);
-  } else {
-    return await buildFallbackNode(node, fallback, appliedMarksTypes);
   }
+
+  if (isTableCell(nodeType)) {
+    return await buildTableCell(node, fallback, appliedMarksTypes);
+  }
+
+  if (isBlock(nodeType) || isInline(nodeType)) {
+    return await buildGenericBlockOrInline(node, fallback, appliedMarksTypes);
+  }
+
+  if (isText(nodeType)) {
+    return await buildText(node, fallback, appliedMarksTypes);
+  }
+
+  return await buildFallbackNode(node, fallback);
 }
 
 async function mdToRichTextNodes(
