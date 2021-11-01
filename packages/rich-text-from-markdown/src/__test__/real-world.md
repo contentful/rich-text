@@ -73,13 +73,28 @@ Inline `code`
 
 ## Tables
 
-| Name       | Country |
-| ---------- | ------- |
-| Contentful | Germany |
-| Nasa       | USA     |
+| Name                                         | Country |
+| -------------------------------------------- | ------- |
+| Test 1                                       | Germany |
+| Test 2                                       | USA     |
+| > Test 3                                     | USA     |
+| * Test 4                                     | Germany |
+| # Test 5                                     | Germany |
+| <p>Test 6<br/>Test 7</p>                     | USA     |
+| <ul><li>Test 8</li></ul>                     | USA     |
+| <blockquote>Test 9</blockquote>              | Germany |
+| <div><p>Test 10</p> and <p>Test 11</p></div> | Germany |
+| <img src="image.jpg" />                      | Germany |
+| ![Image Description](image.jpg)              | Brazil  |
+| **[Test 12](https://example.com)**           | USA     |
 
 ## Tables with marks
 
 | **Bold Header 1** | **Bold Header 2** |
 | ----------------- | ----------------- |
 | _Italic_          | `Code`            |
+
+## Tables without body
+
+| abc | def |
+| --- | --- |
