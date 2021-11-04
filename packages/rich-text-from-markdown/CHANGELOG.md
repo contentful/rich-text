@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.6.0](https://github.com/contentful/rich-text/compare/v15.5.1...v15.6.0) (2021-11-04)
+
+
+### Features
+
+* add support to convert tables from md to rich text ([#284](https://github.com/contentful/rich-text/issues/284)) ([213a29c](https://github.com/contentful/rich-text/commit/213a29c78d48b3e63088999c4eed4891906d1719))
+
+
+
+
+
 ## [15.5.1](https://github.com/contentful/rich-text/compare/v15.5.0...v15.5.1) (2021-10-25)
 
 **Note:** Version bump only for package @contentful/rich-text-from-markdown
