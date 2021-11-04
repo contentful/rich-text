@@ -19,6 +19,18 @@ describe('rich-text-from-markdown', () => {
         block(BLOCKS.HEADING_4, {}, text('h4 Heading')),
         block(BLOCKS.HEADING_5, {}, text('h5 Heading')),
         block(BLOCKS.HEADING_6, {}, text('h6 Heading')),
+        // Paragraphs
+        block(BLOCKS.HEADING_2, {}, text('Paragraphs')),
+        block(
+          BLOCKS.PARAGRAPH,
+          {},
+          text(`This is a paragraph
+with a new line.`),
+        ),
+        block(BLOCKS.PARAGRAPH, {}, text('This is a new paragraph.')),
+        // TODO: <br /> test should be ideally the same as the new line one.
+        block(BLOCKS.PARAGRAPH, {}, text('This is a paragraph'), text('using br.')),
+
         block(BLOCKS.HEADING_2, {}, text('Horizontal Rules')),
         block(BLOCKS.HR),
         block(BLOCKS.HR),

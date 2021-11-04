@@ -5,6 +5,15 @@
 ##### h5 Heading
 ###### h6 Heading
 
+## Paragraphs
+
+This is a paragraph
+with a new line.
+
+This is a new paragraph.
+
+This is a paragraph<br/>using br.
+
 
 ## Horizontal Rules
 
