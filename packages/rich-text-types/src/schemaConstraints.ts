@@ -86,6 +86,8 @@ export const VOID_BLOCKS = [BLOCKS.HR, BLOCKS.EMBEDDED_ENTRY, BLOCKS.EMBEDDED_AS
 
 /**
  * Dictionary of all container block types, and the set block types they accept as children.
+ *
+ * Note: This does not include `[BLOCKS.DOCUMENT]: TOP_LEVEL_BLOCKS`
  */
 export const CONTAINERS = {
   [BLOCKS.OL_LIST]: [BLOCKS.LIST_ITEM],
@@ -97,6 +99,19 @@ export const CONTAINERS = {
   [BLOCKS.TABLE_CELL]: [BLOCKS.PARAGRAPH],
   [BLOCKS.TABLE_HEADER_CELL]: [BLOCKS.PARAGRAPH],
 };
+
+/**
+ * Array of all block types that may contain text and inline nodes.
+ */
+export const TEXT_CONTAINERS = [
+  BLOCKS.PARAGRAPH,
+  BLOCKS.HEADING_1,
+  BLOCKS.HEADING_2,
+  BLOCKS.HEADING_3,
+  BLOCKS.HEADING_4,
+  BLOCKS.HEADING_5,
+  BLOCKS.HEADING_6,
+];
 
 /**
  * Node types before `tables` release.
