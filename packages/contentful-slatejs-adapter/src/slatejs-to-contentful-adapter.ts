@@ -28,17 +28,11 @@ export default function toContentfulDocument({
   return {
     nodeType: Contentful.BLOCKS.DOCUMENT,
     data: {},
-    content: flatMap(
-      document,
-      node => convertNode(node, fromJSON(schema)) as Contentful.Block[],
-    ),
+    content: flatMap(document, node => convertNode(node, fromJSON(schema)) as Contentful.Block[]),
   };
 }
 
-function convertNode(
-  node: SlateNode,
-  schema: Schema
-): ContentfulNode[] {
+function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
   const nodes: ContentfulNode[] = [];
   if (isSlateElement(node)) {
     const contentfulElement: ContentfulElementNode = {
@@ -47,7 +41,9 @@ function convertNode(
       content: [],
     };
     if (!schema.isVoid(contentfulElement)) {
-      contentfulElement.content = flatMap(node.children, childNode => convertNode(childNode, schema));
+      contentfulElement.content = flatMap(node.children, childNode =>
+        convertNode(childNode, schema),
+      );
     }
     nodes.push(contentfulElement);
   } else {

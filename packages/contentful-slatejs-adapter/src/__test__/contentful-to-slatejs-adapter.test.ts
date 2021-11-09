@@ -211,7 +211,14 @@ describe('both adapters (roundtrippable cases)', () => {
         content: [
           {
             nodeType: Contentful.BLOCKS.PARAGRAPH,
-            content: [],
+            content: [
+              {
+                nodeType: 'text',
+                marks: [],
+                data: {},
+                value: '',
+              },
+            ],
             data: { a: 1 },
           },
         ],
@@ -221,7 +228,7 @@ describe('both adapters (roundtrippable cases)', () => {
           type: Contentful.BLOCKS.PARAGRAPH,
           data: { a: 1 },
           isVoid: false,
-          children: [],
+          children: [{ text: '', data: {} }],
         },
       ],
     );
@@ -363,6 +370,59 @@ describe('both adapters (roundtrippable cases)', () => {
       });
       expect(actualContentfulDoc).toEqual(contentfulDoc);
     });
+  });
+});
+
+describe('toSlatejsDocument() adapter (non-roundtrippable cases)', () => {
+  // `content` for any TEXT_CONTAINER contentful node could be empty according to our
+  // validation rules, but SlateJS could crash if there isn't a text leaf.
+  it('inserts empty text nodes into text container blocks with empty `content`', () => {
+    const cfDoc = {
+      nodeType: Contentful.BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: Contentful.BLOCKS.PARAGRAPH,
+          content: [] as any,
+          data: {},
+        },
+        {
+          nodeType: Contentful.BLOCKS.HEADING_1,
+          content: [] as any,
+          data: {},
+        },
+        {
+          nodeType: Contentful.BLOCKS.HEADING_6,
+          content: [] as any,
+          data: { a: 42 },
+        },
+      ],
+    };
+    const expectedSlateDoc = [
+      {
+        type: Contentful.BLOCKS.PARAGRAPH,
+        data: {},
+        isVoid: false,
+        children: [{ text: '', data: {} }],
+      },
+      {
+        type: Contentful.BLOCKS.HEADING_1,
+        data: {},
+        isVoid: false,
+        children: [{ text: '', data: {} }],
+      },
+      {
+        type: Contentful.BLOCKS.HEADING_6,
+        data: { a: 42 },
+        isVoid: false,
+        children: [{ text: '', data: {} }],
+      },
+    ];
+    const actualSlateDoc = toSlatejsDocument({
+      document: cfDoc,
+      schema,
+    });
+    expect(actualSlateDoc).toEqual(expectedSlateDoc);
   });
 });
 
