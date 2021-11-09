@@ -463,7 +463,7 @@ describe('toContentfulDocument() adapter (non-roundtrippable cases)', () => {
           content: [
             {
               nodeType: 'text',
-              marks: [],
+              marks: [] as any,
               data: {},
               value: '',
             },
@@ -484,12 +484,26 @@ describe('toContentfulDocument() adapter (non-roundtrippable cases)', () => {
         },
         {
           nodeType: Contentful.BLOCKS.PARAGRAPH,
-          content: [],
+          content: [
+            {
+              nodeType: 'text',
+              marks: [],
+              data: {},
+              value: '',
+            },
+          ],
           data: {},
         },
         {
           nodeType: Contentful.BLOCKS.HEADING_2,
-          content: [],
+          content: [
+            {
+              nodeType: 'text',
+              marks: [],
+              data: {},
+              value: '',
+            },
+          ],
           data: {},
         },
       ],

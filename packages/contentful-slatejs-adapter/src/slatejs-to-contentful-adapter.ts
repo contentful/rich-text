@@ -45,6 +45,9 @@ function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
         convertNode(childNode, schema),
       );
     }
+    if (contentfulElement.content.length === 0 && schema.isTextContainer(node.type)) {
+      contentfulElement.content.push(convertText({ text: '', data: {} }));
+    }
     nodes.push(contentfulElement);
   } else {
     const contentfulText = convertText(node);
