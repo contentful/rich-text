@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-html-renderer",
-  "version": "15.7.0",
+  "version": "15.8.0",
   "main": "dist/rich-text-html-renderer.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [

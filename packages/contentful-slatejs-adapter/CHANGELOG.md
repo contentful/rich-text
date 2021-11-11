@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.8.0](https://github.com/contentful/rich-text/compare/v15.7.0...v15.8.0) (2021-11-11)
+
+
+### Features
+
+* add toContentfulDocument() and toSlatejsDocument() empty block node handling ([#287](https://github.com/contentful/rich-text/issues/287)) ([fa79626](https://github.com/contentful/rich-text/commit/fa79626e4020d9640a920ca5d0ccb654e89cfa90))
+
+
+
+
+
 # [15.7.0](https://github.com/contentful/rich-text/compare/v15.6.2...v15.7.0) (2021-11-11)
 
 **Note:** Version bump only for package @contentful/contentful-slatejs-adapter
