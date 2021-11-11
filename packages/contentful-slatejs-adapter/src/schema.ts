@@ -48,11 +48,11 @@ export function fromJSON(schema: SchemaJSON = defaultSchema): Schema {
      * @returns
      */
     isVoid(node: ContentfulElementNode) {
-      const root = Object.values(BLOCKS).includes(node.nodeType) ? 'blocks' : 'inlines';
+      const root = Object.values(BLOCKS).includes(node.nodeType as any) ? 'blocks' : 'inlines';
       return get(schema, [root, node.nodeType as string, 'isVoid'], false);
     },
     isTextContainer(nodeType: string) {
-      return TEXT_CONTAINERS.includes(nodeType);
+      return TEXT_CONTAINERS.includes(nodeType as any);
     },
   };
 }

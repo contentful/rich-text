@@ -28,7 +28,10 @@ export default function toContentfulDocument({
   return {
     nodeType: Contentful.BLOCKS.DOCUMENT,
     data: {},
-    content: flatMap(document, node => convertNode(node, fromJSON(schema)) as Contentful.Block[]),
+    content: flatMap(
+      document,
+      node => convertNode(node, fromJSON(schema)) as Contentful.TopLevelBlock[],
+    ),
   };
 }
 
@@ -36,7 +39,7 @@ function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
   const nodes: ContentfulNode[] = [];
   if (isSlateElement(node)) {
     const contentfulElement: ContentfulElementNode = {
-      nodeType: node.type,
+      nodeType: node.type as Contentful.BLOCKS,
       data: getDataOrDefault(node.data),
       content: [],
     };

@@ -397,7 +397,7 @@ describe('toSlatejsDocument() adapter (non-roundtrippable cases)', () => {
           data: { a: 42 },
         },
       ],
-    };
+    } as Contentful.Document;
     const expectedSlateDoc = [
       {
         type: Contentful.BLOCKS.PARAGRAPH,
@@ -426,7 +426,7 @@ describe('toSlatejsDocument() adapter (non-roundtrippable cases)', () => {
   });
 });
 
-describe('toContentfulDocument() adapter (non-roundtrippable cases)', () => {
+describe('toContentfulDocument()}; adapter (non-roundtrippable cases)', () => {
   it('neither inserts nor removes empty text nodes on container blocks with empty `children`', () => {
     const slateDoc = [
       {

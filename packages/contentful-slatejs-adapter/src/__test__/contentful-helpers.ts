@@ -1,22 +1,34 @@
-import * as Contentful from '@contentful/rich-text-types';
+import {
+  BLOCKS,
+  INLINES,
+  Document,
+  Block,
+  Inline,
+  Text,
+  Mark,
+  TopLevelBlock,
+  TopLevelBlockEnum,
+} from '@contentful/rich-text-types';
 
 export interface NodeProps {
   isVoid?: boolean;
   data?: Record<string, any>;
 }
 
-export function document(...content: Contentful.Block[]): Contentful.Document {
+export function document(...content: TopLevelBlock[]): Document {
   return {
     data: {},
-    nodeType: Contentful.BLOCKS.DOCUMENT,
+    nodeType: BLOCKS.DOCUMENT,
     content,
   };
 }
 
 export function block(
-  nodeType: string,
-  ...content: Array<Contentful.Block | Contentful.Inline | Contentful.Text>
-): Contentful.Block {
+  nodeType: TopLevelBlockEnum,
+  ...content: Array<Block | Inline | Text>
+): TopLevelBlock;
+export function block(nodeType: BLOCKS, ...content: Array<Block | Inline | Text>): Block;
+export function block(nodeType: BLOCKS, ...content: Array<Block | Inline | Text>): Block {
   return {
     nodeType,
     content,
@@ -24,10 +36,7 @@ export function block(
   };
 }
 
-export function inline(
-  nodeType: string,
-  ...content: Array<Contentful.Inline | Contentful.Text>
-): Contentful.Inline {
+export function inline(nodeType: INLINES, ...content: Array<Inline | Text>): Inline {
   return {
     nodeType,
     content,
@@ -35,7 +44,7 @@ export function inline(
   };
 }
 
-export function text(value: string, ...marks: Contentful.Mark[]): Contentful.Text {
+export function text(value: string, ...marks: Mark[]): Text {
   return {
     nodeType: 'text',
     data: {},
@@ -44,7 +53,7 @@ export function text(value: string, ...marks: Contentful.Mark[]): Contentful.Tex
   };
 }
 
-export function mark(type: string): Contentful.Mark {
+export function mark(type: string): Mark {
   return {
     type,
   };
