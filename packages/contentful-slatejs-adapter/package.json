@@ -60,7 +60,7 @@
     "trailingComma": "all"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^5.0.0",
+    "@contentful/rich-text-types": "^15.7.0",
     "lodash.flatmap": "^4.5.0",
     "lodash.get": "^4.4.2",
     "lodash.omit": "^4.5.0"
