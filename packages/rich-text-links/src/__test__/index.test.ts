@@ -163,6 +163,76 @@ describe('getRichTextEntityLinks', () => {
             },
           ],
         },
+        {
+          nodeType: BLOCKS.TABLE,
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.TABLE_ROW,
+              data: {},
+              content: [
+                {
+                  nodeType: BLOCKS.TABLE_HEADER_CELL,
+                  data: {},
+                  content: [{ data: {}, content: [], nodeType: BLOCKS.PARAGRAPH }],
+                },
+                {
+                  nodeType: BLOCKS.TABLE_HEADER_CELL,
+                  data: {},
+                  content: [
+                    {
+                      nodeType: BLOCKS.PARAGRAPH,
+                      data: {},
+                      content: [
+                        {
+                          nodeType: INLINES.EMBEDDED_ENTRY,
+                          data: {
+                            target: {
+                              sys: { id: 'inline-header-entry', type: 'Link', linkType: 'Entry' },
+                            },
+                          },
+                          content: [],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              nodeType: BLOCKS.TABLE_ROW,
+              data: {},
+              content: [
+                {
+                  nodeType: BLOCKS.TABLE_CELL,
+                  data: {},
+                  content: [
+                    {
+                      nodeType: BLOCKS.PARAGRAPH,
+                      data: {},
+                      content: [
+                        {
+                          nodeType: INLINES.EMBEDDED_ENTRY,
+                          data: {
+                            target: {
+                              sys: { id: 'inline-cell-entry', type: 'Link', linkType: 'Entry' },
+                            },
+                          },
+                          content: [],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  nodeType: BLOCKS.TABLE_CELL,
+                  data: {},
+                  content: [{ data: {}, content: [], nodeType: BLOCKS.PARAGRAPH }],
+                },
+              ],
+            },
+          ],
+        },
       ],
     };
 
@@ -183,6 +253,16 @@ describe('getRichTextEntityLinks', () => {
             linkType: 'Entry',
             type: 'Link',
             id: 'bar',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'inline-cell-entry',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'inline-header-entry',
           },
         ],
         Asset: [
