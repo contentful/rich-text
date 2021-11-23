@@ -212,10 +212,10 @@ describe('getRichTextEntityLinks', () => {
                       data: {},
                       content: [
                         {
-                          nodeType: INLINES.EMBEDDED_ENTRY,
+                          nodeType: INLINES.ENTRY_HYPERLINK,
                           data: {
                             target: {
-                              sys: { id: 'inline-cell-entry', type: 'Link', linkType: 'Entry' },
+                              sys: { id: 'hyperlink-cell-entry', type: 'Link', linkType: 'Entry' },
                             },
                           },
                           content: [],
@@ -227,7 +227,33 @@ describe('getRichTextEntityLinks', () => {
                 {
                   nodeType: BLOCKS.TABLE_CELL,
                   data: {},
-                  content: [{ data: {}, content: [], nodeType: BLOCKS.PARAGRAPH }],
+                  content: [
+                    {
+                      data: {},
+                      content: [
+                        {
+                          nodeType: BLOCKS.PARAGRAPH,
+                          data: {},
+                          content: [
+                            {
+                              nodeType: INLINES.ASSET_HYPERLINK,
+                              data: {
+                                target: {
+                                  sys: {
+                                    id: 'hyperlink-cell-asset',
+                                    type: 'Link',
+                                    linkType: 'Asset',
+                                  },
+                                },
+                              },
+                              content: [],
+                            },
+                          ],
+                        },
+                      ],
+                      nodeType: BLOCKS.PARAGRAPH,
+                    },
+                  ],
                 },
               ],
             },
@@ -257,7 +283,7 @@ describe('getRichTextEntityLinks', () => {
           {
             linkType: 'Entry',
             type: 'Link',
-            id: 'inline-cell-entry',
+            id: 'hyperlink-cell-entry',
           },
           {
             linkType: 'Entry',
@@ -275,6 +301,11 @@ describe('getRichTextEntityLinks', () => {
             linkType: 'Asset',
             type: 'Link',
             id: 'quux',
+          },
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'hyperlink-cell-asset',
           },
         ],
       });
