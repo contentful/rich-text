@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.9.0](https://github.com/contentful/rich-text/compare/v15.8.0...v15.9.0) (2021-12-09)
+
+**Note:** Version bump only for package @contentful/rich-text-html-renderer
+
+
+
+
+
 # [15.8.0](https://github.com/contentful/rich-text/compare/v15.7.0...v15.8.0) (2021-11-11)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.9.0](https://github.com/contentful/rich-text/compare/v15.8.0...v15.9.0) (2021-12-09)
+
+
+### Features
+
+* **rich-text-types:** expose RT validation helper ([#292](https://github.com/contentful/rich-text/issues/292)) ([fc5a7cc](https://github.com/contentful/rich-text/commit/fc5a7cc27244f293a9a50acd785f7edcdaaa96ea))
+
+
+
+
+
 # [15.8.0](https://github.com/contentful/rich-text/compare/v15.7.0...v15.8.0) (2021-11-11)
 
 
