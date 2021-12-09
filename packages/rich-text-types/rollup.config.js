@@ -8,11 +8,18 @@ const customConfig = () => {
 
   return {
     ...baseConfig,
+    output: {
+      // Maintain the same file names & folders structure as "src"
+      // This is necessary to resolve generated JSON schema files
+      //
+      // https://rollupjs.org/guide/en/#outputpreservemodules
+      preserveModules: true,
+    },
     plugins: [
       ...baseConfig.plugins,
       copy({
         targets: {
-          'src/schemas/generated': 'dist/lib/schemas/generated',
+          'src/schemas/generated': 'dist/schemas/generated',
         },
       }),
     ],
