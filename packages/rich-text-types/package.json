@@ -24,6 +24,9 @@
     "lint": "tslint -t codeFrame '@(src|bin)/*.ts'",
     "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen"
   },
+  "dependencies": {
+    "ajv": "^8.8.2"
+  },
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "@types/node": "^14.17.14",

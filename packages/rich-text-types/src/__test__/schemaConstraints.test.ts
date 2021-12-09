@@ -1,4 +1,4 @@
-import BLOCKS from '../blocks';
+import { BLOCKS } from '../blocks';
 import { VOID_BLOCKS, CONTAINERS, TEXT_CONTAINERS } from '../schemaConstraints';
 
 const allKnownBlocks = Object.values(BLOCKS);
