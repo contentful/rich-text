@@ -1,5 +1,5 @@
-import BLOCKS from './blocks';
-import INLINES from './inlines';
+import { BLOCKS } from './blocks';
+import { INLINES } from './inlines';
 import { Block, Inline, Text, ListItemBlock } from './types';
 
 type EmptyNodeData = {};

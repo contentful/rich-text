@@ -1,6 +1,6 @@
 import { Node, Block, Inline, Text } from './types';
-import BLOCKS from './blocks';
-import INLINES from './inlines';
+import { BLOCKS } from './blocks';
+import { INLINES } from './inlines';
 
 /**
  * Checks if the node is an instance of Inline.

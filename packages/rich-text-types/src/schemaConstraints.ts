@@ -1,5 +1,5 @@
-import BLOCKS from './blocks';
-import INLINES from './inlines';
+import { BLOCKS } from './blocks';
+import { INLINES } from './inlines';
 
 export type TopLevelBlockEnum =
   | BLOCKS.PARAGRAPH
