@@ -1,6 +1,3 @@
-import 'core-js/features/object/values';
-import 'core-js/features/array/includes';
-
 export { BLOCKS } from './blocks';
 export { INLINES } from './inlines';
 export { default as MARKS } from './marks';
