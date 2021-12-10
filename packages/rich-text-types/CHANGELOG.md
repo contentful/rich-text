@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.9.1](https://github.com/contentful/rich-text/compare/v15.9.0...v15.9.1) (2021-12-10)
+
+
+### Bug Fixes
+
+* **rich-text-types:** resolve generated JSON schemas ([#294](https://github.com/contentful/rich-text/issues/294)) ([1e5b4c4](https://github.com/contentful/rich-text/commit/1e5b4c474e1e27e97df177748c0c8df365a2ab71))
+
+
+
+
+
 # [15.9.0](https://github.com/contentful/rich-text/compare/v15.8.0...v15.9.0) (2021-12-09)
 
 
