@@ -124,17 +124,19 @@ describe('validateRichTextDocument', () => {
 
       const errorsResult = validateRichTextDocument(value);
 
-      expect(errorsResult).toEqual([
-        expect.objectContaining({
-          keyword: 'enum',
-          instancePath: '/content/0/nodeType',
-          message: 'must be equal to one of the allowed values',
-          params: {
-            allowedValues: Object.values(INLINES).sort(),
-          },
-          data: 'custom-type',
-        }),
-      ]);
+      expect(errorsResult).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            keyword: 'enum',
+            instancePath: '/content/0/nodeType',
+            message: 'must be equal to one of the allowed values',
+            params: {
+              allowedValues: Object.values(INLINES).sort(),
+            },
+            data: 'custom-type',
+          }),
+        ]),
+      );
     });
   });
 
@@ -202,17 +204,19 @@ describe('validateRichTextDocument', () => {
       const value = document({}, text());
       const errorsResult = validateRichTextDocument(value);
 
-      expect(errorsResult).toEqual([
-        expect.objectContaining({
-          keyword: 'enum',
-          instancePath: '/content/0/nodeType',
-          message: `must be equal to one of the allowed values`,
-          params: {
-            allowedValues: topLevelBlocks,
-          },
-          data: 'text',
-        }),
-      ]);
+      expect(errorsResult).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            keyword: 'enum',
+            instancePath: '/content/0/nodeType',
+            message: `must be equal to one of the allowed values`,
+            params: {
+              allowedValues: topLevelBlocks,
+            },
+            data: 'text',
+          }),
+        ]),
+      );
     });
 
     it('fail with text and inline as direct children', () => {
@@ -225,17 +229,19 @@ describe('validateRichTextDocument', () => {
 
       const errorsResult = validateRichTextDocument(value);
 
-      expect(errorsResult).toEqual([
-        expect.objectContaining({
-          keyword: 'enum',
-          instancePath: '/content/0/nodeType',
-          message: `must be equal to one of the allowed values`,
-          params: {
-            allowedValues: topLevelBlocks,
-          },
-          data: 'text',
-        }),
-      ]);
+      expect(errorsResult).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            keyword: 'enum',
+            instancePath: '/content/0/nodeType',
+            message: `must be equal to one of the allowed values`,
+            params: {
+              allowedValues: topLevelBlocks,
+            },
+            data: 'text',
+          }),
+        ]),
+      );
     });
   });
 
@@ -302,17 +308,19 @@ describe('validateRichTextDocument', () => {
       const value = document({}, node(BLOCKS.UL_LIST, {}, node(BLOCKS.LIST_ITEM, {}, text(''))));
       const errorsResult = validateRichTextDocument(value);
 
-      expect(errorsResult).toEqual([
-        expect.objectContaining({
-          keyword: 'enum',
-          instancePath: '/content/0/nodeType',
-          message: `must be equal to one of the allowed values`,
-          params: {
-            allowedValues: listBlocks,
-          },
-          data: 'text',
-        }),
-      ]);
+      expect(errorsResult).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            keyword: 'enum',
+            instancePath: '/content/0/nodeType',
+            message: `must be equal to one of the allowed values`,
+            params: {
+              allowedValues: listBlocks,
+            },
+            data: 'text',
+          }),
+        ]),
+      );
     });
 
     it(`allows only paragraphs as direct children of ${BLOCKS.TABLE_CELL} nodes`, () => {
@@ -323,17 +331,19 @@ describe('validateRichTextDocument', () => {
 
       const errorsResult = validateRichTextDocument(value);
 
-      expect(errorsResult).toEqual([
-        expect.objectContaining({
-          keyword: 'enum',
-          instancePath: '/content/0/nodeType',
-          message: `must be equal to one of the allowed values`,
-          params: {
-            allowedValues: ['paragraph'],
-          },
-          data: 'text',
-        }),
-      ]);
+      expect(errorsResult).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            keyword: 'enum',
+            instancePath: '/content/0/nodeType',
+            message: `must be equal to one of the allowed values`,
+            params: {
+              allowedValues: ['paragraph'],
+            },
+            data: 'text',
+          }),
+        ]),
+      );
     });
 
     it('allows inlines to contain only inline or text nodes', () => {
@@ -348,17 +358,19 @@ describe('validateRichTextDocument', () => {
 
       const errorsResult = validateRichTextDocument(value);
 
-      expect(errorsResult).toEqual([
-        expect.objectContaining({
-          keyword: 'enum',
-          instancePath: '/content/0/nodeType',
-          message: `must be equal to one of the allowed values`,
-          params: {
-            allowedValues: ['text'],
-          },
-          data: BLOCKS.PARAGRAPH,
-        }),
-      ]);
+      expect(errorsResult).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            keyword: 'enum',
+            instancePath: '/content/0/nodeType',
+            message: `must be equal to one of the allowed values`,
+            params: {
+              allowedValues: ['text'],
+            },
+            data: BLOCKS.PARAGRAPH,
+          }),
+        ]),
+      );
     });
 
     it(`allows only ${BLOCKS.PARAGRAPH} as children of ${BLOCKS.QUOTE}`, () => {
@@ -400,17 +412,19 @@ describe('validateRichTextDocument', () => {
         const value = document({}, node(BLOCKS.PARAGRAPH, { data: {}, nodeType: null }, text('')));
         const errorsResult = validateRichTextDocument(value);
 
-        expect(errorsResult).toEqual([
-          expect.objectContaining({
-            keyword: 'enum',
-            instancePath: '/content/0/nodeType',
-            message: 'must be equal to one of the allowed values',
-            params: {
-              allowedValues: topLevelBlocks,
-            },
-            data: null,
-          }),
-        ]);
+        expect(errorsResult).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              keyword: 'enum',
+              instancePath: '/content/0/nodeType',
+              message: 'must be equal to one of the allowed values',
+              params: {
+                allowedValues: topLevelBlocks,
+              },
+              data: null,
+            }),
+          ]),
+        );
       });
 
       it('fail without required `content` property', () => {

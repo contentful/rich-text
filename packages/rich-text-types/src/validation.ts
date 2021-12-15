@@ -15,6 +15,12 @@ type AnyNode = Node & {
 
 type Path = (string | number)[];
 
+type ErrorTransformer<T = unknown> = (error: ErrorObject, path: Path) => T;
+
+export type ValidationOptions<T> = {
+  transformError?: ErrorTransformer<T>;
+};
+
 /**
  * Validates a rich text document against our JSON schemas using AJV.
  *
@@ -33,9 +39,14 @@ type Path = (string | number)[];
  * parent node's nodeType. This is the reasoning behind the `removeChildNodes`
  * and `removeGrandChildNodes` helpers.
  */
-export function validateRichTextDocument(document: AnyNode): ErrorObject[] {
+export function validateRichTextDocument<T>(
+  document: AnyNode,
+  options?: ValidationOptions<T>,
+): T[] {
   const validateRootNode = getValidator(BLOCKS.DOCUMENT);
   const rootNodeIsValid = validateRootNode(removeGrandChildNodes(document));
+
+  const transformError: ErrorTransformer = options?.transformError ?? (error => error);
 
   /**
    * Note that this is not the most beautiful / functional implementation
@@ -44,12 +55,12 @@ export function validateRichTextDocument(document: AnyNode): ErrorObject[] {
    * constrain both space _and_ memory usage. This is the reasoning behind using
    * imperative logic with passed references and in-line mutation.
    */
-  const errors: ErrorObject[] = [];
+  const errors: T[] = [];
 
   if (rootNodeIsValid) {
-    validateChildNodes(document, ['content'], errors);
+    validateChildNodes(document, ['content'], errors, transformError);
   } else {
-    buildSchemaErrors(validateRootNode, [], errors);
+    buildSchemaErrors(validateRootNode, [], errors, transformError);
   }
 
   return errors;
@@ -59,22 +70,27 @@ export function validateRichTextDocument(document: AnyNode): ErrorObject[] {
  * Validates each child of a root node, continually (recursively) passing down
  * the path from the originating root node.
  */
-function validateChildNodes(node: AnyNode, path: Path, errors: ErrorObject[]) {
+function validateChildNodes(
+  node: AnyNode,
+  path: Path,
+  errors: unknown[],
+  transform: ErrorTransformer,
+) {
   for (let i = 0; i < node.content.length; i++) {
-    validateNode(node.content[i], [...path, i], errors);
+    validateNode(node.content[i], [...path, i], errors, transform);
   }
 }
 
-function validateNode(node: AnyNode, path: Path, errors: ErrorObject[]) {
+function validateNode(node: AnyNode, path: Path, errors: unknown[], transform: ErrorTransformer) {
   const validateSchema = getValidator(node.nodeType);
   const isValid = validateSchema(removeGrandChildNodes(resetChildNodes(node)));
   if (!isValid) {
-    buildSchemaErrors(validateSchema, path, errors);
+    buildSchemaErrors(validateSchema, path, errors, transform);
     return;
   }
 
   if (!isLeafNode(node)) {
-    validateChildNodes(node, [...path, 'content'], errors);
+    validateChildNodes(node, [...path, 'content'], errors, transform);
   }
 }
 
@@ -90,18 +106,13 @@ function getValidator(nodeType: string): ValidateFunction {
   return ajv.compile(schema);
 }
 
-function isConstraintError(error: ErrorObject) {
-  return error.keyword === 'enum' || error.keyword === 'anyOf';
-}
-
-function buildSchemaErrors(validateSchema: ValidateFunction, path: Path, errors: ErrorObject[]) {
-  const schemaErrors = validateSchema.errors;
-  const constraintError = schemaErrors.find(isConstraintError);
-
-  if (constraintError) {
-    errors.push(constraintError);
-    return;
-  }
+function buildSchemaErrors(
+  validateSchema: ValidateFunction,
+  path: Path,
+  errors: unknown[],
+  transform: ErrorTransformer,
+) {
+  const schemaErrors = (validateSchema.errors || []).map(error => transform(error, path));
 
   errors.push(...schemaErrors);
 }
