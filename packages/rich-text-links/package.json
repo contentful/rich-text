@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-links",
-  "version": "15.9.1",
+  "version": "15.10.0",
   "main": "dist/rich-text-links.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -24,7 +24,7 @@
     "lint": "tslint -t codeFrame '@(src|bin)/*.ts'"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^15.9.1"
+    "@contentful/rich-text-types": "^15.10.0"
   },
   "devDependencies": {
     "jest": "^27.1.0",

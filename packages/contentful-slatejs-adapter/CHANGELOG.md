@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.10.0](https://github.com/contentful/rich-text/compare/v15.9.1...v15.10.0) (2021-12-15)
+
+
+### Features
+
+* support custom error transformer ([#296](https://github.com/contentful/rich-text/issues/296)) ([9449b87](https://github.com/contentful/rich-text/commit/9449b87fc063a00f11cfe7b2bc0fdb4d91251c69))
+
+
+
+
+
 ## [15.9.1](https://github.com/contentful/rich-text/compare/v15.9.0...v15.9.1) (2021-12-10)
 
 
