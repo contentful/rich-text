@@ -112,7 +112,7 @@ function buildSchemaErrors(
   errors: unknown[],
   transform: ErrorTransformer,
 ) {
-  const schemaErrors: any[] = (validateSchema.errors || []).map(error => transform(error, path));
+  const schemaErrors = (validateSchema.errors || []).map(error => transform(error, path));
 
   errors.push(...schemaErrors);
 }
