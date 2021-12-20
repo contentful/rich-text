@@ -27,9 +27,6 @@ const markdownNodeTypes = new Map<string, string>([
   ['blockquote', BLOCKS.QUOTE],
   ['list', 'list'],
   ['listItem', BLOCKS.LIST_ITEM],
-  ['table', BLOCKS.TABLE],
-  ['tableRow', BLOCKS.TABLE_ROW],
-  ['tableCell', BLOCKS.TABLE_CELL],
 ]);
 
 const nodeTypeFor = (node: MarkdownNode) => {
@@ -45,11 +42,7 @@ const nodeTypeFor = (node: MarkdownNode) => {
   }
 };
 
-const markTypes = new Map([
-  ['emphasis', 'italic'],
-  ['strong', 'bold'],
-  ['inlineCode', 'code'],
-]);
+const markTypes = new Map([['emphasis', 'italic'], ['strong', 'bold'], ['inlineCode', 'code']]);
 const markTypeFor = (node: MarkdownNode) => {
   return markTypes.get(node.type);
 };
@@ -72,10 +65,6 @@ const nodeContainerTypes = new Map([
   [BLOCKS.QUOTE, 'block'],
   [BLOCKS.HR, 'block'],
   [BLOCKS.PARAGRAPH, 'block'],
-  [BLOCKS.TABLE, 'block'],
-  [BLOCKS.TABLE_CELL, 'block'],
-  [BLOCKS.TABLE_HEADER_CELL, 'block'],
-  [BLOCKS.TABLE_ROW, 'block'],
   [INLINES.HYPERLINK, 'inline'],
   ['text', 'text'],
   ['emphasis', 'text'],
@@ -93,10 +82,6 @@ const isText = (nodeType: string) => {
 
 const isInline = (nodeType: string) => {
   return nodeContainerTypes.get(nodeType) === 'inline';
-};
-
-const isTableCell = (nodeType: string) => {
-  return nodeType === BLOCKS.TABLE_CELL;
 };
 
 const buildHyperlink = async (
@@ -132,33 +117,6 @@ const buildGenericBlockOrInline = async (
   ];
 };
 
-const buildTableCell = async (
-  node: MarkdownNode,
-  fallback: FallbackResolver,
-  appliedMarksTypes: string[],
-): Promise<Array<Block>> => {
-  const content = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
-
-  /**
-   * We should only support texts inside table cells.
-   * Some markdowns might contain html inside tables such as <ul>, <blockquote>, etc
-   * but they are pretty much filtered out by markdownNodeTypes and nodeContainerTypes variables.
-   * so we ended up receiving only `text` nodes.
-   * We can't have table cells with text nodes directly, we must wrap text nodes inside paragraphs.
-   */
-  return [
-    {
-      nodeType: BLOCKS.TABLE_CELL,
-      content: content.map(contentNode => ({
-        nodeType: BLOCKS.PARAGRAPH,
-        data: {},
-        content: [contentNode],
-      })),
-      data: {},
-    } as Block,
-  ];
-};
-
 const buildText = async (
   node: MarkdownNode,
   fallback: FallbackResolver,
@@ -190,6 +148,7 @@ const buildText = async (
 const buildFallbackNode = async (
   node: MarkdownNode,
   fallback: FallbackResolver,
+  appliedMarksTypes: string[],
 ): Promise<Node[]> => {
   const fallbackResult = await fallback(node);
 
@@ -208,21 +167,13 @@ async function mdToRichTextNode(
 
   if (isLink(node)) {
     return await buildHyperlink(node, fallback, appliedMarksTypes);
-  }
-
-  if (isTableCell(nodeType)) {
-    return await buildTableCell(node, fallback, appliedMarksTypes);
-  }
-
-  if (isBlock(nodeType) || isInline(nodeType)) {
+  } else if (isBlock(nodeType) || isInline(nodeType)) {
     return await buildGenericBlockOrInline(node, fallback, appliedMarksTypes);
-  }
-
-  if (isText(nodeType)) {
+  } else if (isText(nodeType)) {
     return await buildText(node, fallback, appliedMarksTypes);
+  } else {
+    return await buildFallbackNode(node, fallback, appliedMarksTypes);
   }
-
-  return await buildFallbackNode(node, fallback);
 }
 
 async function mdToRichTextNodes(

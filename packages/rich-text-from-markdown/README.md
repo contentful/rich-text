@@ -42,9 +42,6 @@ The library will convert automatically the following markdown nodes:
 - `blockquote`
 - `list`
 - `listItem`
-- `table`
-- `tableRow`
-- `tableCell`
 
 If the markdown content has unsupported nodes like image `![image](url)` you can add a callback as a second argument
 and it will get called everytime an unsupported node is found. The return value of the callback will be the rich text representation
