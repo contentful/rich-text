@@ -101,10 +101,9 @@ export const CONTAINERS = {
 };
 
 /**
- * Array of all block types that may contain text and inline nodes.
+ * Array of all heading levels
  */
-export const TEXT_CONTAINERS = [
-  BLOCKS.PARAGRAPH,
+export const HEADINGS = [
   BLOCKS.HEADING_1,
   BLOCKS.HEADING_2,
   BLOCKS.HEADING_3,
@@ -112,6 +111,11 @@ export const TEXT_CONTAINERS = [
   BLOCKS.HEADING_5,
   BLOCKS.HEADING_6,
 ];
+
+/**
+ * Array of all block types that may contain text and inline nodes.
+ */
+export const TEXT_CONTAINERS = [BLOCKS.PARAGRAPH, ...HEADINGS];
 
 /**
  * Node types before `tables` release.
