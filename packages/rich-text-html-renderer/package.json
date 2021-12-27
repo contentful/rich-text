@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-html-renderer",
-  "version": "15.10.1",
+  "version": "15.11.0",
   "main": "dist/rich-text-html-renderer.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -24,7 +24,7 @@
     "lint": "tslint -t codeFrame '@(src|bin)/*.ts'"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^15.10.1",
+    "@contentful/rich-text-types": "^15.11.0",
     "escape-html": "^1.0.3"
   },
   "devDependencies": {

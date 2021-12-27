@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.11.0](https://github.com/contentful/rich-text/compare/v15.10.1...v15.11.0) (2021-12-27)
+
+
+### Features
+
+* **rich-text-types:** expose HEADINGS array ([#301](https://github.com/contentful/rich-text/issues/301)) ([758539d](https://github.com/contentful/rich-text/commit/758539d46f3db13c21ca2f6d74a389a6fef21803))
+
+
+
+
+
 ## [15.10.1](https://github.com/contentful/rich-text/compare/v15.10.0...v15.10.1) (2021-12-21)
 
 **Note:** Version bump only for package @contentful/rich-text-types

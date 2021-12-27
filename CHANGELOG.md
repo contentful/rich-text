@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.11.0](https://github.com/contentful/rich-text/compare/v15.10.1...v15.11.0) (2021-12-27)
+
+
+### Bug Fixes
+
+* **react-renderer:** wrap table rows in tbody ([#300](https://github.com/contentful/rich-text/issues/300)) ([e23d1f4](https://github.com/contentful/rich-text/commit/e23d1f4f5c63ce7ded84144b271f566327a144d1))
+
+
+### Features
+
+* **rich-text-types:** expose HEADINGS array ([#301](https://github.com/contentful/rich-text/issues/301)) ([758539d](https://github.com/contentful/rich-text/commit/758539d46f3db13c21ca2f6d74a389a6fef21803))
+
+
+
+
+
 ## [15.10.1](https://github.com/contentful/rich-text/compare/v15.10.0...v15.10.1) (2021-12-21)
 
 
