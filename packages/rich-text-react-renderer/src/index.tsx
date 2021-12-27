@@ -17,7 +17,11 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.LIST_ITEM]: (node, children) => <li>{children}</li>,
   [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
   [BLOCKS.HR]: () => <hr />,
-  [BLOCKS.TABLE]: (node, children) => <table>{children}</table>,
+  [BLOCKS.TABLE]: (node, children) => (
+    <table>
+      <tbody>{children}</tbody>
+    </table>
+  ),
   [BLOCKS.TABLE_ROW]: (node, children) => <tr>{children}</tr>,
   [BLOCKS.TABLE_HEADER_CELL]: (node, children) => <th>{children}</th>,
   [BLOCKS.TABLE_CELL]: (node, children) => <td>{children}</td>,
