@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.11.1](https://github.com/contentful/rich-text/compare/v15.11.0...v15.11.1) (2022-01-04)
+
+
+### Bug Fixes
+
+* **rich-text-types:** remove RT validation helpers ([#302](https://github.com/contentful/rich-text/issues/302)) ([fcd3a27](https://github.com/contentful/rich-text/commit/fcd3a277952f53eb3ae6ebb559ae6a02f5553c87)), closes [#295](https://github.com/contentful/rich-text/issues/295) [#274](https://github.com/contentful/rich-text/issues/274)
+
+
+
+
+
 # [15.11.0](https://github.com/contentful/rich-text/compare/v15.10.1...v15.11.0) (2021-12-27)
 
 
