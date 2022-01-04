@@ -11,4 +11,4 @@ export { default as EMPTY_DOCUMENT } from './emptyDocument';
 
 import * as helpers from './helpers';
 export { helpers };
-export { validateRichTextDocument } from './validation';
+export { getSchemaWithNodeType } from './schemas/';
