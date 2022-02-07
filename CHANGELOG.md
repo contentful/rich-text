@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.11.2](https://github.com/contentful/rich-text/compare/v15.11.1...v15.11.2) (2022-02-07)
+
+
+### Bug Fixes
+
+* set "typings" for rich-text-from-markdown ([1b3a15f](https://github.com/contentful/rich-text/commit/1b3a15f1cb15eacb6d1b15f2b79c5747e2d25618))
+
+
+
+
+
 ## [15.11.1](https://github.com/contentful/rich-text/compare/v15.11.0...v15.11.1) (2022-01-04)
 
 
