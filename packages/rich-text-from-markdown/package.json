@@ -11,6 +11,7 @@
   "homepage": "https://github.com/contentful/rich-text#readme",
   "license": "MIT",
   "main": "dist/rich-text-from-markdown.es5.js",
+  "typings": "dist/types/index.d.ts",
   "directories": {
     "src": "src",
     "test": "__tests__"
