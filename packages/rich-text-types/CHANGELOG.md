@@ -3,6 +3,126 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.11.1](https://github.com/contentful/rich-text/compare/v15.11.0...v15.11.1) (2022-01-04)
+
+
+### Bug Fixes
+
+* **rich-text-types:** remove RT validation helpers ([#302](https://github.com/contentful/rich-text/issues/302)) ([fcd3a27](https://github.com/contentful/rich-text/commit/fcd3a277952f53eb3ae6ebb559ae6a02f5553c87)), closes [#295](https://github.com/contentful/rich-text/issues/295) [#274](https://github.com/contentful/rich-text/issues/274)
+
+
+
+
+
+# [15.11.0](https://github.com/contentful/rich-text/compare/v15.10.1...v15.11.0) (2021-12-27)
+
+
+### Features
+
+* **rich-text-types:** expose HEADINGS array ([#301](https://github.com/contentful/rich-text/issues/301)) ([758539d](https://github.com/contentful/rich-text/commit/758539d46f3db13c21ca2f6d74a389a6fef21803))
+
+
+
+
+
+## [15.10.1](https://github.com/contentful/rich-text/compare/v15.10.0...v15.10.1) (2021-12-21)
+
+**Note:** Version bump only for package @contentful/rich-text-types
+
+
+
+
+
+# [15.10.0](https://github.com/contentful/rich-text/compare/v15.9.1...v15.10.0) (2021-12-15)
+
+
+### Features
+
+* support custom error transformer ([#296](https://github.com/contentful/rich-text/issues/296)) ([9449b87](https://github.com/contentful/rich-text/commit/9449b87fc063a00f11cfe7b2bc0fdb4d91251c69))
+
+
+
+
+
+## [15.9.1](https://github.com/contentful/rich-text/compare/v15.9.0...v15.9.1) (2021-12-10)
+
+
+### Bug Fixes
+
+* **rich-text-types:** resolve generated JSON schemas ([#294](https://github.com/contentful/rich-text/issues/294)) ([1e5b4c4](https://github.com/contentful/rich-text/commit/1e5b4c474e1e27e97df177748c0c8df365a2ab71))
+
+
+
+
+
+# [15.9.0](https://github.com/contentful/rich-text/compare/v15.8.0...v15.9.0) (2021-12-09)
+
+
+### Features
+
+* **rich-text-types:** expose RT validation helper ([#292](https://github.com/contentful/rich-text/issues/292)) ([fc5a7cc](https://github.com/contentful/rich-text/commit/fc5a7cc27244f293a9a50acd785f7edcdaaa96ea))
+
+
+
+
+
+# [15.7.0](https://github.com/contentful/rich-text/compare/v15.6.2...v15.7.0) (2021-11-11)
+
+
+### Features
+
+* **rich-text-types:** Add TEXT_CONTAINERS ([#286](https://github.com/contentful/rich-text/issues/286)) ([3356ea8](https://github.com/contentful/rich-text/commit/3356ea815a46901a6637f177b04bcf1926adc88d))
+
+
+
+
+
+## [15.6.2](https://github.com/contentful/rich-text/compare/v15.6.1...v15.6.2) (2021-11-05)
+
+**Note:** Version bump only for package @contentful/rich-text-types
+
+
+
+
+
+## [15.6.1](https://github.com/contentful/rich-text/compare/v15.6.0...v15.6.1) (2021-11-05)
+
+**Note:** Version bump only for package @contentful/rich-text-types
+
+
+
+
+
+# [15.6.0](https://github.com/contentful/rich-text/compare/v15.5.1...v15.6.0) (2021-11-04)
+
+**Note:** Version bump only for package @contentful/rich-text-types
+
+
+
+
+
+## [15.5.1](https://github.com/contentful/rich-text/compare/v15.5.0...v15.5.1) (2021-10-25)
+
+
+### Bug Fixes
+
+* npm 15.5.0 ([#280](https://github.com/contentful/rich-text/issues/280)) ([e7aeba4](https://github.com/contentful/rich-text/commit/e7aeba49a3074fc9eae6aee569db4e30d1acb8b8))
+
+
+
+
+
+# [15.5.0](https://github.com/contentful/rich-text/compare/v15.4.0...v15.5.0) (2021-10-25)
+
+
+### Features
+
+* add v1 node types constraints ([#279](https://github.com/contentful/rich-text/issues/279)) ([5026023](https://github.com/contentful/rich-text/commit/5026023610ec1439f24fd32df9977c2cd4c13e86))
+
+
+
+
+
 ## [15.3.6](https://github.com/contentful/rich-text/compare/v15.3.5...v15.3.6) (2021-09-15)
 
 

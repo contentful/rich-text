@@ -30,24 +30,26 @@ export default function toContentfulDocument({
     data: {},
     content: flatMap(
       document,
-      node => convertNode(node, fromJSON(schema)) as Contentful.Block[],
+      node => convertNode(node, fromJSON(schema)) as Contentful.TopLevelBlock[],
     ),
   };
 }
 
-function convertNode(
-  node: SlateNode,
-  schema: Schema
-): ContentfulNode[] {
+function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
   const nodes: ContentfulNode[] = [];
   if (isSlateElement(node)) {
     const contentfulElement: ContentfulElementNode = {
-      nodeType: node.type,
+      nodeType: node.type as Contentful.BLOCKS,
       data: getDataOrDefault(node.data),
       content: [],
     };
     if (!schema.isVoid(contentfulElement)) {
-      contentfulElement.content = flatMap(node.children, childNode => convertNode(childNode, schema));
+      contentfulElement.content = flatMap(node.children, childNode =>
+        convertNode(childNode, schema),
+      );
+    }
+    if (contentfulElement.content.length === 0 && schema.isTextContainer(node.type)) {
+      contentfulElement.content.push(convertText({ text: '', data: {} }));
     }
     nodes.push(contentfulElement);
   } else {

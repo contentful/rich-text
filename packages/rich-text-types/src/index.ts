@@ -1,8 +1,5 @@
-import 'core-js/features/object/values';
-import 'core-js/features/array/includes';
-
-export { default as BLOCKS } from './blocks';
-export { default as INLINES } from './inlines';
+export { BLOCKS } from './blocks';
+export { INLINES } from './inlines';
 export { default as MARKS } from './marks';
 
 export * from './schemaConstraints';

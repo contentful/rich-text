@@ -1,4 +1,5 @@
-import BLOCKS from './blocks';
+import { BLOCKS } from './blocks';
+import { INLINES } from './inlines';
 
 export type TopLevelBlockEnum =
   | BLOCKS.PARAGRAPH
@@ -85,6 +86,8 @@ export const VOID_BLOCKS = [BLOCKS.HR, BLOCKS.EMBEDDED_ENTRY, BLOCKS.EMBEDDED_AS
 
 /**
  * Dictionary of all container block types, and the set block types they accept as children.
+ *
+ * Note: This does not include `[BLOCKS.DOCUMENT]: TOP_LEVEL_BLOCKS`
  */
 export const CONTAINERS = {
   [BLOCKS.OL_LIST]: [BLOCKS.LIST_ITEM],
@@ -96,3 +99,46 @@ export const CONTAINERS = {
   [BLOCKS.TABLE_CELL]: [BLOCKS.PARAGRAPH],
   [BLOCKS.TABLE_HEADER_CELL]: [BLOCKS.PARAGRAPH],
 };
+
+/**
+ * Array of all heading levels
+ */
+export const HEADINGS = [
+  BLOCKS.HEADING_1,
+  BLOCKS.HEADING_2,
+  BLOCKS.HEADING_3,
+  BLOCKS.HEADING_4,
+  BLOCKS.HEADING_5,
+  BLOCKS.HEADING_6,
+];
+
+/**
+ * Array of all block types that may contain text and inline nodes.
+ */
+export const TEXT_CONTAINERS = [BLOCKS.PARAGRAPH, ...HEADINGS];
+
+/**
+ * Node types before `tables` release.
+ */
+export const V1_NODE_TYPES = [
+  BLOCKS.DOCUMENT,
+  BLOCKS.PARAGRAPH,
+  BLOCKS.HEADING_1,
+  BLOCKS.HEADING_2,
+  BLOCKS.HEADING_3,
+  BLOCKS.HEADING_4,
+  BLOCKS.HEADING_5,
+  BLOCKS.HEADING_6,
+  BLOCKS.OL_LIST,
+  BLOCKS.UL_LIST,
+  BLOCKS.LIST_ITEM,
+  BLOCKS.HR,
+  BLOCKS.QUOTE,
+  BLOCKS.EMBEDDED_ENTRY,
+  BLOCKS.EMBEDDED_ASSET,
+  INLINES.HYPERLINK,
+  INLINES.ENTRY_HYPERLINK,
+  INLINES.ASSET_HYPERLINK,
+  INLINES.EMBEDDED_ENTRY,
+  'text',
+];

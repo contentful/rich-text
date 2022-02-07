@@ -1,7 +1,7 @@
 /**
  * Map of all Contentful block types. Blocks contain inline or block nodes.
  */
-enum BLOCKS {
+export enum BLOCKS {
   DOCUMENT = 'document',
   PARAGRAPH = 'paragraph',
 
@@ -27,5 +27,3 @@ enum BLOCKS {
   TABLE_CELL = 'table-cell',
   TABLE_HEADER_CELL = 'table-header-cell',
 }
-
-export default BLOCKS;

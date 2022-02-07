@@ -42,9 +42,13 @@ function convertNode(node: ContentfulNode, schema: Schema): SlateNode {
 
 function convertElementNode(
   contentfulBlock: ContentfulElementNode,
-  children: SlateNode[],
+  slateChildren: SlateNode[],
   schema: Schema,
 ): SlateElement {
+  const children =
+    slateChildren.length === 0 && schema.isTextContainer(contentfulBlock.nodeType)
+      ? [{ text: '', data: {} }]
+      : slateChildren;
   return {
     type: contentfulBlock.nodeType,
     children,
@@ -57,7 +61,7 @@ function convertTextNode(node: Contentful.Text): SlateText {
   return {
     text: node.value,
     data: getDataOrDefault(node.data),
-    ...convertTextMarks(node)
+    ...convertTextMarks(node),
   };
 }
 

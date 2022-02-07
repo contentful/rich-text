@@ -3,6 +3,102 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.11.1](https://github.com/contentful/rich-text/compare/v15.11.0...v15.11.1) (2022-01-04)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+# [15.11.0](https://github.com/contentful/rich-text/compare/v15.10.1...v15.11.0) (2021-12-27)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+## [15.10.1](https://github.com/contentful/rich-text/compare/v15.10.0...v15.10.1) (2021-12-21)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+# [15.10.0](https://github.com/contentful/rich-text/compare/v15.9.1...v15.10.0) (2021-12-15)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+## [15.9.1](https://github.com/contentful/rich-text/compare/v15.9.0...v15.9.1) (2021-12-10)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+# [15.9.0](https://github.com/contentful/rich-text/compare/v15.8.0...v15.9.0) (2021-12-09)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+# [15.7.0](https://github.com/contentful/rich-text/compare/v15.6.2...v15.7.0) (2021-11-11)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+## [15.6.2](https://github.com/contentful/rich-text/compare/v15.6.1...v15.6.2) (2021-11-05)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+## [15.6.1](https://github.com/contentful/rich-text/compare/v15.6.0...v15.6.1) (2021-11-05)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+# [15.6.0](https://github.com/contentful/rich-text/compare/v15.5.1...v15.6.0) (2021-11-04)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+## [15.5.1](https://github.com/contentful/rich-text/compare/v15.5.0...v15.5.1) (2021-10-25)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
+# [15.5.0](https://github.com/contentful/rich-text/compare/v15.4.0...v15.5.0) (2021-10-25)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+
+
+
+
 ## [15.3.6](https://github.com/contentful/rich-text/compare/v15.3.5...v15.3.6) (2021-09-15)
 
 **Note:** Version bump only for package @contentful/rich-text-plain-text-renderer

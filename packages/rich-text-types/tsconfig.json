@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declarationDir": "dist/types",
-    "outDir": "dist/lib",
+    "outDir": "dist",
     "typeRoots": ["../../node_modules/@types", "node_modules/@types", "src/typings"],
     "types": ["jest", "node"]
   },
