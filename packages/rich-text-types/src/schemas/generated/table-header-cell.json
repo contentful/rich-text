@@ -23,6 +23,7 @@
           "additionalProperties": false
         },
         "content": {
+          "minItems": 1,
           "type": "array",
           "items": {
             "$ref": "#/definitions/Paragraph"

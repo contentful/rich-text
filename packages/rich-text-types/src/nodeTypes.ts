@@ -162,6 +162,10 @@ export interface TableCell extends Block {
     colspan?: number;
     rowspan?: number;
   };
+
+  /**
+   * @minItems 1
+   */
   content: Paragraph[];
 }
 
@@ -174,11 +178,19 @@ export interface TableHeaderCell extends TableCell {
 export interface TableRow extends Block {
   nodeType: BLOCKS.TABLE_ROW;
   data: EmptyNodeData;
+
+  /**
+   * @minItems 1
+   */
   content: TableCell[];
 }
 
 export interface Table extends Block {
   nodeType: BLOCKS.TABLE;
   data: EmptyNodeData;
+
+  /**
+   * @minItems 1
+   */
   content: TableRow[];
 }
