@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.12.0](https://github.com/contentful/rich-text/compare/v15.11.2...v15.12.0) (2022-03-25)
+
+
+### Features
+
+* enforce minItems in table-related node types ([#314](https://github.com/contentful/rich-text/issues/314)) ([1125331](https://github.com/contentful/rich-text/commit/112533100f66ae01cd9944069dc62fc95f1737a5))
+
+
+
+
+
 ## [15.11.1](https://github.com/contentful/rich-text/compare/v15.11.0...v15.11.1) (2022-01-04)
 
 

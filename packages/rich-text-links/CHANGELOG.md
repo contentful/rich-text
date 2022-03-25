@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.12.0](https://github.com/contentful/rich-text/compare/v15.11.2...v15.12.0) (2022-03-25)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+
+
+
+
 ## [15.11.1](https://github.com/contentful/rich-text/compare/v15.11.0...v15.11.1) (2022-01-04)
 
 **Note:** Version bump only for package @contentful/rich-text-links
