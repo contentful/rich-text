@@ -2823,6 +2823,7 @@ Object {
           "items": Object {
             "$ref": "#/definitions/TableRow",
           },
+          "minItems": 1,
           "type": "array",
         },
         "data": Object {
@@ -2850,6 +2851,7 @@ Object {
           "items": Object {
             "$ref": "#/definitions/Paragraph",
           },
+          "minItems": 1,
           "type": "array",
         },
         "data": Object {
@@ -2886,6 +2888,7 @@ Object {
           "items": Object {
             "$ref": "#/definitions/TableCell",
           },
+          "minItems": 1,
           "type": "array",
         },
         "data": Object {
@@ -3042,6 +3045,7 @@ Object {
           "items": Object {
             "$ref": "#/definitions/Paragraph",
           },
+          "minItems": 1,
           "type": "array",
         },
         "data": Object {
@@ -3207,6 +3211,7 @@ Object {
           "items": Object {
             "$ref": "#/definitions/Paragraph",
           },
+          "minItems": 1,
           "type": "array",
         },
         "data": Object {
@@ -3371,6 +3376,7 @@ Object {
           "items": Object {
             "$ref": "#/definitions/Paragraph",
           },
+          "minItems": 1,
           "type": "array",
         },
         "data": Object {
@@ -3407,6 +3413,7 @@ Object {
           "items": Object {
             "$ref": "#/definitions/TableCell",
           },
+          "minItems": 1,
           "type": "array",
         },
         "data": Object {

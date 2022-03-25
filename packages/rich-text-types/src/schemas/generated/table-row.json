@@ -15,6 +15,7 @@
           "properties": {}
         },
         "content": {
+          "minItems": 1,
           "type": "array",
           "items": {
             "$ref": "#/definitions/TableCell"
@@ -51,6 +52,7 @@
           "additionalProperties": false
         },
         "content": {
+          "minItems": 1,
           "type": "array",
           "items": {
             "$ref": "#/definitions/Paragraph"
