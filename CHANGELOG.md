@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.12.1](https://github.com/contentful/rich-text/compare/v15.12.0...v15.12.1) (2022-04-21)
+
+
+### Bug Fixes
+
+* upgrade react peerDependencies to support react^18.0.0 ([#323](https://github.com/contentful/rich-text/issues/323)) ([7a0bfdf](https://github.com/contentful/rich-text/commit/7a0bfdfb687cca608239e072cbc301ba1b1310d1))
+
+
+
+
+
 # [15.12.0](https://github.com/contentful/rich-text/compare/v15.11.2...v15.12.0) (2022-03-25)
 
 
