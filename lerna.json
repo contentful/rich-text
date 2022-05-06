@@ -1,6 +1,6 @@
 {
   "lerna": "2.7.2",
-  "version": "15.12.1",
+  "version": "15.13.0",
   "packages": [
     "packages/contentful-slatejs-adapter",
     "packages/rich-text-from-markdown",

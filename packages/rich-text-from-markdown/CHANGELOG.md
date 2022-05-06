@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.13.0](https://github.com/contentful/rich-text/compare/v15.12.1...v15.13.0) (2022-05-06)
+
+
+### Features
+
+* support converting tables from markdown to rich-text ([0abc0c6](https://github.com/contentful/rich-text/commit/0abc0c60b7e3e2683ebbb427b44847e6242f6e5e))
+
+
+
+
+
 ## [15.12.1](https://github.com/contentful/rich-text/compare/v15.12.0...v15.12.1) (2022-04-21)
 
 **Note:** Version bump only for package @contentful/rich-text-from-markdown
