@@ -107,3 +107,10 @@ Inline `code`
 
 | abc | def |
 | --- | --- |
+
+## Table with empty cells
+
+|        |        |
+| ------ | ------ |
+| Cell 1 |        |
+|        | Cell 2 |
