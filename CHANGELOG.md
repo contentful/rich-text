@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.13.1](https://github.com/contentful/rich-text/compare/v15.13.0...v15.13.1) (2022-05-10)
+
+
+### Bug Fixes
+
+* **markdown:** handle empty table cells ([#329](https://github.com/contentful/rich-text/issues/329)) ([55a0a16](https://github.com/contentful/rich-text/commit/55a0a16a12700fefbe7e9727a7172043fd126fc5))
+
+
+
+
+
 # [15.13.0](https://github.com/contentful/rich-text/compare/v15.12.1...v15.13.0) (2022-05-06)
 
 
