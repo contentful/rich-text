@@ -137,7 +137,29 @@ const buildTableCell = async (
   fallback: FallbackResolver,
   appliedMarksTypes: string[],
 ): Promise<Array<Block>> => {
-  const content = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
+  const nodeChildren = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
+
+  const content = nodeChildren.map(contentNode => ({
+    nodeType: BLOCKS.PARAGRAPH,
+    data: {},
+    content: [contentNode],
+  }));
+
+  // A table cell can't be empty
+  if (content.length === 0) {
+    content.push({
+      nodeType: BLOCKS.PARAGRAPH,
+      data: {},
+      content: [
+        {
+          nodeType: 'text',
+          data: {},
+          marks: [],
+          value: '',
+        } as Text,
+      ],
+    });
+  }
 
   /**
    * We should only support texts inside table cells.
@@ -149,11 +171,7 @@ const buildTableCell = async (
   return [
     {
       nodeType: BLOCKS.TABLE_CELL,
-      content: content.map(contentNode => ({
-        nodeType: BLOCKS.PARAGRAPH,
-        data: {},
-        content: [contentNode],
-      })),
+      content,
       data: {},
     } as Block,
   ];
