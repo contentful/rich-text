@@ -42,7 +42,7 @@ function addLinksFromRichTextNode(node: Node, links: EntityLinkMaps, type?: stri
   const toCrawl: Node[] = [node];
 
   while (toCrawl.length > 0) {
-    const { data, content, nodeType } = toCrawl.pop() as Block;
+    const { data, content, nodeType } = toCrawl.shift() as Block;
     const hasRequestedNodeType = !type || nodeType === type;
 
     if (hasRequestedNodeType && isLinkObject(data)) {
