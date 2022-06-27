@@ -34,7 +34,7 @@ Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source
 - `npm run clean` removes any built files and `node_modules`
 - `npm run lint` runs our TypeScript linter on all `.ts` files in each package
 - `npm run test` runs unit tests for all packages
-- `npm run test:ci` runs unit tests in CI mode (same as would be run by Travis)
+- `npm run test:ci` runs unit tests in CI mode
 - `npm run test:watch` runs unit tests in "watch" mode (will refresh relevant
   code paths on save)
 
