@@ -56,20 +56,17 @@ of that node.
 const { richTextFromMarkdown } = require('@contentful/rich-text-from-markdown');
 
 // define your own type for unsupported nodes like asset
-const document = await richTextFromMarkdown(
-  '![image](\'https://example.com/image.jpg\')',
-  node => ({
-    nodeType: 'embedded-[entry|asset]-[block|inline]',
-    content: [],
-    data: {
-      target: {
-        sys: {
-          type: 'Link',
-          linkType: 'Entry|Asset',
-          id: '.........'
-        }
-      }
-    }
-  })
-);
+const document = await richTextFromMarkdown("![image]('https://example.com/image.jpg')", node => ({
+  nodeType: 'embedded-[entry|asset]-[block|inline]',
+  content: [],
+  data: {
+    target: {
+      sys: {
+        type: 'Link',
+        linkType: 'Entry|Asset',
+        id: '.........',
+      },
+    },
+  },
+}));
 ```
