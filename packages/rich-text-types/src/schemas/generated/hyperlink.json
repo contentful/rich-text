@@ -6,9 +6,7 @@
       "properties": {
         "nodeType": {
           "type": "string",
-          "enum": [
-            "hyperlink"
-          ]
+          "enum": ["hyperlink"]
         },
         "data": {
           "type": "object",
@@ -18,9 +16,7 @@
             }
           },
           "additionalProperties": false,
-          "required": [
-            "uri"
-          ]
+          "required": ["uri"]
         },
         "content": {
           "type": "array",
@@ -30,20 +26,14 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
+      "required": ["content", "data", "nodeType"]
     },
     "Text": {
       "type": "object",
       "properties": {
         "nodeType": {
           "type": "string",
-          "enum": [
-            "text"
-          ]
+          "enum": ["text"]
         },
         "value": {
           "type": "string"
@@ -59,12 +49,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "data",
-        "marks",
-        "nodeType",
-        "value"
-      ]
+      "required": ["data", "marks", "nodeType", "value"]
     },
     "Mark": {
       "type": "object",
@@ -74,9 +59,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     },
     "NodeData": {
       "additionalProperties": true,

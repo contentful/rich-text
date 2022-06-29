@@ -6,9 +6,7 @@
       "properties": {
         "nodeType": {
           "type": "string",
-          "enum": [
-            "table"
-          ]
+          "enum": ["table"]
         },
         "data": {
           "type": "object",
@@ -23,20 +21,14 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
+      "required": ["content", "data", "nodeType"]
     },
     "TableRow": {
       "type": "object",
       "properties": {
         "nodeType": {
           "type": "string",
-          "enum": [
-            "table-row"
-          ]
+          "enum": ["table-row"]
         },
         "data": {
           "type": "object",
@@ -51,20 +43,13 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
+      "required": ["content", "data", "nodeType"]
     },
     "TableCell": {
       "type": "object",
       "properties": {
         "nodeType": {
-          "enum": [
-            "table-cell",
-            "table-header-cell"
-          ],
+          "enum": ["table-cell", "table-header-cell"],
           "type": "string"
         },
         "data": {
@@ -88,20 +73,14 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
+      "required": ["content", "data", "nodeType"]
     },
     "Paragraph": {
       "type": "object",
       "properties": {
         "nodeType": {
           "type": "string",
-          "enum": [
-            "paragraph"
-          ]
+          "enum": ["paragraph"]
         },
         "data": {
           "type": "object",
@@ -122,11 +101,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
+      "required": ["content", "data", "nodeType"]
     },
     "Inline": {
       "type": "object",
@@ -152,20 +127,11 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
+      "required": ["content", "data", "nodeType"]
     },
     "INLINES": {
       "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
-      "enum": [
-        "asset-hyperlink",
-        "embedded-entry-inline",
-        "entry-hyperlink",
-        "hyperlink"
-      ],
+      "enum": ["asset-hyperlink", "embedded-entry-inline", "entry-hyperlink", "hyperlink"],
       "type": "string"
     },
     "Text": {
@@ -173,9 +139,7 @@
       "properties": {
         "nodeType": {
           "type": "string",
-          "enum": [
-            "text"
-          ]
+          "enum": ["text"]
         },
         "value": {
           "type": "string"
@@ -191,12 +155,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "data",
-        "marks",
-        "nodeType",
-        "value"
-      ]
+      "required": ["data", "marks", "nodeType", "value"]
     },
     "Mark": {
       "type": "object",
@@ -206,9 +165,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     },
     "NodeData": {
       "additionalProperties": true,

@@ -30,7 +30,7 @@ Text documents.
   - Flutter renderer for the Contentful rich text field type (work in progress)
 - [`ngx-contentful-rich-text`](https://github.com/kgajera/ngx-contentful-rich-text)
   - Angular renderer for the Contentful rich text field type
-  
+
 ## About Rich Text
 
 - [Rich Text Concept](https://www.contentful.com/developers/docs/concepts/rich-text/)

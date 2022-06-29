@@ -24,7 +24,7 @@ It also explains what to do if you want to set up the project locally and run
 tests.
 
 **Working on your first Pull Request?**
-You can learn how from this *free* series: [How to Contribute to an Open Source
+You can learn how from this _free_ series: [How to Contribute to an Open Source
 Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
 
 ## Useful npm scripts
@@ -64,8 +64,8 @@ This should generally only happen at publishing time, but you may want to run
 
 For example, let's say you're working on a pull request that
 
-1) adds support for a type in `rich-text-types`, and
-2) adds behavior to handle that type in `rich-text-html-renderer`.
+1. adds support for a type in `rich-text-types`, and
+2. adds behavior to handle that type in `rich-text-html-renderer`.
 
 If changes in the latter are dependent upon changes in the former, you'll need
 to run `npm run build` to update the referenced vendored files in

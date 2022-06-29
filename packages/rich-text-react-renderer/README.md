@@ -33,7 +33,7 @@ const document = {
           nodeType: 'text',
           value: 'Hello world!',
           marks: [],
-          data: {}
+          data: {},
         },
       ],
     },
