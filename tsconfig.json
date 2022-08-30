@@ -15,6 +15,7 @@
     "strict": true,
     "strictNullChecks": false,
     "sourceMap": true,
+    "inlineSources": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
