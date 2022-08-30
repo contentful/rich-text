@@ -35,7 +35,9 @@ jobs:
       - checkout
       - npm_install
       - run: npm run prettier:check
-      - run: npm run test:ci
+      - run: 
+          command: npm run test:ci
+          no_output_timeout: 20m
 
   release:
     executor: default
