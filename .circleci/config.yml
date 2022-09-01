@@ -36,6 +36,7 @@ jobs:
       - npm_install
       - run: npm run prettier:check
       - run: npm run test:ci
+    resource_class: medium+
 
   release:
     executor: default
