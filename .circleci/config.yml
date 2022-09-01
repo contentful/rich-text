@@ -46,8 +46,8 @@ jobs:
       - run: git config --global user.name "contentful-ecosystem-bot"
       - npm_install
       - run: npm run build
-      - run: npm run lerna version --no-private --conventional-commits --create-release github --yes
-      - run: npm run lerna publish from-git --yes
+      - run: npm run lerna -- version --no-private --conventional-commits --create-release github --yes
+      - run: npm run lerna -- publish from-git --yes
 
   compressed-size:
     executor: default
