@@ -11,8 +11,10 @@ executors:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
 
-cache-key: &cache-key
-  key: npm-cache-{{ arch }}-{{ checksum ".nvmrc" }}-{{ checksum "package-lock.json" }}-{{ .Branch }}
+cache-key:
+  &cache-key
+  key: npm-cache-{{ arch }}-{{ checksum ".nvmrc" }}-{{ checksum
+    "package-lock.json" }}-{{ .Branch }}
 
 commands:
   use_npm_token:
@@ -36,16 +38,20 @@ jobs:
       - npm_install
       - run: npm run prettier:check
       - run: npm run test:ci
+    # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
+    resource_class: large
 
   release:
     executor: default
     steps:
       - checkout
-      - run: git config --global user.email "prd-dev-workflows+ecosystem-bot@contentful.com"
+      - run: git config --global user.email
+          "prd-dev-workflows+ecosystem-bot@contentful.com"
       - run: git config --global user.name "contentful-ecosystem-bot"
       - npm_install
       - run: npm run build
-      - run: npm run lerna version --no-private --conventional-commits --create-release github --yes
+      - run: npm run lerna version --no-private --conventional-commits --create-release
+          github --yes
       - run: npm run lerna publish from-git --yes
 
   compressed-size:
