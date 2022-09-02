@@ -6,7 +6,9 @@
       "properties": {
         "nodeType": {
           "type": "string",
-          "enum": ["entry-hyperlink"]
+          "enum": [
+            "entry-hyperlink"
+          ]
         },
         "data": {
           "type": "object",
@@ -16,7 +18,9 @@
             }
           },
           "additionalProperties": false,
-          "required": ["target"]
+          "required": [
+            "target"
+          ]
         },
         "content": {
           "type": "array",
@@ -26,7 +30,11 @@
         }
       },
       "additionalProperties": false,
-      "required": ["content", "data", "nodeType"]
+      "required": [
+        "content",
+        "data",
+        "nodeType"
+      ]
     },
     "Link<\"Entry\">": {
       "type": "object",
@@ -36,29 +44,41 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["Link"]
+              "enum": [
+                "Link"
+              ]
             },
             "linkType": {
               "type": "string",
-              "enum": ["Entry"]
+              "enum": [
+                "Entry"
+              ]
             },
             "id": {
               "type": "string"
             }
           },
           "additionalProperties": false,
-          "required": ["id", "linkType", "type"]
+          "required": [
+            "id",
+            "linkType",
+            "type"
+          ]
         }
       },
       "additionalProperties": false,
-      "required": ["sys"]
+      "required": [
+        "sys"
+      ]
     },
     "Text": {
       "type": "object",
       "properties": {
         "nodeType": {
           "type": "string",
-          "enum": ["text"]
+          "enum": [
+            "text"
+          ]
         },
         "value": {
           "type": "string"
@@ -74,7 +94,12 @@
         }
       },
       "additionalProperties": false,
-      "required": ["data", "marks", "nodeType", "value"]
+      "required": [
+        "data",
+        "marks",
+        "nodeType",
+        "value"
+      ]
     },
     "Mark": {
       "type": "object",
@@ -84,7 +109,9 @@
         }
       },
       "additionalProperties": false,
-      "required": ["type"]
+      "required": [
+        "type"
+      ]
     },
     "NodeData": {
       "additionalProperties": true,
