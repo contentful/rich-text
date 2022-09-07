@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.13.2](https://github.com/contentful/rich-text/compare/v15.13.1...v15.13.2) (2022-09-07)
+
+
+### Bug Fixes
+
+* add --no-package-lock ([#364](https://github.com/contentful/rich-text/issues/364)) ([41643c9](https://github.com/contentful/rich-text/commit/41643c9f61f525536941b54b64e944b70cb4a241))
+* add inline sources to packages ([#357](https://github.com/contentful/rich-text/issues/357)) ([bca6abb](https://github.com/contentful/rich-text/commit/bca6abb4328414b5a7a87b9b57481e161d800dcf))
+* add missing -- to circleci release commands ([#360](https://github.com/contentful/rich-text/issues/360)) ([233be08](https://github.com/contentful/rich-text/commit/233be0826cc7c76b799e70262b3281f7dbe4cd92))
+* add prettier write command ([#345](https://github.com/contentful/rich-text/issues/345)) ([0edad4c](https://github.com/contentful/rich-text/commit/0edad4c3176cea85d56a55fc5f4072419d730c8a))
+* circleci update resource class ([#359](https://github.com/contentful/rich-text/issues/359)) ([6bb3710](https://github.com/contentful/rich-text/commit/6bb3710623907a2601c218f3cea3a817790cbf59))
+* revert change to monorepo tsconfig, apply to tsconfig in rich-text-types ([#358](https://github.com/contentful/rich-text/issues/358)) ([56126cc](https://github.com/contentful/rich-text/commit/56126cc9ed3704f21b89d2dbded160be0265f153))
+* update Lerna, rollup in slatejs-adapter ([#366](https://github.com/contentful/rich-text/issues/366)) ([32448e3](https://github.com/contentful/rich-text/commit/32448e369ae2b76601dd81839e13c15432430d68))
+
+
+
+
+
 ## [15.13.1](https://github.com/contentful/rich-text/compare/v15.13.0...v15.13.1) (2022-05-10)
 
 ### Bug Fixes
