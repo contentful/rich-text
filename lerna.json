@@ -10,10 +10,10 @@
     "packages/rich-text-react-renderer",
     "packages/rich-text-types"
   ],
+  "useWorkspaces": true,
   "command": {
     "bootstrap": {
-      "hoist": true,
-      "useWorkspaces": true
+      "hoist": true
     },
     "version": {
       "allowBranch": "master",
