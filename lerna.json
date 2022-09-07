@@ -12,7 +12,8 @@
   ],
   "command": {
     "bootstrap": {
-      "hoist": true
+      "hoist": true,
+      "useWorkspaces": true
     },
     "version": {
       "allowBranch": "master",
