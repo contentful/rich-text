@@ -68,7 +68,7 @@
     "commitizen": "^3.1.2",
     "git-cz": "^3.3.0",
     "husky": "^2.7.0",
-    "lerna": "^3.22.1",
+    "lerna": "^5.5.0",
     "lint-staged": "^8.2.1",
     "prettier": "^1.19.1",
     "rollup": "^1.32.1",
