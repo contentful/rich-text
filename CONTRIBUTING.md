@@ -27,15 +27,15 @@ tests.
 You can learn how from this _free_ series: [How to Contribute to an Open Source
 Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
 
-## Useful npm scripts
+## Useful yarn scripts
 
-- `npm run build` builds vendored files in the `dist` directory of each package
-- `npm run commit` runs git commits with [commitizen](http://commitizen.github.io/cz-cli/)
-- `npm run clean` removes any built files and `node_modules`
-- `npm run lint` runs our TypeScript linter on all `.ts` files in each package
-- `npm run test` runs unit tests for all packages
-- `npm run test:ci` runs unit tests in CI mode
-- `npm run test:watch` runs unit tests in "watch" mode (will refresh relevant
+- `yarn build` builds vendored files in the `dist` directory of each package
+- `yarn commit` runs git commits with [commitizen](http://commitizen.github.io/cz-cli/)
+- `yarn clean` removes any built files and `node_modules`
+- `yarn lint` runs our TypeScript linter on all `.ts` files in each package
+- `yarn test` runs unit tests for all packages
+- `yarn test:ci` runs unit tests in CI mode
+- `yarn test:watch` runs unit tests in "watch" mode (will refresh relevant
   code paths on save)
 
 ## Setup
@@ -45,12 +45,12 @@ each published separately to npm.
 
 ### Local Development
 
-Run `npm install` to install all necessary dependencies.
+Run `yarn` to install all necessary dependencies.
 
 As a post-install step, all Lerna dependencies are [hoisted](https://github.com/lerna/lerna/blob/master/doc/hoist.md),
 and hence internally reliant packages (e.g., `rich-text-html-renderer`, which
 depends upon `rich-text-types`) will resolve their modules via symlink. In other
-words, `npm install` will _both_ install external dependencies for each project,
+words, `yarn` will _both_ install external dependencies for each project,
 _and_ ensure packages that pull in other packages in this repository as
 dependencies are linked to the local version (rather than whatever the state
 of those packages is on npm).
@@ -60,7 +60,7 @@ compiled to ES5 using [rollup](https://rollupjs.org/guide/en) to the `dist`
 directory.
 
 This should generally only happen at publishing time, but you may want to run
-`npm run build` prematurely during local development.
+`yarn build` prematurely during local development.
 
 For example, let's say you're working on a pull request that
 
@@ -68,18 +68,18 @@ For example, let's say you're working on a pull request that
 2. adds behavior to handle that type in `rich-text-html-renderer`.
 
 If changes in the latter are dependent upon changes in the former, you'll need
-to run `npm run build` to update the referenced vendored files in
+to run `yarn build` to update the referenced vendored files in
 `rich-text-html-renderer`.
 
 All necessary dependencies are installed under `node_modules` and any necessary
-tools can be accessed via npm scripts. There is no need to install anything
+tools can be accessed via yarn scripts. There is no need to install anything
 globally.
 
 ### Creating commits
 
 We follow [Angular JS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153#allowed-type)
 to generate a changelog, enforced by [commitizen](http://commitizen.github.io/cz-cli/).
-You'll need to use `npm run commit` to create conventional commits.
+You'll need to use `yarn commit` to create conventional commits.
 
 ### Code style
 
@@ -96,8 +96,8 @@ repository as a whole.
 
 ### Running tests
 
-We use [Jest](https://jestjs.io/) for unit tests. See **Useful npm scripts**
-above for some relevant npm commands.
+We use [Jest](https://jestjs.io/) for unit tests. See **Useful yarn scripts**
+above for some relevant yarn commands.
 
 ### Benchmarks
 
@@ -109,16 +109,16 @@ Node version in `./node-version`) to evaluate these.
 
 Benchmarks are stored in the `bin/benchmark` folder of each relevant package.
 To run all benchmarks for a particular package, e.g. `rich-text-links`, you
-can run the npm `benchmark` script scoped to that package:
+can run the yarn `benchmark` script scoped to that package:
 
 ```sh
-npm run benchmark @contentful/rich-text-links
+yarn benchmark @contentful/rich-text-links
 ```
 
 or
 
 ```sh
-npm run benchmark rich-text-links
+yarn benchmark rich-text-links
 ```
 
 Before submitting a pull request for a package with benchmarked code paths,
@@ -132,6 +132,6 @@ We use [Lerna](https://github.com/lerna/lerna) to:
 - keep dependencies in sync
   - `lerna bootstrap --hoist` (which is run as a post-install step)
 - publish
-  - `NPM_CONFIG_OTP={2fa_otp_goes_here} npm run publish`
+  - `NPM_CONFIG_OTP={2fa_otp_goes_here} npm publish`
   - As a community developer, you most likely won't have to worry about this
     step :)

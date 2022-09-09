@@ -15,19 +15,19 @@
     "benchmark": "ts-node -O '{\"module\": \"commonjs\"}' bin/benchmark",
     "build": "lerna run build",
     "commit": "git-cz",
-    "clean": "lerna exec 'rm -rf node_modules/ dist/ && npm prune' && rm -rf node_modules/ && npm prune",
+    "clean": "lerna exec 'rm -rf node_modules/ dist/' && rm -rf node_modules/",
     "lint": "lerna run lint",
     "lerna": "lerna",
     "prettier": "prettier './**/*.{js,jsx,ts,tsx}' --write",
     "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
     "postinstall": "lerna bootstrap --hoist --progress --no-ci",
     "prebuild": "lerna run prebuild",
-    "prepublishOnly": "npm i && npm run build && npm run lint && npm run test",
+    "prepublishOnly": "yarn && yarn build && yarn lint && yarn test",
     "release": "lerna version --no-private --conventional-commits --create-release github --yes && lerna publish from-git --yes",
     "start": "lerna run start",
     "test": "jest",
-    "test:ci": "npm run build && npm run test:prod",
-    "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
+    "test:ci": "yarn build && yarn test:prod",
+    "test:prod": "yarn lint && yarn test -- --coverage --no-cache",
     "test:watch": "jest --watch"
   },
   "workspaces": [
@@ -50,7 +50,7 @@
   "config": {
     "validate-commit-msg": {
       "types": "conventional-commit-types",
-      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+      "helpMessage": "Use \"yarn commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
     },
     "commitizen": {
       "path": "./node_modules/git-cz"
@@ -83,5 +83,6 @@
     "tslint-config-standard": "^8.0.1",
     "typescript": "^4.4.2",
     "validate-commit-msg": "^2.14.0"
-  }
+  },
+  "packageManager": "yarn@3.2.3"
 }

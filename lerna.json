@@ -1,6 +1,7 @@
 {
-  "lerna": "2.7.2",
+  "lerna": "5.5.0",
   "version": "15.13.2",
+  "npmClient": "yarn",
   "packages": [
     "packages/contentful-slatejs-adapter",
     "packages/rich-text-from-markdown",
@@ -10,6 +11,7 @@
     "packages/rich-text-react-renderer",
     "packages/rich-text-types"
   ],
+  "useWorkspaces": true,
   "command": {
     "bootstrap": {
       "hoist": true
