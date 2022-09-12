@@ -22,13 +22,13 @@
 **/typings/
 
 # Optional yarn cache directory
-**/.yarn/*
-**/!.yarn/cache
-**/!.yarn/patches
-**/!.yarn/plugins
-**/!.yarn/releases
-**/!.yarn/sdks
-**/!.yarn/versions
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # Optional eslint cache
 **/.eslintcache
