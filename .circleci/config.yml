@@ -16,23 +16,19 @@ commands:
     steps:
       - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 
-  restore_cache:
-    name: Restore Yarn Package Cache
-    keys:
-      - yarn-packages-{{ checksum "yarn.lock" }}
-
-  save_cache:
-    name: Save Yarn Package Cache
-    key: yarn-packages-{{ checksum "yarn.lock" }}
-    paths:
-      - .yarn/cache
-      - .yarn/unplugged
-
   yarn_install:
     steps:
-      - restore_cache
+      -   restore_cache:
+            name: Restore Yarn Package Cache
+            keys:
+              - yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn install --immutable
-      - save_cache
+      -   save_cache:
+            name: Save Yarn Package Cache
+            key: yarn-packages-{{ checksum "yarn.lock" }}
+            paths:
+              - .yarn/cache
+              - .yarn/unplugged
 
 jobs:
   lint-and-test:
