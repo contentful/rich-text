@@ -18,17 +18,17 @@ commands:
 
   yarn_install:
     steps:
-      -   restore_cache:
-            name: Restore Yarn Package Cache
-            keys:
-              - yarn-packages-{{ checksum "yarn.lock" }}
-      - run: yarn install
-      -   save_cache:
-            name: Save Yarn Package Cache
-            key: yarn-packages-{{ checksum "yarn.lock" }}
-            paths:
-              - .yarn/cache
-              - .yarn/unplugged
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - .yarn/cache
+            - .yarn/unplugged
 
 jobs:
   lint-and-test:
