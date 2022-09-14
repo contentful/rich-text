@@ -130,7 +130,6 @@ please make sure that your changes do not negatively impact performance.
 We use [Lerna](https://github.com/lerna/lerna) to:
 
 - keep dependencies in sync
-  - `lerna bootstrap --hoist` (which is run as a post-install step)
 - publish
   - `NPM_CONFIG_OTP={2fa_otp_goes_here} npm publish`
   - As a community developer, you most likely won't have to worry about this
