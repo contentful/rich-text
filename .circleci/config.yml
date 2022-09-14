@@ -22,7 +22,7 @@ commands:
             name: Restore Yarn Package Cache
             keys:
               - yarn-packages-{{ checksum "yarn.lock" }}
-      - run: yarn install --prefer-offline
+      - run: yarn install
       -   save_cache:
             name: Save Yarn Package Cache
             key: yarn-packages-{{ checksum "yarn.lock" }}
