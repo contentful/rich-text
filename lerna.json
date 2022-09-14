@@ -13,9 +13,6 @@
   ],
   "useWorkspaces": true,
   "command": {
-    "bootstrap": {
-      "hoist": true
-    },
     "version": {
       "allowBranch": "master",
       "conventionalCommits": true,
