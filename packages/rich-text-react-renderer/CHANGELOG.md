@@ -5,14 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [15.13.2](https://github.com/contentful/rich-text/compare/v15.13.1...v15.13.2) (2022-09-07)
 
-
 ### Bug Fixes
 
-* add prettier write command ([#345](https://github.com/contentful/rich-text/issues/345)) ([0edad4c](https://github.com/contentful/rich-text/commit/0edad4c3176cea85d56a55fc5f4072419d730c8a))
-
-
-
-
+- add prettier write command ([#345](https://github.com/contentful/rich-text/issues/345)) ([0edad4c](https://github.com/contentful/rich-text/commit/0edad4c3176cea85d56a55fc5f4072419d730c8a))
 
 ## [15.12.1](https://github.com/contentful/rich-text/compare/v15.12.0...v15.12.1) (2022-04-21)
 

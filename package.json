@@ -18,7 +18,7 @@
     "clean": "lerna exec 'rm -rf node_modules/ dist/' && rm -rf node_modules/",
     "lint": "lerna run lint",
     "lerna": "lerna",
-    "prettier": "prettier './**/*.{js,jsx,ts,tsx}' --write",
+    "prettier": "prettier './**/*.{js,jsx,ts,tsx,md,mdx}' --write",
     "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
     "prebuild": "lerna run prebuild",
     "prepublishOnly": "yarn && yarn build && yarn lint && yarn test",
