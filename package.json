@@ -70,7 +70,7 @@
     "husky": "^2.7.0",
     "lerna": "^5.5.0",
     "lint-staged": "^8.2.1",
-    "prettier": "^1.19.1",
+    "prettier": "1.19.1",
     "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^4.0.0",
