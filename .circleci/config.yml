@@ -47,6 +47,8 @@ jobs:
       - npm_install
       - run: npm run build
       - run: npm run lerna -- version --no-private --conventional-commits --create-release github --yes
+      # This to remove any generated package-lock.json files (this is the easiest solution to prevent breaking releases).
+      - run: git checkout .
       - run: npm run lerna -- publish from-git --yes
 
   compressed-size:
