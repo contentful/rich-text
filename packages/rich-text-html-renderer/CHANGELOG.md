@@ -5,15 +5,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [15.13.2](https://github.com/contentful/rich-text/compare/v15.13.1...v15.13.2) (2022-09-07)
 
-
 ### Bug Fixes
 
-* add prettier write command ([#345](https://github.com/contentful/rich-text/issues/345)) ([0edad4c](https://github.com/contentful/rich-text/commit/0edad4c3176cea85d56a55fc5f4072419d730c8a))
-* update Lerna, rollup in slatejs-adapter ([#366](https://github.com/contentful/rich-text/issues/366)) ([32448e3](https://github.com/contentful/rich-text/commit/32448e369ae2b76601dd81839e13c15432430d68))
-
-
-
-
+- add prettier write command ([#345](https://github.com/contentful/rich-text/issues/345)) ([0edad4c](https://github.com/contentful/rich-text/commit/0edad4c3176cea85d56a55fc5f4072419d730c8a))
+- update Lerna, rollup in slatejs-adapter ([#366](https://github.com/contentful/rich-text/issues/366)) ([32448e3](https://github.com/contentful/rich-text/commit/32448e369ae2b76601dd81839e13c15432430d68))
 
 ## [15.13.1](https://github.com/contentful/rich-text/compare/v15.13.0...v15.13.1) (2022-05-10)
 
