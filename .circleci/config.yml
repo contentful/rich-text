@@ -6,7 +6,7 @@ orbs:
 executors:
   default:
     docker:
-      - image: cypress/browsers:node14.17.0-chrome88-ff89
+      - image: cypress/browsers:node16.3.0-chrome88-ff89
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
