@@ -64,6 +64,8 @@ workflows:
     jobs:
       - lint-and-test
       - release:
+          context:
+            - semantic-release-js
           filters:
             branches:
               only: master
