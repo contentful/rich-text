@@ -34,7 +34,8 @@ jobs:
     steps:
       - checkout
       - npm_install
-      - run: npm run prettier:check
+      # TODO: investigate why this has different results than running locally
+      # - run: npm run prettier:check
       - run: npm run test:ci
     resource_class: medium+
 
