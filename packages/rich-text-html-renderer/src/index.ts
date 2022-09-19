@@ -31,9 +31,9 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.TABLE_ROW]: (node, next) => `<tr>${next(node.content)}</tr>`,
   [BLOCKS.TABLE_HEADER_CELL]: (node, next) => `<th>${next(node.content)}</th>`,
   [BLOCKS.TABLE_CELL]: (node, next) => `<td>${next(node.content)}</td>`,
-  [INLINES.ASSET_HYPERLINK]: node => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
-  [INLINES.ENTRY_HYPERLINK]: node => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
-  [INLINES.EMBEDDED_ENTRY]: node => defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
+  [INLINES.ASSET_HYPERLINK]: (node) => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
+  [INLINES.ENTRY_HYPERLINK]: (node) => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
+  [INLINES.EMBEDDED_ENTRY]: (node) => defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
   [INLINES.HYPERLINK]: (node, next) => {
     const href = typeof node.data.uri === 'string' ? node.data.uri : '';
     return `<a href=${attributeValue(href)}>${next(node.content)}</a>`;
@@ -41,10 +41,10 @@ const defaultNodeRenderers: RenderNode = {
 };
 
 const defaultMarkRenderers: RenderMark = {
-  [MARKS.BOLD]: text => `<b>${text}</b>`,
-  [MARKS.ITALIC]: text => `<i>${text}</i>`,
-  [MARKS.UNDERLINE]: text => `<u>${text}</u>`,
-  [MARKS.CODE]: text => `<code>${text}</code>`,
+  [MARKS.BOLD]: (text) => `<b>${text}</b>`,
+  [MARKS.ITALIC]: (text) => `<i>${text}</i>`,
+  [MARKS.UNDERLINE]: (text) => `<u>${text}</u>`,
+  [MARKS.CODE]: (text) => `<code>${text}</code>`,
 };
 
 const defaultInline = (type: string, node: Inline) =>
@@ -103,9 +103,7 @@ export function documentToHtmlString(
 }
 
 function nodeListToHtmlString(nodes: CommonNode[], { renderNode, renderMark }: Options): string {
-  return nodes
-    .map<string>(node => nodeToHtmlString(node, { renderNode, renderMark }))
-    .join('');
+  return nodes.map<string>((node) => nodeToHtmlString(node, { renderNode, renderMark })).join('');
 }
 
 function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options): string {
@@ -122,7 +120,7 @@ function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options)
 
     return nodeValue;
   } else {
-    const nextNode: Next = nodes => nodeListToHtmlString(nodes, { renderMark, renderNode });
+    const nextNode: Next = (nodes) => nodeListToHtmlString(nodes, { renderMark, renderNode });
     if (!node.nodeType || !renderNode[node.nodeType]) {
       // TODO: Figure what to return when passed an unrecognized node.
       return '';

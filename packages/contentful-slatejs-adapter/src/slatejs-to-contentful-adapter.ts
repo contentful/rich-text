@@ -30,7 +30,7 @@ export default function toContentfulDocument({
     data: {},
     content: flatMap(
       document,
-      node => convertNode(node, fromJSON(schema)) as Contentful.TopLevelBlock[],
+      (node) => convertNode(node, fromJSON(schema)) as Contentful.TopLevelBlock[],
     ),
   };
 }
@@ -44,7 +44,7 @@ function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
       content: [],
     };
     if (!schema.isVoid(contentfulElement)) {
-      contentfulElement.content = flatMap(node.children, childNode =>
+      contentfulElement.content = flatMap(node.children, (childNode) =>
         convertNode(childNode, schema),
       );
     }

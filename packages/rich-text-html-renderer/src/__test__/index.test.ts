@@ -90,7 +90,7 @@ describe('documentToHtmlString', () => {
   it('renders marks with the passed custom mark rendered', () => {
     const options: Options = {
       renderMark: {
-        [MARKS.UNDERLINE]: text => `<u>${text}</u>`,
+        [MARKS.UNDERLINE]: (text) => `<u>${text}</u>`,
       },
     };
     const document: Document = marksDoc(MARKS.UNDERLINE);

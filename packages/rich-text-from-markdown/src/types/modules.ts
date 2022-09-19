@@ -16,9 +16,9 @@ declare module 'unified' {
     parse(md: string): MarkdownTree;
   }
 
-  export default function(): { use(md: Object, config: Object): Processor };
+  export default function (): { use(md: Object, config: Object): Processor };
 }
 
 declare module 'remark-parse' {
-  export default function(one: Object, two: Object): void;
+  export default function (one: Object, two: Object): void;
 }

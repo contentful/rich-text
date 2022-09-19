@@ -139,7 +139,7 @@ const buildTableCell = async (
 ): Promise<Array<Block>> => {
   const nodeChildren = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
 
-  const content = nodeChildren.map(contentNode => ({
+  const content = nodeChildren.map((contentNode) => ({
     nodeType: BLOCKS.PARAGRAPH,
     data: {},
     content: [contentNode],
@@ -198,7 +198,7 @@ const buildText = async (
       {
         nodeType: nodeType,
         value: node.value,
-        marks: marks.map(type => ({ type })),
+        marks: marks.map((type) => ({ type })),
         data: {},
       } as Text,
     ];
@@ -252,7 +252,7 @@ async function mdToRichTextNodes(
     return Promise.resolve([]);
   }
   const rtNodes = await Promise.all(
-    nodes.map(node => mdToRichTextNode(node, fallback, appliedMarksTypes)),
+    nodes.map((node) => mdToRichTextNode(node, fallback, appliedMarksTypes)),
   );
 
   return _.flatten(rtNodes).filter(Boolean);
@@ -331,7 +331,7 @@ function prepareMdAST(ast: MarkdownTree): MarkdownNode {
       return node;
     }
 
-    const children = _.flatMap(node.children, n => expandParagraphWithInlineImages(n)).map(n =>
+    const children = _.flatMap(node.children, (n) => expandParagraphWithInlineImages(n)).map((n) =>
       prepareASTNodeChildren(n),
     );
 
