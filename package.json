@@ -18,9 +18,8 @@
     "clean": "lerna exec 'rm -rf node_modules/ dist/ && npm prune' && rm -rf node_modules/ && npm prune",
     "lint": "lerna run lint",
     "lerna": "lerna",
-    "prettier": "prettier './**/*.{js,jsx,ts,tsx}' --write",
+    "prettier": "prettier './**/*.{js,jsx,ts,tsx,md,mdx}' --write",
     "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
-    "postinstall": "lerna bootstrap --hoist --progress --no-ci",
     "prebuild": "lerna run prebuild",
     "prepublishOnly": "npm i && npm run build && npm run lint && npm run test",
     "release": "lerna version --no-private --conventional-commits --create-release github --yes && lerna publish from-git --yes",
@@ -28,22 +27,17 @@
     "test": "jest",
     "test:ci": "npm run build && npm run test:prod",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prepare": "husky install"
   },
   "workspaces": [
     "packages/*"
   ],
-  "husky": {
-    "hooks": {
-      "commit-msg": "validate-commit-msg",
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write"
     ],
-    "*.md": [
+    "*.{md, mdx}": [
       "prettier --write"
     ]
   },
@@ -61,16 +55,17 @@
     "trailingComma": "all"
   },
   "devDependencies": {
+    "@lerna-lite/cli": "^1.11.2",
+    "@lerna-lite/run": "^1.11.2",
     "@types/benchmark": "^1.0.33",
     "@types/faker": "^4.1.12",
     "@types/jest": "^27.0.1",
     "benchmark": "^2.1.4",
     "commitizen": "^3.1.2",
     "git-cz": "^3.3.0",
-    "husky": "^2.7.0",
-    "lerna": "^5.5.0",
-    "lint-staged": "^8.2.1",
-    "prettier": "^1.19.1",
+    "husky": "^8.0.0",
+    "lint-staged": "12.4.1",
+    "prettier": "2.7.1",
     "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^4.0.0",

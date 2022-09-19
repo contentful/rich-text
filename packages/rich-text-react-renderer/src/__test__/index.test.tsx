@@ -51,7 +51,7 @@ describe('documentToReactComponents', () => {
       headingDoc(BLOCKS.HEADING_2),
     ];
 
-    docs.forEach(doc => {
+    docs.forEach((doc) => {
       expect(documentToReactComponents(doc)).toMatchSnapshot();
     });
   });
@@ -64,7 +64,7 @@ describe('documentToReactComponents', () => {
       marksDoc(MARKS.CODE),
     ];
 
-    docs.forEach(doc => {
+    docs.forEach((doc) => {
       expect(documentToReactComponents(doc)).toMatchSnapshot();
     });
   });
@@ -94,7 +94,7 @@ describe('documentToReactComponents', () => {
   it('renders marks with the passed custom mark renderer', () => {
     const options: Options = {
       renderMark: {
-        [MARKS.BOLD]: text => <Strong>{text}</Strong>,
+        [MARKS.BOLD]: (text) => <Strong>{text}</Strong>,
       },
     };
     const document: Document = multiMarkDoc();
@@ -104,7 +104,7 @@ describe('documentToReactComponents', () => {
 
   it('renders text with the passed custom text renderer', () => {
     const options: Options = {
-      renderText: text => text.replace(/world/, 'Earth'),
+      renderText: (text) => text.replace(/world/, 'Earth'),
     };
     const document: Document = paragraphDoc;
 

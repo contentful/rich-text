@@ -1,5 +1,5 @@
 {
-  "lerna": "2.7.2",
+  "$schema": "node_modules/@lerna-lite/cli/schemas/lerna-schema.json",
   "version": "15.13.2",
   "packages": [
     "packages/contentful-slatejs-adapter",
@@ -11,9 +11,6 @@
     "packages/rich-text-types"
   ],
   "command": {
-    "bootstrap": {
-      "hoist": true
-    },
     "version": {
       "allowBranch": "master",
       "conventionalCommits": true,

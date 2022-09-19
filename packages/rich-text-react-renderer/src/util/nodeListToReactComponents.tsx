@@ -4,11 +4,9 @@ import { CommonNode, Options } from '..';
 import { appendKeyToValidElement } from './appendKeyToValidElement';
 
 export function nodeListToReactComponents(nodes: CommonNode[], options: Options): ReactNode {
-  return nodes.map(
-    (node: CommonNode, index: number): ReactNode => {
-      return appendKeyToValidElement(nodeToReactComponent(node, options), index);
-    },
-  );
+  return nodes.map((node: CommonNode, index: number): ReactNode => {
+    return appendKeyToValidElement(nodeToReactComponent(node, options), index);
+  });
 }
 
 export function nodeToReactComponent(node: CommonNode, options: Options): ReactNode {

@@ -12,7 +12,7 @@ describe(`Process Rich Text content correctly`, () => {
   };
 
   // Make some fake functions its expecting.
-  const loadNodeContent = node => Promise.resolve(node.content);
+  const loadNodeContent = (node) => Promise.resolve(node.content);
   describe(`Process generated richtext node correctly`, () => {
     it(`Correctly creates a new ContentfulRichText node`, async () => {
       const content = `
