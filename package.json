@@ -71,7 +71,7 @@
     "git-cz": "^3.3.0",
     "husky": "^8.0.1",
     "lint-staged": "12.4.1",
-    "prettier": "^2.7.1",
+    "prettier": "2.7.1",
     "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^4.0.0",
