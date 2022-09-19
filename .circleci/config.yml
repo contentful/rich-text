@@ -22,7 +22,7 @@ commands:
   npm_install:
     steps:
       - restore_cache: *cache-key
-      - run: npm ci --prefer-offline --no-audit
+      - run: npm ci --prefer-offline --no-audit --no-package-lock
       - save_cache:
           <<: *cache-key
           paths:
