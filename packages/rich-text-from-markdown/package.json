@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.172",
+    "@types/node": "^18.8.1",
     "faker": "^4.1.0",
     "jest": "^27.1.0",
     "rimraf": "^2.6.3",
