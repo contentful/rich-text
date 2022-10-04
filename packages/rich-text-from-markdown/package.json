@@ -30,13 +30,14 @@
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.js",
     "start": "tsc && rollup -c rollup.config.js -w",
-    "lint": "tslint -t codeFrame '@(src|bin)/*.ts'"
+    "lint": "tslint -t codeFrame '@(src|bin)/*.ts'",
+    "test:ci": "npm run build && npm run test:prod"
   },
   "dependencies": {
     "@contentful/rich-text-types": "^15.13.2",
     "lodash": "^4.17.11",
     "remark-parse": "^9.0.0",
-    "unified": "^7.1.0"
+    "unified": "^9.0.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.172",
