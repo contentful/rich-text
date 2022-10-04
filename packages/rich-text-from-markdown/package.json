@@ -36,8 +36,8 @@
   "dependencies": {
     "@contentful/rich-text-types": "^15.13.2",
     "lodash": "^4.17.11",
-    "remark-parse": "^9.0.0",
-    "unified": "^9.0.0"
+    "remark-parse": "10.0.1",
+    "unified": "8.0.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.172",
