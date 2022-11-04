@@ -62,6 +62,8 @@ describe('documentToReactComponents', () => {
       marksDoc(MARKS.BOLD),
       marksDoc(MARKS.UNDERLINE),
       marksDoc(MARKS.CODE),
+      marksDoc(MARKS.SUPERSCRIPT),
+      marksDoc(MARKS.SUBSCRIPT),
     ];
 
     docs.forEach((doc) => {

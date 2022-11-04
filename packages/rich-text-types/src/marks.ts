@@ -1,11 +1,11 @@
 /**
  * Map of all Contentful marks.
  */
-enum MARKS {
-  BOLD = 'bold',
-  ITALIC = 'italic',
-  UNDERLINE = 'underline',
-  CODE = 'code',
-}
-
-export default MARKS;
+export default {
+  BOLD: 'bold',
+  ITALIC: 'italic',
+  UNDERLINE: 'underline',
+  CODE: 'code',
+  SUPERSCRIPT: 'superscript',
+  SUBSCRIPT: 'subscript',
+};

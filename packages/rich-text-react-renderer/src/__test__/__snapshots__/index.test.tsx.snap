@@ -144,6 +144,26 @@ Array [
 ]
 `;
 
+exports[`documentToReactComponents renders marks with default mark renderer 5`] = `
+Array [
+  <p>
+    <sup>
+      hello world
+    </sup>
+  </p>,
+]
+`;
+
+exports[`documentToReactComponents renders marks with default mark renderer 6`] = `
+Array [
+  <p>
+    <sub>
+      hello world
+    </sub>
+  </p>,
+]
+`;
+
 exports[`documentToReactComponents renders marks with the passed custom mark renderer 1`] = `
 Array [
   <p>
