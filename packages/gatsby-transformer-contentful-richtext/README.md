@@ -194,5 +194,3 @@ The `renderMark` keys should be one of the following `MARKS` properties as defin
   - `ITALIC`
   - `UNDERLINE`
   - `CODE`
-  - `SUPERSCRIPT`
-  - `SUBSCRIPT`
