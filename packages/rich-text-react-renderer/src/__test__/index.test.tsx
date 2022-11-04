@@ -17,6 +17,8 @@ import {
   paragraphDoc,
   quoteDoc,
   ulDoc,
+  tableDoc,
+  tableWithHeaderDoc,
 } from './documents';
 import DocumentWrapper from './components/Document';
 import Paragraph from './components/Paragraph';
@@ -49,7 +51,7 @@ describe('documentToReactComponents', () => {
       headingDoc(BLOCKS.HEADING_2),
     ];
 
-    docs.forEach(doc => {
+    docs.forEach((doc) => {
       expect(documentToReactComponents(doc)).toMatchSnapshot();
     });
   });
@@ -64,7 +66,7 @@ describe('documentToReactComponents', () => {
       marksDoc(MARKS.SUBSCRIPT),
     ];
 
-    docs.forEach(doc => {
+    docs.forEach((doc) => {
       expect(documentToReactComponents(doc)).toMatchSnapshot();
     });
   });
@@ -94,7 +96,7 @@ describe('documentToReactComponents', () => {
   it('renders marks with the passed custom mark renderer', () => {
     const options: Options = {
       renderMark: {
-        [MARKS.BOLD]: text => <Strong>{text}</Strong>,
+        [MARKS.BOLD]: (text) => <Strong>{text}</Strong>,
       },
     };
     const document: Document = multiMarkDoc();
@@ -104,7 +106,7 @@ describe('documentToReactComponents', () => {
 
   it('renders text with the passed custom text renderer', () => {
     const options: Options = {
-      renderText: text => text.replace(/world/, 'Earth'),
+      renderText: (text) => text.replace(/world/, 'Earth'),
     };
     const document: Document = paragraphDoc;
 
@@ -158,6 +160,16 @@ describe('documentToReactComponents', () => {
     const document: Document = hrDoc;
 
     expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+
+  it('renders tables', () => {
+    const document: Document = tableDoc;
+
+    expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+
+  it('renders tables with header', () => {
+    expect(documentToReactComponents(tableWithHeaderDoc)).toMatchSnapshot();
   });
 
   it('does not crash with inline elements (e.g. hyperlink)', () => {

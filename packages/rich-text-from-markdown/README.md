@@ -42,6 +42,9 @@ The library will convert automatically the following markdown nodes:
 - `blockquote`
 - `list`
 - `listItem`
+- `table`
+- `tableRow`
+- `tableCell`
 
 If the markdown content has unsupported nodes like image `![image](url)` you can add a callback as a second argument
 and it will get called everytime an unsupported node is found. The return value of the callback will be the rich text representation
@@ -54,8 +57,8 @@ const { richTextFromMarkdown } = require('@contentful/rich-text-from-markdown');
 
 // define your own type for unsupported nodes like asset
 const document = await richTextFromMarkdown(
-  '![image](\'https://example.com/image.jpg\')',
-  node => ({
+  "![image]('https://example.com/image.jpg')",
+  (node) => ({
     nodeType: 'embedded-[entry|asset]-[block|inline]',
     content: [],
     data: {
@@ -63,10 +66,10 @@ const document = await richTextFromMarkdown(
         sys: {
           type: 'Link',
           linkType: 'Entry|Asset',
-          id: '.........'
-        }
-      }
-    }
-  })
+          id: '.........',
+        },
+      },
+    },
+  }),
 );
 ```

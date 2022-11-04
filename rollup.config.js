@@ -23,7 +23,7 @@ export default (outputFile, overrides = {}) => ({
     // Compile TypeScript files
     typescript({
       useTsconfigDeclarationDir: true,
-      objectHashIgnoreUnknownHack: true
+      objectHashIgnoreUnknownHack: true,
     }),
 
     // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)

@@ -53,6 +53,10 @@ const blockSymbolsMap = new Map([
   [BLOCKS.QUOTE, 'Quote'],
   [BLOCKS.EMBEDDED_ENTRY, 'EntryLinkBlock'],
   [BLOCKS.EMBEDDED_ASSET, 'AssetLinkBlock'],
+  [BLOCKS.TABLE, 'Table'],
+  [BLOCKS.TABLE_ROW, 'TableRow'],
+  [BLOCKS.TABLE_CELL, 'TableCell'],
+  [BLOCKS.TABLE_HEADER_CELL, 'TableHeaderCell'],
 ]);
 
 const inlineSymbolsMap = new Map([
@@ -62,12 +66,12 @@ const inlineSymbolsMap = new Map([
   [INLINES.EMBEDDED_ENTRY, 'EntryLinkInline'],
 ]);
 
-Object.values(BLOCKS).forEach(nodeType => {
+Object.values(BLOCKS).forEach((nodeType) => {
   const symbolName = blockSymbolsMap.get(nodeType);
   createJsonSchema(symbolName, nodeType);
 });
 
-Object.values(INLINES).forEach(nodeType => {
+Object.values(INLINES).forEach((nodeType) => {
   const symbolName = inlineSymbolsMap.get(nodeType);
   createJsonSchema(symbolName, nodeType);
 });

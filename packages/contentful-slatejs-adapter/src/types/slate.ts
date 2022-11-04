@@ -1,4 +1,5 @@
 namespace Slate {
+  // @ts-ignore fixes "Duplicate identifier" when generating tests coverage
   export type NodeObject = 'document' | 'block' | 'inline' | 'text';
   export interface Node {
     object: NodeObject;

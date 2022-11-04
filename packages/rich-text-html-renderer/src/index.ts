@@ -11,6 +11,8 @@ import {
   helpers,
 } from '@contentful/rich-text-types';
 
+const attributeValue = (value: string) => `"${value.replace(/"/g, '&quot;')}"`;
+
 const defaultNodeRenderers: RenderNode = {
   [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
   [BLOCKS.HEADING_1]: (node, next) => `<h1>${next(node.content)}</h1>`,
@@ -25,23 +27,30 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.LIST_ITEM]: (node, next) => `<li>${next(node.content)}</li>`,
   [BLOCKS.QUOTE]: (node, next) => `<blockquote>${next(node.content)}</blockquote>`,
   [BLOCKS.HR]: () => '<hr/>',
-  [INLINES.ASSET_HYPERLINK]: node => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
-  [INLINES.ENTRY_HYPERLINK]: node => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
-  [INLINES.EMBEDDED_ENTRY]: node => defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
-  [INLINES.HYPERLINK]: (node, next) => `<a href="${node.data.uri}">${next(node.content)}</a>`,
+  [BLOCKS.TABLE]: (node, next) => `<table>${next(node.content)}</table>`,
+  [BLOCKS.TABLE_ROW]: (node, next) => `<tr>${next(node.content)}</tr>`,
+  [BLOCKS.TABLE_HEADER_CELL]: (node, next) => `<th>${next(node.content)}</th>`,
+  [BLOCKS.TABLE_CELL]: (node, next) => `<td>${next(node.content)}</td>`,
+  [INLINES.ASSET_HYPERLINK]: (node) => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
+  [INLINES.ENTRY_HYPERLINK]: (node) => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
+  [INLINES.EMBEDDED_ENTRY]: (node) => defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
+  [INLINES.HYPERLINK]: (node, next) => {
+    const href = typeof node.data.uri === 'string' ? node.data.uri : '';
+    return `<a href=${attributeValue(href)}>${next(node.content)}</a>`;
+  },
 };
 
 const defaultMarkRenderers: RenderMark = {
-  [MARKS.BOLD]: text => `<b>${text}</b>`,
-  [MARKS.ITALIC]: text => `<i>${text}</i>`,
-  [MARKS.UNDERLINE]: text => `<u>${text}</u>`,
-  [MARKS.CODE]: text => `<code>${text}</code>`,
-  [MARKS.SUPERSCRIPT]: text => `<sup>${text}</sup>`,
-  [MARKS.SUBSCRIPT]: text => `<sub>${text}</sub>`,
+  [MARKS.BOLD]: (text) => `<b>${text}</b>`,
+  [MARKS.ITALIC]: (text) => `<i>${text}</i>`,
+  [MARKS.UNDERLINE]: (text) => `<u>${text}</u>`,
+  [MARKS.CODE]: (text) => `<code>${text}</code>`,
+  [MARKS.SUPERSCRIPT]: (text) => `<sup>${text}</sup>`,
+  [MARKS.SUBSCRIPT]: (text) => `<sub>${text}</sub>`,
 };
 
 const defaultInline = (type: string, node: Inline) =>
-  `<span>type: ${type} id: ${node.data.target.sys.id}</span>`;
+  `<span>type: ${escape(type)} id: ${escape(node.data.target.sys.id)}</span>`;
 
 export type CommonNode = Text | Block | Inline;
 
@@ -96,7 +105,7 @@ export function documentToHtmlString(
 }
 
 function nodeListToHtmlString(nodes: CommonNode[], { renderNode, renderMark }: Options): string {
-  return nodes.map<string>(node => nodeToHtmlString(node, { renderNode, renderMark })).join('');
+  return nodes.map<string>((node) => nodeToHtmlString(node, { renderNode, renderMark })).join('');
 }
 
 function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options): string {
@@ -113,7 +122,7 @@ function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options)
 
     return nodeValue;
   } else {
-    const nextNode: Next = nodes => nodeListToHtmlString(nodes, { renderMark, renderNode });
+    const nextNode: Next = (nodes) => nodeListToHtmlString(nodes, { renderMark, renderNode });
     if (!node.nodeType || !renderNode[node.nodeType]) {
       // TODO: Figure what to return when passed an unrecognized node.
       return '';

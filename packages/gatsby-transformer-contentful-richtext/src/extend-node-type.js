@@ -4,10 +4,10 @@ const { GraphQLString, GraphQLInt } = require(`gatsby/graphql`);
 const words = require('lodash.words');
 
 let pathPrefixCacheStr = ``;
-const htmlCacheKey = node =>
+const htmlCacheKey = (node) =>
   `transformer-contentful-rich-text-html-${node.internal.contentDigest}-${pathPrefixCacheStr}`;
 
-const ttrCacheKey = node =>
+const ttrCacheKey = (node) =>
   `transformer-contentful-rich-text-ttr-${node.internal.contentDigest}-${pathPrefixCacheStr}`;
 
 module.exports = ({ type, cache, pathPrefix }, pluginOptions) => {
@@ -33,11 +33,11 @@ module.exports = ({ type, cache, pathPrefix }, pluginOptions) => {
   let { renderOptions } = pluginOptions;
   renderOptions = renderOptions || {};
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     return resolve({
       html: {
         type: GraphQLString,
-        resolve: richTextNode =>
+        resolve: (richTextNode) =>
           cacheWrap(htmlCacheKey(richTextNode), () =>
             documentToHtmlString(JSON.parse(richTextNode.internal.content), renderOptions),
           ),
@@ -45,7 +45,7 @@ module.exports = ({ type, cache, pathPrefix }, pluginOptions) => {
 
       timeToRead: {
         type: GraphQLInt,
-        resolve: richTextNode =>
+        resolve: (richTextNode) =>
           cacheWrap(ttrCacheKey(richTextNode), () => {
             let plainString = documentToPlainTextString(JSON.parse(richTextNode.internal.content));
             let wordsCount = words(plainString).length;

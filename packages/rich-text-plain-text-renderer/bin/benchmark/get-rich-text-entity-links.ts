@@ -36,10 +36,8 @@ const richTextField: Document = {
           ],
         }),
       }),
-    }
-  ]
+    },
+  ],
 };
 
-export const documentToPlainTextString = () => (
-  docToString(richTextField, '')
-);
+export const documentToPlainTextString = () => docToString(richTextField, '');

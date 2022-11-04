@@ -9,3 +9,5 @@ export { default as embeddedEntryDoc } from './embedded-entry';
 export { default as olDoc } from './ol';
 export { default as ulDoc } from './ul';
 export { default as quoteDoc } from './quote';
+export { default as tableDoc } from './table';
+export { default as tableWithHeaderDoc } from './table-header';

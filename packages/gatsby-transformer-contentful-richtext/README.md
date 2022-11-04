@@ -47,7 +47,7 @@ const Text = ({ children }) => <p className="align-center">{children}</p>;
 
 const options = {
   renderMark: {
-    [MARKS.BOLD]: text => <Bold>{text}</Bold>,
+    [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
   },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
@@ -142,12 +142,10 @@ module.exports = {
            */
           renderNode: {
             // Example
-            [INLINES.ASSET_HYPERLINK]: node => {
-              return `<img class='custom-asset' src="${
-                node.data.target.fields.file['en-US'].url
-              }"/>`;
+            [INLINES.ASSET_HYPERLINK]: (node) => {
+              return `<img class='custom-asset' src="${node.data.target.fields.file['en-US'].url}"/>`;
             },
-            [INLINES.EMBEDDED_ENTRY]: node => {
+            [INLINES.EMBEDDED_ENTRY]: (node) => {
               return `<div class='custom-entry' />${node.data.target.fields.name['en-US']}</div>`;
             },
           },
@@ -156,7 +154,7 @@ module.exports = {
            */
           renderMark: {
             // Example
-            [MARKS.BOLD]: text => `<custom-bold>${text}<custom-bold>`,
+            [MARKS.BOLD]: (text) => `<custom-bold>${text}<custom-bold>`,
           },
         },
       },

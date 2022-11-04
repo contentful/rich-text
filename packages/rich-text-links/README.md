@@ -37,11 +37,11 @@ const document = {
               sys: {
                 linkType: 'Entry',
                 type: 'Link',
-                id: 'yXmVKmaDBm8tRfQMwA0e'
-              }
-            }
+                id: 'yXmVKmaDBm8tRfQMwA0e',
+              },
+            },
           },
-          content: []
+          content: [],
         },
         {
           nodeType: 'embedded-asset-block',
@@ -50,11 +50,11 @@ const document = {
               sys: {
                 linkType: 'Asset',
                 type: 'Link',
-                id: 'jNhaW0aSc6Hu74SHVMtq'
-              }
-            }
+                id: 'jNhaW0aSc6Hu74SHVMtq',
+              },
+            },
           },
-          content: []
+          content: [],
         },
       ],
     },

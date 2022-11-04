@@ -19,15 +19,27 @@ describe('rich-text-from-markdown', () => {
         block(BLOCKS.HEADING_4, {}, text('h4 Heading')),
         block(BLOCKS.HEADING_5, {}, text('h5 Heading')),
         block(BLOCKS.HEADING_6, {}, text('h6 Heading')),
+        // Paragraphs
+        block(BLOCKS.HEADING_2, {}, text('Paragraphs')),
+        block(
+          BLOCKS.PARAGRAPH,
+          {},
+          text(`This is a paragraph
+with a new line.`),
+        ),
+        block(BLOCKS.PARAGRAPH, {}, text('This is a new paragraph.')),
+        // TODO: <br /> test should be ideally the same as the new line one.
+        block(BLOCKS.PARAGRAPH, {}, text('This is a paragraph'), text('using br.')),
+
         block(BLOCKS.HEADING_2, {}, text('Horizontal Rules')),
         block(BLOCKS.HR),
         block(BLOCKS.HR),
         block(BLOCKS.HR),
         block(BLOCKS.HEADING_2, {}, text('Emphasis')),
-        block(BLOCKS.PARAGRAPH, {}, text('This is bold text', mark('bold'))),
-        block(BLOCKS.PARAGRAPH, {}, text('This is bold text', mark('bold'))),
-        block(BLOCKS.PARAGRAPH, {}, text('This is italic text', mark('italic'))),
-        block(BLOCKS.PARAGRAPH, {}, text('This is italic text', mark('italic'))),
+        block(BLOCKS.PARAGRAPH, {}, text('This is bold text', mark(MARKS.BOLD))),
+        block(BLOCKS.PARAGRAPH, {}, text('This is bold text', mark(MARKS.BOLD))),
+        block(BLOCKS.PARAGRAPH, {}, text('This is italic text', mark(MARKS.ITALIC))),
+        block(BLOCKS.PARAGRAPH, {}, text('This is italic text', mark(MARKS.ITALIC))),
         block(BLOCKS.PARAGRAPH, {}, text('Strikethrough is not supported')),
         block(BLOCKS.HEADING_2, {}, text('Blockquotes')),
         block(BLOCKS.QUOTE, {}, block(BLOCKS.PARAGRAPH, {}, text('Blockquotes'))),
@@ -156,6 +168,183 @@ describe('rich-text-from-markdown', () => {
             INLINES.HYPERLINK,
             { data: { uri: 'https://www.contentful.com/blog/' } },
             text('link with title'),
+          ),
+        ),
+        // Tables
+        block(BLOCKS.HEADING_2, {}, text('Tables')),
+        block(
+          BLOCKS.TABLE,
+          {},
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Name'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Country'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Test 1'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Germany'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Test 2'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('USA'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('> Test 3'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('USA'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('* Test 4'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Germany'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('# Test 5'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Germany'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(BLOCKS.PARAGRAPH, {}, text('Test 6')),
+              block(BLOCKS.PARAGRAPH, {}, text('Test 7')),
+            ),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('USA'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Test 8'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('USA'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Test 9'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Germany'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(BLOCKS.PARAGRAPH, {}, text('Test 10')),
+              block(BLOCKS.PARAGRAPH, {}, text(' and ')),
+              block(BLOCKS.PARAGRAPH, {}, text('Test 11')),
+            ),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Germany'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text(''))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Germany'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text(''))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Brazil'))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(
+                BLOCKS.PARAGRAPH,
+                {},
+                inline(
+                  INLINES.HYPERLINK,
+                  { data: { uri: 'https://example.com' } },
+                  text('Test 12', mark(MARKS.BOLD)),
+                ),
+              ),
+            ),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('USA'))),
+          ),
+        ),
+        // Tables with marks
+        block(BLOCKS.HEADING_2, {}, text('Tables with marks')),
+        block(
+          BLOCKS.TABLE,
+          {},
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(BLOCKS.PARAGRAPH, {}, text('Bold Header 1', mark(MARKS.BOLD))),
+            ),
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(BLOCKS.PARAGRAPH, {}, text('Bold Header 2', mark(MARKS.BOLD))),
+            ),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(BLOCKS.PARAGRAPH, {}, text('Italic', mark(MARKS.ITALIC))),
+            ),
+            block(
+              BLOCKS.TABLE_CELL,
+              {},
+              block(BLOCKS.PARAGRAPH, {}, text('Code', mark(MARKS.CODE))),
+            ),
+          ),
+        ),
+        // Tables without body
+        block(BLOCKS.HEADING_2, {}, text('Tables without body')),
+        block(
+          BLOCKS.TABLE,
+          {},
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('abc'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('def'))),
+          ),
+        ),
+        // Tables with empty cells
+        block(BLOCKS.HEADING_2, {}, text('Table with empty cells')),
+        block(
+          BLOCKS.TABLE,
+          {},
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text(''))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text(''))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Cell 1'))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text(''))),
+          ),
+          block(
+            BLOCKS.TABLE_ROW,
+            {},
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text(''))),
+            block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Cell 2'))),
           ),
         ),
       ),

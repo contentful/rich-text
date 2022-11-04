@@ -1,4 +1,4 @@
-import { Document, BLOCKS, INLINES } from '../../node_modules/@contentful/rich-text-types';
+import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { getRichTextEntityLinks } from '../index';
 
 describe('getRichTextEntityLinks', () => {
@@ -163,6 +163,102 @@ describe('getRichTextEntityLinks', () => {
             },
           ],
         },
+        {
+          nodeType: BLOCKS.TABLE,
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.TABLE_ROW,
+              data: {},
+              content: [
+                {
+                  nodeType: BLOCKS.TABLE_HEADER_CELL,
+                  data: {},
+                  content: [{ data: {}, content: [], nodeType: BLOCKS.PARAGRAPH }],
+                },
+                {
+                  nodeType: BLOCKS.TABLE_HEADER_CELL,
+                  data: {},
+                  content: [
+                    {
+                      nodeType: BLOCKS.PARAGRAPH,
+                      data: {},
+                      content: [
+                        {
+                          nodeType: INLINES.EMBEDDED_ENTRY,
+                          data: {
+                            target: {
+                              sys: { id: 'inline-header-entry', type: 'Link', linkType: 'Entry' },
+                            },
+                          },
+                          content: [],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              nodeType: BLOCKS.TABLE_ROW,
+              data: {},
+              content: [
+                {
+                  nodeType: BLOCKS.TABLE_CELL,
+                  data: {},
+                  content: [
+                    {
+                      nodeType: BLOCKS.PARAGRAPH,
+                      data: {},
+                      content: [
+                        {
+                          nodeType: INLINES.ENTRY_HYPERLINK,
+                          data: {
+                            target: {
+                              sys: { id: 'hyperlink-cell-entry', type: 'Link', linkType: 'Entry' },
+                            },
+                          },
+                          content: [],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  nodeType: BLOCKS.TABLE_CELL,
+                  data: {},
+                  content: [
+                    {
+                      data: {},
+                      content: [
+                        {
+                          nodeType: BLOCKS.PARAGRAPH,
+                          data: {},
+                          content: [
+                            {
+                              nodeType: INLINES.ASSET_HYPERLINK,
+                              data: {
+                                target: {
+                                  sys: {
+                                    id: 'hyperlink-cell-asset',
+                                    type: 'Link',
+                                    linkType: 'Asset',
+                                  },
+                                },
+                              },
+                              content: [],
+                            },
+                          ],
+                        },
+                      ],
+                      nodeType: BLOCKS.PARAGRAPH,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
       ],
     };
 
@@ -184,6 +280,16 @@ describe('getRichTextEntityLinks', () => {
             type: 'Link',
             id: 'bar',
           },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'hyperlink-cell-entry',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'inline-header-entry',
+          },
         ],
         Asset: [
           {
@@ -195,6 +301,11 @@ describe('getRichTextEntityLinks', () => {
             linkType: 'Asset',
             type: 'Link',
             id: 'quux',
+          },
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'hyperlink-cell-asset',
           },
         ],
       });

@@ -1,36 +1,44 @@
 {
-  "name": "root",
+  "name": "@contentful/rich-text",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "description": "A monorepo for all NPM packages related to Rich Text",
+  "author": "Contentful GmbH",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/contentful/rich-text.git"
+  },
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "benchmark": "ts-node -O '{\"module\": \"commonjs\"}' bin/benchmark",
     "build": "lerna run build",
     "commit": "git-cz",
     "clean": "lerna exec 'rm -rf node_modules/ dist/ && npm prune' && rm -rf node_modules/ && npm prune",
     "lint": "lerna run lint",
-    "postinstall": "lerna bootstrap --hoist --progress --no-ci",
+    "lerna": "lerna",
+    "prettier": "prettier './**/*.{js,jsx,ts,tsx,md,mdx}' --write",
+    "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
     "prebuild": "lerna run prebuild",
     "prepublishOnly": "npm i && npm run build && npm run lint && npm run test",
-    "publish": "lerna publish",
-    "release": "lerna run release",
+    "release": "lerna version --no-private --conventional-commits --create-release github --yes && lerna publish from-git --yes",
     "start": "lerna run start",
     "test": "jest",
     "test:ci": "npm run build && npm run test:prod",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prepare": "husky install"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "validate-commit-msg",
-      "pre-commit": "lint-staged"
-    }
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "lint-staged": {
-    "packages/**/{src,test}/**/*.ts": [
-      "prettier --write",
-      "git add"
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write"
+    ],
+    "*.{md, mdx}": [
+      "prettier --write"
     ]
   },
   "config": {
@@ -47,27 +55,28 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@types/benchmark": "^1.0.31",
-    "@types/faker": "^4.1.5",
-    "@types/jest": "^24.0.12",
+    "@lerna-lite/cli": "^1.11.2",
+    "@lerna-lite/run": "^1.11.2",
+    "@types/benchmark": "^1.0.33",
+    "@types/faker": "^4.1.12",
+    "@types/jest": "^27.0.1",
     "benchmark": "^2.1.4",
-    "commitizen": "^3.1.1",
-    "git-cz": "^3.0.1",
-    "husky": "^2.2.0",
-    "lerna": "^3.13.4",
-    "lint-staged": "^8.1.6",
-    "prettier": "^1.17.0",
-    "rollup": "^1.11.0",
+    "commitizen": "^3.1.2",
+    "git-cz": "^3.3.0",
+    "husky": "^8.0.0",
+    "lint-staged": "12.4.1",
+    "prettier": "2.7.1",
+    "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.21.0",
-    "ts-jest": "^24.0.2",
-    "ts-node": "^8.1.0",
+    "rollup-plugin-node-resolve": "^4.2.4",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^8.10.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.4.5",
+    "typescript": "^4.4.2",
     "validate-commit-msg": "^2.14.0"
   }
 }

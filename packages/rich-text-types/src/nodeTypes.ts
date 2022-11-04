@@ -1,6 +1,6 @@
-import { Block, Inline, Text, TopLevelBlock } from './types';
-import BLOCKS from './blocks';
-import INLINES from './inlines';
+import { BLOCKS } from './blocks';
+import { INLINES } from './inlines';
+import { Block, Inline, Text, ListItemBlock } from './types';
 
 type EmptyNodeData = {};
 // BLOCKS
@@ -82,7 +82,7 @@ export interface UnorderedList extends Block {
 export interface ListItem extends Block {
   nodeType: BLOCKS.LIST_ITEM;
   data: EmptyNodeData;
-  content: TopLevelBlock[];
+  content: ListItemBlock[];
 }
 
 // taken from graphql schema-generator/contentful-types/link.ts
@@ -154,4 +154,43 @@ export interface EntryHyperlink extends Inline {
     target: Link<'Entry'>;
   };
   content: Text[];
+}
+
+export interface TableCell extends Block {
+  nodeType: BLOCKS.TABLE_HEADER_CELL | BLOCKS.TABLE_CELL;
+  data: {
+    colspan?: number;
+    rowspan?: number;
+  };
+
+  /**
+   * @minItems 1
+   */
+  content: Paragraph[];
+}
+
+export interface TableHeaderCell extends TableCell {
+  nodeType: BLOCKS.TABLE_HEADER_CELL;
+}
+
+// An abstract table row can have both table cell types
+
+export interface TableRow extends Block {
+  nodeType: BLOCKS.TABLE_ROW;
+  data: EmptyNodeData;
+
+  /**
+   * @minItems 1
+   */
+  content: TableCell[];
+}
+
+export interface Table extends Block {
+  nodeType: BLOCKS.TABLE;
+  data: EmptyNodeData;
+
+  /**
+   * @minItems 1
+   */
+  content: TableRow[];
 }

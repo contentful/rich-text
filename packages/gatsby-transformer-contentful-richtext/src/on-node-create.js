@@ -1,18 +1,20 @@
-const crypto = require(`crypto`)
+const crypto = require(`crypto`);
 
-module.exports = async function onCreateNode(
-  { node, getNode, loadNodeContent, actions, createNodeId }
-) {
-  const { createNode, createParentChildLink } = actions
+module.exports = async function onCreateNode({
+  node,
+  getNode,
+  loadNodeContent,
+  actions,
+  createNodeId,
+}) {
+  const { createNode, createParentChildLink } = actions;
 
   // We only care about markdown content.
-  if (
-    node.internal.mediaType !== `text/richtext`
-  ) {
-    return
+  if (node.internal.mediaType !== `text/richtext`) {
+    return;
   }
 
-  const content = await loadNodeContent(node)
+  const content = await loadNodeContent(node);
 
   const richTextNode = {
     id: createNodeId(`${node.id} >>> ContentfulRichText`),
@@ -22,11 +24,11 @@ module.exports = async function onCreateNode(
       content,
       type: `ContentfulRichText`,
     },
-  } 
+  };
   richTextNode.internal.contentDigest = crypto
     .createHash(`md5`)
     .update(JSON.stringify(richTextNode))
-    .digest(`hex`)
-  createNode(richTextNode)
-  createParentChildLink({ parent: node, child: richTextNode })
-}
+    .digest(`hex`);
+  createNode(richTextNode);
+  createParentChildLink({ parent: node, child: richTextNode });
+};

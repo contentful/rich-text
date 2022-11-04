@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-from-markdown",
-  "version": "14.1.2",
+  "version": "15.13.2",
   "description": "convert markdown to rich text",
   "keywords": [
     "rich-text",
@@ -11,6 +11,7 @@
   "homepage": "https://github.com/contentful/rich-text#readme",
   "license": "MIT",
   "main": "dist/rich-text-from-markdown.es5.js",
+  "typings": "dist/types/index.d.ts",
   "directories": {
     "src": "src",
     "test": "__tests__"
@@ -32,27 +33,29 @@
     "lint": "tslint -t codeFrame '@(src|bin)/*.ts'"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^14.1.2",
+    "@contentful/rich-text-types": "^15.13.2",
     "lodash": "^4.17.11",
     "remark-parse": "^6.0.3",
     "unified": "^7.1.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.123",
+    "@types/lodash": "^4.14.172",
     "faker": "^4.1.0",
-    "jest": "^24.7.1",
+    "jest": "^27.1.0",
     "rimraf": "^2.6.3",
-    "rollup": "^1.11.0",
+    "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.21.0",
-    "ts-jest": "^24.0.2",
-    "tslint": "^5.16.0",
-    "typescript": "^3.4.5"
+    "rollup-plugin-node-resolve": "^4.2.4",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.5",
+    "tslib": "^2.3.1",
+    "tslint": "^6.1.3",
+    "typescript": "^4.4.2"
   },
   "bugs": {
     "url": "https://github.com/contentful/rich-text/issues"
-  }
+  },
+  "gitHead": "c7e34bc0f0172728999b121af43df88995eec305"
 }

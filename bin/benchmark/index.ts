@@ -28,12 +28,7 @@ if (!packageNameArg) {
  */
 const packageName = packageNameArg.replace(/^@contentful\//, '');
 
-const paths = [
-  __dirname,
-  '../../packages',
-  packageName,
-  'bin/benchmark'
-];
+const paths = [__dirname, '../../packages', packageName, 'bin/benchmark'];
 
 const benchmarkPath = resolve(...paths);
 
@@ -55,10 +50,7 @@ readdir(benchmarkPath, (err, files) => {
   const benchmarks: Array<[string, Function]> = Object.entries(
     files
       .map((name): { [key: string]: Function } => require(resolve(...paths, name)))
-      .reduce((allBenchmarks, fileBenchmarks) => Object.assign(
-        allBenchmarks,
-        fileBenchmarks
-      ), {})
+      .reduce((allBenchmarks, fileBenchmarks) => Object.assign(allBenchmarks, fileBenchmarks), {}),
   );
 
   for (const [name, benchmark] of benchmarks) {

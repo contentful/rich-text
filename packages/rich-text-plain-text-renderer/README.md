@@ -11,6 +11,7 @@ npm install @contentful/rich-text-plain-text-renderer
 ```
 
 Using [yarn](https://yarnpkg.com/):
+
 ```sh
 yarn add @contentful/rich-text-plain-text-renderer
 ```
@@ -32,17 +33,17 @@ const document = {
           nodeType: 'text',
           value: 'Hello',
           marks: [{ type: 'bold' }],
-          data: {}
+          data: {},
         },
         {
           nodeType: 'text',
           value: ' world!',
           marks: [{ type: 'italic' }],
-          data: {}
+          data: {},
         },
       ],
     },
-  ]
+  ],
 };
 
 documentToPlainTextString(document); // -> Hello world!
