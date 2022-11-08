@@ -72,8 +72,8 @@ workflows:
   commit:
     jobs:
       - lint-and-test:
-        context:
-          - vault
+          context:
+            - vault
       - release:
           context:
             - semantic-release-js
@@ -86,5 +86,5 @@ workflows:
   compressed-size:
     jobs:
       - compressed-size:
-        context:
-          - vault
+          context:
+            - vault
