@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   frontend-tools: contentful/frontend-tools@1
+  vault: contentful/vault@1
 
 executors:
   default:
@@ -33,6 +34,8 @@ jobs:
     executor: default
     steps:
       - checkout
+      - vault/get-secrets:
+          template-preset: npm-read
       - npm_install
       # TODO: investigate why this has different results than running locally
       # - run: npm run prettier:check
@@ -43,6 +46,8 @@ jobs:
     executor: default
     steps:
       - checkout
+      - vault/get-secrets:
+          template-preset: semantic-release
       - run: git config --global user.email "prd-dev-workflows+ecosystem-bot@contentful.com"
       - run: git config --global user.name "contentful-ecosystem-bot"
       - npm_install
@@ -54,6 +59,10 @@ jobs:
     executor: default
     steps:
       - checkout
+      - vault/get-secrets:
+          template-preset: npm-read
+      - vault/get-secrets:
+          template-preset: github-comment
       - use_npm_token
       - frontend-tools/compressed-size
 
@@ -62,10 +71,13 @@ workflows:
   # run on every commit
   commit:
     jobs:
-      - lint-and-test
+      - lint-and-test:
+        context:
+          - vault
       - release:
           context:
             - semantic-release-js
+            - vault
           filters:
             branches:
               only: master
@@ -73,4 +85,6 @@ workflows:
             - lint-and-test
   compressed-size:
     jobs:
-      - compressed-size
+      - compressed-size:
+        context:
+          - vault
