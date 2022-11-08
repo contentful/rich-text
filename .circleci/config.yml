@@ -71,10 +71,13 @@ workflows:
   # run on every commit
   commit:
     jobs:
-      - lint-and-test
+      - lint-and-test:
+        context:
+          - vault
       - release:
           context:
             - semantic-release-js
+            - vault
           filters:
             branches:
               only: master
@@ -83,3 +86,5 @@ workflows:
   compressed-size:
     jobs:
       - compressed-size
+        context:
+          - vault
