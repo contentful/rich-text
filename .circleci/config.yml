@@ -85,6 +85,6 @@ workflows:
             - lint-and-test
   compressed-size:
     jobs:
-      - compressed-size
+      - compressed-size:
         context:
           - vault
