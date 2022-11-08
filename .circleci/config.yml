@@ -78,6 +78,9 @@ workflows:
           context:
             - semantic-release-js
             - vault
+          filters:
+            branches:
+              only: master
           requires:
             - lint-and-test
   compressed-size:
