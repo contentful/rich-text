@@ -76,7 +76,7 @@ workflows:
             - vault
       - release:
           context:
-            - semantic-release-js
+            - semantic-release-ecosystem
             - vault
           filters:
             branches:
