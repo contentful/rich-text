@@ -76,7 +76,6 @@ workflows:
             - vault
       - release:
           context:
-            - semantic-release-ecosystem
             - vault
           requires:
             - lint-and-test
