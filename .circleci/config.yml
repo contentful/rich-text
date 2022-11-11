@@ -78,9 +78,6 @@ workflows:
           context:
             - semantic-release-ecosystem
             - vault
-          filters:
-            branches:
-              only: master
           requires:
             - lint-and-test
   compressed-size:
