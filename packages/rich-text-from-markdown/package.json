@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-from-markdown",
-  "version": "15.14.0",
+  "version": "15.13.2",
   "description": "convert markdown to rich text",
   "keywords": [
     "rich-text",
@@ -33,7 +33,7 @@
     "lint": "tslint -t codeFrame '@(src|bin)/*.ts'"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^15.14.0",
+    "@contentful/rich-text-types": "^15.13.2",
     "lodash": "^4.17.11",
     "remark-parse": "^6.0.3",
     "unified": "^7.1.0"

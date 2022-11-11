@@ -1,6 +1,6 @@
 {
   "name": "@contentful/contentful-slatejs-adapter",
-  "version": "15.14.0",
+  "version": "15.13.2",
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
@@ -59,7 +59,7 @@
     "trailingComma": "all"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^15.14.0",
+    "@contentful/rich-text-types": "^15.13.2",
     "lodash.flatmap": "^4.5.0",
     "lodash.get": "^4.4.2",
     "lodash.omit": "^4.5.0"

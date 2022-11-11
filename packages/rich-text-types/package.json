@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-types",
-  "version": "15.14.0",
+  "version": "15.13.2",
   "main": "dist/index.js",
   "typings": "dist/types/index.d.ts",
   "files": [
