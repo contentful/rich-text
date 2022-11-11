@@ -78,6 +78,9 @@ workflows:
       - release:
           context:
             - vault
+          filters:
+            branches:
+              only: master
           requires:
             - lint-and-test
   compressed-size:
