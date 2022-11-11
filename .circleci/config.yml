@@ -50,6 +50,7 @@ jobs:
           template-preset: semantic-release-ecosystem
       - run: git config --global user.email $GIT_COMMITTER_EMAIL
       - run: git config --global user.name $GIT_COMMITTER_NAME
+      - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
       - npm_install
       - run: npm run build
       - run: npm run lerna -- version --no-private --conventional-commits --create-release github --yes
