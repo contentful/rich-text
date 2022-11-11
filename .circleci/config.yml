@@ -47,9 +47,9 @@ jobs:
     steps:
       - checkout
       - vault/get-secrets:
-          template-preset: semantic-release
-      - run: git config --global user.email "prd-dev-workflows+ecosystem-bot@contentful.com"
-      - run: git config --global user.name "contentful-ecosystem-bot"
+          template-preset: semantic-release-ecosystem
+      - run: git config --global user.email $GIT_COMMITTER_EMAIL
+      - run: git config --global user.name $GIT_COMMITTER_NAME
       - npm_install
       - run: npm run build
       - run: npm run lerna -- version --no-private --conventional-commits --create-release github --yes
