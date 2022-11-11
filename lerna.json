@@ -12,7 +12,6 @@
   ],
   "command": {
     "version": {
-      "allowBranch": "master",
       "conventionalCommits": true,
       "message": "chore(release): updated release notes and package versions [ci skip]",
       "ignoreChanges": [
