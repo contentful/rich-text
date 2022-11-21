@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   frontend-tools: contentful/frontend-tools@1
   vault: contentful/vault@1
+  nx: nrwl/nx@1.6.1
 
 executors:
   default:
@@ -29,6 +30,12 @@ commands:
           paths:
             - ~/.npm
 
+  nx_set_shas:
+    steps:
+      - nx/set-shas:
+          error-on-no-successful-workflow: true
+          main-branch-name: master
+
 jobs:
   lint-and-test:
     executor: default
@@ -37,8 +44,7 @@ jobs:
       - vault/get-secrets:
           template-preset: npm-read
       - npm_install
-      # TODO: investigate why this has different results than running locally
-      # - run: npm run prettier:check
+      - run: npm run prettier:check
       - run: npm run test:ci
     resource_class: medium+
 
@@ -53,8 +59,8 @@ jobs:
       - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
       - npm_install
       - run: npm run build
-      - run: npm run lerna -- version --no-private --conventional-commits --create-release github --yes
-      - run: npm run lerna -- publish from-git --yes
+      # - run: npx lerna -- version --no-private --conventional-commits --create-release github --yes
+      # - run: npx lerna -- publish from-git --yes
 
   compressed-size:
     executor: default
