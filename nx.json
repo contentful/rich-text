@@ -1,18 +1,45 @@
 {
+  "extends": "nx/presets/npm.json",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "test", "lint", "test:ci", "tsc", "prettier:check"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "prebuild",
+          "test",
+          "test:prod",
+          "generate-json-schema"
+        ]
       }
     }
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "outputs": ["{projectRoot}/]"]
+    },
+    "prebuild": {
+      "dependsOn": ["^prebuild"]
+    },
+    "test": {
+      "dependsOn": ["^test"]
+    },
+    "test:prod": {
+      "dependsOn": ["^test:prod"]
+    },
+    "generate-json-schema": {
+      "dependsOn": ["^generate-json-schema"],
+      "outputs": ["{projectRoot}/src/schemas/generated"]
     }
   },
   "affected": {
     "defaultBase": "origin/master"
-  }
+  },
+  "defaultBase": "master"
 }
