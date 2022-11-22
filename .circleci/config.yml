@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   frontend-tools: contentful/frontend-tools@1
   vault: contentful/vault@1
-  nx: nrwl/nx@1.6.1
 
 executors:
   default:
@@ -29,12 +28,6 @@ commands:
           <<: *cache-key
           paths:
             - ~/.npm
-
-  #  nx_set_shas:
-  #   steps:
-  #     - nx/set-shas:
-  #         error-on-no-successful-workflow: true
-  #         main-branch-name: master
 
 jobs:
   lint-and-test:
