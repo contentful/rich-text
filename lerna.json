@@ -3,5 +3,21 @@
   "useWorkspaces": true,
   "version": "15.14.0",
   "useNx": true,
-  "packages": ["packages/*"]
+  "packages": ["packages/*"],
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "message": "chore(release): updated release notes and package versions [ci skip]",
+      "ignoreChanges": [
+        "*.md",
+        "*.mdx",
+        "**/*.spec.*",
+        "**/*.test.*",
+        "**/*.stories.*",
+        "**/__fixtures__/**",
+        "**/__tests__/**"
+      ]
+    }
+  }
 }

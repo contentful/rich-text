@@ -22,7 +22,8 @@
     "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
     "prebuild": "lerna run prebuild",
     "prepublishOnly": "npm i && npm run build && npm run lint && npm run test",
-    "release": "lerna run nx version --dryRun",
+    "lerna:version": "lerna version --no-private --conventional-commits --create-release github --yes",
+    "lerna:publish": "lerna publish from-git --yes",
     "start": "lerna run start",
     "test": "jest",
     "test:ci": "npm run build && npm run test:prod",
@@ -55,9 +56,6 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
-    "@commitlint/config-conventional": "^17.0.0",
-    "@jscutlery/semver": "^2.29.0",
     "@types/benchmark": "^1.0.33",
     "@types/faker": "^4.1.12",
     "@types/jest": "^27.0.1",
@@ -67,7 +65,6 @@
     "husky": "^8.0.0",
     "lerna": "^6.0.3",
     "lint-staged": "12.4.1",
-    "nx": "15.2.1",
     "prettier": "2.7.1",
     "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^9.3.4",

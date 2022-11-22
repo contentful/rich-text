@@ -24,17 +24,17 @@ commands:
   npm_install:
     steps:
       - restore_cache: *cache-key
-      - run: npm ci --prefer-offline --no-audit --no-package-lock
+      - run: npm ci
       - save_cache:
           <<: *cache-key
           paths:
             - ~/.npm
 
-  nx_set_shas:
-    steps:
-      - nx/set-shas:
-          error-on-no-successful-workflow: true
-          main-branch-name: master
+  #  nx_set_shas:
+  #   steps:
+  #     - nx/set-shas:
+  #         error-on-no-successful-workflow: true
+  #         main-branch-name: master
 
 jobs:
   lint-and-test:
@@ -59,8 +59,8 @@ jobs:
       - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
       - npm_install
       - run: npm run build
-      # - run: npx lerna -- version --no-private --conventional-commits --create-release github --yes
-      # - run: npx lerna -- publish from-git --yes
+      - run: npm run lerna:version
+      - run: npm run lerna:publish
 
   compressed-size:
     executor: default

@@ -1,17 +1,9 @@
 {
-  "extends": "nx/presets/npm.json",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "prebuild",
-          "test",
-          "test:prod",
-          "generate-json-schema"
-        ]
+        "cacheableOperations": ["build", "lint", "prebuild", "test", "test:prod"]
       }
     }
   },
@@ -32,10 +24,6 @@
     },
     "test:prod": {
       "dependsOn": ["^test:prod"]
-    },
-    "generate-json-schema": {
-      "dependsOn": ["^generate-json-schema"],
-      "outputs": ["{projectRoot}/src/schemas/generated"]
     }
   },
   "affected": {
