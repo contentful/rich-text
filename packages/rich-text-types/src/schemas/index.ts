@@ -10,7 +10,6 @@ export declare type Definition = {
   title?: string;
   type?: string | string[];
   definitions?: {
-    // tslint:disable-next-line:no-any
     [key: string]: any;
   };
   format?: string;
@@ -27,7 +26,6 @@ export declare type Definition = {
   required?: string[];
   propertyOrder?: string[];
   properties?: {
-    // tslint:disable-next-line:no-any
     [key: string]: any;
   };
   defaultProperties?: string[];

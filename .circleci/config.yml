@@ -44,6 +44,7 @@ jobs:
       - vault/get-secrets:
           template-preset: npm-read
       - npm_install
+      - run: npm run lint
       - run: npm run prettier:check
       - run: npm run test:ci
     resource_class: medium+

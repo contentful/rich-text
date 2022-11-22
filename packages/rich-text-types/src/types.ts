@@ -5,7 +5,7 @@ import { TopLevelBlockEnum, ListItemBlockEnum } from './schemaConstraints';
 /**
  * @additionalProperties true
  */
-export type NodeData = Record<string, any>; // tslint:disable-line:no-any
+export type NodeData = Record<string, any>;
 export interface Node {
   readonly nodeType: string;
 
