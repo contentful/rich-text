@@ -25,13 +25,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
-    "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "{src,test}/**/*.ts": [
-      "prettier --write"
-    ]
+    "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "jest": {
     "transform": {
@@ -54,10 +48,6 @@
     ],
     "collectCoverage": true
   },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
   "dependencies": {
     "@contentful/rich-text-types": "^15.14.0",
     "lodash.flatmap": "^4.5.0",
@@ -79,7 +69,6 @@
     "jest": "^27.1.0",
     "lint-staged": "^7.0.0",
     "lodash.camelcase": "^4.3.0",
-    "prettier": "^1.19.1",
     "prompt": "^1.0.0",
     "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",

@@ -3,7 +3,14 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "prebuild", "test", "test:prod"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "prebuild",
+          "test",
+          "test:prod",
+          "generate-json-schema"
+        ]
       }
     }
   },
@@ -24,6 +31,10 @@
     },
     "test:prod": {
       "dependsOn": ["^test:prod"]
+    },
+    "generate-json-schema": {
+      "dependsOn": ["^generate-json-schema"],
+      "outputs": ["{projectRoot}/src/schemas/generated"]
     }
   },
   "affected": {
