@@ -35,10 +35,7 @@
     "packages/*"
   ],
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "prettier --write"
-    ],
-    "*.{md, mdx}": [
+    "**/*.{jsx,js,ts,tsx,md,mdx}": [
       "prettier --write"
     ]
   },
@@ -64,8 +61,8 @@
     "git-cz": "^3.3.0",
     "husky": "^8.0.0",
     "lerna": "^6.0.3",
-    "lint-staged": "12.4.1",
-    "prettier": "2.7.1",
+    "lint-staged": "13.0.3",
+    "prettier": "^2.7.1",
     "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^4.0.0",
