@@ -1,15 +1,8 @@
 {
-  "$schema": "node_modules/@lerna-lite/cli/schemas/lerna-schema.json",
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "useWorkspaces": true,
   "version": "15.14.0",
-  "packages": [
-    "packages/contentful-slatejs-adapter",
-    "packages/rich-text-from-markdown",
-    "packages/rich-text-html-renderer",
-    "packages/rich-text-links",
-    "packages/rich-text-plain-text-renderer",
-    "packages/rich-text-react-renderer",
-    "packages/rich-text-types"
-  ],
+  "packages": ["packages/*"],
   "command": {
     "version": {
       "allowBranch": "master",
@@ -19,6 +12,7 @@
         "*.md",
         "*.mdx",
         "**/*.spec.*",
+        "**/*.test.*",
         "**/*.stories.*",
         "**/__fixtures__/**",
         "**/__tests__/**"

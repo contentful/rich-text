@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add super/sub script types ([#391](https://github.com/contentful/rich-text/issues/391)) ([2562f66](https://github.com/contentful/rich-text/commit/2562f66278f0eff4eeeb367025d4b465773893d1))
+- add super/sub script types ([#391](https://github.com/contentful/rich-text/issues/391)) ([2562f66](https://github.com/contentful/rich-text/commit/2562f66278f0eff4eeeb367025d4b465773893d1))
 
 ## [15.13.2](https://github.com/contentful/rich-text/compare/v15.13.1...v15.13.2) (2022-09-07)
 
