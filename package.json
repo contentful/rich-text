@@ -27,7 +27,8 @@
     "test": "jest",
     "test:ci": "npm run test -- --coverage --no-cache",
     "test:watch": "jest --watch",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "patch-package"
   },
   "workspaces": [
     "packages/*"
@@ -60,6 +61,7 @@
     "husky": "^8.0.0",
     "lerna": "^6.0.3",
     "lint-staged": "13.0.3",
+    "patch-package": "^6.5.0",
     "prettier": "^2.7.1",
     "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^9.3.4",
@@ -73,6 +75,5 @@
     "tslint-config-standard": "^8.0.1",
     "typescript": "^4.4.2",
     "validate-commit-msg": "^2.14.0"
-  },
-  "dependencies": {}
+  }
 }
