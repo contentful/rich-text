@@ -147,9 +147,4 @@ export const V1_NODE_TYPES = [
 /**
  * Marks before `superscript` & `subscript` release.
  */
-export const V1_MARKS = [
-  MARKS.BOLD,
-  MARKS.CODE,
-  MARKS.ITALIC,
-  MARKS.UNDERLINE
-];
+export const V1_MARKS = [MARKS.BOLD, MARKS.CODE, MARKS.ITALIC, MARKS.UNDERLINE];
