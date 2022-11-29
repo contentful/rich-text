@@ -1,5 +1,6 @@
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
+import MARKS from './marks';
 
 export type TopLevelBlockEnum =
   | BLOCKS.PARAGRAPH
@@ -142,3 +143,13 @@ export const V1_NODE_TYPES = [
   INLINES.EMBEDDED_ENTRY,
   'text',
 ];
+
+/**
+ * Marks before `superscript` & `subscript` release.
+ */
+export const V1_MARKS = [
+  MARKS.BOLD,
+  MARKS.CODE,
+  MARKS.ITALIC,
+  MARKS.UNDERLINE
+]
