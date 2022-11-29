@@ -152,4 +152,4 @@ export const V1_MARKS = [
   MARKS.CODE,
   MARKS.ITALIC,
   MARKS.UNDERLINE
-]
+];
