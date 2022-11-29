@@ -23,6 +23,9 @@ commands:
   npm_install:
     steps:
       - restore_cache: *cache-key
+      - run: npm i -g npm@^8
+      - run: node -v
+      - run: npm -v
       - run: npm ci
       - save_cache:
           <<: *cache-key
