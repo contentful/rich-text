@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.15.0](https://github.com/contentful/rich-text/compare/v15.14.1...v15.15.0) (2022-11-29)
+
+### Features
+
+- adding v1 marks to rich text types [TOL-786] ([#416](https://github.com/contentful/rich-text/issues/416)) ([8885de8](https://github.com/contentful/rich-text/commit/8885de8ebba7736de46b0b8892a8aa15bb8d7ba4))
+
 ## [15.14.1](https://github.com/contentful/rich-text/compare/v15.14.0...v15.14.1) (2022-11-23)
 
 **Note:** Version bump only for package @contentful/rich-text-types
