@@ -21,7 +21,6 @@
     "prettier": "prettier './**/*.{js,jsx,ts,tsx,md,mdx}' --write",
     "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
     "prebuild": "lerna run prebuild",
-    "prepublishOnly": "npm i && npm run build && npm run lint && npm run test",
     "lerna:version": "lerna version --no-private --conventional-commits --create-release github --yes",
     "lerna:publish": "lerna publish from-git --yes",
     "start": "lerna run start",
