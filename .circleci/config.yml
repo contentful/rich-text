@@ -13,21 +13,23 @@ executors:
           password: $DOCKERHUB_PASSWORD
 
 cache-key: &cache-key
-  key: npm-cache-{{ arch }}-{{ checksum ".nvmrc" }}-{{ checksum "package-lock.json" }}-{{ .Branch }}
+  key: npm-cache-{{ arch }}-{{ checksum ".nvmrc" }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
 
 commands:
   use_npm_token:
     steps:
       - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 
-  npm_install:
+  yarn_install:
     steps:
       - restore_cache: *cache-key
-      - run: npm ci --prefer-offline --no-audit --no-package-lock
+      - run: node -v
+      - run: yarn -v
+      - run: yarn install --prefer-offline --pure-lockfile
       - save_cache:
           <<: *cache-key
           paths:
-            - ~/.npm
+            - ~/.cache/yarn
 
 jobs:
   lint-and-test:
@@ -36,10 +38,11 @@ jobs:
       - checkout
       - vault/get-secrets:
           template-preset: npm-read
-      - npm_install
-      # TODO: investigate why this has different results than running locally
-      # - run: npm run prettier:check
-      - run: npm run test:ci
+      - yarn_install
+      - run: yarn build
+      - run: yarn lint
+      - run: yarn prettier:check
+      - run: yarn test:ci
     resource_class: medium+
 
   release:
@@ -51,10 +54,10 @@ jobs:
       - run: git config --global user.email $GIT_COMMITTER_EMAIL
       - run: git config --global user.name $GIT_COMMITTER_NAME
       - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-      - npm_install
-      - run: npm run build
-      - run: npm run lerna -- version --no-private --conventional-commits --create-release github --yes
-      - run: npm run lerna -- publish from-git --yes
+      - yarn_install
+      - run: yarn build
+      - run: yarn lerna:version
+      - run: yarn lerna:publish
 
   compressed-size:
     executor: default

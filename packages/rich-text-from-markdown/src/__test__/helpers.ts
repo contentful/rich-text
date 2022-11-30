@@ -8,7 +8,6 @@ import {
   Mark,
 } from '@contentful/rich-text-types';
 export interface NodeProps {
-  // tslint:disable-next-line:no-any
   data?: Record<string, any>;
 }
 

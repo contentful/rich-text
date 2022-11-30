@@ -28,7 +28,6 @@ export interface Schema extends SchemaJSON {
 
 export interface SchemaValue {
   isVoid?: boolean;
-  // tslint:disable-next-line:no-any
   [k: string]: any;
 }
 
