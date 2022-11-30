@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.15.1](https://github.com/contentful/rich-text/compare/v15.15.0...v15.15.1) (2022-11-30)
+
+### Bug Fixes
+
+- **release:** switch to yarn ([#420](https://github.com/contentful/rich-text/issues/420)) ([0e53501](https://github.com/contentful/rich-text/commit/0e53501eb94b3d1c76ac88ca30943d2675e536c8))
+
 # [15.15.0](https://github.com/contentful/rich-text/compare/v15.14.1...v15.15.0) (2022-11-29)
 
 **Note:** Version bump only for package @contentful/rich-text-links
