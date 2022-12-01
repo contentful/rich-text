@@ -19,7 +19,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "npm run generate-json-schema && tsc --module commonjs && rollup -c rollup.config.js",
+    "build": "yarn generate-json-schema && tsc --module commonjs && rollup -c rollup.config.js",
     "start": "tsc && rollup -c rollup.config.js -w",
     "lint": "tslint -t codeFrame '@(src|bin)/*.ts'",
     "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen",
