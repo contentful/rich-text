@@ -47,6 +47,7 @@ export function fromJSON(schema: SchemaJSON = defaultSchema): Schema {
      */
     isVoid(node: ContentfulElementNode) {
       const root = Object.values(BLOCKS).includes(node.nodeType as any) ? 'blocks' : 'inlines';
+      // tslint:disable-next-line
       return schema?.[root]?.[node.nodeType]?.['isVoid'] ?? false;
     },
     isTextContainer(nodeType: string) {

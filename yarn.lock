@@ -1710,20 +1710,6 @@
   dependencies:
     "@types/lodash" "*"
 
-"@types/lodash.flatmap@^4.5.3":
-  version "4.5.7"
-  resolved "https://registry.npmjs.org/@types/lodash.flatmap/-/lodash.flatmap-4.5.7.tgz"
-  integrity sha512-ZTfFXFpta2MU1SkoidRz4QMPpFJdFuZkDNffofj/b3XGT59vD0cpddO0agiwjp9l8KIjLNHRcaAUpi2/izUmFw==
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash.get@^4.4.4":
-  version "4.4.7"
-  resolved "https://registry.npmjs.org/@types/lodash.get/-/lodash.get-4.4.7.tgz"
-  integrity sha512-af34Mj+KdDeuzsJBxc/XeTtOx0SZHZNLd+hdrn+PcKGQs0EG2TJTzQAOTCZTgDJCArahlCzLWSy8c2w59JRz7Q==
-  dependencies:
-    "@types/lodash" "*"
-
 "@types/lodash@*", "@types/lodash@^4.14.172":
   version "4.14.190"
   resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.190.tgz"
