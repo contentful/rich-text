@@ -54,15 +54,11 @@ jobs:
       - run: git config --global user.email $GIT_COMMITTER_EMAIL
       - run: git config --global user.name $GIT_COMMITTER_NAME
       - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+      - use_npm_token
       - yarn_install
       - run: yarn build
       - run: yarn lerna:version
-      # `lerna publish` fails with 404 for some reason but as far as we are concerned
-      # `npm publish` does the same thing since all the versioning, changelog generation
-      # GitHub releases happen in the `lerna version` command.
-      # Using `npx` instead of `yarn` due to an issue with yarn not reading the token
-      # from .npmrc
-      - run: npx lerna exec -- npm publish
+      - run: yarn lerna publish from-git --yes
 
   compressed-size:
     executor: default
