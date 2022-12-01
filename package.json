@@ -22,7 +22,6 @@
     "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
     "prebuild": "lerna run prebuild",
     "lerna:version": "lerna version --no-private --conventional-commits --create-release github --yes",
-    "lerna:publish": "npx lerna exec -- npm publish",
     "start": "lerna run start",
     "test": "lerna run test",
     "prepare": "husky install"
