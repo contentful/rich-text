@@ -22,7 +22,8 @@
     "build": "npm run generate-json-schema && tsc --module commonjs && rollup -c rollup.config.js",
     "start": "tsc && rollup -c rollup.config.js -w",
     "lint": "tslint -t codeFrame '@(src|bin)/*.ts'",
-    "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen"
+    "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen",
+    "test": "jest"
   },
   "devDependencies": {
     "@cspotcode/source-map-consumer": "^0.8.0",
