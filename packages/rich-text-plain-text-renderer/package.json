@@ -21,7 +21,8 @@
     "build": "tsc --module commonjs && rollup -c rollup.config.js",
     "prebuild": "rimraf dist",
     "start": "tsc && rollup -c rollup.config.js -w",
-    "lint": "tslint -t codeFrame '@(src|bin)/*.ts'"
+    "lint": "tslint -t codeFrame '@(src|bin)/*.ts'",
+    "test": "jest"
   },
   "dependencies": {
     "@contentful/rich-text-types": "^15.15.1"

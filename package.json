@@ -24,9 +24,7 @@
     "lerna:version": "lerna version --no-private --conventional-commits --create-release github --yes",
     "lerna:publish": "lerna publish from-git --yes",
     "start": "lerna run start",
-    "test": "jest",
-    "test:ci": "npm run test -- --coverage --no-cache",
-    "test:watch": "jest --watch",
+    "test": "lerna run test",
     "prepare": "husky install"
   },
   "workspaces": [

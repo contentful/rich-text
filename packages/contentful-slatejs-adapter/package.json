@@ -20,39 +20,15 @@
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module ES2015 && rollup -c rollup.config.ts",
+    "build": "tsc && rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "testPathIgnorePatterns": [
-      "/dist/"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/test/",
-      "/__test__/",
-      "/dist/"
-    ],
-    "collectCoverage": true
-  },
   "dependencies": {
-    "@contentful/rich-text-types": "^15.15.1",
-    "lodash.flatmap": "^4.5.0",
-    "lodash.get": "^4.4.2",
-    "lodash.omit": "^4.5.0"
+    "@contentful/rich-text-types": "^15.15.1"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
