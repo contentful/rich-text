@@ -42,7 +42,7 @@ jobs:
       - run: yarn build
       - run: yarn lint
       - run: yarn prettier:check
-      - run: yarn test:ci
+      - run: yarn test
     resource_class: medium+
 
   release:
