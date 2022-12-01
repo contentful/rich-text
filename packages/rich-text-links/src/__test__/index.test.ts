@@ -1,4 +1,4 @@
-import { Document, BLOCKS, INLINES } from '../../node_modules/@contentful/rich-text-types';
+import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { getRichTextEntityLinks } from '../index';
 
 describe('getRichTextEntityLinks', () => {

@@ -184,6 +184,4 @@ const richTextField: Document = {
   ],
 };
 
-export const getRichTextEntityLinks = () => (
-  richTextLinks.getRichTextEntityLinks(richTextField)
-);
+export const getRichTextEntityLinks = () => richTextLinks.getRichTextEntityLinks(richTextField);

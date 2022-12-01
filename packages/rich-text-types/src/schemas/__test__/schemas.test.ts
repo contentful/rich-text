@@ -10,10 +10,10 @@ const matchesSnapshot = (nodeType: string): void => {
 
 describe('getSchemaWithNodeType', () => {
   it('returns json schema for each nodeType', () => {
-    Object.values(INLINES).forEach(nodeType => {
+    Object.values(INLINES).forEach((nodeType) => {
       matchesSnapshot(nodeType);
     });
-    Object.values(BLOCKS).forEach(nodeType => {
+    Object.values(BLOCKS).forEach((nodeType) => {
       matchesSnapshot(nodeType);
     });
 

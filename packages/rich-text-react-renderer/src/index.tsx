@@ -25,17 +25,19 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.TABLE_ROW]: (node, children) => <tr>{children}</tr>,
   [BLOCKS.TABLE_HEADER_CELL]: (node, children) => <th>{children}</th>,
   [BLOCKS.TABLE_CELL]: (node, children) => <td>{children}</td>,
-  [INLINES.ASSET_HYPERLINK]: node => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
-  [INLINES.ENTRY_HYPERLINK]: node => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
-  [INLINES.EMBEDDED_ENTRY]: node => defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
+  [INLINES.ASSET_HYPERLINK]: (node) => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
+  [INLINES.ENTRY_HYPERLINK]: (node) => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
+  [INLINES.EMBEDDED_ENTRY]: (node) => defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
   [INLINES.HYPERLINK]: (node, children) => <a href={node.data.uri}>{children}</a>,
 };
 
 const defaultMarkRenderers: RenderMark = {
-  [MARKS.BOLD]: text => <b>{text}</b>,
-  [MARKS.ITALIC]: text => <i>{text}</i>,
-  [MARKS.UNDERLINE]: text => <u>{text}</u>,
-  [MARKS.CODE]: text => <code>{text}</code>,
+  [MARKS.BOLD]: (text) => <b>{text}</b>,
+  [MARKS.ITALIC]: (text) => <i>{text}</i>,
+  [MARKS.UNDERLINE]: (text) => <u>{text}</u>,
+  [MARKS.CODE]: (text) => <code>{text}</code>,
+  [MARKS.SUPERSCRIPT]: (text) => <sup>{text}</sup>,
+  [MARKS.SUBSCRIPT]: (text) => <sub>{text}</sub>,
 };
 
 function defaultInline(type: string, node: Inline): ReactNode {

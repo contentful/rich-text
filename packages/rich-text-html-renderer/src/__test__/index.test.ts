@@ -68,6 +68,14 @@ describe('documentToHtmlString', () => {
         doc: marksDoc(MARKS.CODE),
         expected: '<p><code>hello world</code></p>',
       },
+      {
+        doc: marksDoc(MARKS.SUPERSCRIPT),
+        expected: '<p><sup>hello world</sup></p>',
+      },
+      {
+        doc: marksDoc(MARKS.SUBSCRIPT),
+        expected: '<p><sub>hello world</sub></p>',
+      },
     ];
 
     docs.forEach(({ doc, expected }) => {
@@ -90,7 +98,7 @@ describe('documentToHtmlString', () => {
   it('renders marks with the passed custom mark rendered', () => {
     const options: Options = {
       renderMark: {
-        [MARKS.UNDERLINE]: text => `<u>${text}</u>`,
+        [MARKS.UNDERLINE]: (text) => `<u>${text}</u>`,
       },
     };
     const document: Document = marksDoc(MARKS.UNDERLINE);

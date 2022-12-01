@@ -1,0 +1,93 @@
+version: 2.1
+
+orbs:
+  frontend-tools: contentful/frontend-tools@1
+  vault: contentful/vault@1
+
+executors:
+  default:
+    docker:
+      - image: cypress/browsers:node16.13.2-chrome100-ff98
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+
+cache-key: &cache-key
+  key: npm-cache-{{ arch }}-{{ checksum ".nvmrc" }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+
+commands:
+  use_npm_token:
+    steps:
+      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+
+  yarn_install:
+    steps:
+      - restore_cache: *cache-key
+      - run: node -v
+      - run: yarn -v
+      - run: yarn install --prefer-offline --pure-lockfile
+      - save_cache:
+          <<: *cache-key
+          paths:
+            - ~/.cache/yarn
+
+jobs:
+  lint-and-test:
+    executor: default
+    steps:
+      - checkout
+      - vault/get-secrets:
+          template-preset: npm-read
+      - yarn_install
+      - run: yarn build
+      - run: yarn lint
+      - run: yarn prettier:check
+      - run: yarn test:ci
+    resource_class: medium+
+
+  release:
+    executor: default
+    steps:
+      - checkout
+      - vault/get-secrets:
+          template-preset: semantic-release-ecosystem
+      - run: git config --global user.email $GIT_COMMITTER_EMAIL
+      - run: git config --global user.name $GIT_COMMITTER_NAME
+      - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+      - yarn_install
+      - run: yarn build
+      - run: yarn lerna:version
+      - run: yarn lerna:publish
+
+  compressed-size:
+    executor: default
+    steps:
+      - checkout
+      - vault/get-secrets:
+          template-preset: npm-read
+      - vault/get-secrets:
+          template-preset: github-comment
+      - use_npm_token
+      - frontend-tools/compressed-size
+
+workflows:
+  version: 2
+  # run on every commit
+  commit:
+    jobs:
+      - lint-and-test:
+          context:
+            - vault
+      - release:
+          context:
+            - vault
+          filters:
+            branches:
+              only: master
+          requires:
+            - lint-and-test
+  compressed-size:
+    jobs:
+      - compressed-size:
+          context:
+            - vault

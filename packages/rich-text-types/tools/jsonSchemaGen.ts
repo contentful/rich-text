@@ -66,12 +66,12 @@ const inlineSymbolsMap = new Map([
   [INLINES.EMBEDDED_ENTRY, 'EntryLinkInline'],
 ]);
 
-Object.values(BLOCKS).forEach(nodeType => {
+Object.values(BLOCKS).forEach((nodeType) => {
   const symbolName = blockSymbolsMap.get(nodeType);
   createJsonSchema(symbolName, nodeType);
 });
 
-Object.values(INLINES).forEach(nodeType => {
+Object.values(INLINES).forEach((nodeType) => {
   const symbolName = inlineSymbolsMap.get(nodeType);
   createJsonSchema(symbolName, nodeType);
 });

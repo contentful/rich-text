@@ -71,11 +71,11 @@ const bootstrapTest = (label, content, query, test, additionalParameters = {}) =
     },
   };
   // Make some fake functions its expecting.
-  const loadNodeContent = node => Promise.resolve(node.content);
+  const loadNodeContent = (node) => Promise.resolve(node.content);
 
-  it(label, async done => {
+  it(label, async (done) => {
     node.content = content;
-    const createNode = richTextNode => {
+    const createNode = (richTextNode) => {
       queryResult(
         [richTextNode],
         query,
@@ -83,7 +83,7 @@ const bootstrapTest = (label, content, query, test, additionalParameters = {}) =
           types: [{ name: `LISTNODE` }],
         },
         additionalParameters,
-      ).then(result => {
+      ).then((result) => {
         try {
           test(result.data.listNode[0]);
           done();
@@ -128,7 +128,7 @@ describe(`extend-node-type`, () => {
   });
 
   describe(`HTML is generated correctly`, () => {
-    bootstrapTest(`correctly loads html`, JSON.stringify(createContent()), `html`, node => {
+    bootstrapTest(`correctly loads html`, JSON.stringify(createContent()), `html`, (node) => {
       expect(node.html).toEqual('<p>Hello world!</p>');
     });
   });
@@ -138,7 +138,7 @@ describe(`extend-node-type`, () => {
       `correctly calculate timeToRead for short text`,
       JSON.stringify(createContent()),
       `timeToRead`,
-      node => {
+      (node) => {
         expect(node.timeToRead).toEqual(1);
       },
     );
@@ -147,7 +147,7 @@ describe(`extend-node-type`, () => {
       `correctly calculate timeToRead for long text`,
       JSON.stringify(createContent('one thousand words text '.repeat(250))),
       `timeToRead`,
-      node => {
+      (node) => {
         expect(node.timeToRead).toEqual(5);
       },
     );

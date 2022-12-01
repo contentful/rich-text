@@ -33,7 +33,7 @@ const document = {
           nodeType: 'text',
           value: 'Hello world!',
           marks: [],
-          data: {}
+          data: {},
         },
       ],
     },
@@ -104,12 +104,12 @@ const Text = ({ children }) => <p className="align-center">{children}</p>;
 
 const options = {
   renderMark: {
-    [MARKS.BOLD]: text => <Bold>{text}</Bold>,
+    [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
   },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
   },
-  renderText: text => text.replace('!', '?'),
+  renderText: (text) => text.replace('!', '?'),
 };
 
 documentToReactComponents(document, options);
@@ -191,7 +191,7 @@ The `renderText` callback is a function that has a single string argument and re
 
 ```javascript
 const options = {
-  renderText: text => {
+  renderText: (text) => {
     return text.split('\n').reduce((children, textSegment, index) => {
       return [...children, index > 0 && <br key={index} />, textSegment];
     }, []);
@@ -208,7 +208,7 @@ To work around this limitation, just append any non-numeric character to your cu
 ```javascript
 const options = {
   renderMark: {
-    [MARKS.BOLD]: text => {
+    [MARKS.BOLD]: (text) => {
       return <b key={`${text}-key`}>{text}</b>;
     },
   },
