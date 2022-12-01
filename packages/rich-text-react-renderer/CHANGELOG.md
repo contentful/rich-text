@@ -3,6 +3,130 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 15.16.0 (2022-12-01)
+
+## 15.15.1 (2022-11-30)
+
+### Bug Fixes
+
+- **release:** switch to yarn ([#420](https://github.com/contentful/rich-text/issues/420)) ([0e53501](https://github.com/contentful/rich-text/commit/0e53501eb94b3d1c76ac88ca30943d2675e536c8))
+
+# 15.15.0 (2022-11-29)
+
+## 15.14.1 (2022-11-23)
+
+# 15.14.0 (2022-11-14)
+
+### Features
+
+- add super/sub script types ([#391](https://github.com/contentful/rich-text/issues/391)) ([2562f66](https://github.com/contentful/rich-text/commit/2562f66278f0eff4eeeb367025d4b465773893d1))
+
+## 15.13.2 (2022-09-07)
+
+### Bug Fixes
+
+- add prettier write command ([#345](https://github.com/contentful/rich-text/issues/345)) ([0edad4c](https://github.com/contentful/rich-text/commit/0edad4c3176cea85d56a55fc5f4072419d730c8a))
+
+## 15.12.1 (2022-04-21)
+
+### Bug Fixes
+
+- upgrade react peerDependencies to support react^18.0.0 ([#323](https://github.com/contentful/rich-text/issues/323)) ([7a0bfdf](https://github.com/contentful/rich-text/commit/7a0bfdfb687cca608239e072cbc301ba1b1310d1))
+
+# 15.12.0 (2022-03-25)
+
+## 15.11.1 (2022-01-04)
+
+# 15.11.0 (2021-12-27)
+
+### Bug Fixes
+
+- **react-renderer:** wrap table rows in tbody ([#300](https://github.com/contentful/rich-text/issues/300)) ([e23d1f4](https://github.com/contentful/rich-text/commit/e23d1f4f5c63ce7ded84144b271f566327a144d1))
+
+## 15.10.1 (2021-12-21)
+
+# 15.10.0 (2021-12-15)
+
+## 15.9.1 (2021-12-10)
+
+# 15.9.0 (2021-12-09)
+
+# 15.7.0 (2021-11-11)
+
+## 15.6.2 (2021-11-05)
+
+## 15.6.1 (2021-11-05)
+
+# 15.6.0 (2021-11-04)
+
+## 15.5.1 (2021-10-25)
+
+# 15.5.0 (2021-10-25)
+
+# 15.4.0 (2021-09-16)
+
+### Features
+
+- **html+react:** render Table header as <th> ([#269](https://github.com/contentful/rich-text/issues/269)) ([0f82905](https://github.com/contentful/rich-text/commit/0f829059be6d91e042dfc71698009177ae4ab78d))
+
+## 15.3.6 (2021-09-15)
+
+## 15.3.5 (2021-09-13)
+
+## 15.3.3 (2021-09-07)
+
+## 15.3.2 (2021-09-07)
+
+## 15.3.1 (2021-09-07)
+
+# 15.3.0 (2021-09-06)
+
+# 15.2.0 (2021-08-16)
+
+### Bug Fixes
+
+- audit fix aiming mixing-deep vulnerability ([2b98cbd](https://github.com/contentful/rich-text/commit/2b98cbd8e85435305378dd91d70d55db5e9c0832))
+
+# 15.1.0 (2021-08-02)
+
+### Features
+
+- 🎸 add RT react renderer tables support ([fddfb8a](https://github.com/contentful/rich-text/commit/fddfb8a943b9807efe92b749d7ffdeb1308e42bd))
+
+# 15.0.0 (2021-06-15)
+
+## 14.1.3 (2021-04-12)
+
+## 14.1.2 (2020-11-02)
+
+## 14.0.1 (2020-01-30)
+
+# 14.0.0 (2020-01-28)
+
+# 13.4.0 (2019-08-01)
+
+### Features
+
+- 🎸 Adds BLOCKS.DOCUMENT renderer support to react-renderer ([57c922c](https://github.com/contentful/rich-text/commit/57c922cb638c47729f2189815a647ba68859394e)), closes [#104](https://github.com/contentful/rich-text/issues/104)
+
+# 13.2.0 (2019-03-18)
+
+### Features
+
+- 🎸 renderText option to alter all text ([f684a6e](https://github.com/contentful/rich-text/commit/f684a6e91d81ab0c66c286adaa923bd2edf0f4f1))
+
+# 13.1.0 (2019-03-04)
+
+## 13.0.1 (2019-02-11)
+
+### Bug Fixes
+
+- 🐛 Fix wrong import in tests ([bead583](https://github.com/contentful/rich-text/commit/bead583e6e9bb71638694e466980b90e599fa47b))
+
+### Features
+
+- 🎸 Initial rich-text-react-renderer implementation ([06dad9b](https://github.com/contentful/rich-text/commit/06dad9b0359325d8fa433438dac997fc9656d13f))
+
 ## [15.15.1](https://github.com/contentful/rich-text/compare/v15.15.0...v15.15.1) (2022-11-30)
 
 ### Bug Fixes

@@ -3,6 +3,135 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 16.0.0 (2022-12-01)
+
+## 15.15.1 (2022-11-30)
+
+### Bug Fixes
+
+- **release:** switch to yarn ([#420](https://github.com/contentful/rich-text/issues/420)) ([0e53501](https://github.com/contentful/rich-text/commit/0e53501eb94b3d1c76ac88ca30943d2675e536c8))
+
+# 15.15.0 (2022-11-29)
+
+## 15.14.1 (2022-11-23)
+
+# 15.14.0 (2022-11-14)
+
+## 15.13.2 (2022-09-07)
+
+### Bug Fixes
+
+- add prettier write command ([#345](https://github.com/contentful/rich-text/issues/345)) ([0edad4c](https://github.com/contentful/rich-text/commit/0edad4c3176cea85d56a55fc5f4072419d730c8a))
+
+## 15.12.1 (2022-04-21)
+
+# 15.12.0 (2022-03-25)
+
+## 15.11.1 (2022-01-04)
+
+# 15.11.0 (2021-12-27)
+
+## 15.10.1 (2021-12-21)
+
+# 15.10.0 (2021-12-15)
+
+## 15.9.1 (2021-12-10)
+
+# 15.9.0 (2021-12-09)
+
+# 15.7.0 (2021-11-11)
+
+## 15.6.2 (2021-11-05)
+
+## 15.6.1 (2021-11-05)
+
+# 15.6.0 (2021-11-04)
+
+## 15.5.1 (2021-10-25)
+
+# 15.5.0 (2021-10-25)
+
+## 15.3.6 (2021-09-15)
+
+## 15.3.5 (2021-09-13)
+
+## 15.3.3 (2021-09-07)
+
+## 15.3.2 (2021-09-07)
+
+## 15.3.1 (2021-09-07)
+
+# 15.3.0 (2021-09-06)
+
+# 15.1.0 (2021-08-02)
+
+# 15.0.0 (2021-06-15)
+
+## 14.1.2 (2020-11-02)
+
+## 14.0.1 (2020-01-30)
+
+# 14.0.0 (2020-01-28)
+
+### Bug Fixes
+
+- 🐛 detect links as children of nodes also having links ([565f423](https://github.com/contentful/rich-text/commit/565f423b2881c7bcfac40e9ee9ecb6a545fce047))
+
+# 13.4.0 (2019-08-01)
+
+# 13.3.0 (2019-03-21)
+
+# 13.1.0 (2019-03-04)
+
+### Bug Fixes
+
+- 🐛 Fix incorrect typings file path ([cca74d5](https://github.com/contentful/rich-text/commit/cca74d5594fb0594fd1117945e087afa2000877b))
+
+### Features
+
+- 🎸 Support filtering by node name in rich-text-links ([5ec0dda](https://github.com/contentful/rich-text/commit/5ec0dda07cdbe3d28027d28520c553b074ca699f))
+
+# 13.0.0 (2019-01-22)
+
+## 12.1.2 (2018-12-14)
+
+## 12.0.3 (2018-12-05)
+
+### Performance Improvements
+
+- ⚡️ prefer iterator unrolling to Array.from ([a887a92](https://github.com/contentful/rich-text/commit/a887a9213dee9dd6986cf313e67b94fd020d138b))
+
+## 12.0.1 (2018-12-04)
+
+# 12.0.0 (2018-11-29)
+
+### Features
+
+- 🎸 `getRichTextEntityLinks` perf and signature changes ([fcd6d7f](https://github.com/contentful/rich-text/commit/fcd6d7f42e63df87ddb58d651b86a023d45f990e))
+
+### Performance Improvements
+
+- ⚡️ Add benchmark support ([ae278b7](https://github.com/contentful/rich-text/commit/ae278b7be515a52576af0a1abb6a4cefb05f71a7))
+
+### BREAKING CHANGES
+
+- Produces an entirely new return value and obviates the `linkType`
+  parameter (all entities are grouped and returned by default).
+
+# 11.0.0 (2018-11-27)
+
+# 10.3.0 (2018-11-26)
+
+### Features
+
+- 🎸 return all entity links when no linkType is provided ([02970ea](https://github.com/contentful/rich-text/commit/02970ea61b5b13d99c7b629902defe704c146b17))
+
+# 10.2.0 (2018-11-19)
+
+### Features
+
+- 🎸 Rename, refactor, docu. & cache r-t-links ([9cf6d14](https://github.com/contentful/rich-text/commit/9cf6d1460833300053cb8dde5a6e29b0ddf89964))
+
 ## [15.15.1](https://github.com/contentful/rich-text/compare/v15.15.0...v15.15.1) (2022-11-30)
 
 ### Bug Fixes
