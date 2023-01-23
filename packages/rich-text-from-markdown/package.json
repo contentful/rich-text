@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-from-markdown",
-  "version": "15.15.1",
+  "version": "15.16.2",
   "description": "convert markdown to rich text",
   "keywords": [
     "rich-text",
@@ -30,10 +30,11 @@
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.js",
     "start": "tsc && rollup -c rollup.config.js -w",
-    "lint": "tslint -t codeFrame '@(src|bin)/*.ts'"
+    "lint": "tslint -t codeFrame '@(src|bin)/*.ts'",
+    "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^15.15.1",
+    "@contentful/rich-text-types": "^16.0.2",
     "lodash": "^4.17.11",
     "remark-parse": "^6.0.3",
     "unified": "^7.1.0"
@@ -56,6 +57,5 @@
   },
   "bugs": {
     "url": "https://github.com/contentful/rich-text/issues"
-  },
-  "gitHead": "c7e34bc0f0172728999b121af43df88995eec305"
+  }
 }

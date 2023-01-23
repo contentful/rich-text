@@ -30,9 +30,6 @@
     "test": {
       "dependsOn": ["^test"]
     },
-    "test:prod": {
-      "dependsOn": ["^test:prod"]
-    },
     "generate-json-schema": {
       "dependsOn": ["^generate-json-schema"],
       "outputs": ["{projectRoot}/src/schemas/generated"]

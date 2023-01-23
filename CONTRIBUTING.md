@@ -29,13 +29,12 @@ Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source
 
 ## Useful npm scripts
 
-- `npm run build` builds vendored files in the `dist` directory of each package
-- `npm run commit` runs git commits with [commitizen](http://commitizen.github.io/cz-cli/)
-- `npm run clean` removes any built files and `node_modules`
-- `npm run lint` runs our TypeScript linter on all `.ts` files in each package
-- `npm run test` runs unit tests for all packages
-- `npm run test:ci` runs unit tests in CI mode
-- `npm run test:watch` runs unit tests in "watch" mode (will refresh relevant
+- `yarn build` builds vendored files in the `dist` directory of each package
+- `yarn commit` runs git commits with [commitizen](http://commitizen.github.io/cz-cli/)
+- `yarn clean` removes any built files and `node_modules`
+- `yarn lint` runs our TypeScript linter on all `.ts` files in each package
+- `yarn test` runs unit tests for all packages
+- `yarn test:watch` runs unit tests in "watch" mode (will refresh relevant
   code paths on save)
 
 ## Setup
@@ -60,7 +59,7 @@ compiled to ES5 using [rollup](https://rollupjs.org/guide/en) to the `dist`
 directory.
 
 This should generally only happen at publishing time, but you may want to run
-`npm run build` prematurely during local development.
+`yarn build` prematurely during local development.
 
 For example, let's say you're working on a pull request that
 
@@ -68,7 +67,7 @@ For example, let's say you're working on a pull request that
 2. adds behavior to handle that type in `rich-text-html-renderer`.
 
 If changes in the latter are dependent upon changes in the former, you'll need
-to run `npm run build` to update the referenced vendored files in
+to run `yarn build` to update the referenced vendored files in
 `rich-text-html-renderer`.
 
 All necessary dependencies are installed under `node_modules` and any necessary
@@ -79,7 +78,7 @@ globally.
 
 We follow [Angular JS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153#allowed-type)
 to generate a changelog, enforced by [commitizen](http://commitizen.github.io/cz-cli/).
-You'll need to use `npm run commit` to create conventional commits.
+You'll need to use `yarn commit` to create conventional commits.
 
 ### Code style
 
@@ -112,13 +111,13 @@ To run all benchmarks for a particular package, e.g. `rich-text-links`, you
 can run the npm `benchmark` script scoped to that package:
 
 ```sh
-npm run benchmark @contentful/rich-text-links
+yarn benchmark @contentful/rich-text-links
 ```
 
 or
 
 ```sh
-npm run benchmark rich-text-links
+yarn benchmark rich-text-links
 ```
 
 Before submitting a pull request for a package with benchmarked code paths,
@@ -132,6 +131,6 @@ We use [Lerna](https://github.com/lerna/lerna) to:
 - keep dependencies in sync
   - `lerna bootstrap --hoist` (which is run as a post-install step)
 - publish
-  - `NPM_CONFIG_OTP={2fa_otp_goes_here} npm run publish`
+  - `NPM_CONFIG_OTP={2fa_otp_goes_here} yarn publish`
   - As a community developer, you most likely won't have to worry about this
     step :)

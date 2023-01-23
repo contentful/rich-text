@@ -1,5 +1,3 @@
-import flatmap from 'lodash.flatmap';
-
 import { getDataOrDefault } from './helpers';
 
 import { fromJSON, Schema, SchemaJSON } from './schema';
@@ -26,7 +24,7 @@ export default function toSlatejsDocument({
   // We allow adding data to the root document node, but Slate >v0.5.0
   // has no concept of a root document node. We should determine whether
   // this will be a compatibility problem for existing users.
-  return flatmap(document.content, (node) => convertNode(node, fromJSON(schema)));
+  return document.content.flatMap((node) => convertNode(node, fromJSON(schema)));
 }
 
 function convertNode(node: ContentfulNode, schema: Schema): SlateNode {
@@ -34,7 +32,7 @@ function convertNode(node: ContentfulNode, schema: Schema): SlateNode {
     return convertTextNode(node as Contentful.Text);
   } else {
     const contentfulNode = node as ContentfulElementNode;
-    const childNodes = flatmap(contentfulNode.content, (childNode) =>
+    const childNodes = contentfulNode.content.flatMap((childNode) =>
       convertNode(childNode, schema),
     );
     const slateNode = convertElementNode(contentfulNode, childNodes, schema);

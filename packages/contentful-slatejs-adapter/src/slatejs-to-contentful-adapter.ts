@@ -1,4 +1,3 @@
-import flatMap from 'lodash.flatmap';
 import { getDataOrDefault } from './helpers';
 import { SchemaJSON, Schema, fromJSON } from './schema';
 
@@ -28,8 +27,7 @@ export default function toContentfulDocument({
   return {
     nodeType: Contentful.BLOCKS.DOCUMENT,
     data: {},
-    content: flatMap(
-      document,
+    content: document.flatMap(
       (node) => convertNode(node, fromJSON(schema)) as Contentful.TopLevelBlock[],
     ),
   };
@@ -44,7 +42,7 @@ function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
       content: [],
     };
     if (!schema.isVoid(contentfulElement)) {
-      contentfulElement.content = flatMap(node.children, (childNode) =>
+      contentfulElement.content = node.children.flatMap((childNode) =>
         convertNode(childNode, schema),
       );
     }
