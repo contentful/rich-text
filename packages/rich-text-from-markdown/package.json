@@ -55,6 +55,9 @@
     "tslint": "^6.1.3",
     "typescript": "^4.4.2"
   },
+  "resolutions": {
+    "trim": "0.0.3"
+  },
   "bugs": {
     "url": "https://github.com/contentful/rich-text/issues"
   }
