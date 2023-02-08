@@ -36,8 +36,9 @@
   "dependencies": {
     "@contentful/rich-text-types": "^16.0.2",
     "lodash": "^4.17.11",
-    "remark-parse": "^6.0.3",
-    "unified": "^7.1.0"
+    "remark-parse": "^9.0.0",
+    "remark-gfm": "^1.0.0",
+    "unified": "^9.0.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.172",
@@ -54,9 +55,6 @@
     "tslib": "^2.3.1",
     "tslint": "^6.1.3",
     "typescript": "^4.4.2"
-  },
-  "resolutions": {
-    "trim": "0.0.3"
   },
   "bugs": {
     "url": "https://github.com/contentful/rich-text/issues"
