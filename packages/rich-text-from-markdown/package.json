@@ -58,6 +58,11 @@
   "resolutions": {
     "trim": "0.0.3"
   },
+  "overrides": {
+    "remark-parse": {
+      "trim": "0.0.3"
+    }
+  },
   "bugs": {
     "url": "https://github.com/contentful/rich-text/issues"
   }
