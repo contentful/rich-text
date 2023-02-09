@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import unified from 'unified';
 import markdown from 'remark-parse';
+import gfm from 'remark-gfm';
 import {
   Document,
   Node,
@@ -337,14 +338,14 @@ function prepareMdAST(ast: MarkdownTree): MarkdownNode {
 
     return { ...node, children };
   }
-  const treeNode: MarkdownNode = {
+
+  return prepareASTNodeChildren({
     depth: '0',
     type: 'root',
     value: '',
     ordered: true,
     children: ast.children,
-  };
-  return prepareASTNodeChildren(treeNode);
+  });
 }
 
 // COMPAT: can resolve with either Node or an array of Nodes for back compatibility.
@@ -354,8 +355,9 @@ export async function richTextFromMarkdown(
   md: string,
   fallback: FallbackResolver = () => Promise.resolve(null),
 ): Promise<Document> {
-  const processor = unified().use(markdown, { commonmark: true });
+  const processor = unified().use(markdown).use(gfm);
   const tree = processor.parse(md);
+  // @ts-expect-error children is missing in the return type of processor.parse
   const ast = prepareMdAST(tree);
   return await astToRichTextDocument(ast, fallback);
 }
