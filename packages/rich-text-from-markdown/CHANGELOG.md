@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.16.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.2...@contentful/rich-text-from-markdown@15.16.3) (2023-02-09)
+
+### Bug Fixes
+
+- update remark-parse to v9 to fix security issue of trim@0.0.1 ([#444](https://github.com/contentful/rich-text/issues/444)) ([f961a89](https://github.com/contentful/rich-text/commit/f961a8927d911b2653883601b3cfdcd1b255a60b))
+
 ## [15.16.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.1...@contentful/rich-text-from-markdown@15.16.2) (2022-12-01)
 
 **Note:** Version bump only for package @contentful/rich-text-from-markdown
