@@ -22,11 +22,8 @@
     "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
     "prebuild": "lerna run prebuild",
     "lerna:version": "lerna version --no-private --conventional-commits --create-release github --yes",
-    "lerna:publish": "lerna publish from-git --yes",
     "start": "lerna run start",
-    "test": "jest",
-    "test:ci": "npm run test -- --coverage --no-cache",
-    "test:watch": "jest --watch",
+    "test": "lerna run test",
     "prepare": "husky install"
   },
   "workspaces": [
@@ -38,10 +35,6 @@
     ]
   },
   "config": {
-    "validate-commit-msg": {
-      "types": "conventional-commit-types",
-      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
-    },
     "commitizen": {
       "path": "./node_modules/git-cz"
     }
@@ -51,11 +44,13 @@
     "trailingComma": "all"
   },
   "devDependencies": {
+    "@commitlint/cli": "17.4.2",
+    "@commitlint/config-conventional": "17.4.2",
     "@types/benchmark": "^1.0.33",
     "@types/faker": "^4.1.12",
     "@types/jest": "^27.0.1",
     "benchmark": "^2.1.4",
-    "commitizen": "^3.1.2",
+    "commitizen": "4.3.0",
     "git-cz": "^3.3.0",
     "husky": "^8.0.0",
     "lerna": "^6.0.3",
@@ -71,8 +66,7 @@
     "ts-node": "^8.10.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^4.4.2",
-    "validate-commit-msg": "^2.14.0"
+    "typescript": "^4.4.2"
   },
   "dependencies": {}
 }

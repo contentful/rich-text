@@ -42,7 +42,7 @@ jobs:
       - run: yarn build
       - run: yarn lint
       - run: yarn prettier:check
-      - run: yarn test:ci
+      - run: yarn test
     resource_class: medium+
 
   release:
@@ -54,10 +54,11 @@ jobs:
       - run: git config --global user.email $GIT_COMMITTER_EMAIL
       - run: git config --global user.name $GIT_COMMITTER_NAME
       - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+      - use_npm_token
       - yarn_install
       - run: yarn build
       - run: yarn lerna:version
-      - run: yarn lerna:publish
+      - run: yarn lerna publish from-git --yes
 
   compressed-size:
     executor: default

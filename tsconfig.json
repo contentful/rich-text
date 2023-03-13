@@ -20,6 +20,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "jsx": "react",
-    "types": ["jest"]
+    "types": ["jest", "node"]
   }
 }
