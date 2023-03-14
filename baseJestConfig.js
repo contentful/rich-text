@@ -1,6 +1,11 @@
-function getConfig(packageName: string) {
+function getConfig(packageName) {
   return {
-    testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
+    collectCoverage: true,
+    testPathIgnorePatterns: ['/dist/'],
+    transform: {
+      '^.+\\.tsx?$': 'ts-jest',
+    },
+    testMatch: ['**/*.test.[jt]s?(x)'],
     reporters: [
       'default',
       [
@@ -12,11 +17,6 @@ function getConfig(packageName: string) {
         },
       ],
     ],
-    globals: {
-      'ts-jest': {
-        diagnostics: false,
-      },
-    },
   };
 }
 
