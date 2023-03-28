@@ -93,7 +93,7 @@ describe('both adapters (roundtrippable cases)', () => {
         });
         expect(actualContentfulDoc).toEqual(contentfulDoc);
       });
-      it.only('is converts Slate mentions to Contentful mentions', () => {
+      it('is converts Slate mentions to Contentful mentions', () => {
         const slateFormatWithMention = [
           {
             type: 'paragraph',
@@ -153,7 +153,7 @@ describe('both adapters (roundtrippable cases)', () => {
 
         expect(resultContentfulDoc).toEqual(expectedContentfulDoc);
       });
-      it.only('converts text', () => {
+      it('converts text-only nodes', () => {
         const slateText = [
           {
             type: 'paragraph',
@@ -291,8 +291,6 @@ describe('both adapters (roundtrippable cases)', () => {
         ),
       );
     });
-
-    it('deals converts slate mentions to contentful mentions', () => {});
 
     testAdapters(
       'text with multiple marks',
