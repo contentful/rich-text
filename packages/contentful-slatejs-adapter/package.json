@@ -28,7 +28,7 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.0.2"
+    "@contentful/rich-text-types": "^16.0.3"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
