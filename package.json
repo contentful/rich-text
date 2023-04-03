@@ -46,7 +46,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.4.2",
     "@commitlint/config-conventional": "17.4.2",
-    "@types/benchmark": "^1.0.33",
+    "@types/benchmark": "^2.1.2",
     "@types/faker": "^4.1.12",
     "@types/jest": "^27.0.1",
     "benchmark": "^2.1.4",
