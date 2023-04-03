@@ -4,7 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
-  "typings": "dist/types/contentful-slatejs-adapter.d.ts",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
