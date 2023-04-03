@@ -51,7 +51,7 @@
     "@types/jest": "^27.0.1",
     "benchmark": "^2.1.4",
     "commitizen": "4.3.0",
-    "git-cz": "^3.3.0",
+    "git-cz": "^4.9.0",
     "husky": "^8.0.0",
     "lerna": "^6.0.3",
     "lint-staged": "13.0.3",
