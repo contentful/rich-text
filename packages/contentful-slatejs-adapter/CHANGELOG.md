@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.16.4](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.3...@contentful/contentful-slatejs-adapter@15.16.4) (2023-04-03)
+
+### Bug Fixes
+
+- entrypoint for types of package ([#454](https://github.com/contentful/rich-text/issues/454)) ([3809d57](https://github.com/contentful/rich-text/commit/3809d57891be88950798c1c2638ee5cebc376bd4))
+
 ## [15.16.3](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.2...@contentful/contentful-slatejs-adapter@15.16.3) (2023-03-14)
 
 **Note:** Version bump only for package @contentful/contentful-slatejs-adapter
