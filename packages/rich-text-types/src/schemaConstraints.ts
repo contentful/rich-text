@@ -16,6 +16,7 @@ export type TopLevelBlockEnum =
   | BLOCKS.QUOTE
   | BLOCKS.EMBEDDED_ENTRY
   | BLOCKS.EMBEDDED_ASSET
+  | BLOCKS.EMBEDDED_RESOURCE
   | BLOCKS.TABLE;
 
 /**
@@ -36,6 +37,7 @@ export const TOP_LEVEL_BLOCKS: TopLevelBlockEnum[] = [
   BLOCKS.QUOTE,
   BLOCKS.EMBEDDED_ENTRY,
   BLOCKS.EMBEDDED_ASSET,
+  BLOCKS.EMBEDDED_RESOURCE,
   BLOCKS.TABLE,
 ];
 
@@ -83,7 +85,12 @@ export const TABLE_BLOCKS = [
 /**
  * Array of all void block types
  */
-export const VOID_BLOCKS = [BLOCKS.HR, BLOCKS.EMBEDDED_ENTRY, BLOCKS.EMBEDDED_ASSET];
+export const VOID_BLOCKS = [
+  BLOCKS.HR,
+  BLOCKS.EMBEDDED_ENTRY,
+  BLOCKS.EMBEDDED_ASSET,
+  BLOCKS.EMBEDDED_RESOURCE,
+];
 
 /**
  * Dictionary of all container block types, and the set block types they accept as children.
