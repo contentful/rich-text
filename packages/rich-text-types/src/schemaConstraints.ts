@@ -54,7 +54,8 @@ export type ListItemBlockEnum =
   | BLOCKS.HR
   | BLOCKS.QUOTE
   | BLOCKS.EMBEDDED_ENTRY
-  | BLOCKS.EMBEDDED_ASSET;
+  | BLOCKS.EMBEDDED_ASSET
+  | BLOCKS.EMBEDDED_RESOURCE;
 
 /**
  * Array of all allowed block types inside list items
@@ -73,6 +74,7 @@ export const LIST_ITEM_BLOCKS: TopLevelBlockEnum[] = [
   BLOCKS.QUOTE,
   BLOCKS.EMBEDDED_ENTRY,
   BLOCKS.EMBEDDED_ASSET,
+  BLOCKS.EMBEDDED_RESOURCE,
 ];
 
 export const TABLE_BLOCKS = [
