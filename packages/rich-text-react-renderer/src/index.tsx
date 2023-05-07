@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import { Block, BLOCKS, Document, Inline, INLINES, MARKS, Text } from '@contentful/rich-text-types';
-import { nodeToReactComponent } from './util/nodeListToReactComponents';
+import { Block, BLOCKS, Document, TopLevelBlock, Inline, INLINES, MARKS, Text } from '@contentful/rich-text-types';
+import { nodeToReactComponent, nodeListToReactComponents } from './util/nodeListToReactComponents';
 
 const defaultNodeRenderers: RenderNode = {
   [BLOCKS.DOCUMENT]: (node, children) => children,
@@ -92,7 +92,31 @@ export function documentToReactComponents(
     return null;
   }
 
-  return nodeToReactComponent(richTextDocument, {
+  return toReactComponents(richTextDocument, nodeToReactComponent, options);
+}
+
+/**
+ * Serialize a list of entities inside a Contentful Rich Text
+ * `document` to a react tree
+ */
+export function nodesToReactComponents(
+  richTextNodes: TopLevelBlock[],
+  options: Options = {},
+): ReactNode {
+  if (!richTextNodes || !richTextNodes.length) {
+    return null
+  }
+
+  return toReactComponents(richTextNodes, nodeListToReactComponents, options);
+}
+
+function toReactComponents(
+  nodes: any,
+  nodesToReactComponents: Function,
+  options: Options = {}
+): ReactNode {
+
+  return nodesToReactComponents(nodes, {
     renderNode: {
       ...defaultNodeRenderers,
       ...options.renderNode,
@@ -102,5 +126,5 @@ export function documentToReactComponents(
       ...options.renderMark,
     },
     renderText: options.renderText,
-  });
+  })
 }
