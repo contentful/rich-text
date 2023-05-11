@@ -1,46 +1,32 @@
 {
-  "$ref": "#/definitions/ListItem",
+  "$ref": "#/definitions/ResourceLinkBlock",
   "definitions": {
-    "ListItem": {
+    "ResourceLinkBlock": {
       "type": "object",
       "properties": {
         "nodeType": {
           "type": "string",
           "enum": [
-            "list-item"
+            "embedded-resource-block"
           ]
         },
         "data": {
           "type": "object",
-          "properties": {}
+          "properties": {
+            "target": {
+              "$ref": "#/definitions/ResourceLink"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "target"
+          ]
         },
         "content": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ListItemBlock"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "ListItemBlock": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "$ref": "#/definitions/ListItemBlockEnum"
-        },
-        "content": {
+          "maxItems": 0,
           "type": "array",
           "items": {
             "anyOf": [
-              {
-                "$ref": "#/definitions/Block"
-              },
               {
                 "$ref": "#/definitions/Inline"
               },
@@ -49,9 +35,6 @@
               }
             ]
           }
-        },
-        "data": {
-          "$ref": "#/definitions/NodeData"
         }
       },
       "additionalProperties": false,
@@ -61,83 +44,40 @@
         "nodeType"
       ]
     },
-    "ListItemBlockEnum": {
-      "enum": [
-        "blockquote",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "embedded-resource-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "ordered-list",
-        "paragraph",
-        "unordered-list"
-      ],
-      "type": "string"
-    },
-    "Block": {
+    "ResourceLink": {
       "type": "object",
       "properties": {
-        "nodeType": {
-          "$ref": "#/definitions/BLOCKS"
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Block"
-              },
-              {
-                "$ref": "#/definitions/Inline"
-              },
-              {
-                "$ref": "#/definitions/Text"
-              }
-            ]
-          }
-        },
-        "data": {
-          "$ref": "#/definitions/NodeData"
+        "sys": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "ResourceLink"
+              ]
+            },
+            "linkType": {
+              "type": "string",
+              "enum": [
+                "Contentful:Entry"
+              ]
+            },
+            "urn": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "linkType",
+            "type",
+            "urn"
+          ]
         }
       },
       "additionalProperties": false,
       "required": [
-        "content",
-        "data",
-        "nodeType"
+        "sys"
       ]
-    },
-    "BLOCKS": {
-      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
-      "enum": [
-        "blockquote",
-        "document",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "embedded-resource-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "list-item",
-        "ordered-list",
-        "paragraph",
-        "table",
-        "table-cell",
-        "table-header-cell",
-        "table-row",
-        "unordered-list"
-      ],
-      "type": "string"
     },
     "Inline": {
       "type": "object",

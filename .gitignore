@@ -41,3 +41,6 @@
 **/.rpt2_cache
 .vscode/settings.json
 .idea
+
+# test reports
+reports

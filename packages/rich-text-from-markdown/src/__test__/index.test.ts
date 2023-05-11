@@ -80,7 +80,12 @@ describe('parses complex inline image markdown correctly', () => {
           nodeType: 'image',
           data: {},
         },
-        block(BLOCKS.PARAGRAPH, {}, text('\n      ')),
+        block(
+          BLOCKS.PARAGRAPH,
+          {},
+          text(`
+`),
+        ),
         {
           nodeType: 'image',
           data: {},
