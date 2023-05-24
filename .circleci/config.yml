@@ -43,6 +43,8 @@ jobs:
       - run: yarn lint
       - run: yarn prettier:check
       - run: yarn test
+      - store_test_results:
+          path: reports
     resource_class: medium+
 
   release:
