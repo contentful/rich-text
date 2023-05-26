@@ -1,5 +1,15 @@
 import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
-import { getRichTextEntityLinks } from '../index';
+import { getRichTextEntityLinks, getRichTextResourceLinks } from '../index';
+
+function makeResourceLink(spaceId: string, entryId: string) {
+  return {
+    sys: {
+      type: 'ResourceLink',
+      linkType: 'Contentful:Entry',
+      urn: `crn:contentful:::content:spaces/${spaceId}/entries/${entryId}`,
+    },
+  };
+}
 
 describe('getRichTextEntityLinks', () => {
   describe('returning top-level rich text links', () => {
@@ -268,6 +278,16 @@ describe('getRichTextEntityLinks', () => {
           {
             linkType: 'Entry',
             type: 'Link',
+            id: 'hyperlink-cell-entry',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'inline-header-entry',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
             id: 'foo',
           },
           {
@@ -280,18 +300,13 @@ describe('getRichTextEntityLinks', () => {
             type: 'Link',
             id: 'bar',
           },
-          {
-            linkType: 'Entry',
-            type: 'Link',
-            id: 'hyperlink-cell-entry',
-          },
-          {
-            linkType: 'Entry',
-            type: 'Link',
-            id: 'inline-header-entry',
-          },
         ],
         Asset: [
+          {
+            linkType: 'Asset',
+            type: 'Link',
+            id: 'hyperlink-cell-asset',
+          },
           {
             linkType: 'Asset',
             type: 'Link',
@@ -301,11 +316,6 @@ describe('getRichTextEntityLinks', () => {
             linkType: 'Asset',
             type: 'Link',
             id: 'quux',
-          },
-          {
-            linkType: 'Asset',
-            type: 'Link',
-            id: 'hyperlink-cell-asset',
           },
         ],
       });
@@ -488,5 +498,208 @@ describe('getRichTextEntityLinks', () => {
         Asset: [],
       });
     });
+  });
+});
+
+describe(`getRichTextResourceLinks`, () => {
+  it('returns top-level rich text resource-links', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.EMBEDDED_RESOURCE,
+              data: {
+                target: makeResourceLink('foo', 'bar'),
+              },
+              content: [],
+            },
+          ],
+        },
+      ],
+    };
+
+    expect(getRichTextResourceLinks(document, BLOCKS.EMBEDDED_RESOURCE)).toEqual([
+      makeResourceLink('foo', 'bar'),
+    ]);
+  });
+
+  it(`returns resource-links from multiple levels`, () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.EMBEDDED_RESOURCE,
+              data: {
+                target: makeResourceLink('space-1', 'entry-1'),
+              },
+              content: [],
+            },
+            {
+              nodeType: BLOCKS.OL_LIST,
+              data: {},
+              content: [
+                {
+                  nodeType: BLOCKS.LIST_ITEM,
+                  data: {},
+                  content: [
+                    {
+                      nodeType: BLOCKS.PARAGRAPH,
+                      data: {},
+                      content: [
+                        {
+                          nodeType: BLOCKS.LIST_ITEM,
+                          data: {},
+                          content: [
+                            {
+                              nodeType: BLOCKS.EMBEDDED_RESOURCE,
+                              data: {
+                                target: makeResourceLink('space-1', 'entry-2'),
+                              },
+                              content: [],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  nodeType: BLOCKS.LIST_ITEM,
+                  data: {},
+                  content: [
+                    {
+                      nodeType: BLOCKS.EMBEDDED_RESOURCE,
+                      data: {
+                        target: makeResourceLink('space-2', 'entry-1'),
+                      },
+                      content: [],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          nodeType: BLOCKS.TABLE,
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.TABLE_ROW,
+              data: {},
+              content: [
+                {
+                  nodeType: BLOCKS.TABLE_HEADER_CELL,
+                  data: {},
+                  content: [{ data: {}, content: [], nodeType: BLOCKS.PARAGRAPH }],
+                },
+                {
+                  nodeType: BLOCKS.TABLE_HEADER_CELL,
+                  data: {},
+                  content: [
+                    {
+                      nodeType: BLOCKS.PARAGRAPH,
+                      data: {},
+                      content: [
+                        {
+                          nodeType: BLOCKS.EMBEDDED_RESOURCE,
+                          data: {
+                            target: makeResourceLink('space-2', 'entry-2'),
+                          },
+                          content: [],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              nodeType: BLOCKS.TABLE_ROW,
+              data: {},
+              content: [
+                {
+                  nodeType: BLOCKS.TABLE_CELL,
+                  data: {},
+                  content: [
+                    {
+                      nodeType: BLOCKS.PARAGRAPH,
+                      data: {},
+                      content: [
+                        {
+                          nodeType: BLOCKS.EMBEDDED_RESOURCE,
+                          data: {
+                            target: makeResourceLink('space-2', 'entry-3'),
+                          },
+                          content: [],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+
+    expect(getRichTextResourceLinks(document, BLOCKS.EMBEDDED_RESOURCE)).toEqual([
+      makeResourceLink('space-2', 'entry-3'),
+      makeResourceLink('space-2', 'entry-2'),
+      makeResourceLink('space-2', 'entry-1'),
+      makeResourceLink('space-1', 'entry-2'),
+      makeResourceLink('space-1', 'entry-1'),
+    ]);
+  });
+
+  it(`de-duplicates links based on urn`, () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.EMBEDDED_RESOURCE,
+              data: {
+                target: makeResourceLink('space-1', 'entry-1'),
+              },
+              content: [],
+            },
+            {
+              nodeType: BLOCKS.EMBEDDED_RESOURCE,
+              data: {
+                target: makeResourceLink('space-1', 'entry-2'),
+              },
+              content: [],
+            },
+            {
+              nodeType: BLOCKS.EMBEDDED_RESOURCE,
+              data: {
+                target: makeResourceLink('space-1', 'entry-1'),
+              },
+              content: [],
+            },
+          ],
+        },
+      ],
+    };
+    expect(getRichTextResourceLinks(document, BLOCKS.EMBEDDED_RESOURCE)).toEqual([
+      makeResourceLink('space-1', 'entry-1'),
+      makeResourceLink('space-1', 'entry-2'),
+    ]);
   });
 });

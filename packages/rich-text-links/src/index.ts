@@ -1,4 +1,12 @@
-import { Document, Node, Block, Link, NodeData } from '@contentful/rich-text-types';
+import {
+  Block,
+  BLOCKS,
+  Document,
+  Link,
+  Node,
+  NodeData,
+  ResourceLink,
+} from '@contentful/rich-text-types';
 
 export type EntityLinks = { [type in EntityType]: EntityLink[] };
 export type EntityLinkMaps = { [type in EntityType]: Map<string, EntityLink> };
@@ -8,6 +16,31 @@ export type SysObject = Link<EntityType>;
 export type EntityLinkNodeData = {
   target: SysObject;
 };
+
+// spare upstream dependencies the need to use rich-text-types
+type AcceptedResourceLinkTypes = `${BLOCKS.EMBEDDED_RESOURCE}`;
+// | `${INLINES.EMBEDDED_RESOURCE}`
+// | `${INLINES.RESOURCE_HYPERLINK}`;
+
+/**
+ * Extracts all links no matter the entity they are pointing to.
+ */
+export function getRichTextResourceLinks(
+  document: Document,
+  nodeType: AcceptedResourceLinkTypes,
+): ResourceLink[] {
+  const links = new Map<string, ResourceLink>();
+  const isValidType = (actualNodeType: BLOCKS, data: NodeData) =>
+    actualNodeType === nodeType && data.target?.sys?.type === 'ResourceLink';
+
+  visitNodes(document, (block) => {
+    if (isValidType(block.nodeType, block.data)) {
+      links.set(block.data.target.sys.urn, block.data.target);
+    }
+  });
+
+  return iteratorToArray(links.values());
+}
 
 /**
  *  Extracts entity links from a Rich Text document.
@@ -27,10 +60,16 @@ export function getRichTextEntityLinks(
     Asset: new Map(),
   };
 
-  const content = (document && document.content) || ([] as Node[]);
-  for (const node of content) {
-    addLinksFromRichTextNode(node, entityLinks, type);
-  }
+  // const content = (document && document.content) || ([] as Node[]);
+  const addLink = ({ data, nodeType }: Block) => {
+    const hasRequestedNodeType = !type || nodeType === type;
+
+    if (hasRequestedNodeType && isLinkObject(data)) {
+      entityLinks[data.target.sys.linkType].set(data.target.sys.id, data.target.sys);
+    }
+  };
+
+  visitNodes(document, addLink);
 
   return {
     Entry: iteratorToArray(entityLinks.Entry.values()),
@@ -38,16 +77,13 @@ export function getRichTextEntityLinks(
   };
 }
 
-function addLinksFromRichTextNode(node: Node, links: EntityLinkMaps, type?: string): void {
+function visitNodes(node: Node, onVisit: (block: Block) => void): void {
   const toCrawl: Node[] = [node];
 
   while (toCrawl.length > 0) {
-    const { data, content, nodeType } = toCrawl.pop() as Block;
-    const hasRequestedNodeType = !type || nodeType === type;
-
-    if (hasRequestedNodeType && isLinkObject(data)) {
-      links[data.target.sys.linkType].set(data.target.sys.id, data.target.sys);
-    }
+    const block = toCrawl.pop() as Block;
+    const content = block.content;
+    onVisit(block);
 
     if (Array.isArray(content)) {
       for (const childNode of content) {
