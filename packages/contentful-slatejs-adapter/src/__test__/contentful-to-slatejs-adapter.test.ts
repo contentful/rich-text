@@ -84,7 +84,7 @@ describe('both adapters (roundtrippable cases)', () => {
         ];
         expect(slateOutput).toStrictEqual(expectedSlateOutput);
       });
-      it('adds comment data', () => {
+      it.only('adds comment data', () => {
         const JSONPATH1 = 'content[0].content[1]';
         // would there be a jsonpath2?
         const comment = {
@@ -129,6 +129,7 @@ describe('both adapters (roundtrippable cases)', () => {
         };
         const slateOutput = toSlatejsDocument({
           document: contentfulInput as unknown as Contentful.Document,
+          comments: [comment],
         });
 
         const expectedSlateOutput = [

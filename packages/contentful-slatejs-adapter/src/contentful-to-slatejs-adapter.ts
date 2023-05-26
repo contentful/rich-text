@@ -1,4 +1,5 @@
 import { getDataOrDefault } from './helpers';
+import get from 'lodash/get';
 
 import { fromJSON, Schema, SchemaJSON } from './schema';
 import * as Contentful from '@contentful/rich-text-types';
@@ -11,15 +12,58 @@ import {
   SlateMarks,
 } from './types';
 
+export interface InlineComment {
+  metadata: {
+    range: string[];
+    originalText: string;
+  };
+  body: string; // here the body would actually also be rich text since comments are now rich text
+  id: string;
+}
+
 export interface ToSlatejsDocumentProperties {
   document: Contentful.Document;
   schema?: SchemaJSON;
+  comments?: InlineComment[];
 }
+
+const addCommentsToContentfulDocument = (
+  document: Contentful.Document,
+  comments: InlineComment[],
+): void => {
+  // extract the object from the json path
+  for (let i = 0; i < comments?.length; i++) {
+    // this assumes there is only one element in the json path
+    const commentedNode = get(document, comments[i].metadata.range[0]);
+    if (commentedNode && commentedNode.data) {
+      commentedNode.data = {
+        comment: {
+          sys: {
+            type: 'Link',
+            linkType: 'Comment',
+            id: comments[i].id,
+          },
+        },
+      };
+    }
+    console.log('commented node', commentedNode);
+  }
+
+  // decorate the object with a new data object
+};
 
 export default function toSlatejsDocument({
   document,
   schema,
+  comments,
 }: ToSlatejsDocumentProperties): SlateNode[] {
+  // decorate with comments
+  if (comments) {
+    addCommentsToContentfulDocument(document, comments);
+  }
+
+  console.log('document now is ', document);
+
   // TODO:
   // We allow adding data to the root document node, but Slate >v0.5.0
   // has no concept of a root document node. We should determine whether

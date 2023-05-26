@@ -28,10 +28,12 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.1.0"
+    "@contentful/rich-text-types": "^16.1.0",
+    "lodash.get": "^4.4.2"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
+    "@types/lodash": "^4.14.195",
     "@types/node": "^10.0.3",
     "@types/rollup-plugin-json": "^3.0.3",
     "colors": "^1.1.2",

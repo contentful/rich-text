@@ -4,4 +4,7 @@ const packageName = package.name.split('@contentful/')[1];
 
 module.exports = {
   ...getBaseConfig(packageName),
+  moduleNameMapper: {
+    underscore$: 'lodash',
+  },
 };
