@@ -27,6 +27,7 @@ export interface ToSlatejsDocumentProperties {
   comments?: InlineComment[];
 }
 
+// should it return something or no because it changes the object anyway
 const addCommentsToContentfulDocument = (
   document: Contentful.Document,
   comments: InlineComment[],
@@ -58,9 +59,9 @@ export default function toSlatejsDocument({
   comments,
 }: ToSlatejsDocumentProperties): SlateNode[] {
   // decorate with comments
-  if (comments) {
-    addCommentsToContentfulDocument(document, comments);
-  }
+  // if (comments) {
+  //   addCommentsToContentfulDocument(document, comments);
+  // }
 
   console.log('document now is ', document);
 

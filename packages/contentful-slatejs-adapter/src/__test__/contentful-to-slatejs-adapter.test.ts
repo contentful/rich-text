@@ -13,7 +13,7 @@ describe('both adapters (roundtrippable cases)', () => {
     contentfulDoc: Contentful.Document,
     slateDoc: SlateNode[],
   ) => {
-    describe.only('toSlatejsDocument()', () => {
+    describe('toSlatejsDocument()', () => {
       it(message, () => {
         const actualSlateDoc = toSlatejsDocument({
           document: contentfulDoc,
@@ -84,18 +84,127 @@ describe('both adapters (roundtrippable cases)', () => {
         ];
         expect(slateOutput).toStrictEqual(expectedSlateOutput);
       });
-      it.only('adds comment data', () => {
-        const JSONPATH1 = 'content[0].content[1]';
-        // would there be a jsonpath2?
-        const comment = {
-          metadata: {
-            range: [JSONPATH1],
-            originalText: 'irure dolor',
+      // it.only('adds comment data', () => {
+      //   const JSONPATH1 = 'content[0].content[1]';
+      //   // would there be a jsonpath2?
+      //   const comment = {
+      //     metadata: {
+      //       range: [JSONPATH1],
+      //       originalText: 'irure dolor',
+      //     },
+      //     body: 'My comment is this',
+      //     id: 'commentId',
+      //   };
+      //   const contentfulInput = {
+      //     nodeType: 'document',
+      //     data: {},
+      //     content: [
+      //       {
+      //         nodeType: 'paragraph',
+      //         data: {},
+      //         content: [
+      //           {
+      //             nodeType: 'text',
+      //             value:
+      //               'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute ',
+      //             marks: [],
+      //             data: {},
+      //           },
+      //           {
+      //             nodeType: 'text',
+      //             value: 'irure dolor', // here is where the comment would go
+      //             marks: [],
+      //             data: {},
+      //           },
+      //           {
+      //             nodeType: 'text',
+      //             value:
+      //               ' in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      //             marks: [],
+      //             data: {},
+      //           },
+      //         ],
+      //       },
+      //     ],
+      //   };
+      //   const slateOutput = toSlatejsDocument({
+      //     document: contentfulInput as unknown as Contentful.Document,
+      //     comments: [comment],
+      //   });
+
+      //   const expectedSlateOutput = [
+      //     {
+      //       type: 'paragraph',
+      //       isVoid: false,
+      //       data: {},
+      //       children: [
+      //         {
+      //           data: {},
+      //           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute ',
+      //         },
+      //         {
+      //           data: {
+      //             comment: {
+      //               sys: {
+      //                 id: 'commentId',
+      //                 linkType: 'Comment',
+      //                 type: 'Link',
+      //               },
+      //             },
+      //           },
+      //           text: 'irure dolor',
+      //         },
+      //         {
+      //           data: {},
+      //           text: ' in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      //         },
+      //       ],
+      //     },
+      //   ];
+
+      //   expect(slateOutput).toStrictEqual(expectedSlateOutput);
+      // });
+    });
+    describe.only('toContentfulDocument()', () => {
+      it(message, () => {
+        const actualContentfulDoc = toContentfulDocument({
+          document: slateDoc,
+          schema,
+        });
+        expect(actualContentfulDoc).toEqual(contentfulDoc);
+      });
+      it('removes comment data from Slate document', () => {
+        const slateInput = [
+          {
+            type: 'paragraph',
+            isVoid: false,
+            data: {},
+            children: [
+              {
+                data: {},
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute ',
+              },
+              {
+                data: {
+                  comment: {
+                    sys: {
+                      id: 'commentId',
+                      linkType: 'Comment',
+                      type: 'Link',
+                    },
+                  },
+                },
+                text: 'irure dolor',
+              },
+              {
+                data: {},
+                text: ' in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              },
+            ],
           },
-          body: 'My comment is this',
-          id: 'commentId',
-        };
-        const contentfulInput = {
+        ];
+
+        const expectedContentfulOutput = {
           nodeType: 'document',
           data: {},
           content: [
@@ -127,51 +236,12 @@ describe('both adapters (roundtrippable cases)', () => {
             },
           ],
         };
-        const slateOutput = toSlatejsDocument({
-          document: contentfulInput as unknown as Contentful.Document,
-          comments: [comment],
+
+        const actualContentfulOutput = toContentfulDocument({
+          document: slateInput as unknown as SlateNode[],
         });
 
-        const expectedSlateOutput = [
-          {
-            type: 'paragraph',
-            isVoid: false,
-            data: {},
-            children: [
-              {
-                data: {},
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute ',
-              },
-              {
-                data: {
-                  comment: {
-                    sys: {
-                      id: 'commentId',
-                      linkType: 'Comment',
-                      type: 'Link',
-                    },
-                  },
-                },
-                text: 'irure dolor',
-              },
-              {
-                data: {},
-                text: ' in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-              },
-            ],
-          },
-        ];
-
-        expect(slateOutput).toStrictEqual(expectedSlateOutput);
-      });
-    });
-    describe('toContentfulDocument()', () => {
-      it(message, () => {
-        const actualContentfulDoc = toContentfulDocument({
-          document: slateDoc,
-          schema,
-        });
-        expect(actualContentfulDoc).toEqual(contentfulDoc);
+        expect(actualContentfulOutput).toStrictEqual(expectedContentfulOutput);
       });
       it('is converts Slate mentions to Contentful mentions', () => {
         const slateFormatWithMention = [

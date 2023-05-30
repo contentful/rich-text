@@ -16,10 +16,32 @@ export interface ToContentfulDocumentProperties {
   schema?: SchemaJSON;
 }
 
+const removeCommentDataFromDocument = (document: any): any => {
+  if (typeof document !== 'object' || document === null) {
+    return document;
+  }
+  if ('comment' in document) {
+    return {};
+  }
+
+  if (Array.isArray(document)) {
+    return document.map((node) => removeCommentDataFromDocument(node));
+  } else {
+    const newNode: any = {};
+    for (const key in document) {
+      newNode[key] = removeCommentDataFromDocument(document[key]);
+    }
+    return newNode;
+  }
+};
+
 export default function toContentfulDocument({
   document,
   schema,
 }: ToContentfulDocumentProperties): Contentful.Document {
+  // todo: remove comments from slatejs document
+  const newDocument: SlateNode[] = removeCommentDataFromDocument(document);
+
   // TODO:
   // We allow adding data to the root document node, but Slate >v0.5.0
   // has no concept of a root document node. We should determine whether
@@ -27,7 +49,7 @@ export default function toContentfulDocument({
   return {
     nodeType: Contentful.BLOCKS.DOCUMENT,
     data: {},
-    content: document.flatMap(
+    content: newDocument.flatMap(
       (node) => convertNode(node, fromJSON(schema)) as Contentful.TopLevelBlock[],
     ),
   };
