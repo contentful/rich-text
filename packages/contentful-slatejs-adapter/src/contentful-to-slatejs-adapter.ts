@@ -59,9 +59,9 @@ export default function toSlatejsDocument({
   comments,
 }: ToSlatejsDocumentProperties): SlateNode[] {
   // decorate with comments
-  // if (comments) {
-  //   addCommentsToContentfulDocument(document, comments);
-  // }
+  if (comments) {
+    addCommentsToContentfulDocument(document, comments);
+  }
 
   console.log('document now is ', document);
 

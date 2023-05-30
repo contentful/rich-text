@@ -39,7 +39,6 @@ export default function toContentfulDocument({
   document,
   schema,
 }: ToContentfulDocumentProperties): Contentful.Document {
-  // todo: remove comments from slatejs document
   const newDocument: SlateNode[] = removeCommentDataFromDocument(document);
 
   // TODO:
