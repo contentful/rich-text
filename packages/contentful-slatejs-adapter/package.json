@@ -44,7 +44,6 @@
     "faker": "^4.1.0",
     "husky": "^2.7.0",
     "jest": "^27.1.0",
-    "lodash.camelcase": "^4.3.0",
     "prompt": "^1.0.0",
     "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",
