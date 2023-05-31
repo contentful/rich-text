@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.1.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.1.0...@contentful/rich-text-links@16.1.1) (2023-05-31)
+
+### Bug Fixes
+
+- prevent crash when a null value is passed as document ([#468](https://github.com/contentful/rich-text/issues/468)) ([3c8531c](https://github.com/contentful/rich-text/commit/3c8531cbcdde623c66c4b13d49fff73cad096871))
+
 # [16.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.0.4...@contentful/rich-text-links@16.1.0) (2023-05-26)
 
 ### Features
