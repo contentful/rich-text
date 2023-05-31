@@ -2,6 +2,7 @@ import {
   Block,
   BLOCKS,
   Document,
+  Inline,
   Link,
   Node,
   NodeData,
@@ -30,12 +31,12 @@ export function getRichTextResourceLinks(
   nodeType: AcceptedResourceLinkTypes,
 ): ResourceLink[] {
   const links = new Map<string, ResourceLink>();
-  const isValidType = (actualNodeType: BLOCKS, data: NodeData) =>
+  const isValidType = (actualNodeType: string, data: NodeData) =>
     actualNodeType === nodeType && data.target?.sys?.type === 'ResourceLink';
 
-  visitNodes(document, (block) => {
-    if (isValidType(block.nodeType, block.data)) {
-      links.set(block.data.target.sys.urn, block.data.target);
+  visitNodes(document, (node) => {
+    if (isValidType(node.nodeType, node.data)) {
+      links.set(node.data.target.sys.urn, node.data.target);
     }
   });
 
@@ -61,7 +62,7 @@ export function getRichTextEntityLinks(
   };
 
   // const content = (document && document.content) || ([] as Node[]);
-  const addLink = ({ data, nodeType }: Block) => {
+  const addLink = ({ data, nodeType }: Node) => {
     const hasRequestedNodeType = !type || nodeType === type;
 
     if (hasRequestedNodeType && isLinkObject(data)) {
@@ -77,16 +78,22 @@ export function getRichTextEntityLinks(
   };
 }
 
-function visitNodes(node: Node, onVisit: (block: Block) => void): void {
-  const toCrawl: Node[] = [node];
+function isContentNode(node: Node): node is Inline | Block {
+  return 'content' in node && Array.isArray(node.content);
+}
+
+function visitNodes(startNode: Node, onVisit: (node: Node) => void): void {
+  /**
+   * Do not remove this null check as consumers of this library do not all have good Typescript types
+   */
+  const toCrawl: Node[] = startNode ? [startNode] : [];
 
   while (toCrawl.length > 0) {
-    const block = toCrawl.pop() as Block;
-    const content = block.content;
-    onVisit(block);
+    const node = toCrawl.pop();
+    onVisit(node);
 
-    if (Array.isArray(content)) {
-      for (const childNode of content) {
+    if (isContentNode(node)) {
+      for (const childNode of node.content) {
         toCrawl.push(childNode);
       }
     }
