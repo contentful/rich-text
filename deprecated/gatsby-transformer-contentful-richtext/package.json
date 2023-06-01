@@ -38,7 +38,7 @@
     "@babel/core": "^7.15.5",
     "babel-preset-gatsby-package": "^0.1.4",
     "cross-env": "^5.2.1",
-    "gatsby": "^2.32.13",
+    "gatsby": "^5.6.0",
     "jest": "^27.1.0",
     "npm-run-all": "^4.1.3"
   }
