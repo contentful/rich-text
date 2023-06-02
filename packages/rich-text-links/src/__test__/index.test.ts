@@ -70,6 +70,17 @@ describe('getRichTextEntityLinks', () => {
         ],
       });
     });
+
+    it('returns an empty array if document parameter is `null`', () => {
+      /**
+       * This test is important! Not all consumers of this library have correct typescript types,
+       * we know that not handling `null` gracefully will cause issues in production.
+       */
+
+      const documentThatIsNull: Document | null = null;
+
+      expect(getRichTextEntityLinks(documentThatIsNull!)).toEqual({ Asset: [], Entry: [] });
+    });
   });
 
   describe('returning rich text links at an arbitrary level of depth', () => {
@@ -526,6 +537,12 @@ describe(`getRichTextResourceLinks`, () => {
     expect(getRichTextResourceLinks(document, BLOCKS.EMBEDDED_RESOURCE)).toEqual([
       makeResourceLink('foo', 'bar'),
     ]);
+  });
+
+  it('returns an empty array if document parameter is `null`', () => {
+    const document: Document | null = null;
+
+    expect(getRichTextResourceLinks(document!, BLOCKS.EMBEDDED_RESOURCE)).toEqual([]);
   });
 
   it(`returns resource-links from multiple levels`, () => {
