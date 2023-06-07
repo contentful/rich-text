@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.2.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.1.1...@contentful/rich-text-links@16.2.0) (2023-06-07)
+
+### Features
+
+- add deduplicate option to getRichTextResourceLinks ([#470](https://github.com/contentful/rich-text/issues/470)) ([1141d5b](https://github.com/contentful/rich-text/commit/1141d5b6848e32efce198ad2d47b6442a9660aa0))
+
 ## [16.1.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.1.0...@contentful/rich-text-links@16.1.1) (2023-05-31)
 
 ### Bug Fixes
