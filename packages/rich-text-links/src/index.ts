@@ -8,6 +8,7 @@ import {
   NodeData,
   ResourceLink,
 } from '@contentful/rich-text-types';
+import { Maybe } from './types/utils';
 
 export type EntityLinks = { [type in EntityType]: EntityLink[] };
 export type EntityLinkMaps = { [type in EntityType]: Map<string, EntityLink> };
@@ -27,7 +28,7 @@ type AcceptedResourceLinkTypes = `${BLOCKS.EMBEDDED_RESOURCE}`;
  * Extracts all links no matter the entity they are pointing to.
  */
 export function getRichTextResourceLinks(
-  document: Document,
+  document: Maybe<Document>,
   nodeType: AcceptedResourceLinkTypes,
   { deduplicate = true }: { deduplicate?: boolean } = {},
 ): ResourceLink[] {
@@ -52,7 +53,7 @@ export function getRichTextEntityLinks(
   /**
    *  An instance of a Rich Text Document.
    */
-  document: Document,
+  document: Maybe<Document>,
   /**
    *  Node type. Only the entity links with given node type will be extracted.
    */
@@ -84,7 +85,7 @@ function isContentNode(node: Node): node is Inline | Block {
   return 'content' in node && Array.isArray(node.content);
 }
 
-function visitNodes(startNode: Node, onVisit: (node: Node) => void): void {
+function visitNodes(startNode: Maybe<Node>, onVisit: (node: Node) => void): void {
   /**
    * Do not remove this null check as consumers of this library do not all have good Typescript types
    */

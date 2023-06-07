@@ -1,5 +1,6 @@
 import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { getRichTextEntityLinks, getRichTextResourceLinks } from '../index';
+import { Maybe } from '../types/utils';
 
 function makeResourceLink(spaceId: string, entryId: string) {
   return {
@@ -77,9 +78,15 @@ describe('getRichTextEntityLinks', () => {
        * we know that not handling `null` gracefully will cause issues in production.
        */
 
-      const documentThatIsNull: Document | null = null;
+      const documentThatIsNull: Maybe<Document> = null;
 
-      expect(getRichTextEntityLinks(documentThatIsNull!)).toEqual({ Asset: [], Entry: [] });
+      expect(getRichTextEntityLinks(documentThatIsNull)).toEqual({ Asset: [], Entry: [] });
+    });
+
+    it('returns an empty array if document parameter is `undefined`', () => {
+      const documentThatIsUndefined: Maybe<Document> = undefined;
+
+      expect(getRichTextEntityLinks(documentThatIsUndefined)).toEqual({ Asset: [], Entry: [] });
     });
   });
 
@@ -527,9 +534,15 @@ describe(`getRichTextResourceLinks`, () => {
   });
 
   it('returns an empty array if document parameter is `null`', () => {
-    const document: Document | null = null;
+    const documentThatIsNull: Maybe<Document> = null;
 
-    expect(getRichTextResourceLinks(document!, BLOCKS.EMBEDDED_RESOURCE)).toEqual([]);
+    expect(getRichTextResourceLinks(documentThatIsNull, BLOCKS.EMBEDDED_RESOURCE)).toEqual([]);
+  });
+
+  it('returns an empty array if document parameter is `undefined`', () => {
+    const documentThatIsUndefined: Maybe<Document> = undefined;
+
+    expect(getRichTextResourceLinks(documentThatIsUndefined, BLOCKS.EMBEDDED_RESOURCE)).toEqual([]);
   });
 
   it(`returns all ResourceLinks from multiple levels in the same order as defined in the document`, () => {
