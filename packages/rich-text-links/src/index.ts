@@ -29,6 +29,7 @@ type AcceptedResourceLinkTypes = `${BLOCKS.EMBEDDED_RESOURCE}`;
 export function getRichTextResourceLinks(
   document: Document,
   nodeType: AcceptedResourceLinkTypes,
+  { deduplicate = true }: { deduplicate?: boolean } = {},
 ): ResourceLink[] {
   const links = new Map<string, ResourceLink>();
   const isValidType = (actualNodeType: string, data: NodeData) =>
@@ -36,7 +37,8 @@ export function getRichTextResourceLinks(
 
   visitNodes(document, (node) => {
     if (isValidType(node.nodeType, node.data)) {
-      links.set(node.data.target.sys.urn, node.data.target);
+      const key = deduplicate ? node.data.target.sys.urn : links.size;
+      links.set(key, node.data.target);
     }
   });
 
