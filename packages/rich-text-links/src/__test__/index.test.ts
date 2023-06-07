@@ -719,4 +719,47 @@ describe(`getRichTextResourceLinks`, () => {
       makeResourceLink('space-1', 'entry-2'),
     ]);
   });
+
+  it(`should return duplicate links if the deduplicate option value is passed as false`, () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.EMBEDDED_RESOURCE,
+              data: {
+                target: makeResourceLink('space-1', 'entry-1'),
+              },
+              content: [],
+            },
+            {
+              nodeType: BLOCKS.EMBEDDED_RESOURCE,
+              data: {
+                target: makeResourceLink('space-1', 'entry-2'),
+              },
+              content: [],
+            },
+            {
+              nodeType: BLOCKS.EMBEDDED_RESOURCE,
+              data: {
+                target: makeResourceLink('space-1', 'entry-1'),
+              },
+              content: [],
+            },
+          ],
+        },
+      ],
+    };
+    expect(
+      getRichTextResourceLinks(document, BLOCKS.EMBEDDED_RESOURCE, { deduplicate: false }),
+    ).toEqual([
+      makeResourceLink('space-1', 'entry-1'),
+      makeResourceLink('space-1', 'entry-2'),
+      makeResourceLink('space-1', 'entry-1'),
+    ]);
+  });
 });
