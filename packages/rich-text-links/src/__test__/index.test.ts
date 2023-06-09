@@ -90,15 +90,7 @@ describe('getRichTextEntityLinks', () => {
       content: [
         {
           nodeType: BLOCKS.PARAGRAPH,
-          data: {
-            target: {
-              sys: {
-                linkType: 'Entry',
-                type: 'Link',
-                id: 'foo',
-              },
-            },
-          },
+          data: {},
           content: [
             {
               nodeType: BLOCKS.EMBEDDED_ENTRY,
@@ -283,23 +275,13 @@ describe('getRichTextEntityLinks', () => {
       ],
     };
 
-    it('returns all entity link objects', () => {
+    it('returns all entity link objects in the same order as defined in the document', () => {
       expect(getRichTextEntityLinks(document)).toEqual({
         Entry: [
           {
             linkType: 'Entry',
             type: 'Link',
-            id: 'hyperlink-cell-entry',
-          },
-          {
-            linkType: 'Entry',
-            type: 'Link',
-            id: 'inline-header-entry',
-          },
-          {
-            linkType: 'Entry',
-            type: 'Link',
-            id: 'foo',
+            id: 'bar',
           },
           {
             linkType: 'Entry',
@@ -309,14 +291,19 @@ describe('getRichTextEntityLinks', () => {
           {
             linkType: 'Entry',
             type: 'Link',
-            id: 'bar',
+            id: 'inline-header-entry',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'hyperlink-cell-entry',
           },
         ],
         Asset: [
           {
             linkType: 'Asset',
             type: 'Link',
-            id: 'hyperlink-cell-asset',
+            id: 'quux',
           },
           {
             linkType: 'Asset',
@@ -326,7 +313,7 @@ describe('getRichTextEntityLinks', () => {
           {
             linkType: 'Asset',
             type: 'Link',
-            id: 'quux',
+            id: 'hyperlink-cell-asset',
           },
         ],
       });
@@ -545,7 +532,7 @@ describe(`getRichTextResourceLinks`, () => {
     expect(getRichTextResourceLinks(document!, BLOCKS.EMBEDDED_RESOURCE)).toEqual([]);
   });
 
-  it(`returns resource-links from multiple levels`, () => {
+  it(`returns all ResourceLinks from multiple levels in the same order as defined in the document`, () => {
     const document: Document = {
       nodeType: BLOCKS.DOCUMENT,
       data: {},
@@ -672,11 +659,11 @@ describe(`getRichTextResourceLinks`, () => {
     };
 
     expect(getRichTextResourceLinks(document, BLOCKS.EMBEDDED_RESOURCE)).toEqual([
-      makeResourceLink('space-2', 'entry-3'),
-      makeResourceLink('space-2', 'entry-2'),
-      makeResourceLink('space-2', 'entry-1'),
-      makeResourceLink('space-1', 'entry-2'),
       makeResourceLink('space-1', 'entry-1'),
+      makeResourceLink('space-1', 'entry-2'),
+      makeResourceLink('space-2', 'entry-1'),
+      makeResourceLink('space-2', 'entry-2'),
+      makeResourceLink('space-2', 'entry-3'),
     ]);
   });
 
