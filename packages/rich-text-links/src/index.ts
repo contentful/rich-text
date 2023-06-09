@@ -95,8 +95,8 @@ function visitNodes(startNode: Node, onVisit: (node: Node) => void): void {
     onVisit(node);
 
     if (isContentNode(node)) {
-      for (const childNode of node.content) {
-        toCrawl.push(childNode);
+      for (let i = node.content.length - 1; i >= 0; i--) {
+        toCrawl.push(node.content[i]);
       }
     }
   }
