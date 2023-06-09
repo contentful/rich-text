@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@16.0.5...@contentful/rich-text-html-renderer@16.1.0) (2023-06-09)
+
+### Features
+
+- add default renderer for the node ([#472](https://github.com/contentful/rich-text/issues/472)) ([5a53caf](https://github.com/contentful/rich-text/commit/5a53cafc58aa8d009d2aa2d6cb4fa2d6cee6b19d))
+
 ## [16.0.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@16.0.4...@contentful/rich-text-html-renderer@16.0.5) (2023-05-26)
 
 **Note:** Version bump only for package @contentful/rich-text-html-renderer
