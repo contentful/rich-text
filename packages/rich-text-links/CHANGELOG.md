@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.3.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.2.0...@contentful/rich-text-links@16.3.0) (2023-06-09)
+
+### Features
+
+- change visitNodes to visit nodes in depth-first order ([#475](https://github.com/contentful/rich-text/issues/475)) ([ace5225](https://github.com/contentful/rich-text/commit/ace52253af4e83035075a466b7c97a08072e35ad))
+
 # [16.2.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.1.1...@contentful/rich-text-links@16.2.0) (2023-06-07)
 
 ### Features
