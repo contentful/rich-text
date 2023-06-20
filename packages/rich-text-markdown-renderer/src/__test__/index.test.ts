@@ -377,36 +377,6 @@ describe('convertRtfToMarkdown', () => {
     expect(markdown).toBe('This is a [link](https://example.com) example');
   });
 
-  // it('converts embedded assets', () => {
-  //   const rtf: any = {
-  //     nodeType: 'paragraph',
-  //     content: [
-  //       {
-  //         nodeType: 'embedded-asset-block',
-  //         data: {
-  //           target: {
-  //             sys: {
-  //               id: 'example-entity-id',
-  //               type: 'Link',
-  //               linkType: 'Asset',
-  //             },
-  //             fields: {
-  //               title: 'Example Image',
-  //               file: {
-  //                 url: 'https://example.com/image.jpg',
-  //               },
-  //             },
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-  //
-  //   const markdown = documentToMarkdown(rtf);
-  //
-  //   expect(markdown).toBe('![Example Image](https://example.com/image.jpg)');
-  // });
-
   it('handles null or undefined input', () => {
     const markdown = documentToMarkdown(null);
 
@@ -422,6 +392,60 @@ describe('convertRtfToMarkdown', () => {
     const markdown = documentToMarkdown(rtf);
 
     expect(markdown).toBe('');
+  });
+
+  it('supports custom renderers', () => {
+    const rtf: any = {
+      nodeType: 'document',
+      data: {},
+      content: [
+        {
+          nodeType: 'heading-1',
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'Heading 1',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    expect(
+      documentToMarkdown(rtf, {
+        renderNode: {
+          [BLOCKS.HEADING_1]: (node: any, next: any) => `${next(node.content)}\n-\n`,
+        },
+      }),
+    ).toBe('Heading 1\n-\n');
+  });
+
+  it('does not escape especial characters', () => {
+    const rtf: any = {
+      nodeType: 'document',
+      data: {},
+      content: [
+        {
+          nodeType: 'heading-1',
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: "Hi, I'm Miguel!",
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    const markdown = documentToMarkdown(rtf);
+
+    expect(markdown).toBe("# Hi, I'm Miguel!\n");
   });
 
   // TODO: Transform table into gfm instead of generating html
