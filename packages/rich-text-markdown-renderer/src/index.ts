@@ -1,11 +1,36 @@
-import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+import { BLOCKS, MARKS, INLINES, Block, Inline, Document } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
-export function documentToMarkdown(
-  document: any,
-  renderNodeExt: any = {},
-  renderMarkExt: any = {},
-): string {
+export interface RenderNode {
+  [k: string]: NodeRenderer;
+}
+
+export interface RenderMark {
+  [k: string]: (text: string) => string;
+}
+
+export type CommonNode = Text | Block | Inline;
+
+export interface Next {
+  (nodes: CommonNode[]): string;
+}
+
+export interface NodeRenderer {
+  (node: Block | Inline, next: Next): string;
+}
+
+export interface Options {
+  /**
+   * Node renderers
+   */
+  renderNode?: RenderNode;
+  /**
+   * Mark renderers
+   */
+  renderMark?: RenderMark;
+}
+
+export function documentToMarkdown(document: Document, options: Partial<Options> = {}): string {
   let orderedListCounter = -1;
 
   return documentToHtmlString(document, {
@@ -14,7 +39,7 @@ export function documentToMarkdown(
       [MARKS.ITALIC]: (text: any) => `*${text}*`,
       [MARKS.UNDERLINE]: (text: any) => `~~${text}~~`,
       [MARKS.CODE]: (text: any) => `\`${text}\``,
-      ...renderMarkExt,
+      ...options.renderMark,
     },
     renderNode: {
       // text: (node: any, next: any) => `=>node.value`,
@@ -51,7 +76,7 @@ export function documentToMarkdown(
       //   `![${node.data.target.fields.title}](${node.data.target.fields.file.url})`,
       // [INLINES.ENTRY_HYPERLINK]: (node: any, next: any) =>
       //   `[${next(node.content)}](${node.data.target.sys.id})`,
-      ...renderNodeExt,
+      ...options.renderNode,
     },
   });
 }
