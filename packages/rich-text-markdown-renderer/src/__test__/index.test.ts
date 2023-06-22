@@ -143,7 +143,7 @@ describe('convertRtfToMarkdown', () => {
     };
 
     expect(documentToMarkdown(rtf)).toBe(
-      `Paragraph with list:\n- First\n- Second\nContent\n- Third\n`,
+      `Paragraph with list:\n\n- First\n\n- Second\n\nContent\n\n- Third\n\n`,
     );
   });
 
@@ -228,7 +228,7 @@ describe('convertRtfToMarkdown', () => {
     };
 
     expect(documentToMarkdown(rtf)).toBe(
-      `Paragraph with ordered list:\n1. First\n2. Second\n3. Third\n`,
+      `Paragraph with ordered list:\n\n1. First\n\n2. Second\n\n3. Third\n\n`,
     );
   });
 

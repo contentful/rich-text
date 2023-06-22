@@ -1,7 +1,6 @@
 # rich-text
 
-Monorepo with Typescript libraries for handling and rendering Contentful Rich
-Text documents.
+Monorepo with Typescript libraries for handling and rendering Contentful Rich Text documents.
 
 ## Packages
 
