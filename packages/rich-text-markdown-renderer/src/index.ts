@@ -33,6 +33,7 @@ export interface Options {
 
 export function documentToMarkdown(document: Document, options: Partial<Options> = {}): string {
   let orderedListCounter = -1;
+  let nestedListCounter = -1;
 
   return he.decode(
     documentToHtmlString(document, {
@@ -53,17 +54,28 @@ export function documentToMarkdown(document: Document, options: Partial<Options>
         [BLOCKS.HEADING_6]: (node: any, next: any) => `###### ${next(node.content)}\n`,
         [BLOCKS.UL_LIST]: (node: any, next: any) => {
           orderedListCounter = -1;
-          return `${next(node.content)}`;
+          nestedListCounter++;
+          const content = `${next(node.content)}`;
+          nestedListCounter--;
+          return content;
         },
         [BLOCKS.OL_LIST]: (node: any, next: any) => {
           orderedListCounter = 0; // Reset the counter for each new ordered list
-          return `${next(node.content)}`;
+
+          nestedListCounter++;
+          const content = `${next(node.content)}`;
+          nestedListCounter--;
+          return content;
         },
         [BLOCKS.LIST_ITEM]: (node: any, next: any) => {
           const itemText = next(node.content);
           if (orderedListCounter > -1) orderedListCounter++;
 
-          return `${orderedListCounter > 0 ? `${orderedListCounter}.` : '-'} ${itemText}`;
+          return `${
+            orderedListCounter > 0
+              ? `${'\t'.repeat(nestedListCounter)}${orderedListCounter}.`
+              : `${'\t'.repeat(nestedListCounter)}-`
+          } ${itemText}`;
         },
         [BLOCKS.QUOTE]: (node: any, next: any) => `> ${next(node.content)}\n`,
         [BLOCKS.HR]: () => '\n---\n',

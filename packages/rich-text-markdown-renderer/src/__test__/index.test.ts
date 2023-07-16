@@ -447,4 +447,105 @@ describe('convertRtfToMarkdown', () => {
 
     expect(markdown).toBe("# Hi, I'm Miguel!\n");
   });
+
+  it('converts nested lists', () => {
+    const rtf: any = {
+      nodeType: 'document',
+      data: {},
+      content: [
+        {
+          nodeType: 'unordered-list',
+          data: {},
+          content: [
+            {
+              nodeType: 'list-item',
+              data: {},
+              content: [
+                {
+                  nodeType: 'paragraph',
+                  data: {},
+                  content: [
+                    {
+                      nodeType: 'text',
+                      value: 'First',
+                      marks: [],
+                      data: {},
+                    },
+                  ],
+                },
+                {
+                  nodeType: 'unordered-list',
+                  data: {},
+                  content: [
+                    {
+                      nodeType: 'list-item',
+                      data: {},
+                      content: [
+                        {
+                          nodeType: 'paragraph',
+                          data: {},
+                          content: [
+                            {
+                              nodeType: 'text',
+                              value: 'Nested',
+                              marks: [],
+                              data: {},
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              nodeType: 'list-item',
+              data: {},
+              content: [
+                {
+                  nodeType: 'paragraph',
+                  data: {},
+                  content: [
+                    {
+                      nodeType: 'text',
+                      value: 'Second',
+                      marks: [],
+                      data: {},
+                    },
+                  ],
+                },
+                {
+                  nodeType: 'unordered-list',
+                  data: {},
+                  content: [
+                    {
+                      nodeType: 'list-item',
+                      data: {},
+                      content: [
+                        {
+                          nodeType: 'paragraph',
+                          data: {},
+                          content: [
+                            {
+                              nodeType: 'text',
+                              value: 'Nested 2',
+                              marks: [],
+                              data: {},
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+
+    expect(documentToMarkdown(rtf)).toBe(`- First\n\n\t- Nested\n\n- Second\n\n\t- Nested 2\n\n`);
+  });
 });
