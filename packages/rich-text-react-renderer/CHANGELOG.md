@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.17.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.16.5...@contentful/rich-text-react-renderer@15.17.0) (2023-06-09)
+
+### Features
+
+- add default renderer for the embedded-resource-block node ([#474](https://github.com/contentful/rich-text/issues/474)) ([844c011](https://github.com/contentful/rich-text/commit/844c011ef3d6f2887d82a39784c6fb5672c6e065))
+
+## [15.16.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.16.4...@contentful/rich-text-react-renderer@15.16.5) (2023-05-26)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
 ## [15.16.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.16.3...@contentful/rich-text-react-renderer@15.16.4) (2023-05-04)
 
 **Note:** Version bump only for package @contentful/rich-text-react-renderer
