@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.4.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.3.0...@contentful/rich-text-links@16.4.0) (2023-07-10)
+
+### Features
+
+- allow document parameter to be nullable ([#471](https://github.com/contentful/rich-text/issues/471)) ([e50f8d2](https://github.com/contentful/rich-text/commit/e50f8d24c60a74f43f84f415a5c393038919efd2))
+
 # [16.3.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.2.0...@contentful/rich-text-links@16.3.0) (2023-06-09)
 
 ### Features
