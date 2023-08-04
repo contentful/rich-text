@@ -40,6 +40,12 @@ Array [
 ]
 `;
 
+exports[`documentToReactComponents renders default resource block 1`] = `
+Array [
+  <div />,
+]
+`;
+
 exports[`documentToReactComponents renders embedded entry 1`] = `
 Array [
   <p>

@@ -12,6 +12,7 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.HEADING_5]: (node, children) => <h5>{children}</h5>,
   [BLOCKS.HEADING_6]: (node, children) => <h6>{children}</h6>,
   [BLOCKS.EMBEDDED_ENTRY]: (node, children) => <div>{children}</div>,
+  [BLOCKS.EMBEDDED_RESOURCE]: (node, children) => <div>{children}</div>,
   [BLOCKS.UL_LIST]: (node, children) => <ul>{children}</ul>,
   [BLOCKS.OL_LIST]: (node, children) => <ol>{children}</ol>,
   [BLOCKS.LIST_ITEM]: (node, children) => <li>{children}</li>,

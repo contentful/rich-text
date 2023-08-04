@@ -21,6 +21,7 @@ export enum BLOCKS {
 
   EMBEDDED_ENTRY = 'embedded-entry-block',
   EMBEDDED_ASSET = 'embedded-asset-block',
+  EMBEDDED_RESOURCE = 'embedded-resource-block',
 
   TABLE = 'table',
   TABLE_ROW = 'table-row',

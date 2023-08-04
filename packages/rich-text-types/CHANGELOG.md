@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.2.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.1.0...@contentful/rich-text-types@16.2.0) (2023-05-26)
+
+### Features
+
+- 🎸 add `getRichTextResourceLinks` ([#465](https://github.com/contentful/rich-text/issues/465)) ([5746ba6](https://github.com/contentful/rich-text/commit/5746ba652ae5eac2df27d05193e19aef9e85c438))
+
+# [16.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.0.3...@contentful/rich-text-types@16.1.0) (2023-05-04)
+
+### Features
+
+- add embedded-resource-block to the list of supported block elements ([#461](https://github.com/contentful/rich-text/issues/461)) ([c85fd63](https://github.com/contentful/rich-text/commit/c85fd632d5166bf6a4bd30adbc3ed35668f2e7d5))
+
 ## [16.0.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.0.2...@contentful/rich-text-types@16.0.3) (2023-03-14)
 
 **Note:** Version bump only for package @contentful/rich-text-types

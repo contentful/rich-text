@@ -7,6 +7,7 @@ export { default as headingDoc } from './heading';
 export { default as marksDoc } from './mark';
 export { default as multiMarkDoc } from './multi-mark';
 export { default as embeddedEntryDoc } from './embedded-entry';
+export { default as embeddedResourceDoc } from './embedded-resource';
 export { default as inlineEntityDoc } from './inline-entity';
 export { default as olDoc } from './ol';
 export { default as ulDoc } from './ul';
