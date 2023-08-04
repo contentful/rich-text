@@ -173,6 +173,7 @@ The `renderNode` keys should be one of the following `BLOCKS` and `INLINES` prop
   - `HR`
   - `EMBEDDED_ENTRY`
   - `EMBEDDED_ASSET`
+  - `EMBEDDED_RESOURCE`
 
 - `INLINES`
   - `EMBEDDED_ENTRY` (this is different from the `BLOCKS.EMBEDDED_ENTRY`)
