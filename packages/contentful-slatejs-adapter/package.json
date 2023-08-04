@@ -1,6 +1,6 @@
 {
   "name": "@contentful/contentful-slatejs-adapter",
-  "version": "15.16.6",
+  "version": "15.16.7",
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
@@ -28,7 +28,7 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.2.0"
+    "@contentful/rich-text-types": "^16.2.1"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
@@ -50,7 +50,7 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^4.2.4",
     "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-typescript2": "^0.35.0",
     "ts-jest": "^27.0.5",
     "ts-node": "^6.0.0",
     "typescript": "^4.4.2"
