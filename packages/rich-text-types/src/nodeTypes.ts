@@ -94,6 +94,14 @@ export interface Link<T extends string = string> {
   };
 }
 
+export interface ResourceLink {
+  sys: {
+    type: 'ResourceLink';
+    linkType: 'Contentful:Entry';
+    urn: string;
+  };
+}
+
 export interface EntryLinkBlock extends Block {
   nodeType: BLOCKS.EMBEDDED_ENTRY;
   data: {
@@ -110,6 +118,18 @@ export interface AssetLinkBlock extends Block {
   nodeType: BLOCKS.EMBEDDED_ASSET;
   data: {
     target: Link<'Asset'>;
+  };
+  /**
+   *
+   * @maxItems 0
+   */
+  content: Array<Inline | Text>;
+}
+
+export interface ResourceLinkBlock extends Block {
+  nodeType: BLOCKS.EMBEDDED_RESOURCE;
+  data: {
+    target: ResourceLink;
   };
   /**
    *
