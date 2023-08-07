@@ -35,7 +35,7 @@
     "lodash.clonedeep": "^4.5.0",
     "rimraf": "^2.6.3",
     "rollup": "^1.32.1",
-    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^4.2.3",
     "rollup-plugin-sourcemaps": "^0.6.3",
