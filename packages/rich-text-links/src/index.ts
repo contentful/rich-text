@@ -3,6 +3,7 @@ import {
   BLOCKS,
   Document,
   Inline,
+  INLINES,
   Link,
   Node,
   NodeData,
@@ -20,9 +21,10 @@ export type EntityLinkNodeData = {
 };
 
 // spare upstream dependencies the need to use rich-text-types
-type AcceptedResourceLinkTypes = `${BLOCKS.EMBEDDED_RESOURCE}`;
-// | `${INLINES.EMBEDDED_RESOURCE}`
-// | `${INLINES.RESOURCE_HYPERLINK}`;
+type AcceptedResourceLinkTypes =
+  | `${BLOCKS.EMBEDDED_RESOURCE}`
+  | `${INLINES.EMBEDDED_RESOURCE}`
+  | `${INLINES.RESOURCE_HYPERLINK}`;
 
 /**
  * Extracts all links no matter the entity they are pointing to.
@@ -35,6 +37,29 @@ export function getRichTextResourceLinks(
   const links = new Map<string, ResourceLink>();
   const isValidType = (actualNodeType: string, data: NodeData) =>
     actualNodeType === nodeType && data.target?.sys?.type === 'ResourceLink';
+
+  visitNodes(document, (node) => {
+    if (isValidType(node.nodeType, node.data)) {
+      const key = deduplicate ? node.data.target.sys.urn : links.size;
+      links.set(key, node.data.target);
+    }
+  });
+
+  return iteratorToArray(links.values());
+}
+
+export function getAllRichTextResourceLinks(
+  document: Maybe<Document>,
+  { deduplicate = true }: { deduplicate?: boolean } = {},
+): ResourceLink[] {
+  const links = new Map<string, ResourceLink>();
+  const nodeTypes: string[] = [
+    BLOCKS.EMBEDDED_RESOURCE,
+    INLINES.EMBEDDED_RESOURCE,
+    INLINES.RESOURCE_HYPERLINK,
+  ];
+  const isValidType = (actualNodeType: string, data: NodeData) =>
+    nodeTypes.includes(actualNodeType) && data.target?.sys?.type === 'ResourceLink';
 
   visitNodes(document, (node) => {
     if (isValidType(node.nodeType, node.data)) {

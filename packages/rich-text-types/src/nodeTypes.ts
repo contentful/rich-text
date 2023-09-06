@@ -152,6 +152,18 @@ export interface EntryLinkInline extends Inline {
   content: Text[];
 }
 
+export interface ResourceLinkInline extends Inline {
+  nodeType: INLINES.EMBEDDED_RESOURCE;
+  data: {
+    target: Link<'Entry'>;
+  };
+  /**
+   *
+   * @maxItems 0
+   */
+  content: Text[];
+}
+
 export interface Hyperlink extends Inline {
   nodeType: INLINES.HYPERLINK;
   data: {
@@ -172,6 +184,14 @@ export interface EntryHyperlink extends Inline {
   nodeType: INLINES.ENTRY_HYPERLINK;
   data: {
     target: Link<'Entry'>;
+  };
+  content: Text[];
+}
+
+export interface ResourceHyperlink extends Inline {
+  nodeType: INLINES.RESOURCE_HYPERLINK;
+  data: {
+    target: ResourceLink;
   };
   content: Text[];
 }
