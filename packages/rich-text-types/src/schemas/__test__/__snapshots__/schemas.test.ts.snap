@@ -1174,41 +1174,6 @@ Object {
   "$ref": "#/definitions/ResourceLinkInline",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": Object {
-    "Link<\\"Entry\\">": Object {
-      "additionalProperties": false,
-      "properties": Object {
-        "sys": Object {
-          "additionalProperties": false,
-          "properties": Object {
-            "id": Object {
-              "type": "string",
-            },
-            "linkType": Object {
-              "enum": Array [
-                "Entry",
-              ],
-              "type": "string",
-            },
-            "type": Object {
-              "enum": Array [
-                "Link",
-              ],
-              "type": "string",
-            },
-          },
-          "required": Array [
-            "id",
-            "linkType",
-            "type",
-          ],
-          "type": "object",
-        },
-      },
-      "required": Array [
-        "sys",
-      ],
-      "type": "object",
-    },
     "Mark": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -1225,6 +1190,41 @@ Object {
       "additionalProperties": true,
       "type": "object",
     },
+    "ResourceLink": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "sys": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "linkType": Object {
+              "enum": Array [
+                "Contentful:Entry",
+              ],
+              "type": "string",
+            },
+            "type": Object {
+              "enum": Array [
+                "ResourceLink",
+              ],
+              "type": "string",
+            },
+            "urn": Object {
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "linkType",
+            "type",
+            "urn",
+          ],
+          "type": "object",
+        },
+      },
+      "required": Array [
+        "sys",
+      ],
+      "type": "object",
+    },
     "ResourceLinkInline": Object {
       "additionalProperties": false,
       "properties": Object {
@@ -1239,7 +1239,7 @@ Object {
           "additionalProperties": false,
           "properties": Object {
             "target": Object {
-              "$ref": "#/definitions/Link<\\"Entry\\">",
+              "$ref": "#/definitions/ResourceLink",
             },
           },
           "required": Array [
