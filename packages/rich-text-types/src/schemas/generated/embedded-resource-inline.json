@@ -14,7 +14,7 @@
           "type": "object",
           "properties": {
             "target": {
-              "$ref": "#/definitions/Link<\"Entry\">"
+              "$ref": "#/definitions/ResourceLink"
             }
           },
           "additionalProperties": false,
@@ -37,7 +37,7 @@
         "nodeType"
       ]
     },
-    "Link<\"Entry\">": {
+    "ResourceLink": {
       "type": "object",
       "properties": {
         "sys": {
@@ -46,24 +46,24 @@
             "type": {
               "type": "string",
               "enum": [
-                "Link"
+                "ResourceLink"
               ]
             },
             "linkType": {
               "type": "string",
               "enum": [
-                "Entry"
+                "Contentful:Entry"
               ]
             },
-            "id": {
+            "urn": {
               "type": "string"
             }
           },
           "additionalProperties": false,
           "required": [
-            "id",
             "linkType",
-            "type"
+            "type",
+            "urn"
           ]
         }
       },

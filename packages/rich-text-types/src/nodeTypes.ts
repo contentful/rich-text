@@ -155,7 +155,7 @@ export interface EntryLinkInline extends Inline {
 export interface ResourceLinkInline extends Inline {
   nodeType: INLINES.EMBEDDED_RESOURCE;
   data: {
-    target: Link<'Entry'>;
+    target: ResourceLink;
   };
   /**
    *
