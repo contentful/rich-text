@@ -34,25 +34,16 @@ export function getRichTextResourceLinks(
   nodeType: AcceptedResourceLinkTypes,
   { deduplicate = true }: { deduplicate?: boolean } = {},
 ): ResourceLink[] {
-  const links = new Map<string, ResourceLink>();
   const isValidType = (actualNodeType: string, data: NodeData) =>
     actualNodeType === nodeType && data.target?.sys?.type === 'ResourceLink';
 
-  visitNodes(document, (node) => {
-    if (isValidType(node.nodeType, node.data)) {
-      const key = deduplicate ? node.data.target.sys.urn : links.size;
-      links.set(key, node.data.target);
-    }
-  });
-
-  return iteratorToArray(links.values());
+  return getValidResourceLinks(document, isValidType, deduplicate);
 }
 
 export function getAllRichTextResourceLinks(
   document: Maybe<Document>,
   { deduplicate = true }: { deduplicate?: boolean } = {},
 ): ResourceLink[] {
-  const links = new Map<string, ResourceLink>();
   const nodeTypes: string[] = [
     BLOCKS.EMBEDDED_RESOURCE,
     INLINES.EMBEDDED_RESOURCE,
@@ -61,6 +52,15 @@ export function getAllRichTextResourceLinks(
   const isValidType = (actualNodeType: string, data: NodeData) =>
     nodeTypes.includes(actualNodeType) && data.target?.sys?.type === 'ResourceLink';
 
+  return getValidResourceLinks(document, isValidType, deduplicate);
+}
+
+function getValidResourceLinks(
+  document: Maybe<Document>,
+  isValidType: (actualNodeType: string, data: NodeData) => boolean,
+  deduplicate: boolean,
+): ResourceLink[] {
+  const links = new Map<string, ResourceLink>();
   visitNodes(document, (node) => {
     if (isValidType(node.nodeType, node.data)) {
       const key = deduplicate ? node.data.target.sys.urn : links.size;
