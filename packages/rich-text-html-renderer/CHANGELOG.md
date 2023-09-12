@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.1.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@16.1.1...@contentful/rich-text-html-renderer@16.1.2) (2023-09-12)
+
+**Note:** Version bump only for package @contentful/rich-text-html-renderer
+
 ## [16.1.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@16.1.0...@contentful/rich-text-html-renderer@16.1.1) (2023-08-04)
 
 **Note:** Version bump only for package @contentful/rich-text-html-renderer

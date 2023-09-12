@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-html-renderer",
-  "version": "16.1.1",
+  "version": "16.1.2",
   "main": "dist/rich-text-html-renderer.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -25,7 +25,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.2.1",
+    "@contentful/rich-text-types": "^16.3.0",
     "escape-html": "^1.0.3"
   },
   "devDependencies": {
