@@ -332,4 +332,85 @@ describe('documentToHtmlString', () => {
   it('does not crash with undefined documents', () => {
     expect(documentToHtmlString(undefined as Document)).toEqual('');
   });
+
+  it('preserves whitespace with preserveWhitespace option', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'hello    world',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+    const options: Options = {
+      preserveWhitespace: true,
+    };
+    const expected = '<p>hello&nbsp;&nbsp;&nbsp;&nbsp;world</p>';
+
+    expect(documentToHtmlString(document, options)).toEqual(expected);
+  });
+
+  it('preserves line breaks with preserveWhitespace option', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'hello\nworld',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+    const options: Options = {
+      preserveWhitespace: true,
+    };
+    const expected = '<p>hello<br/>world</p>';
+
+    expect(documentToHtmlString(document, options)).toEqual(expected);
+  });
+
+  it('preserves both spaces and line breaks with preserveWhitespace option', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'hello   \n  world',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+    const options: Options = {
+      preserveWhitespace: true,
+    };
+    const expected = '<p>hello&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;world</p>';
+
+    expect(documentToHtmlString(document, options)).toEqual(expected);
+  });
 });

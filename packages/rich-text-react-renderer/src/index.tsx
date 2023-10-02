@@ -80,6 +80,10 @@ export interface Options {
    * Text renderer
    */
   renderText?: RenderText;
+  /**
+   * Keep line breaks and multiple spaces
+   */
+  preserveWhitespace?: boolean;
 }
 
 /**
@@ -103,5 +107,6 @@ export function documentToReactComponents(
       ...options.renderMark,
     },
     renderText: options.renderText,
+    preserveWhitespace: options.preserveWhitespace,
   });
 }

@@ -80,6 +80,10 @@ export interface Options {
    * Mark renderers
    */
   renderMark?: RenderMark;
+  /**
+   * Keep line breaks and multiple spaces
+   */
+  preserveWhitespace?: boolean;
 }
 
 /**
@@ -102,16 +106,33 @@ export function documentToHtmlString(
       ...defaultMarkRenderers,
       ...options.renderMark,
     },
+    preserveWhitespace: options.preserveWhitespace,
   });
 }
 
-function nodeListToHtmlString(nodes: CommonNode[], { renderNode, renderMark }: Options): string {
-  return nodes.map<string>((node) => nodeToHtmlString(node, { renderNode, renderMark })).join('');
+function nodeListToHtmlString(
+  nodes: CommonNode[],
+  { renderNode, renderMark, preserveWhitespace }: Options,
+): string {
+  return nodes
+    .map<string>((node) => nodeToHtmlString(node, { renderNode, renderMark, preserveWhitespace }))
+    .join('');
 }
 
-function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options): string {
+function nodeToHtmlString(
+  node: CommonNode,
+  { renderNode, renderMark, preserveWhitespace }: Options,
+): string {
   if (helpers.isText(node)) {
-    const nodeValue = escape(node.value);
+    let nodeValue = escape(node.value);
+
+    // If preserveWhitespace is true, handle line breaks and spaces.
+    if (preserveWhitespace) {
+      nodeValue = nodeValue
+        .replace(/\n/g, '<br/>')
+        .replace(/ {2,}/g, (match) => '&nbsp;'.repeat(match.length));
+    }
+
     if (node.marks.length > 0) {
       return node.marks.reduce((value: string, mark: Mark) => {
         if (!renderMark[mark.type]) {
@@ -123,7 +144,8 @@ function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options)
 
     return nodeValue;
   } else {
-    const nextNode: Next = (nodes) => nodeListToHtmlString(nodes, { renderMark, renderNode });
+    const nextNode: Next = (nodes) =>
+      nodeListToHtmlString(nodes, { renderMark, renderNode, preserveWhitespace });
     if (!node.nodeType || !renderNode[node.nodeType]) {
       // TODO: Figure what to return when passed an unrecognized node.
       return '';

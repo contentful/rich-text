@@ -404,3 +404,55 @@ describe('nodeListToReactComponents', () => {
     expect(renderedNodes).toMatchSnapshot();
   });
 });
+
+describe.only('preserveWhitespace', () => {
+  it('preserves spaces between words', () => {
+    const options: Options = {
+      preserveWhitespace: true,
+    };
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'hello    world',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+    expect(documentToReactComponents(document, options)).toMatchSnapshot();
+  });
+
+  it('preserves new lines', () => {
+    const options: Options = {
+      preserveWhitespace: true,
+    };
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'hello\nworld',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+    expect(documentToReactComponents(document, options)).toMatchSnapshot();
+  });
+});
