@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.18.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.17.2...@contentful/rich-text-react-renderer@15.18.0) (2023-10-02)
+
+### Features
+
+- preserve formatting linebreak whitespace ([#497](https://github.com/contentful/rich-text/issues/497)) ([e62ab92](https://github.com/contentful/rich-text/commit/e62ab92f6320d970f921e751d1753cd290224224))
+
 ## [15.17.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.17.1...@contentful/rich-text-react-renderer@15.17.2) (2023-09-12)
 
 **Note:** Version bump only for package @contentful/rich-text-react-renderer
