@@ -405,7 +405,7 @@ describe('nodeListToReactComponents', () => {
   });
 });
 
-describe.only('preserveWhitespace', () => {
+describe('preserveWhitespace', () => {
   it('preserves spaces between words', () => {
     const options: Options = {
       preserveWhitespace: true,
