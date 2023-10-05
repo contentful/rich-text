@@ -11,14 +11,14 @@ Array [
 exports[`documentToReactComponents renders asset hyperlink 1`] = `
 Array [
   <p>
-
+    
     <span>
-      type:
+      type: 
       asset-hyperlink
-       id:
+       id: 
       9mpxT4zsRi6Iwukey8KeM
     </span>
-
+    
   </p>,
 ]
 `;
@@ -49,14 +49,14 @@ Array [
 exports[`documentToReactComponents renders embedded entry 1`] = `
 Array [
   <p>
-
+    
     <span>
-      type:
+      type: 
       embedded-entry-inline
-       id:
+       id: 
       9mpxT4zsRi6Iwukey8KeM
     </span>
-
+    
   </p>,
 ]
 `;
@@ -72,14 +72,14 @@ Array [
 exports[`documentToReactComponents renders entry hyperlink 1`] = `
 Array [
   <p>
-
+    
     <span>
-      type:
+      type: 
       entry-hyperlink
-       id:
+       id: 
       9mpxT4zsRi6Iwukey8KeM
     </span>
-
+    
   </p>,
 ]
 `;
@@ -91,7 +91,7 @@ Array [
   </p>,
   <hr />,
   <p>
-
+    
   </p>,
 ]
 `;
@@ -99,7 +99,7 @@ Array [
 exports[`documentToReactComponents renders hyperlink 1`] = `
 Array [
   <p>
-    Some text
+    Some text 
     <a
       href="https://url.org"
     >
@@ -244,7 +244,7 @@ Array [
     </li>
   </ol>,
   <p>
-
+    
   </p>,
 ]
 `;
@@ -346,7 +346,7 @@ Array [
     </li>
   </ul>,
   <p>
-
+    
   </p>,
 ]
 `;
@@ -358,7 +358,7 @@ Array [
   </p>,
   <hr />,
   <p>
-
+    
   </p>,
 ]
 `;
