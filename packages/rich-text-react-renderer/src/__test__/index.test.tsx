@@ -50,6 +50,10 @@ describe('documentToReactComponents', () => {
       paragraphDoc,
       headingDoc(BLOCKS.HEADING_1),
       headingDoc(BLOCKS.HEADING_2),
+      headingDoc(BLOCKS.HEADING_3),
+      headingDoc(BLOCKS.HEADING_4),
+      headingDoc(BLOCKS.HEADING_5),
+      headingDoc(BLOCKS.HEADING_6),
     ];
 
     docs.forEach((doc) => {
@@ -142,7 +146,7 @@ describe('documentToReactComponents', () => {
   it('renders default resource block', () => {
     const resourceSys: ResourceLink = {
       sys: {
-        urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/entries/9mpxT4zsRi6Iwukey8KeM',
+        urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM',
         type: 'ResourceLink',
         linkType: 'Contentful:Entry',
       },
@@ -217,12 +221,26 @@ describe('documentToReactComponents', () => {
       target: {
         sys: {
           id: '9mpxT4zsRi6Iwukey8KeM',
-          link: 'Link',
-          type: 'Entry',
+          type: 'Link',
+          linkType: 'Entry',
         },
       },
     };
     const document: Document = inlineEntityDoc(entry, INLINES.ENTRY_HYPERLINK);
+
+    expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+  it('renders resource hyperlink', () => {
+    const entry = {
+      target: {
+        sys: {
+          urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM',
+          type: 'Link',
+          linkType: 'Entry',
+        },
+      },
+    };
+    const document: Document = inlineEntityDoc(entry, INLINES.RESOURCE_HYPERLINK);
 
     expect(documentToReactComponents(document)).toMatchSnapshot();
   });
@@ -231,12 +249,26 @@ describe('documentToReactComponents', () => {
       target: {
         sys: {
           id: '9mpxT4zsRi6Iwukey8KeM',
-          link: 'Link',
-          type: 'Entry',
+          type: 'Link',
+          linkType: 'Entry',
         },
       },
     };
     const document: Document = inlineEntityDoc(entry, INLINES.EMBEDDED_ENTRY);
+
+    expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+  it('renders embedded resource', () => {
+    const entry = {
+      target: {
+        sys: {
+          urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM',
+          type: 'ResourceLink',
+          linkType: 'Contentful:Entry',
+        },
+      },
+    };
+    const document: Document = inlineEntityDoc(entry, INLINES.EMBEDDED_RESOURCE);
 
     expect(documentToReactComponents(document)).toMatchSnapshot();
   });

@@ -163,9 +163,11 @@ The `renderNode` keys should be one of the following `BLOCKS` and `INLINES` prop
 
 - `INLINES`
   - `EMBEDDED_ENTRY` (this is different from the `BLOCKS.EMBEDDED_ENTRY`)
+  - `EMBEDDED_RESOURCE`
   - `HYPERLINK`
   - `ENTRY_HYPERLINK`
   - `ASSET_HYPERLINK`
+  - `RESOURCE_HYPERLINK`
 
 The `renderMark` keys should be one of the following `MARKS` properties as defined in [`@contentful/rich-text-types`](https://www.npmjs.com/package/@contentful/rich-text-types):
 
