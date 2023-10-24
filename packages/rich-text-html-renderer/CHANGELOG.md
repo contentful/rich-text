@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.3.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@16.2.0...@contentful/rich-text-html-renderer@16.3.0) (2023-10-24)
+
+### Features
+
+- add default renderers for new resource nodes ([#504](https://github.com/contentful/rich-text/issues/504)) ([f748e6b](https://github.com/contentful/rich-text/commit/f748e6b0f0e22ce3809ca8881438b84b1baafb8f))
+
 # [16.2.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@16.1.2...@contentful/rich-text-html-renderer@16.2.0) (2023-10-02)
 
 ### Features
