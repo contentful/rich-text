@@ -61,6 +61,21 @@ Array [
 ]
 `;
 
+exports[`documentToReactComponents renders embedded resource 1`] = `
+Array [
+  <p>
+    
+    <span>
+      type: 
+      embedded-resource-inline
+       urn: 
+      crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM
+    </span>
+    
+  </p>,
+]
+`;
+
 exports[`documentToReactComponents renders empty node if type is not recognized 1`] = `
 Array [
   <React.Fragment>
@@ -218,6 +233,38 @@ Array [
 ]
 `;
 
+exports[`documentToReactComponents renders nodes with default node renderer 4`] = `
+Array [
+  <h3>
+    hello world
+  </h3>,
+]
+`;
+
+exports[`documentToReactComponents renders nodes with default node renderer 5`] = `
+Array [
+  <h4>
+    hello world
+  </h4>,
+]
+`;
+
+exports[`documentToReactComponents renders nodes with default node renderer 6`] = `
+Array [
+  <h5>
+    hello world
+  </h5>,
+]
+`;
+
+exports[`documentToReactComponents renders nodes with default node renderer 7`] = `
+Array [
+  <h6>
+    hello world
+  </h6>,
+]
+`;
+
 exports[`documentToReactComponents renders nodes with passed custom node renderer 1`] = `
 <Document>
   <Paragraph>
@@ -244,6 +291,21 @@ Array [
     </li>
   </ol>,
   <p>
+    
+  </p>,
+]
+`;
+
+exports[`documentToReactComponents renders resource hyperlink 1`] = `
+Array [
+  <p>
+    
+    <span>
+      type: 
+      resource-hyperlink
+       urn: 
+      crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM
+    </span>
     
   </p>,
 ]
