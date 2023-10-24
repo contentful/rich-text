@@ -203,7 +203,7 @@ describe('documentToHtmlString', () => {
   it('renders default resource link block', () => {
     const resourceLink: ResourceLink = {
       sys: {
-        urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/entries/9mpxT4zsRi6Iwukey8KeM',
+        urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM',
         type: 'ResourceLink',
         linkType: 'Contentful:Entry',
       },
@@ -298,8 +298,8 @@ describe('documentToHtmlString', () => {
       target: {
         sys: {
           id: '9mpxT4zsRi6Iwukey8KeM',
-          link: 'Link',
-          type: 'Asset',
+          type: 'Link',
+          linkType: 'Asset',
         },
       },
     };
@@ -314,8 +314,8 @@ describe('documentToHtmlString', () => {
       target: {
         sys: {
           id: '9mpxT4zsRi6Iwukey8KeM',
-          link: 'Link',
-          type: 'Entry',
+          type: 'Link',
+          linkType: 'Entry',
         },
       },
     };
@@ -325,18 +325,50 @@ describe('documentToHtmlString', () => {
     expect(documentToHtmlString(document)).toEqual(expected);
   });
 
+  it('renders resource hyperlink', () => {
+    const entry = {
+      target: {
+        sys: {
+          urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM',
+          type: 'ResourceLink',
+          linkType: 'Contentful:Entry',
+        },
+      },
+    };
+    const document: Document = inlineEntity(entry, INLINES.RESOURCE_HYPERLINK);
+    const expected = `<p><span>type: ${INLINES.RESOURCE_HYPERLINK} urn: ${entry.target.sys.urn}</span></p>`;
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
   it('renders embedded entry', () => {
     const entry = {
       target: {
         sys: {
           id: '9mpxT4zsRi6Iwukey8KeM',
-          link: 'Link',
-          type: 'Entry',
+          type: 'Link',
+          linkType: 'Entry',
         },
       },
     };
     const document: Document = inlineEntity(entry, INLINES.EMBEDDED_ENTRY);
     const expected = `<p><span>type: ${INLINES.EMBEDDED_ENTRY} id: ${entry.target.sys.id}</span></p>`;
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders embedded resource', () => {
+    const entry = {
+      target: {
+        sys: {
+          urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM',
+          type: 'Link',
+          linkType: 'Contentful:Entry',
+        },
+      },
+    };
+    const document: Document = inlineEntity(entry, INLINES.EMBEDDED_RESOURCE);
+    const expected = `<p><span>type: ${INLINES.EMBEDDED_RESOURCE} urn: ${entry.target.sys.urn}</span></p>`;
 
     expect(documentToHtmlString(document)).toEqual(expected);
   });

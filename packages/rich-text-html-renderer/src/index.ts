@@ -34,7 +34,11 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.TABLE_CELL]: (node, next) => `<td>${next(node.content)}</td>`,
   [INLINES.ASSET_HYPERLINK]: (node) => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
   [INLINES.ENTRY_HYPERLINK]: (node) => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
+  [INLINES.RESOURCE_HYPERLINK]: (node) =>
+    defaultInlineResource(INLINES.RESOURCE_HYPERLINK, node as Inline),
   [INLINES.EMBEDDED_ENTRY]: (node) => defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
+  [INLINES.EMBEDDED_RESOURCE]: (node) =>
+    defaultInlineResource(INLINES.EMBEDDED_RESOURCE, node as Inline),
   [INLINES.HYPERLINK]: (node, next) => {
     const href = typeof node.data.uri === 'string' ? node.data.uri : '';
     return `<a href=${attributeValue(href)}>${next(node.content)}</a>`;
@@ -52,6 +56,9 @@ const defaultMarkRenderers: RenderMark = {
 
 const defaultInline = (type: string, node: Inline) =>
   `<span>type: ${escape(type)} id: ${escape(node.data.target.sys.id)}</span>`;
+
+const defaultInlineResource = (type: string, node: Inline) =>
+  `<span>type: ${escape(type)} urn: ${escape(node.data.target.sys.urn)}</span>`;
 
 export type CommonNode = Text | Block | Inline;
 
