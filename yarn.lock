@@ -1885,10 +1885,10 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/benchmark@^1.0.33":
-  version "1.0.33"
-  resolved "https://registry.npmjs.org/@types/benchmark/-/benchmark-1.0.33.tgz"
-  integrity sha512-rG7Ieasa9UfZJnL72qiFvY9ivhEIYjCGgfcLLb5tJ/EL9+Mcxernj6W3HVCv/cOfJYuwNUwvVVhnrKl8iT8aqA==
+"@types/benchmark@^2.1.4":
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@types/benchmark/-/benchmark-2.1.4.tgz#74f331a07ca5a07a14409ccae7e8072775974361"
+  integrity sha512-rVCCileCU5NhP9Ix1e03sIn4gd0mpjh7VNULVQAxzF+9vddk6A5QAHzp2h5kXH8pkv1Ow45fUf3QP3wOEiISvA==
 
 "@types/escape-html@^0.0.20":
   version "0.0.20"
