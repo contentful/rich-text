@@ -36,6 +36,7 @@ Text documents.
 - [Rich Text Concept](https://www.contentful.com/developers/docs/concepts/rich-text/)
 - [Getting Started](https://www.contentful.com/developers/docs/tutorials/general/getting-started-with-rich-text-field-type/)
 - [Migrate content to Rich Text](https://www.contentful.com/developers/docs/tutorials/general/migrate-to-rich-text/)
+- [Rich Text and Gatsby](https://www.contentful.com/developers/docs/tutorials/general/rich-text-and-gatsby/)
 
 ## Get involved
 
