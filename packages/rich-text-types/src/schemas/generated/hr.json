@@ -71,8 +71,10 @@
       "enum": [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
-        "hyperlink"
+        "hyperlink",
+        "resource-hyperlink"
       ],
       "type": "string"
     },

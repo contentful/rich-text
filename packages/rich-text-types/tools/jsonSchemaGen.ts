@@ -64,7 +64,9 @@ const inlineSymbolsMap = new Map([
   [INLINES.HYPERLINK, 'Hyperlink'],
   [INLINES.ENTRY_HYPERLINK, 'EntryHyperlink'],
   [INLINES.ASSET_HYPERLINK, 'AssetHyperlink'],
+  [INLINES.RESOURCE_HYPERLINK, 'ResourceHyperlink'],
   [INLINES.EMBEDDED_ENTRY, 'EntryLinkInline'],
+  [INLINES.EMBEDDED_RESOURCE, 'ResourceLinkInline'],
 ]);
 
 Object.values(BLOCKS).forEach((nodeType) => {
