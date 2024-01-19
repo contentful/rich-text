@@ -140,11 +140,20 @@ const buildTableCell = async (
 ): Promise<Array<Block>> => {
   const nodeChildren = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
 
-  const content = nodeChildren.map((contentNode) => ({
-    nodeType: BLOCKS.PARAGRAPH,
-    data: {},
-    content: [contentNode],
-  }));
+  const content = nodeChildren.reduce((result, contentNode) => {
+    if (isText(contentNode.nodeType) || isInline(contentNode.nodeType)) {
+      const lastNode = result[result.length - 1];
+      if (lastNode && lastNode.nodeType === BLOCKS.PARAGRAPH) {
+        lastNode.content.push(contentNode);
+      } else {
+        result.push({ nodeType: BLOCKS.PARAGRAPH, data: {}, content: [contentNode] });
+      }
+    } else {
+      result.push(contentNode);
+    }
+
+    return result;
+  }, []);
 
   // A table cell can't be empty
   if (content.length === 0) {
@@ -328,6 +337,7 @@ function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
 // so we must hoist them out before transforming to rich text.
 function prepareMdAST(ast: MarkdownTree): MarkdownNode {
   function prepareASTNodeChildren(node: MarkdownNode): MarkdownNode {
+    console.log({ node: JSON.stringify(node, null, 2) });
     if (!node.children) {
       return node;
     }
@@ -357,6 +367,7 @@ export async function richTextFromMarkdown(
 ): Promise<Document> {
   const processor = unified().use(markdown).use(gfm);
   const tree = processor.parse(md);
+  // console.log({tree: JSON.stringify(tree, null, 2)});
   // @ts-expect-error children is missing in the return type of processor.parse
   const ast = prepareMdAST(tree);
   return await astToRichTextDocument(ast, fallback);
