@@ -337,7 +337,6 @@ function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
 // so we must hoist them out before transforming to rich text.
 function prepareMdAST(ast: MarkdownTree): MarkdownNode {
   function prepareASTNodeChildren(node: MarkdownNode): MarkdownNode {
-    console.log({ node: JSON.stringify(node, null, 2) });
     if (!node.children) {
       return node;
     }
@@ -367,7 +366,6 @@ export async function richTextFromMarkdown(
 ): Promise<Document> {
   const processor = unified().use(markdown).use(gfm);
   const tree = processor.parse(md);
-  // console.log({tree: JSON.stringify(tree, null, 2)});
   // @ts-expect-error children is missing in the return type of processor.parse
   const ast = prepareMdAST(tree);
   return await astToRichTextDocument(ast, fallback);
