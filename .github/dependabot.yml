@@ -26,5 +26,6 @@ updates:
       prefix: chore
     registries:
       - npm-registry-registry-npmjs-org
+      - npm-github
     reviewers:
       - 'contentful/team-tolkien'
