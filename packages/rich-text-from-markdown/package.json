@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-from-markdown",
-  "version": "15.16.8",
+  "version": "15.16.9",
   "description": "convert markdown to rich text",
   "keywords": [
     "rich-text",
@@ -24,7 +24,8 @@
     "url": "git+https://github.com/contentful/rich-text.git"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "prebuild": "rimraf dist",

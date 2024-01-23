@@ -140,11 +140,20 @@ const buildTableCell = async (
 ): Promise<Array<Block>> => {
   const nodeChildren = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
 
-  const content = nodeChildren.map((contentNode) => ({
-    nodeType: BLOCKS.PARAGRAPH,
-    data: {},
-    content: [contentNode],
-  }));
+  const content = nodeChildren.reduce((result, contentNode) => {
+    if (isText(contentNode.nodeType) || isInline(contentNode.nodeType)) {
+      const lastNode = result[result.length - 1];
+      if (lastNode && lastNode.nodeType === BLOCKS.PARAGRAPH) {
+        lastNode.content.push(contentNode);
+      } else {
+        result.push({ nodeType: BLOCKS.PARAGRAPH, data: {}, content: [contentNode] });
+      }
+    } else {
+      result.push(contentNode);
+    }
+
+    return result;
+  }, []);
 
   // A table cell can't be empty
   if (content.length === 0) {
