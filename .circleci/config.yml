@@ -54,7 +54,7 @@ jobs:
     steps:
       - checkout
       - vault/get-secrets:
-          template-preset: semantic-release-ecosystem
+          template-preset: semantic-release
       - run: git config --global user.email $GIT_COMMITTER_EMAIL
       - run: git config --global user.name $GIT_COMMITTER_NAME
       - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
