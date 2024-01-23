@@ -1,6 +1,6 @@
 {
   "name": "@contentful/contentful-slatejs-adapter",
-  "version": "15.16.9",
+  "version": "15.16.10",
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
@@ -28,7 +28,7 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.3.1"
+    "@contentful/rich-text-types": "^16.3.2"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
