@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.3.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.3.0...@contentful/rich-text-types@16.3.1) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-types
+
 # [16.3.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.2.1...@contentful/rich-text-types@16.3.0) (2023-09-12)
 
 ### Features
