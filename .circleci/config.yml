@@ -58,7 +58,9 @@ jobs:
       - run: git config --global user.email $GIT_COMMITTER_EMAIL
       - run: git config --global user.name $GIT_COMMITTER_NAME
       - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-      - use_npm_token
+      - run: |
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_WRITE_TOKEN}" > ~/.npmrc
+          echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
       - yarn_install
       - run: yarn build
       - run: yarn lerna:version
