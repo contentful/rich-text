@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.16.9](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.8...@contentful/rich-text-from-markdown@15.16.9) (2024-01-22)
+
+### Bug Fixes
+
+- [] Wrap inline nodes inside of a table cell in paragraph node ([#520](https://github.com/contentful/rich-text/issues/520)) ([6290f7d](https://github.com/contentful/rich-text/commit/6290f7dcae96c279d97e88ad65c42a080778fe73))
+
 ## [15.16.8](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.7...@contentful/rich-text-from-markdown@15.16.8) (2023-09-12)
 
 **Note:** Version bump only for package @contentful/rich-text-from-markdown
