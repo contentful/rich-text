@@ -18,7 +18,9 @@ cache-key: &cache-key
 commands:
   use_npm_token:
     steps:
-      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+      - run: |
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_READ_TOKEN}" > ~/.npmrc
+          echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
 
   yarn_install:
     steps:
@@ -37,7 +39,7 @@ jobs:
     steps:
       - checkout
       - vault/get-secrets:
-          template-preset: npm-read
+          template-preset: packages-read
       - yarn_install
       - run: yarn build
       - run: yarn lint
@@ -52,11 +54,13 @@ jobs:
     steps:
       - checkout
       - vault/get-secrets:
-          template-preset: semantic-release-ecosystem
+          template-preset: semantic-release
       - run: git config --global user.email $GIT_COMMITTER_EMAIL
       - run: git config --global user.name $GIT_COMMITTER_NAME
       - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-      - use_npm_token
+      - run: |
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_WRITE_TOKEN}" > ~/.npmrc
+          echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
       - yarn_install
       - run: yarn build
       - run: yarn lerna:version
@@ -67,7 +71,7 @@ jobs:
     steps:
       - checkout
       - vault/get-secrets:
-          template-preset: npm-read
+          template-preset: packages-read
       - vault/get-secrets:
           template-preset: github-comment
       - use_npm_token
