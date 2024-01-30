@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.0.11](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.10...@contentful/rich-text-plain-text-renderer@16.0.11) (2024-01-30)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
 ## [16.0.10](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.9...@contentful/rich-text-plain-text-renderer@16.0.10) (2024-01-23)
 
 **Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
