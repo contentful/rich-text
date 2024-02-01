@@ -1,7 +1,6 @@
 # rich-text
 
-Monorepo with Typescript libraries for handling and rendering Contentful Rich
-Text documents.
+Monorepo with Typescript libraries for handling and rendering Contentful Rich Text documents.
 
 ## Packages
 
@@ -21,6 +20,8 @@ Text documents.
   - Parses a Contentful Rich Text document to HTML in Gatsby
 - [`rich-text-react-renderer`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-react-renderer)
   - Parses a Contentful Rich Text document to React components
+- [`rich-text-markdown-renderer`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-markdown-renderer)
+  - Parses a Contentful Rich Text document to Markdown
 
 ### Community made
 
