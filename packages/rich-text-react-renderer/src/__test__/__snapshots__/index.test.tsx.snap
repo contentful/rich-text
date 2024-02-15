@@ -497,7 +497,7 @@ Array [
 exports[`preserveWhitespace preserves spaces between words 1`] = `
 Array [
   <p>
-    hello&nbsp;&nbsp;&nbsp;&nbsp;world
+    hello    world
   </p>,
 ]
 `;
