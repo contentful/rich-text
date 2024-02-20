@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.5.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.3...@contentful/rich-text-links@16.5.4) (2024-01-30)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.2...@contentful/rich-text-links@16.5.3) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.1...@contentful/rich-text-links@16.5.2) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.0...@contentful/rich-text-links@16.5.1) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
 # [16.5.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.4.1...@contentful/rich-text-links@16.5.0) (2023-09-12)
 
 ### Features

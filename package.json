@@ -9,7 +9,7 @@
     "url": "https://github.com/contentful/rich-text.git"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "scripts": {
     "benchmark": "ts-node -O '{\"module\": \"commonjs\"}' bin/benchmark",
@@ -21,7 +21,6 @@
     "prettier": "prettier './**/*.{js,jsx,ts,tsx,md,mdx}' --write",
     "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
     "prebuild": "lerna run prebuild",
-    "lerna:version": "lerna version --no-private --conventional-commits --create-release github --yes",
     "start": "lerna run start",
     "test": "lerna run test",
     "prepare": "husky install"
@@ -61,12 +60,12 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^4.2.4",
     "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-typescript2": "^0.35.0",
-    "ts-jest": "^27.0.5",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-jest": "^29.1.2",
     "ts-node": "^8.10.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^4.4.2",
+    "typescript": "^5.3.2",
     "jest-junit": "15.0.0"
   },
   "dependencies": {}
