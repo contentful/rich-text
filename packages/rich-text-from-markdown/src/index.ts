@@ -140,6 +140,11 @@ const buildTableCell = async (
 ): Promise<Array<Block>> => {
   const nodeChildren = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
 
+  const breakChild = node.children.find((child) => child.value?.includes('br'));
+  if (breakChild) {
+    console.log('HEY', { breakChild, nodeChildren, children: node.children });
+  }
+
   const content = nodeChildren.reduce((result, contentNode) => {
     if (isText(contentNode.nodeType) || isInline(contentNode.nodeType)) {
       const lastNode = result[result.length - 1];
@@ -232,6 +237,13 @@ async function mdToRichTextNode(
   fallback: FallbackResolver,
   appliedMarksTypes: string[] = [],
 ): Promise<Node[]> {
+  // By default <br/> is parsed as html node, causing it to be stripped out.
+  // We need to convert it manually in order to support it
+  if (node.type === 'html' && node.value === '<br/>') {
+    node.value = '\n';
+    node.type = 'text';
+  }
+
   const nodeType = nodeTypeFor(node);
 
   if (isLink(node)) {
