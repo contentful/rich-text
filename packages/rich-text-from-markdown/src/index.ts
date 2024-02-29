@@ -140,11 +140,6 @@ const buildTableCell = async (
 ): Promise<Array<Block>> => {
   const nodeChildren = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
 
-  const breakChild = node.children.find((child) => child.value?.includes('br'));
-  if (breakChild) {
-    console.log('HEY', { breakChild, nodeChildren, children: node.children });
-  }
-
   const content = nodeChildren.reduce((result, contentNode) => {
     if (isText(contentNode.nodeType) || isInline(contentNode.nodeType)) {
       const lastNode = result[result.length - 1];
