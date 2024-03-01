@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.5.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.3...@contentful/rich-text-links@16.5.4) (2024-01-30)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.2...@contentful/rich-text-links@16.5.3) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.1...@contentful/rich-text-links@16.5.2) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.0...@contentful/rich-text-links@16.5.1) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+# [16.5.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.4.1...@contentful/rich-text-links@16.5.0) (2023-09-12)
+
+### Features
+
+- add new nodes [DANTE-1157] ([#494](https://github.com/contentful/rich-text/issues/494)) ([b1fa6df](https://github.com/contentful/rich-text/commit/b1fa6dffc4bd7e1d367e9ce2cfddffe4fe07be47))
+
+## [16.4.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.4.0...@contentful/rich-text-links@16.4.1) (2023-08-04)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+# [16.4.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.3.0...@contentful/rich-text-links@16.4.0) (2023-07-10)
+
+### Features
+
+- allow document parameter to be nullable ([#471](https://github.com/contentful/rich-text/issues/471)) ([e50f8d2](https://github.com/contentful/rich-text/commit/e50f8d24c60a74f43f84f415a5c393038919efd2))
+
 # [16.3.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.2.0...@contentful/rich-text-links@16.3.0) (2023-06-09)
 
 ### Features
