@@ -234,7 +234,7 @@ async function mdToRichTextNode(
 ): Promise<Node[]> {
   // By default <br/> is parsed as html node, causing it to be stripped out.
   // We need to convert it manually in order to support it
-  if (node.type === 'html' && node.value.match(/<br\s?\/?>/g)) {
+  if (node.type === 'html' && /<br\s?\/?>/gi.test(node.value)) {
     node.value = '\n';
     node.type = 'text';
   }
