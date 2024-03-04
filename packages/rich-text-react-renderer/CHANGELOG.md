@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.19.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.19.4...@contentful/rich-text-react-renderer@15.19.5) (2024-03-04)
+
+### Bug Fixes
+
+- 🐛 handle multiple space rendering when using preserveWhitespace ([#531](https://github.com/contentful/rich-text/issues/531)) ([982b21b](https://github.com/contentful/rich-text/commit/982b21b13736d8b1dcdb652b4eb41c7ab279ee33)), closes [#514](https://github.com/contentful/rich-text/issues/514)
+
 ## [15.19.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.19.3...@contentful/rich-text-react-renderer@15.19.4) (2024-01-30)
 
 **Note:** Version bump only for package @contentful/rich-text-react-renderer
