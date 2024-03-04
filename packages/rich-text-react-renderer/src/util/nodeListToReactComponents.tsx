@@ -17,7 +17,7 @@ export function nodeToReactComponent(node: CommonNode, options: Options): ReactN
 
     if (preserveWhitespace) {
       // Preserve multiple spaces.
-      nodeValue = (nodeValue as string).replace(/ {2,}/g, (match) => '&nbsp;'.repeat(match.length));
+      nodeValue = (nodeValue as string).replace(/ {2,}/g, (match) => '\u00A0'.repeat(match.length));
 
       // Preserve line breaks.
       let lines = (nodeValue as string).split('\n');
