@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.3.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.3.4...@contentful/rich-text-types@16.3.5) (2024-03-04)
+
+### Bug Fixes
+
+- 🐛 export MARKS and EMPTY_DOCUMENT as ESM friendly ([#462](https://github.com/contentful/rich-text/issues/462)) ([7ea8ab3](https://github.com/contentful/rich-text/commit/7ea8ab31bcf82242291ff22640869a23b12dde57))
+
 ## [16.3.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.3.3...@contentful/rich-text-types@16.3.4) (2024-01-30)
 
 **Note:** Version bump only for package @contentful/rich-text-types
