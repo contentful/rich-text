@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.0.13](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.12...@contentful/rich-text-plain-text-renderer@16.0.13) (2024-03-06)
+
+### Bug Fixes
+
+- correctly handle edge case [ZEND-4744] ([#541](https://github.com/contentful/rich-text/issues/541)) ([819b07d](https://github.com/contentful/rich-text/commit/819b07da3a00e6d8101e49cb0e678e3a21b4cd93))
+
 ## [16.0.12](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.11...@contentful/rich-text-plain-text-renderer@16.0.12) (2024-03-04)
 
 **Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
