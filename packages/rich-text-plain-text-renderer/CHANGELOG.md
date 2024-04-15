@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.0.13](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.12...@contentful/rich-text-plain-text-renderer@16.0.13) (2024-03-06)
+
+### Bug Fixes
+
+- correctly handle edge case [ZEND-4744] ([#541](https://github.com/contentful/rich-text/issues/541)) ([819b07d](https://github.com/contentful/rich-text/commit/819b07da3a00e6d8101e49cb0e678e3a21b4cd93))
+
+## [16.0.12](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.11...@contentful/rich-text-plain-text-renderer@16.0.12) (2024-03-04)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+## [16.0.11](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.10...@contentful/rich-text-plain-text-renderer@16.0.11) (2024-01-30)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+## [16.0.10](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.9...@contentful/rich-text-plain-text-renderer@16.0.10) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+## [16.0.9](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.8...@contentful/rich-text-plain-text-renderer@16.0.9) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+## [16.0.8](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.7...@contentful/rich-text-plain-text-renderer@16.0.8) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+## [16.0.7](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.6...@contentful/rich-text-plain-text-renderer@16.0.7) (2023-09-12)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+## [16.0.6](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.5...@contentful/rich-text-plain-text-renderer@16.0.6) (2023-08-04)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+## [16.0.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.4...@contentful/rich-text-plain-text-renderer@16.0.5) (2023-05-26)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+## [16.0.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.3...@contentful/rich-text-plain-text-renderer@16.0.4) (2023-05-04)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
 ## [16.0.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.2...@contentful/rich-text-plain-text-renderer@16.0.3) (2023-03-14)
 
 **Note:** Version bump only for package @contentful/rich-text-plain-text-renderer

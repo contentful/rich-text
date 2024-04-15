@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.16.15](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.14...@contentful/rich-text-from-markdown@15.16.15) (2024-03-04)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
+## [15.16.14](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.13...@contentful/rich-text-from-markdown@15.16.14) (2024-03-01)
+
+### Bug Fixes
+
+- support <br/> from markdown ([#536](https://github.com/contentful/rich-text/issues/536)) ([30a3668](https://github.com/contentful/rich-text/commit/30a36685f42c70c98ae4bfb514ba710812ec0824))
+
+## [15.16.13](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.12...@contentful/rich-text-from-markdown@15.16.13) (2024-01-30)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
+## [15.16.12](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.11...@contentful/rich-text-from-markdown@15.16.12) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
+## [15.16.11](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.10...@contentful/rich-text-from-markdown@15.16.11) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
+## [15.16.10](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.9...@contentful/rich-text-from-markdown@15.16.10) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
+## [15.16.9](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.8...@contentful/rich-text-from-markdown@15.16.9) (2024-01-22)
+
+### Bug Fixes
+
+- [] Wrap inline nodes inside of a table cell in paragraph node ([#520](https://github.com/contentful/rich-text/issues/520)) ([6290f7d](https://github.com/contentful/rich-text/commit/6290f7dcae96c279d97e88ad65c42a080778fe73))
+
+## [15.16.8](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.7...@contentful/rich-text-from-markdown@15.16.8) (2023-09-12)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
+## [15.16.7](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.6...@contentful/rich-text-from-markdown@15.16.7) (2023-08-04)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
+## [15.16.6](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.5...@contentful/rich-text-from-markdown@15.16.6) (2023-05-26)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
+## [15.16.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.4...@contentful/rich-text-from-markdown@15.16.5) (2023-05-04)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
 ## [15.16.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.3...@contentful/rich-text-from-markdown@15.16.4) (2023-03-14)
 
 **Note:** Version bump only for package @contentful/rich-text-from-markdown

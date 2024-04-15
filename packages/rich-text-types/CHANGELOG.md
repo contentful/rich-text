@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.3.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.3.4...@contentful/rich-text-types@16.3.5) (2024-03-04)
+
+### Bug Fixes
+
+- 🐛 export MARKS and EMPTY_DOCUMENT as ESM friendly ([#462](https://github.com/contentful/rich-text/issues/462)) ([7ea8ab3](https://github.com/contentful/rich-text/commit/7ea8ab31bcf82242291ff22640869a23b12dde57))
+
+## [16.3.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.3.3...@contentful/rich-text-types@16.3.4) (2024-01-30)
+
+**Note:** Version bump only for package @contentful/rich-text-types
+
+## [16.3.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.3.2...@contentful/rich-text-types@16.3.3) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-types
+
+## [16.3.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.3.1...@contentful/rich-text-types@16.3.2) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-types
+
+## [16.3.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.3.0...@contentful/rich-text-types@16.3.1) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-types
+
+# [16.3.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.2.1...@contentful/rich-text-types@16.3.0) (2023-09-12)
+
+### Features
+
+- add new nodes [DANTE-1157] ([#494](https://github.com/contentful/rich-text/issues/494)) ([b1fa6df](https://github.com/contentful/rich-text/commit/b1fa6dffc4bd7e1d367e9ce2cfddffe4fe07be47))
+
+## [16.2.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.2.0...@contentful/rich-text-types@16.2.1) (2023-08-04)
+
+**Note:** Version bump only for package @contentful/rich-text-types
+
+# [16.2.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.1.0...@contentful/rich-text-types@16.2.0) (2023-05-26)
+
+### Features
+
+- 🎸 add `getRichTextResourceLinks` ([#465](https://github.com/contentful/rich-text/issues/465)) ([5746ba6](https://github.com/contentful/rich-text/commit/5746ba652ae5eac2df27d05193e19aef9e85c438))
+
+# [16.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.0.3...@contentful/rich-text-types@16.1.0) (2023-05-04)
+
+### Features
+
+- add embedded-resource-block to the list of supported block elements ([#461](https://github.com/contentful/rich-text/issues/461)) ([c85fd63](https://github.com/contentful/rich-text/commit/c85fd632d5166bf6a4bd30adbc3ed35668f2e7d5))
+
 ## [16.0.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.0.2...@contentful/rich-text-types@16.0.3) (2023-03-14)
 
 **Note:** Version bump only for package @contentful/rich-text-types

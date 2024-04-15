@@ -56,6 +56,7 @@ Unordered
     * Facilisis in pretium nisl aliquet
     - Nulla volutpat aliquam velit
 - Very easy!
+- Here is a list item<br/>with a line break
 
 Ordered
 
@@ -88,7 +89,7 @@ Inline `code`
 | Test 1                                       | Germany |
 | Test 2                                       | USA     |
 | > Test 3                                     | USA     |
-| * Test 4                                    | Germany |
+| \* Test 4                                    | Germany |
 | # Test 5                                     | Germany |
 | <p>Test 6<br/>Test 7</p>                     | USA     |
 | <ul><li>Test 8</li></ul>                     | USA     |
@@ -109,7 +110,6 @@ Inline `code`
 | abc | def |
 | --- | --- |
 
-
 ## Table with empty cells
 
 |        |        |
@@ -117,4 +117,4 @@ Inline `code`
 | Cell 1 |        |
 |        | Cell 2 |
 
-<!-- prettier-ignore-end -->
+  <!-- prettier-ignore-end -->

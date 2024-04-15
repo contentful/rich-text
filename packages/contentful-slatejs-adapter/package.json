@@ -1,6 +1,6 @@
 {
   "name": "@contentful/contentful-slatejs-adapter",
-  "version": "15.16.4",
+  "version": "15.16.13",
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
@@ -28,7 +28,7 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.0.3"
+    "@contentful/rich-text-types": "^16.3.5"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
@@ -50,12 +50,13 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^4.2.4",
     "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "ts-jest": "^27.0.5",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-jest": "^29.1.2",
     "ts-node": "^6.0.0",
-    "typescript": "^4.4.2"
+    "typescript": "^5.3.2"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   }
 }

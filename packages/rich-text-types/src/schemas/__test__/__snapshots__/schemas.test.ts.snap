@@ -135,8 +135,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -293,6 +295,7 @@ Object {
         "document",
         "embedded-asset-block",
         "embedded-entry-block",
+        "embedded-resource-block",
         "heading-1",
         "heading-2",
         "heading-3",
@@ -375,8 +378,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -494,6 +499,7 @@ Object {
         "blockquote",
         "embedded-asset-block",
         "embedded-entry-block",
+        "embedded-resource-block",
         "heading-1",
         "heading-2",
         "heading-3",
@@ -565,8 +571,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -738,8 +746,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -984,6 +994,307 @@ Object {
 }
 `;
 
+exports[`getSchemaWithNodeType returns json schema for each nodeType: embedded-resource-block 1`] = `
+Object {
+  "$ref": "#/definitions/ResourceLinkBlock",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "INLINES": Object {
+      "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "enum": Array [
+        "asset-hyperlink",
+        "embedded-entry-inline",
+        "embedded-resource-inline",
+        "entry-hyperlink",
+        "hyperlink",
+        "resource-hyperlink",
+      ],
+      "type": "string",
+    },
+    "Inline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "$ref": "#/definitions/NodeData",
+        },
+        "nodeType": Object {
+          "$ref": "#/definitions/INLINES",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "NodeData": Object {
+      "additionalProperties": true,
+      "type": "object",
+    },
+    "ResourceLink": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "sys": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "linkType": Object {
+              "enum": Array [
+                "Contentful:Entry",
+              ],
+              "type": "string",
+            },
+            "type": Object {
+              "enum": Array [
+                "ResourceLink",
+              ],
+              "type": "string",
+            },
+            "urn": Object {
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "linkType",
+            "type",
+            "urn",
+          ],
+          "type": "object",
+        },
+      },
+      "required": Array [
+        "sys",
+      ],
+      "type": "object",
+    },
+    "ResourceLinkBlock": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "anyOf": Array [
+              Object {
+                "$ref": "#/definitions/Inline",
+              },
+              Object {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "maxItems": 0,
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "target": Object {
+              "$ref": "#/definitions/ResourceLink",
+            },
+          },
+          "required": Array [
+            "target",
+          ],
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "embedded-resource-block",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/NodeData",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
+exports[`getSchemaWithNodeType returns json schema for each nodeType: embedded-resource-inline 1`] = `
+Object {
+  "$ref": "#/definitions/ResourceLinkInline",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "NodeData": Object {
+      "additionalProperties": true,
+      "type": "object",
+    },
+    "ResourceLink": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "sys": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "linkType": Object {
+              "enum": Array [
+                "Contentful:Entry",
+              ],
+              "type": "string",
+            },
+            "type": Object {
+              "enum": Array [
+                "ResourceLink",
+              ],
+              "type": "string",
+            },
+            "urn": Object {
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "linkType",
+            "type",
+            "urn",
+          ],
+          "type": "object",
+        },
+      },
+      "required": Array [
+        "sys",
+      ],
+      "type": "object",
+    },
+    "ResourceLinkInline": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Text",
+          },
+          "maxItems": 0,
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "target": Object {
+              "$ref": "#/definitions/ResourceLink",
+            },
+          },
+          "required": Array [
+            "target",
+          ],
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "embedded-resource-inline",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/NodeData",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
 exports[`getSchemaWithNodeType returns json schema for each nodeType: entry-hyperlink 1`] = `
 Object {
   "$ref": "#/definitions/EntryHyperlink",
@@ -1153,8 +1464,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -1282,8 +1595,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -1411,8 +1726,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -1540,8 +1857,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -1669,8 +1988,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -1798,8 +2119,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -1928,8 +2251,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -2115,6 +2440,7 @@ Object {
         "document",
         "embedded-asset-block",
         "embedded-entry-block",
+        "embedded-resource-block",
         "heading-1",
         "heading-2",
         "heading-3",
@@ -2171,8 +2497,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -2271,6 +2599,7 @@ Object {
         "blockquote",
         "embedded-asset-block",
         "embedded-entry-block",
+        "embedded-resource-block",
         "heading-1",
         "heading-2",
         "heading-3",
@@ -2346,6 +2675,7 @@ Object {
         "document",
         "embedded-asset-block",
         "embedded-entry-block",
+        "embedded-resource-block",
         "heading-1",
         "heading-2",
         "heading-3",
@@ -2402,8 +2732,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -2502,6 +2834,7 @@ Object {
         "blockquote",
         "embedded-asset-block",
         "embedded-entry-block",
+        "embedded-resource-block",
         "heading-1",
         "heading-2",
         "heading-3",
@@ -2602,8 +2935,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -2721,6 +3056,131 @@ Object {
 }
 `;
 
+exports[`getSchemaWithNodeType returns json schema for each nodeType: resource-hyperlink 1`] = `
+Object {
+  "$ref": "#/definitions/ResourceHyperlink",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": Object {
+    "Mark": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "type",
+      ],
+      "type": "object",
+    },
+    "NodeData": Object {
+      "additionalProperties": true,
+      "type": "object",
+    },
+    "ResourceHyperlink": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "content": Object {
+          "items": Object {
+            "$ref": "#/definitions/Text",
+          },
+          "type": "array",
+        },
+        "data": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "target": Object {
+              "$ref": "#/definitions/ResourceLink",
+            },
+          },
+          "required": Array [
+            "target",
+          ],
+          "type": "object",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "resource-hyperlink",
+          ],
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ResourceLink": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "sys": Object {
+          "additionalProperties": false,
+          "properties": Object {
+            "linkType": Object {
+              "enum": Array [
+                "Contentful:Entry",
+              ],
+              "type": "string",
+            },
+            "type": Object {
+              "enum": Array [
+                "ResourceLink",
+              ],
+              "type": "string",
+            },
+            "urn": Object {
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "linkType",
+            "type",
+            "urn",
+          ],
+          "type": "object",
+        },
+      },
+      "required": Array [
+        "sys",
+      ],
+      "type": "object",
+    },
+    "Text": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "data": Object {
+          "$ref": "#/definitions/NodeData",
+        },
+        "marks": Object {
+          "items": Object {
+            "$ref": "#/definitions/Mark",
+          },
+          "type": "array",
+        },
+        "nodeType": Object {
+          "enum": Array [
+            "text",
+          ],
+          "type": "string",
+        },
+        "value": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "data",
+        "marks",
+        "nodeType",
+        "value",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;
+
 exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] = `
 Object {
   "$ref": "#/definitions/Table",
@@ -2731,8 +3191,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -2953,8 +3415,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -3119,8 +3583,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -3284,8 +3750,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -3535,6 +4003,7 @@ Object {
         "document",
         "embedded-asset-block",
         "embedded-entry-block",
+        "embedded-resource-block",
         "heading-1",
         "heading-2",
         "heading-3",
@@ -3591,8 +4060,10 @@ Object {
       "enum": Array [
         "asset-hyperlink",
         "embedded-entry-inline",
+        "embedded-resource-inline",
         "entry-hyperlink",
         "hyperlink",
+        "resource-hyperlink",
       ],
       "type": "string",
     },
@@ -3691,6 +4162,7 @@ Object {
         "blockquote",
         "embedded-asset-block",
         "embedded-entry-block",
+        "embedded-resource-block",
         "heading-1",
         "heading-2",
         "heading-3",
