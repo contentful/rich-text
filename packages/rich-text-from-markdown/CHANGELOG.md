@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.17.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.15...@contentful/rich-text-from-markdown@15.17.0) (2024-05-22)
+
+### Features
+
+- upgrading rollup to latest version [TOL-2097] ([#559](https://github.com/contentful/rich-text/issues/559)) ([f14d197](https://github.com/contentful/rich-text/commit/f14d1974590d58f92bbf4cb56644095dba929ad9))
+
 ## [15.16.15](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.16.14...@contentful/rich-text-from-markdown@15.16.15) (2024-03-04)
 
 **Note:** Version bump only for package @contentful/rich-text-from-markdown
