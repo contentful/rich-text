@@ -20,8 +20,8 @@
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc && rollup -c rollup.config.ts",
-    "start": "rollup -c rollup.config.ts -w",
+    "build": "tsc && rollup -c --bundleConfigAsCjs rollup.config.ts",
+    "start": "rollup -c --bundleConfigAsCjs rollup.config.ts -w",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:prod": "yarn test -- --coverage --no-cache",
