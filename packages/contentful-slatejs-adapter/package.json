@@ -1,6 +1,6 @@
 {
   "name": "@contentful/contentful-slatejs-adapter",
-  "version": "15.16.13",
+  "version": "15.16.14",
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
@@ -42,7 +42,6 @@
     "jest": "^27.1.0",
     "lodash.camelcase": "^4.3.0",
     "prompt": "^1.0.0",
-    "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",
     "ts-jest": "^29.1.2",
     "ts-node": "^6.0.0",
