@@ -35,7 +35,7 @@
     "@types/node": "^10.0.3",
     "colors": "^1.1.2",
     "coveralls": "^3.0.0",
-    "cross-env": "^5.0.1",
+    "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^2.0.0",
     "faker": "^4.1.0",
     "lodash.camelcase": "^4.3.0",
