@@ -32,7 +32,6 @@
   "devDependencies": {
     "@types/escape-html": "^0.0.20",
     "@types/lodash.clonedeep": "^4.5.6",
-    "jest": "^27.1.0",
     "lodash.clonedeep": "^4.5.0",
     "rimraf": "^2.6.3",
     "ts-jest": "^29.1.2",
