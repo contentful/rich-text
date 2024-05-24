@@ -1,7 +1,7 @@
 /**
  * Map of all Contentful marks.
  */
-enum MARKS {
+export enum MARKS {
   BOLD = 'bold',
   ITALIC = 'italic',
   UNDERLINE = 'underline',
@@ -9,5 +9,3 @@ enum MARKS {
   SUPERSCRIPT = 'superscript',
   SUBSCRIPT = 'subscript',
 }
-
-export default MARKS;

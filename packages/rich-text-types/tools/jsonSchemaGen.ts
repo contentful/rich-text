@@ -53,6 +53,7 @@ const blockSymbolsMap = new Map([
   [BLOCKS.QUOTE, 'Quote'],
   [BLOCKS.EMBEDDED_ENTRY, 'EntryLinkBlock'],
   [BLOCKS.EMBEDDED_ASSET, 'AssetLinkBlock'],
+  [BLOCKS.EMBEDDED_RESOURCE, 'ResourceLinkBlock'],
   [BLOCKS.TABLE, 'Table'],
   [BLOCKS.TABLE_ROW, 'TableRow'],
   [BLOCKS.TABLE_CELL, 'TableCell'],
@@ -63,7 +64,9 @@ const inlineSymbolsMap = new Map([
   [INLINES.HYPERLINK, 'Hyperlink'],
   [INLINES.ENTRY_HYPERLINK, 'EntryHyperlink'],
   [INLINES.ASSET_HYPERLINK, 'AssetHyperlink'],
+  [INLINES.RESOURCE_HYPERLINK, 'ResourceHyperlink'],
   [INLINES.EMBEDDED_ENTRY, 'EntryLinkInline'],
+  [INLINES.EMBEDDED_RESOURCE, 'ResourceLinkInline'],
 ]);
 
 Object.values(BLOCKS).forEach((nodeType) => {
