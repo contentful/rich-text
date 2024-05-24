@@ -177,6 +177,7 @@ The `renderMark` keys should be one of the following `MARKS` properties as defin
 - `CODE`
 - `SUPERSCRIPT`
 - `SUBSCRIPT`
+- `STRIKETHROUGH`
 
 #### Preserving Whitespace
 
