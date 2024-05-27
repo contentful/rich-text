@@ -1,0 +1,929 @@
+{
+  "version": "6.0",
+  "nxVersion": "19.0.5",
+  "deps": {
+    "@types/rollup-plugin-json": "^3.0.7",
+    "@commitlint/cli": "19.0.3",
+    "@commitlint/config-conventional": "17.4.2",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "@types/benchmark": "^2.1.4",
+    "@types/faker": "^4.1.12",
+    "@types/jest": "^27.0.1",
+    "benchmark": "^2.1.4",
+    "commitizen": "4.3.0",
+    "git-cz": "^4.9.0",
+    "husky": "^8.0.0",
+    "lerna": "8.1.3",
+    "jest": "29.7.0",
+    "lint-staged": "13.0.3",
+    "prettier": "^2.7.1",
+    "rollup": "^4.18.0",
+    "rollup-plugin-copy": "3.5.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "10.9.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^5.3.2",
+    "jest-junit": "16.0.0"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "@contentful/rich-text-links": [
+        {
+          "file": "packages/rich-text-links/CHANGELOG.md",
+          "hash": "2344332966731903881"
+        },
+        {
+          "file": "packages/rich-text-links/README.md",
+          "hash": "9064940603199553003"
+        },
+        {
+          "file": "packages/rich-text-links/bin/benchmark/get-rich-text-entity-links.ts",
+          "hash": "15679801175177442800"
+        },
+        {
+          "file": "packages/rich-text-links/bin/tsconfig.json",
+          "hash": "14360190479351705783"
+        },
+        {
+          "file": "packages/rich-text-links/bin/tslint.json",
+          "hash": "5076118927504436358"
+        },
+        {
+          "file": "packages/rich-text-links/jest.config.js",
+          "hash": "8854657863628472056"
+        },
+        {
+          "file": "packages/rich-text-links/package.json",
+          "hash": "7882674311136271221",
+          "deps": [
+            "@contentful/rich-text-types",
+            "npm:rimraf",
+            "npm:ts-jest",
+            "npm:tslint",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/rich-text-links/rollup.config.js",
+          "hash": "5662419146510942977"
+        },
+        {
+          "file": "packages/rich-text-links/src/__test__/index.test.ts",
+          "hash": "6573743841560488562"
+        },
+        {
+          "file": "packages/rich-text-links/src/index.ts",
+          "hash": "16191340075804306446"
+        },
+        {
+          "file": "packages/rich-text-links/src/types/utils.ts",
+          "hash": "9763071460277404300"
+        },
+        {
+          "file": "packages/rich-text-links/tsconfig.json",
+          "hash": "16775238803598606270"
+        }
+      ],
+      "@contentful/contentful-slatejs-adapter": [
+        {
+          "file": "packages/contentful-slatejs-adapter/.editorconfig",
+          "hash": "3805755279423922737"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/.gitignore",
+          "hash": "14021641348242919492"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/CHANGELOG.md",
+          "hash": "9248314740387133315"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/README.md",
+          "hash": "3932760653725518061"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/jest.config.js",
+          "hash": "8854657863628472056"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/package.json",
+          "hash": "15698926821397458273",
+          "deps": [
+            "@contentful/rich-text-types",
+            "npm:@types/jest",
+            "npm:@types/node",
+            "npm:colors",
+            "npm:coveralls",
+            "npm:cross-env",
+            "npm:cz-conventional-changelog",
+            "npm:faker",
+            "npm:lodash.camelcase",
+            "npm:prompt",
+            "npm:rimraf",
+            "npm:ts-jest",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/rollup.config.ts",
+          "hash": "2619819586270391175"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/src/__test__/contentful-helpers.ts",
+          "hash": "1803238988527123008"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/src/__test__/contentful-to-slatejs-adapter.test.ts",
+          "hash": "590754264300736285"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/src/contentful-to-slatejs-adapter.ts",
+          "hash": "6739569063717082034"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/src/helpers.ts",
+          "hash": "6361322809292581226"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/src/index.ts",
+          "hash": "17680036268059986969"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/src/schema.ts",
+          "hash": "5497175406803156015"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/src/slatejs-to-contentful-adapter.ts",
+          "hash": "6486585081775162212"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/src/types/index.ts",
+          "hash": "3594233252210613851"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/src/types/slate.ts",
+          "hash": "5544068720946623262"
+        },
+        {
+          "file": "packages/contentful-slatejs-adapter/tsconfig.json",
+          "hash": "6547307714373279511"
+        }
+      ],
+      "@contentful/rich-text-react-renderer": [
+        {
+          "file": "packages/rich-text-react-renderer/CHANGELOG.md",
+          "hash": "15093462869985819190"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/README.md",
+          "hash": "9688933907254132127"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/jest.config.js",
+          "hash": "8854657863628472056"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/package.json",
+          "hash": "1076062492494765337",
+          "deps": [
+            "@contentful/rich-text-types",
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:react",
+            "npm:react-dom",
+            "npm:rimraf",
+            "npm:ts-jest",
+            "npm:tslint",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/rich-text-react-renderer/rollup.config.js",
+          "hash": "9722894907398624373"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/__snapshots__/index.test.tsx.snap",
+          "hash": "17844905986181176202"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/components/Document.tsx",
+          "hash": "12122103279594439129"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/components/Paragraph.tsx",
+          "hash": "12685062130515022987"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/components/Strong.tsx",
+          "hash": "2928113978748976181"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/embedded-entry.ts",
+          "hash": "16327881201051763917"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/embedded-resource.ts",
+          "hash": "14390866168703364487"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/heading.ts",
+          "hash": "4143497327578307565"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/hr.ts",
+          "hash": "9343923121681998992"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/hyperlink.ts",
+          "hash": "7627282413365687328"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/index.ts",
+          "hash": "15241083840348606198"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/inline-entity.ts",
+          "hash": "4419772255088305007"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/invalid-marks.ts",
+          "hash": "14768278722235017594"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/invalid-type.ts",
+          "hash": "6709042092447113327"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/mark.ts",
+          "hash": "8841692607921458886"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/multi-mark.ts",
+          "hash": "1933607933139923426"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/ol.ts",
+          "hash": "9329164565698416441"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/paragraph.ts",
+          "hash": "12542065773583468054"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/quote.ts",
+          "hash": "7531126130748219780"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/table-header.ts",
+          "hash": "8347615422150825663"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/table.ts",
+          "hash": "8282129549133881659"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/documents/ul.ts",
+          "hash": "5251404064099197886"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/__test__/index.test.tsx",
+          "hash": "7759723515703861780"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/index.tsx",
+          "hash": "2291999068586501555"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/util/appendKeyToValidElement.ts",
+          "hash": "4572213163602381046"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/src/util/nodeListToReactComponents.tsx",
+          "hash": "16537933384504623225"
+        },
+        {
+          "file": "packages/rich-text-react-renderer/tsconfig.json",
+          "hash": "11023280658831377454"
+        }
+      ],
+      "@contentful/rich-text-plain-text-renderer": [
+        {
+          "file": "packages/rich-text-plain-text-renderer/CHANGELOG.md",
+          "hash": "14798707614482811790"
+        },
+        {
+          "file": "packages/rich-text-plain-text-renderer/README.md",
+          "hash": "9328939788499409800"
+        },
+        {
+          "file": "packages/rich-text-plain-text-renderer/bin/benchmark/get-rich-text-entity-links.ts",
+          "hash": "5947514724387977996"
+        },
+        {
+          "file": "packages/rich-text-plain-text-renderer/bin/tsconfig.json",
+          "hash": "14360190479351705783"
+        },
+        {
+          "file": "packages/rich-text-plain-text-renderer/bin/tslint.json",
+          "hash": "5076118927504436358"
+        },
+        {
+          "file": "packages/rich-text-plain-text-renderer/jest.config.js",
+          "hash": "8854657863628472056"
+        },
+        {
+          "file": "packages/rich-text-plain-text-renderer/package.json",
+          "hash": "11709918160824662393",
+          "deps": [
+            "@contentful/rich-text-types",
+            "npm:rimraf",
+            "npm:ts-jest",
+            "npm:tslint",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/rich-text-plain-text-renderer/rollup.config.js",
+          "hash": "5662419146510942977"
+        },
+        {
+          "file": "packages/rich-text-plain-text-renderer/src/__test__/index.test.ts",
+          "hash": "7199336133587253104"
+        },
+        {
+          "file": "packages/rich-text-plain-text-renderer/src/index.ts",
+          "hash": "5110088743927240722"
+        },
+        {
+          "file": "packages/rich-text-plain-text-renderer/tsconfig.json",
+          "hash": "16775238803598606270"
+        }
+      ],
+      "@contentful/rich-text-from-markdown": [
+        {
+          "file": "packages/rich-text-from-markdown/CHANGELOG.md",
+          "hash": "7409215390364692479"
+        },
+        {
+          "file": "packages/rich-text-from-markdown/README.md",
+          "hash": "2519315467503253568"
+        },
+        {
+          "file": "packages/rich-text-from-markdown/jest.config.js",
+          "hash": "8854657863628472056"
+        },
+        {
+          "file": "packages/rich-text-from-markdown/package.json",
+          "hash": "11216613348070203696",
+          "deps": [
+            "@contentful/rich-text-types",
+            "npm:lodash",
+            "npm:remark-gfm",
+            "npm:remark-parse",
+            "npm:unified",
+            "npm:@types/lodash",
+            "npm:faker",
+            "npm:rimraf",
+            "npm:ts-jest",
+            "npm:tslint",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/rich-text-from-markdown/rollup.config.js",
+          "hash": "5662419146510942977"
+        },
+        {
+          "file": "packages/rich-text-from-markdown/src/__test__/helpers.ts",
+          "hash": "1814875941713555898"
+        },
+        {
+          "file": "packages/rich-text-from-markdown/src/__test__/index.test.ts",
+          "hash": "17825315850359980848"
+        },
+        {
+          "file": "packages/rich-text-from-markdown/src/__test__/real-world.md",
+          "hash": "1753221713579187571"
+        },
+        {
+          "file": "packages/rich-text-from-markdown/src/__test__/real-world.test.ts",
+          "hash": "14040887752718974527"
+        },
+        {
+          "file": "packages/rich-text-from-markdown/src/index.ts",
+          "hash": "11941346608053694110"
+        },
+        {
+          "file": "packages/rich-text-from-markdown/src/types/index.ts",
+          "hash": "10662105339992816048"
+        },
+        {
+          "file": "packages/rich-text-from-markdown/tsconfig.json",
+          "hash": "8093910671991172751"
+        }
+      ],
+      "@contentful/rich-text-html-renderer": [
+        {
+          "file": "packages/rich-text-html-renderer/CHANGELOG.md",
+          "hash": "667114519256014146"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/README.md",
+          "hash": "17174718435998479783"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/jest.config.js",
+          "hash": "8854657863628472056"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/package.json",
+          "hash": "17162100955313902880",
+          "deps": [
+            "@contentful/rich-text-types",
+            "npm:escape-html",
+            "npm:@types/escape-html",
+            "npm:@types/lodash.clonedeep",
+            "npm:lodash.clonedeep",
+            "npm:rimraf",
+            "npm:ts-jest",
+            "npm:tslint",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/rich-text-html-renderer/rollup.config.js",
+          "hash": "5662419146510942977"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/embedded-entry.ts",
+          "hash": "16327881201051763917"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/embedded-resource.ts",
+          "hash": "14390866168703364487"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/heading.ts",
+          "hash": "4143497327578307565"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/hr.ts",
+          "hash": "9343923121681998992"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/hyperlink.ts",
+          "hash": "7627282413365687328"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/index.ts",
+          "hash": "14903422051770839090"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/inline-entity.ts",
+          "hash": "4419772255088305007"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/invalid-marks.ts",
+          "hash": "14768278722235017594"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/invalid-type.ts",
+          "hash": "6709042092447113327"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/mark.ts",
+          "hash": "8841692607921458886"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/ol.ts",
+          "hash": "9329164565698416441"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/paragraph.ts",
+          "hash": "12542065773583468054"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/quote.ts",
+          "hash": "7531126130748219780"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/table-header.ts",
+          "hash": "8347615422150825663"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/table.ts",
+          "hash": "8282129549133881659"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/documents/ul.ts",
+          "hash": "5251404064099197886"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/__test__/index.test.ts",
+          "hash": "6104098058367388828"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/src/index.ts",
+          "hash": "7731510037108619347"
+        },
+        {
+          "file": "packages/rich-text-html-renderer/tsconfig.json",
+          "hash": "16775238803598606270"
+        }
+      ],
+      "@contentful/rich-text-types": [
+        {
+          "file": "packages/rich-text-types/CHANGELOG.md",
+          "hash": "1042599772686420230"
+        },
+        {
+          "file": "packages/rich-text-types/README.md",
+          "hash": "11727631678026172260"
+        },
+        {
+          "file": "packages/rich-text-types/jest.config.js",
+          "hash": "8854657863628472056"
+        },
+        {
+          "file": "packages/rich-text-types/package.json",
+          "hash": "17672236895567969112",
+          "deps": [
+            "npm:@cspotcode/source-map-consumer",
+            "npm:@types/jest",
+            "npm:@types/node",
+            "npm:faker",
+            "npm:rimraf",
+            "npm:ts-jest",
+            "npm:tslint",
+            "npm:typescript",
+            "npm:typescript-json-schema"
+          ]
+        },
+        {
+          "file": "packages/rich-text-types/rollup.config.js",
+          "hash": "884285360779839578"
+        },
+        {
+          "file": "packages/rich-text-types/src/__test__/index.test.ts",
+          "hash": "9914177949355916001"
+        },
+        {
+          "file": "packages/rich-text-types/src/__test__/schemaConstraints.test.ts",
+          "hash": "15020976753536540207"
+        },
+        {
+          "file": "packages/rich-text-types/src/blocks.ts",
+          "hash": "17438122017874461320"
+        },
+        {
+          "file": "packages/rich-text-types/src/emptyDocument.ts",
+          "hash": "15832824581333155555"
+        },
+        {
+          "file": "packages/rich-text-types/src/helpers.ts",
+          "hash": "16684137866307981444"
+        },
+        {
+          "file": "packages/rich-text-types/src/index.ts",
+          "hash": "13013898825499253109"
+        },
+        {
+          "file": "packages/rich-text-types/src/inlines.ts",
+          "hash": "14421076497763177143"
+        },
+        {
+          "file": "packages/rich-text-types/src/marks.ts",
+          "hash": "12324441777789947343"
+        },
+        {
+          "file": "packages/rich-text-types/src/nodeTypes.ts",
+          "hash": "18415155726230033242"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemaConstraints.ts",
+          "hash": "8785604747219967213"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/__test__/__snapshots__/schemas.test.ts.snap",
+          "hash": "14253891436080770111"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/__test__/helpers.test.ts",
+          "hash": "17504136458734123540"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/__test__/schemas.test.ts",
+          "hash": "9424675863653916346"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/asset-hyperlink.json",
+          "hash": "8287687980720643905"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/blockquote.json",
+          "hash": "7213380937092773758"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/document.json",
+          "hash": "16654202287151164240"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/embedded-asset-block.json",
+          "hash": "10743119825681926075"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/embedded-entry-block.json",
+          "hash": "11916823144158067436"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/embedded-entry-inline.json",
+          "hash": "15557542424722415260"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/embedded-resource-block.json",
+          "hash": "15309102776314787532"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/embedded-resource-inline.json",
+          "hash": "385191051011545659"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/entry-hyperlink.json",
+          "hash": "6578882928079865592"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/heading-1.json",
+          "hash": "18413979173403218967"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/heading-2.json",
+          "hash": "17726116169108530707"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/heading-3.json",
+          "hash": "15169911514733298349"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/heading-4.json",
+          "hash": "6417394381061974970"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/heading-5.json",
+          "hash": "10043291718494599139"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/heading-6.json",
+          "hash": "17428082333309565826"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/hr.json",
+          "hash": "16032164212473966718"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/hyperlink.json",
+          "hash": "4694372562014527160"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/list-item.json",
+          "hash": "3334019123074406876"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/ordered-list.json",
+          "hash": "18060740839626960283"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/paragraph.json",
+          "hash": "18183488064533239817"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/resource-hyperlink.json",
+          "hash": "8064484644608019789"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/table-cell.json",
+          "hash": "1226677017950185521"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/table-header-cell.json",
+          "hash": "6032621547193053721"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/table-row.json",
+          "hash": "6965077045942590677"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/table.json",
+          "hash": "9811485940928465778"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/text.json",
+          "hash": "3616160089132251164"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/generated/unordered-list.json",
+          "hash": "9997665582118236297"
+        },
+        {
+          "file": "packages/rich-text-types/src/schemas/index.ts",
+          "hash": "4020500635691321222"
+        },
+        {
+          "file": "packages/rich-text-types/src/types.ts",
+          "hash": "7464847504895280789"
+        },
+        {
+          "file": "packages/rich-text-types/tools/jsonSchemaGen.ts",
+          "hash": "10435565468945734288"
+        },
+        {
+          "file": "packages/rich-text-types/tsconfig.json",
+          "hash": "13952345063917806895"
+        }
+      ]
+    },
+    "nonProjectFiles": [
+      {
+        "file": ".circleci/config.yml",
+        "hash": "14315373192208562039"
+      },
+      {
+        "file": ".contentful/compressed-size.yml",
+        "hash": "16356037490667439866"
+      },
+      {
+        "file": ".contentful/vault-secrets.yaml",
+        "hash": "13084160660384903614"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "3805755279423922737"
+      },
+      {
+        "file": ".github/dependabot.yml",
+        "hash": "17989043301750960447"
+      },
+      {
+        "file": ".github/labeler.yml",
+        "hash": "2328856148108715781"
+      },
+      {
+        "file": ".github/semantic.yml",
+        "hash": "10913731454741346604"
+      },
+      {
+        "file": ".github/workflows/auto-approve.yml",
+        "hash": "8176099386919160797"
+      },
+      {
+        "file": ".github/workflows/labeler.yml",
+        "hash": "11156691282033421275"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "3491714590070263198"
+      },
+      {
+        "file": ".husky/pre-commit",
+        "hash": "13469207043343598078"
+      },
+      {
+        "file": ".nvmrc",
+        "hash": "13063318585255476573"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14742561050590281077"
+      },
+      {
+        "file": "CHANGELOG.md",
+        "hash": "16966667072893571128"
+      },
+      {
+        "file": "CONTRIBUTING.md",
+        "hash": "7774898344432553898"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "281933804404151130"
+      },
+      {
+        "file": "README.md",
+        "hash": "11382021124167101850"
+      },
+      {
+        "file": "baseJestConfig.js",
+        "hash": "1905110397387349250"
+      },
+      {
+        "file": "bin/benchmark/index.ts",
+        "hash": "6079435885787924548"
+      },
+      {
+        "file": "bin/tsconfig.json",
+        "hash": "9490597940963031522"
+      },
+      {
+        "file": "bin/tslint.json",
+        "hash": "8675626172311234325"
+      },
+      {
+        "file": "catalog-info.yaml",
+        "hash": "3385701145983411926"
+      },
+      {
+        "file": "commitlint.config.js",
+        "hash": "1797922694529005585"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/.gitignore",
+        "hash": "1604497331056198325"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/.npmignore",
+        "hash": "269062372241293798"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/README.md",
+        "hash": "6265506838682124920"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/extend-node-type.js.map",
+        "hash": "16935492543950159368"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/gatsby-node.js.map",
+        "hash": "3266290144428718545"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/index.js",
+        "hash": "5437242749707283174"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/package-lock.json",
+        "hash": "4141712805096926181"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/package.json",
+        "hash": "16858400941976454503"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/src/__tests__/__snapshots__/gatsby-node.test.js.snap",
+        "hash": "10180388493638346403"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/src/__tests__/extend-node.test.js",
+        "hash": "1881036802776484188"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/src/__tests__/gatsby-node.test.js",
+        "hash": "12767683111039898765"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/src/extend-node-type.js",
+        "hash": "17225492216874070880"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/src/gatsby-node.js",
+        "hash": "5809843082917748979"
+      },
+      {
+        "file": "deprecated/gatsby-transformer-contentful-richtext/src/on-node-create.js",
+        "hash": "4173671303884225826"
+      },
+      {
+        "file": "lerna.json",
+        "hash": "17168803983956723581"
+      },
+      {
+        "file": "nx.json",
+        "hash": "14402486813258704604"
+      },
+      {
+        "file": "package.json",
+        "hash": "1059957785153423722"
+      },
+      {
+        "file": "rollup.config.js",
+        "hash": "17404066528472465885"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "2950901849805497125"
+      },
+      {
+        "file": "tslint.json",
+        "hash": "363717517194080931"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "7343567808837037562"
+      }
+    ]
+  }
+}
