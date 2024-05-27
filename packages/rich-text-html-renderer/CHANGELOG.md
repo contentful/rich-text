@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.5.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@16.4.0...@contentful/rich-text-html-renderer@16.5.0) (2024-05-24)
+
+### Features
+
+- add strikethrough support ([#562](https://github.com/contentful/rich-text/issues/562)) ([b87d0c3](https://github.com/contentful/rich-text/commit/b87d0c31bccb4012745c0479b2b5c92fc28c1e91))
+
+# [16.4.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@16.3.5...@contentful/rich-text-html-renderer@16.4.0) (2024-05-22)
+
+### Features
+
+- upgrading rollup to latest version [TOL-2097] ([#559](https://github.com/contentful/rich-text/issues/559)) ([f14d197](https://github.com/contentful/rich-text/commit/f14d1974590d58f92bbf4cb56644095dba929ad9))
+
 ## [16.3.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@16.3.4...@contentful/rich-text-html-renderer@16.3.5) (2024-03-04)
 
 **Note:** Version bump only for package @contentful/rich-text-html-renderer

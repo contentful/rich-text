@@ -43,6 +43,7 @@ const defaultMarkRenderers: RenderMark = {
   [MARKS.CODE]: (text) => <code>{text}</code>,
   [MARKS.SUPERSCRIPT]: (text) => <sup>{text}</sup>,
   [MARKS.SUBSCRIPT]: (text) => <sub>{text}</sub>,
+  [MARKS.STRIKETHROUGH]: (text) => <s>{text}</s>,
 };
 
 function defaultInline(type: string, node: Inline): ReactNode {

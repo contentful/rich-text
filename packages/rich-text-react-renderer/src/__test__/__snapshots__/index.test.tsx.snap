@@ -185,6 +185,16 @@ exports[`documentToReactComponents renders marks with default mark renderer 6`] 
 ]
 `;
 
+exports[`documentToReactComponents renders marks with default mark renderer 7`] = `
+[
+  <p>
+    <s>
+      hello world
+    </s>
+  </p>,
+]
+`;
+
 exports[`documentToReactComponents renders marks with the passed custom mark renderer 1`] = `
 [
   <p>

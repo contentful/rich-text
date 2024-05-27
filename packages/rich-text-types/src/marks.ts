@@ -8,4 +8,5 @@ export enum MARKS {
   CODE = 'code',
   SUPERSCRIPT = 'superscript',
   SUBSCRIPT = 'subscript',
+  STRIKETHROUGH = 'strikethrough',
 }

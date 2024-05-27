@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.1.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.1.0...@contentful/rich-text-plain-text-renderer@16.1.1) (2024-05-24)
+
+**Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
+
+# [16.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.13...@contentful/rich-text-plain-text-renderer@16.1.0) (2024-05-22)
+
+### Features
+
+- upgrading rollup to latest version [TOL-2097] ([#559](https://github.com/contentful/rich-text/issues/559)) ([f14d197](https://github.com/contentful/rich-text/commit/f14d1974590d58f92bbf4cb56644095dba929ad9))
+
 ## [16.0.13](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.0.12...@contentful/rich-text-plain-text-renderer@16.0.13) (2024-03-06)
 
 ### Bug Fixes
