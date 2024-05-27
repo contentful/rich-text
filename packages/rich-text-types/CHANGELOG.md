@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.5.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.5.0...@contentful/rich-text-types@16.5.1) (2024-05-27)
+
+### Bug Fixes
+
+- fix breaking change for copying json ([#573](https://github.com/contentful/rich-text/issues/573)) ([e5d6533](https://github.com/contentful/rich-text/commit/e5d653360735efc395ad8920d8b2bfd24eb827c1))
+
 # [16.5.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.4.0...@contentful/rich-text-types@16.5.0) (2024-05-24)
 
 ### Features
