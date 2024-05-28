@@ -1,19 +1,19 @@
-import _ from 'lodash';
-import unified from 'unified';
-import markdown from 'remark-parse';
-import gfm from 'remark-gfm';
 import {
-  Document,
-  Node,
-  Block,
   BLOCKS,
-  TopLevelBlock,
-  INLINES,
+  Block,
+  Document,
   Hyperlink,
-  Text,
+  INLINES,
   Inline,
+  Node,
+  Text,
+  TopLevelBlock,
 } from '@contentful/rich-text-types';
-import { MarkdownNode, MarkdownLinkNode, MarkdownTree } from './types';
+import _ from 'lodash';
+import gfm from 'remark-gfm';
+import markdown from 'remark-parse';
+import unified from 'unified';
+import { MarkdownLinkNode, MarkdownNode, MarkdownTree } from './types';
 
 const markdownNodeTypes = new Map<string, string>([
   ['paragraph', BLOCKS.PARAGRAPH],
@@ -194,7 +194,7 @@ const buildText = async (
 ): Promise<Array<Inline | Text>> => {
   const nodeType = nodeTypeFor(node);
   const markType = markTypeFor(node);
-  const marks = [...appliedMarksTypes];
+  const marks = Array.from(appliedMarksTypes);
   if (markType) {
     marks.push(markType);
   }

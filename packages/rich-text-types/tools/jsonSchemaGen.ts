@@ -1,8 +1,8 @@
-import { resolve } from 'path';
 import { writeFile } from 'fs';
+import { resolve } from 'path';
 
 import * as TJS from 'typescript-json-schema';
-import { INLINES, BLOCKS } from '../src/index';
+import { BLOCKS, INLINES } from '../src/index';
 
 // optionally pass argument to schema generator
 const settings: TJS.PartialArgs = {
@@ -11,6 +11,7 @@ const settings: TJS.PartialArgs = {
   required: true,
   // @ts-ignore
   useTypeOfKeyword: true,
+  constAsEnum: true,
 };
 
 // optionally pass ts compiler options
@@ -25,7 +26,7 @@ const createJsonSchema = (symbolName: string, nodeType: string): void => {
 
   const schemaString = JSON.stringify(doc, null, 2);
 
-  writeFile(`./src/schemas/generated/${nodeType}.json`, schemaString, (err: Error) => {
+  writeFile(`./src/schemas/generated/${nodeType}.json`, schemaString, (err) => {
     if (err) {
       return console.log(err);
     }
@@ -71,12 +72,12 @@ const inlineSymbolsMap = new Map([
 
 Object.values(BLOCKS).forEach((nodeType) => {
   const symbolName = blockSymbolsMap.get(nodeType);
-  createJsonSchema(symbolName, nodeType);
+  createJsonSchema(symbolName as string, nodeType);
 });
 
 Object.values(INLINES).forEach((nodeType) => {
   const symbolName = inlineSymbolsMap.get(nodeType);
-  createJsonSchema(symbolName, nodeType);
+  createJsonSchema(symbolName as string, nodeType);
 });
 
 createJsonSchema('Text', 'text');

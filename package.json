@@ -50,7 +50,7 @@
     "@rollup/plugin-node-resolve": "15.2.3",
     "@types/benchmark": "^2.1.4",
     "@types/faker": "^4.1.12",
-    "@types/jest": "^27.0.1",
+    "@types/jest": "29.5.12",
     "benchmark": "^2.1.4",
     "commitizen": "4.3.0",
     "git-cz": "^4.9.0",
@@ -67,7 +67,7 @@
     "ts-node": "10.9.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^5.3.2",
+    "typescript": "5.4.5",
     "jest-junit": "16.0.0"
   },
   "dependencies": {}
