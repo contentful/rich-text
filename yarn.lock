@@ -1445,9 +1445,9 @@
     "@babel/types" "^7.20.7"
 
 "@types/benchmark@^2.1.4":
-  version "2.1.4"
-  resolved "https://registry.npmjs.org/@types/benchmark/-/benchmark-2.1.4.tgz"
-  integrity sha512-rVCCileCU5NhP9Ix1e03sIn4gd0mpjh7VNULVQAxzF+9vddk6A5QAHzp2h5kXH8pkv1Ow45fUf3QP3wOEiISvA==
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@types/benchmark/-/benchmark-2.1.5.tgz#940c1850c18fdfdaee3fd6ed29cd92ae0d445b45"
+  integrity sha512-cKio2eFB3v7qmKcvIHLUMw/dIx/8bhWPuzpzRT4unCPRTD8VdA9Zb0afxpcxOqR4PixRS7yT42FqGS8BYL8g1w==
 
 "@types/conventional-commits-parser@^5.0.0":
   version "5.0.0"
