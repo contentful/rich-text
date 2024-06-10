@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@types/rollup-plugin-json": "^3.0.7",
-    "@commitlint/cli": "19.0.3",
+    "@commitlint/cli": "19.3.0",
     "@commitlint/config-conventional": "17.4.2",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
