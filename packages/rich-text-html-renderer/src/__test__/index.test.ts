@@ -97,6 +97,10 @@ describe('documentToHtmlString', () => {
         doc: marksDoc(MARKS.STRIKETHROUGH),
         expected: '<p><s>hello world</s></p>',
       },
+      {
+        doc: marksDoc(MARKS.EMPHASIS),
+        expected: '<p><em>hello world</em></p>',
+      },
     ];
 
     docs.forEach(({ doc, expected }) => {

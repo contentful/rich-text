@@ -70,6 +70,7 @@ describe('documentToReactComponents', () => {
       marksDoc(MARKS.SUPERSCRIPT),
       marksDoc(MARKS.SUBSCRIPT),
       marksDoc(MARKS.STRIKETHROUGH),
+      marksDoc(MARKS.EMPHASIS),
     ];
 
     docs.forEach((doc) => {
