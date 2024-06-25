@@ -10,7 +10,6 @@ export declare type Definition = {
   title?: string;
   type?: string | string[];
   definitions?: {
-    // tslint:disable-next-line:no-any
     [key: string]: any;
   };
   format?: string;
@@ -22,12 +21,11 @@ export declare type Definition = {
       }
     | Definition;
   enum?: PrimitiveType[] | Definition[];
-  default?: PrimitiveType | Object;
+  default?: PrimitiveType | Record<string, any>;
   additionalProperties?: Definition | boolean;
   required?: string[];
   propertyOrder?: string[];
   properties?: {
-    // tslint:disable-next-line:no-any
     [key: string]: any;
   };
   defaultProperties?: string[];

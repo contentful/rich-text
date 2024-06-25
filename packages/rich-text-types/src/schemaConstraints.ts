@@ -1,5 +1,6 @@
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
+import { MARKS } from './marks';
 
 export type TopLevelBlockEnum =
   | BLOCKS.PARAGRAPH
@@ -15,6 +16,7 @@ export type TopLevelBlockEnum =
   | BLOCKS.QUOTE
   | BLOCKS.EMBEDDED_ENTRY
   | BLOCKS.EMBEDDED_ASSET
+  | BLOCKS.EMBEDDED_RESOURCE
   | BLOCKS.TABLE;
 
 /**
@@ -35,6 +37,7 @@ export const TOP_LEVEL_BLOCKS: TopLevelBlockEnum[] = [
   BLOCKS.QUOTE,
   BLOCKS.EMBEDDED_ENTRY,
   BLOCKS.EMBEDDED_ASSET,
+  BLOCKS.EMBEDDED_RESOURCE,
   BLOCKS.TABLE,
 ];
 
@@ -51,7 +54,8 @@ export type ListItemBlockEnum =
   | BLOCKS.HR
   | BLOCKS.QUOTE
   | BLOCKS.EMBEDDED_ENTRY
-  | BLOCKS.EMBEDDED_ASSET;
+  | BLOCKS.EMBEDDED_ASSET
+  | BLOCKS.EMBEDDED_RESOURCE;
 
 /**
  * Array of all allowed block types inside list items
@@ -70,6 +74,7 @@ export const LIST_ITEM_BLOCKS: TopLevelBlockEnum[] = [
   BLOCKS.QUOTE,
   BLOCKS.EMBEDDED_ENTRY,
   BLOCKS.EMBEDDED_ASSET,
+  BLOCKS.EMBEDDED_RESOURCE,
 ];
 
 export const TABLE_BLOCKS = [
@@ -82,7 +87,12 @@ export const TABLE_BLOCKS = [
 /**
  * Array of all void block types
  */
-export const VOID_BLOCKS = [BLOCKS.HR, BLOCKS.EMBEDDED_ENTRY, BLOCKS.EMBEDDED_ASSET];
+export const VOID_BLOCKS = [
+  BLOCKS.HR,
+  BLOCKS.EMBEDDED_ENTRY,
+  BLOCKS.EMBEDDED_ASSET,
+  BLOCKS.EMBEDDED_RESOURCE,
+];
 
 /**
  * Dictionary of all container block types, and the set block types they accept as children.
@@ -142,3 +152,8 @@ export const V1_NODE_TYPES = [
   INLINES.EMBEDDED_ENTRY,
   'text',
 ];
+
+/**
+ * Marks before `superscript` & `subscript` release.
+ */
+export const V1_MARKS = [MARKS.BOLD, MARKS.CODE, MARKS.ITALIC, MARKS.UNDERLINE];

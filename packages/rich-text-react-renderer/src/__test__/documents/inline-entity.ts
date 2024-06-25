@@ -1,6 +1,6 @@
-import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
+import { BLOCKS, Document, INLINES } from '@contentful/rich-text-types';
 
-export default function inlineEntity(entry: Object, inlineType: INLINES) {
+export default function inlineEntity(entry: Record<string, any>, inlineType: INLINES) {
   return {
     content: [
       {

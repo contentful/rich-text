@@ -1,6 +1,6 @@
+import Benchmark from 'benchmark';
 import { readdir } from 'fs';
 import { resolve } from 'path';
-import Benchmark from 'benchmark';
 
 const suite = new Benchmark.Suite();
 
@@ -28,12 +28,7 @@ if (!packageNameArg) {
  */
 const packageName = packageNameArg.replace(/^@contentful\//, '');
 
-const paths = [
-  __dirname,
-  '../../packages',
-  packageName,
-  'bin/benchmark'
-];
+const paths = [__dirname, '../../packages', packageName, 'bin/benchmark'];
 
 const benchmarkPath = resolve(...paths);
 
@@ -52,13 +47,10 @@ readdir(benchmarkPath, (err, files) => {
     process.exit(1);
   }
 
-  const benchmarks: Array<[string, Function]> = Object.entries(
+  const benchmarks: Array<[string, () => void]> = Object.entries(
     files
-      .map((name): { [key: string]: Function } => require(resolve(...paths, name)))
-      .reduce((allBenchmarks, fileBenchmarks) => Object.assign(
-        allBenchmarks,
-        fileBenchmarks
-      ), {})
+      .map((name): { [key: string]: () => void } => require(resolve(...paths, name)))
+      .reduce((allBenchmarks, fileBenchmarks) => Object.assign(allBenchmarks, fileBenchmarks), {}),
   );
 
   for (const [name, benchmark] of benchmarks) {

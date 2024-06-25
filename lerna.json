@@ -1,19 +1,9 @@
 {
-  "lerna": "2.7.2",
-  "version": "15.13.1",
-  "packages": [
-    "packages/contentful-slatejs-adapter",
-    "packages/rich-text-from-markdown",
-    "packages/rich-text-html-renderer",
-    "packages/rich-text-links",
-    "packages/rich-text-plain-text-renderer",
-    "packages/rich-text-react-renderer",
-    "packages/rich-text-types"
-  ],
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "npmClient": "yarn",
+  "version": "independent",
+  "packages": ["packages/*"],
   "command": {
-    "bootstrap": {
-      "hoist": true
-    },
     "version": {
       "allowBranch": "master",
       "conventionalCommits": true,
@@ -22,6 +12,7 @@
         "*.md",
         "*.mdx",
         "**/*.spec.*",
+        "**/*.test.*",
         "**/*.stories.*",
         "**/__fixtures__/**",
         "**/__tests__/**"

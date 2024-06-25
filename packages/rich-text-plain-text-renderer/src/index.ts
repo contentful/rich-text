@@ -1,4 +1,4 @@
-import { Block, Node, Inline, helpers } from '@contentful/rich-text-types';
+import { Block, Inline, Node, helpers } from '@contentful/rich-text-types';
 
 /**
  * Returns the text value of a rich text document.
@@ -10,7 +10,7 @@ export function documentToPlainTextString(
   rootNode: Block | Inline,
   blockDivisor: string = ' ',
 ): string {
-  if (!rootNode || !rootNode.content) {
+  if (!rootNode || !rootNode.content || !Array.isArray(rootNode.content)) {
     /**
      * Handles edge cases, such as when the value is not set in the CMA or the
      * field has not been properly validated, e.g. because of a user extension.
@@ -20,6 +20,7 @@ export function documentToPlainTextString(
      */
     return '';
   }
+
   /**
    * Algorithm notes: We only want to apply spacing when a node is part of a
    * sequence. This is tricky because nodes can often be deeply nested within

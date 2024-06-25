@@ -1,0 +1,122 @@
+{
+  "$ref": "#/definitions/ResourceHyperlink",
+  "definitions": {
+    "ResourceHyperlink": {
+      "type": "object",
+      "properties": {
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "resource-hyperlink"
+          ]
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "target": {
+              "$ref": "#/definitions/ResourceLink"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "target"
+          ]
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Text"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content",
+        "data",
+        "nodeType"
+      ]
+    },
+    "ResourceLink": {
+      "type": "object",
+      "properties": {
+        "sys": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "ResourceLink"
+              ]
+            },
+            "linkType": {
+              "type": "string",
+              "enum": [
+                "Contentful:Entry"
+              ]
+            },
+            "urn": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "linkType",
+            "type",
+            "urn"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "sys"
+      ]
+    },
+    "Text": {
+      "type": "object",
+      "properties": {
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "text"
+          ]
+        },
+        "value": {
+          "type": "string"
+        },
+        "marks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Mark"
+          }
+        },
+        "data": {
+          "$ref": "#/definitions/NodeData"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "data",
+        "marks",
+        "nodeType",
+        "value"
+      ]
+    },
+    "Mark": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "NodeData": {
+      "additionalProperties": true,
+      "type": "object"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

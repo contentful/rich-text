@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`documentToReactComponents does not render unrecognized marks 1`] = `
-Array [
+[
   <p>
     Hello world!
   </p>,
@@ -9,7 +9,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders asset hyperlink 1`] = `
-Array [
+[
   <p>
     
     <span>
@@ -24,7 +24,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders blockquotes 1`] = `
-Array [
+[
   <p>
     hello
   </p>,
@@ -35,13 +35,19 @@ Array [
 `;
 
 exports[`documentToReactComponents renders default entry link block 1`] = `
-Array [
+[
+  <div />,
+]
+`;
+
+exports[`documentToReactComponents renders default resource block 1`] = `
+[
   <div />,
 ]
 `;
 
 exports[`documentToReactComponents renders embedded entry 1`] = `
-Array [
+[
   <p>
     
     <span>
@@ -55,8 +61,23 @@ Array [
 ]
 `;
 
+exports[`documentToReactComponents renders embedded resource 1`] = `
+[
+  <p>
+    
+    <span>
+      type: 
+      embedded-resource-inline
+       urn: 
+      crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM
+    </span>
+    
+  </p>,
+]
+`;
+
 exports[`documentToReactComponents renders empty node if type is not recognized 1`] = `
-Array [
+[
   <React.Fragment>
     Hello world!
   </React.Fragment>,
@@ -64,7 +85,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders entry hyperlink 1`] = `
-Array [
+[
   <p>
     
     <span>
@@ -79,7 +100,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders horizontal rule 1`] = `
-Array [
+[
   <p>
     hello world
   </p>,
@@ -91,7 +112,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders hyperlink 1`] = `
-Array [
+[
   <p>
     Some text 
     <a
@@ -105,7 +126,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders marks with default mark renderer 1`] = `
-Array [
+[
   <p>
     <i>
       hello world
@@ -115,7 +136,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders marks with default mark renderer 2`] = `
-Array [
+[
   <p>
     <b>
       hello world
@@ -125,7 +146,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders marks with default mark renderer 3`] = `
-Array [
+[
   <p>
     <u>
       hello world
@@ -135,7 +156,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders marks with default mark renderer 4`] = `
-Array [
+[
   <p>
     <code>
       hello world
@@ -144,8 +165,38 @@ Array [
 ]
 `;
 
+exports[`documentToReactComponents renders marks with default mark renderer 5`] = `
+[
+  <p>
+    <sup>
+      hello world
+    </sup>
+  </p>,
+]
+`;
+
+exports[`documentToReactComponents renders marks with default mark renderer 6`] = `
+[
+  <p>
+    <sub>
+      hello world
+    </sub>
+  </p>,
+]
+`;
+
+exports[`documentToReactComponents renders marks with default mark renderer 7`] = `
+[
+  <p>
+    <s>
+      hello world
+    </s>
+  </p>,
+]
+`;
+
 exports[`documentToReactComponents renders marks with the passed custom mark renderer 1`] = `
-Array [
+[
   <p>
     <i>
       <Strong>
@@ -157,7 +208,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders multiple marks with default mark renderer 1`] = `
-Array [
+[
   <p>
     <i>
       <b>
@@ -169,7 +220,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders nodes with default node renderer 1`] = `
-Array [
+[
   <p>
     hello world
   </p>,
@@ -177,7 +228,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders nodes with default node renderer 2`] = `
-Array [
+[
   <h1>
     hello world
   </h1>,
@@ -185,10 +236,42 @@ Array [
 `;
 
 exports[`documentToReactComponents renders nodes with default node renderer 3`] = `
-Array [
+[
   <h2>
     hello world
   </h2>,
+]
+`;
+
+exports[`documentToReactComponents renders nodes with default node renderer 4`] = `
+[
+  <h3>
+    hello world
+  </h3>,
+]
+`;
+
+exports[`documentToReactComponents renders nodes with default node renderer 5`] = `
+[
+  <h4>
+    hello world
+  </h4>,
+]
+`;
+
+exports[`documentToReactComponents renders nodes with default node renderer 6`] = `
+[
+  <h5>
+    hello world
+  </h5>,
+]
+`;
+
+exports[`documentToReactComponents renders nodes with default node renderer 7`] = `
+[
+  <h6>
+    hello world
+  </h6>,
 ]
 `;
 
@@ -204,7 +287,7 @@ exports[`documentToReactComponents renders nodes with passed custom node rendere
 `;
 
 exports[`documentToReactComponents renders ordered lists 1`] = `
-Array [
+[
   <ol>
     <li>
       <p>
@@ -223,8 +306,23 @@ Array [
 ]
 `;
 
+exports[`documentToReactComponents renders resource hyperlink 1`] = `
+[
+  <p>
+    
+    <span>
+      type: 
+      resource-hyperlink
+       urn: 
+      crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM
+    </span>
+    
+  </p>,
+]
+`;
+
 exports[`documentToReactComponents renders tables 1`] = `
-Array [
+[
   <table>
     <tbody>
       <tr>
@@ -257,7 +355,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders tables with header 1`] = `
-Array [
+[
   <table>
     <tbody>
       <tr>
@@ -290,7 +388,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders text with the passed custom text renderer 1`] = `
-Array [
+[
   <p>
     hello Earth
   </p>,
@@ -298,7 +396,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders unaltered text with default text renderer 1`] = `
-Array [
+[
   <p>
     hello world
   </p>,
@@ -306,7 +404,7 @@ Array [
 `;
 
 exports[`documentToReactComponents renders unordered lists 1`] = `
-Array [
+[
   <ul>
     <li>
       <p>
@@ -326,7 +424,7 @@ Array [
 `;
 
 exports[`documentToReactComponents returns an array of elements when given a populated document 1`] = `
-Array [
+[
   <p>
     hello world
   </p>,
@@ -338,7 +436,7 @@ Array [
 `;
 
 exports[`nodeListToReactComponents renders children as an array with keys from its index 1`] = `
-Array [
+[
   <p>
     <b>
       hello
@@ -394,4 +492,22 @@ exports[`nodeToReactComponent renders valid nodes 1`] = `
 <p>
   hello world
 </p>
+`;
+
+exports[`preserveWhitespace preserves new lines 1`] = `
+[
+  <p>
+    hello
+    <br />
+    world
+  </p>,
+]
+`;
+
+exports[`preserveWhitespace preserves spaces between words 1`] = `
+[
+  <p>
+    hello    world
+  </p>,
+]
 `;

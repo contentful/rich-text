@@ -1,11 +1,11 @@
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
-import { TopLevelBlockEnum, ListItemBlockEnum } from './schemaConstraints';
+import { ListItemBlockEnum, TopLevelBlockEnum } from './schemaConstraints';
 
 /**
  * @additionalProperties true
  */
-export type NodeData = Record<string, any>; // tslint:disable-line:no-any
+export type NodeData = Record<string, any>;
 export interface Node {
   readonly nodeType: string;
 

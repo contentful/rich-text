@@ -33,7 +33,7 @@ const document = {
           nodeType: 'text',
           value: 'Hello world!',
           marks: [],
-          data: {}
+          data: {},
         },
       ],
     },
@@ -104,12 +104,12 @@ const Text = ({ children }) => <p className="align-center">{children}</p>;
 
 const options = {
   renderMark: {
-    [MARKS.BOLD]: text => <Bold>{text}</Bold>,
+    [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
   },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
   },
-  renderText: text => text.replace('!', '?'),
+  renderText: (text) => text.replace('!', '?'),
 };
 
 documentToReactComponents(document, options);
@@ -173,12 +173,15 @@ The `renderNode` keys should be one of the following `BLOCKS` and `INLINES` prop
   - `HR`
   - `EMBEDDED_ENTRY`
   - `EMBEDDED_ASSET`
+  - `EMBEDDED_RESOURCE`
 
 - `INLINES`
   - `EMBEDDED_ENTRY` (this is different from the `BLOCKS.EMBEDDED_ENTRY`)
+  - `EMBEDDED_RESOURCE`
   - `HYPERLINK`
   - `ENTRY_HYPERLINK`
   - `ASSET_HYPERLINK`
+  - `RESOURCE_HYPERLINK`
 
 The `renderMark` keys should be one of the following `MARKS` properties as defined in [`@contentful/rich-text-types`](https://www.npmjs.com/package/@contentful/rich-text-types):
 
@@ -191,7 +194,7 @@ The `renderText` callback is a function that has a single string argument and re
 
 ```javascript
 const options = {
-  renderText: text => {
+  renderText: (text) => {
     return text.split('\n').reduce((children, textSegment, index) => {
       return [...children, index > 0 && <br key={index} />, textSegment];
     }, []);
@@ -208,9 +211,42 @@ To work around this limitation, just append any non-numeric character to your cu
 ```javascript
 const options = {
   renderMark: {
-    [MARKS.BOLD]: text => {
+    [MARKS.BOLD]: (text) => {
       return <b key={`${text}-key`}>{text}</b>;
     },
   },
 };
 ```
+
+#### Preserving Whitespace
+
+The `options` object can include a `preserveWhitespace` boolean flag. When set to `true`, this flag ensures that multiple spaces in the rich text content are preserved by replacing them with `&nbsp;`, and line breaks are maintained with `<br />` tags. This is useful for content that relies on specific formatting using spaces and line breaks.
+
+```javascript
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
+const document = {
+  nodeType: 'document',
+  content: [
+    {
+      nodeType: 'paragraph',
+      content: [
+        {
+          nodeType: 'text',
+          value: 'Hello     world!',
+          marks: [],
+        },
+      ],
+    },
+  ],
+};
+
+const options = {
+  preserveWhitespace: true,
+};
+
+documentToReactComponents(document, options);
+// -> <p>Hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;world!</p>
+```
+
+In this example, the multiple spaces between "Hello" and "world!" are preserved in the rendered output.

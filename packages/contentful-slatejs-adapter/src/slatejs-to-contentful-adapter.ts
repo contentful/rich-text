@@ -1,15 +1,14 @@
-import flatMap from 'lodash.flatmap';
-import { getDataOrDefault } from './helpers';
-import { SchemaJSON, Schema, fromJSON } from './schema';
-
 import * as Contentful from '@contentful/rich-text-types';
+
+import { getDataOrDefault } from './helpers';
+import { Schema, SchemaJSON, fromJSON } from './schema';
 import {
-  ContentfulNode,
   ContentfulElementNode,
-  SlateNode,
+  ContentfulNode,
   SlateElement,
-  SlateText,
   SlateMarks,
+  SlateNode,
+  SlateText,
 } from './types';
 
 export interface ToContentfulDocumentProperties {
@@ -28,9 +27,8 @@ export default function toContentfulDocument({
   return {
     nodeType: Contentful.BLOCKS.DOCUMENT,
     data: {},
-    content: flatMap(
-      document,
-      node => convertNode(node, fromJSON(schema)) as Contentful.TopLevelBlock[],
+    content: document.flatMap(
+      (node) => convertNode(node, fromJSON(schema)) as Contentful.TopLevelBlock[],
     ),
   };
 }
@@ -44,7 +42,7 @@ function convertNode(node: SlateNode, schema: Schema): ContentfulNode[] {
       content: [],
     };
     if (!schema.isVoid(contentfulElement)) {
-      contentfulElement.content = flatMap(node.children, childNode =>
+      contentfulElement.content = node.children.flatMap((childNode) =>
         convertNode(childNode, schema),
       );
     }
@@ -63,9 +61,9 @@ function convertText(node: SlateText): Contentful.Text {
   const { text, data, ...marks } = node;
   return {
     nodeType: 'text',
-    value: node.text,
+    value: text,
     marks: getMarkList(marks),
-    data: getDataOrDefault(node.data),
+    data: getDataOrDefault(data),
   };
 }
 

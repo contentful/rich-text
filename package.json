@@ -9,46 +9,31 @@
     "url": "https://github.com/contentful/rich-text.git"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "scripts": {
     "benchmark": "ts-node -O '{\"module\": \"commonjs\"}' bin/benchmark",
     "build": "lerna run build",
     "commit": "git-cz",
     "clean": "lerna exec 'rm -rf node_modules/ dist/ && npm prune' && rm -rf node_modules/ && npm prune",
-    "lint": "lerna run lint",
+    "lint": "eslint ./ --ext .ts,.tsx",
     "lerna": "lerna",
+    "prettier": "prettier './**/*.{js,jsx,ts,tsx,md,mdx}' --write",
     "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
-    "postinstall": "lerna bootstrap --hoist --progress --no-ci",
     "prebuild": "lerna run prebuild",
-    "prepublishOnly": "npm i && npm run build && npm run lint && npm run test",
-    "release": "lerna version --no-private --conventional-commits --create-release github --yes && lerna publish from-git --yes",
     "start": "lerna run start",
-    "test": "jest",
-    "test:ci": "npm run build && npm run test:prod",
-    "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
-    "test:watch": "jest --watch"
+    "test": "lerna run test",
+    "prepare": "husky"
   },
   "workspaces": [
     "packages/*"
   ],
-  "husky": {
-    "hooks": {
-      "commit-msg": "validate-commit-msg",
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "packages/**/{src,test}/**/*.ts": [
-      "prettier --write",
-      "git add"
+    "**/*.{jsx,js,ts,tsx,md,mdx}": [
+      "prettier --write"
     ]
   },
   "config": {
-    "validate-commit-msg": {
-      "types": "conventional-commit-types",
-      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
-    },
     "commitizen": {
       "path": "./node_modules/git-cz"
     }
@@ -58,28 +43,39 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@types/benchmark": "^1.0.33",
-    "@types/faker": "^4.1.12",
-    "@types/jest": "^27.0.1",
+    "@commitlint/cli": "19.3.0",
+    "@commitlint/config-conventional": "19.2.2",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "@types/benchmark": "^2.1.4",
+    "@types/jest": "29.5.12",
+    "@types/rollup-plugin-json": "^3.0.7",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.14.1",
     "benchmark": "^2.1.4",
-    "commitizen": "^3.1.2",
-    "git-cz": "^3.3.0",
-    "husky": "^2.7.0",
-    "lerna": "^3.22.1",
-    "lint-staged": "^8.2.1",
-    "prettier": "^1.19.1",
-    "rollup": "^1.32.1",
-    "rollup-plugin-commonjs": "^9.3.4",
+    "commitizen": "4.3.0",
+    "eslint": "8.56.0",
+    "eslint-plugin-jest": "27.6.3",
+    "eslint-plugin-jsx-a11y": "6.8.0",
+    "eslint-plugin-react": "7.34.3",
+    "eslint-plugin-react-hooks": "4.6.2",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-import-helpers": "1.3.1",
+    "eslint-plugin-you-dont-need-lodash-underscore": "6.13.0",
+    "git-cz": "^4.9.0",
+    "husky": "^9.0.11",
+    "jest": "29.7.0",
+    "jest-junit": "16.0.0",
+    "lerna": "8.1.3",
+    "lint-staged": "15.2.5",
+    "prettier": "^3.2.5",
+    "rollup": "^4.18.0",
+    "rollup-plugin-copy": "3.5.0",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^4.2.4",
-    "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "ts-jest": "^27.0.5",
-    "ts-node": "^8.10.2",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-config-standard": "^8.0.1",
-    "typescript": "^4.4.2",
-    "validate-commit-msg": "^2.14.0"
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.5"
   },
   "dependencies": {}
 }

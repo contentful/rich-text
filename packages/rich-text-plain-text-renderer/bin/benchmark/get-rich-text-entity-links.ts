@@ -1,4 +1,5 @@
-import { BLOCKS, Document, UnorderedList, ListItem, Text, Node } from '@contentful/rich-text-types';
+import { BLOCKS, Document, Node } from '@contentful/rich-text-types';
+
 import { documentToPlainTextString as docToString } from '../../src/index';
 
 /**
@@ -36,10 +37,8 @@ const richTextField: Document = {
           ],
         }),
       }),
-    }
-  ]
+    },
+  ],
 };
 
-export const documentToPlainTextString = () => (
-  docToString(richTextField, '')
-);
+export const documentToPlainTextString = () => docToString(richTextField, '');
