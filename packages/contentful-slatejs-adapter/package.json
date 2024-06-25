@@ -1,6 +1,6 @@
 {
   "name": "@contentful/contentful-slatejs-adapter",
-  "version": "15.17.4",
+  "version": "15.17.5",
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
@@ -28,16 +28,16 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.5.3"
+    "@contentful/rich-text-types": "^16.5.4"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@types/jest": "^27.0.1",
     "@types/node": "^20.14.8",
     "colors": "^1.1.2",
     "coveralls": "^3.0.0",
     "cross-env": "^5.0.1",
     "cz-conventional-changelog": "^2.0.0",
-    "@faker-js/faker": "^8.4.1",
     "lodash.camelcase": "^4.3.0",
     "prompt": "^1.0.0",
     "rimraf": "^2.6.1",
