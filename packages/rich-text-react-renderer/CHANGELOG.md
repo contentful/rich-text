@@ -11,7 +11,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- switch from tslint to eslint [TOL-2218][TOL-2203] ([#594](https://github.com/contentful/rich-text/issues/594)) ([c077b5a](https://github.com/contentful/rich-text/commit/c077b5af58f94c8dc6af4715d4b82c2771d643c5))
+- switch from tslint to eslint [TOL-2218][tol-2203] ([#594](https://github.com/contentful/rich-text/issues/594)) ([c077b5a](https://github.com/contentful/rich-text/commit/c077b5af58f94c8dc6af4715d4b82c2771d643c5))
 
 ## [15.21.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.21.3...@contentful/rich-text-react-renderer@15.21.4) (2024-06-25)
 
