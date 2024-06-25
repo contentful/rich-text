@@ -22,7 +22,6 @@
     "prebuild": "rimraf dist",
     "build": "yarn generate-json-schema && tsc --module commonjs && rollup -c --bundleConfigAsCjs rollup.config.js",
     "start": "tsc && rollup -c --bundleConfigAsCjs rollup.config.js -w",
-    "lint": "tslint -t codeFrame '@(src|bin)/*.ts'",
     "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen",
     "test": "jest"
   },
@@ -33,7 +32,6 @@
     "@types/node": "^20.14.8",
     "rimraf": "^2.6.3",
     "ts-jest": "^29.1.2",
-    "tslint": "^6.1.3",
     "typescript-json-schema": "0.63.0"
   }
 }

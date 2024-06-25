@@ -1,5 +1,6 @@
-import cloneDeep from 'lodash/cloneDeep';
 import { Block, BLOCKS, Document, INLINES, MARKS, ResourceLink } from '@contentful/rich-text-types';
+import cloneDeep from 'lodash/cloneDeep';
+
 import { documentToHtmlString, Options } from '../index';
 import {
   embeddedEntryDoc,

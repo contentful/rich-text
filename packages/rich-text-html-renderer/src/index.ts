@@ -1,15 +1,15 @@
-import escape from 'escape-html';
 import {
+  BLOCKS,
+  Block,
   Document,
+  INLINES,
+  Inline,
+  MARKS,
   Mark,
   Text,
-  BLOCKS,
-  MARKS,
-  INLINES,
-  Block,
-  Inline,
   helpers,
 } from '@contentful/rich-text-types';
+import escape from 'escape-html';
 
 const attributeValue = (value: string) => `"${value.replace(/"/g, '&quot;')}"`;
 

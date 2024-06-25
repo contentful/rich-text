@@ -1,14 +1,14 @@
-import { getDataOrDefault } from './helpers';
-
-import { fromJSON, Schema, SchemaJSON } from './schema';
 import * as Contentful from '@contentful/rich-text-types';
+
+import { getDataOrDefault } from './helpers';
+import { fromJSON, Schema, SchemaJSON } from './schema';
 import {
-  ContentfulNode,
   ContentfulElementNode,
-  SlateNode,
+  ContentfulNode,
   SlateElement,
-  SlateText,
   SlateMarks,
+  SlateNode,
+  SlateText,
 } from './types';
 
 export interface ToSlatejsDocumentProperties {

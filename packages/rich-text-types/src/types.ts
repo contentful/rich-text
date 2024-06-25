@@ -1,6 +1,6 @@
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
-import { TopLevelBlockEnum, ListItemBlockEnum } from './schemaConstraints';
+import { ListItemBlockEnum, TopLevelBlockEnum } from './schemaConstraints';
 
 /**
  * @additionalProperties true

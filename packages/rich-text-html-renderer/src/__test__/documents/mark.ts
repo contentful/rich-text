@@ -1,5 +1,6 @@
 import { Document } from '@contentful/rich-text-types';
-export default function (mark: String) {
+
+export default function (mark: string) {
   return {
     nodeType: 'document',
     data: {},

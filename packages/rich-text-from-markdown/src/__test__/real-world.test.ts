@@ -1,9 +1,10 @@
-import _ from 'lodash';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
-import { document, block, text, mark, inline } from './helpers';
-import { richTextFromMarkdown } from '..';
 import { readFileSync } from 'fs';
 import path from 'path';
+
+import { richTextFromMarkdown } from '..';
+
+import { block, document, inline, mark, text } from './helpers';
 
 describe('rich-text-from-markdown', () => {
   it('should parse md with all formatting options', async () => {

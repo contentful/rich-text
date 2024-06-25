@@ -1,7 +1,7 @@
 import { writeFile } from 'fs';
 import { resolve } from 'path';
-
 import * as TJS from 'typescript-json-schema';
+
 import { BLOCKS, INLINES } from '../src/index';
 
 // optionally pass argument to schema generator
@@ -9,7 +9,7 @@ const settings: TJS.PartialArgs = {
   topRef: true,
   noExtraProps: true,
   required: true,
-  // @ts-ignore
+  // @ts-expect-error causes a bug in the generated schema if left out
   useTypeOfKeyword: true,
   constAsEnum: true,
 };

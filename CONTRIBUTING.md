@@ -88,7 +88,7 @@ if you'd like. When in doubt, follow a style similar to the existing code :)
 
 We use a common [rollup](https://rollupjs.org/guide/en) config to compile
 packages from TypeScript to ES5. We also use common [TypeScript](https://www.typescriptlang.org/)
-and [tslint](https://palantir.github.io/tslint/) configs. You'll notice
+and [eslint](https://eslint.org/docs/v8.x/) configs. You'll notice
 the `rollup.config.js` and `tsconfig.json` in each package largely reference
 those files on a root level - this keeps code conventions consistent across the
 repository as a whole.
