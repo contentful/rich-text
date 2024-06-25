@@ -13,6 +13,7 @@ import _ from 'lodash';
 import gfm from 'remark-gfm';
 import markdown from 'remark-parse';
 import unified from 'unified';
+
 import { MarkdownLinkNode, MarkdownNode, MarkdownTree } from './types';
 
 const markdownNodeTypes = new Map<string, string>([
@@ -291,7 +292,8 @@ function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
   if (node.type !== 'paragraph') {
     return [node];
   }
-  let imageNodeIndices = [];
+
+  const imageNodeIndices = [];
   for (let i = 0; i < node.children.length; i++) {
     if (node.children[i].type === 'image') {
       imageNodeIndices.push(i);

@@ -3,7 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import json from 'rollup-plugin-json';
 import typescript from 'rollup-plugin-typescript2';
 
-const pkg = require('./package.json');
+import pkg from './package.json';
 
 const options = {
   input: `src/index.ts`,

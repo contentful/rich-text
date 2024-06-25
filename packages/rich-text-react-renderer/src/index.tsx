@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
+
 import { Block, BLOCKS, Document, Inline, INLINES, MARKS, Text } from '@contentful/rich-text-types';
+
 import { nodeToReactComponent } from './util/nodeListToReactComponents';
 
 const defaultNodeRenderers: RenderNode = {
@@ -31,7 +33,7 @@ const defaultNodeRenderers: RenderNode = {
   [INLINES.RESOURCE_HYPERLINK]: (node) =>
     defaultInlineResource(INLINES.RESOURCE_HYPERLINK, node as Inline),
   [INLINES.EMBEDDED_ENTRY]: (node) => defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
-  [INLINES.EMBEDDED_RESOURCE]: (node, children) =>
+  [INLINES.EMBEDDED_RESOURCE]: (node, _children) =>
     defaultInlineResource(INLINES.EMBEDDED_RESOURCE, node as Inline),
   [INLINES.HYPERLINK]: (node, children) => <a href={node.data.uri}>{children}</a>,
 };

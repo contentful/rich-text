@@ -1,4 +1,5 @@
 import { BLOCKS, TEXT_CONTAINERS } from '@contentful/rich-text-types';
+
 import { ContentfulElementNode } from './types';
 
 const defaultSchema: SchemaJSON = {};

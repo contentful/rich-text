@@ -1,6 +1,9 @@
 import React, { ReactNode } from 'react';
+
 import { helpers, Mark } from '@contentful/rich-text-types';
+
 import { CommonNode, Options } from '..';
+
 import { appendKeyToValidElement } from './appendKeyToValidElement';
 
 export function nodeListToReactComponents(nodes: CommonNode[], options: Options): ReactNode {
@@ -20,8 +23,9 @@ export function nodeToReactComponent(node: CommonNode, options: Options): ReactN
       nodeValue = (nodeValue as string).replace(/ {2,}/g, (match) => '\u00A0'.repeat(match.length));
 
       // Preserve line breaks.
-      let lines = (nodeValue as string).split('\n');
-      let jsxLines: (string | JSX.Element)[] = [];
+      const lines = (nodeValue as string).split('\n');
+      const jsxLines: (string | JSX.Element)[] = [];
+
       lines.forEach((line, index) => {
         jsxLines.push(line);
         if (index !== lines.length - 1) {
