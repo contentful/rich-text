@@ -1,7 +1,7 @@
-import { Document, Block, Inline, Text } from '../types';
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 import { BLOCKS, INLINES } from '..';
 import { TopLevelBlockEnum } from '../schemaConstraints';
+import { Block, Document, Inline, Text } from '../types';
 
 describe('Document', () => {
   it('empty Document', () => {
@@ -18,7 +18,7 @@ describe('Document', () => {
       data: {},
       content: [
         {
-          nodeType: faker.name.title() as TopLevelBlockEnum,
+          nodeType: faker.person.prefix() as TopLevelBlockEnum,
           data: {},
           content: [],
         },
@@ -42,7 +42,7 @@ describe('Block', () => {
       data: {},
       content: [
         {
-          nodeType: faker.name.title() as INLINES,
+          nodeType: faker.person.prefix() as INLINES,
           data: {},
           content: [],
         },
@@ -81,7 +81,7 @@ describe('Inline', () => {
       data: {},
       content: [
         {
-          nodeType: faker.name.title() as INLINES,
+          nodeType: faker.person.prefix() as INLINES,
           data: {},
           content: [],
         },
@@ -91,7 +91,7 @@ describe('Inline', () => {
 
   it('Inline with text', () => {
     const inline: Inline = {
-      nodeType: faker.name.title() as INLINES,
+      nodeType: faker.person.prefix() as INLINES,
       data: {},
       content: [
         {

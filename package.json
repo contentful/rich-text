@@ -49,7 +49,6 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@types/benchmark": "^2.1.4",
-    "@types/faker": "^6.6.9",
     "@types/jest": "29.5.12",
     "benchmark": "^2.1.4",
     "commitizen": "4.3.0",
