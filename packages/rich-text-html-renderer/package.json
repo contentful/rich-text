@@ -30,7 +30,7 @@
     "escape-html": "^1.0.3"
   },
   "devDependencies": {
-    "@types/escape-html": "^0.0.20",
+    "@types/escape-html": "^1.0.4",
     "@types/lodash.clonedeep": "^4.5.6",
     "lodash.clonedeep": "^4.5.0",
     "rimraf": "^2.6.3",
