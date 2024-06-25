@@ -1,5 +1,5 @@
 import React, { ReactNode, ReactNodeArray } from 'react';
-import { BLOCKS, Document, INLINES, MARKS } from '@contentful/rich-text-types';
+import { BLOCKS, Document, INLINES, MARKS, ResourceLink } from '@contentful/rich-text-types';
 
 import { CommonNode, documentToReactComponents, Options } from '..';
 
@@ -25,6 +25,7 @@ import Paragraph from './components/Paragraph';
 import Strong from './components/Strong';
 import { appendKeyToValidElement } from '../util/appendKeyToValidElement';
 import { nodeListToReactComponents, nodeToReactComponent } from '../util/nodeListToReactComponents';
+import embeddedResource from './documents/embedded-resource';
 
 describe('documentToReactComponents', () => {
   it('returns an empty array when given an empty document', () => {
@@ -49,6 +50,10 @@ describe('documentToReactComponents', () => {
       paragraphDoc,
       headingDoc(BLOCKS.HEADING_1),
       headingDoc(BLOCKS.HEADING_2),
+      headingDoc(BLOCKS.HEADING_3),
+      headingDoc(BLOCKS.HEADING_4),
+      headingDoc(BLOCKS.HEADING_5),
+      headingDoc(BLOCKS.HEADING_6),
     ];
 
     docs.forEach((doc) => {
@@ -64,6 +69,7 @@ describe('documentToReactComponents', () => {
       marksDoc(MARKS.CODE),
       marksDoc(MARKS.SUPERSCRIPT),
       marksDoc(MARKS.SUBSCRIPT),
+      marksDoc(MARKS.STRIKETHROUGH),
     ];
 
     docs.forEach((doc) => {
@@ -138,6 +144,19 @@ describe('documentToReactComponents', () => {
     expect(documentToReactComponents(document)).toMatchSnapshot();
   });
 
+  it('renders default resource block', () => {
+    const resourceSys: ResourceLink = {
+      sys: {
+        urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM',
+        type: 'ResourceLink',
+        linkType: 'Contentful:Entry',
+      },
+    };
+    const document: Document = embeddedResource(resourceSys);
+
+    expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+
   it('renders ordered lists', () => {
     const document: Document = olDoc;
 
@@ -203,12 +222,26 @@ describe('documentToReactComponents', () => {
       target: {
         sys: {
           id: '9mpxT4zsRi6Iwukey8KeM',
-          link: 'Link',
-          type: 'Entry',
+          type: 'Link',
+          linkType: 'Entry',
         },
       },
     };
     const document: Document = inlineEntityDoc(entry, INLINES.ENTRY_HYPERLINK);
+
+    expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+  it('renders resource hyperlink', () => {
+    const entry = {
+      target: {
+        sys: {
+          urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM',
+          type: 'Link',
+          linkType: 'Entry',
+        },
+      },
+    };
+    const document: Document = inlineEntityDoc(entry, INLINES.RESOURCE_HYPERLINK);
 
     expect(documentToReactComponents(document)).toMatchSnapshot();
   });
@@ -217,12 +250,26 @@ describe('documentToReactComponents', () => {
       target: {
         sys: {
           id: '9mpxT4zsRi6Iwukey8KeM',
-          link: 'Link',
-          type: 'Entry',
+          type: 'Link',
+          linkType: 'Entry',
         },
       },
     };
     const document: Document = inlineEntityDoc(entry, INLINES.EMBEDDED_ENTRY);
+
+    expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+  it('renders embedded resource', () => {
+    const entry = {
+      target: {
+        sys: {
+          urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM',
+          type: 'ResourceLink',
+          linkType: 'Contentful:Entry',
+        },
+      },
+    };
+    const document: Document = inlineEntityDoc(entry, INLINES.EMBEDDED_RESOURCE);
 
     expect(documentToReactComponents(document)).toMatchSnapshot();
   });
@@ -388,5 +435,57 @@ describe('nodeListToReactComponents', () => {
     expect(renderedNodes[1]).not.toHaveProperty('key');
     expect(renderedNodes[2]).toHaveProperty('key', '2');
     expect(renderedNodes).toMatchSnapshot();
+  });
+});
+
+describe('preserveWhitespace', () => {
+  it('preserves spaces between words', () => {
+    const options: Options = {
+      preserveWhitespace: true,
+    };
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'hello    world',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+    expect(documentToReactComponents(document, options)).toMatchSnapshot();
+  });
+
+  it('preserves new lines', () => {
+    const options: Options = {
+      preserveWhitespace: true,
+    };
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'hello\nworld',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+    expect(documentToReactComponents(document, options)).toMatchSnapshot();
   });
 });

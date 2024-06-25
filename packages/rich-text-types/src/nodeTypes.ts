@@ -94,6 +94,14 @@ export interface Link<T extends string = string> {
   };
 }
 
+export interface ResourceLink {
+  sys: {
+    type: 'ResourceLink';
+    linkType: 'Contentful:Entry';
+    urn: string;
+  };
+}
+
 export interface EntryLinkBlock extends Block {
   nodeType: BLOCKS.EMBEDDED_ENTRY;
   data: {
@@ -118,12 +126,36 @@ export interface AssetLinkBlock extends Block {
   content: Array<Inline | Text>;
 }
 
+export interface ResourceLinkBlock extends Block {
+  nodeType: BLOCKS.EMBEDDED_RESOURCE;
+  data: {
+    target: ResourceLink;
+  };
+  /**
+   *
+   * @maxItems 0
+   */
+  content: Array<Inline | Text>;
+}
+
 // INLINE
 
 export interface EntryLinkInline extends Inline {
   nodeType: INLINES.EMBEDDED_ENTRY;
   data: {
     target: Link<'Entry'>;
+  };
+  /**
+   *
+   * @maxItems 0
+   */
+  content: Text[];
+}
+
+export interface ResourceLinkInline extends Inline {
+  nodeType: INLINES.EMBEDDED_RESOURCE;
+  data: {
+    target: ResourceLink;
   };
   /**
    *
@@ -152,6 +184,14 @@ export interface EntryHyperlink extends Inline {
   nodeType: INLINES.ENTRY_HYPERLINK;
   data: {
     target: Link<'Entry'>;
+  };
+  content: Text[];
+}
+
+export interface ResourceHyperlink extends Inline {
+  nodeType: INLINES.RESOURCE_HYPERLINK;
+  data: {
+    target: ResourceLink;
   };
   content: Text[];
 }

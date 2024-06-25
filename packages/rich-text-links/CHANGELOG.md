@@ -3,6 +3,96 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.6.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.6.3...@contentful/rich-text-links@16.6.4) (2024-06-25)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.6.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.6.2...@contentful/rich-text-links@16.6.3) (2024-05-28)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.6.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.6.1...@contentful/rich-text-links@16.6.2) (2024-05-27)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.6.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.6.0...@contentful/rich-text-links@16.6.1) (2024-05-24)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+# [16.6.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.5...@contentful/rich-text-links@16.6.0) (2024-05-22)
+
+### Features
+
+- upgrading rollup to latest version [TOL-2097] ([#559](https://github.com/contentful/rich-text/issues/559)) ([f14d197](https://github.com/contentful/rich-text/commit/f14d1974590d58f92bbf4cb56644095dba929ad9))
+
+## [16.5.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.4...@contentful/rich-text-links@16.5.5) (2024-03-04)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.3...@contentful/rich-text-links@16.5.4) (2024-01-30)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.2...@contentful/rich-text-links@16.5.3) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.1...@contentful/rich-text-links@16.5.2) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.0...@contentful/rich-text-links@16.5.1) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+# [16.5.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.4.1...@contentful/rich-text-links@16.5.0) (2023-09-12)
+
+### Features
+
+- add new nodes [DANTE-1157] ([#494](https://github.com/contentful/rich-text/issues/494)) ([b1fa6df](https://github.com/contentful/rich-text/commit/b1fa6dffc4bd7e1d367e9ce2cfddffe4fe07be47))
+
+## [16.4.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.4.0...@contentful/rich-text-links@16.4.1) (2023-08-04)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+# [16.4.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.3.0...@contentful/rich-text-links@16.4.0) (2023-07-10)
+
+### Features
+
+- allow document parameter to be nullable ([#471](https://github.com/contentful/rich-text/issues/471)) ([e50f8d2](https://github.com/contentful/rich-text/commit/e50f8d24c60a74f43f84f415a5c393038919efd2))
+
+# [16.3.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.2.0...@contentful/rich-text-links@16.3.0) (2023-06-09)
+
+### Features
+
+- change visitNodes to visit nodes in depth-first order ([#475](https://github.com/contentful/rich-text/issues/475)) ([ace5225](https://github.com/contentful/rich-text/commit/ace52253af4e83035075a466b7c97a08072e35ad))
+
+# [16.2.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.1.1...@contentful/rich-text-links@16.2.0) (2023-06-07)
+
+### Features
+
+- add deduplicate option to getRichTextResourceLinks ([#470](https://github.com/contentful/rich-text/issues/470)) ([1141d5b](https://github.com/contentful/rich-text/commit/1141d5b6848e32efce198ad2d47b6442a9660aa0))
+
+## [16.1.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.1.0...@contentful/rich-text-links@16.1.1) (2023-05-31)
+
+### Bug Fixes
+
+- prevent crash when a null value is passed as document ([#468](https://github.com/contentful/rich-text/issues/468)) ([3c8531c](https://github.com/contentful/rich-text/commit/3c8531cbcdde623c66c4b13d49fff73cad096871))
+
+# [16.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.0.4...@contentful/rich-text-links@16.1.0) (2023-05-26)
+
+### Features
+
+- 🎸 add `getRichTextResourceLinks` ([#465](https://github.com/contentful/rich-text/issues/465)) ([5746ba6](https://github.com/contentful/rich-text/commit/5746ba652ae5eac2df27d05193e19aef9e85c438))
+
+## [16.0.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.0.3...@contentful/rich-text-links@16.0.4) (2023-05-04)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.0.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.0.2...@contentful/rich-text-links@16.0.3) (2023-03-14)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
 ## [16.0.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.0.1...@contentful/rich-text-links@16.0.2) (2022-12-01)
 
 **Note:** Version bump only for package @contentful/rich-text-links

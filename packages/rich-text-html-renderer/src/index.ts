@@ -22,6 +22,7 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.HEADING_5]: (node, next) => `<h5>${next(node.content)}</h5>`,
   [BLOCKS.HEADING_6]: (node, next) => `<h6>${next(node.content)}</h6>`,
   [BLOCKS.EMBEDDED_ENTRY]: (node, next) => `<div>${next(node.content)}</div>`,
+  [BLOCKS.EMBEDDED_RESOURCE]: (node, next) => `<div>${next(node.content)}</div>`,
   [BLOCKS.UL_LIST]: (node, next) => `<ul>${next(node.content)}</ul>`,
   [BLOCKS.OL_LIST]: (node, next) => `<ol>${next(node.content)}</ol>`,
   [BLOCKS.LIST_ITEM]: (node, next) => `<li>${next(node.content)}</li>`,
@@ -33,7 +34,11 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.TABLE_CELL]: (node, next) => `<td>${next(node.content)}</td>`,
   [INLINES.ASSET_HYPERLINK]: (node) => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
   [INLINES.ENTRY_HYPERLINK]: (node) => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
+  [INLINES.RESOURCE_HYPERLINK]: (node) =>
+    defaultInlineResource(INLINES.RESOURCE_HYPERLINK, node as Inline),
   [INLINES.EMBEDDED_ENTRY]: (node) => defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
+  [INLINES.EMBEDDED_RESOURCE]: (node) =>
+    defaultInlineResource(INLINES.EMBEDDED_RESOURCE, node as Inline),
   [INLINES.HYPERLINK]: (node, next) => {
     const href = typeof node.data.uri === 'string' ? node.data.uri : '';
     return `<a href=${attributeValue(href)}>${next(node.content)}</a>`;
@@ -47,10 +52,14 @@ const defaultMarkRenderers: RenderMark = {
   [MARKS.CODE]: (text) => `<code>${text}</code>`,
   [MARKS.SUPERSCRIPT]: (text) => `<sup>${text}</sup>`,
   [MARKS.SUBSCRIPT]: (text) => `<sub>${text}</sub>`,
+  [MARKS.STRIKETHROUGH]: (text) => `<s>${text}</s>`,
 };
 
 const defaultInline = (type: string, node: Inline) =>
   `<span>type: ${escape(type)} id: ${escape(node.data.target.sys.id)}</span>`;
+
+const defaultInlineResource = (type: string, node: Inline) =>
+  `<span>type: ${escape(type)} urn: ${escape(node.data.target.sys.urn)}</span>`;
 
 export type CommonNode = Text | Block | Inline;
 
@@ -79,6 +88,10 @@ export interface Options {
    * Mark renderers
    */
   renderMark?: RenderMark;
+  /**
+   * Keep line breaks and multiple spaces
+   */
+  preserveWhitespace?: boolean;
 }
 
 /**
@@ -101,16 +114,33 @@ export function documentToHtmlString(
       ...defaultMarkRenderers,
       ...options.renderMark,
     },
+    preserveWhitespace: options.preserveWhitespace,
   });
 }
 
-function nodeListToHtmlString(nodes: CommonNode[], { renderNode, renderMark }: Options): string {
-  return nodes.map<string>((node) => nodeToHtmlString(node, { renderNode, renderMark })).join('');
+function nodeListToHtmlString(
+  nodes: CommonNode[],
+  { renderNode, renderMark, preserveWhitespace }: Options,
+): string {
+  return nodes
+    .map<string>((node) => nodeToHtmlString(node, { renderNode, renderMark, preserveWhitespace }))
+    .join('');
 }
 
-function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options): string {
+function nodeToHtmlString(
+  node: CommonNode,
+  { renderNode, renderMark, preserveWhitespace }: Options,
+): string {
   if (helpers.isText(node)) {
-    const nodeValue = escape(node.value);
+    let nodeValue = escape(node.value);
+
+    // If preserveWhitespace is true, handle line breaks and spaces.
+    if (preserveWhitespace) {
+      nodeValue = nodeValue
+        .replace(/\n/g, '<br/>')
+        .replace(/ {2,}/g, (match) => '&nbsp;'.repeat(match.length));
+    }
+
     if (node.marks.length > 0) {
       return node.marks.reduce((value: string, mark: Mark) => {
         if (!renderMark[mark.type]) {
@@ -122,7 +152,8 @@ function nodeToHtmlString(node: CommonNode, { renderNode, renderMark }: Options)
 
     return nodeValue;
   } else {
-    const nextNode: Next = (nodes) => nodeListToHtmlString(nodes, { renderMark, renderNode });
+    const nextNode: Next = (nodes) =>
+      nodeListToHtmlString(nodes, { renderMark, renderNode, preserveWhitespace });
     if (!node.nodeType || !renderNode[node.nodeType]) {
       // TODO: Figure what to return when passed an unrecognized node.
       return '';

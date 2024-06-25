@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-links",
-  "version": "16.0.2",
+  "version": "16.6.4",
   "main": "dist/rich-text-links.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -15,29 +15,22 @@
     "node": ">=6.0.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "build": "tsc --module commonjs && rollup -c rollup.config.js",
+    "build": "tsc --module commonjs && rollup -c --bundleConfigAsCjs rollup.config.js",
     "prebuild": "rimraf dist",
-    "start": "tsc && rollup -c rollup.config.js -w",
+    "start": "tsc && rollup -c --bundleConfigAsCjs rollup.config.js -w",
     "lint": "tslint -t codeFrame '@(src|bin)/*.ts'",
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.0.2"
+    "@contentful/rich-text-types": "^16.5.3"
   },
   "devDependencies": {
-    "jest": "^27.1.0",
     "rimraf": "^2.6.3",
-    "rollup": "^1.32.1",
-    "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^4.2.4",
-    "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "ts-jest": "^27.0.5",
-    "tslint": "^6.1.3",
-    "typescript": "^4.4.2"
+    "ts-jest": "^29.1.2",
+    "tslint": "^6.1.3"
   }
 }

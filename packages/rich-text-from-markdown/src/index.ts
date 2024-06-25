@@ -1,19 +1,19 @@
-import _ from 'lodash';
-import unified from 'unified';
-import markdown from 'remark-parse';
-import gfm from 'remark-gfm';
 import {
-  Document,
-  Node,
-  Block,
   BLOCKS,
-  TopLevelBlock,
-  INLINES,
+  Block,
+  Document,
   Hyperlink,
-  Text,
+  INLINES,
   Inline,
+  Node,
+  Text,
+  TopLevelBlock,
 } from '@contentful/rich-text-types';
-import { MarkdownNode, MarkdownLinkNode, MarkdownTree } from './types';
+import _ from 'lodash';
+import gfm from 'remark-gfm';
+import markdown from 'remark-parse';
+import unified from 'unified';
+import { MarkdownLinkNode, MarkdownNode, MarkdownTree } from './types';
 
 const markdownNodeTypes = new Map<string, string>([
   ['paragraph', BLOCKS.PARAGRAPH],
@@ -140,11 +140,20 @@ const buildTableCell = async (
 ): Promise<Array<Block>> => {
   const nodeChildren = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
 
-  const content = nodeChildren.map((contentNode) => ({
-    nodeType: BLOCKS.PARAGRAPH,
-    data: {},
-    content: [contentNode],
-  }));
+  const content = nodeChildren.reduce((result, contentNode) => {
+    if (isText(contentNode.nodeType) || isInline(contentNode.nodeType)) {
+      const lastNode = result[result.length - 1];
+      if (lastNode && lastNode.nodeType === BLOCKS.PARAGRAPH) {
+        lastNode.content.push(contentNode);
+      } else {
+        result.push({ nodeType: BLOCKS.PARAGRAPH, data: {}, content: [contentNode] });
+      }
+    } else {
+      result.push(contentNode);
+    }
+
+    return result;
+  }, []);
 
   // A table cell can't be empty
   if (content.length === 0) {
@@ -185,7 +194,7 @@ const buildText = async (
 ): Promise<Array<Inline | Text>> => {
   const nodeType = nodeTypeFor(node);
   const markType = markTypeFor(node);
-  const marks = [...appliedMarksTypes];
+  const marks = Array.from(appliedMarksTypes);
   if (markType) {
     marks.push(markType);
   }
@@ -223,6 +232,13 @@ async function mdToRichTextNode(
   fallback: FallbackResolver,
   appliedMarksTypes: string[] = [],
 ): Promise<Node[]> {
+  // By default <br/> is parsed as html node, causing it to be stripped out.
+  // We need to convert it manually in order to support it
+  if (node.type === 'html' && /<br\s?\/?>/gi.test(node.value)) {
+    node.value = '\n';
+    node.type = 'text';
+  }
+
   const nodeType = nodeTypeFor(node);
 
   if (isLink(node)) {

@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.21.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.21.2...@contentful/rich-text-react-renderer@15.21.3) (2024-06-25)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+## [15.21.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.21.1...@contentful/rich-text-react-renderer@15.21.2) (2024-05-28)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+## [15.21.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.21.0...@contentful/rich-text-react-renderer@15.21.1) (2024-05-27)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+# [15.21.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.20.0...@contentful/rich-text-react-renderer@15.21.0) (2024-05-24)
+
+### Features
+
+- add strikethrough support ([#562](https://github.com/contentful/rich-text/issues/562)) ([b87d0c3](https://github.com/contentful/rich-text/commit/b87d0c31bccb4012745c0479b2b5c92fc28c1e91))
+
+# [15.20.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.19.6...@contentful/rich-text-react-renderer@15.20.0) (2024-05-22)
+
+### Features
+
+- upgrading rollup to latest version [TOL-2097] ([#559](https://github.com/contentful/rich-text/issues/559)) ([f14d197](https://github.com/contentful/rich-text/commit/f14d1974590d58f92bbf4cb56644095dba929ad9))
+
+## [15.19.6](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.19.5...@contentful/rich-text-react-renderer@15.19.6) (2024-03-04)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+## [15.19.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.19.4...@contentful/rich-text-react-renderer@15.19.5) (2024-03-04)
+
+### Bug Fixes
+
+- 🐛 handle multiple space rendering when using preserveWhitespace ([#531](https://github.com/contentful/rich-text/issues/531)) ([982b21b](https://github.com/contentful/rich-text/commit/982b21b13736d8b1dcdb652b4eb41c7ab279ee33)), closes [#514](https://github.com/contentful/rich-text/issues/514)
+
+## [15.19.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.19.3...@contentful/rich-text-react-renderer@15.19.4) (2024-01-30)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+## [15.19.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.19.2...@contentful/rich-text-react-renderer@15.19.3) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+## [15.19.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.19.1...@contentful/rich-text-react-renderer@15.19.2) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+## [15.19.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.19.0...@contentful/rich-text-react-renderer@15.19.1) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+# [15.19.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.18.0...@contentful/rich-text-react-renderer@15.19.0) (2023-10-24)
+
+### Features
+
+- add default renderers for new resource nodes ([#504](https://github.com/contentful/rich-text/issues/504)) ([f748e6b](https://github.com/contentful/rich-text/commit/f748e6b0f0e22ce3809ca8881438b84b1baafb8f))
+
+# [15.18.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.17.2...@contentful/rich-text-react-renderer@15.18.0) (2023-10-02)
+
+### Features
+
+- preserve formatting linebreak whitespace ([#497](https://github.com/contentful/rich-text/issues/497)) ([e62ab92](https://github.com/contentful/rich-text/commit/e62ab92f6320d970f921e751d1753cd290224224))
+
+## [15.17.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.17.1...@contentful/rich-text-react-renderer@15.17.2) (2023-09-12)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+## [15.17.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.17.0...@contentful/rich-text-react-renderer@15.17.1) (2023-08-04)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+# [15.17.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.16.5...@contentful/rich-text-react-renderer@15.17.0) (2023-06-09)
+
+### Features
+
+- add default renderer for the embedded-resource-block node ([#474](https://github.com/contentful/rich-text/issues/474)) ([844c011](https://github.com/contentful/rich-text/commit/844c011ef3d6f2887d82a39784c6fb5672c6e065))
+
+## [15.16.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.16.4...@contentful/rich-text-react-renderer@15.16.5) (2023-05-26)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+## [15.16.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.16.3...@contentful/rich-text-react-renderer@15.16.4) (2023-05-04)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
+## [15.16.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.16.2...@contentful/rich-text-react-renderer@15.16.3) (2023-03-14)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
 ## [15.16.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.16.1...@contentful/rich-text-react-renderer@15.16.2) (2022-12-01)
 
 **Note:** Version bump only for package @contentful/rich-text-react-renderer
