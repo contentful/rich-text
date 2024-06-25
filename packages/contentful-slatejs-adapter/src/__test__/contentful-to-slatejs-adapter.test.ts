@@ -1,9 +1,9 @@
+import * as Contentful from '@contentful/rich-text-types';
+
 import toSlatejsDocument from '../contentful-to-slatejs-adapter';
 import toContentfulDocument from '../slatejs-to-contentful-adapter';
-import * as contentful from './contentful-helpers';
-
-import * as Contentful from '@contentful/rich-text-types';
 import { SlateNode } from '../types';
+import * as contentful from './contentful-helpers';
 
 const schema = { blocks: { [Contentful.BLOCKS.EMBEDDED_ENTRY]: { isVoid: true } } };
 

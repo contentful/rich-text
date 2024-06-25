@@ -1,8 +1,14 @@
-import React, { ReactNode, ReactNodeArray } from 'react';
+import React, { ReactNode } from 'react';
+
 import { BLOCKS, Document, INLINES, MARKS, ResourceLink } from '@contentful/rich-text-types';
 
 import { CommonNode, documentToReactComponents, Options } from '..';
 
+import { appendKeyToValidElement } from '../util/appendKeyToValidElement';
+import { nodeListToReactComponents, nodeToReactComponent } from '../util/nodeListToReactComponents';
+import DocumentWrapper from './components/Document';
+import Paragraph from './components/Paragraph';
+import Strong from './components/Strong';
 import {
   embeddedEntryDoc,
   headingDoc,
@@ -16,15 +22,10 @@ import {
   olDoc,
   paragraphDoc,
   quoteDoc,
-  ulDoc,
   tableDoc,
   tableWithHeaderDoc,
+  ulDoc,
 } from './documents';
-import DocumentWrapper from './components/Document';
-import Paragraph from './components/Paragraph';
-import Strong from './components/Strong';
-import { appendKeyToValidElement } from '../util/appendKeyToValidElement';
-import { nodeListToReactComponents, nodeToReactComponent } from '../util/nodeListToReactComponents';
 import embeddedResource from './documents/embedded-resource';
 
 describe('documentToReactComponents', () => {
@@ -427,10 +428,7 @@ describe('nodeListToReactComponents', () => {
   ];
 
   it('renders children as an array with keys from its index', () => {
-    const renderedNodes: ReactNodeArray = nodeListToReactComponents(
-      nodes,
-      options,
-    ) as ReactNodeArray;
+    const renderedNodes: ReactNode[] = nodeListToReactComponents(nodes, options) as ReactNode[];
     expect(renderedNodes[0]).toHaveProperty('key', '0');
     expect(renderedNodes[1]).not.toHaveProperty('key');
     expect(renderedNodes[2]).toHaveProperty('key', '2');

@@ -1,7 +1,7 @@
 export interface MarkdownNode extends MarkdownTree {
   depth: string;
   type: string;
-  ordered: Boolean;
+  ordered: boolean;
   value: string;
 }
 

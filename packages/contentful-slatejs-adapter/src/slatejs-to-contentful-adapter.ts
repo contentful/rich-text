@@ -1,14 +1,14 @@
-import { getDataOrDefault } from './helpers';
-import { SchemaJSON, Schema, fromJSON } from './schema';
-
 import * as Contentful from '@contentful/rich-text-types';
+
+import { getDataOrDefault } from './helpers';
+import { Schema, SchemaJSON, fromJSON } from './schema';
 import {
-  ContentfulNode,
   ContentfulElementNode,
-  SlateNode,
+  ContentfulNode,
   SlateElement,
-  SlateText,
   SlateMarks,
+  SlateNode,
+  SlateText,
 } from './types';
 
 export interface ToContentfulDocumentProperties {
@@ -61,9 +61,9 @@ function convertText(node: SlateText): Contentful.Text {
   const { text, data, ...marks } = node;
   return {
     nodeType: 'text',
-    value: node.text,
+    value: text,
     marks: getMarkList(marks),
-    data: getDataOrDefault(node.data),
+    data: getDataOrDefault(data),
   };
 }
 

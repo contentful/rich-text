@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.18.0](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.17.5...@contentful/contentful-slatejs-adapter@15.18.0) (2024-06-25)
+
+### Features
+
+- switch from tslint to eslint [TOL-2218][TOL-2203] ([#594](https://github.com/contentful/rich-text/issues/594)) ([c077b5a](https://github.com/contentful/rich-text/commit/c077b5af58f94c8dc6af4715d4b82c2771d643c5))
+
+## [15.17.5](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.17.4...@contentful/contentful-slatejs-adapter@15.17.5) (2024-06-25)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
 ## [15.17.4](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.17.3...@contentful/contentful-slatejs-adapter@15.17.4) (2024-06-25)
 
 **Note:** Version bump only for package @contentful/contentful-slatejs-adapter

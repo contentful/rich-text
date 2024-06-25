@@ -1,4 +1,5 @@
 import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
+
 import {
   getAllRichTextResourceLinks,
   getRichTextEntityLinks,
