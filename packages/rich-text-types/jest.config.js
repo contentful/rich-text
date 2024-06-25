@@ -1,8 +1,9 @@
+/* eslint-disable */
+
+const getBaseConfig = require('../../baseJestConfig');
+const packageJson = require('./package.json');
+const packageName = packageJson.name.split('@contentful/')[1];
+
 module.exports = {
-  collectCoverage: true,
-  testPathIgnorePatterns: ['/dist/'],
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
-  testMatch: ['**/*.test.[jt]s?(x)'],
+  ...getBaseConfig(packageName),
 };

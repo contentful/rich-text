@@ -1,4 +1,16 @@
-import { Document, Node, Block, Link, NodeData } from '@contentful/rich-text-types';
+import {
+  Block,
+  BLOCKS,
+  Document,
+  Inline,
+  INLINES,
+  Link,
+  Node,
+  NodeData,
+  ResourceLink,
+} from '@contentful/rich-text-types';
+
+import { Maybe } from './types/utils';
 
 export type EntityLinks = { [type in EntityType]: EntityLink[] };
 export type EntityLinkMaps = { [type in EntityType]: Map<string, EntityLink> };
@@ -9,6 +21,57 @@ export type EntityLinkNodeData = {
   target: SysObject;
 };
 
+// spare upstream dependencies the need to use rich-text-types
+type AcceptedResourceLinkTypes =
+  | `${BLOCKS.EMBEDDED_RESOURCE}`
+  | `${INLINES.EMBEDDED_RESOURCE}`
+  | `${INLINES.RESOURCE_HYPERLINK}`;
+
+/**
+ * Extracts all links no matter the entity they are pointing to.
+ */
+export function getRichTextResourceLinks(
+  document: Maybe<Document>,
+  nodeType: AcceptedResourceLinkTypes,
+  { deduplicate = true }: { deduplicate?: boolean } = {},
+): ResourceLink[] {
+  const isValidType = (actualNodeType: string, data: NodeData) =>
+    actualNodeType === nodeType && data.target?.sys?.type === 'ResourceLink';
+
+  return getValidResourceLinks(document, isValidType, deduplicate);
+}
+
+export function getAllRichTextResourceLinks(
+  document: Maybe<Document>,
+  { deduplicate = true }: { deduplicate?: boolean } = {},
+): ResourceLink[] {
+  const nodeTypes: string[] = [
+    BLOCKS.EMBEDDED_RESOURCE,
+    INLINES.EMBEDDED_RESOURCE,
+    INLINES.RESOURCE_HYPERLINK,
+  ];
+  const isValidType = (actualNodeType: string, data: NodeData) =>
+    nodeTypes.includes(actualNodeType) && data.target?.sys?.type === 'ResourceLink';
+
+  return getValidResourceLinks(document, isValidType, deduplicate);
+}
+
+function getValidResourceLinks(
+  document: Maybe<Document>,
+  isValidType: (actualNodeType: string, data: NodeData) => boolean,
+  deduplicate: boolean,
+): ResourceLink[] {
+  const links = new Map<string, ResourceLink>();
+  visitNodes(document, (node) => {
+    if (isValidType(node.nodeType, node.data)) {
+      const key = deduplicate ? node.data.target.sys.urn : links.size;
+      links.set(key, node.data.target);
+    }
+  });
+
+  return iteratorToArray(links.values());
+}
+
 /**
  *  Extracts entity links from a Rich Text document.
  */
@@ -16,7 +79,7 @@ export function getRichTextEntityLinks(
   /**
    *  An instance of a Rich Text Document.
    */
-  document: Document,
+  document: Maybe<Document>,
   /**
    *  Node type. Only the entity links with given node type will be extracted.
    */
@@ -27,10 +90,16 @@ export function getRichTextEntityLinks(
     Asset: new Map(),
   };
 
-  const content = (document && document.content) || ([] as Node[]);
-  for (const node of content) {
-    addLinksFromRichTextNode(node, entityLinks, type);
-  }
+  // const content = (document && document.content) || ([] as Node[]);
+  const addLink = ({ data, nodeType }: Node) => {
+    const hasRequestedNodeType = !type || nodeType === type;
+
+    if (hasRequestedNodeType && isLinkObject(data)) {
+      entityLinks[data.target.sys.linkType].set(data.target.sys.id, data.target.sys);
+    }
+  };
+
+  visitNodes(document, addLink);
 
   return {
     Entry: iteratorToArray(entityLinks.Entry.values()),
@@ -38,20 +107,23 @@ export function getRichTextEntityLinks(
   };
 }
 
-function addLinksFromRichTextNode(node: Node, links: EntityLinkMaps, type?: string): void {
-  const toCrawl: Node[] = [node];
+function isContentNode(node: Node): node is Inline | Block {
+  return 'content' in node && Array.isArray(node.content);
+}
+
+function visitNodes(startNode: Maybe<Node>, onVisit: (node: Node) => void): void {
+  /**
+   * Do not remove this null check as consumers of this library do not all have good Typescript types
+   */
+  const toCrawl: Node[] = startNode ? [startNode] : [];
 
   while (toCrawl.length > 0) {
-    const { data, content, nodeType } = toCrawl.pop() as Block;
-    const hasRequestedNodeType = !type || nodeType === type;
+    const node = toCrawl.pop();
+    onVisit(node);
 
-    if (hasRequestedNodeType && isLinkObject(data)) {
-      links[data.target.sys.linkType].set(data.target.sys.id, data.target.sys);
-    }
-
-    if (Array.isArray(content)) {
-      for (const childNode of content) {
-        toCrawl.push(childNode);
+    if (isContentNode(node)) {
+      for (let i = node.content.length - 1; i >= 0; i--) {
+        toCrawl.push(node.content[i]);
       }
     }
   }
@@ -91,6 +163,7 @@ function isLinkObject(data: NodeData): data is EntityLinkNodeData {
 function iteratorToArray<T>(iterator: IterableIterator<T>): T[] {
   const result = [];
 
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     const { value, done } = iterator.next();
     if (done) {

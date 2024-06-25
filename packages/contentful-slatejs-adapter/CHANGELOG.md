@@ -3,6 +3,96 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.18.2](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.18.1...@contentful/contentful-slatejs-adapter@15.18.2) (2024-06-25)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.18.1](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.18.0...@contentful/contentful-slatejs-adapter@15.18.1) (2024-06-25)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+# [15.18.0](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.17.5...@contentful/contentful-slatejs-adapter@15.18.0) (2024-06-25)
+
+### Features
+
+- switch from tslint to eslint [TOL-2218][tol-2203] ([#594](https://github.com/contentful/rich-text/issues/594)) ([c077b5a](https://github.com/contentful/rich-text/commit/c077b5af58f94c8dc6af4715d4b82c2771d643c5))
+
+## [15.17.5](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.17.4...@contentful/contentful-slatejs-adapter@15.17.5) (2024-06-25)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.17.4](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.17.3...@contentful/contentful-slatejs-adapter@15.17.4) (2024-06-25)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.17.3](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.17.2...@contentful/contentful-slatejs-adapter@15.17.3) (2024-05-28)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.17.2](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.17.1...@contentful/contentful-slatejs-adapter@15.17.2) (2024-05-27)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.17.1](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.17.0...@contentful/contentful-slatejs-adapter@15.17.1) (2024-05-24)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+# [15.17.0](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.14...@contentful/contentful-slatejs-adapter@15.17.0) (2024-05-22)
+
+### Features
+
+- upgrading rollup to latest version [TOL-2097] ([#559](https://github.com/contentful/rich-text/issues/559)) ([f14d197](https://github.com/contentful/rich-text/commit/f14d1974590d58f92bbf4cb56644095dba929ad9))
+
+## [15.16.14](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.13...@contentful/contentful-slatejs-adapter@15.16.14) (2024-05-22)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.16.13](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.12...@contentful/contentful-slatejs-adapter@15.16.13) (2024-03-04)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.16.12](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.11...@contentful/contentful-slatejs-adapter@15.16.12) (2024-01-30)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.16.11](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.10...@contentful/contentful-slatejs-adapter@15.16.11) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.16.10](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.9...@contentful/contentful-slatejs-adapter@15.16.10) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.16.9](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.8...@contentful/contentful-slatejs-adapter@15.16.9) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.16.8](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.7...@contentful/contentful-slatejs-adapter@15.16.8) (2023-09-12)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.16.7](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.6...@contentful/contentful-slatejs-adapter@15.16.7) (2023-08-04)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.16.6](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.5...@contentful/contentful-slatejs-adapter@15.16.6) (2023-05-26)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.16.5](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.4...@contentful/contentful-slatejs-adapter@15.16.5) (2023-05-04)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
+## [15.16.4](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.3...@contentful/contentful-slatejs-adapter@15.16.4) (2023-04-03)
+
+### Bug Fixes
+
+- entrypoint for types of package ([#454](https://github.com/contentful/rich-text/issues/454)) ([3809d57](https://github.com/contentful/rich-text/commit/3809d57891be88950798c1c2638ee5cebc376bd4))
+
+## [15.16.3](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.2...@contentful/contentful-slatejs-adapter@15.16.3) (2023-03-14)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
 ## [15.16.2](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.16.1...@contentful/contentful-slatejs-adapter@15.16.2) (2022-12-01)
 
 **Note:** Version bump only for package @contentful/contentful-slatejs-adapter

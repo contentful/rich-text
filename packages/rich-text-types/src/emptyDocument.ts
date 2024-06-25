@@ -1,11 +1,11 @@
-import { Document } from './types';
 import { BLOCKS } from './blocks';
+import { Document } from './types';
 
 /**
  * A rich text document considered to be empty.
  * Any other document structure than this is not considered empty.
  */
-const EMPTY_DOCUMENT: Document = {
+export const EMPTY_DOCUMENT: Document = {
   nodeType: BLOCKS.DOCUMENT,
   data: {},
   content: [
@@ -23,5 +23,3 @@ const EMPTY_DOCUMENT: Document = {
     },
   ],
 };
-
-export default EMPTY_DOCUMENT;
