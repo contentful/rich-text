@@ -36,7 +36,6 @@
     "coveralls": "^3.0.0",
     "cross-env": "^5.0.1",
     "cz-conventional-changelog": "^2.0.0",
-    "@faker-js/faker": "^8.4.1",
     "lodash.camelcase": "^4.3.0",
     "prompt": "^1.0.0",
     "rimraf": "^2.6.1",
