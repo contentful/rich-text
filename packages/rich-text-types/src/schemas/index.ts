@@ -21,7 +21,7 @@ export declare type Definition = {
       }
     | Definition;
   enum?: PrimitiveType[] | Definition[];
-  default?: PrimitiveType | Object;
+  default?: PrimitiveType | Record<string, any>;
   additionalProperties?: Definition | boolean;
   required?: string[];
   propertyOrder?: string[];

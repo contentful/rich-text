@@ -1,9 +1,10 @@
-import _ from 'lodash';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
-import { document, block, text, mark, inline } from './helpers';
-import { richTextFromMarkdown } from '..';
 import { readFileSync } from 'fs';
 import path from 'path';
+
+import { richTextFromMarkdown } from '..';
+
+import { block, document, inline, mark, text } from './helpers';
 
 describe('rich-text-from-markdown', () => {
   it('should parse md with all formatting options', async () => {
@@ -29,7 +30,7 @@ with a new line.`),
         ),
         block(BLOCKS.PARAGRAPH, {}, text('This is a new paragraph.')),
         // TODO: <br /> test should be ideally the same as the new line one.
-        block(BLOCKS.PARAGRAPH, {}, text('This is a paragraph'), text('using br.')),
+        block(BLOCKS.PARAGRAPH, {}, text('This is a paragraph'), text('\n'), text('using br.')),
 
         block(BLOCKS.HEADING_2, {}, text('Horizontal Rules')),
         block(BLOCKS.HR),
@@ -106,6 +107,17 @@ with a new line.`),
             ),
           ),
           block(BLOCKS.LIST_ITEM, {}, block(BLOCKS.PARAGRAPH, {}, text('Very easy!'))),
+          block(
+            BLOCKS.LIST_ITEM,
+            {},
+            block(
+              BLOCKS.PARAGRAPH,
+              {},
+              text('Here is a list item'),
+              text('\n'),
+              text('with a line break'),
+            ),
+          ),
         ),
         block(BLOCKS.PARAGRAPH, {}, text('Ordered')),
         block(
@@ -217,8 +229,7 @@ with a new line.`),
             block(
               BLOCKS.TABLE_CELL,
               {},
-              block(BLOCKS.PARAGRAPH, {}, text('Test 6')),
-              block(BLOCKS.PARAGRAPH, {}, text('Test 7')),
+              block(BLOCKS.PARAGRAPH, {}, text('Test 6'), text('\n'), text('Test 7')),
             ),
             block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('USA'))),
           ),
@@ -240,9 +251,7 @@ with a new line.`),
             block(
               BLOCKS.TABLE_CELL,
               {},
-              block(BLOCKS.PARAGRAPH, {}, text('Test 10')),
-              block(BLOCKS.PARAGRAPH, {}, text(' and ')),
-              block(BLOCKS.PARAGRAPH, {}, text('Test 11')),
+              block(BLOCKS.PARAGRAPH, {}, text('Test 10'), text(' and '), text('Test 11')),
             ),
             block(BLOCKS.TABLE_CELL, {}, block(BLOCKS.PARAGRAPH, {}, text('Germany'))),
           ),

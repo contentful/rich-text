@@ -66,6 +66,7 @@
         "blockquote",
         "embedded-asset-block",
         "embedded-entry-block",
+        "embedded-resource-block",
         "heading-1",
         "heading-2",
         "heading-3",
@@ -114,28 +115,29 @@
     },
     "BLOCKS": {
       "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
+      "type": "string",
       "enum": [
-        "blockquote",
         "document",
-        "embedded-asset-block",
-        "embedded-entry-block",
+        "paragraph",
         "heading-1",
         "heading-2",
         "heading-3",
         "heading-4",
         "heading-5",
         "heading-6",
-        "hr",
-        "list-item",
         "ordered-list",
-        "paragraph",
+        "unordered-list",
+        "list-item",
+        "hr",
+        "blockquote",
+        "embedded-entry-block",
+        "embedded-asset-block",
+        "embedded-resource-block",
         "table",
-        "table-cell",
-        "table-header-cell",
         "table-row",
-        "unordered-list"
-      ],
-      "type": "string"
+        "table-cell",
+        "table-header-cell"
+      ]
     },
     "Inline": {
       "type": "object",
@@ -169,13 +171,15 @@
     },
     "INLINES": {
       "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "type": "string",
       "enum": [
-        "asset-hyperlink",
-        "embedded-entry-inline",
+        "hyperlink",
         "entry-hyperlink",
-        "hyperlink"
-      ],
-      "type": "string"
+        "asset-hyperlink",
+        "resource-hyperlink",
+        "embedded-entry-inline",
+        "embedded-resource-inline"
+      ]
     },
     "Text": {
       "type": "object",
