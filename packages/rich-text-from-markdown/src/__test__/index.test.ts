@@ -1,7 +1,8 @@
-import _ from 'lodash';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
-import { document, block, text, mark, inline } from './helpers';
+
 import { richTextFromMarkdown } from '..';
+
+import { block, document, inline, mark, text } from './helpers';
 
 describe('rich-text-from-markdown', () => {
   test('should parse some markdown', async () => {
@@ -11,13 +12,13 @@ describe('rich-text-from-markdown', () => {
 
   test('should call the fallback function when a node is not supported', async () => {
     const fakeNode = { nodeType: 'image', data: {} };
-    const fallback = jest.fn((node) => Promise.resolve(fakeNode));
+    const fallback = jest.fn(() => Promise.resolve(fakeNode));
     const result = await richTextFromMarkdown(
       '![image](https://image.example.com/image.jpg)',
       fallback,
     );
 
-    expect(fallback).toBeCalledTimes(1);
+    expect(fallback).toHaveBeenCalledTimes(1);
     expect(result).toEqual({
       nodeType: BLOCKS.DOCUMENT,
       data: {},
@@ -64,7 +65,7 @@ describe.each<[string, string[], string[]?]>([
 describe('parses complex inline image markdown correctly', () => {
   test('incoming markdown tree calls fallback twice', async () => {
     const fakeNode = { nodeType: 'image', data: {} };
-    const fallback = jest.fn((node) => Promise.resolve(fakeNode));
+    const fallback = jest.fn(() => Promise.resolve(fakeNode));
     const result = await richTextFromMarkdown(
       `![image](https://image.example.com/image.jpg)
       ![image](https://image.example.com/image2.jpg)`,
@@ -80,7 +81,12 @@ describe('parses complex inline image markdown correctly', () => {
           nodeType: 'image',
           data: {},
         },
-        block(BLOCKS.PARAGRAPH, {}, text('\n      ')),
+        block(
+          BLOCKS.PARAGRAPH,
+          {},
+          text(`
+`),
+        ),
         {
           nodeType: 'image',
           data: {},
@@ -90,7 +96,7 @@ describe('parses complex inline image markdown correctly', () => {
   });
   test('incoming markdown tree calls fallback twice', async () => {
     const fakeNode = { nodeType: 'image', data: {} };
-    const fallback = jest.fn((node) => Promise.resolve(fakeNode));
+    const fallback = jest.fn(() => Promise.resolve(fakeNode));
     const result = await richTextFromMarkdown(
       `some text ![image](https://image.example.com/image.jpg)![image](https://image.example.com/image2.jpg) some more text`,
       fallback,

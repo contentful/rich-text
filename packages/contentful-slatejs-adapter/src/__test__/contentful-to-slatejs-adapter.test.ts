@@ -1,9 +1,9 @@
+import * as Contentful from '@contentful/rich-text-types';
+
 import toSlatejsDocument from '../contentful-to-slatejs-adapter';
 import toContentfulDocument from '../slatejs-to-contentful-adapter';
-import * as contentful from './contentful-helpers';
-
-import * as Contentful from '@contentful/rich-text-types';
 import { SlateNode } from '../types';
+import * as contentful from './contentful-helpers';
 
 const schema = { blocks: { [Contentful.BLOCKS.EMBEDDED_ENTRY]: { isVoid: true } } };
 
@@ -21,6 +21,69 @@ describe('both adapters (roundtrippable cases)', () => {
         });
         expect(actualSlateDoc).toEqual(slateDoc);
       });
+
+      it('converts Contentful mentions to Slate mentions', () => {
+        const contentfulInput = {
+          content: [
+            {
+              content: [
+                { data: {}, marks: [], nodeType: 'text', value: 'Hello ' },
+                {
+                  content: [{ data: {}, marks: [], nodeType: 'text', value: '' }],
+                  data: { target: { sys: { id: 'user-id-0', linkType: 'User', type: 'Link' } } },
+                  nodeType: 'mention',
+                },
+                { data: {}, marks: [], nodeType: 'text', value: '' },
+              ],
+              data: {},
+              nodeType: 'paragraph',
+            },
+          ],
+          data: {},
+          nodeType: 'document',
+        };
+        const slateOutput = toSlatejsDocument({
+          document: contentfulInput as unknown as Contentful.Document,
+        });
+
+        const expectedSlateOutput = [
+          {
+            type: 'paragraph',
+            isVoid: false,
+            data: {},
+            children: [
+              {
+                data: {},
+                text: 'Hello ',
+              },
+              {
+                type: 'mention',
+                isVoid: false,
+                data: {
+                  target: {
+                    sys: {
+                      type: 'Link',
+                      linkType: 'User',
+                      id: 'user-id-0',
+                    },
+                  },
+                },
+                children: [
+                  {
+                    data: {},
+                    text: '',
+                  },
+                ],
+              },
+              {
+                data: {},
+                text: '',
+              },
+            ],
+          },
+        ];
+        expect(slateOutput).toStrictEqual(expectedSlateOutput);
+      });
     });
     describe('toContentfulDocument()', () => {
       it(message, () => {
@@ -29,6 +92,97 @@ describe('both adapters (roundtrippable cases)', () => {
           schema,
         });
         expect(actualContentfulDoc).toEqual(contentfulDoc);
+      });
+      it('is converts Slate mentions to Contentful mentions', () => {
+        const slateFormatWithMention = [
+          {
+            type: 'paragraph',
+            data: {},
+            children: [
+              {
+                text: 'Hello ',
+              },
+              {
+                type: 'mention',
+                data: {
+                  target: {
+                    sys: {
+                      type: 'Link',
+                      linkType: 'User',
+                      id: 'user-id-0',
+                    },
+                  },
+                },
+                children: [
+                  {
+                    text: '',
+                  },
+                ],
+              },
+              {
+                text: '',
+              },
+            ],
+          },
+        ];
+
+        const resultContentfulDoc = toContentfulDocument({
+          document: slateFormatWithMention as unknown as SlateNode[],
+          schema,
+        });
+
+        const expectedContentfulDoc = {
+          content: [
+            {
+              content: [
+                { data: {}, marks: [], nodeType: 'text', value: 'Hello ' },
+                {
+                  content: [{ data: {}, marks: [], nodeType: 'text', value: '' }],
+                  data: { target: { sys: { id: 'user-id-0', linkType: 'User', type: 'Link' } } },
+                  nodeType: 'mention',
+                },
+                { data: {}, marks: [], nodeType: 'text', value: '' },
+              ],
+              data: {},
+              nodeType: 'paragraph',
+            },
+          ],
+          data: {},
+          nodeType: 'document',
+        };
+
+        expect(resultContentfulDoc).toEqual(expectedContentfulDoc);
+      });
+      it('converts text-only nodes', () => {
+        const slateText = [
+          {
+            type: 'paragraph',
+            data: {},
+            children: [
+              {
+                text: 'Hello ',
+              },
+            ],
+          },
+        ];
+
+        const convertedToContentful = toContentfulDocument({
+          document: slateText as unknown as SlateNode[],
+        });
+
+        const expectedContentfulDoc = {
+          content: [
+            {
+              content: [{ data: {}, marks: [], nodeType: 'text', value: 'Hello ' }],
+              data: {},
+              nodeType: 'paragraph',
+            },
+          ],
+          data: {},
+          nodeType: 'document',
+        };
+
+        expect(convertedToContentful).toStrictEqual(expectedContentfulDoc);
       });
     });
   };

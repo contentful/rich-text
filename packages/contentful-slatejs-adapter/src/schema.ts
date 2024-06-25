@@ -1,5 +1,5 @@
-import get from 'lodash.get';
 import { BLOCKS, TEXT_CONTAINERS } from '@contentful/rich-text-types';
+
 import { ContentfulElementNode } from './types';
 
 const defaultSchema: SchemaJSON = {};
@@ -28,7 +28,6 @@ export interface Schema extends SchemaJSON {
 
 export interface SchemaValue {
   isVoid?: boolean;
-  // tslint:disable-next-line:no-any
   [k: string]: any;
 }
 
@@ -49,7 +48,7 @@ export function fromJSON(schema: SchemaJSON = defaultSchema): Schema {
      */
     isVoid(node: ContentfulElementNode) {
       const root = Object.values(BLOCKS).includes(node.nodeType as any) ? 'blocks' : 'inlines';
-      return get(schema, [root, node.nodeType as string, 'isVoid'], false);
+      return schema?.[root]?.[node.nodeType]?.['isVoid'] ?? false;
     },
     isTextContainer(nodeType: string) {
       return TEXT_CONTAINERS.includes(nodeType as any);

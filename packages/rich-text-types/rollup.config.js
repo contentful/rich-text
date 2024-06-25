@@ -18,9 +18,12 @@ const customConfig = () => {
     plugins: [
       ...baseConfig.plugins,
       copy({
-        targets: {
-          'src/schemas/generated': 'dist/schemas/generated',
-        },
+        targets: [
+          {
+            src: 'src/schemas/generated',
+            dest: 'dist/schemas',
+          },
+        ],
       }),
     ],
   };

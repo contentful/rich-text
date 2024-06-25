@@ -1,6 +1,6 @@
-import { Node, Block, Inline, Text } from './types';
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
+import { Block, Inline, Node, Text } from './types';
 
 /**
  * Tiny replacement for Object.values(object).includes(key) to

@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.15.1](https://github.com/contentful/rich-text/compare/v15.15.0...v15.15.1) (2022-11-30)
+
+### Bug Fixes
+
+- **release:** switch to yarn ([#420](https://github.com/contentful/rich-text/issues/420)) ([0e53501](https://github.com/contentful/rich-text/commit/0e53501eb94b3d1c76ac88ca30943d2675e536c8))
+
+# [15.15.0](https://github.com/contentful/rich-text/compare/v15.14.1...v15.15.0) (2022-11-29)
+
+### Bug Fixes
+
+- don't run npm install on prePublish ([#417](https://github.com/contentful/rich-text/issues/417)) ([0af2378](https://github.com/contentful/rich-text/commit/0af237897ce093e294833e7e17c3b69e4634e09a))
+
+### Features
+
+- adding v1 marks to rich text types [TOL-786] ([#416](https://github.com/contentful/rich-text/issues/416)) ([8885de8](https://github.com/contentful/rich-text/commit/8885de8ebba7736de46b0b8892a8aa15bb8d7ba4))
+
+## [15.14.1](https://github.com/contentful/rich-text/compare/v15.14.0...v15.14.1) (2022-11-23)
+
+**Note:** Version bump only for package @contentful/rich-text
+
+# [15.14.0](https://github.com/contentful/rich-text/compare/v15.13.2...v15.14.0) (2022-11-14)
+
+### Features
+
+- add super/sub script types ([#391](https://github.com/contentful/rich-text/issues/391)) ([2562f66](https://github.com/contentful/rich-text/commit/2562f66278f0eff4eeeb367025d4b465773893d1))
+
 ## [15.13.2](https://github.com/contentful/rich-text/compare/v15.13.1...v15.13.2) (2022-09-07)
 
 ### Bug Fixes

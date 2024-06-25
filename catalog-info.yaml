@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: rich-text
+  description: |
+    Monorepo with Typescript libraries for handling and rendering Contentful Rich Text documents.
+  annotations:
+    circleci.com/project-slug: github/contentful/rich-text
+    github.com/project-slug: contentful/rich-text
+    backstage.io/source-location: url:https://github.com/contentful/rich-text/
+spec:
+  type: library
+  lifecycle: production
+  owner: group:team-tolkien
