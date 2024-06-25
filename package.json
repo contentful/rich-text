@@ -48,7 +48,6 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@types/benchmark": "^2.1.4",
-    "@types/faker": "^4.1.12",
     "@types/jest": "29.5.12",
     "@types/rollup-plugin-json": "^3.0.7",
     "@typescript-eslint/eslint-plugin": "^7.14.1",
