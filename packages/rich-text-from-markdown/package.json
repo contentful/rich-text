@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.172",
-    "faker": "^4.1.0",
+    "@faker-js/faker": "^8.4.1",
     "rimraf": "^2.6.3",
     "ts-jest": "^29.1.2",
     "tslint": "^6.1.3"
