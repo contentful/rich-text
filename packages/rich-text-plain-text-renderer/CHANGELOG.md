@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.2.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.1.5...@contentful/rich-text-plain-text-renderer@16.2.0) (2024-06-25)
+
+### Features
+
+- switch from tslint to eslint [TOL-2218][TOL-2203] ([#594](https://github.com/contentful/rich-text/issues/594)) ([c077b5a](https://github.com/contentful/rich-text/commit/c077b5af58f94c8dc6af4715d4b82c2771d643c5))
+
 ## [16.1.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-plain-text-renderer@16.1.4...@contentful/rich-text-plain-text-renderer@16.1.5) (2024-06-25)
 
 **Note:** Version bump only for package @contentful/rich-text-plain-text-renderer
