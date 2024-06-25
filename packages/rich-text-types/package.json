@@ -28,7 +28,7 @@
   "devDependencies": {
     "@cspotcode/source-map-consumer": "^0.8.0",
     "@faker-js/faker": "^8.4.1",
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.14.8",
     "rimraf": "^2.6.3",
     "ts-jest": "^29.1.2",
