@@ -55,7 +55,7 @@
     "benchmark": "^2.1.4",
     "commitizen": "4.3.0",
     "eslint": "8.57.0",
-    "eslint-plugin-jest": "27.6.3",
+    "eslint-plugin-jest": "28.6.0",
     "eslint-plugin-jsx-a11y": "6.8.0",
     "eslint-plugin-react": "7.34.3",
     "eslint-plugin-react-hooks": "4.6.2",
