@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.7.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.6.3...@contentful/rich-text-types@16.7.0) (2024-07-16)
+
+### Features
+
+- support ol & ul list validation in table cell [TOL-2249] ([#616](https://github.com/contentful/rich-text/issues/616)) ([f116c33](https://github.com/contentful/rich-text/commit/f116c33d7a26401447836d1230277f6914a31ac1))
+
 ## [16.6.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.6.2...@contentful/rich-text-types@16.6.3) (2024-07-16)
 
 **Note:** Version bump only for package @contentful/rich-text-types
