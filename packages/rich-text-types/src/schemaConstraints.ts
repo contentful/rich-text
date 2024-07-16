@@ -1,6 +1,6 @@
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
-import MARKS from './marks';
+import { MARKS } from './marks';
 
 export type TopLevelBlockEnum =
   | BLOCKS.PARAGRAPH

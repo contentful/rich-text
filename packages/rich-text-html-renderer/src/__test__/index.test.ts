@@ -1,5 +1,6 @@
-import cloneDeep from 'lodash/cloneDeep';
 import { Block, BLOCKS, Document, INLINES, MARKS, ResourceLink } from '@contentful/rich-text-types';
+import cloneDeep from 'lodash/cloneDeep';
+
 import { documentToHtmlString, Options } from '../index';
 import {
   embeddedEntryDoc,
@@ -92,6 +93,10 @@ describe('documentToHtmlString', () => {
       {
         doc: marksDoc(MARKS.SUBSCRIPT),
         expected: '<p><sub>hello world</sub></p>',
+      },
+      {
+        doc: marksDoc(MARKS.STRIKETHROUGH),
+        expected: '<p><s>hello world</s></p>',
       },
     ];
 

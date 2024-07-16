@@ -44,3 +44,6 @@
 
 # test reports
 reports
+
+# nx specific
+.nx/

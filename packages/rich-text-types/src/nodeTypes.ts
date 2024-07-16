@@ -1,7 +1,8 @@
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
-import { Block, Inline, Text, ListItemBlock } from './types';
+import { Block, Inline, ListItemBlock, Text } from './types';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 type EmptyNodeData = {};
 // BLOCKS
 

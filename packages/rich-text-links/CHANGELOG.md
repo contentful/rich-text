@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.7.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.7.1...@contentful/rich-text-links@16.7.2) (2024-07-16)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.7.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.7.0...@contentful/rich-text-links@16.7.1) (2024-06-25)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+# [16.7.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.6.5...@contentful/rich-text-links@16.7.0) (2024-06-25)
+
+### Features
+
+- switch from tslint to eslint [TOL-2218][tol-2203] ([#594](https://github.com/contentful/rich-text/issues/594)) ([c077b5a](https://github.com/contentful/rich-text/commit/c077b5af58f94c8dc6af4715d4b82c2771d643c5))
+
+## [16.6.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.6.4...@contentful/rich-text-links@16.6.5) (2024-06-25)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.6.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.6.3...@contentful/rich-text-links@16.6.4) (2024-06-25)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.6.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.6.2...@contentful/rich-text-links@16.6.3) (2024-05-28)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.6.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.6.1...@contentful/rich-text-links@16.6.2) (2024-05-27)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.6.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.6.0...@contentful/rich-text-links@16.6.1) (2024-05-24)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+# [16.6.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.5...@contentful/rich-text-links@16.6.0) (2024-05-22)
+
+### Features
+
+- upgrading rollup to latest version [TOL-2097] ([#559](https://github.com/contentful/rich-text/issues/559)) ([f14d197](https://github.com/contentful/rich-text/commit/f14d1974590d58f92bbf4cb56644095dba929ad9))
+
+## [16.5.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.4...@contentful/rich-text-links@16.5.5) (2024-03-04)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.3...@contentful/rich-text-links@16.5.4) (2024-01-30)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.2...@contentful/rich-text-links@16.5.3) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [16.5.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.1...@contentful/rich-text-links@16.5.2) (2024-01-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
 ## [16.5.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.5.0...@contentful/rich-text-links@16.5.1) (2024-01-23)
 
 **Note:** Version bump only for package @contentful/rich-text-links

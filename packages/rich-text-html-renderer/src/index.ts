@@ -1,15 +1,15 @@
-import escape from 'escape-html';
 import {
+  BLOCKS,
+  Block,
   Document,
+  INLINES,
+  Inline,
+  MARKS,
   Mark,
   Text,
-  BLOCKS,
-  MARKS,
-  INLINES,
-  Block,
-  Inline,
   helpers,
 } from '@contentful/rich-text-types';
+import escape from 'escape-html';
 
 const attributeValue = (value: string) => `"${value.replace(/"/g, '&quot;')}"`;
 
@@ -52,6 +52,7 @@ const defaultMarkRenderers: RenderMark = {
   [MARKS.CODE]: (text) => `<code>${text}</code>`,
   [MARKS.SUPERSCRIPT]: (text) => `<sup>${text}</sup>`,
   [MARKS.SUBSCRIPT]: (text) => `<sub>${text}</sub>`,
+  [MARKS.STRIKETHROUGH]: (text) => `<s>${text}</s>`,
 };
 
 const defaultInline = (type: string, node: Inline) =>

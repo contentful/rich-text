@@ -1,6 +1,6 @@
 import { BLOCKS } from '../../blocks';
-import { INLINES } from '../../inlines';
 import { isBlock, isInline } from '../../helpers';
+import { INLINES } from '../../inlines';
 
 test('isBlock', () => {
   const block: any = { nodeType: BLOCKS.PARAGRAPH };

@@ -9,6 +9,7 @@ import {
   NodeData,
   ResourceLink,
 } from '@contentful/rich-text-types';
+
 import { Maybe } from './types/utils';
 
 export type EntityLinks = { [type in EntityType]: EntityLink[] };
@@ -162,6 +163,7 @@ function isLinkObject(data: NodeData): data is EntityLinkNodeData {
 function iteratorToArray<T>(iterator: IterableIterator<T>): T[] {
   const result = [];
 
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     const { value, done } = iterator.next();
     if (done) {

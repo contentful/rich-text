@@ -94,15 +94,15 @@
     },
     "INLINES": {
       "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
+      "type": "string",
       "enum": [
-        "asset-hyperlink",
-        "embedded-entry-inline",
-        "embedded-resource-inline",
-        "entry-hyperlink",
         "hyperlink",
-        "resource-hyperlink"
-      ],
-      "type": "string"
+        "entry-hyperlink",
+        "asset-hyperlink",
+        "resource-hyperlink",
+        "embedded-entry-inline",
+        "embedded-resource-inline"
+      ]
     },
     "Text": {
       "type": "object",
