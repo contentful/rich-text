@@ -12,7 +12,7 @@ import {
 import _ from 'lodash';
 import gfm from 'remark-gfm';
 import markdown from 'remark-parse';
-import unified from 'unified';
+import { unified } from 'unified';
 
 import { MarkdownLinkNode, MarkdownNode, MarkdownTree } from './types';
 
