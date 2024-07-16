@@ -18,7 +18,8 @@ export function nodeToReactComponent(node: CommonNode, options: Options): ReactN
   if (helpers.isText(node)) {
     let nodeValue: ReactNode = renderText ? renderText(node.value) : node.value;
 
-    if (preserveWhitespace) {
+    // Preserving whitespace is only supported with the default transformations.
+    if (preserveWhitespace && !renderText) {
       // Preserve multiple spaces.
       nodeValue = (nodeValue as string).replace(/ {2,}/g, (match) => '\u00A0'.repeat(match.length));
 
