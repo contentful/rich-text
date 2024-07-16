@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-types",
-  "version": "16.6.2",
+  "version": "16.6.3",
   "main": "dist/index.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -30,7 +30,6 @@
     "@faker-js/faker": "^8.4.1",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.8",
-    "rimraf": "^2.6.3",
     "ts-jest": "^29.1.2",
     "typescript-json-schema": "0.64.0"
   }

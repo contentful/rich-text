@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-html-renderer",
-  "version": "16.6.2",
+  "version": "16.6.3",
   "main": "dist/rich-text-html-renderer.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -25,14 +25,13 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.6.2",
+    "@contentful/rich-text-types": "^16.6.3",
     "escape-html": "^1.0.3"
   },
   "devDependencies": {
     "@types/escape-html": "^1.0.4",
     "@types/lodash.clonedeep": "^4.5.6",
     "lodash.clonedeep": "^4.5.0",
-    "rimraf": "^2.6.3",
     "ts-jest": "^29.1.2"
   }
 }

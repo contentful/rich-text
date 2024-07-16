@@ -69,6 +69,7 @@
     "lerna": "8.1.3",
     "lint-staged": "15.2.7",
     "prettier": "^3.2.5",
+    "rimraf": "6.0.1",
     "rollup": "^4.18.0",
     "rollup-plugin-copy": "3.5.0",
     "rollup-plugin-json": "^4.0.0",
