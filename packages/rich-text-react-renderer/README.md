@@ -222,6 +222,8 @@ const options = {
 
 The `options` object can include a `preserveWhitespace` boolean flag. When set to `true`, this flag ensures that multiple spaces in the rich text content are preserved by replacing them with `&nbsp;`, and line breaks are maintained with `<br />` tags. This is useful for content that relies on specific formatting using spaces and line breaks.
 
+Note that `preserveWhitespace` is not compatible with the `renderText` option. When the functionality of `preserveWhitespace` is desired along with a custom `renderText` callback, it should be implemented within the callback instead.
+
 ```javascript
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
