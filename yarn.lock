@@ -3559,10 +3559,10 @@ eslint-plugin-react@7.34.3:
     semver "^6.3.1"
     string.prototype.matchall "^4.0.11"
 
-eslint-plugin-you-dont-need-lodash-underscore@6.13.0:
-  version "6.13.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-you-dont-need-lodash-underscore/-/eslint-plugin-you-dont-need-lodash-underscore-6.13.0.tgz#5aa6e97fa7cc677150b108db07fa2f24a4b898f3"
-  integrity sha512-6FkFLp/R/QlgfJl5NrxkIXMQ36jMVLczkWDZJvMd7/wr/M3K0DS7mtX7plZ3giTDcbDD7VBfNYUfUVaBCZOXKA==
+eslint-plugin-you-dont-need-lodash-underscore@6.14.0:
+  version "6.14.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-you-dont-need-lodash-underscore/-/eslint-plugin-you-dont-need-lodash-underscore-6.14.0.tgz#41f6032367e2e13a88d350e5e555b180fabf9501"
+  integrity sha512-3zkkU/O1agczP7szJGHmisZJS/AknfVl6mb0Zqoc95dvFsdmfK+cbhrn+Ffy0UWB1pgDJwQr7kIO3rPstWs3Dw==
   dependencies:
     kebab-case "^1.0.0"
 
