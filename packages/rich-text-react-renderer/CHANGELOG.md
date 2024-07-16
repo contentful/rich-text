@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.22.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.22.3...@contentful/rich-text-react-renderer@15.22.4) (2024-07-16)
+
+**Note:** Version bump only for package @contentful/rich-text-react-renderer
+
 ## [15.22.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@15.22.2...@contentful/rich-text-react-renderer@15.22.3) (2024-07-16)
 
 ### Bug Fixes
