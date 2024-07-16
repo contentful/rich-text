@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-react-renderer",
-  "version": "15.22.2",
+  "version": "15.22.3",
   "main": "dist/rich-text-react-renderer.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
