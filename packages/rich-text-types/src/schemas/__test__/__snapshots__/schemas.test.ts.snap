@@ -3330,8 +3330,10 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
         },
         "nodeType": {
           "enum": [
+            "ordered-list",
             "table-cell",
             "table-header-cell",
+            "unordered-list",
           ],
           "type": "string",
         },
@@ -3526,8 +3528,10 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
         },
         "nodeType": {
           "enum": [
+            "ordered-list",
             "table-cell",
             "table-header-cell",
+            "unordered-list",
           ],
           "type": "string",
         },
@@ -3861,8 +3865,10 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
         },
         "nodeType": {
           "enum": [
+            "ordered-list",
             "table-cell",
             "table-header-cell",
+            "unordered-list",
           ],
           "type": "string",
         },
