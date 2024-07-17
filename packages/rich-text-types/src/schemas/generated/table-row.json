@@ -18,14 +18,7 @@
           "minItems": 1,
           "type": "array",
           "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/TableCell"
-              },
-              {
-                "$ref": "#/definitions/TableHeaderCell"
-              }
-            ]
+            "$ref": "#/definitions/TableCell"
           }
         }
       },
@@ -40,10 +33,11 @@
       "type": "object",
       "properties": {
         "nodeType": {
-          "type": "string",
           "enum": [
-            "table-cell"
-          ]
+            "table-cell",
+            "table-header-cell"
+          ],
+          "type": "string"
         },
         "data": {
           "type": "object",
@@ -61,17 +55,7 @@
           "minItems": 1,
           "type": "array",
           "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Paragraph"
-              },
-              {
-                "$ref": "#/definitions/OrderedList"
-              },
-              {
-                "$ref": "#/definitions/UnorderedList"
-              }
-            ]
+            "$ref": "#/definitions/Paragraph"
           }
         }
       },
@@ -203,234 +187,6 @@
     "NodeData": {
       "additionalProperties": true,
       "type": "object"
-    },
-    "OrderedList": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "ordered-list"
-          ]
-        },
-        "data": {
-          "type": "object",
-          "properties": {}
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ListItem"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "ListItem": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "list-item"
-          ]
-        },
-        "data": {
-          "type": "object",
-          "properties": {}
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ListItemBlock"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "ListItemBlock": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "$ref": "#/definitions/ListItemBlockEnum"
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Block"
-              },
-              {
-                "$ref": "#/definitions/Inline"
-              },
-              {
-                "$ref": "#/definitions/Text"
-              }
-            ]
-          }
-        },
-        "data": {
-          "$ref": "#/definitions/NodeData"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "ListItemBlockEnum": {
-      "enum": [
-        "blockquote",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "embedded-resource-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "ordered-list",
-        "paragraph",
-        "unordered-list"
-      ],
-      "type": "string"
-    },
-    "Block": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "$ref": "#/definitions/BLOCKS"
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Block"
-              },
-              {
-                "$ref": "#/definitions/Inline"
-              },
-              {
-                "$ref": "#/definitions/Text"
-              }
-            ]
-          }
-        },
-        "data": {
-          "$ref": "#/definitions/NodeData"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "BLOCKS": {
-      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
-      "type": "string",
-      "enum": [
-        "document",
-        "paragraph",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "ordered-list",
-        "unordered-list",
-        "list-item",
-        "hr",
-        "blockquote",
-        "embedded-entry-block",
-        "embedded-asset-block",
-        "embedded-resource-block",
-        "table",
-        "table-row",
-        "table-cell",
-        "table-header-cell"
-      ]
-    },
-    "UnorderedList": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "unordered-list"
-          ]
-        },
-        "data": {
-          "type": "object",
-          "properties": {}
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ListItem"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "TableHeaderCell": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "table-header-cell"
-          ]
-        },
-        "data": {
-          "type": "object",
-          "properties": {
-            "colspan": {
-              "type": "number"
-            },
-            "rowspan": {
-              "type": "number"
-            }
-          },
-          "additionalProperties": false
-        },
-        "content": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Paragraph"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"
