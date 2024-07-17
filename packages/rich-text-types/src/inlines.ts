@@ -1,5 +1,9 @@
 /**
  * Map of all Contentful inline types. Inline contain inline or text nodes.
+ *
+ * @note This should be kept in alphabetical order since the
+ * [validation package](https://github.com/contentful/content-stack/tree/master/packages/validation)
+ *  relies on the values being in a predictable order.
  */
 export enum INLINES {
   ASSET_HYPERLINK = 'asset-hyperlink',
