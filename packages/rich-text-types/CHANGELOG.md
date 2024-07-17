@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.8.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.8.0...@contentful/rich-text-types@16.8.1) (2024-07-17)
+
+### Bug Fixes
+
+- revert schema changes [TOL-2249] ([de0157b](https://github.com/contentful/rich-text/commit/de0157bd8b7b1fd00b58e4b753befb1d9eeecbff))
+
 # [16.8.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.7.0...@contentful/rich-text-types@16.8.0) (2024-07-17)
 
 ### Features
