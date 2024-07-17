@@ -63,7 +63,7 @@
         "nodeType": {
           "type": "string",
           "enum": [
-            "table-header-cell"
+            "table-cell"
           ]
         },
         "data": {

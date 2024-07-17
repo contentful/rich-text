@@ -10,13 +10,6 @@
             "table-header-cell"
           ]
         },
-        "content": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Paragraph"
-          }
-        },
         "data": {
           "type": "object",
           "properties": {
@@ -28,6 +21,13 @@
             }
           },
           "additionalProperties": false
+        },
+        "content": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Paragraph"
+          }
         }
       },
       "additionalProperties": false,
