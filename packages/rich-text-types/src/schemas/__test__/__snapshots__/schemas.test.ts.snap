@@ -3186,6 +3186,65 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
   "$ref": "#/definitions/Table",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
+    "BLOCKS": {
+      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
+      "enum": [
+        "document",
+        "paragraph",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "ordered-list",
+        "unordered-list",
+        "list-item",
+        "hr",
+        "blockquote",
+        "embedded-entry-block",
+        "embedded-asset-block",
+        "embedded-resource-block",
+        "table",
+        "table-row",
+        "table-cell",
+        "table-header-cell",
+      ],
+      "type": "string",
+    },
+    "Block": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Block",
+              },
+              {
+                "$ref": "#/definitions/Inline",
+              },
+              {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": {
+          "$ref": "#/definitions/NodeData",
+        },
+        "nodeType": {
+          "$ref": "#/definitions/BLOCKS",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
     "INLINES": {
       "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
       "enum": [
@@ -3228,6 +3287,85 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
       ],
       "type": "object",
     },
+    "ListItem": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "$ref": "#/definitions/ListItemBlock",
+          },
+          "type": "array",
+        },
+        "data": {
+          "properties": {},
+          "type": "object",
+        },
+        "nodeType": {
+          "enum": [
+            "list-item",
+          ],
+          "type": "string",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItemBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Block",
+              },
+              {
+                "$ref": "#/definitions/Inline",
+              },
+              {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": {
+          "$ref": "#/definitions/NodeData",
+        },
+        "nodeType": {
+          "$ref": "#/definitions/ListItemBlockEnum",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItemBlockEnum": {
+      "enum": [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "embedded-resource-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
+    },
     "Mark": {
       "additionalProperties": false,
       "properties": {
@@ -3242,6 +3380,33 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
     },
     "NodeData": {
       "additionalProperties": true,
+      "type": "object",
+    },
+    "OrderedList": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "$ref": "#/definitions/ListItem",
+          },
+          "type": "array",
+        },
+        "data": {
+          "properties": {},
+          "type": "object",
+        },
+        "nodeType": {
+          "enum": [
+            "ordered-list",
+          ],
+          "type": "string",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
       "type": "object",
     },
     "Paragraph": {
@@ -3310,11 +3475,27 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
       "additionalProperties": false,
       "properties": {
         "content": {
-          "items": {
-            "$ref": "#/definitions/Paragraph",
-          },
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/definitions/Paragraph",
+              },
+              "type": "array",
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/OrderedList",
+              },
+              "type": "array",
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/UnorderedList",
+              },
+              "type": "array",
+            },
+          ],
           "minItems": 1,
-          "type": "array",
         },
         "data": {
           "additionalProperties": false,
@@ -3330,10 +3511,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
         },
         "nodeType": {
           "enum": [
-            "ordered-list",
-            "table-cell",
             "table-header-cell",
-            "unordered-list",
           ],
           "type": "string",
         },
@@ -3403,6 +3581,33 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
       ],
       "type": "object",
     },
+    "UnorderedList": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "$ref": "#/definitions/ListItem",
+          },
+          "type": "array",
+        },
+        "data": {
+          "properties": {},
+          "type": "object",
+        },
+        "nodeType": {
+          "enum": [
+            "unordered-list",
+          ],
+          "type": "string",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
   },
 }
 `;
@@ -3412,6 +3617,65 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
   "$ref": "#/definitions/TableCell",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
+    "BLOCKS": {
+      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
+      "enum": [
+        "document",
+        "paragraph",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "ordered-list",
+        "unordered-list",
+        "list-item",
+        "hr",
+        "blockquote",
+        "embedded-entry-block",
+        "embedded-asset-block",
+        "embedded-resource-block",
+        "table",
+        "table-row",
+        "table-cell",
+        "table-header-cell",
+      ],
+      "type": "string",
+    },
+    "Block": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Block",
+              },
+              {
+                "$ref": "#/definitions/Inline",
+              },
+              {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": {
+          "$ref": "#/definitions/NodeData",
+        },
+        "nodeType": {
+          "$ref": "#/definitions/BLOCKS",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
     "INLINES": {
       "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
       "enum": [
@@ -3454,6 +3718,85 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
       ],
       "type": "object",
     },
+    "ListItem": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "$ref": "#/definitions/ListItemBlock",
+          },
+          "type": "array",
+        },
+        "data": {
+          "properties": {},
+          "type": "object",
+        },
+        "nodeType": {
+          "enum": [
+            "list-item",
+          ],
+          "type": "string",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItemBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Block",
+              },
+              {
+                "$ref": "#/definitions/Inline",
+              },
+              {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": {
+          "$ref": "#/definitions/NodeData",
+        },
+        "nodeType": {
+          "$ref": "#/definitions/ListItemBlockEnum",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItemBlockEnum": {
+      "enum": [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "embedded-resource-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
+    },
     "Mark": {
       "additionalProperties": false,
       "properties": {
@@ -3468,6 +3811,33 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
     },
     "NodeData": {
       "additionalProperties": true,
+      "type": "object",
+    },
+    "OrderedList": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "$ref": "#/definitions/ListItem",
+          },
+          "type": "array",
+        },
+        "data": {
+          "properties": {},
+          "type": "object",
+        },
+        "nodeType": {
+          "enum": [
+            "ordered-list",
+          ],
+          "type": "string",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
       "type": "object",
     },
     "Paragraph": {
@@ -3508,11 +3878,27 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
       "additionalProperties": false,
       "properties": {
         "content": {
-          "items": {
-            "$ref": "#/definitions/Paragraph",
-          },
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/definitions/Paragraph",
+              },
+              "type": "array",
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/OrderedList",
+              },
+              "type": "array",
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/UnorderedList",
+              },
+              "type": "array",
+            },
+          ],
           "minItems": 1,
-          "type": "array",
         },
         "data": {
           "additionalProperties": false,
@@ -3528,10 +3914,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
         },
         "nodeType": {
           "enum": [
-            "ordered-list",
-            "table-cell",
             "table-header-cell",
-            "unordered-list",
           ],
           "type": "string",
         },
@@ -3570,6 +3953,33 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
         "marks",
         "nodeType",
         "value",
+      ],
+      "type": "object",
+    },
+    "UnorderedList": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "$ref": "#/definitions/ListItem",
+          },
+          "type": "array",
+        },
+        "data": {
+          "properties": {},
+          "type": "object",
+        },
+        "nodeType": {
+          "enum": [
+            "unordered-list",
+          ],
+          "type": "string",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
       ],
       "type": "object",
     },
@@ -3749,6 +4159,65 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
   "$ref": "#/definitions/TableRow",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
+    "BLOCKS": {
+      "description": "Map of all Contentful block types. Blocks contain inline or block nodes.",
+      "enum": [
+        "document",
+        "paragraph",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "ordered-list",
+        "unordered-list",
+        "list-item",
+        "hr",
+        "blockquote",
+        "embedded-entry-block",
+        "embedded-asset-block",
+        "embedded-resource-block",
+        "table",
+        "table-row",
+        "table-cell",
+        "table-header-cell",
+      ],
+      "type": "string",
+    },
+    "Block": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Block",
+              },
+              {
+                "$ref": "#/definitions/Inline",
+              },
+              {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": {
+          "$ref": "#/definitions/NodeData",
+        },
+        "nodeType": {
+          "$ref": "#/definitions/BLOCKS",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
     "INLINES": {
       "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
       "enum": [
@@ -3791,6 +4260,85 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
       ],
       "type": "object",
     },
+    "ListItem": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "$ref": "#/definitions/ListItemBlock",
+          },
+          "type": "array",
+        },
+        "data": {
+          "properties": {},
+          "type": "object",
+        },
+        "nodeType": {
+          "enum": [
+            "list-item",
+          ],
+          "type": "string",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItemBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Block",
+              },
+              {
+                "$ref": "#/definitions/Inline",
+              },
+              {
+                "$ref": "#/definitions/Text",
+              },
+            ],
+          },
+          "type": "array",
+        },
+        "data": {
+          "$ref": "#/definitions/NodeData",
+        },
+        "nodeType": {
+          "$ref": "#/definitions/ListItemBlockEnum",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
+      "type": "object",
+    },
+    "ListItemBlockEnum": {
+      "enum": [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "embedded-resource-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
+        "ordered-list",
+        "paragraph",
+        "unordered-list",
+      ],
+      "type": "string",
+    },
     "Mark": {
       "additionalProperties": false,
       "properties": {
@@ -3805,6 +4353,33 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
     },
     "NodeData": {
       "additionalProperties": true,
+      "type": "object",
+    },
+    "OrderedList": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "$ref": "#/definitions/ListItem",
+          },
+          "type": "array",
+        },
+        "data": {
+          "properties": {},
+          "type": "object",
+        },
+        "nodeType": {
+          "enum": [
+            "ordered-list",
+          ],
+          "type": "string",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
+      ],
       "type": "object",
     },
     "Paragraph": {
@@ -3845,11 +4420,27 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
       "additionalProperties": false,
       "properties": {
         "content": {
-          "items": {
-            "$ref": "#/definitions/Paragraph",
-          },
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/definitions/Paragraph",
+              },
+              "type": "array",
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/OrderedList",
+              },
+              "type": "array",
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/UnorderedList",
+              },
+              "type": "array",
+            },
+          ],
           "minItems": 1,
-          "type": "array",
         },
         "data": {
           "additionalProperties": false,
@@ -3865,10 +4456,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
         },
         "nodeType": {
           "enum": [
-            "ordered-list",
-            "table-cell",
             "table-header-cell",
-            "unordered-list",
           ],
           "type": "string",
         },
@@ -3935,6 +4523,33 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
         "marks",
         "nodeType",
         "value",
+      ],
+      "type": "object",
+    },
+    "UnorderedList": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "$ref": "#/definitions/ListItem",
+          },
+          "type": "array",
+        },
+        "data": {
+          "properties": {},
+          "type": "object",
+        },
+        "nodeType": {
+          "enum": [
+            "unordered-list",
+          ],
+          "type": "string",
+        },
+      },
+      "required": [
+        "content",
+        "data",
+        "nodeType",
       ],
       "type": "object",
     },
