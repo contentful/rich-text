@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.8.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.7.0...@contentful/rich-text-types@16.8.0) (2024-07-17)
+
+### Features
+
+- update inline enum order [] ([#620](https://github.com/contentful/rich-text/issues/620)) ([8643e11](https://github.com/contentful/rich-text/commit/8643e1126ce765842190a866556d7c0fa45a7ba8))
+- update schema for rich text types [TOL-2249] ([#619](https://github.com/contentful/rich-text/issues/619)) ([010831e](https://github.com/contentful/rich-text/commit/010831ea1259f478543845ccd70a3aa80f643db0))
+
 # [16.7.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.6.3...@contentful/rich-text-types@16.7.0) (2024-07-16)
 
 ### Features
