@@ -34,8 +34,10 @@
       "properties": {
         "nodeType": {
           "enum": [
+            "ordered-list",
             "table-cell",
-            "table-header-cell"
+            "table-header-cell",
+            "unordered-list"
           ],
           "type": "string"
         },

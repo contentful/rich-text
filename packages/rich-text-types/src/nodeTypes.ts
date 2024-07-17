@@ -198,7 +198,7 @@ export interface ResourceHyperlink extends Inline {
 }
 
 export interface TableCell extends Block {
-  nodeType: BLOCKS.TABLE_HEADER_CELL | BLOCKS.TABLE_CELL;
+  nodeType: BLOCKS.TABLE_HEADER_CELL | BLOCKS.TABLE_CELL | BLOCKS.OL_LIST | BLOCKS.UL_LIST;
   data: {
     colspan?: number;
     rowspan?: number;
