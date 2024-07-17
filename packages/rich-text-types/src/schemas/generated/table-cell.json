@@ -24,26 +24,20 @@
         },
         "content": {
           "minItems": 1,
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
                 "$ref": "#/definitions/Paragraph"
-              }
-            },
-            {
-              "type": "array",
-              "items": {
+              },
+              {
                 "$ref": "#/definitions/OrderedList"
-              }
-            },
-            {
-              "type": "array",
-              "items": {
+              },
+              {
                 "$ref": "#/definitions/UnorderedList"
               }
-            }
-          ]
+            ]
+          }
         }
       },
       "additionalProperties": false,

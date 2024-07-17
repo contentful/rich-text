@@ -46,7 +46,14 @@
           "minItems": 1,
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TableCell"
+            "anyOf": [
+              {
+                "$ref": "#/definitions/TableCell"
+              },
+              {
+                "$ref": "#/definitions/TableHeaderCell"
+              }
+            ]
           }
         }
       },
@@ -80,26 +87,20 @@
         },
         "content": {
           "minItems": 1,
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
                 "$ref": "#/definitions/Paragraph"
-              }
-            },
-            {
-              "type": "array",
-              "items": {
+              },
+              {
                 "$ref": "#/definitions/OrderedList"
-              }
-            },
-            {
-              "type": "array",
-              "items": {
+              },
+              {
                 "$ref": "#/definitions/UnorderedList"
               }
-            }
-          ]
+            ]
+          }
         }
       },
       "additionalProperties": false,
@@ -413,6 +414,42 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/ListItem"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content",
+        "data",
+        "nodeType"
+      ]
+    },
+    "TableHeaderCell": {
+      "type": "object",
+      "properties": {
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "table-header-cell"
+          ]
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "colspan": {
+              "type": "number"
+            },
+            "rowspan": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        },
+        "content": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Paragraph"
           }
         }
       },

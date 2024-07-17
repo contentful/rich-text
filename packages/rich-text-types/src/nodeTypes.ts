@@ -207,7 +207,7 @@ export interface TableCell extends Block {
   /**
    * @minItems 1
    */
-  content: Paragraph[] | OrderedList[] | UnorderedList[];
+  content: (Paragraph | OrderedList | UnorderedList)[];
 }
 
 export interface TableHeaderCell extends Block {
@@ -232,7 +232,7 @@ export interface TableRow extends Block {
   /**
    * @minItems 1
    */
-  content: TableCell[];
+  content: (TableCell | TableHeaderCell)[];
 }
 
 export interface Table extends Block {
