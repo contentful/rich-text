@@ -150,12 +150,12 @@
       "description": "Map of all Contentful inline types. Inline contain inline or text nodes.",
       "type": "string",
       "enum": [
-        "hyperlink",
-        "entry-hyperlink",
         "asset-hyperlink",
-        "resource-hyperlink",
         "embedded-entry-inline",
-        "embedded-resource-inline"
+        "embedded-resource-inline",
+        "entry-hyperlink",
+        "hyperlink",
+        "resource-hyperlink"
       ]
     },
     "Text": {
