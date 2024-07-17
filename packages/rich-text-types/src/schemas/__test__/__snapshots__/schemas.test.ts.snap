@@ -3511,7 +3511,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
         },
         "nodeType": {
           "enum": [
-            "table-header-cell",
+            "table-cell",
           ],
           "type": "string",
         },
@@ -3914,7 +3914,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
         },
         "nodeType": {
           "enum": [
-            "table-header-cell",
+            "table-cell",
           ],
           "type": "string",
         },
@@ -4456,7 +4456,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
         },
         "nodeType": {
           "enum": [
-            "table-header-cell",
+            "table-cell",
           ],
           "type": "string",
         },

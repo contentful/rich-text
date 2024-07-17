@@ -198,7 +198,7 @@ export interface ResourceHyperlink extends Inline {
 }
 
 export interface TableCell extends Block {
-  nodeType: BLOCKS.TABLE_HEADER_CELL;
+  nodeType: BLOCKS.TABLE_CELL;
   data: {
     colspan?: number;
     rowspan?: number;
@@ -210,8 +210,12 @@ export interface TableCell extends Block {
   content: Paragraph[] | OrderedList[] | UnorderedList[];
 }
 
-export interface TableHeaderCell extends TableCell {
+export interface TableHeaderCell extends Block {
   nodeType: BLOCKS.TABLE_HEADER_CELL;
+  data: {
+    colspan?: number;
+    rowspan?: number;
+  };
 
   /**
    * @minItems 1
