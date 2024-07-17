@@ -198,7 +198,7 @@ export interface ResourceHyperlink extends Inline {
 }
 
 export interface TableCell extends Block {
-  nodeType: BLOCKS.TABLE_HEADER_CELL | BLOCKS.TABLE_CELL | BLOCKS.OL_LIST | BLOCKS.UL_LIST;
+  nodeType: BLOCKS.TABLE_HEADER_CELL;
   data: {
     colspan?: number;
     rowspan?: number;
@@ -207,11 +207,16 @@ export interface TableCell extends Block {
   /**
    * @minItems 1
    */
-  content: Paragraph[];
+  content: Paragraph[] | OrderedList[] | UnorderedList[];
 }
 
 export interface TableHeaderCell extends TableCell {
   nodeType: BLOCKS.TABLE_HEADER_CELL;
+
+  /**
+   * @minItems 1
+   */
+  content: Paragraph[];
 }
 
 // An abstract table row can have both table cell types
