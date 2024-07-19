@@ -197,6 +197,10 @@ export interface ResourceHyperlink extends Inline {
   content: Text[];
 }
 
+interface TableCellContent extends Block {
+  nodeType: BLOCKS.PARAGRAPH | BLOCKS.UL_LIST | BLOCKS.OL_LIST;
+}
+
 export interface TableCell extends Block {
   nodeType: BLOCKS.TABLE_HEADER_CELL | BLOCKS.TABLE_CELL;
   data: {
@@ -207,7 +211,7 @@ export interface TableCell extends Block {
   /**
    * @minItems 1
    */
-  content: (Paragraph | OrderedList | UnorderedList)[];
+  content: TableCellContent[];
 }
 
 // Notice that this is only exported and not reused anywhere else in this file
