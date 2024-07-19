@@ -217,7 +217,7 @@ export interface TableCell extends Block {
 // Notice that this is only exported and not reused anywhere else in this file
 // this is because this we only want this interface to generate the schema
 // if we end up decouping the header cell from the regular cell we
-// end up with unwanted side effects when validating the schema in @contentful/validation
+// end up with unwanted side effects when validating the schema
 export interface TableHeaderCell extends TableCell {
   nodeType: BLOCKS.TABLE_HEADER_CELL;
 
