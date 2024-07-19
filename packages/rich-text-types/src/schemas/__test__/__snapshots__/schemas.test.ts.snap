@@ -3287,85 +3287,6 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
       ],
       "type": "object",
     },
-    "ListItem": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "$ref": "#/definitions/ListItemBlock",
-          },
-          "type": "array",
-        },
-        "data": {
-          "properties": {},
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
-            "list-item",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "ListItemBlock": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Block",
-              },
-              {
-                "$ref": "#/definitions/Inline",
-              },
-              {
-                "$ref": "#/definitions/Text",
-              },
-            ],
-          },
-          "type": "array",
-        },
-        "data": {
-          "$ref": "#/definitions/NodeData",
-        },
-        "nodeType": {
-          "$ref": "#/definitions/ListItemBlockEnum",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "ListItemBlockEnum": {
-      "enum": [
-        "blockquote",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "embedded-resource-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "ordered-list",
-        "paragraph",
-        "unordered-list",
-      ],
-      "type": "string",
-    },
     "Mark": {
       "additionalProperties": false,
       "properties": {
@@ -3380,67 +3301,6 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
     },
     "NodeData": {
       "additionalProperties": true,
-      "type": "object",
-    },
-    "OrderedList": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "$ref": "#/definitions/ListItem",
-          },
-          "type": "array",
-        },
-        "data": {
-          "properties": {},
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
-            "ordered-list",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "Paragraph": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Inline",
-              },
-              {
-                "$ref": "#/definitions/Text",
-              },
-            ],
-          },
-          "type": "array",
-        },
-        "data": {
-          "properties": {},
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
-            "paragraph",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
       "type": "object",
     },
     "Table": {
@@ -3476,17 +3336,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
       "properties": {
         "content": {
           "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Paragraph",
-              },
-              {
-                "$ref": "#/definitions/OrderedList",
-              },
-              {
-                "$ref": "#/definitions/UnorderedList",
-              },
-            ],
+            "$ref": "#/definitions/TableCellContent",
           },
           "minItems": 1,
           "type": "array",
@@ -3506,6 +3356,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
         "nodeType": {
           "enum": [
             "table-cell",
+            "table-header-cell",
           ],
           "type": "string",
         },
@@ -3517,31 +3368,33 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
       ],
       "type": "object",
     },
-    "TableHeaderCell": {
+    "TableCellContent": {
       "additionalProperties": false,
       "properties": {
         "content": {
           "items": {
-            "$ref": "#/definitions/Paragraph",
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Block",
+              },
+              {
+                "$ref": "#/definitions/Inline",
+              },
+              {
+                "$ref": "#/definitions/Text",
+              },
+            ],
           },
-          "minItems": 1,
           "type": "array",
         },
         "data": {
-          "additionalProperties": false,
-          "properties": {
-            "colspan": {
-              "type": "number",
-            },
-            "rowspan": {
-              "type": "number",
-            },
-          },
-          "type": "object",
+          "$ref": "#/definitions/NodeData",
         },
         "nodeType": {
           "enum": [
-            "table-header-cell",
+            "ordered-list",
+            "paragraph",
+            "unordered-list",
           ],
           "type": "string",
         },
@@ -3558,14 +3411,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
       "properties": {
         "content": {
           "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/TableCell",
-              },
-              {
-                "$ref": "#/definitions/TableHeaderCell",
-              },
-            ],
+            "$ref": "#/definitions/TableCell",
           },
           "minItems": 1,
           "type": "array",
@@ -3615,33 +3461,6 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table 1`] 
         "marks",
         "nodeType",
         "value",
-      ],
-      "type": "object",
-    },
-    "UnorderedList": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "$ref": "#/definitions/ListItem",
-          },
-          "type": "array",
-        },
-        "data": {
-          "properties": {},
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
-            "unordered-list",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
       ],
       "type": "object",
     },
@@ -3755,22 +3574,48 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
       ],
       "type": "object",
     },
-    "ListItem": {
+    "Mark": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+        },
+      },
+      "required": [
+        "type",
+      ],
+      "type": "object",
+    },
+    "NodeData": {
+      "additionalProperties": true,
+      "type": "object",
+    },
+    "TableCell": {
       "additionalProperties": false,
       "properties": {
         "content": {
           "items": {
-            "$ref": "#/definitions/ListItemBlock",
+            "$ref": "#/definitions/TableCellContent",
           },
+          "minItems": 1,
           "type": "array",
         },
         "data": {
-          "properties": {},
+          "additionalProperties": false,
+          "properties": {
+            "colspan": {
+              "type": "number",
+            },
+            "rowspan": {
+              "type": "number",
+            },
+          },
           "type": "object",
         },
         "nodeType": {
           "enum": [
-            "list-item",
+            "table-cell",
+            "table-header-cell",
           ],
           "type": "string",
         },
@@ -3782,7 +3627,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
       ],
       "type": "object",
     },
-    "ListItemBlock": {
+    "TableCellContent": {
       "additionalProperties": false,
       "properties": {
         "content": {
@@ -3805,147 +3650,10 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
           "$ref": "#/definitions/NodeData",
         },
         "nodeType": {
-          "$ref": "#/definitions/ListItemBlockEnum",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "ListItemBlockEnum": {
-      "enum": [
-        "blockquote",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "embedded-resource-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "ordered-list",
-        "paragraph",
-        "unordered-list",
-      ],
-      "type": "string",
-    },
-    "Mark": {
-      "additionalProperties": false,
-      "properties": {
-        "type": {
-          "type": "string",
-        },
-      },
-      "required": [
-        "type",
-      ],
-      "type": "object",
-    },
-    "NodeData": {
-      "additionalProperties": true,
-      "type": "object",
-    },
-    "OrderedList": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "$ref": "#/definitions/ListItem",
-          },
-          "type": "array",
-        },
-        "data": {
-          "properties": {},
-          "type": "object",
-        },
-        "nodeType": {
           "enum": [
             "ordered-list",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "Paragraph": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Inline",
-              },
-              {
-                "$ref": "#/definitions/Text",
-              },
-            ],
-          },
-          "type": "array",
-        },
-        "data": {
-          "properties": {},
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
             "paragraph",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "TableCell": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Paragraph",
-              },
-              {
-                "$ref": "#/definitions/OrderedList",
-              },
-              {
-                "$ref": "#/definitions/UnorderedList",
-              },
-            ],
-          },
-          "minItems": 1,
-          "type": "array",
-        },
-        "data": {
-          "additionalProperties": false,
-          "properties": {
-            "colspan": {
-              "type": "number",
-            },
-            "rowspan": {
-              "type": "number",
-            },
-          },
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
-            "table-cell",
+            "unordered-list",
           ],
           "type": "string",
         },
@@ -3984,33 +3692,6 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-cell
         "marks",
         "nodeType",
         "value",
-      ],
-      "type": "object",
-    },
-    "UnorderedList": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "$ref": "#/definitions/ListItem",
-          },
-          "type": "array",
-        },
-        "data": {
-          "properties": {},
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
-            "unordered-list",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
       ],
       "type": "object",
     },
@@ -4291,22 +3972,48 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
       ],
       "type": "object",
     },
-    "ListItem": {
+    "Mark": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+        },
+      },
+      "required": [
+        "type",
+      ],
+      "type": "object",
+    },
+    "NodeData": {
+      "additionalProperties": true,
+      "type": "object",
+    },
+    "TableCell": {
       "additionalProperties": false,
       "properties": {
         "content": {
           "items": {
-            "$ref": "#/definitions/ListItemBlock",
+            "$ref": "#/definitions/TableCellContent",
           },
+          "minItems": 1,
           "type": "array",
         },
         "data": {
-          "properties": {},
+          "additionalProperties": false,
+          "properties": {
+            "colspan": {
+              "type": "number",
+            },
+            "rowspan": {
+              "type": "number",
+            },
+          },
           "type": "object",
         },
         "nodeType": {
           "enum": [
-            "list-item",
+            "table-cell",
+            "table-header-cell",
           ],
           "type": "string",
         },
@@ -4318,7 +4025,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
       ],
       "type": "object",
     },
-    "ListItemBlock": {
+    "TableCellContent": {
       "additionalProperties": false,
       "properties": {
         "content": {
@@ -4341,183 +4048,10 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
           "$ref": "#/definitions/NodeData",
         },
         "nodeType": {
-          "$ref": "#/definitions/ListItemBlockEnum",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "ListItemBlockEnum": {
-      "enum": [
-        "blockquote",
-        "embedded-asset-block",
-        "embedded-entry-block",
-        "embedded-resource-block",
-        "heading-1",
-        "heading-2",
-        "heading-3",
-        "heading-4",
-        "heading-5",
-        "heading-6",
-        "hr",
-        "ordered-list",
-        "paragraph",
-        "unordered-list",
-      ],
-      "type": "string",
-    },
-    "Mark": {
-      "additionalProperties": false,
-      "properties": {
-        "type": {
-          "type": "string",
-        },
-      },
-      "required": [
-        "type",
-      ],
-      "type": "object",
-    },
-    "NodeData": {
-      "additionalProperties": true,
-      "type": "object",
-    },
-    "OrderedList": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "$ref": "#/definitions/ListItem",
-          },
-          "type": "array",
-        },
-        "data": {
-          "properties": {},
-          "type": "object",
-        },
-        "nodeType": {
           "enum": [
             "ordered-list",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "Paragraph": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Inline",
-              },
-              {
-                "$ref": "#/definitions/Text",
-              },
-            ],
-          },
-          "type": "array",
-        },
-        "data": {
-          "properties": {},
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
             "paragraph",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "TableCell": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/Paragraph",
-              },
-              {
-                "$ref": "#/definitions/OrderedList",
-              },
-              {
-                "$ref": "#/definitions/UnorderedList",
-              },
-            ],
-          },
-          "minItems": 1,
-          "type": "array",
-        },
-        "data": {
-          "additionalProperties": false,
-          "properties": {
-            "colspan": {
-              "type": "number",
-            },
-            "rowspan": {
-              "type": "number",
-            },
-          },
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
-            "table-cell",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
-      ],
-      "type": "object",
-    },
-    "TableHeaderCell": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "$ref": "#/definitions/Paragraph",
-          },
-          "minItems": 1,
-          "type": "array",
-        },
-        "data": {
-          "additionalProperties": false,
-          "properties": {
-            "colspan": {
-              "type": "number",
-            },
-            "rowspan": {
-              "type": "number",
-            },
-          },
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
-            "table-header-cell",
+            "unordered-list",
           ],
           "type": "string",
         },
@@ -4534,14 +4068,7 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
       "properties": {
         "content": {
           "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/TableCell",
-              },
-              {
-                "$ref": "#/definitions/TableHeaderCell",
-              },
-            ],
+            "$ref": "#/definitions/TableCell",
           },
           "minItems": 1,
           "type": "array",
@@ -4591,33 +4118,6 @@ exports[`getSchemaWithNodeType returns json schema for each nodeType: table-row 
         "marks",
         "nodeType",
         "value",
-      ],
-      "type": "object",
-    },
-    "UnorderedList": {
-      "additionalProperties": false,
-      "properties": {
-        "content": {
-          "items": {
-            "$ref": "#/definitions/ListItem",
-          },
-          "type": "array",
-        },
-        "data": {
-          "properties": {},
-          "type": "object",
-        },
-        "nodeType": {
-          "enum": [
-            "unordered-list",
-          ],
-          "type": "string",
-        },
-      },
-      "required": [
-        "content",
-        "data",
-        "nodeType",
       ],
       "type": "object",
     },
