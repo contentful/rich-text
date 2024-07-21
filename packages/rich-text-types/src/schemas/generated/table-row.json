@@ -18,7 +18,7 @@
           "minItems": 1,
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TableCell"
+            "$ref": "#/definitions/TableRowBlock"
           }
         }
       },
@@ -29,53 +29,11 @@
         "nodeType"
       ]
     },
-    "TableCell": {
+    "TableRowBlock": {
       "type": "object",
       "properties": {
         "nodeType": {
-          "enum": [
-            "table-cell",
-            "table-header-cell"
-          ],
-          "type": "string"
-        },
-        "data": {
-          "type": "object",
-          "properties": {
-            "colspan": {
-              "type": "number"
-            },
-            "rowspan": {
-              "type": "number"
-            }
-          },
-          "additionalProperties": false
-        },
-        "content": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/TableCellContent"
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "content",
-        "data",
-        "nodeType"
-      ]
-    },
-    "TableCellContent": {
-      "type": "object",
-      "properties": {
-        "nodeType": {
-          "enum": [
-            "ordered-list",
-            "paragraph",
-            "unordered-list"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/TableRowBlockEnum"
         },
         "content": {
           "type": "array",
@@ -103,6 +61,13 @@
         "data",
         "nodeType"
       ]
+    },
+    "TableRowBlockEnum": {
+      "enum": [
+        "table-cell",
+        "table-header-cell"
+      ],
+      "type": "string"
     },
     "Block": {
       "type": "object",

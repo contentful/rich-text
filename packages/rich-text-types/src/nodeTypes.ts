@@ -1,6 +1,14 @@
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
-import { Block, Inline, ListItemBlock, Text } from './types';
+import {
+  Block,
+  Inline,
+  ListItemBlock,
+  TableCellBlock,
+  TableHeaderCellBlock,
+  TableRowBlock,
+  Text,
+} from './types';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type EmptyNodeData = {};
@@ -197,12 +205,8 @@ export interface ResourceHyperlink extends Inline {
   content: Text[];
 }
 
-interface TableCellContent extends Block {
-  nodeType: BLOCKS.PARAGRAPH | BLOCKS.UL_LIST | BLOCKS.OL_LIST;
-}
-
 export interface TableCell extends Block {
-  nodeType: BLOCKS.TABLE_HEADER_CELL | BLOCKS.TABLE_CELL;
+  nodeType: BLOCKS.TABLE_CELL;
   data: {
     colspan?: number;
     rowspan?: number;
@@ -211,20 +215,20 @@ export interface TableCell extends Block {
   /**
    * @minItems 1
    */
-  content: TableCellContent[];
+  content: TableCellBlock[];
 }
 
-// Notice that this is only exported and not reused anywhere else in this file
-// this is because this we only want this interface to generate the schema
-// if we end up decouping the header cell from the regular cell we
-// end up with unwanted side effects when validating the schema
-export interface TableHeaderCell extends TableCell {
+export interface TableHeaderCell extends Block {
   nodeType: BLOCKS.TABLE_HEADER_CELL;
+  data: {
+    colspan?: number;
+    rowspan?: number;
+  };
 
   /**
    * @minItems 1
    */
-  content: Paragraph[];
+  content: TableHeaderCellBlock[];
 }
 
 // An abstract table row can have both table cell types
@@ -236,7 +240,7 @@ export interface TableRow extends Block {
   /**
    * @minItems 1
    */
-  content: TableCell[];
+  content: TableRowBlock[];
 }
 
 export interface Table extends Block {

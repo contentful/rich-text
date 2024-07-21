@@ -5,11 +5,10 @@
       "type": "object",
       "properties": {
         "nodeType": {
+          "type": "string",
           "enum": [
-            "table-cell",
-            "table-header-cell"
-          ],
-          "type": "string"
+            "table-cell"
+          ]
         },
         "data": {
           "type": "object",
@@ -27,7 +26,7 @@
           "minItems": 1,
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TableCellContent"
+            "$ref": "#/definitions/TableCellBlock"
           }
         }
       },
@@ -38,16 +37,11 @@
         "nodeType"
       ]
     },
-    "TableCellContent": {
+    "TableCellBlock": {
       "type": "object",
       "properties": {
         "nodeType": {
-          "enum": [
-            "ordered-list",
-            "paragraph",
-            "unordered-list"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/TableCellEnum"
         },
         "content": {
           "type": "array",
@@ -75,6 +69,14 @@
         "data",
         "nodeType"
       ]
+    },
+    "TableCellEnum": {
+      "enum": [
+        "ordered-list",
+        "paragraph",
+        "unordered-list"
+      ],
+      "type": "string"
     },
     "Block": {
       "type": "object",
