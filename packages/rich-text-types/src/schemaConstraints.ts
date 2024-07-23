@@ -59,7 +59,7 @@ export type ListItemBlockEnum =
 
 export type TableRowBlockEnum = BLOCKS.TABLE_CELL | BLOCKS.TABLE_HEADER_CELL;
 
-export type TableCellEnum = BLOCKS.PARAGRAPH | BLOCKS.UL_LIST | BLOCKS.OL_LIST;
+export type TableCellEnum = ListItemBlockEnum;
 
 export type TableHeaderCellEnum = BLOCKS.PARAGRAPH;
 

@@ -72,6 +72,17 @@
     },
     "TableCellEnum": {
       "enum": [
+        "blockquote",
+        "embedded-asset-block",
+        "embedded-entry-block",
+        "embedded-resource-block",
+        "heading-1",
+        "heading-2",
+        "heading-3",
+        "heading-4",
+        "heading-5",
+        "heading-6",
+        "hr",
         "ordered-list",
         "paragraph",
         "unordered-list"
