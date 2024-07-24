@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.7.7](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.7.6...@contentful/rich-text-links@16.7.7) (2024-07-24)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
 ## [16.7.6](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.7.5...@contentful/rich-text-links@16.7.6) (2024-07-17)
 
 **Note:** Version bump only for package @contentful/rich-text-links

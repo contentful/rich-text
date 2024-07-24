@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.8.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.8.1...@contentful/rich-text-types@16.8.2) (2024-07-24)
+
+### Bug Fixes
+
+- exporting schema function [] ([#632](https://github.com/contentful/rich-text/issues/632)) ([21bf8a6](https://github.com/contentful/rich-text/commit/21bf8a61883abbb2174524df2ec5be826fd429a3))
+
 ## [16.8.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.8.0...@contentful/rich-text-types@16.8.1) (2024-07-17)
 
 ### Bug Fixes
