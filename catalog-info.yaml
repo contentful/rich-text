@@ -8,6 +8,7 @@ metadata:
     circleci.com/project-slug: github/contentful/rich-text
     github.com/project-slug: contentful/rich-text
     backstage.io/source-location: url:https://github.com/contentful/rich-text/
+    contentful.com/ci-alert-slack: prd-creators-tolkien-alerts
 spec:
   type: library
   lifecycle: production
