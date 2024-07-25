@@ -1,12 +1,15 @@
-name: Auto approve
-
+name: 'dependabot approve-and-request-merge'
 on: pull_request_target
 
 jobs:
-  auto-approve:
+  worker:
+    permissions:
+      contents: write
+      id-token: write
+      pull-requests: write
     runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
     steps:
-      - uses: hmarr/auto-approve-action@v2.1.0
-        if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
+      - uses: contentful/github-auto-merge@v2
         with:
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          VAULT_URL: ${{ secrets.VAULT_URL }}
