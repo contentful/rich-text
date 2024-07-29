@@ -32,7 +32,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.14.8",
+    "@types/node": "^22.0.0",
     "colors": "^1.1.2",
     "coveralls": "^3.0.0",
     "cross-env": "^5.0.1",
