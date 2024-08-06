@@ -1,6 +1,14 @@
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
-import { Block, Inline, ListItemBlock, Text } from './types';
+import {
+  Block,
+  Inline,
+  ListItemBlock,
+  TableCellBlock,
+  TableHeaderCellBlock,
+  TableRowBlock,
+  Text,
+} from './types';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type EmptyNodeData = {};
@@ -198,7 +206,7 @@ export interface ResourceHyperlink extends Inline {
 }
 
 export interface TableCell extends Block {
-  nodeType: BLOCKS.TABLE_HEADER_CELL | BLOCKS.TABLE_CELL;
+  nodeType: BLOCKS.TABLE_CELL;
   data: {
     colspan?: number;
     rowspan?: number;
@@ -207,11 +215,20 @@ export interface TableCell extends Block {
   /**
    * @minItems 1
    */
-  content: Paragraph[];
+  content: TableCellBlock[];
 }
 
-export interface TableHeaderCell extends TableCell {
+export interface TableHeaderCell extends Block {
   nodeType: BLOCKS.TABLE_HEADER_CELL;
+  data: {
+    colspan?: number;
+    rowspan?: number;
+  };
+
+  /**
+   * @minItems 1
+   */
+  content: TableHeaderCellBlock[];
 }
 
 // An abstract table row can have both table cell types
@@ -223,7 +240,7 @@ export interface TableRow extends Block {
   /**
    * @minItems 1
    */
-  content: TableCell[];
+  content: TableRowBlock[];
 }
 
 export interface Table extends Block {
