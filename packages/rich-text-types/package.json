@@ -31,6 +31,6 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^22.0.0",
     "ts-jest": "^29.1.2",
-    "typescript-json-schema": "0.64.0"
+    "typescript-json-schema": "0.65.1"
   }
 }
