@@ -3523,10 +3523,10 @@ eslint-plugin-import@2.29.1:
     semver "^6.3.1"
     tsconfig-paths "^3.15.0"
 
-eslint-plugin-jest@28.8.1:
-  version "28.8.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-28.8.1.tgz#3cf7d2752350bd711ca0de000b048a5464b52e0b"
-  integrity sha512-G46XMyYu6PtSNJUkQ0hsPjzXYpzq/O4vpCciMizTKRJG8kNsRreGoMRDG6H9FIB/xVgfFuclVnuX4XRvFUzrZQ==
+eslint-plugin-jest@28.8.3:
+  version "28.8.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-28.8.3.tgz#c5699bba0ad06090ad613535e4f1572f4c2567c0"
+  integrity sha512-HIQ3t9hASLKm2IhIOqnu+ifw7uLZkIlR7RYNv7fMcEi/p0CIiJmfriStQS2LDkgtY4nyLbIZAD+JL347Yc2ETQ==
   dependencies:
     "@typescript-eslint/utils" "^6.0.0 || ^7.0.0 || ^8.0.0"
 
