@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.18.11](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.18.10...@contentful/contentful-slatejs-adapter@15.18.11) (2024-09-09)
+
+**Note:** Version bump only for package @contentful/contentful-slatejs-adapter
+
 ## [15.18.10](https://github.com/contentful/rich-text/compare/@contentful/contentful-slatejs-adapter@15.18.9...@contentful/contentful-slatejs-adapter@15.18.10) (2024-08-26)
 
 **Note:** Version bump only for package @contentful/contentful-slatejs-adapter

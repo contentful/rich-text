@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-from-markdown",
-  "version": "15.18.9",
+  "version": "15.18.10",
   "description": "convert markdown to rich text",
   "keywords": [
     "rich-text",
@@ -34,7 +34,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.8.4",
+    "@contentful/rich-text-types": "^16.8.5",
     "lodash": "^4.17.11",
     "remark-gfm": "^1.0.0",
     "remark-parse": "^9.0.0",
