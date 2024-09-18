@@ -25,6 +25,9 @@
     "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen",
     "test": "jest"
   },
+  "dependencies": {
+    "is-plain-obj": "^3.0.0"
+  },
   "devDependencies": {
     "@cspotcode/source-map-consumer": "^0.8.0",
     "@faker-js/faker": "^9.0.0",
