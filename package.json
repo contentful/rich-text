@@ -46,7 +46,7 @@
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
     "@rollup/plugin-commonjs": "^26.0.1",
-    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-node-resolve": "15.2.4",
     "@types/benchmark": "^2.1.4",
     "@types/jest": "29.5.13",
     "@types/rollup-plugin-json": "^3.0.7",
