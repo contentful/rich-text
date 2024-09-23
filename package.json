@@ -43,7 +43,7 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.4.1",
+    "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "15.2.3",
