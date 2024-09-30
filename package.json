@@ -53,7 +53,7 @@
     "@typescript-eslint/eslint-plugin": "^7.14.1",
     "@typescript-eslint/parser": "^7.14.1",
     "benchmark": "^2.1.4",
-    "commitizen": "4.3.0",
+    "commitizen": "4.3.1",
     "eslint": "8.57.0",
     "eslint-plugin-jest": "28.8.3",
     "eslint-plugin-jsx-a11y": "6.10.0",
