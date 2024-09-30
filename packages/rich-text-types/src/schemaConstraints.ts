@@ -57,6 +57,12 @@ export type ListItemBlockEnum =
   | BLOCKS.EMBEDDED_ASSET
   | BLOCKS.EMBEDDED_RESOURCE;
 
+export type TableRowBlockEnum = BLOCKS.TABLE_CELL | BLOCKS.TABLE_HEADER_CELL;
+
+export type TableCellEnum = ListItemBlockEnum;
+
+export type TableHeaderCellEnum = BLOCKS.PARAGRAPH;
+
 /**
  * Array of all allowed block types inside list items
  */
