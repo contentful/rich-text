@@ -1,11 +1,11 @@
-import { ObjectAssertion } from './assert';
-import { Path } from './path';
-import { NodeAssertion, Node, HyperLinkAssertion, assert, assertLink, VOID_CONTENT } from './node';
-import { assertText } from './text';
-import { Document, Text } from '../types';
 import { BLOCKS } from '../blocks';
 import { INLINES } from '../inlines';
 import { CONTAINERS, LIST_ITEM_BLOCKS, TOP_LEVEL_BLOCKS } from '../schemaConstraints';
+import { Document, Text } from '../types';
+import { ObjectAssertion } from './assert';
+import { NodeAssertion, Node, HyperLinkAssertion, assert, assertLink, VOID_CONTENT } from './node';
+import { Path } from './path';
+import { assertText } from './text';
 
 export type ValidationError = {
   name: string;
