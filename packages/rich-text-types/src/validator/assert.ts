@@ -1,4 +1,6 @@
 import isPlainObject from 'is-plain-obj';
+
+import { ValidationError } from '.';
 import {
   maxSizeError,
   typeMismatchError,
@@ -8,8 +10,6 @@ import {
   minSizeError,
 } from './errors';
 import type { Path } from './path';
-import { uniqWith } from 'lodash';
-import { ValidationError } from '.';
 
 export class ObjectAssertion {
   private _errors: ValidationError[] = [];
@@ -30,9 +30,10 @@ export class ObjectAssertion {
         path: error.path,
       });
 
-    return uniqWith(this._errors, (a, b) => {
-      return serializeError(a) === serializeError(b);
-    });
+    return this._errors.filter(
+      (error, index) =>
+        this._errors.findIndex((step) => serializeError(error) === serializeError(step)) === index,
+    );
   }
 
   /**

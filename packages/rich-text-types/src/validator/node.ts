@@ -1,5 +1,3 @@
-import type { Path } from './path';
-import { ObjectAssertion } from './assert';
 import { ValidationError } from '.';
 import {
   AssetHyperlink,
@@ -11,6 +9,8 @@ import {
   ResourceLinkInline,
 } from '../nodeTypes';
 import { Block, Document, Inline } from '../types';
+import { ObjectAssertion } from './assert';
+import type { Path } from './path';
 
 export type Node = Document | Block | Inline;
 
