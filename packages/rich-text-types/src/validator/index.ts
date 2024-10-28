@@ -71,7 +71,7 @@ const nodeValidator: Record<Node['nodeType'], NodeAssertion<any>> = {
   [INLINES.HYPERLINK]: new HyperLinkAssertion(),
   [INLINES.EMBEDDED_ENTRY]: assertVoidEntryLink,
   [INLINES.EMBEDDED_RESOURCE]: assertLink('Contentful:Entry', VOID_CONTENT),
-  [INLINES.ENTRY_HYPERLINK]: assertLink('Entry', ['§']),
+  [INLINES.ENTRY_HYPERLINK]: assertLink('Entry', ['text']),
   [INLINES.ASSET_HYPERLINK]: assertLink('Asset', ['text']),
   [INLINES.RESOURCE_HYPERLINK]: assertLink('Contentful:Entry', ['text']),
 };

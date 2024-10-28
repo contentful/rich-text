@@ -933,39 +933,36 @@ describe('validation', () => {
     ]);
   });
 
-  it.each([
-    INLINES.ASSET_HYPERLINK,
-    INLINES.ENTRY_HYPERLINK,
-    INLINES.RESOURCE_HYPERLINK,
-    INLINES.EMBEDDED_ENTRY,
-    INLINES.EMBEDDED_RESOURCE,
-  ] as const)('fails with invalid properties for %s', (nodeType) => {
-    const document: Document = {
-      nodeType: BLOCKS.DOCUMENT,
-      content: [
-        {
-          nodeType: BLOCKS.PARAGRAPH,
-          content: [
-            {
-              nodeType,
-              data: {},
-              content: [],
-            },
-          ],
-          data: {},
-        },
-      ],
-      data: {},
-    };
+  it.each([INLINES.ASSET_HYPERLINK, INLINES.ENTRY_HYPERLINK, INLINES.RESOURCE_HYPERLINK] as const)(
+    'fails with invalid properties for %s',
+    (nodeType) => {
+      const document: Document = {
+        nodeType: BLOCKS.DOCUMENT,
+        content: [
+          {
+            nodeType: BLOCKS.PARAGRAPH,
+            content: [
+              {
+                nodeType,
+                data: {},
+                content: [{ nodeType: 'text', value: `Hello ${nodeType}`, data: {}, marks: [] }],
+              },
+            ],
+            data: {},
+          },
+        ],
+        data: {},
+      };
 
-    expect(validateRichTextDocument(document)).toEqual([
-      {
-        details: 'The property "target" is required here',
-        name: 'required',
-        path: ['content', 0, 'content', 0, 'data', 'target'],
-      },
-    ]);
-  });
+      expect(validateRichTextDocument(document)).toEqual([
+        {
+          details: 'The property "target" is required here',
+          name: 'required',
+          path: ['content', 0, 'content', 0, 'data', 'target'],
+        },
+      ]);
+    },
+  );
 
   it('fails with invalid properties for hypperlink node', () => {
     const document: Document = {
@@ -977,7 +974,7 @@ describe('validation', () => {
             {
               nodeType: INLINES.HYPERLINK,
               data: {},
-              content: [],
+              content: [{ nodeType: 'text', value: 'Hello hyperlink', data: {}, marks: [] }],
             },
           ],
           data: {},
@@ -994,6 +991,37 @@ describe('validation', () => {
       },
     ]);
   });
+
+  it.each([INLINES.EMBEDDED_ENTRY, INLINES.EMBEDDED_RESOURCE] as const)(
+    'fails with invalid properties for %s',
+    (nodeType) => {
+      const document: Document = {
+        nodeType: BLOCKS.DOCUMENT,
+        content: [
+          {
+            nodeType: BLOCKS.PARAGRAPH,
+            content: [
+              {
+                nodeType,
+                data: {},
+                content: [],
+              },
+            ],
+            data: {},
+          },
+        ],
+        data: {},
+      };
+
+      expect(validateRichTextDocument(document)).toEqual([
+        {
+          details: 'The property "target" is required here',
+          name: 'required',
+          path: ['content', 0, 'content', 0, 'data', 'target'],
+        },
+      ]);
+    },
+  );
 
   it('succeeds with a valid structure', () => {
     const document: Document = {
