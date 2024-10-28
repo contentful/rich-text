@@ -1,6 +1,12 @@
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
-import { ListItemBlockEnum, TopLevelBlockEnum } from './schemaConstraints';
+import {
+  ListItemBlockEnum,
+  TableCellEnum,
+  TableHeaderCellEnum,
+  TableRowBlockEnum,
+  TopLevelBlockEnum,
+} from './schemaConstraints';
 
 /**
  * @additionalProperties true
@@ -43,4 +49,16 @@ export interface Mark {
 
 export interface ListItemBlock extends Block {
   nodeType: ListItemBlockEnum;
+}
+
+export interface TableRowBlock extends Block {
+  nodeType: TableRowBlockEnum;
+}
+
+export interface TableCellBlock extends Block {
+  nodeType: TableCellEnum;
+}
+
+export interface TableHeaderCellBlock extends Block {
+  nodeType: TableHeaderCellEnum;
 }

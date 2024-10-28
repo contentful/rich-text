@@ -23,7 +23,8 @@
     "build": "yarn generate-json-schema && tsc --module commonjs && rollup -c --bundleConfigAsCjs rollup.config.js",
     "start": "tsc && rollup -c --bundleConfigAsCjs rollup.config.js -w",
     "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen",
-    "test": "jest"
+    "test": "jest",
+    "test:update-snapshots": "jest -u"
   },
   "devDependencies": {
     "@cspotcode/source-map-consumer": "^0.8.0",
