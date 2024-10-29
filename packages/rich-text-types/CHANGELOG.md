@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.0.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.8.5...@contentful/rich-text-types@17.0.0) (2024-10-29)
+
+### Features
+
+- bring rich text validator [TOL-2426] ([#694](https://github.com/contentful/rich-text/issues/694)) ([30893a6](https://github.com/contentful/rich-text/commit/30893a68b171167502135b48258ba4b93c8375c7))
+
+### BREAKING CHANGES
+
+- removed getSchemaWithNodeType in favor of validateRichTextDocument
+
 ## [16.8.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@16.8.4...@contentful/rich-text-types@16.8.5) (2024-09-09)
 
 **Note:** Version bump only for package @contentful/rich-text-types
