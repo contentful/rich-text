@@ -17,7 +17,7 @@ Text documents.
   - Converts rich text documents to plain text
 - [`rich-text-types`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-types)
   - Type definitions and constants for the rich text field type
-- [`gatsby-transformer-contentful-richtext`](https://github.com/contentful/rich-text/tree/master/deprecated/gatsby-transformer-contentful-richtext) [DEPRECATED]
+- [`gatsby-transformer-contentful-richtext`](https://github.com/contentful/rich-text/tree/4ef875c44b4c8617f4035a46569b240d8cc67bbe/deprecated/gatsby-transformer-contentful-richtext) [DEPRECATED]
   - Parses a Contentful Rich Text document to HTML in Gatsby
 - [`rich-text-react-renderer`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-react-renderer)
   - Parses a Contentful Rich Text document to React components
