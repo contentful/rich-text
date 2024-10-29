@@ -1,4 +1,6 @@
 import config from '../../rollup.config';
-import { main as outputFile } from './package.json';
+import { main as outputFile, dependencies } from './package.json';
 
-export default config(outputFile);
+export default config(outputFile, {
+  external: Object.keys(dependencies),
+});

@@ -1,9 +1,9 @@
 import config from '../../rollup.config';
-import { main as outputFile } from './package.json';
+import { main as outputFile, dependencies } from './package.json';
 
 const overrides = {
   input: 'src/index.tsx',
-  external: ['react'],
+  external: [...Object.keys(dependencies), 'react'],
 };
 
 export default config(outputFile, overrides);

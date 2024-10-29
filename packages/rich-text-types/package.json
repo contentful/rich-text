@@ -20,17 +20,16 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "yarn generate-json-schema && tsc --module commonjs && rollup -c --bundleConfigAsCjs rollup.config.js",
+    "build": "tsc --module commonjs && rollup -c --bundleConfigAsCjs rollup.config.js",
     "start": "tsc && rollup -c --bundleConfigAsCjs rollup.config.js -w",
-    "generate-json-schema": "ts-node -O '{\"module\": \"commonjs\"}' ./tools/jsonSchemaGen",
     "test": "jest"
   },
+  "dependencies": {
+    "is-plain-obj": "^3.0.0"
+  },
   "devDependencies": {
-    "@cspotcode/source-map-consumer": "^0.8.0",
-    "@faker-js/faker": "^9.0.0",
     "@types/jest": "^29.5.12",
     "@types/node": "^22.0.0",
-    "ts-jest": "^29.1.2",
-    "typescript-json-schema": "0.65.1"
+    "ts-jest": "^29.1.2"
   }
 }
