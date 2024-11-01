@@ -29,10 +29,7 @@ export type ValidateData<T extends Node> = (data: T['data'], path: Path) => Vali
 export const VOID_CONTENT: GetContentRule<Node> = [];
 
 export class NodeAssertion<T extends Node = Node> {
-  constructor(
-    private contentRule: GetContentRule<T>,
-    private validateData?: ValidateData<T>,
-  ) {}
+  constructor(private contentRule: GetContentRule<T>, private validateData?: ValidateData<T>) {}
 
   assert(node: T, path: Path): ValidationError[] {
     const $ = new ObjectAssertion(node, path);
@@ -111,6 +108,10 @@ export class EntityLinkAssertion<
     const $ = new ObjectAssertion(data, path);
 
     if ($.object('target')) {
+      const target$ = new ObjectAssertion(data.target, path.of('target'));
+
+      target$.noAdditionalProperties(['sys']);
+
       const sys$ = new ObjectAssertion(data.target.sys, path.of('target').of('sys'));
 
       if (sys$.object()) {
@@ -126,7 +127,7 @@ export class EntityLinkAssertion<
         }
       }
 
-      $.catch(...sys$.errors);
+      $.catch(...target$.errors, ...sys$.errors);
     }
 
     $.noAdditionalProperties(['target']);
