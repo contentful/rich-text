@@ -83,8 +83,10 @@ export function getRichTextEntityLinks(
   /**
    *  Node type. Only the entity links with given node type will be extracted.
    */
-  type?: string,
+  ...type: (BLOCKS | INLINES | string)[]
 ): EntityLinks {
+  const types = new Set(type);
+
   const entityLinks: EntityLinkMaps = {
     Entry: new Map(),
     Asset: new Map(),
@@ -92,7 +94,7 @@ export function getRichTextEntityLinks(
 
   // const content = (document && document.content) || ([] as Node[]);
   const addLink = ({ data, nodeType }: Node) => {
-    const hasRequestedNodeType = !type || nodeType === type;
+    const hasRequestedNodeType = !types.size || types.has(nodeType);
 
     if (hasRequestedNodeType && isLinkObject(data)) {
       entityLinks[data.target.sys.linkType].set(data.target.sys.id, data.target.sys);
