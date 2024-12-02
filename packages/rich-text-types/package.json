@@ -25,7 +25,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "is-plain-obj": "^3.0.0"
+    "is-plain-obj": "^4.1.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
