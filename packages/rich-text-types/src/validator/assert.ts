@@ -1,4 +1,4 @@
-import isPlainObject from 'is-plain-obj';
+import isPlainObject from 'lodash.isplainobject';
 
 import { ValidationError } from '.';
 import {

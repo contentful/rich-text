@@ -25,11 +25,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "is-plain-obj": "^3.0.0"
+    "lodash.isplainobject": "^4.0.6"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^22.0.0",
+    "@types/lodash.isplainobject": "^4.0.9",
     "ts-jest": "^29.1.2"
   }
 }
