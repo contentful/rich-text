@@ -25,7 +25,7 @@ export function nodeToReactComponent(node: CommonNode, options: Options): ReactN
 
       // Preserve line breaks.
       const lines = (nodeValue as string).split('\n');
-      const jsxLines: (string | JSX.Element)[] = [];
+      const jsxLines: (string | React.JSX.Element)[] = [];
 
       lines.forEach((line, index) => {
         jsxLines.push(line);

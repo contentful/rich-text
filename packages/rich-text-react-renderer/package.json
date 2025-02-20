@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-react-renderer",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "main": "dist/rich-text-react-renderer.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -28,8 +28,8 @@
     "@contentful/rich-text-types": "^17.0.0"
   },
   "peerDependencies": {
-    "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.6 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
