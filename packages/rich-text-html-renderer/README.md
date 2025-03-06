@@ -111,7 +111,7 @@ documentToHtmlString(document, options);
 // -> <custom-paragraph><custom-bold>Hello</custom-bold><u> world!</u></custom-paragraph>
 ```
 
-Last, but not least, you can pass a custom rendering component for an embedded entry:
+Last, but not least, if you use `EMBEDDED_ASSET` or `EMBEDDED_ASSET` you must pass a custom rendering component for render them:
 
 ```javascript
 import { BLOCKS } from '@contentful/rich-text-types';
