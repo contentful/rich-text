@@ -36,7 +36,7 @@
   "dependencies": {
     "@contentful/rich-text-types": "^17.0.0",
     "lodash": "^4.17.11",
-    "remark-gfm": "^1.0.0",
+    "remark-gfm": "^4.0.1",
     "remark-parse": "^9.0.0",
     "unified": "^9.0.0"
   },
