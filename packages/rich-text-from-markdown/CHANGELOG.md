@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.0.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@16.0.0...@contentful/rich-text-from-markdown@16.0.1) (2025-06-16)
+
+**Note:** Version bump only for package @contentful/rich-text-from-markdown
+
 # [16.0.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@15.18.10...@contentful/rich-text-from-markdown@16.0.0) (2024-10-29)
 
 ### Features
