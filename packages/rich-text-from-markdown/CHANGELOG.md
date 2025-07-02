@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@16.0.1...@contentful/rich-text-from-markdown@16.1.0) (2025-07-02)
+
+### Features
+
+- **markdown:** transform strikethrough to rich-text mark ([#883](https://github.com/contentful/rich-text/issues/883)) ([ac51579](https://github.com/contentful/rich-text/commit/ac51579f5e716bb15862796177a924c7e838edb6))
+
 ## [16.0.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-from-markdown@16.0.0...@contentful/rich-text-from-markdown@16.0.1) (2025-06-16)
 
 **Note:** Version bump only for package @contentful/rich-text-from-markdown
