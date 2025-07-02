@@ -39,7 +39,7 @@ _This is italic text_
 
 _This is italic text_
 
-~~Strikethrough is not supported~~
+~~Strikethrough is supported~~
 
 ## Blockquotes
 
