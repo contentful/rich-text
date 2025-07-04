@@ -1,5 +1,5 @@
 ---
-name: "CodeQL Scan for GitHub Actions Workflows"
+name: "CodeQL Scan for GitHub Actions Workflow"
 
 on:
   push:
