@@ -1,6 +1,15 @@
 import React, { ReactNode } from 'react';
 
-import { Block, BLOCKS, Document, Inline, INLINES, MARKS, Text } from '@contentful/rich-text-types';
+import {
+  Block,
+  BLOCKS,
+  Document,
+  Inline,
+  INLINES,
+  MARKS,
+  Text,
+  helpers,
+} from '@contentful/rich-text-types';
 
 import { nodeToReactComponent } from './util/nodeListToReactComponents';
 
@@ -99,6 +108,10 @@ export interface Options {
    * Keep line breaks and multiple spaces
    */
   preserveWhitespace?: boolean;
+  /**
+   * Strip empty trailing paragraph from the document
+   */
+  stripEmptyTrailingParagraph?: boolean;
 }
 
 /**
@@ -112,7 +125,13 @@ export function documentToReactComponents(
     return null;
   }
 
-  return nodeToReactComponent(richTextDocument, {
+  // Strip empty trailing paragraph if enabled
+  const processedDocument = helpers.stripEmptyTrailingParagraphFromDocument(
+    richTextDocument,
+    options.stripEmptyTrailingParagraph || false,
+  );
+
+  return nodeToReactComponent(processedDocument, {
     renderNode: {
       ...defaultNodeRenderers,
       ...options.renderNode,
