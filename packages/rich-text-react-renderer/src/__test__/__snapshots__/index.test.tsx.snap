@@ -511,3 +511,64 @@ exports[`preserveWhitespace preserves spaces between words 1`] = `
   </p>,
 ]
 `;
+
+exports[`stripEmptyTrailingParagraph does not strip empty trailing paragraph when disabled 1`] = `
+[
+  <p>
+    Hello world
+  </p>,
+  <p>
+    
+  </p>,
+]
+`;
+
+exports[`stripEmptyTrailingParagraph does not strip empty trailing paragraph when it is the only child 1`] = `
+[
+  <p>
+    
+  </p>,
+]
+`;
+
+exports[`stripEmptyTrailingParagraph does not strip non-empty trailing paragraph 1`] = `
+[
+  <p>
+    Hello world
+  </p>,
+  <p>
+    Not empty
+  </p>,
+]
+`;
+
+exports[`stripEmptyTrailingParagraph does not strip trailing non-paragraph node 1`] = `
+[
+  <p>
+    Hello world
+  </p>,
+  <h1>
+    
+  </h1>,
+]
+`;
+
+exports[`stripEmptyTrailingParagraph does not strip trailing paragraph with multiple text nodes 1`] = `
+[
+  <p>
+    Hello world
+  </p>,
+  <p>
+    
+    
+  </p>,
+]
+`;
+
+exports[`stripEmptyTrailingParagraph strips empty trailing paragraph when enabled 1`] = `
+[
+  <p>
+    Hello world
+  </p>,
+]
+`;

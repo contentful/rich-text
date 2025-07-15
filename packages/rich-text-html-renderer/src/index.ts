@@ -92,6 +92,10 @@ export interface Options {
    * Keep line breaks and multiple spaces
    */
   preserveWhitespace?: boolean;
+  /**
+   * Strip empty trailing paragraph from the document
+   */
+  stripEmptyTrailingParagraph?: boolean;
 }
 
 /**
@@ -105,7 +109,13 @@ export function documentToHtmlString(
     return '';
   }
 
-  return nodeListToHtmlString(richTextDocument.content, {
+  // Strip empty trailing paragraph if enabled
+  let processedDocument = richTextDocument;
+  if (options.stripEmptyTrailingParagraph) {
+    processedDocument = helpers.stripEmptyTrailingParagraphFromDocument(richTextDocument);
+  }
+
+  return nodeListToHtmlString(processedDocument.content, {
     renderNode: {
       ...defaultNodeRenderers,
       ...options.renderNode,
