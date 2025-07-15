@@ -1,6 +1,6 @@
 import { BLOCKS } from './blocks';
 import { INLINES } from './inlines';
-import { Block, Inline, Node, Text, Document } from './types';
+import { Block, Inline, Node, Text, Document as CDocument } from './types';
 
 /**
  * Tiny replacement for Object.values(object).includes(key) to
@@ -53,16 +53,16 @@ export function isEmptyParagraph(node: Block): boolean {
   return textNode.nodeType === 'text' && (textNode as Text).value === '';
 }
 
-function isValidDocument(document: unknown): document is Document {
+function isValidDocument(document: unknown): document is CDocument {
   return (
     document != null &&
     typeof document === 'object' &&
     'content' in document &&
-    Array.isArray((document as Document).content)
+    Array.isArray((document as CDocument).content)
   );
 }
 
-const MIN_CONTENT_LENGTH_FOR_STRIPPING = 2;
+const MIN_NODES_FOR_STRIPPING = 2;
 
 /**
  * Strips empty trailing paragraph from a document if enabled
@@ -73,14 +73,10 @@ const MIN_CONTENT_LENGTH_FOR_STRIPPING = 2;
  * const processedDoc = stripEmptyTrailingParagraphFromDocument(document, true);
  */
 export function stripEmptyTrailingParagraphFromDocument(
-  document: Document,
+  document: CDocument,
   enabled: boolean,
-): Document {
-  if (
-    !enabled ||
-    !isValidDocument(document) ||
-    document.content.length < MIN_CONTENT_LENGTH_FOR_STRIPPING
-  ) {
+): CDocument {
+  if (!enabled || !isValidDocument(document) || document.content.length < MIN_NODES_FOR_STRIPPING) {
     return document;
   }
 
