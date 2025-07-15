@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-links",
-  "version": "17.0.1",
+  "version": "17.0.2",
   "main": "dist/rich-text-links.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -25,7 +25,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^17.0.1"
+    "@contentful/rich-text-types": "^17.1.0"
   },
   "devDependencies": {
     "ts-jest": "^29.1.2"

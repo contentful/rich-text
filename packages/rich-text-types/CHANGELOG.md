@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.0.1...@contentful/rich-text-types@17.1.0) (2025-07-15)
+
+### Features
+
+- add an option to strip empty trailing paragraphs [TOL-3193] ([#892](https://github.com/contentful/rich-text/issues/892)) ([9beff0e](https://github.com/contentful/rich-text/commit/9beff0e4cba3e79dc68e6a0725e843c5d642eb87))
+
 ## [17.0.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.0.0...@contentful/rich-text-types@17.0.1) (2025-06-16)
 
 **Note:** Version bump only for package @contentful/rich-text-types
