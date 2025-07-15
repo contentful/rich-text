@@ -31,11 +31,8 @@ export function documentToPlainTextString(
 
   // Strip empty trailing paragraph if enabled and rootNode is a Document
   let processedRootNode = rootNode;
-  if (rootNode.nodeType === BLOCKS.DOCUMENT) {
-    processedRootNode = helpers.stripEmptyTrailingParagraphFromDocument(
-      rootNode as Document,
-      options.stripEmptyTrailingParagraph || false,
-    );
+  if (rootNode.nodeType === BLOCKS.DOCUMENT && options.stripEmptyTrailingParagraph) {
+    processedRootNode = helpers.stripEmptyTrailingParagraphFromDocument(rootNode as Document);
   }
 
   /**

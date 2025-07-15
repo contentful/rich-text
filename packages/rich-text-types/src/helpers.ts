@@ -67,16 +67,12 @@ const MIN_NODES_FOR_STRIPPING = 2;
 /**
  * Strips empty trailing paragraph from a document if enabled
  * @param document - The rich text document to process
- * @param enabled - Whether to enable empty trailing paragraph stripping
  * @returns A new document with the empty trailing paragraph removed (if conditions are met)
  * @example
- * const processedDoc = stripEmptyTrailingParagraphFromDocument(document, true);
+ * const processedDoc = stripEmptyTrailingParagraphFromDocument(document);
  */
-export function stripEmptyTrailingParagraphFromDocument(
-  document: CDocument,
-  enabled: boolean,
-): CDocument {
-  if (!enabled || !isValidDocument(document) || document.content.length < MIN_NODES_FOR_STRIPPING) {
+export function stripEmptyTrailingParagraphFromDocument(document: CDocument): CDocument {
+  if (!isValidDocument(document) || document.content.length < MIN_NODES_FOR_STRIPPING) {
     return document;
   }
 

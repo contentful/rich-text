@@ -76,7 +76,7 @@ describe('helpers', () => {
   });
 
   describe('stripEmptyTrailingParagraphFromDocument', () => {
-    it('strips empty trailing paragraph when enabled', () => {
+    it('strips empty trailing paragraph', () => {
       const document: Document = {
         nodeType: BLOCKS.DOCUMENT,
         data: {},
@@ -108,45 +108,9 @@ describe('helpers', () => {
         ],
       };
 
-      const result = helpers.stripEmptyTrailingParagraphFromDocument(document, true);
+      const result = helpers.stripEmptyTrailingParagraphFromDocument(document);
       expect(result.content).toHaveLength(1);
       expect(result.content[0].nodeType).toBe(BLOCKS.PARAGRAPH);
-    });
-
-    it('does not strip empty trailing paragraph when disabled', () => {
-      const document: Document = {
-        nodeType: BLOCKS.DOCUMENT,
-        data: {},
-        content: [
-          {
-            nodeType: BLOCKS.PARAGRAPH,
-            data: {},
-            content: [
-              {
-                nodeType: 'text' as const,
-                value: 'Hello world',
-                marks: [] as Mark[],
-                data: {},
-              },
-            ],
-          },
-          {
-            nodeType: BLOCKS.PARAGRAPH,
-            data: {},
-            content: [
-              {
-                nodeType: 'text' as const,
-                value: '',
-                marks: [] as Mark[],
-                data: {},
-              },
-            ],
-          },
-        ],
-      };
-
-      const result = helpers.stripEmptyTrailingParagraphFromDocument(document, false);
-      expect(result.content).toHaveLength(2);
     });
 
     it('does not strip empty trailing paragraph when it is the only child', () => {
@@ -169,7 +133,7 @@ describe('helpers', () => {
         ],
       };
 
-      const result = helpers.stripEmptyTrailingParagraphFromDocument(document, true);
+      const result = helpers.stripEmptyTrailingParagraphFromDocument(document);
       expect(result.content).toHaveLength(1);
     });
 
@@ -205,7 +169,7 @@ describe('helpers', () => {
         ],
       };
 
-      const result = helpers.stripEmptyTrailingParagraphFromDocument(document, true);
+      const result = helpers.stripEmptyTrailingParagraphFromDocument(document);
       expect(result.content).toHaveLength(2);
     });
   });

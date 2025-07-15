@@ -126,10 +126,10 @@ export function documentToReactComponents(
   }
 
   // Strip empty trailing paragraph if enabled
-  const processedDocument = helpers.stripEmptyTrailingParagraphFromDocument(
-    richTextDocument,
-    options.stripEmptyTrailingParagraph || false,
-  );
+  let processedDocument = richTextDocument;
+  if (options.stripEmptyTrailingParagraph) {
+    processedDocument = helpers.stripEmptyTrailingParagraphFromDocument(richTextDocument);
+  }
 
   return nodeToReactComponent(processedDocument, {
     renderNode: {

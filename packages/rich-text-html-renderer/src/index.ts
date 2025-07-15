@@ -110,10 +110,10 @@ export function documentToHtmlString(
   }
 
   // Strip empty trailing paragraph if enabled
-  const processedDocument = helpers.stripEmptyTrailingParagraphFromDocument(
-    richTextDocument,
-    options.stripEmptyTrailingParagraph || false,
-  );
+  let processedDocument = richTextDocument;
+  if (options.stripEmptyTrailingParagraph) {
+    processedDocument = helpers.stripEmptyTrailingParagraphFromDocument(richTextDocument);
+  }
 
   return nodeListToHtmlString(processedDocument.content, {
     renderNode: {
