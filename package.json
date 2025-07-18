@@ -9,7 +9,7 @@
     "url": "https://github.com/contentful/rich-text.git"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "benchmark": "ts-node -O '{\"module\": \"commonjs\"}' bin/benchmark",
