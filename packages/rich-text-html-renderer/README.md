@@ -143,7 +143,6 @@ documentToHtmlString(document, options);
 The `renderNode` keys should be one of the following `BLOCKS` and `INLINES` properties as defined in [`@contentful/rich-text-types`](https://www.npmjs.com/package/@contentful/rich-text-types):
 
 - `BLOCKS`
-
   - `DOCUMENT`
   - `PARAGRAPH`
   - `HEADING_1`
