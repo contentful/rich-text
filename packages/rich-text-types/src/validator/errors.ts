@@ -1,7 +1,7 @@
 import { t } from '@lingui/core/macro';
 
-import { ValidationError } from '.';
 import type { Path } from './path';
+import { ValidationError } from './types';
 
 export const typeMismatchError = ({
   path,

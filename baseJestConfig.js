@@ -3,7 +3,7 @@ function getConfig(packageName) {
     collectCoverage: true,
     testPathIgnorePatterns: ['/dist/'],
     transform: {
-      '^.+\\.tsx?$': 'ts-jest',
+      '^.+\\.tsx?$': '@swc/jest',
     },
     testMatch: ['**/*.test.[jt]s?(x)'],
     reporters: [

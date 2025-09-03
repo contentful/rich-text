@@ -6,20 +6,9 @@ import { ObjectAssertion } from './assert';
 import { NodeAssertion, Node, HyperLinkAssertion, assert, assertLink, VOID_CONTENT } from './node';
 import { Path } from './path';
 import { assertText } from './text';
+import type { ValidationError } from './types';
 
-export type ValidationError = {
-  name: string;
-  type?: string;
-  value?: Record<string, any> | string | number | boolean | null;
-  min?: number | string;
-  max?: number | string;
-  details?: string | null;
-  path?: (string | number)[];
-  contentTypeId?: string | string[];
-  nodeType?: string;
-  customMessage?: string;
-  expected?: string[];
-};
+export type { ValidationError };
 
 const assertInlineOrText = assert([...Object.values(INLINES), 'text'].sort());
 

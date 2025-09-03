@@ -46,7 +46,7 @@ export default (outputFile, overrides = {}) => ({
           },
         },
         module: {
-          type: 'es6',
+          type: 'commonjs',
         },
         minify: false,
       },

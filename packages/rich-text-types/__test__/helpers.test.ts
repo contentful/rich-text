@@ -1,6 +1,6 @@
-import { BLOCKS } from '../blocks';
-import { helpers } from '../index';
-import { Document, Mark } from '../types';
+import { BLOCKS } from '../src/blocks';
+import { helpers } from '../src/index';
+import { Document, Mark } from '../src/types';
 
 describe('helpers', () => {
   describe('isEmptyParagraph', () => {
