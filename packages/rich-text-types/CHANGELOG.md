@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.2.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.1.0...@contentful/rich-text-types@17.2.0) (2025-09-04)
+
+### Features
+
+- migrate to swc and use lingui for i18n [TOL-3288] ([#914](https://github.com/contentful/rich-text/issues/914)) ([b6782a9](https://github.com/contentful/rich-text/commit/b6782a9658b24944ccce2676f06efb1a527d9936))
+
 # [17.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.0.1...@contentful/rich-text-types@17.1.0) (2025-07-15)
 
 ### Features

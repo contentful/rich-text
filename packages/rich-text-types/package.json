@@ -1,10 +1,10 @@
 {
   "name": "@contentful/rich-text-types",
-  "version": "17.1.0",
+  "version": "17.2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
-   "exports": {
+  "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.js",
