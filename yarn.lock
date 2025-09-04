@@ -1303,14 +1303,6 @@
     jiti "^1.17.1"
     picocolors "^1.1.1"
 
-"@lingui/core@5.3.3":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@lingui/core/-/core-5.3.3.tgz#4ffdb3a4777930a3681abdb75eba4336d73e199e"
-  integrity sha512-H2PAJrbcPBjJg2q3JqMS9OndPkx0kUV+zDLSguONNFGYbe/G7vcNpgEfyYfcCoJBrWaZzJ0iy3Se6LdFbvn6nA==
-  dependencies:
-    "@babel/runtime" "^7.20.13"
-    "@lingui/message-utils" "5.3.3"
-
 "@lingui/core@5.4.1", "@lingui/core@^5.4.1":
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/@lingui/core/-/core-5.4.1.tgz#f73183bb36a21601cd8087f12764e6bc18a32b23"
@@ -1328,14 +1320,6 @@
     "@lingui/message-utils" "5.4.1"
     date-fns "^3.6.0"
     pofile "^1.1.4"
-
-"@lingui/message-utils@5.3.3":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@lingui/message-utils/-/message-utils-5.3.3.tgz#6b4b41aae53b353424c62e5876063e23d1e87483"
-  integrity sha512-Xn1jFX9pworCEKvPwyEo/YJEp8qjELoRkFMUQ+D9AMi8jpaBUbcJpKdJ/TcIt7SKfk8koR/TMxoayMVsh++KCw==
-  dependencies:
-    "@messageformat/parser" "^5.0.0"
-    js-sha256 "^0.10.1"
 
 "@lingui/message-utils@5.4.1":
   version "5.4.1"
