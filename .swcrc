@@ -1,0 +1,33 @@
+{
+  "$schema": "https://swc.rs/schema.json",
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true
+    },
+    "target": "es5",
+    "loose": false,
+    "minify": {
+      "compress": false,
+      "mangle": false
+    },
+    "experimental": {
+      "plugins": [
+        [
+          "@lingui/swc-plugin",
+          {
+            "stripNonEssentialFields": false,
+            "runtimeModules": {
+              "i18n": ["@lingui/core", "i18n"],
+              "trans": ["@lingui/react", "Trans"]
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "module": {
+    "type": "commonjs"
+  },
+  "minify": false
+}

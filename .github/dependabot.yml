@@ -29,3 +29,9 @@ updates:
       - npm-github
     reviewers:
       - 'contentful/team-tolkien'
+    groups:
+      lingui:
+        patterns:
+          - "@lingui/core"
+          - "@lingui/cli"
+          - "@lingui/swc-plugin"
