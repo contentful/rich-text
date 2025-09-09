@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.1.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@16.1.1...@contentful/rich-text-react-renderer@16.1.2) (2025-09-09)
+
+### Bug Fixes
+
+- bundle issues after swc migration [TOL-3396] ([#924](https://github.com/contentful/rich-text/issues/924)) ([22245f0](https://github.com/contentful/rich-text/commit/22245f0648b0164ad29dd0dfe789cd83f78283e8))
+
 ## [16.1.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-react-renderer@16.1.0...@contentful/rich-text-react-renderer@16.1.1) (2025-09-04)
 
 **Note:** Version bump only for package @contentful/rich-text-react-renderer
