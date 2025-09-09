@@ -24,7 +24,7 @@ export default (outputFile, overrides = {}) => ({
             syntax: 'typescript',
             tsx: true,
           },
-          target: 'es5',
+          target: 'es2019',
           loose: false,
           minify: {
             compress: false,
@@ -44,9 +44,6 @@ export default (outputFile, overrides = {}) => ({
               ],
             ],
           },
-        },
-        module: {
-          type: 'commonjs',
         },
         minify: false,
       },

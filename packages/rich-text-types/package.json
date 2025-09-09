@@ -34,7 +34,7 @@
     "build:types": "tsc --outDir dist/types --emitDeclarationOnly",
     "build:cjs": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/cjs",
     "build:esm": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm -C module.type=es6",
-    "start": "tsc && rollup -c --bundleConfigAsCjs rollup.config.js -w",
+    "start": "tsc && swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm -C module.type=es6 -w",
     "test": "jest"
   },
   "dependencies": {
