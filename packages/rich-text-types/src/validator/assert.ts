@@ -7,9 +7,9 @@ import {
   unknownPropertyError,
   requiredPropertyError,
   minSizeError,
-} from './errors';
-import type { Path } from './path';
-import { ValidationError } from './types';
+} from './errors.js';
+import type { Path } from './path.js';
+import { ValidationError } from './types.js';
 
 export class ObjectAssertion {
   private _errors: ValidationError[] = [];

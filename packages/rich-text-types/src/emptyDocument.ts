@@ -1,5 +1,5 @@
-import { BLOCKS } from './blocks';
-import { Document } from './types';
+import { BLOCKS } from './blocks.js';
+import { Document } from './types.js';
 
 /**
  * A rich text document considered to be empty.

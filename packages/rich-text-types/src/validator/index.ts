@@ -1,12 +1,19 @@
-import { BLOCKS } from '../blocks';
-import { INLINES } from '../inlines';
-import { CONTAINERS, LIST_ITEM_BLOCKS, TOP_LEVEL_BLOCKS } from '../schemaConstraints';
-import { Document, Text } from '../types';
-import { ObjectAssertion } from './assert';
-import { NodeAssertion, Node, HyperLinkAssertion, assert, assertLink, VOID_CONTENT } from './node';
-import { Path } from './path';
-import { assertText } from './text';
-import type { ValidationError } from './types';
+import { BLOCKS } from '../blocks.js';
+import { INLINES } from '../inlines.js';
+import { CONTAINERS, LIST_ITEM_BLOCKS, TOP_LEVEL_BLOCKS } from '../schemaConstraints.js';
+import { Document, Text } from '../types.js';
+import { ObjectAssertion } from './assert.js';
+import {
+  NodeAssertion,
+  Node,
+  HyperLinkAssertion,
+  assert,
+  assertLink,
+  VOID_CONTENT,
+} from './node.js';
+import { Path } from './path.js';
+import { assertText } from './text.js';
+import type { ValidationError } from './types.js';
 
 export type { ValidationError };
 

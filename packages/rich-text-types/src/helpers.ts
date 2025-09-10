@@ -1,6 +1,6 @@
-import { BLOCKS } from './blocks';
-import { INLINES } from './inlines';
-import { Block, Inline, Node, Text, Document as CDocument } from './types';
+import { BLOCKS } from './blocks.js';
+import { INLINES } from './inlines.js';
+import { Block, Inline, Node, Text, Document as CDocument } from './types.js';
 
 /**
  * Tiny replacement for Object.values(object).includes(key) to
