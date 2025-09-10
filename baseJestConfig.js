@@ -2,8 +2,11 @@ function getConfig(packageName) {
   return {
     collectCoverage: true,
     testPathIgnorePatterns: ['/dist/'],
+    moduleNameMapper: {
+      '^(\\.{1,2}/.*)\\.js$': '$1', // strip .js so TS imports resolve
+    },
     transform: {
-      '^.+\\.tsx?$': '@swc/jest',
+      '^.+\\.(j|t)sx?$': '@swc/jest',
     },
     testMatch: ['**/*.test.[jt]s?(x)'],
     reporters: [

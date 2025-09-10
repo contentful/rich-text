@@ -1,7 +1,7 @@
-import { Text } from '../types';
-import { ObjectAssertion } from './assert';
-import type { Path } from './path';
-import { ValidationError } from './types';
+import { Text } from '../types.js';
+import { ObjectAssertion } from './assert.js';
+import type { Path } from './path.js';
+import { ValidationError } from './types.js';
 
 export function assertText(text: Text, path: Path): ValidationError[] {
   const $ = new ObjectAssertion(text, path);
