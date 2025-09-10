@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-types",
-  "version": "17.2.1",
+  "version": "17.2.2",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.2.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.2.1...@contentful/rich-text-types@17.2.2) (2025-09-10)
+
+### Bug Fixes
+
+- **rich-text-types:** add .js extension for esm [] ([#926](https://github.com/contentful/rich-text/issues/926)) ([b218716](https://github.com/contentful/rich-text/commit/b218716f27a0fe8ad71d0dd8ce551f2ecd2334d6))
+
 ## [17.2.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.2.0...@contentful/rich-text-types@17.2.1) (2025-09-09)
 
 ### Bug Fixes
