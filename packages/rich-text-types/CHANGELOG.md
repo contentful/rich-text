@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.2.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.2.2...@contentful/rich-text-types@17.2.3) (2025-09-23)
+
+### Bug Fixes
+
+- revert lingui [ZEND-6939] ([#937](https://github.com/contentful/rich-text/issues/937)) ([a55a67b](https://github.com/contentful/rich-text/commit/a55a67b1f1b9739801bc5bc3a9885701ff970cc0))
+
 ## [17.2.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.2.1...@contentful/rich-text-types@17.2.2) (2025-09-10)
 
 ### Bug Fixes
