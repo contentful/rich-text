@@ -30,20 +30,6 @@ export default (outputFile, overrides = {}) => ({
             compress: false,
             mangle: false,
           },
-          experimental: {
-            plugins: [
-              [
-                '@lingui/swc-plugin',
-                {
-                  stripNonEssentialFields: false,
-                  runtimeModules: {
-                    i18n: ['@lingui/core', 'i18n'],
-                    trans: ['@lingui/react', 'Trans'],
-                  },
-                },
-              ],
-            ],
-          },
         },
         minify: false,
       },
