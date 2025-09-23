@@ -2,12 +2,12 @@
   "name": "@contentful/rich-text-types",
   "version": "17.2.3",
   "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "module": "dist/esm/index.mjs",
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
+      "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.js",
       "default": "./dist/cjs/index.js"
     },
@@ -30,11 +30,12 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "npm run build:types && npm run build:cjs && npm run build:esm",
+    "build": "npm run build:types && npm run build:cjs && npm run build:esm && npm run fix-esm-imports",
     "build:types": "tsc --outDir dist/types --emitDeclarationOnly",
-    "build:cjs": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/cjs",
-    "build:esm": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm -C module.type=es6",
-    "start": "tsc && swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm -C module.type=es6 -w",
+    "build:cjs": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/cjs -C module.type=commonjs",
+    "build:esm": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm --out-file-extension mjs -C module.type=es6 -C module.resolveFully=true -C module.outFileExtension=mjs",
+    "fix-esm-imports": "node ./scripts/fix-esm-import-extensions.mjs",
+    "start": "tsc && swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm --out-file-extension mjs -C module.type=es6 -C module.resolveFully=true -C module.outFileExtension=mjs -w",
     "test": "jest"
   },
   "dependencies": {
