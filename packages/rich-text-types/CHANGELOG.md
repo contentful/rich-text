@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.2.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.2.3...@contentful/rich-text-types@17.2.4) (2025-09-23)
+
+### Bug Fixes
+
+- **build:** resolve ESM import failures in rich-text-types [TOL-3435] ([#940](https://github.com/contentful/rich-text/issues/940)) ([5af12af](https://github.com/contentful/rich-text/commit/5af12af168a6005826216c2090fc989db3f8fb03))
+
 ## [17.2.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.2.2...@contentful/rich-text-types@17.2.3) (2025-09-23)
 
 ### Bug Fixes
