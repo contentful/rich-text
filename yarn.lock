@@ -964,17 +964,17 @@
     yargs-parser "21.1.1"
 
 "@lingui/core@^5.4.1":
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/@lingui/core/-/core-5.5.0.tgz#d1da45cad9211d911aea06a5de98702ab6109c9a"
-  integrity sha512-xQ8gtz7MAl+90VgQEvcBYgpzQXCxTGTSW5WFpPv1jpzGbhfIA6zarZ+DZmQEStpZrKjTLbuxeP9beJ+ThSMQHg==
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/@lingui/core/-/core-5.5.1.tgz#3d5a8d1bed841074e97ee97f0efbe1a727e812d5"
+  integrity sha512-jxmeLTnKKbnVaLUllHpnM3XolFipHqgr0hQkuAj5+SGTGimaHx6RyGm/YL5FxWeYMt7wRRoH86SIJ3sn44pxAw==
   dependencies:
     "@babel/runtime" "^7.20.13"
-    "@lingui/message-utils" "5.5.0"
+    "@lingui/message-utils" "5.5.1"
 
-"@lingui/message-utils@5.5.0":
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/@lingui/message-utils/-/message-utils-5.5.0.tgz#abedc8d085cf267213e210def53e27a74fa69425"
-  integrity sha512-LY7AclexJm5sJnbcqeYjgRg/tL1/HDceH9/tR+GiD/Ei1ZNubzqHOvoI0JRZNmxG4x0qKzz9fxLl1ympM3a0VA==
+"@lingui/message-utils@5.5.1":
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/@lingui/message-utils/-/message-utils-5.5.1.tgz#200ad17fa8954b49c41bcc0dab6ef478025662f6"
+  integrity sha512-RV3WjkSDTYIhNQwAj5MUHjpfOgPJFBXDuBW3aFZZmPqAkFrSJJbrKxVmBoja59b3CEX5QuCGOHnijrCehBpU+w==
   dependencies:
     "@messageformat/parser" "^5.0.0"
     js-sha256 "^0.10.1"
