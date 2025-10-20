@@ -2700,10 +2700,10 @@ axe-core@^4.10.0:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.10.0.tgz#d9e56ab0147278272739a000880196cdfe113b59"
   integrity sha512-Mr2ZakwQ7XUAjp7pAwQWRhhK8mQQ6JAaNWSjmjxil0R8BPioMtQsTLOolGYkji1rcL++3dCqZA3zWqpT+9Ew6g==
 
-axios@^1.11.0, axios@^1.7.4:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.11.0.tgz#c2ec219e35e414c025b2095e8b8280278478fdb6"
-  integrity sha512-1Lx3WLFQWm3ooKDYZD1eXmoGO9fxYQjrycfHFC8P0sCfQVXyROp0p9PFWBehewBOdCwHc+f/b8I0fMto5eSfwA==
+axios@^1.12.2, axios@^1.7.4:
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.12.2.tgz#6c307390136cf7a2278d09cec63b136dfc6e6da7"
+  integrity sha512-vMJzPewAlRyOgxV2dU0Cuz2O8zzzx9VYtbJOaBgXFeLc4IV/Eg50n4LowmehOOR61S8ZMpc2K5Sa7g6A4jfkUw==
   dependencies:
     follow-redirects "^1.15.6"
     form-data "^4.0.4"
@@ -3378,13 +3378,13 @@ content-disposition@^0.5.4:
   dependencies:
     safe-buffer "5.2.1"
 
-contentful-management@11.58.0:
-  version "11.58.0"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.58.0.tgz#767cdb70e2028e1efdf8e027bb9330d606d1649b"
-  integrity sha512-17rqukaUE/dhbbNLNlt/SvJv74M7D2lRN6d+63EShIGAkdKaCROomfUV3aFB+chPKcqNuEgnxz7Lj78bBMCVBw==
+contentful-management@11.60.4:
+  version "11.60.4"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.60.4.tgz#16471806ffcad5cbb847d1a69b2c0d147f6350eb"
+  integrity sha512-sfdth9Tg6v/yH6o2NwctTXilyn6dN5ITGm4REk2FIiYgK06BqcUYvqT9KljPoL+aHjB6mE9qzarzxZHISnOXaA==
   dependencies:
     "@contentful/rich-text-types" "^16.6.1"
-    axios "^1.11.0"
+    axios "^1.12.2"
     contentful-sdk-core "^9.0.1"
     fast-copy "^3.0.0"
     globals "^15.15.0"
