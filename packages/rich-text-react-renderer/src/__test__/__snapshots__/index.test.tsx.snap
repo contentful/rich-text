@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`documentToReactComponents does not render unrecognized marks 1`] = `
 [
@@ -11,14 +11,12 @@ exports[`documentToReactComponents does not render unrecognized marks 1`] = `
 exports[`documentToReactComponents renders asset hyperlink 1`] = `
 [
   <p>
-    
     <span>
       type: 
       asset-hyperlink
        id: 
       9mpxT4zsRi6Iwukey8KeM
     </span>
-    
   </p>,
 ]
 `;
@@ -49,14 +47,12 @@ exports[`documentToReactComponents renders default resource block 1`] = `
 exports[`documentToReactComponents renders embedded entry 1`] = `
 [
   <p>
-    
     <span>
       type: 
       embedded-entry-inline
        id: 
       9mpxT4zsRi6Iwukey8KeM
     </span>
-    
   </p>,
 ]
 `;
@@ -64,14 +60,12 @@ exports[`documentToReactComponents renders embedded entry 1`] = `
 exports[`documentToReactComponents renders embedded resource 1`] = `
 [
   <p>
-    
     <span>
       type: 
       embedded-resource-inline
        urn: 
       crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM
     </span>
-    
   </p>,
 ]
 `;
@@ -87,14 +81,12 @@ exports[`documentToReactComponents renders empty node if type is not recognized 
 exports[`documentToReactComponents renders entry hyperlink 1`] = `
 [
   <p>
-    
     <span>
       type: 
       entry-hyperlink
        id: 
       9mpxT4zsRi6Iwukey8KeM
     </span>
-    
   </p>,
 ]
 `;
@@ -105,9 +97,7 @@ exports[`documentToReactComponents renders horizontal rule 1`] = `
     hello world
   </p>,
   <hr />,
-  <p>
-    
-  </p>,
+  <p />,
 ]
 `;
 
@@ -300,23 +290,19 @@ exports[`documentToReactComponents renders ordered lists 1`] = `
       </p>
     </li>
   </ol>,
-  <p>
-    
-  </p>,
+  <p />,
 ]
 `;
 
 exports[`documentToReactComponents renders resource hyperlink 1`] = `
 [
   <p>
-    
     <span>
       type: 
       resource-hyperlink
        urn: 
       crn:contentful:::content:spaces/6fqi4ljzyr0e/environments/master/entries/9mpxT4zsRi6Iwukey8KeM
     </span>
-    
   </p>,
 ]
 `;
@@ -417,9 +403,7 @@ exports[`documentToReactComponents renders unordered lists 1`] = `
       </p>
     </li>
   </ul>,
-  <p>
-    
-  </p>,
+  <p />,
 ]
 `;
 
@@ -429,9 +413,7 @@ exports[`documentToReactComponents returns an array of elements when given a pop
     hello world
   </p>,
   <hr />,
-  <p>
-    
-  </p>,
+  <p />,
 ]
 `;
 
@@ -517,17 +499,13 @@ exports[`stripEmptyTrailingParagraph does not strip empty trailing paragraph whe
   <p>
     Hello world
   </p>,
-  <p>
-    
-  </p>,
+  <p />,
 ]
 `;
 
 exports[`stripEmptyTrailingParagraph does not strip empty trailing paragraph when it is the only child 1`] = `
 [
-  <p>
-    
-  </p>,
+  <p />,
 ]
 `;
 
@@ -547,9 +525,7 @@ exports[`stripEmptyTrailingParagraph does not strip trailing non-paragraph node 
   <p>
     Hello world
   </p>,
-  <h1>
-    
-  </h1>,
+  <h1 />,
 ]
 `;
 
@@ -558,10 +534,7 @@ exports[`stripEmptyTrailingParagraph does not strip trailing paragraph with mult
   <p>
     Hello world
   </p>,
-  <p>
-    
-    
-  </p>,
+  <p />,
 ]
 `;
 
