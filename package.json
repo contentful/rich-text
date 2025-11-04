@@ -13,14 +13,14 @@
   },
   "scripts": {
     "benchmark": "ts-node -O '{\"module\": \"commonjs\"}' bin/benchmark",
-    "build": "lerna run build",
+    "build": "lerna run build --skip-nx-cache",
     "commit": "git-cz",
     "clean": "lerna exec 'rm -rf node_modules/ dist/ && npm prune' && rm -rf node_modules/ && npm prune",
     "lint": "eslint ./ --ext .ts,.tsx",
     "lerna": "lerna",
     "prettier": "prettier './**/*.{js,jsx,ts,tsx,md,mdx}' --write",
     "prettier:check": "prettier --check '**/*.{jsx,js,ts,tsx,md,mdx}'",
-    "prebuild": "lerna run prebuild",
+    "prebuild": "lerna run prebuild --skip-nx-cache",
     "start": "lerna run start",
     "test": "lerna run test",
     "prepare": "husky"

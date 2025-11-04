@@ -36,12 +36,15 @@ commands:
 jobs:
   lint-and-test:
     executor: default
+    environment:
+      NX_DAEMON: "false"
+      NX_SKIP_NX_CACHE: "true"
     steps:
       - checkout
       - vault/get-secrets:
           template-preset: packages-read
       - yarn_install
-      - run: yarn build
+      - run: yarn lerna run prebuild --skip-nx-cache && yarn lerna run build --skip-nx-cache
       - run: yarn lint
       - run: yarn prettier:check
       - run: yarn test
@@ -51,6 +54,9 @@ jobs:
 
   release:
     executor: default
+    environment:
+      NX_DAEMON: "false"
+      NX_SKIP_NX_CACHE: "true"
     steps:
       - checkout
       - vault/get-secrets:
@@ -62,12 +68,15 @@ jobs:
           echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_WRITE_TOKEN}" > ~/.npmrc
           echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
       - yarn_install
-      - run: yarn build
+      - run: yarn lerna run prebuild --skip-nx-cache && yarn lerna run build --skip-nx-cache
       - run: yarn lerna version --no-private --conventional-commits --create-release github --yes
       - run: yarn lerna publish from-git --yes
 
   compressed-size:
     executor: default
+    environment:
+      NX_DAEMON: "false"
+      NX_SKIP_NX_CACHE: "true"
     steps:
       - checkout
       - vault/get-secrets:
