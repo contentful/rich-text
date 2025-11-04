@@ -25,7 +25,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^17.1.0"
+    "@contentful/rich-text-types": "^17.2.4"
   },
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0 || ^19.0.0",
