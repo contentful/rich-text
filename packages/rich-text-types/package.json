@@ -1,9 +1,18 @@
 {
   "name": "@contentful/rich-text-types",
-  "version": "17.1.0",
+  "version": "17.2.4",
   "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "typings": "dist/types/index.d.ts",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist"
   ],
@@ -21,11 +30,16 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c --bundleConfigAsCjs rollup.config.js",
-    "start": "tsc && rollup -c --bundleConfigAsCjs rollup.config.js -w",
+    "build": "npm run build:types && npm run build:cjs && npm run build:esm && npm run fix-esm-imports",
+    "build:types": "tsc --outDir dist/types --emitDeclarationOnly",
+    "build:cjs": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/cjs -C module.type=commonjs",
+    "build:esm": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm --out-file-extension mjs -C module.type=es6 -C module.resolveFully=true -C module.outFileExtension=mjs",
+    "fix-esm-imports": "node ./scripts/fix-esm-import-extensions.mjs",
+    "start": "tsc && swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm --out-file-extension mjs -C module.type=es6 -C module.resolveFully=true -C module.outFileExtension=mjs -w",
     "test": "jest"
   },
   "dependencies": {
+    "@lingui/core": "^5.4.1",
     "is-plain-obj": "^3.0.0"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
-import { BLOCKS } from '../blocks';
-import { INLINES } from '../inlines';
-import type { Document } from '../types';
-import { validateRichTextDocument } from '../validator';
+import { BLOCKS } from '../src/blocks';
+import { INLINES } from '../src/inlines';
+import type { Document } from '../src/types';
+import { validateRichTextDocument } from '../src/validator/index';
 
 describe('validation', () => {
   it('fails if it is not document node', () => {

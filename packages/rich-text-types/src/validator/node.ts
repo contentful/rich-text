@@ -1,4 +1,3 @@
-import { ValidationError } from '.';
 import {
   AssetHyperlink,
   AssetLinkBlock,
@@ -7,10 +6,11 @@ import {
   Hyperlink,
   ResourceLinkBlock,
   ResourceLinkInline,
-} from '../nodeTypes';
-import { Block, Document, Inline } from '../types';
-import { ObjectAssertion } from './assert';
-import type { Path } from './path';
+} from '../nodeTypes.js';
+import { Block, Document, Inline } from '../types.js';
+import { ObjectAssertion } from './assert.js';
+import type { Path } from './path.js';
+import { ValidationError } from './types.js';
 
 export type Node = Document | Block | Inline;
 

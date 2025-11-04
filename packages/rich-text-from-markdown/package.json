@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-from-markdown",
-  "version": "16.1.1",
+  "version": "16.1.7",
   "description": "convert markdown to rich text",
   "keywords": [
     "rich-text",
@@ -34,14 +34,14 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^17.1.0",
+    "@contentful/rich-text-types": "^17.2.4",
     "lodash": "^4.17.11",
     "remark-gfm": "^1.0.0",
     "remark-parse": "^9.0.0",
     "unified": "^9.0.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.0.0",
+    "@faker-js/faker": "^10.0.0",
     "@types/lodash": "^4.14.172",
     "ts-jest": "^29.1.2"
   },
