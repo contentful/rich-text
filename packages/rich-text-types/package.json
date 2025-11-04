@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-types",
-  "version": "17.2.4",
+  "version": "17.2.5",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.mjs",
   "types": "dist/types/index.d.ts",
@@ -43,7 +43,7 @@
     "is-plain-obj": "^3.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.0.1",
     "ts-jest": "^29.1.2"
   }
