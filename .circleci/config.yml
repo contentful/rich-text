@@ -13,7 +13,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
 
 cache-key: &cache-key
-  key: npm-cache-{{ arch }}-{{ checksum ".nvmrc" }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+  key: v2-npm-cache-{{ arch }}-{{ checksum ".nvmrc" }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
 
 commands:
   use_npm_token:
