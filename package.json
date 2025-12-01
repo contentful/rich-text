@@ -54,7 +54,7 @@
     "@types/benchmark": "^2.1.4",
     "@types/jest": "30.0.0",
     "@types/rollup-plugin-json": "^3.0.7",
-    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
     "@typescript-eslint/parser": "^7.14.1",
     "benchmark": "^2.1.4",
     "commitizen": "4.3.1",
