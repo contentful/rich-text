@@ -59,7 +59,7 @@
     "benchmark": "^2.1.4",
     "commitizen": "4.3.1",
     "contentful-management": "11.63.1",
-    "eslint": "8.57.1",
+    "eslint": "9.39.1",
     "eslint-plugin-jest": "29.2.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.5",
