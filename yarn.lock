@@ -4528,10 +4528,10 @@ eslint-module-utils@^2.12.1:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-import-helpers@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import-helpers/-/eslint-plugin-import-helpers-2.0.0.tgz#472b274fd45e5de60f34d89315ee99bb3bb393b3"
-  integrity sha512-C79/nmaWgGUkYeD/ddp420NGConq1pP28HOWbFsZrqlThClBkTsA62mZ1sFwU4YRSbwFupw2itr02MzQERz8Xg==
+eslint-plugin-import-helpers@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import-helpers/-/eslint-plugin-import-helpers-2.0.1.tgz#3a5c451b0fe303987931b369cb89d6a3b7eca2d5"
+  integrity sha512-MSiQZV0k+bQlt7RnHZrJxDBE948urZthusQt78FKmQ5/WLm5PpS8L16+2JVGBiSffneOAe4fud8RdYmqPveo8A==
 
 eslint-plugin-import@2.32.0:
   version "2.32.0"
