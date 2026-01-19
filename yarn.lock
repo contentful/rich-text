@@ -3636,10 +3636,10 @@ content-disposition@^0.5.4:
   dependencies:
     safe-buffer "5.2.1"
 
-contentful-management@11.66.0:
-  version "11.66.0"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.66.0.tgz#a564585dc59d9b38cc0bed690a474e797ea5e759"
-  integrity sha512-rMI8LnNljyOBnREIT9V5MDLtxlPctO7dYwIszNZuHdBvd5C10CM8apglCrm87nFTuRGpbJ0q+y7cv/c8IQyfZw==
+contentful-management@11.67.0:
+  version "11.67.0"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.67.0.tgz#b98edb1c3214d497e6dbe5de80591f76125e6aa2"
+  integrity sha512-Al6Dm9eBoLfBERl1nkYWLHGMSR98CCTPdsh466k2tjjlSGDAT3B2D/BnNTzpzidW5vYGIoVjRezGvcedV3vxfg==
   dependencies:
     "@contentful/rich-text-types" "^16.6.1"
     axios "^1.12.2"
