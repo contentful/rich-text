@@ -53,6 +53,7 @@ const defaultMarkRenderers: RenderMark = {
   [MARKS.SUPERSCRIPT]: (text) => `<sup>${text}</sup>`,
   [MARKS.SUBSCRIPT]: (text) => `<sub>${text}</sub>`,
   [MARKS.STRIKETHROUGH]: (text) => `<s>${text}</s>`,
+  [MARKS.EMPHASIS]: (text) => `<em>${text}</em>`,
 };
 
 const defaultInline = (type: string, node: Inline) =>
