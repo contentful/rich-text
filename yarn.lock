@@ -3645,27 +3645,26 @@ content-disposition@^0.5.4:
   dependencies:
     safe-buffer "5.2.1"
 
-contentful-management@11.67.0:
-  version "11.67.0"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.67.0.tgz#b98edb1c3214d497e6dbe5de80591f76125e6aa2"
-  integrity sha512-Al6Dm9eBoLfBERl1nkYWLHGMSR98CCTPdsh466k2tjjlSGDAT3B2D/BnNTzpzidW5vYGIoVjRezGvcedV3vxfg==
+contentful-management@11.67.2:
+  version "11.67.2"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.67.2.tgz#b0b5ceb61f471e12df954bee572f77ba522a602c"
+  integrity sha512-QBcQMcGo2rHcEpRq3hIK2nflhQc4AH+g8nlBhnVkOJueGhwQ+kcfY6dnN2x9mQqvp4vGXM0hPWiooPS1cfS1Cg==
   dependencies:
     "@contentful/rich-text-types" "^16.6.1"
     axios "^1.12.2"
-    contentful-sdk-core "^9.0.1"
+    contentful-sdk-core "^9.4.1"
     fast-copy "^3.0.0"
     globals "^15.15.0"
 
-contentful-sdk-core@^9.0.1:
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-9.2.0.tgz#d3648fcb8392fd2eb9368b579258a9152de802cf"
-  integrity sha512-cUvHbC2u8ouJHhG3tofQhUc0FAmM/QBcalYjiczMtFKrR77BW+eSPcPg+A9DQlhIP0UGcQ/knXxoJpBvrERXTA==
+contentful-sdk-core@^9.4.1:
+  version "9.4.2"
+  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-9.4.2.tgz#b430fc4a4418e06eb055971395ea078b0a8b6730"
+  integrity sha512-G/8cEs3ggeMrUtT8ywXlzoSCKNpmUo2ZXq/pBCnxcM6JP7isfk8nYDHL0xRR9qTwlNs3XCmCf20iApOQeR6Qsg==
   dependencies:
     fast-copy "^3.0.2"
-    lodash "^4.17.21"
-    p-throttle "^6.1.0"
+    lodash "^4.17.23"
     process "^0.11.10"
-    qs "^6.12.3"
+    qs "^6.14.1"
   optionalDependencies:
     "@rollup/rollup-linux-x64-gnu" "^4.18.0"
 
@@ -7316,7 +7315,7 @@ lodash@4.17.21:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.21, lodash@^4.17.4:
+lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.21, lodash@^4.17.23, lodash@^4.17.4:
   version "4.17.23"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.23.tgz#f113b0378386103be4f6893388c73d0bde7f2c5a"
   integrity sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==
@@ -8394,11 +8393,6 @@ p-reduce@2.1.0, p-reduce@^2.0.0, p-reduce@^2.1.0:
   resolved "https://registry.yarnpkg.com/p-reduce/-/p-reduce-2.1.0.tgz#09408da49507c6c274faa31f28df334bc712b64a"
   integrity sha512-2USApvnsutq8uoxZBGbbWM0JIYLiEMJ9RlaN7fAzVNb9OZN0SHjjTTfIcb667XynS5Y1VhwDJVDa72TnPzAYWw==
 
-p-throttle@^6.1.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/p-throttle/-/p-throttle-6.2.0.tgz#bc75ff1f128680bec15568cbf7312ae34a9d35ed"
-  integrity sha512-NCKkOVj6PZa6NiTmfvGilDdf6vO1rFCD3KDnkHko8dTOtkpk4cSR/VTAhhLMG9aiQ7/A9HYgEDNmxzf6hxzR3g==
-
 p-timeout@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/p-timeout/-/p-timeout-3.2.0.tgz#c7e17abc971d2a7962ef83626b35d635acf23dfe"
@@ -8794,10 +8788,10 @@ pure-rand@^7.0.0:
   resolved "https://registry.yarnpkg.com/pure-rand/-/pure-rand-7.0.1.tgz#6f53a5a9e3e4a47445822af96821ca509ed37566"
   integrity sha512-oTUZM/NAZS8p7ANR3SHh30kXB+zK2r2BPcEn/awJIbOvq82WoMN4p62AWWp3Hhw50G0xMsw1mhIBLqHw64EcNQ==
 
-qs@^6.12.3:
-  version "6.14.0"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.14.0.tgz#c63fa40680d2c5c941412a0e899c89af60c0a930"
-  integrity sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==
+qs@^6.14.1:
+  version "6.14.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.14.1.tgz#a41d85b9d3902f31d27861790506294881871159"
+  integrity sha512-4EK3+xJl8Ts67nLYNwqw/dsFVnCf+qR7RgXSK9jEEm9unao3njwMDdmsdvoKBKHzxd7tCYz5e5M+SnMjdtXGQQ==
   dependencies:
     side-channel "^1.1.0"
 
