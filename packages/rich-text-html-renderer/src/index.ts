@@ -23,6 +23,7 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.HEADING_6]: (node, next) => `<h6>${next(node.content)}</h6>`,
   [BLOCKS.EMBEDDED_ENTRY]: (node, next) => `<div>${next(node.content)}</div>`,
   [BLOCKS.EMBEDDED_RESOURCE]: (node, next) => `<div>${next(node.content)}</div>`,
+  [BLOCKS.EMBEDDED_ASSET]: (node) => defaultBlockAsset(node as Block),
   [BLOCKS.UL_LIST]: (node, next) => `<ul>${next(node.content)}</ul>`,
   [BLOCKS.OL_LIST]: (node, next) => `<ol>${next(node.content)}</ol>`,
   [BLOCKS.LIST_ITEM]: (node, next) => `<li>${next(node.content)}</li>`,
@@ -55,11 +56,19 @@ const defaultMarkRenderers: RenderMark = {
   [MARKS.STRIKETHROUGH]: (text) => `<s>${text}</s>`,
 };
 
+const defaultBlockAsset = (node: Block) => {
+  const fileUrl = node.data?.target?.fields?.file?.url ?? '';
+  const imageUrl = fileUrl.startsWith('//') ? `https:${fileUrl}` : fileUrl;
+  const imgDescription = node.data?.target?.fields?.description ?? '';
+
+  return `<img src="${imageUrl}" alt="${escape(imgDescription)}" loading="lazy" />`;
+};
+
 const defaultInline = (type: string, node: Inline) =>
   `<span>type: ${escape(type)} id: ${escape(node.data.target.sys.id)}</span>`;
 
 const defaultInlineResource = (type: string, node: Inline) =>
-  `<span>type: ${escape(type)} urn: ${escape(node.data.target.sys.urn)}</span>`;
+  `<span>type: ${escape(type)} urn: ${escape(node.data?.target?.sys?.urn ?? '')}</span>`;
 
 export type CommonNode = Text | Block | Inline;
 
