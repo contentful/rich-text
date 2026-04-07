@@ -35,9 +35,6 @@ importers:
       '@swc/jest':
         specifier: 0.2.39
         version: 0.2.39(@swc/core@1.15.10)
-      '@types/benchmark':
-        specifier: ^2.1.4
-        version: 2.1.5
       '@types/jest':
         specifier: 30.0.0
         version: 30.0.0
@@ -50,12 +47,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^7.14.1
         version: 7.18.0(eslint@8.57.1)(typescript@5.9.3)
-      benchmark:
-        specifier: ^2.1.4
-        version: 2.1.4
-      commitizen:
-        specifier: 4.3.1
-        version: 4.3.1(@types/node@25.0.10)(typescript@5.9.3)
       contentful-management:
         specifier: 11.68.0
         version: 11.68.0
@@ -83,9 +74,6 @@ importers:
       eslint-plugin-you-dont-need-lodash-underscore:
         specifier: 6.14.0
         version: 6.14.0
-      git-cz:
-        specifier: ^4.9.0
-        version: 4.9.0
       husky:
         specifier: ^9.0.11
         version: 9.1.7
@@ -101,9 +89,6 @@ importers:
       lint-staged:
         specifier: 16.2.7
         version: 16.2.7
-      pofile:
-        specifier: 1.1.4
-        version: 1.1.4
       prettier:
         specifier: ^3.2.5
         version: 3.8.1
@@ -126,8 +111,8 @@ importers:
   packages/contentful-slatejs-adapter:
     dependencies:
       '@contentful/rich-text-types':
-        specifier: ^17.2.5
-        version: 17.2.5
+        specifier: ^17.2.6
+        version: link:../rich-text-types
     devDependencies:
       '@faker-js/faker':
         specifier: ^10.0.0
@@ -163,8 +148,8 @@ importers:
   packages/rich-text-from-markdown:
     dependencies:
       '@contentful/rich-text-types':
-        specifier: ^17.2.5
-        version: 17.2.5
+        specifier: ^17.2.6
+        version: link:../rich-text-types
       lodash:
         specifier: ^4.17.11
         version: 4.18.1
@@ -191,15 +176,9 @@ importers:
   packages/rich-text-html-renderer:
     dependencies:
       '@contentful/rich-text-types':
-        specifier: ^17.2.5
-        version: 17.2.5
-      escape-html:
-        specifier: ^1.0.3
-        version: 1.0.3
+        specifier: ^17.2.6
+        version: link:../rich-text-types
     devDependencies:
-      '@types/escape-html':
-        specifier: ^1.0.4
-        version: 1.0.4
       ts-jest:
         specifier: ^29.1.2
         version: 29.4.6(@babel/core@7.28.5)(@jest/transform@30.2.0)(@jest/types@30.2.0)(babel-jest@30.2.0(@babel/core@7.28.5))(jest-util@30.2.0)(jest@30.2.0(@types/node@25.0.10)(ts-node@10.9.2(@swc/core@1.15.10)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
@@ -207,8 +186,8 @@ importers:
   packages/rich-text-links:
     dependencies:
       '@contentful/rich-text-types':
-        specifier: ^17.2.5
-        version: 17.2.5
+        specifier: ^17.2.6
+        version: link:../rich-text-types
     devDependencies:
       ts-jest:
         specifier: ^29.1.2
@@ -217,8 +196,8 @@ importers:
   packages/rich-text-plain-text-renderer:
     dependencies:
       '@contentful/rich-text-types':
-        specifier: ^17.2.5
-        version: 17.2.5
+        specifier: ^17.2.6
+        version: link:../rich-text-types
     devDependencies:
       ts-jest:
         specifier: ^29.1.2
@@ -227,8 +206,8 @@ importers:
   packages/rich-text-react-renderer:
     dependencies:
       '@contentful/rich-text-types':
-        specifier: ^17.2.5
-        version: 17.2.5
+        specifier: ^17.2.6
+        version: link:../rich-text-types
     devDependencies:
       '@types/react':
         specifier: ^19.2.8
@@ -414,10 +393,6 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
-  '@babel/runtime@7.28.3':
-    resolution: {integrity: sha512-9uIQ10o0WGdpP6GDhXcdOJPJuDgFtIDtN/9+ArJQ2NAfAmiuhTQdzkaTGR33v43GYS2UrSA0eX2pPPHoFVvpxA==}
-    engines: {node: '>=6.9.0'}
-
   '@babel/template@7.27.2':
     resolution: {integrity: sha512-LPDZ85aEJyYSd18/DkjNh4/y1ntkE5KwUHWTiqgRxruuZL2F1yuHligVHLvcHY2vMHXttKFpJn6LwfI7cw7ODw==}
     engines: {node: '>=6.9.0'}
@@ -511,10 +486,6 @@ packages:
 
   '@contentful/rich-text-types@16.8.5':
     resolution: {integrity: sha512-q18RJuJCOuYveGiCIjE5xLCQc5lZ3L2Qgxrlg/H2YEobDFqdtmklazRi1XwEWaK3tMg6yVXBzKKkQfLB4qW14A==}
-    engines: {node: '>=6.0.0'}
-
-  '@contentful/rich-text-types@17.2.5':
-    resolution: {integrity: sha512-EA5vTfROZePoPmSlqLVd+luL/ev8CjnI20y6vWFVPlLRxQbv4XytXRzatydPE63CqfsPylF7NCn2z8rTLhnWfg==}
     engines: {node: '>=6.0.0'}
 
   '@cspotcode/source-map-support@0.8.1':
@@ -712,25 +683,6 @@ packages:
     resolution: {integrity: sha512-f+68+iojcQ0tZRMfCgQyJdsdz+YPu3/d+0Zo1RJz92bgBxTCiEU+dHACVq1n3sEjm/YWPnFGdag8U5EYYmP3WA==}
     engines: {node: '>=18.0.0'}
     deprecated: This package is an implementation detail of Lerna and is no longer published separately.
-
-  '@lingui/core@5.9.0':
-    resolution: {integrity: sha512-TJFhRttwHdWpcYRT3KVXh4nT+Qc4yxvrpalV5Vrs/sQTyrQWbT1/Lc9qXNYSALb5BAglZq0XU46oRpJdt+PVMQ==}
-    engines: {node: '>=20.0.0'}
-    peerDependencies:
-      '@lingui/babel-plugin-lingui-macro': 5.9.0
-      babel-plugin-macros: 2 || 3
-    peerDependenciesMeta:
-      '@lingui/babel-plugin-lingui-macro':
-        optional: true
-      babel-plugin-macros:
-        optional: true
-
-  '@lingui/message-utils@5.9.0':
-    resolution: {integrity: sha512-BL5MZt7yCLuyEbuIm+w0TZIZ/ctQOX5IO3yVOrWpM8L3rh2uP/MPDUKhGy8e/XPNMgBVFhlpos/tSzvdh03ErQ==}
-    engines: {node: '>=20.0.0'}
-
-  '@messageformat/parser@5.1.1':
-    resolution: {integrity: sha512-3p0YRGCcTUCYvBKLIxtDDyrJ0YijGIwrTRu1DT8gIviIDZru8H23+FkY6MJBzM1n9n20CiM4VeDYuBsrrwnLjg==}
 
   '@napi-rs/nice-android-arm-eabi@1.1.1':
     resolution: {integrity: sha512-kjirL3N6TnRPv5iuHw36wnucNqXAO46dzK9oPb0wj076R5Xm8PfUVA9nAFB5ZNMmfJQJVKACAPd/Z2KYMppthw==}
@@ -1416,14 +1368,8 @@ packages:
   '@types/babel__traverse@7.20.6':
     resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
 
-  '@types/benchmark@2.1.5':
-    resolution: {integrity: sha512-cKio2eFB3v7qmKcvIHLUMw/dIx/8bhWPuzpzRT4unCPRTD8VdA9Zb0afxpcxOqR4PixRS7yT42FqGS8BYL8g1w==}
-
   '@types/conventional-commits-parser@5.0.0':
     resolution: {integrity: sha512-loB369iXNmAZglwWATL+WRe+CRMmmBPtpolYzIebFaX4YA3x+BEfLqhUAV9WanycKI3TG1IMr5bMJDajDKLlUQ==}
-
-  '@types/escape-html@1.0.4':
-    resolution: {integrity: sha512-qZ72SFTgUAZ5a7Tj6kf2SHLetiH5S6f8G5frB2SPQ3EyF02kxdyBFf4Tz4banE3xCgGnKgWLt//a6VuYHKYJTg==}
 
   '@types/estree@0.0.39':
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
@@ -1986,9 +1932,6 @@ packages:
 
   before-after-hook@2.2.3:
     resolution: {integrity: sha512-NzUnlZexiaH/46WDhANlyR2bXRopNg4F/zuSA3OpZnllCUgRaOF2znDioDWrmbNVsuZk6l9pMquQB38cfBZwkQ==}
-
-  benchmark@2.1.4:
-    resolution: {integrity: sha512-l9MlfN4M1K/H2fbhfMy3B7vJd6AGKJVQn2h6Sg/Yx+KckoUA7ewS5Vv6TjSq18ooE1kS9hhAlQRH3AkXIh/aOQ==}
 
   bin-links@4.0.4:
     resolution: {integrity: sha512-cMtq4W5ZsEwcutJrVId+a/tjt8GSbS+h0oNkdl6+6rBuEv8Ot33Bevj5KPm40t309zuhVic8NjpuL42QCiJWWA==}
@@ -2639,9 +2582,6 @@ packages:
     resolution: {integrity: sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA==}
     engines: {node: '>=6'}
 
-  escape-html@1.0.3:
-    resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
-
   escape-string-regexp@1.0.5:
     resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
     engines: {node: '>=0.8.0'}
@@ -3057,10 +2997,6 @@ packages:
 
   getpass@0.1.7:
     resolution: {integrity: sha512-0fzj9JxOLfJ+XGLhR8ze3unN0KZCgZwiSSDz168VERjK8Wl8kVSdcu2kspd4s4wtAa1y/qrVRiAA0WclVsu0ng==}
-
-  git-cz@4.9.0:
-    resolution: {integrity: sha512-cSRL8IIOXU7UFLdbziCYqg8f8InwLwqHezkiRHNSph7oZqGv0togId1kMTfKil6gzK0VaSXeVBb4oDl0fQCHiw==}
-    hasBin: true
 
   git-raw-commits@3.0.0:
     resolution: {integrity: sha512-b5OHmZ3vAgGrDn/X0kS+9qCfNKWe4K/jFnhwzVWWg0/k5eLa3060tZShrRg8Dja5kPc+YjS0Gc6y7cRr44Lpjw==}
@@ -3757,9 +3693,6 @@ packages:
     resolution: {integrity: sha512-yPBThwecp1wS9DmoA4x4KR2h3QoslacnDR8ypuFM962kI4/456Iy1oHx2RAgh4jfZNdn0bctsdadceiBUgpU1g==}
     hasBin: true
 
-  js-sha256@0.10.1:
-    resolution: {integrity: sha512-5obBtsz9301ULlsgggLg542s/jqtddfOpV5KJc4hajc9JV8GeY2gZHSVpYBn4nWqAUTJ9v+xwtbJ1mIBgIH5Vw==}
-
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -4237,9 +4170,6 @@ packages:
     resolution: {integrity: sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==}
     engines: {node: '>=0.10.0'}
 
-  moo@0.5.2:
-    resolution: {integrity: sha512-iSAJLHYKnX41mKcJKjqvnAN9sf0LMDTXDEvFv+ffuRR9a1MIuXLjMNL6EsnDHSkKLTWNqQQ5uo61P4EbU4NU+Q==}
-
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
@@ -4638,12 +4568,6 @@ packages:
   pkg-dir@4.2.0:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
-
-  platform@1.3.6:
-    resolution: {integrity: sha512-fnWVljUchTro6RiCFvCXBbNhJc2NijN7oIQxbwsyL0buWJPG85v81ehlHI9fXrJsMNgTofEoWIQeClKpgxFLrg==}
-
-  pofile@1.1.4:
-    resolution: {integrity: sha512-r6Q21sKsY1AjTVVjOuU02VYKVNQGJNQHjTIvs4dEbeuuYfxgYk/DGD2mqqq4RDaVkwdSq0VEtmQUOPe/wH8X3g==}
 
   possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}
@@ -5893,8 +5817,6 @@ snapshots:
       '@babel/core': 7.28.5
       '@babel/helper-plugin-utils': 7.27.1
 
-  '@babel/runtime@7.28.3': {}
-
   '@babel/template@7.27.2':
     dependencies:
       '@babel/code-frame': 7.27.1
@@ -6035,14 +5957,6 @@ snapshots:
       chalk: 5.6.0
 
   '@contentful/rich-text-types@16.8.5': {}
-
-  '@contentful/rich-text-types@17.2.5':
-    dependencies:
-      '@lingui/core': 5.9.0
-      is-plain-obj: 3.0.0
-    transitivePeerDependencies:
-      - '@lingui/babel-plugin-lingui-macro'
-      - babel-plugin-macros
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
@@ -6431,20 +6345,6 @@ snapshots:
       - encoding
       - supports-color
       - typescript
-
-  '@lingui/core@5.9.0':
-    dependencies:
-      '@babel/runtime': 7.28.3
-      '@lingui/message-utils': 5.9.0
-
-  '@lingui/message-utils@5.9.0':
-    dependencies:
-      '@messageformat/parser': 5.1.1
-      js-sha256: 0.10.1
-
-  '@messageformat/parser@5.1.1':
-    dependencies:
-      moo: 0.5.2
 
   '@napi-rs/nice-android-arm-eabi@1.1.1':
     optional: true
@@ -7078,13 +6978,9 @@ snapshots:
     dependencies:
       '@babel/types': 7.28.5
 
-  '@types/benchmark@2.1.5': {}
-
   '@types/conventional-commits-parser@5.0.0':
     dependencies:
       '@types/node': 25.0.10
-
-  '@types/escape-html@1.0.4': {}
 
   '@types/estree@0.0.39': {}
 
@@ -7711,11 +7607,6 @@ snapshots:
       tweetnacl: 0.14.5
 
   before-after-hook@2.2.3: {}
-
-  benchmark@2.1.4:
-    dependencies:
-      lodash: 4.18.1
-      platform: 1.3.6
 
   bin-links@4.0.4:
     dependencies:
@@ -8427,8 +8318,6 @@ snapshots:
 
   escalade@3.2.0: {}
 
-  escape-html@1.0.3: {}
-
   escape-string-regexp@1.0.5: {}
 
   escape-string-regexp@2.0.0: {}
@@ -8930,8 +8819,6 @@ snapshots:
   getpass@0.1.7:
     dependencies:
       assert-plus: 1.0.0
-
-  git-cz@4.9.0: {}
 
   git-raw-commits@3.0.0:
     dependencies:
@@ -9850,8 +9737,6 @@ snapshots:
 
   jiti@2.4.1: {}
 
-  js-sha256@0.10.1: {}
-
   js-tokens@4.0.0: {}
 
   js-yaml@3.14.1:
@@ -10452,8 +10337,6 @@ snapshots:
 
   modify-values@1.0.1: {}
 
-  moo@0.5.2: {}
-
   ms@2.1.3: {}
 
   multimatch@5.0.0:
@@ -10922,10 +10805,6 @@ snapshots:
   pkg-dir@4.2.0:
     dependencies:
       find-up: 4.1.0
-
-  platform@1.3.6: {}
-
-  pofile@1.1.4: {}
 
   possible-typed-array-names@1.0.0: {}
 

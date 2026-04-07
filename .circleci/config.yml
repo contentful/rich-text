@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   frontend-tools: contentful/frontend-tools@2
   vault: contentful/vault@1.30.0
+  nx: nrwl/nx@1.6.2
 
 executors:
   default:
@@ -18,8 +19,7 @@ commands:
       - run:
           name: Install pnpm package manager
           command: |
-            npm install --global corepack@latest
-            corepack enable
+            sudo corepack enable
             corepack prepare pnpm --activate
             pnpm config set store-dir .pnpm-store
 
@@ -34,6 +34,14 @@ commands:
           paths:
             - .pnpm-store
 
+  nx_set_shas:
+    steps:
+      - vault/get-secrets:
+          template-preset: nx-read-circleci
+      - nx/set-shas:
+          error-on-no-successful-workflow: true
+          main-branch-name: master
+
 jobs:
   lint-and-test:
     executor: default
@@ -43,13 +51,19 @@ jobs:
           template-preset: packages-read
       - setup_pnpm
       - pnpm_install
-      - run: pnpm build
-      - run: pnpm lint
-      - run: pnpm prettier:check
-      - run: pnpm test
+      - nx_set_shas
+      - run: pnpm exec nx affected --target=build --base=$NX_BASE --head=$NX_HEAD
+      - run: pnpm exec nx affected --target=lint --base=$NX_BASE --head=$NX_HEAD
+      - run: pnpm exec nx affected --target=prettier:check --base=$NX_BASE --head=$NX_HEAD
+      - run: pnpm exec nx affected --target=test --base=$NX_BASE --head=$NX_HEAD
       - store_test_results:
           path: reports
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
     resource_class: medium+
+
 
   release:
     executor: default
@@ -57,14 +71,12 @@ jobs:
       - checkout
       - vault/get-secrets:
           template-preset: semantic-release
-      - run: git config --global user.email $GIT_COMMITTER_EMAIL
-      - run: git config --global user.name $GIT_COMMITTER_NAME
-      - run: git remote set-url origin "https://$GIT_AUTHOR_NAME:$GITHUB_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-      - run: echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_WRITE_TOKEN}" > ~/.npmrc
-      - run: echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
-      - setup_pnpm
-      - pnpm_install
-      - run: pnpm build
+      - attach_workspace:
+          at: ~/project
+      - vault/configure-lerna
+      - run: |
+          echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_WRITE_TOKEN}" >> ~/.npmrc
       - run: pnpm lerna version --no-private --conventional-commits --create-release github --yes
       - run: pnpm lerna publish from-git --yes
 
@@ -76,8 +88,9 @@ jobs:
           template-preset: packages-read
       - vault/get-secrets:
           template-preset: github-comment
-      - run: echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_READ_TOKEN}" > ~/.npmrc
-      - run: echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
+      - run: |
+          echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_READ_TOKEN}" >> ~/.npmrc
       - frontend-tools/compressed-size:
           package-manager: pnpm
 
