@@ -248,9 +248,6 @@ importers:
 
   packages/rich-text-types:
     dependencies:
-      '@lingui/core':
-        specifier: ^5.4.1
-        version: 5.9.0
       is-plain-obj:
         specifier: ^3.0.0
         version: 3.0.0
