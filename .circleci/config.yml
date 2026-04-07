@@ -7,10 +7,7 @@ orbs:
 executors:
   default:
     docker:
-      - image: cypress/browsers:node-22.14.0-chrome-133.0.6943.53-1-ff-135.0-edge-133.0.3065.59-1
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+      - image: cimg/node:24.13.1
 
 cache-key: &cache-key
   key: v2-npm-cache-{{ arch }}-{{ checksum ".nvmrc" }}-{{ checksum "pnpm-lock.yaml" }}-{{ .Branch }}

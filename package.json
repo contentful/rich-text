@@ -9,7 +9,7 @@
     "url": "https://github.com/contentful/rich-text.git"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "scripts": {
     "build": "lerna run build",
