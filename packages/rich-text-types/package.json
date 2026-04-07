@@ -39,7 +39,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@lingui/core": "^5.4.1",
     "is-plain-obj": "^3.0.0"
   },
   "devDependencies": {
