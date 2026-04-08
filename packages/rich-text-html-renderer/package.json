@@ -1,8 +1,18 @@
 {
   "name": "@contentful/rich-text-html-renderer",
-  "version": "17.1.6",
+  "version": "17.2.0",
   "main": "dist/rich-text-html-renderer.es5.js",
+  "module": "dist/rich-text-html-renderer.esm.js",
   "typings": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/rich-text-html-renderer.esm.js",
+      "require": "./dist/rich-text-html-renderer.es5.js",
+      "default": "./dist/rich-text-html-renderer.es5.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist"
   ],
@@ -25,11 +35,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^17.2.5",
-    "escape-html": "^1.0.3"
+    "@contentful/rich-text-types": "^17.2.6"
   },
   "devDependencies": {
-    "@types/escape-html": "^1.0.4",
     "ts-jest": "^29.1.2"
   }
 }

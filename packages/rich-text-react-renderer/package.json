@@ -1,8 +1,18 @@
 {
   "name": "@contentful/rich-text-react-renderer",
-  "version": "16.1.6",
+  "version": "16.2.0",
   "main": "dist/rich-text-react-renderer.es5.js",
+  "module": "dist/rich-text-react-renderer.esm.js",
   "typings": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/rich-text-react-renderer.esm.js",
+      "require": "./dist/rich-text-react-renderer.es5.js",
+      "default": "./dist/rich-text-react-renderer.es5.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist"
   ],
@@ -25,17 +35,17 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^17.2.5"
+    "@contentful/rich-text-types": "^17.2.6"
   },
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
+    "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
-    "react": "^18.3.1",
+    "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "ts-jest": "^29.1.2"
+    "ts-jest": "^29.4.6"
   }
 }

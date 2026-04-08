@@ -11,6 +11,11 @@ export default (outputFile, overrides = {}) => ({
       format: 'cjs',
       sourcemap: true,
     },
+    {
+      file: outputFile.replace(/\.es5\.js$/, '.esm.js'),
+      format: 'es',
+      sourcemap: true,
+    },
   ],
   watch: {
     include: 'src/**',

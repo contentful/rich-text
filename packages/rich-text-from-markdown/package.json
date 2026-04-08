@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-from-markdown",
-  "version": "16.1.8",
+  "version": "16.2.0",
   "description": "convert markdown to rich text",
   "keywords": [
     "rich-text",
@@ -11,7 +11,17 @@
   "homepage": "https://github.com/contentful/rich-text#readme",
   "license": "MIT",
   "main": "dist/rich-text-from-markdown.es5.js",
+  "module": "dist/rich-text-from-markdown.esm.js",
   "typings": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/rich-text-from-markdown.esm.js",
+      "require": "./dist/rich-text-from-markdown.es5.js",
+      "default": "./dist/rich-text-from-markdown.es5.js"
+    },
+    "./package.json": "./package.json"
+  },
   "directories": {
     "src": "src",
     "test": "__tests__"
@@ -34,7 +44,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^17.2.5",
+    "@contentful/rich-text-types": "^17.2.6",
     "lodash": "^4.17.11",
     "remark-gfm": "^1.0.0",
     "remark-parse": "^9.0.0",
