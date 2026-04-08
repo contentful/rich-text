@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-plain-text-renderer",
-  "version": "17.1.6",
+  "version": "17.2.0",
   "main": "dist/rich-text-plain-text-renderer.es5.js",
   "module": "dist/rich-text-plain-text-renderer.esm.js",
   "typings": "dist/types/index.d.ts",
@@ -35,7 +35,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^17.2.5"
+    "@contentful/rich-text-types": "^17.2.6"
   },
   "devDependencies": {
     "ts-jest": "^29.1.2"
