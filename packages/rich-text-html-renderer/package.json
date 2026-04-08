@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-html-renderer",
-  "version": "17.2.0",
+  "version": "17.2.1",
   "main": "dist/rich-text-html-renderer.es5.js",
   "module": "dist/rich-text-html-renderer.esm.js",
   "typings": "dist/types/index.d.ts",

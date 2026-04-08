@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.2.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.2.0...@contentful/rich-text-html-renderer@17.2.1) (2026-04-08)
+
+### Bug Fixes
+
+- **rich-text-html-renderer:** parse and render asset [] ([#854](https://github.com/contentful/rich-text/issues/854)) ([3ca028d](https://github.com/contentful/rich-text/commit/3ca028d828979a22cb208607371ffec8990d01b7)), closes [#853](https://github.com/contentful/rich-text/issues/853)
+
 # [17.2.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.1.6...@contentful/rich-text-html-renderer@17.2.0) (2026-04-08)
 
 ### Features
