@@ -4,7 +4,17 @@
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
+  "module": "dist/contentful-slatejs-adapter.esm.js",
   "typings": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/contentful-slatejs-adapter.esm.js",
+      "require": "./dist/contentful-slatejs-adapter.es5.js",
+      "default": "./dist/contentful-slatejs-adapter.es5.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist"
   ],
