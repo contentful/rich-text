@@ -47,9 +47,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^7.14.1
         version: 7.18.0(eslint@8.57.1)(typescript@5.9.3)
-      contentful-management:
-        specifier: 11.68.0
-        version: 11.68.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -101,9 +98,6 @@ importers:
       rollup-plugin-json:
         specifier: ^4.0.0
         version: 4.0.0
-      ts-node:
-        specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.15.10)(@types/node@25.0.10)(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -483,10 +477,6 @@ packages:
   '@commitlint/types@20.3.1':
     resolution: {integrity: sha512-VmIFV/JkBRhDRRv7N5B7zEUkNZIx9Mp+8Pe65erz0rKycXLsi8Epcw0XJ+btSeRXgTzE7DyOyA9bkJ9mn/yqVQ==}
     engines: {node: '>=v18'}
-
-  '@contentful/rich-text-types@16.8.5':
-    resolution: {integrity: sha512-q18RJuJCOuYveGiCIjE5xLCQc5lZ3L2Qgxrlg/H2YEobDFqdtmklazRi1XwEWaK3tMg6yVXBzKKkQfLB4qW14A==}
-    engines: {node: '>=6.0.0'}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -2213,14 +2203,6 @@ packages:
     resolution: {integrity: sha512-FveZTNuGw04cxlAiWbzi6zTAL/lhehaWbTtgluJh4/E95DqMwTmha3KZN1aAWA8cFIhHzMZUvLevkw5Rqk+tSQ==}
     engines: {node: '>= 0.6'}
 
-  contentful-management@11.68.0:
-    resolution: {integrity: sha512-5TYJ0zsfvkGWGPQXMCmJeIrWAdhHu2W8TxOzeSSXpvFlek/+1WeOlv8EoE0Gc9KWxYG11BjM9JKn5g1bypDnkw==}
-    engines: {node: '>=18'}
-
-  contentful-sdk-core@9.4.2:
-    resolution: {integrity: sha512-G/8cEs3ggeMrUtT8ywXlzoSCKNpmUo2ZXq/pBCnxcM6JP7isfk8nYDHL0xRR9qTwlNs3XCmCf20iApOQeR6Qsg==}
-    engines: {node: '>=18'}
-
   conventional-changelog-angular@7.0.0:
     resolution: {integrity: sha512-ROjNchA9LgfNMTTFSIWPzebCwOGFdgkEq45EnvvrmSLvCtAw0HSmrCs7/ty+wAeYUZyNay0YMUNYFTRL72PkBQ==}
     engines: {node: '>=16'}
@@ -2773,9 +2755,6 @@ packages:
     resolution: {integrity: sha512-GipyPsXO1anza0AOZdy69Im7hGFCNB7Y/NGjDlZGJ3GJJLtwNSb2vrzYrTYJRrRloVx7pl+bhUaTB8yiccPvFQ==}
     engines: {node: '> 0.1.90'}
 
-  fast-copy@3.0.2:
-    resolution: {integrity: sha512-dl0O9Vhju8IrcLndv2eU4ldt1ftXMqqfgN4H1cpmGV7P6jeB9FwpN9a2c8DPGE1Ys88rNUJVYDHq73CGAGOPfQ==}
-
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
@@ -3071,10 +3050,6 @@ packages:
   globals@13.24.0:
     resolution: {integrity: sha512-AhO5QUcj8llrbG09iWhPU2B204J1xnPeL8kQmVorSsy+Sjj1sk8gIyh6cUocGmH4L0UuhAJy+hJMRA4mgA4mFQ==}
     engines: {node: '>=8'}
-
-  globals@15.15.0:
-    resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
-    engines: {node: '>=18'}
 
   globalthis@1.0.4:
     resolution: {integrity: sha512-DpLKbNU4WylpxJykQujfCcwYWiV/Jhm50Goo0wrVILAv5jOr9d+H+UR3PhSCD2rCCEIg0uc+G+muBTwD54JhDQ==}
@@ -4605,10 +4580,6 @@ packages:
   process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
 
-  process@0.11.10:
-    resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
-    engines: {node: '>= 0.6.0'}
-
   proggy@2.0.0:
     resolution: {integrity: sha512-69agxLtnI8xBs9gUGqEnK26UfiexpHy+KUpBQWabiytQjnn5wFY8rklAi7GRfABIuPNnQ/ik48+LGLkYYJcy4A==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -4657,10 +4628,6 @@ packages:
 
   pure-rand@7.0.1:
     resolution: {integrity: sha512-oTUZM/NAZS8p7ANR3SHh30kXB+zK2r2BPcEn/awJIbOvq82WoMN4p62AWWp3Hhw50G0xMsw1mhIBLqHw64EcNQ==}
-
-  qs@6.14.1:
-    resolution: {integrity: sha512-4EK3+xJl8Ts67nLYNwqw/dsFVnCf+qR7RgXSK9jEEm9unao3njwMDdmsdvoKBKHzxd7tCYz5e5M+SnMjdtXGQQ==}
-    engines: {node: '>=0.6'}
 
   qs@6.5.3:
     resolution: {integrity: sha512-qxXIEh4pCGfHICj1mAJQ2/2XVZkjCDTcEgfoSQxc/fYivUZxTkk7L3bDBJSoNrEzXI17oUO5Dp07ktqE5KzczA==}
@@ -5956,11 +5923,10 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.0
       chalk: 5.6.0
 
-  '@contentful/rich-text-types@16.8.5': {}
-
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
+    optional: true
 
   '@emnapi/core@1.7.0':
     dependencies:
@@ -6263,6 +6229,7 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+    optional: true
 
   '@lerna/create@8.2.3(@swc/core@1.15.10)(encoding@0.1.13)(typescript@5.9.3)':
     dependencies:
@@ -6933,13 +6900,17 @@ snapshots:
 
   '@tokenizer/token@0.3.0': {}
 
-  '@tsconfig/node10@1.0.11': {}
+  '@tsconfig/node10@1.0.11':
+    optional: true
 
-  '@tsconfig/node12@1.0.11': {}
+  '@tsconfig/node12@1.0.11':
+    optional: true
 
-  '@tsconfig/node14@1.0.3': {}
+  '@tsconfig/node14@1.0.3':
+    optional: true
 
-  '@tsconfig/node16@1.0.4': {}
+  '@tsconfig/node16@1.0.4':
+    optional: true
 
   '@tufjs/canonical-json@2.0.0': {}
 
@@ -7347,6 +7318,7 @@ snapshots:
   acorn-walk@8.3.3:
     dependencies:
       acorn: 8.12.0
+    optional: true
 
   acorn@8.12.0: {}
 
@@ -7412,7 +7384,8 @@ snapshots:
 
   arch@3.0.0: {}
 
-  arg@4.1.3: {}
+  arg@4.1.3:
+    optional: true
 
   argparse@1.0.10:
     dependencies:
@@ -7897,25 +7870,6 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  contentful-management@11.68.0:
-    dependencies:
-      '@contentful/rich-text-types': 16.8.5
-      axios: 1.12.2
-      contentful-sdk-core: 9.4.2
-      fast-copy: 3.0.2
-      globals: 15.15.0
-    transitivePeerDependencies:
-      - debug
-
-  contentful-sdk-core@9.4.2:
-    dependencies:
-      fast-copy: 3.0.2
-      lodash: 4.18.1
-      process: 0.11.10
-      qs: 6.14.1
-    optionalDependencies:
-      '@rollup/rollup-linux-x64-gnu': 4.59.0
-
   conventional-changelog-angular@7.0.0:
     dependencies:
       compare-func: 2.0.0
@@ -8011,7 +7965,8 @@ snapshots:
       minimist: 1.2.8
       request: 2.88.2
 
-  create-require@1.1.1: {}
+  create-require@1.1.1:
+    optional: true
 
   cross-env@10.1.0:
     dependencies:
@@ -8139,7 +8094,8 @@ snapshots:
 
   diff-sequences@29.6.3: {}
 
-  diff@4.0.2: {}
+  diff@4.0.2:
+    optional: true
 
   dir-glob@3.0.1:
     dependencies:
@@ -8586,8 +8542,6 @@ snapshots:
 
   eyes@0.1.8: {}
 
-  fast-copy@3.0.2: {}
-
   fast-deep-equal@3.1.3: {}
 
   fast-fifo@1.3.2: {}
@@ -8915,8 +8869,6 @@ snapshots:
   globals@13.24.0:
     dependencies:
       type-fest: 0.20.2
-
-  globals@15.15.0: {}
 
   globalthis@1.0.4:
     dependencies:
@@ -10835,8 +10787,6 @@ snapshots:
 
   process-nextick-args@2.0.1: {}
 
-  process@0.11.10: {}
-
   proggy@2.0.0: {}
 
   promise-all-reject-late@1.0.1: {}
@@ -10877,10 +10827,6 @@ snapshots:
   punycode@2.3.1: {}
 
   pure-rand@7.0.1: {}
-
-  qs@6.14.1:
-    dependencies:
-      side-channel: 1.1.0
 
   qs@6.5.3: {}
 
@@ -11637,6 +11583,7 @@ snapshots:
       yn: 3.1.1
     optionalDependencies:
       '@swc/core': 1.15.10
+    optional: true
 
   tsconfig-paths@3.15.0:
     dependencies:
@@ -11822,7 +11769,8 @@ snapshots:
 
   uuid@8.3.2: {}
 
-  v8-compile-cache-lib@3.0.1: {}
+  v8-compile-cache-lib@3.0.1:
+    optional: true
 
   v8-to-istanbul@9.3.0:
     dependencies:
@@ -12035,7 +11983,8 @@ snapshots:
       buffer-crc32: 0.2.13
       pend: 1.2.0
 
-  yn@3.1.1: {}
+  yn@3.1.1:
+    optional: true
 
   yocto-queue@0.1.0: {}
 
