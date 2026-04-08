@@ -29,3 +29,6 @@ updates:
       - npm-github
     reviewers:
       - 'contentful/team-tolkien'
+
+    cooldown:
+      default-days: 15

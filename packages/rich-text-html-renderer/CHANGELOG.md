@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.2.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.1.6...@contentful/rich-text-html-renderer@17.2.0) (2026-04-08)
+
+### Features
+
+- add esm support [ZEND-7778] ([#1069](https://github.com/contentful/rich-text/issues/1069)) ([8c320bd](https://github.com/contentful/rich-text/commit/8c320bde7fa313572bdad84b91a6fd12224afc3a)), closes [#1068](https://github.com/contentful/rich-text/issues/1068)
+
+## [17.1.6](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.1.5...@contentful/rich-text-html-renderer@17.1.6) (2025-11-04)
+
+**Note:** Version bump only for package @contentful/rich-text-html-renderer
+
+## [17.1.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.1.4...@contentful/rich-text-html-renderer@17.1.5) (2025-09-23)
+
+**Note:** Version bump only for package @contentful/rich-text-html-renderer
+
+## [17.1.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.1.3...@contentful/rich-text-html-renderer@17.1.4) (2025-09-23)
+
+**Note:** Version bump only for package @contentful/rich-text-html-renderer
+
+## [17.1.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.1.2...@contentful/rich-text-html-renderer@17.1.3) (2025-09-10)
+
+**Note:** Version bump only for package @contentful/rich-text-html-renderer
+
+## [17.1.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.1.1...@contentful/rich-text-html-renderer@17.1.2) (2025-09-09)
+
+**Note:** Version bump only for package @contentful/rich-text-html-renderer
+
+## [17.1.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.1.0...@contentful/rich-text-html-renderer@17.1.1) (2025-09-04)
+
+**Note:** Version bump only for package @contentful/rich-text-html-renderer
+
+# [17.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.0.1...@contentful/rich-text-html-renderer@17.1.0) (2025-07-15)
+
+### Features
+
+- add an option to strip empty trailing paragraphs [TOL-3193] ([#892](https://github.com/contentful/rich-text/issues/892)) ([9beff0e](https://github.com/contentful/rich-text/commit/9beff0e4cba3e79dc68e6a0725e843c5d642eb87))
+
+## [17.0.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.0.0...@contentful/rich-text-html-renderer@17.0.1) (2025-06-16)
+
+**Note:** Version bump only for package @contentful/rich-text-html-renderer
+
 # [17.0.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@16.6.10...@contentful/rich-text-html-renderer@17.0.0) (2024-10-29)
 
 ### Features

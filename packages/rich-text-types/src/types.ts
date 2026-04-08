@@ -1,6 +1,6 @@
-import { BLOCKS } from './blocks';
-import { INLINES } from './inlines';
-import { ListItemBlockEnum, TopLevelBlockEnum } from './schemaConstraints';
+import { BLOCKS } from './blocks.js';
+import { INLINES } from './inlines.js';
+import { ListItemBlockEnum, TopLevelBlockEnum } from './schemaConstraints.js';
 
 /**
  * @additionalProperties true

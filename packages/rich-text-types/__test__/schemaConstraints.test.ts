@@ -1,5 +1,5 @@
-import { BLOCKS } from '../blocks';
-import { CONTAINERS, TEXT_CONTAINERS, VOID_BLOCKS } from '../schemaConstraints';
+import { BLOCKS } from '../src/blocks';
+import { CONTAINERS, TEXT_CONTAINERS, VOID_BLOCKS } from '../src/schemaConstraints';
 
 const allKnownBlocks = Object.values(BLOCKS);
 

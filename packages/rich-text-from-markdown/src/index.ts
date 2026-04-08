@@ -51,6 +51,7 @@ const markTypes = new Map([
   ['emphasis', 'italic'],
   ['strong', 'bold'],
   ['inlineCode', 'code'],
+  ['delete', 'strikethrough'],
 ]);
 const markTypeFor = (node: MarkdownNode) => {
   return markTypes.get(node.type);
@@ -83,6 +84,7 @@ const nodeContainerTypes = new Map([
   ['emphasis', 'text'],
   ['strong', 'text'],
   ['inlineCode', 'text'],
+  ['delete', 'text'],
 ]);
 
 const isBlock = (nodeType: string) => {

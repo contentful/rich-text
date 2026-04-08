@@ -467,3 +467,239 @@ describe('documentToHtmlString', () => {
     expect(documentToHtmlString(document, options)).toEqual(expected);
   });
 });
+
+describe('stripEmptyTrailingParagraph', () => {
+  it('strips empty trailing paragraph when enabled', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'Hello world',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: '',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    const options: Options = {
+      stripEmptyTrailingParagraph: true,
+    };
+
+    const result = documentToHtmlString(document, options);
+    expect(result).toEqual('<p>Hello world</p>');
+  });
+
+  it('does not strip empty trailing paragraph when disabled', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'Hello world',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: '',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    const options: Options = {
+      stripEmptyTrailingParagraph: false,
+    };
+
+    const result = documentToHtmlString(document, options);
+    expect(result).toEqual('<p>Hello world</p><p></p>');
+  });
+
+  it('does not strip empty trailing paragraph when it is the only child', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: '',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    const options: Options = {
+      stripEmptyTrailingParagraph: true,
+    };
+
+    const result = documentToHtmlString(document, options);
+    expect(result).toEqual('<p></p>');
+  });
+
+  it('does not strip non-empty trailing paragraph', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'Hello world',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'Not empty',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    const options: Options = {
+      stripEmptyTrailingParagraph: true,
+    };
+
+    const result = documentToHtmlString(document, options);
+    expect(result).toEqual('<p>Hello world</p><p>Not empty</p>');
+  });
+
+  it('does not strip trailing paragraph with multiple text nodes', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'Hello world',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: '',
+              marks: [],
+              data: {},
+            },
+            {
+              nodeType: 'text',
+              value: '',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    const options: Options = {
+      stripEmptyTrailingParagraph: true,
+    };
+
+    const result = documentToHtmlString(document, options);
+    expect(result).toEqual('<p>Hello world</p><p></p>');
+  });
+
+  it('does not strip trailing non-paragraph node', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'Hello world',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+        {
+          nodeType: BLOCKS.HEADING_1,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: '',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    const options: Options = {
+      stripEmptyTrailingParagraph: true,
+    };
+
+    const result = documentToHtmlString(document, options);
+    expect(result).toEqual('<p>Hello world</p><h1></h1>');
+  });
+});

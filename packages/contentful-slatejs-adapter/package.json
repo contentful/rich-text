@@ -1,10 +1,20 @@
 {
   "name": "@contentful/contentful-slatejs-adapter",
-  "version": "16.0.0",
+  "version": "16.2.0",
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
+  "module": "dist/contentful-slatejs-adapter.esm.js",
   "typings": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/contentful-slatejs-adapter.esm.js",
+      "require": "./dist/contentful-slatejs-adapter.es5.js",
+      "default": "./dist/contentful-slatejs-adapter.es5.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist"
   ],
@@ -27,15 +37,15 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^17.0.0"
+    "@contentful/rich-text-types": "^17.2.6"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.0.0",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^22.0.0",
+    "@faker-js/faker": "^10.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.2",
     "colors": "^1.1.2",
     "coveralls": "^3.0.0",
-    "cross-env": "^5.0.1",
+    "cross-env": "^10.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "lodash.camelcase": "^4.3.0",
     "prompt": "^1.0.0",

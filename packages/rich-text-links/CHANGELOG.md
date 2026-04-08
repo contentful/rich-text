@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.0.8...@contentful/rich-text-links@17.1.0) (2026-04-08)
+
+### Features
+
+- add esm support [ZEND-7778] ([#1069](https://github.com/contentful/rich-text/issues/1069)) ([8c320bd](https://github.com/contentful/rich-text/commit/8c320bde7fa313572bdad84b91a6fd12224afc3a)), closes [#1068](https://github.com/contentful/rich-text/issues/1068)
+
+## [17.0.8](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.0.7...@contentful/rich-text-links@17.0.8) (2025-11-04)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [17.0.7](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.0.6...@contentful/rich-text-links@17.0.7) (2025-09-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [17.0.6](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.0.5...@contentful/rich-text-links@17.0.6) (2025-09-23)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [17.0.5](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.0.4...@contentful/rich-text-links@17.0.5) (2025-09-10)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [17.0.4](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.0.3...@contentful/rich-text-links@17.0.4) (2025-09-09)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [17.0.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.0.2...@contentful/rich-text-links@17.0.3) (2025-09-04)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [17.0.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.0.1...@contentful/rich-text-links@17.0.2) (2025-07-15)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
+## [17.0.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.0.0...@contentful/rich-text-links@17.0.1) (2025-06-16)
+
+**Note:** Version bump only for package @contentful/rich-text-links
+
 # [17.0.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@16.7.10...@contentful/rich-text-links@17.0.0) (2024-10-29)
 
 ### Features

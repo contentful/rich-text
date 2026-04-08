@@ -1,5 +1,5 @@
-import { ValidationError } from '.';
-import type { Path } from './path';
+import type { Path } from './path.js';
+import { ValidationError } from './types.js';
 
 export const typeMismatchError = ({
   path,

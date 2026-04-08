@@ -47,3 +47,6 @@ reports
 
 # nx specific
 .nx/
+
+# swc
+**/.swc

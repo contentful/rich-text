@@ -9,7 +9,8 @@ import {
   Text,
   helpers,
 } from '@contentful/rich-text-types';
-import escape from 'escape-html';
+
+import { escapeHtml } from './escapeHtml';
 
 const attributeValue = (value: string) => `"${value.replace(/"/g, '&quot;')}"`;
 
@@ -65,10 +66,10 @@ const defaultBlockAsset = (node: Block) => {
 };
 
 const defaultInline = (type: string, node: Inline) =>
-  `<span>type: ${escape(type)} id: ${escape(node.data.target.sys.id)}</span>`;
+  `<span>type: ${escapeHtml(type)} id: ${escapeHtml(node.data.target.sys.id)}</span>`;
 
 const defaultInlineResource = (type: string, node: Inline) =>
-  `<span>type: ${escape(type)} urn: ${escape(node.data?.target?.sys?.urn ?? '')}</span>`;
+  `<span>type: ${escapeHtml(type)} urn: ${escapeHtml(node.data?.target?.sys?.urn ?? '')}</span>`;
 
 export type CommonNode = Text | Block | Inline;
 
@@ -101,6 +102,10 @@ export interface Options {
    * Keep line breaks and multiple spaces
    */
   preserveWhitespace?: boolean;
+  /**
+   * Strip empty trailing paragraph from the document
+   */
+  stripEmptyTrailingParagraph?: boolean;
 }
 
 /**
@@ -114,7 +119,13 @@ export function documentToHtmlString(
     return '';
   }
 
-  return nodeListToHtmlString(richTextDocument.content, {
+  // Strip empty trailing paragraph if enabled
+  let processedDocument = richTextDocument;
+  if (options.stripEmptyTrailingParagraph) {
+    processedDocument = helpers.stripEmptyTrailingParagraphFromDocument(richTextDocument);
+  }
+
+  return nodeListToHtmlString(processedDocument.content, {
     renderNode: {
       ...defaultNodeRenderers,
       ...options.renderNode,
@@ -141,7 +152,7 @@ function nodeToHtmlString(
   { renderNode, renderMark, preserveWhitespace }: Options,
 ): string {
   if (helpers.isText(node)) {
-    let nodeValue = escape(node.value);
+    let nodeValue = escapeHtml(node.value);
 
     // If preserveWhitespace is true, handle line breaks and spaces.
     if (preserveWhitespace) {

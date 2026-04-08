@@ -72,7 +72,7 @@ describe('parses complex inline image markdown correctly', () => {
       fallback,
     );
 
-    expect(fallback).toBeCalledTimes(2);
+    expect(fallback).toHaveBeenCalledTimes(2);
     expect(result).toEqual({
       nodeType: 'document',
       data: {},
@@ -102,7 +102,7 @@ describe('parses complex inline image markdown correctly', () => {
       fallback,
     );
 
-    expect(fallback).toBeCalledTimes(2);
+    expect(fallback).toHaveBeenCalledTimes(2);
     expect(result).toEqual({
       nodeType: 'document',
       data: {},

@@ -1,4 +1,11 @@
-import { Block, Inline, Node, helpers } from '@contentful/rich-text-types';
+import { Block, Inline, Node, helpers, BLOCKS, Document } from '@contentful/rich-text-types';
+
+export interface Options {
+  /**
+   * Strip empty trailing paragraph from the document
+   */
+  stripEmptyTrailingParagraph?: boolean;
+}
 
 /**
  * Returns the text value of a rich text document.
@@ -9,6 +16,7 @@ import { Block, Inline, Node, helpers } from '@contentful/rich-text-types';
 export function documentToPlainTextString(
   rootNode: Block | Inline,
   blockDivisor: string = ' ',
+  options: Options = {},
 ): string {
   if (!rootNode || !rootNode.content || !Array.isArray(rootNode.content)) {
     /**
@@ -19,6 +27,12 @@ export function documentToPlainTextString(
      * should never lack a Node[] `content` property.
      */
     return '';
+  }
+
+  // Strip empty trailing paragraph if enabled and rootNode is a Document
+  let processedRootNode = rootNode;
+  if (rootNode.nodeType === BLOCKS.DOCUMENT && options.stripEmptyTrailingParagraph) {
+    processedRootNode = helpers.stripEmptyTrailingParagraphFromDocument(rootNode as Document);
   }
 
   /**
@@ -84,21 +98,24 @@ export function documentToPlainTextString(
    * 'Yet another list item' - the non-semantic HR between the two nodes should
    * not denote an additional space.
    */
-  return (rootNode as Block).content.reduce((acc: string, node: Node, i: number): string => {
-    let nodeTextValue: string;
+  return (processedRootNode as Block).content.reduce(
+    (acc: string, node: Node, i: number): string => {
+      let nodeTextValue: string;
 
-    if (helpers.isText(node)) {
-      nodeTextValue = node.value;
-    } else if (helpers.isBlock(node) || helpers.isInline(node)) {
-      nodeTextValue = documentToPlainTextString(node, blockDivisor);
-      if (!nodeTextValue.length) {
-        return acc;
+      if (helpers.isText(node)) {
+        nodeTextValue = node.value;
+      } else if (helpers.isBlock(node) || helpers.isInline(node)) {
+        nodeTextValue = documentToPlainTextString(node, blockDivisor, options);
+        if (!nodeTextValue.length) {
+          return acc;
+        }
       }
-    }
 
-    const nextNode = rootNode.content[i + 1];
-    const isNextNodeBlock = nextNode && helpers.isBlock(nextNode);
-    const divisor = isNextNodeBlock ? blockDivisor : '';
-    return acc + nodeTextValue + divisor;
-  }, '');
+      const nextNode = processedRootNode.content[i + 1];
+      const isNextNodeBlock = nextNode && helpers.isBlock(nextNode);
+      const divisor = isNextNodeBlock ? blockDivisor : '';
+      return acc + nodeTextValue + divisor;
+    },
+    '',
+  );
 }

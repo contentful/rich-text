@@ -1,16 +1,16 @@
-export { BLOCKS } from './blocks';
-export { INLINES } from './inlines';
-export { MARKS } from './marks';
+export { BLOCKS } from './blocks.js';
+export { INLINES } from './inlines.js';
+export { MARKS } from './marks.js';
 
-export * from './schemaConstraints';
+export * from './schemaConstraints.js';
 
-export * from './types';
-export * from './nodeTypes';
+export * from './types.js';
+export * from './nodeTypes.js';
 
-export { EMPTY_DOCUMENT } from './emptyDocument';
+export { EMPTY_DOCUMENT } from './emptyDocument.js';
 
-import * as helpers from './helpers';
+import * as helpers from './helpers.js';
 export { helpers };
 
-export { validateRichTextDocument } from './validator';
-export type { ValidationError } from './validator';
+export { validateRichTextDocument } from './validator/index.js';
+export type { ValidationError } from './validator/index.js';

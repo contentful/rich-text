@@ -1,6 +1,5 @@
 import isPlainObject from 'is-plain-obj';
 
-import { ValidationError } from '.';
 import {
   maxSizeError,
   typeMismatchError,
@@ -8,8 +7,9 @@ import {
   unknownPropertyError,
   requiredPropertyError,
   minSizeError,
-} from './errors';
-import type { Path } from './path';
+} from './errors.js';
+import type { Path } from './path.js';
+import { ValidationError } from './types.js';
 
 export class ObjectAssertion {
   private _errors: ValidationError[] = [];
