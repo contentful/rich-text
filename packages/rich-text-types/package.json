@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=20.0.0"
   },
   "publishConfig": {
     "access": "public",
@@ -33,14 +33,12 @@
     "build": "npm run build:types && npm run build:cjs && npm run build:esm && npm run fix-esm-imports",
     "build:types": "tsc --outDir dist/types --emitDeclarationOnly",
     "build:cjs": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/cjs -C module.type=commonjs",
-    "build:esm": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm --out-file-extension mjs -C module.type=es6 -C module.resolveFully=true -C module.outFileExtension=mjs",
+    "build:esm": "swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm --out-file-extension mjs -C jsc.target=es2022 -C module.type=es6 -C module.resolveFully=true -C module.outFileExtension=mjs",
     "fix-esm-imports": "node ./scripts/fix-esm-import-extensions.mjs",
     "start": "tsc && swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm --out-file-extension mjs -C module.type=es6 -C module.resolveFully=true -C module.outFileExtension=mjs -w",
     "test": "jest"
   },
-  "dependencies": {
-    "is-plain-obj": "^3.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.2",

@@ -1,5 +1,3 @@
-import isPlainObject from 'is-plain-obj';
-
 import {
   maxSizeError,
   typeMismatchError,
@@ -68,7 +66,7 @@ export class ObjectAssertion {
       }
     }
 
-    if (isPlainObject(value)) {
+    if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
       return true;
     }
 
