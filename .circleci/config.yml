@@ -77,6 +77,7 @@ jobs:
       - run: |
           echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_WRITE_TOKEN}" >> ~/.npmrc
+      - run: pnpm nx run-many -t build
       - run: pnpm lerna version --no-private --conventional-commits --create-release github --yes
       - run: pnpm lerna publish from-git --yes
 
