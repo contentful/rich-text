@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-react-renderer",
-  "version": "16.2.0",
+  "version": "16.2.1",
   "main": "dist/rich-text-react-renderer.es5.js",
   "module": "dist/rich-text-react-renderer.esm.js",
   "typings": "dist/types/index.d.ts",
@@ -35,7 +35,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^17.2.6"
+    "@contentful/rich-text-types": "^17.2.7"
   },
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0 || ^19.0.0",

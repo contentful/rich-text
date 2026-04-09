@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.2.7](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.2.6...@contentful/rich-text-types@17.2.7) (2026-04-09)
+
+### Bug Fixes
+
+- **rich-text-types:** improve esm compability [ZEND-7778] ([#1073](https://github.com/contentful/rich-text/issues/1073)) ([204aaec](https://github.com/contentful/rich-text/commit/204aaecc3893633c081986f44896e14272fa376a))
+
 ## [17.2.6](https://github.com/contentful/rich-text/compare/@contentful/rich-text-types@17.2.5...@contentful/rich-text-types@17.2.6) (2026-04-08)
 
 **Note:** Version bump only for package @contentful/rich-text-types

@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-types",
-  "version": "17.2.6",
+  "version": "17.2.7",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.mjs",
   "types": "dist/types/index.d.ts",
@@ -38,7 +38,6 @@
     "start": "tsc && swc src --strip-leading-paths --config-file ../../.swcrc -d dist/esm --out-file-extension mjs -C module.type=es6 -C module.resolveFully=true -C module.outFileExtension=mjs -w",
     "test": "jest"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.2",

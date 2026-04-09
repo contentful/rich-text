@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.1.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.1.0...@contentful/rich-text-links@17.1.1) (2026-04-09)
+
+### Bug Fixes
+
+- **rich-text-types:** improve esm compability [ZEND-7778] ([#1073](https://github.com/contentful/rich-text/issues/1073)) ([204aaec](https://github.com/contentful/rich-text/commit/204aaecc3893633c081986f44896e14272fa376a))
+
 # [17.1.0](https://github.com/contentful/rich-text/compare/@contentful/rich-text-links@17.0.8...@contentful/rich-text-links@17.1.0) (2026-04-08)
 
 ### Features

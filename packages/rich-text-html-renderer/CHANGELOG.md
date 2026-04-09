@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.2.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.2.1...@contentful/rich-text-html-renderer@17.2.2) (2026-04-09)
+
+### Bug Fixes
+
+- **rich-text-types:** improve esm compability [ZEND-7778] ([#1073](https://github.com/contentful/rich-text/issues/1073)) ([204aaec](https://github.com/contentful/rich-text/commit/204aaecc3893633c081986f44896e14272fa376a))
+
 ## [17.2.1](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.2.0...@contentful/rich-text-html-renderer@17.2.1) (2026-04-08)
 
 ### Bug Fixes
