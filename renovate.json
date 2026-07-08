@@ -1,6 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "local>contentful/renovate-config"
-  ]
+  "extends": ["local>contentful/renovate-config:defaultNxMonorepo"]
 }
