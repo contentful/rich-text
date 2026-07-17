@@ -62,7 +62,7 @@ const defaultBlockAsset = (node: Block) => {
   const imageUrl = fileUrl.startsWith('//') ? `https:${fileUrl}` : fileUrl;
   const imgDescription = node.data?.target?.fields?.description ?? '';
 
-  return `<img src="${imageUrl}" alt="${escape(imgDescription)}" loading="lazy" />`;
+  return `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(imgDescription)}" loading="lazy" />`;
 };
 
 const defaultInline = (type: string, node: Inline) =>
