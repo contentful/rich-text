@@ -330,7 +330,7 @@ describe('documentToHtmlString', () => {
               },
             },
           },
-        } as unknown as Block,
+        },
       ],
     };
     const expected =
@@ -355,7 +355,7 @@ describe('documentToHtmlString', () => {
               },
             },
           },
-        } as unknown as Block,
+        },
       ],
     };
     const expected =
@@ -380,7 +380,7 @@ describe('documentToHtmlString', () => {
               },
             },
           },
-        } as unknown as Block,
+        },
       ],
     };
     const expected =
