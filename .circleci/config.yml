@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   frontend-tools: contentful/frontend-tools@2
-  vault: contentful/vault@1.30.0
+  vault: contentful/vault@1.30.3
   nx: nrwl/nx@1.6.2
 
 executors:
