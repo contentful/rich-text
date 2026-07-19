@@ -1,10 +1,15 @@
 import { Block, Inline, Node, helpers, BLOCKS, Document } from '@contentful/rich-text-types';
 
+export interface RenderNode {
+  [key: string]: (node: Block | Inline, next: (nodes: (Block | Inline)[]) => string) => string;
+}
+
 export interface Options {
   /**
    * Strip empty trailing paragraph from the document
    */
   stripEmptyTrailingParagraph?: boolean;
+  renderNode?: RenderNode;
 }
 
 /**
@@ -102,7 +107,13 @@ export function documentToPlainTextString(
     (acc: string, node: Node, i: number): string => {
       let nodeTextValue: string;
 
-      if (helpers.isText(node)) {
+      if (options?.renderNode?.[node.nodeType]) {
+        nodeTextValue = options.renderNode[node.nodeType](
+          node as Block | Inline,
+          (children) =>
+            children.map((child) => documentToPlainTextString(child, blockDivisor, options)).join(blockDivisor || ''),
+        );
+      } else if (helpers.isText(node)) {
         nodeTextValue = node.value;
       } else if (helpers.isBlock(node) || helpers.isInline(node)) {
         nodeTextValue = documentToPlainTextString(node, blockDivisor, options);
