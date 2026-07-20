@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.2.3](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.2.2...@contentful/rich-text-html-renderer@17.2.3) (2026-07-20)
+
+### Bug Fixes
+
+- **rich-text-html-renderer:** escape embedded asset alt/src attributes [TOL-4304] ([#1082](https://github.com/contentful/rich-text/issues/1082)) ([514b882](https://github.com/contentful/rich-text/commit/514b882ca2c5f46317a6adbe0b941a9077b109a0))
+
 ## [17.2.2](https://github.com/contentful/rich-text/compare/@contentful/rich-text-html-renderer@17.2.1...@contentful/rich-text-html-renderer@17.2.2) (2026-04-09)
 
 ### Bug Fixes
