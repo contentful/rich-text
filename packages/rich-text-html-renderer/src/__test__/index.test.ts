@@ -314,6 +314,81 @@ describe('documentToHtmlString', () => {
     expect(documentToHtmlString(document)).toEqual(expected);
   });
 
+  it('renders embedded asset image with escaped url and description', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.EMBEDDED_ASSET,
+          content: [],
+          data: {
+            target: {
+              fields: {
+                file: { url: '//images.ctfassets.net/space/asset.jpg' },
+                description: 'A mountain at sunset',
+              },
+            },
+          },
+        },
+      ],
+    };
+    const expected =
+      '<img src="https://images.ctfassets.net/space/asset.jpg" alt="A mountain at sunset" loading="lazy" />';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders embedded asset image url with escaped query param ampersands', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.EMBEDDED_ASSET,
+          content: [],
+          data: {
+            target: {
+              fields: {
+                file: { url: '//images.ctfassets.net/space/asset.jpg?a=1&b=2' },
+                description: 'A mountain at sunset',
+              },
+            },
+          },
+        },
+      ],
+    };
+    const expected =
+      '<img src="https://images.ctfassets.net/space/asset.jpg?a=1&amp;b=2" alt="A mountain at sunset" loading="lazy" />';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders embedded asset image without allowing html injection via url or description', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.EMBEDDED_ASSET,
+          content: [],
+          data: {
+            target: {
+              fields: {
+                file: { url: '"><script>alert(1)</script>' },
+                description: '"><script>alert(2)</script>',
+              },
+            },
+          },
+        },
+      ],
+    };
+    const expected =
+      '<img src="&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;" alt="&quot;&gt;&lt;script&gt;alert(2)&lt;/script&gt;" loading="lazy" />';
+
+    expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
   it('renders entry hyperlink', () => {
     const entry = {
       target: {
