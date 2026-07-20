@@ -2,13 +2,13 @@ version: 2.1
 
 orbs:
   frontend-tools: contentful/frontend-tools@2
-  vault: contentful/vault@1.30.0
-  nx: nrwl/nx@1.6.2
+  vault: contentful/vault@1.30.3
+  nx: nrwl/nx@1.7.0
 
 executors:
   default:
     docker:
-      - image: cimg/node:24.13.1
+      - image: cimg/node:24.18.0
 
 cache-key: &cache-key
   key: v2-npm-cache-{{ arch }}-{{ checksum ".nvmrc" }}-{{ checksum "pnpm-lock.yaml" }}-{{ .Branch }}
