@@ -162,8 +162,8 @@ importers:
         specifier: ^10.0.0
         version: 10.2.0
       '@types/lodash':
-        specifier: ^4.14.172
-        version: 4.17.23
+        specifier: ^4.17.24
+        version: 4.17.24
       ts-jest:
         specifier: ^29.1.2
         version: 29.4.6(@babel/core@7.28.5)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.28.5))(jest-util@30.4.1)(jest@30.4.2(@types/node@25.0.10)(ts-node@10.9.2(@swc/core@1.15.43)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
@@ -1656,8 +1656,8 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  '@types/lodash@4.17.23':
-    resolution: {integrity: sha512-RDvF6wTulMPjrNdCoYRC8gNR880JNGT8uB+REUpC2Ns4pRqQJhGz90wh7rgdXDPpCczF3VGktDuFGVnz8zP7HA==}
+  '@types/lodash@4.17.24':
+    resolution: {integrity: sha512-gIW7lQLZbue7lRSWEFql49QJJWThrTFFeIMJdp3eH4tKoxm1OvEPg02rm4wCCSHS0cL3/Fizimb35b7k8atwsQ==}
 
   '@types/mdast@3.0.15':
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
@@ -7557,7 +7557,7 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@types/lodash@4.17.23': {}
+  '@types/lodash@4.17.24': {}
 
   '@types/mdast@3.0.15':
     dependencies:
