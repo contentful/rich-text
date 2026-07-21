@@ -119,7 +119,7 @@ importers:
         specifier: ^25.0.2
         version: 25.0.10
       colors:
-        specifier: ^1.1.2
+        specifier: ^1.4.0
         version: 1.4.0
       coveralls:
         specifier: ^3.0.0
