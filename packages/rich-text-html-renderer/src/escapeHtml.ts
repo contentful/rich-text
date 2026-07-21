@@ -1,3 +1,4 @@
+// CI verification: confirms nx affected picks up a real package change.
 const escapeRegExp = /["'&<>]/g;
 
 const escapeMap: Record<string, string> = {
