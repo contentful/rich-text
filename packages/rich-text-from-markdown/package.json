@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-from-markdown",
-  "version": "16.2.1",
+  "version": "16.2.2",
   "description": "convert markdown to rich text",
   "keywords": [
     "rich-text",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^10.0.0",
-    "@types/lodash": "^4.14.172",
+    "@types/lodash": "^4.17.24",
     "ts-jest": "^29.1.2"
   },
   "bugs": {
