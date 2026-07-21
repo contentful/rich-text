@@ -52,7 +52,6 @@ jobs:
         with:
           path: packages/*/dist
           key: build-cache-${{ github.run_id }}-${{ github.run_attempt }}
-          fail-on-cache-miss: true
 
       - name: Build all projects
         run: pnpm nx run-many --all -t build --skip-nx-cache

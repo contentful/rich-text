@@ -32,7 +32,6 @@ jobs:
         with:
           path: packages/*/dist
           key: build-cache-${{ github.run_id }}-${{ github.run_attempt }}
-          fail-on-cache-miss: true
 
       - name: Lint affected projects
         run: pnpm exec nx affected --target=lint --base=$NX_BASE --head=$NX_HEAD
