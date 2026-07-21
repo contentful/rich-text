@@ -491,18 +491,38 @@ describe('getRichTextEntityLinks', () => {
               },
               content: [],
             },
+            {
+              nodeType: INLINES.EMBEDDED_ENTRY,
+              data: {
+                target: {
+                  sys: {
+                    linkType: 'Entry',
+                    type: 'Link',
+                    id: 'baz',
+                  },
+                },
+              },
+              content: [],
+            },
           ],
         },
       ],
     };
 
     it('ignores all links of different types', () => {
-      expect(getRichTextEntityLinks(document, BLOCKS.EMBEDDED_ENTRY)).toEqual({
+      expect(
+        getRichTextEntityLinks(document, BLOCKS.EMBEDDED_ENTRY, INLINES.EMBEDDED_ENTRY),
+      ).toEqual({
         Entry: [
           {
             linkType: 'Entry',
             type: 'Link',
             id: 'foo',
+          },
+          {
+            linkType: 'Entry',
+            type: 'Link',
+            id: 'baz',
           },
         ],
         Asset: [],

@@ -44,14 +44,13 @@ each published separately to npm.
 
 ### Local Development
 
-Run `npm install` to install all necessary dependencies.
+Run `yarn install` to install all necessary dependencies.
 
-As a post-install step, all Lerna dependencies are [hoisted](https://github.com/lerna/lerna/blob/master/doc/hoist.md),
+`yarn build` ensures all Lerna dependencies are [hoisted](https://github.com/lerna/lerna/blob/master/doc/hoist.md),
 and hence internally reliant packages (e.g., `rich-text-html-renderer`, which
 depends upon `rich-text-types`) will resolve their modules via symlink. In other
-words, `npm install` will _both_ install external dependencies for each project,
-_and_ ensure packages that pull in other packages in this repository as
-dependencies are linked to the local version (rather than whatever the state
+words, `yarn build` ensure packages that pull in other packages in this repository
+as dependencies are linked to the local version (rather than whatever the state
 of those packages is on npm).
 
 Each package is written in [TypeScript](https://www.typescriptlang.org/) and
