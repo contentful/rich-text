@@ -1,0 +1,52 @@
+name: Check
+
+on:
+  workflow_call:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Set SHAs for Nx affected commands
+        uses: nrwl/nx-set-shas@v5
+        with:
+          main-branch-name: master
+
+      - name: Restore build output
+        uses: actions/cache/restore@v4
+        with:
+          path: packages/*/dist
+          key: build-cache-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Lint affected projects
+        run: pnpm exec nx affected --target=lint --base=$NX_BASE --head=$NX_HEAD
+
+      - name: Check formatting on affected projects
+        run: pnpm exec nx affected --target=prettier:check --base=$NX_BASE --head=$NX_HEAD
+
+      - name: Test affected projects
+        run: pnpm exec nx affected --target=test --base=$NX_BASE --head=$NX_HEAD
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: reports
