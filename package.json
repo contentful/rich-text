@@ -58,7 +58,7 @@
     "eslint-plugin-you-dont-need-lodash-underscore": "6.14.0",
     "husky": "^9.0.11",
     "jest": "30.4.2",
-    "jest-junit": "16.0.0",
+    "jest-junit": "17.0.0",
     "lerna": "8.2.4",
     "lint-staged": "17.0.8",
     "prettier": "^3.2.5",
