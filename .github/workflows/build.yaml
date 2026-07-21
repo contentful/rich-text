@@ -28,7 +28,6 @@ jobs:
         uses: nrwl/nx-set-shas@v5
         with:
           main-branch-name: master
-          error-on-no-successful-workflow: true
 
       - name: Build affected projects
         run: pnpm exec nx affected --target=build --base=$NX_BASE --head=$NX_HEAD

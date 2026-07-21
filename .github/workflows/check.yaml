@@ -28,7 +28,6 @@ jobs:
         uses: nrwl/nx-set-shas@v5
         with:
           main-branch-name: master
-          error-on-no-successful-workflow: true
 
       - name: Restore build output
         uses: actions/cache/restore@v4
