@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-react-renderer",
-  "version": "16.2.1",
+  "version": "16.2.2",
   "main": "dist/rich-text-react-renderer.es5.js",
   "module": "dist/rich-text-react-renderer.esm.js",
   "typings": "dist/types/index.d.ts",
