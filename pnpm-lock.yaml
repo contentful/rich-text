@@ -214,11 +214,11 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.17)
       react:
-        specifier: ^19.2.3
-        version: 19.2.3
+        specifier: ^19.2.7
+        version: 19.2.8
       react-dom:
         specifier: ^19.2.3
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.8)
       ts-jest:
         specifier: ^29.4.6
         version: 29.4.6(@babel/core@7.28.5)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.28.5))(jest-util@30.4.1)(jest@30.4.2(@types/node@25.0.10)(ts-node@10.9.2(@swc/core@1.15.43)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
@@ -4682,8 +4682,8 @@ packages:
   react-is@19.2.7:
     resolution: {integrity: sha512-kZFnouyVv7eP/Phmrlo9FK+zcAdriZJvzxXHF1Sl1P377WSGe2G/JxVolhTrB/jeV47lKImhNUsijjHAAbcl/A==}
 
-  react@19.2.3:
-    resolution: {integrity: sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==}
+  react@19.2.8:
+    resolution: {integrity: sha512-PWaYA1L/q9u2u7xYQi+Y3L3Yfnie7XyLeaJICV1MGD6LprsBxcAqGjYyr0eY3p+QdsA+x/Irkt4Qif8D63+Sbw==}
     engines: {node: '>=0.10.0'}
 
   read@1.0.7:
@@ -10664,9 +10664,9 @@ snapshots:
 
   quick-lru@5.1.1: {}
 
-  react-dom@19.2.3(react@19.2.3):
+  react-dom@19.2.3(react@19.2.8):
     dependencies:
-      react: 19.2.3
+      react: 19.2.8
       scheduler: 0.27.0
 
   react-is@18.3.1: {}
@@ -10675,7 +10675,7 @@ snapshots:
 
   react-is@19.2.7: {}
 
-  react@19.2.3: {}
+  react@19.2.8: {}
 
   read@1.0.7:
     dependencies:
