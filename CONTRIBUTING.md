@@ -39,14 +39,14 @@ Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source
 
 ## Setup
 
-This project is a [Lerna](https://lernajs.io/) monorepo with several packages,
+This project is an npm/pnpm workspaces monorepo with several packages,
 each published separately to npm.
 
 ### Local Development
 
 Run `npm install` to install all necessary dependencies.
 
-As a post-install step, all Lerna dependencies are [hoisted](https://github.com/lerna/lerna/blob/master/doc/hoist.md),
+As a post-install step, workspace dependencies are hoisted,
 and hence internally reliant packages (e.g., `rich-text-html-renderer`, which
 depends upon `rich-text-types`) will resolve their modules via symlink. In other
 words, `npm install` will _both_ install external dependencies for each project,
@@ -99,11 +99,16 @@ above for some relevant npm commands.
 
 ## Publishing
 
-We use [Lerna](https://github.com/lerna/lerna) to:
+Publishing is fully automated via [Nx Release](https://nx.dev/features/manage-releases) in CI.
+On every merge to `master`, a GitHub Actions workflow:
 
-- keep dependencies in sync
-  - `lerna bootstrap --hoist` (which is run as a post-install step)
-- publish
-  - `NPM_CONFIG_OTP={2fa_otp_goes_here} yarn publish`
-  - As a community developer, you most likely won't have to worry about this
-    step :)
+- runs `nx release version` to compute the next version for each changed
+  package (based on conventional commits since its last release tag) and
+  pushes the corresponding `@contentful/<package>@<version>` git tag — no
+  commit is made to the repository, so `package.json` version fields on disk
+  are not kept in sync between releases
+- runs `nx release publish` to publish each newly-tagged package to npm and
+  create a GitHub Release with generated changelog notes
+
+As a community developer, you most likely won't have to worry about this
+step :)

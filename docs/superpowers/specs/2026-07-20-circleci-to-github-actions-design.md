@@ -1,5 +1,7 @@
 # CircleCI to GitHub Actions Migration — Design
 
+> **Superseded (2026-07-22):** the "stay on Lerna" decision recorded below (see "Prior art surveyed" and "Out of scope") no longer holds. An org-level ruleset now blocks direct pushes to `master`, which `lerna version` relied on — the release job's versioning mechanism was migrated to the tag-only `nx release` pattern instead. The rest of this document (build/check workflow design, Vault wiring) is still accurate.
+
 **Goal:** Replace `.circleci/config.yml` with equivalent GitHub Actions workflows, preserving the existing Lerna-based independent-versioning release flow. Single PR: add GH Actions workflows and remove CircleCI config/Vault wiring together.
 
 ## Context
