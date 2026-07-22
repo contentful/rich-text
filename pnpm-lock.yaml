@@ -134,7 +134,7 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0
       prompt:
-        specifier: ^1.0.0
+        specifier: ^1.3.0
         version: 1.3.0
       ts-jest:
         specifier: ^29.1.2
