@@ -56,15 +56,12 @@ jobs:
       - name: Build all projects
         run: pnpm nx run-many --all -t build --skip-nx-cache
 
-      - name: Version packages
+      - name: Version and tag packages
         env:
-          GH_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
-        run: |
-          git config user.name "contentful-automation[bot]"
-          git config user.email "contentful-automation[bot]@users.noreply.github.com"
-          pnpm lerna version --no-private --conventional-commits --create-release github --yes
+          GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
+        run: pnpm nx release version --yes
 
       - name: Publish packages
         env:
           GH_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
-        run: pnpm lerna publish from-git --yes
+        run: pnpm nx release publish --yes
