@@ -59,9 +59,9 @@ jobs:
       - name: Version and tag packages
         env:
           GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
-        run: pnpm nx release version --yes
+        run: pnpm nx release version
 
       - name: Publish packages
         env:
           GH_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
-        run: pnpm nx release publish --yes
+        run: pnpm nx release publish
