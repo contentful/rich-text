@@ -53,7 +53,7 @@
   "devDependencies": {
     "@faker-js/faker": "^10.0.0",
     "@types/lodash": "^4.17.24",
-    "ts-jest": "^29.1.2"
+    "ts-jest": "^29.4.11"
   },
   "bugs": {
     "url": "https://github.com/contentful/rich-text/issues"
