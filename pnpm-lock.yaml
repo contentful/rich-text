@@ -217,8 +217,8 @@ importers:
         specifier: ^19.2.7
         version: 19.2.8
       react-dom:
-        specifier: ^19.2.3
-        version: 19.2.3(react@19.2.8)
+        specifier: ^19.2.7
+        version: 19.2.8(react@19.2.8)
       ts-jest:
         specifier: ^29.4.6
         version: 29.4.6(@babel/core@7.28.5)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.28.5))(jest-util@30.4.1)(jest@30.4.2(@types/node@25.0.10)(ts-node@10.9.2(@swc/core@1.15.43)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
@@ -4668,10 +4668,10 @@ packages:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
 
-  react-dom@19.2.3:
-    resolution: {integrity: sha512-yELu4WmLPw5Mr/lmeEpox5rw3RETacE++JgHqQzd2dg+YbJuat3jH4ingc+WPZhxaoFzdv9y33G+F7Nl5O0GBg==}
+  react-dom@19.2.8:
+    resolution: {integrity: sha512-rVprimfGBG3DR+Tq0IQG2DT5PxKth1WIGDmj5yPmlzr4YBe7uyE+Du4oVqTDXZSHGGGXRtTJEGSSePyQCMBglQ==}
     peerDependencies:
-      react: ^19.2.3
+      react: ^19.2.8
 
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
@@ -10661,7 +10661,7 @@ snapshots:
 
   quick-lru@5.1.1: {}
 
-  react-dom@19.2.3(react@19.2.8):
+  react-dom@19.2.8(react@19.2.8):
     dependencies:
       react: 19.2.8
       scheduler: 0.27.0
