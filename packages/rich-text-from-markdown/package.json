@@ -51,7 +51,7 @@
     "unified": "^9.0.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^10.0.0",
+    "@faker-js/faker": "^10.5.0",
     "@types/lodash": "^4.17.24",
     "ts-jest": "^29.4.11"
   },
