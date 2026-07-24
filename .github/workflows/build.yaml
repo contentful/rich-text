@@ -33,7 +33,7 @@ jobs:
         run: pnpm exec nx affected --target=build --base=$NX_BASE --head=$NX_HEAD
 
       - name: Save build output
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: packages/*/dist
           key: build-cache-${{ github.run_id }}-${{ github.run_attempt }}
