@@ -1,6 +1,24 @@
-import { Block, Inline, Node, helpers, BLOCKS, Document } from '@contentful/rich-text-types';
+import { Block, Inline, Node, helpers, BLOCKS, Document, Text } from '@contentful/rich-text-types';
+
+export type CommonNode = Text | Block | Inline;
+
+export interface Next {
+  (nodes: CommonNode[]): string;
+}
+
+export interface NodeRenderer {
+  (node: Block | Inline, next: Next): string;
+}
+
+export interface RenderNode {
+  [k: string]: NodeRenderer;
+}
 
 export interface Options {
+  /**
+   * Custom node renderers for specific node types
+   */
+  renderNode?: RenderNode;
   /**
    * Strip empty trailing paragraph from the document
    */
@@ -98,24 +116,30 @@ export function documentToPlainTextString(
    * 'Yet another list item' - the non-semantic HR between the two nodes should
    * not denote an additional space.
    */
-  return (processedRootNode as Block).content.reduce(
-    (acc: string, node: Node, i: number): string => {
+  const { renderNode } = options;
+
+  const next: Next = (nodes: CommonNode[]) =>
+    nodes.reduce((acc: string, node: Node, i: number): string => {
       let nodeTextValue: string;
 
       if (helpers.isText(node)) {
         nodeTextValue = node.value;
       } else if (helpers.isBlock(node) || helpers.isInline(node)) {
-        nodeTextValue = documentToPlainTextString(node, blockDivisor, options);
+        if (renderNode && renderNode[node.nodeType]) {
+          nodeTextValue = renderNode[node.nodeType](node, next);
+        } else {
+          nodeTextValue = documentToPlainTextString(node, blockDivisor, options);
+        }
         if (!nodeTextValue.length) {
           return acc;
         }
       }
 
-      const nextNode = processedRootNode.content[i + 1];
+      const nextNode = nodes[i + 1];
       const isNextNodeBlock = nextNode && helpers.isBlock(nextNode);
       const divisor = isNextNodeBlock ? blockDivisor : '';
       return acc + nodeTextValue + divisor;
-    },
-    '',
-  );
+    }, '');
+
+  return next(processedRootNode.content as CommonNode[]);
 }
