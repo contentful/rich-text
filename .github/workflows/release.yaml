@@ -48,7 +48,7 @@ jobs:
           echo "//npm.pkg.github.com/:_authToken=${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}" >> ~/.npmrc
 
       - name: Restore build output
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: packages/*/dist
           key: build-cache-${{ github.run_id }}-${{ github.run_attempt }}
