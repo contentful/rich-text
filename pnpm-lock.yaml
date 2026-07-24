@@ -158,7 +158,7 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
       unified:
-        specifier: ^9.0.0
+        specifier: ^9.2.2
         version: 9.2.2
     devDependencies:
       '@faker-js/faker':
