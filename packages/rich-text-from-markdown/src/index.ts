@@ -31,7 +31,7 @@ const markdownNodeTypes = new Map<string, string>([
   ['listItem', BLOCKS.LIST_ITEM],
   ['table', BLOCKS.TABLE],
   ['tableRow', BLOCKS.TABLE_ROW],
-  ['tableCell', BLOCKS.TABLE_CELL],
+  ['tableCell', 'tableCell'],
 ]);
 
 const nodeTypeFor = (node: MarkdownNode) => {
@@ -100,7 +100,11 @@ const isInline = (nodeType: string) => {
 };
 
 const isTableCell = (nodeType: string) => {
-  return nodeType === BLOCKS.TABLE_CELL;
+  return nodeType === 'tableCell';
+};
+
+const isTable = (nodeType: string) => {
+  return nodeType === BLOCKS.TABLE;
 };
 
 const buildHyperlink = async (
@@ -136,10 +140,53 @@ const buildGenericBlockOrInline = async (
   ];
 };
 
+const buildTableRow = async (
+  node: MarkdownNode,
+  fallback: FallbackResolver,
+  appliedMarksTypes: string[],
+  isHeaderRow: boolean,
+): Promise<Array<Block>> => {
+  const cellNodes = await Promise.all(
+    (node.children || []).map((child) =>
+      buildTableCell(child, fallback, appliedMarksTypes, isHeaderRow),
+    ),
+  );
+  const content = _.flatten(cellNodes);
+
+  return [
+    {
+      nodeType: BLOCKS.TABLE_ROW,
+      content,
+      data: {},
+    } as Block,
+  ];
+};
+
+const buildTable = async (
+  node: MarkdownNode,
+  fallback: FallbackResolver,
+  appliedMarksTypes: string[],
+): Promise<Array<Block>> => {
+  const rows = node.children || [];
+  const tableRows = await Promise.all(
+    rows.map((row, index) => buildTableRow(row, fallback, appliedMarksTypes, index === 0)),
+  );
+  const content = _.flatten(tableRows);
+
+  return [
+    {
+      nodeType: BLOCKS.TABLE,
+      content,
+      data: {},
+    } as Block,
+  ];
+};
+
 const buildTableCell = async (
   node: MarkdownNode,
   fallback: FallbackResolver,
   appliedMarksTypes: string[],
+  isHeaderCell: boolean = false,
 ): Promise<Array<Block>> => {
   const nodeChildren = await mdToRichTextNodes(node.children, fallback, appliedMarksTypes);
 
@@ -181,9 +228,10 @@ const buildTableCell = async (
    * so we ended up receiving only `text` nodes.
    * We can't have table cells with text nodes directly, we must wrap text nodes inside paragraphs.
    */
+  const cellNodeType = isHeaderCell ? BLOCKS.TABLE_HEADER_CELL : BLOCKS.TABLE_CELL;
   return [
     {
-      nodeType: BLOCKS.TABLE_CELL,
+      nodeType: cellNodeType,
       content,
       data: {},
     } as Block,
@@ -246,6 +294,10 @@ async function mdToRichTextNode(
 
   if (isLink(node)) {
     return await buildHyperlink(node, fallback, appliedMarksTypes);
+  }
+
+  if (isTable(nodeType)) {
+    return await buildTable(node, fallback, appliedMarksTypes);
   }
 
   if (isTableCell(nodeType)) {
