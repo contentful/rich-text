@@ -149,7 +149,7 @@ importers:
         specifier: ^17.2.7
         version: link:../rich-text-types
       lodash:
-        specifier: ^4.17.11
+        specifier: ^4.18.1
         version: 4.18.1
       remark-gfm:
         specifier: ^1.0.0
