@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^10.5.0",
-    "@types/lodash": "^4.17.24",
+    "@types/lodash": "^4.17.25",
     "ts-jest": "^29.4.12"
   },
   "bugs": {
