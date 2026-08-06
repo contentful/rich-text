@@ -9,4 +9,5 @@ export enum MARKS {
   SUPERSCRIPT = 'superscript',
   SUBSCRIPT = 'subscript',
   STRIKETHROUGH = 'strikethrough',
+  EMPHASIS = 'emphasis',
 }
