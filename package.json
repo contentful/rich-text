@@ -41,7 +41,7 @@
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-swc": "0.4.1",
-    "@swc/core": "1.15.47",
+    "@swc/core": "1.16.0",
     "@swc/cli": "0.8.1",
     "@swc/jest": "0.2.39",
     "@types/jest": "30.0.0",
