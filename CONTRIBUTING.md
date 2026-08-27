@@ -14,101 +14,119 @@
   </a>
 </p>
 
-We appreciate any community contributions to this project, whether in the form
-of issues or pull requests.
+We appreciate any community contributions to this project, whether in the form of issues or pull requests.
 
-This document outlines what we'd like you to follow in terms of commit messages
-and code style.
+## 1. Prerequisites
 
-It also explains what to do if you want to set up the project locally and run
-tests.
+| Tool | Version | Notes |
+| --- | --- | --- |
+| Node.js | `>=24` (see `.nvmrc`, pinned to `v24`) | Use `nvm use` to switch. [`package.json` → `engines.node`, `.nvmrc`] |
+| pnpm | `10.33.0` | Pinned via the `packageManager` field; corepack will use this version automatically. [`package.json` → `packageManager`] |
 
-**Working on your first Pull Request?**
-You can learn how from this _free_ series: [How to Contribute to an Open Source
-Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
+## 2. Getting Started
 
-## Useful npm scripts
+```bash
+git clone https://github.com/contentful/rich-text.git
+cd rich-text
+pnpm install
+pnpm build
+pnpm test
+```
 
-- `yarn build` builds vendored files in the `dist` directory of each package
-- `yarn commit` runs git commits with [commitizen](http://commitizen.github.io/cz-cli/)
-- `yarn clean` removes any built files and `node_modules`
-- `yarn lint` runs our TypeScript linter on all `.ts` files in each package
-- `yarn test` runs unit tests for all packages
-- `yarn test:watch` runs unit tests in "watch" mode (will refresh relevant
-  code paths on save)
+`.npmrc` sets `ignore-scripts=true` and `shamefully-hoist=true` — the latter makes pnpm's `node_modules` layout match the flat/hoisted structure Nx expects. [`.npmrc`]
 
-## Setup
+## 3. Development Workflow
 
-This project is an npm/pnpm workspaces monorepo with several packages,
-each published separately to npm.
+This is an npm/pnpm workspaces monorepo (`packages/*`) orchestrated by Nx. Each package is written in TypeScript and built to `dist/` (CJS + ESM).
 
-### Local Development
+- Run a target for every package: `pnpm <script>` at the root (delegates to `nx run-many -t <target>`).
+- Run a target for one package only: `nx run <package-name>:<target>` (e.g. `nx run rich-text-html-renderer:test`), or `nx affected --target=<target>` to run only what changed relative to `master`. [`package.json` → `scripts`, `.github/workflows/check.yaml`]
+- If you change `rich-text-types` and are working on a dependent package (e.g. `rich-text-html-renderer`) in the same PR, run `pnpm build` first so the dependent picks up the built types/dist output.
 
-Run `npm install` to install all necessary dependencies.
+## 4. Commands
 
-As a post-install step, workspace dependencies are hoisted,
-and hence internally reliant packages (e.g., `rich-text-html-renderer`, which
-depends upon `rich-text-types`) will resolve their modules via symlink. In other
-words, `npm install` will _both_ install external dependencies for each project,
-_and_ ensure packages that pull in other packages in this repository as
-dependencies are linked to the local version (rather than whatever the state
-of those packages is on npm).
+**Development**
 
-Each package is written in [TypeScript](https://www.typescriptlang.org/) and
-compiled to ES5 using [rollup](https://rollupjs.org/guide/en) to the `dist`
-directory.
+| Command | Source |
+| --- | --- |
+| `pnpm start` | `package.json` → `scripts.start` (`nx run-many -t start`) |
+| `pnpm clean` | `package.json` → `scripts.clean` |
 
-This should generally only happen at publishing time, but you may want to run
-`yarn build` prematurely during local development.
+**Testing**
 
-For example, let's say you're working on a pull request that
+| Command | Source |
+| --- | --- |
+| `pnpm test` | `package.json` → `scripts.test` (`nx run-many -t test`) |
 
-1. adds support for a type in `rich-text-types`, and
-2. adds behavior to handle that type in `rich-text-html-renderer`.
+**Linting & Formatting**
 
-If changes in the latter are dependent upon changes in the former, you'll need
-to run `yarn build` to update the referenced vendored files in
-`rich-text-html-renderer`.
+| Command | Source |
+| --- | --- |
+| `pnpm lint` | `package.json` → `scripts.lint` (`eslint ./ --ext .ts,.tsx`) |
+| `pnpm prettier` | `package.json` → `scripts.prettier` — writes formatting in place |
+| `pnpm prettier:check` | `package.json` → `scripts.prettier:check` — check-only, used in CI |
 
-All necessary dependencies are installed under `node_modules` and any necessary
-tools can be accessed via npm scripts. There is no need to install anything
-globally.
+**Building**
 
-### Creating commits
+| Command | Source |
+| --- | --- |
+| `pnpm build` | `package.json` → `scripts.build` (`nx run-many -t build`) |
 
-We follow [Angular JS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153#allowed-type)
-to generate a changelog.
+## 5. Testing
 
-### Code style
+- **Framework:** Jest, via `@swc/jest` for TS/TSX transform. [`baseJestConfig.js`]
+- **Location:** `packages/<name>/src/__test__/*.test.ts(x)`, except `rich-text-types`, whose tests live in
+  `packages/rich-text-types/__test__/` (package-root-level, not under `src/`).
+- **Run all:** `pnpm test`.
+- **Run one package:** `nx run <package-name>:test`.
+- **Coverage:** enabled by default (`collectCoverage: true` in `baseJestConfig.js`); reporters write JUnit
+  XML to `../../reports/<package>-results.xml`, uploaded as a CI artifact. [`baseJestConfig.js`,
+  `.github/workflows/check.yaml`]
 
-This project uses [JavaScript Standard Style](https://standardjs.com/) and
-[Prettier](https://prettier.io/) conventions. Install a relevant editor plugin
-if you'd like. When in doubt, follow a style similar to the existing code :)
+## 6. Code Style & Conventions
 
-We use a common [rollup](https://rollupjs.org/guide/en) config to compile
-packages from TypeScript to ES5. We also use common [TypeScript](https://www.typescriptlang.org/)
-and [eslint](https://eslint.org/docs/v8.x/) configs. You'll notice
-the `rollup.config.js` and `tsconfig.json` in each package largely reference
-those files on a root level - this keeps code conventions consistent across the
-repository as a whole.
+- TypeScript, `strict: true` at the root (`strictNullChecks: false`); individual packages may override
+  (e.g. `rich-text-types` targets `ES2020`/`esnext` and enables `isolatedModules`). [`tsconfig.json`,
+  `packages/rich-text-types/tsconfig.json`]
+- ESLint: `eslint:recommended` + `plugin:react/recommended` + `plugin:react-hooks/recommended` +
+  `plugin:@typescript-eslint/recommended`, plus import-ordering via `eslint-plugin-import-helpers`.
+  [`.eslintrc.js`]
+- Prettier: single quotes, trailing commas everywhere. [`package.json` → `prettier`]
+- 2-space indent, LF line endings, 100-char line length (Markdown exempted from trailing-whitespace
+  trimming). [`.editorconfig`]
+- Pre-commit hook runs `lint-staged` (Prettier on staged `.js/.jsx/.ts/.tsx/.md/.mdx`). [`.husky/pre-commit`,
+  `package.json` → `lint-staged`]
 
-### Running tests
+## 7. Commit Convention
 
-We use [Jest](https://jestjs.io/) for unit tests. See **Useful npm scripts**
-above for some relevant npm commands.
+Commit messages are linted by `commitlint` against `@commitlint/config-conventional` (standard Conventional
+Commits: `feat:`, `fix:`, `chore:`, etc.). [`commitlint.config.js`]
 
-## Publishing
+## 8. Branch Strategy & Release Process
 
-Publishing is fully automated via [Nx Release](https://nx.dev/features/manage-releases) in CI.
-On every merge to `master`, a GitHub Actions workflow:
+- `master` is the release branch; CI runs on every push/PR to any branch. [`.github/workflows/ci.yml`]
+- Publishing is fully automated via Nx Release in CI. On every merge to `master`:
+  - `nx release version` computes each changed package's next semver from Conventional Commits since its last tag and pushes a `@contentful/<package>@<version>` git tag — **it does not commit a version bump to the repository**, so `package.json` version fields on disk are not kept in sync between releases.
+  - `nx release publish` publishes each newly-tagged package to npm and creates a GitHub Release with generated notes.
+  - Nx Release's default Conventional Commits mapping gives `chore`/`build` commits `semverBump: "none"` — unlike the old Lerna setup, a `chore(deps)` PR alone will not trigger a package release; only `feat`/`fix`/breaking-change commits do.
+  - Per-package `CHANGELOG.md` files are frozen at their last Lerna-generated state and are **not** updated by CI going forward; current release notes appear on the GitHub Releases page instead.
 
-- runs `nx release version` to compute the next version for each changed
-  package (based on conventional commits since its last release tag) and
-  pushes the corresponding `@contentful/<package>@<version>` git tag — no
-  commit is made to the repository, so `package.json` version fields on disk
-  are not kept in sync between releases
-- runs `nx release publish` to publish each newly-tagged package to npm and
-  create a GitHub Release with generated changelog notes
+## 9. Pull Requests
 
-As a community developer, you most likely won't have to worry about this
-step :)
+- Semantic PR title/commit enforcement is configured via `.github/semantic.yml` (allowed types: `feat`, `fix`, `improvement`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`; merge commits are not allowed). [`.github/semantic.yml`]
+- Working on your first PR? See [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+
+## 10. CI/CD
+
+| Job | Trigger | What it does |
+| --- | --- | --- |
+| `build` | every push/PR (any branch) | `nx affected --target=build`; caches `packages/*/dist` for later jobs. [`.github/workflows/build.yaml`] |
+| `check` | after `build` | `nx affected` for `lint`, `prettier:check`, `test`; uploads JUnit reports. [`.github/workflows/check.yaml`] |
+| `release` | push to `master`, after `build` + `check` | Pulls Vault secrets, builds all projects, runs `nx release version` + `nx release publish`. [`.github/workflows/release.yaml`] |
+
+## 11. File-Level Guidance
+
+| Path | Why restricted |
+| --- | --- |
+| `packages/*/dist/` | Build output, regenerated by `prebuild`/`build`; do not hand-edit. |
+| `packages/rich-text-types/scripts/fix-esm-import-extensions.mjs` | Part of the `rich-text-types` build pipeline (rewrites relative `.js` specifiers to `.mjs` in built ESM output) — do not run standalone against source. |
