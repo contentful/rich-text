@@ -110,7 +110,6 @@ No runtime environment variables — these are libraries, not services. Build/pu
 
 `.contentful/compressed-size.yml` declares a bundle-size-tracking config (gzip, `packages/*/{dist,build}`),
 but the CI job that consumed it was dropped when CI migrated from CircleCI to GitHub Actions — the migration commit explicitly notes "Drops the compressed-size job (no GH Actions equivalent exists org-wide) — flagged as a follow-up." `[POSSIBLY DEAD CONFIG — declared but no active CI step consumes it as of this run]`
-[`140b093` — `chore(ci): migrate from CircleCI to GitHub Actions`]
 
 ## 8. Operational Knowledge
 
