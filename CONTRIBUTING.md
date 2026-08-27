@@ -33,20 +33,15 @@ pnpm build
 pnpm test
 ```
 
-`.npmrc` sets `ignore-scripts=true` and `shamefully-hoist=true` — the latter makes pnpm's `node_modules`
-layout match the flat/hoisted structure Nx expects. [`.npmrc`]
+`.npmrc` sets `ignore-scripts=true` and `shamefully-hoist=true` — the latter makes pnpm's `node_modules` layout match the flat/hoisted structure Nx expects. [`.npmrc`]
 
 ## 3. Development Workflow
 
-This is an npm/pnpm workspaces monorepo (`packages/*`) orchestrated by Nx. Each package is written in
-TypeScript and built to `dist/` (CJS + ESM).
+This is an npm/pnpm workspaces monorepo (`packages/*`) orchestrated by Nx. Each package is written in TypeScript and built to `dist/` (CJS + ESM).
 
 - Run a target for every package: `pnpm <script>` at the root (delegates to `nx run-many -t <target>`).
-- Run a target for one package only: `nx run <package-name>:<target>` (e.g.
-  `nx run rich-text-html-renderer:test`), or `nx affected --target=<target>` to run only what changed
-  relative to `master`. [`package.json` → `scripts`, `.github/workflows/check.yaml`]
-- If you change `rich-text-types` and are working on a dependent package (e.g. `rich-text-html-renderer`)
-  in the same PR, run `pnpm build` first so the dependent picks up the built types/dist output.
+- Run a target for one package only: `nx run <package-name>:<target>` (e.g. `nx run rich-text-html-renderer:test`), or `nx affected --target=<target>` to run only what changed relative to `master`. [`package.json` → `scripts`, `.github/workflows/check.yaml`]
+- If you change `rich-text-types` and are working on a dependent package (e.g. `rich-text-html-renderer`) in the same PR, run `pnpm build` first so the dependent picks up the built types/dist output.
 
 ## 4. Commands
 
@@ -111,24 +106,15 @@ Commits: `feat:`, `fix:`, `chore:`, etc.). [`commitlint.config.js`]
 
 - `master` is the release branch; CI runs on every push/PR to any branch. [`.github/workflows/ci.yml`]
 - Publishing is fully automated via Nx Release in CI. On every merge to `master`:
-  - `nx release version` computes each changed package's next semver from Conventional Commits since its
-    last tag and pushes a `@contentful/<package>@<version>` git tag — **it does not commit a version bump
-    to the repository**, so `package.json` version fields on disk are not kept in sync between releases.
-  - `nx release publish` publishes each newly-tagged package to npm and creates a GitHub Release with
-    generated notes.
-  - Nx Release's default Conventional Commits mapping gives `chore`/`build` commits `semverBump: "none"` —
-    unlike the old Lerna setup, a `chore(deps)` PR alone will not trigger a package release; only
-    `feat`/`fix`/breaking-change commits do.
-  - Per-package `CHANGELOG.md` files are frozen at their last Lerna-generated state and are **not** updated
-    by CI going forward; current release notes appear on the GitHub Releases page instead.
+  - `nx release version` computes each changed package's next semver from Conventional Commits since its last tag and pushes a `@contentful/<package>@<version>` git tag — **it does not commit a version bump to the repository**, so `package.json` version fields on disk are not kept in sync between releases.
+  - `nx release publish` publishes each newly-tagged package to npm and creates a GitHub Release with generated notes.
+  - Nx Release's default Conventional Commits mapping gives `chore`/`build` commits `semverBump: "none"` — unlike the old Lerna setup, a `chore(deps)` PR alone will not trigger a package release; only `feat`/`fix`/breaking-change commits do.
+  - Per-package `CHANGELOG.md` files are frozen at their last Lerna-generated state and are **not** updated by CI going forward; current release notes appear on the GitHub Releases page instead.
 
 ## 9. Pull Requests
 
-- Semantic PR title/commit enforcement is configured via `.github/semantic.yml` (allowed types: `feat`,
-  `fix`, `improvement`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`; merge
-  commits are not allowed). [`.github/semantic.yml`]
-- Working on your first PR? See
-  [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+- Semantic PR title/commit enforcement is configured via `.github/semantic.yml` (allowed types: `feat`, `fix`, `improvement`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`; merge commits are not allowed). [`.github/semantic.yml`]
+- Working on your first PR? See [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 
 ## 10. CI/CD
 
