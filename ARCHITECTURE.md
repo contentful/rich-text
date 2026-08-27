@@ -2,33 +2,15 @@
 
 ## 1. Overview
 
-`rich-text` is a pnpm/Nx monorepo of seven independently-versioned TypeScript
-packages that define, validate, convert, and render Contentful's Rich Text
-document format. Contentful's Rich Text field is stored and delivered as a
-JSON node tree (not HTML); this repo owns the canonical type definitions for
-that tree and the tools consumers use to turn it into HTML, React, plain
-text, or a link list, plus tools to build a tree from markdown or a Slate.js
-editor document. [`package.json`, `README.md`, `catalog-info.yaml`]
-
-There is no server, database, or network call anywhere in this repo — every
-package is a synchronous, in-memory data-transformation library
-(`[Source: no matches for process.env / SNS / SQS / DynamoDB / S3Client / axios / fetch( across packages/*/src]`).
+`rich-text` is a pnpm/Nx monorepo of seven independently-versioned TypeScript packages that define, validate, convert, and render Contentful's Rich Text document format. Contentful's Rich Text field is stored and delivered as a JSON node tree (not HTML); this repo owns the canonical type definitions for that tree and the tools consumers use to turn it into HTML, React, plain text, or a link list, plus tools to build a tree from markdown or a Slate.js editor document. [`package.json`, `README.md`, `catalog-info.yaml`]
 
 ## 2. System Context
 
-This repo has no runtime dependents *within* this repo — it is consumed by
-external applications and packages that need to read or produce Contentful
-Rich Text content. Confirmed public consumers (verified by reading their
-`package.json`/README, not exhaustive):
+This repo has no runtime dependents *within* this repo — it is consumed by external applications and packages that need to read or produce Contentful Rich Text content. Confirmed public consumers (verified by reading their `package.json`/README, not exhaustive):
 
 - [`contentful.js`](https://github.com/contentful/contentful.js) — Contentful's official JavaScript SDK — depends directly on `@contentful/rich-text-types`.
 - [`field-editors`](https://github.com/contentful/field-editors) `packages/rich-text` (`@contentful/field-editor-rich-text`) — "the React `RichTextEditor` component that is used as the default for RichText field type in the Contentful web application," per that package's README.
 - Third-party integrations such as [`marketplace-partner-apps`](https://github.com/contentful/marketplace-partner-apps) depend on `@contentful/rich-text-html-renderer`.
-
-A complete consumer list cannot be determined from this repo alone —
-`field-editors` and other Contentful web-app code may depend on
-`contentful-slatejs-adapter`/`rich-text-types` in ways not visible from a
-package.json dependency scan alone `[NEEDS TEAM INPUT]`.
 
 ```mermaid
 graph TD
@@ -52,10 +34,7 @@ graph TD
     Links --> LinksOut["Entry / Asset / ResourceLink list"]
 ```
 
-`[INFERRED]` — this diagram is built from `import`/`dependencies` statements
-found in each package's `src/index.ts` and `package.json` (Backstage was
-unavailable for this discovery run, so there is no declared-topology source
-to cross-check against — `[NEEDS BACKSTAGE DATA]`).
+This diagram is built from `import`/`dependencies` statements found in each package's `src/index.ts` and `package.json`.
 
 ## 3. Internal Structure
 
@@ -110,24 +89,13 @@ to cross-check against — `[NEEDS BACKSTAGE DATA]`).
 - **Link vs. ResourceLink** — two distinct reference shapes. `Link` (`sys.type: 'Link'`, `sys.id`, `sys.linkType: 'Entry'|'Asset'`) is the original same-space reference. `ResourceLink` (`sys.type: 'ResourceLink'`, `sys.urn`) is a newer shape used for cross-space entity references. Consumers must branch on `sys.type`, not assume one shape. [`packages/rich-text-types/src/types.ts`]
 - **`V1_NODE_TYPES` / `V1_MARKS`** — the node/mark set that existed "before tables release" / "before superscript & subscript release." These are historical markers in the type package, not a runtime-enforced version gate — nothing in this repo reads them to reject newer node types at runtime `[INFERRED]`. [`packages/rich-text-types/src/schemaConstraints.ts`]
 
-This section documents the four structural node *kinds* and the cross-cutting invariants; the full
-enumeration of concrete node-type interfaces (`Heading1`–`Heading6`, `Paragraph`, `Quote`, `Hr`,
-`OrderedList`/`UnorderedList`/`ListItem`, `Table`/`TableRow`/`TableCell`/`TableHeaderCell`,
-`EntryLinkBlock`/`AssetLinkBlock`/`ResourceLinkBlock`, `Hyperlink` and its `Entry`/`Asset`/`Resource`
-variants — 20+ interfaces total) lives in `packages/rich-text-types/src/nodeTypes.ts`, `blocks.ts`, and
-`inlines.ts` and is not repeated here node-by-node.
+This section documents the four structural node *kinds* and the cross-cutting invariants; the full enumeration of concrete node-type interfaces (`Heading1`–`Heading6`, `Paragraph`, `Quote`, `Hr`, `OrderedList`/`UnorderedList`/`ListItem`, `Table`/`TableRow`/`TableCell`/`TableHeaderCell`, `EntryLinkBlock`/`AssetLinkBlock`/`ResourceLinkBlock`, `Hyperlink` and its `Entry`/`Asset`/`Resource` variants — 20+ interfaces total) lives in `packages/rich-text-types/src/nodeTypes.ts`, `blocks.ts`, and `inlines.ts` and is not repeated here node-by-node.
 
 ## 6. Key Dependencies
 
-None. No external service, datastore, queue, or HTTP client is imported anywhere in `packages/*/src`
-(`[Source: grep -rniE "SNS|SQS|DynamoDB|S3Client|axios|fetch\(" packages/*/src` returned zero matches,
-and `grep -rn "process\.env" packages/*/src` returned zero matches`]`). The only non-`rich-text-types`
-runtime dependencies are markdown-parsing libraries (`remark-parse`, `remark-gfm`, `unified`) and `lodash`,
-used exclusively by `rich-text-from-markdown`. [`packages/rich-text-from-markdown/package.json`]
+None. No external service, datastore, queue, or HTTP client is imported anywhere in `packages/*/src` (`[Source: grep -rniE "SNS|SQS|DynamoDB|S3Client|axios|fetch\(" packages/*/src` returned zero matches, and `grep -rn "process\.env" packages/*/src` returned zero matches`]`). The only non-`rich-text-types` runtime dependencies are markdown-parsing libraries (`remark-parse`, `remark-gfm`, `unified`) and `lodash`, used exclusively by `rich-text-from-markdown`. [`packages/rich-text-from-markdown/package.json`]
 
-If this is unavailable (e.g. a downstream package fails to resolve `@contentful/rich-text-types`), every
-renderer/converter package fails to build or import — there is no graceful-degradation path, since it is
-a compile-time/import-time dependency, not a runtime call.
+If this is unavailable (e.g. a downstream package fails to resolve `@contentful/rich-text-types`), every renderer/converter package fails to build or import — there is no graceful-degradation path, since it is a compile-time/import-time dependency, not a runtime call.
 
 ## 7. Configuration
 
@@ -141,26 +109,10 @@ No runtime environment variables — these are libraries, not services. Build/pu
 | `.contentful/vault-secrets.yaml` | Vault policies available to the `release` GitHub Actions job (`github-comment`, `semantic-release`, `packages-read`) | n/a |
 
 `.contentful/compressed-size.yml` declares a bundle-size-tracking config (gzip, `packages/*/{dist,build}`),
-but the CI job that consumed it was dropped when CI migrated from CircleCI to GitHub Actions — the migration
-commit explicitly notes "Drops the compressed-size job (no GH Actions equivalent exists org-wide) — flagged
-as a follow-up." `[POSSIBLY DEAD CONFIG — declared but no active CI step consumes it as of this run]`
+but the CI job that consumed it was dropped when CI migrated from CircleCI to GitHub Actions — the migration commit explicitly notes "Drops the compressed-size job (no GH Actions equivalent exists org-wide) — flagged as a follow-up." `[POSSIBLY DEAD CONFIG — declared but no active CI step consumes it as of this run]`
 [`140b093` — `chore(ci): migrate from CircleCI to GitHub Actions`]
 
 ## 8. Operational Knowledge
 
 **Deployment (release):** On every push to `master`, GitHub Actions runs `build` → `check` → `release`.
-The `release` job runs `nx release version` (computes each changed package's next semver from conventional
-commits since its last tag and pushes a `@contentful/<package>@<version>` git tag — it does not commit to
-the working tree), then `nx release publish` (publishes each newly-tagged package to npm and creates a
-GitHub Release). [`.github/workflows/ci.yml`, `.github/workflows/release.yaml`, `CONTRIBUTING.md`]
-
-**Rollback:** `[NEEDS TEAM INPUT]` — no rollback procedure is documented or evidenced in CI config. Reverting
-likely means publishing a new patch version from a revert commit, but this is not confirmed.
-
-**Failure Modes:** `[NEEDS TEAM INPUT]` — no error-tracking or monitoring SDK is present in this repo. As a
-published library, failures surface as consumer-side bugs/regressions, typically reported via GitHub issues.
-
-**Monitoring:** N/A in-repo — no dashboards or alerts are configured in this repository.
-`[NEEDS BACKSTAGE DATA]` for any org-level SLOs (Backstage was unavailable for this discovery run).
-
-**Incident Playbook:** `[NEEDS TEAM INPUT]`
+The `release` job runs `nx release version` (computes each changed package's next semver from conventional commits since its last tag and pushes a `@contentful/<package>@<version>` git tag — it does not commit to the working tree), then `nx release publish` (publishes each newly-tagged package to npm and creates a GitHub Release). [`.github/workflows/ci.yml`, `.github/workflows/release.yaml`, `CONTRIBUTING.md`]
