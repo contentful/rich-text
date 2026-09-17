@@ -4,12 +4,12 @@
   "description": "",
   "keywords": [],
   "main": "dist/contentful-slatejs-adapter.es5.js",
-  "module": "dist/contentful-slatejs-adapter.esm.js",
+  "module": "dist/contentful-slatejs-adapter.esm.mjs",
   "typings": "dist/types/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/contentful-slatejs-adapter.esm.js",
+      "import": "./dist/contentful-slatejs-adapter.esm.mjs",
       "require": "./dist/contentful-slatejs-adapter.es5.js",
       "default": "./dist/contentful-slatejs-adapter.es5.js"
     },
