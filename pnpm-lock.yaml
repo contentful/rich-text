@@ -91,7 +91,7 @@ importers:
         specifier: 23.0.2
         version: 23.0.2(@swc/core@1.16.2)
       prettier:
-        specifier: ^3.9.7
+        specifier: ^3.9.8
         version: 3.9.8
       rimraf:
         specifier: 6.1.3
