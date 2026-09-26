@@ -140,8 +140,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0
       ts-jest:
-        specifier: ^29.4.12
-        version: 29.4.12(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
+        specifier: ^29.4.13
+        version: 29.4.14(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
 
   packages/rich-text-from-markdown:
     dependencies:
@@ -168,8 +168,8 @@ importers:
         specifier: ^4.17.25
         version: 4.17.25
       ts-jest:
-        specifier: ^29.4.12
-        version: 29.4.12(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
+        specifier: ^29.4.13
+        version: 29.4.14(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
 
   packages/rich-text-html-renderer:
     dependencies:
@@ -178,8 +178,8 @@ importers:
         version: link:../rich-text-types
     devDependencies:
       ts-jest:
-        specifier: ^29.4.12
-        version: 29.4.12(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
+        specifier: ^29.4.13
+        version: 29.4.14(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
 
   packages/rich-text-links:
     dependencies:
@@ -188,8 +188,8 @@ importers:
         version: link:../rich-text-types
     devDependencies:
       ts-jest:
-        specifier: ^29.4.12
-        version: 29.4.12(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
+        specifier: ^29.4.13
+        version: 29.4.14(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
 
   packages/rich-text-plain-text-renderer:
     dependencies:
@@ -198,8 +198,8 @@ importers:
         version: link:../rich-text-types
     devDependencies:
       ts-jest:
-        specifier: ^29.4.12
-        version: 29.4.12(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
+        specifier: ^29.4.13
+        version: 29.4.14(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
 
   packages/rich-text-react-renderer:
     dependencies:
@@ -220,8 +220,8 @@ importers:
         specifier: ^19.3.0
         version: 19.3.0(react@19.3.0)
       ts-jest:
-        specifier: ^29.4.12
-        version: 29.4.12(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
+        specifier: ^29.4.13
+        version: 29.4.14(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
 
   packages/rich-text-types:
     devDependencies:
@@ -232,8 +232,8 @@ importers:
         specifier: ^25.0.2
         version: 25.0.10
       ts-jest:
-        specifier: ^29.4.12
-        version: 29.4.12(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
+        specifier: ^29.4.13
+        version: 29.4.14(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3)
 
 packages:
 
@@ -5050,12 +5050,12 @@ packages:
     peerDependencies:
       typescript: '>=4.8.4'
 
-  ts-jest@29.4.12:
-    resolution: {integrity: sha512-Ov6ClY53Fflh6BGAnY2DlTq1hYDrTycz2PVTXBWFW2CU+9zrEqAp9fWdGXl42EXO5RLSFAcAZ2JFKbP+zBTFfw==}
+  ts-jest@29.4.14:
+    resolution: {integrity: sha512-+943G6wCX5E3VpzTQhBGBFntCmdT+QAkTvUlp03edTONFBvqskuXPhpyX16xdUotO4P5HQKyppldSWjocoltLQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
-      '@babel/core': '>=7.0.0-beta.0 <8'
+      '@babel/core': '>=7.0.0-beta.0 <9'
       '@jest/transform': ^29.0.0 || ^30.0.0
       '@jest/types': ^29.0.0 || ^30.0.0
       babel-jest: ^29.0.0 || ^30.0.0
@@ -11064,7 +11064,7 @@ snapshots:
     dependencies:
       typescript: 5.9.3
 
-  ts-jest@29.4.12(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3):
+  ts-jest@29.4.14(@babel/core@7.28.5)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.28.5))(jest-util@30.5.1)(jest@30.5.2(@types/node@25.0.10)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.16.2)(@types/node@25.0.10)(typescript@5.9.3)))(typescript@5.9.3):
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
