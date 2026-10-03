@@ -12,7 +12,7 @@ export default (outputFile, overrides = {}) => ({
       sourcemap: true,
     },
     {
-      file: outputFile.replace(/\.es5\.js$/, '.esm.js'),
+      file: outputFile.replace(/\.es5\.js$/, '.esm.mjs'),
       format: 'es',
       sourcemap: true,
     },
