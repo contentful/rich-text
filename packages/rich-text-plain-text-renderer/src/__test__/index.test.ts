@@ -1,6 +1,6 @@
 import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
 
-import { documentToPlainTextString } from '../index';
+import { documentToPlainTextString, Options } from '../index';
 
 describe('documentToPlainTextString', () => {
   it('returns empty string when given an empty document', () => {
@@ -415,5 +415,147 @@ describe('stripEmptyTrailingParagraph', () => {
 
     const result = documentToPlainTextString(document, ' ', options);
     expect(result).toEqual('Hello world ');
+  });
+});
+
+describe('custom renderNode', () => {
+  it('allows custom rendering of hyperlinks with uri', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'Check out ',
+              marks: [],
+              data: {},
+            },
+            {
+              nodeType: INLINES.HYPERLINK,
+              content: [
+                {
+                  nodeType: 'text',
+                  value: 'this link',
+                  marks: [],
+                  data: {},
+                },
+              ],
+              data: {
+                uri: 'https://example.com',
+              },
+            },
+            {
+              nodeType: 'text',
+              value: ' for more info.',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    const options: Options = {
+      renderNode: {
+        [INLINES.HYPERLINK]: (node, next) => `${next(node.content)}: ${node.data.uri}`,
+      },
+    };
+
+    const result = documentToPlainTextString(document, ' ', options);
+    expect(result).toEqual('Check out this link: https://example.com for more info.');
+  });
+
+  it('allows custom rendering of block nodes', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'Normal text',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+        {
+          nodeType: BLOCKS.QUOTE,
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.PARAGRAPH,
+              data: {},
+              content: [
+                {
+                  nodeType: 'text',
+                  value: 'Quoted text',
+                  marks: [],
+                  data: {},
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+
+    const options: Options = {
+      renderNode: {
+        [BLOCKS.QUOTE]: (node, next) => `> ${next(node.content)}`,
+      },
+    };
+
+    const result = documentToPlainTextString(document, '\n', options);
+    expect(result).toEqual('Normal text\n> Quoted text');
+  });
+
+  it('uses default rendering for nodes without custom renderer', () => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'First paragraph',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+        {
+          nodeType: BLOCKS.HEADING_1,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'A heading',
+              marks: [],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    const options: Options = {
+      renderNode: {
+        [BLOCKS.HEADING_1]: (node, next) => `# ${next(node.content)}`,
+      },
+    };
+
+    const result = documentToPlainTextString(document, ' ', options);
+    expect(result).toEqual('First paragraph # A heading');
   });
 });
