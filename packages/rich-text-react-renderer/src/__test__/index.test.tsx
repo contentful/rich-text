@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 import { BLOCKS, Document, INLINES, MARKS, ResourceLink } from '@contentful/rich-text-types';
 
@@ -485,6 +486,39 @@ describe('preserveWhitespace', () => {
       ],
     };
     expect(documentToReactComponents(document, options)).toMatchSnapshot();
+  });
+
+  it('renders new lines without missing key warnings', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.PARAGRAPH,
+          data: {},
+          content: [
+            {
+              nodeType: 'text',
+              value: 'hello\nworld',
+              marks: [{ type: MARKS.BOLD }],
+              data: {},
+            },
+          ],
+        },
+      ],
+    };
+
+    try {
+      const html = renderToStaticMarkup(
+        <>{documentToReactComponents(document, { preserveWhitespace: true })}</>,
+      );
+
+      expect(html).toBe('<p><b>hello<br/>world</b></p>');
+      expect(consoleError).not.toHaveBeenCalled();
+    } finally {
+      consoleError.mockRestore();
+    }
   });
 });
 
