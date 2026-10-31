@@ -30,7 +30,7 @@ export function nodeToReactComponent(node: CommonNode, options: Options): ReactN
       lines.forEach((line, index) => {
         jsxLines.push(line);
         if (index !== lines.length - 1) {
-          jsxLines.push(<br />);
+          jsxLines.push(<br key={index} />);
         }
       });
       nodeValue = jsxLines;
