@@ -62,7 +62,7 @@
     "lint-staged": "17.6.0",
     "nx": "23.3.0",
     "prettier": "^3.9.10",
-    "rimraf": "6.1.3",
+    "rimraf": "6.1.4",
     "rollup": "^4.67.4",
     "rollup-plugin-json": "^4.0.0",
     "typescript": "5.9.3"
