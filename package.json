@@ -64,7 +64,7 @@
     "prettier": "^3.10.1",
     "rimraf": "6.1.4",
     "rollup": "^4.68.2",
-    "rollup-plugin-json": "^4.0.0",
+    "@rollup/plugin-json": "^4.0.0",
     "typescript": "5.9.3"
   },
   "packageManager": "pnpm@10.34.9",
