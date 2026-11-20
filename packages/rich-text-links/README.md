@@ -1,6 +1,6 @@
 # rich-text-links
 
-Entity (entry and asset) link extraction utilities for the Contentful rich text
+Entity (entry and asset) link and ResourceLink extraction utilities for the Contentful rich text
 field type.
 
 ## Installation
@@ -20,7 +20,7 @@ yarn add @contentful/rich-text-links
 ## Usage
 
 ```javascript
-import { getRichTextEntityLinks } from '@contentful/rich-text-links';
+import { getRichTextEntityLinks, getRichTextResourceLinks } from '@contentful/rich-text-links';
 
 const document = {
   nodeType: 'document',
@@ -56,6 +56,19 @@ const document = {
           },
           content: [],
         },
+        {
+          nodeType: 'embedded-resource-block',
+          data: {
+            target: {
+              sys: {
+                linkType: 'Contentful:Entry',
+                type: 'ResourceLink',
+                urn: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/entries/9mpxT4zsRi6Iwukey8KeM',
+              },
+            },
+          },
+          content: [],
+        },
       ],
     },
   ],
@@ -72,5 +85,17 @@ getRichTextEntityLinks(document);
  *     { linkType: 'Asset', type: 'Link', id: 'jNhaW0aSc6Hu74SHVMtq' }
  *   ]
  * }
+ */
+
+getRichTextResourceLinks(document, 'embedded-resource-block');
+/**
+ * ->
+ * [
+ *   {
+ *     linkType: 'Contentful:Entry',
+ *     type: 'ResourceLink',
+ *     id: 'crn:contentful:::content:spaces/6fqi4ljzyr0e/entries/9mpxT4zsRi6Iwukey8KeM'
+ *   }
+ * ]
  */
 ```
