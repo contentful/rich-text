@@ -16,6 +16,7 @@ import {
   quoteDoc,
   ulDoc,
   tableWithHeaderDoc,
+  tableWithSpansDoc,
   embeddedResourceDoc,
 } from './documents';
 import inlineEntity from './documents/inline-entity';
@@ -266,6 +267,40 @@ describe('documentToHtmlString', () => {
       '</table>';
 
     expect(documentToHtmlString(tableWithHeaderDoc)).toEqual(expected);
+  });
+
+  it('renders colspan and rowspan on table cells and header cells', () => {
+    const expected =
+      '<table>' +
+      '<tr><th colspan="2"><p>H 1</p></th><th rowspan="2"><p>H 2</p></th></tr>' +
+      '<tr><th><p>H 3</p></th><th><p>H 4</p></th></tr>' +
+      '<tr><td rowspan="2"><p>A</p></td><td colspan="2"><p>B</p></td></tr>' +
+      '<tr><td><p>C</p></td><td><p>D</p></td></tr>' +
+      '<tr><td colspan="2" rowspan="2"><p>E</p></td><td><p>F</p></td></tr>' +
+      '<tr><td><p>G</p></td></tr>' +
+      '</table>';
+
+    expect(documentToHtmlString(tableWithSpansDoc)).toEqual(expected);
+  });
+
+  it.each([
+    ['an attribute-breaking string', '2" onclick="x'],
+    ['a numeric string', '2'],
+    ['zero', 0],
+    ['a negative number', -1],
+    ['a non-integer', 1.5],
+    ['NaN', NaN],
+    ['Infinity', Infinity],
+    ['null', null],
+    ['an object', { toString: () => '2" onclick="x' }],
+  ])('does not emit colspan or rowspan when the value is %s', (_, value) => {
+    const document: Document = cloneDeep(tableDoc);
+    const row = document.content[0].content[0] as Block;
+    (row.content[0] as Block).data = { colspan: value, rowspan: value };
+    (row.content[1] as Block).data = { colspan: value };
+
+    expect(documentToHtmlString(document)).toEqual(documentToHtmlString(tableDoc));
+    expect(documentToHtmlString(document)).not.toMatch(/colspan|rowspan|onclick/);
   });
 
   it('does not crash with inline elements (e.g. hyperlink)', () => {
