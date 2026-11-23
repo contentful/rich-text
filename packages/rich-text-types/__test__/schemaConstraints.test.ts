@@ -23,4 +23,14 @@ describe('schema constraints', () => {
     expect(tableCellChildren).toContain(BLOCKS.UL_LIST);
     expect(tableCellChildren).toContain(BLOCKS.OL_LIST);
   });
+
+  it('should allow EMBEDDED_ASSET blocks as children of TABLE_CELL only', () => {
+    expect(CONTAINERS[BLOCKS.TABLE_CELL]).toContain(BLOCKS.EMBEDDED_ASSET);
+    expect(CONTAINERS[BLOCKS.TABLE_HEADER_CELL]).toEqual([BLOCKS.PARAGRAPH]);
+  });
+
+  it('should not allow other embedded blocks as children of TABLE_CELL', () => {
+    expect(CONTAINERS[BLOCKS.TABLE_CELL]).not.toContain(BLOCKS.EMBEDDED_ENTRY);
+    expect(CONTAINERS[BLOCKS.TABLE_CELL]).not.toContain(BLOCKS.EMBEDDED_RESOURCE);
+  });
 });

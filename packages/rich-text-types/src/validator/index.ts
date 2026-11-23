@@ -21,21 +21,22 @@ const assertInlineOrText = assert([...Object.values(INLINES), 'text'].sort());
 
 const assertList = assert([BLOCKS.LIST_ITEM]);
 const assertVoidEntryLink = assertLink('Entry', VOID_CONTENT);
-const assertTableCell = assert(
-  () => ({
-    nodeTypes: [BLOCKS.PARAGRAPH],
-    min: 1,
-  }),
-  (data, path) => {
-    const $ = new ObjectAssertion(data, path);
+const assertTableCell = (nodeTypes: string[]) =>
+  assert(
+    () => ({
+      nodeTypes,
+      min: 1,
+    }),
+    (data, path) => {
+      const $ = new ObjectAssertion(data, path);
 
-    $.noAdditionalProperties(['colspan', 'rowspan']);
-    $.number('colspan', true);
-    $.number('rowspan', true);
+      $.noAdditionalProperties(['colspan', 'rowspan']);
+      $.number('colspan', true);
+      $.number('rowspan', true);
 
-    return $.errors;
-  },
-);
+      return $.errors;
+    },
+  );
 
 const nodeValidator: Record<Node['nodeType'], NodeAssertion<any>> = {
   [BLOCKS.DOCUMENT]: assert(TOP_LEVEL_BLOCKS),
@@ -62,8 +63,8 @@ const nodeValidator: Record<Node['nodeType'], NodeAssertion<any>> = {
     nodeTypes: [BLOCKS.TABLE_CELL, BLOCKS.TABLE_HEADER_CELL],
     min: 1,
   })),
-  [BLOCKS.TABLE_CELL]: assertTableCell,
-  [BLOCKS.TABLE_HEADER_CELL]: assertTableCell,
+  [BLOCKS.TABLE_CELL]: assertTableCell([BLOCKS.PARAGRAPH, BLOCKS.EMBEDDED_ASSET]),
+  [BLOCKS.TABLE_HEADER_CELL]: assertTableCell([BLOCKS.PARAGRAPH]),
   [INLINES.HYPERLINK]: new HyperLinkAssertion(),
   [INLINES.EMBEDDED_ENTRY]: assertVoidEntryLink,
   [INLINES.EMBEDDED_RESOURCE]: assertLink('Contentful:Entry', VOID_CONTENT),
