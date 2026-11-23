@@ -35,8 +35,16 @@ const defaultNodeRenderers: RenderNode = {
     </table>
   ),
   [BLOCKS.TABLE_ROW]: (node, children) => <tr>{children}</tr>,
-  [BLOCKS.TABLE_HEADER_CELL]: (node, children) => <th>{children}</th>,
-  [BLOCKS.TABLE_CELL]: (node, children) => <td>{children}</td>,
+  [BLOCKS.TABLE_HEADER_CELL]: (node, children) => (
+    <th colSpan={node.data.colspan} rowSpan={node.data.rowspan}>
+      {children}
+    </th>
+  ),
+  [BLOCKS.TABLE_CELL]: (node, children) => (
+    <td colSpan={node.data.colspan} rowSpan={node.data.rowspan}>
+      {children}
+    </td>
+  ),
   [INLINES.ASSET_HYPERLINK]: (node) => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
   [INLINES.ENTRY_HYPERLINK]: (node) => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
   [INLINES.RESOURCE_HYPERLINK]: (node) =>

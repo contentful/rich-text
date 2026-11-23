@@ -14,3 +14,4 @@ export { default as ulDoc } from './ul';
 export { default as quoteDoc } from './quote';
 export { default as tableDoc } from './table';
 export { default as tableWithHeaderDoc } from './table-header';
+export { default as tableWithSpansDoc } from './table-spans';
