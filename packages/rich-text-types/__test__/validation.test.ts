@@ -1,6 +1,6 @@
 import { BLOCKS } from '../src/blocks';
 import { INLINES } from '../src/inlines';
-import type { Document } from '../src/types';
+import type { Block, Document } from '../src/types';
 import { validateRichTextDocument } from '../src/validator/index';
 
 describe('validation', () => {
@@ -662,12 +662,12 @@ describe('validation', () => {
   );
 
   describe('embedded assets inside of table cells', () => {
-    const paragraph = {
+    const paragraph: Block = {
       nodeType: BLOCKS.PARAGRAPH,
       content: [{ nodeType: 'text', value: 'Hello Table', data: {}, marks: [] }],
       data: {},
     };
-    const asset = {
+    const asset: Block = {
       nodeType: BLOCKS.EMBEDDED_ASSET,
       content: [],
       data: { target: { sys: { id: 'asset-id', type: 'Link', linkType: 'Asset' } } },

@@ -1,4 +1,4 @@
-import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
+import { Block, Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
 
 import {
   getAllRichTextResourceLinks,
@@ -329,6 +329,60 @@ describe('getRichTextEntityLinks', () => {
           },
         ],
       });
+    });
+  });
+
+  describe('returning embedded asset blocks nested in table cells', () => {
+    const asset = (id: string): Block => ({
+      nodeType: BLOCKS.EMBEDDED_ASSET,
+      data: { target: { sys: { id, type: 'Link', linkType: 'Asset' } } },
+      content: [],
+    });
+    const document = {
+      nodeType: BLOCKS.DOCUMENT,
+      data: {},
+      content: [
+        {
+          nodeType: BLOCKS.TABLE,
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.TABLE_ROW,
+              data: {},
+              content: [
+                {
+                  nodeType: BLOCKS.TABLE_CELL,
+                  data: {},
+                  content: [asset('cell-asset-1')],
+                },
+                {
+                  nodeType: BLOCKS.TABLE_CELL,
+                  data: {},
+                  content: [
+                    { nodeType: BLOCKS.PARAGRAPH, data: {}, content: [] },
+                    asset('cell-asset-2'),
+                    asset('cell-asset-1'),
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    } as Document;
+
+    it('returns the asset links found in table cells without duplicates', () => {
+      expect(getRichTextEntityLinks(document)).toEqual({
+        Entry: [],
+        Asset: [
+          { linkType: 'Asset', type: 'Link', id: 'cell-asset-1' },
+          { linkType: 'Asset', type: 'Link', id: 'cell-asset-2' },
+        ],
+      });
+    });
+
+    it('returns only the asset links when filtering by the asset block type', () => {
+      expect(getRichTextEntityLinks(document, BLOCKS.EMBEDDED_ASSET).Asset).toHaveLength(2);
     });
   });
 

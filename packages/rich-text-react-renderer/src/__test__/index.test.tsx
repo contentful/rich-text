@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 import { BLOCKS, Document, INLINES, MARKS, ResourceLink } from '@contentful/rich-text-types';
 
@@ -24,6 +25,7 @@ import {
   quoteDoc,
   tableDoc,
   tableWithHeaderDoc,
+  tableWithAssetDoc,
   ulDoc,
 } from './documents';
 import embeddedResource from './documents/embedded-resource';
@@ -186,6 +188,30 @@ describe('documentToReactComponents', () => {
     const document: Document = tableDoc;
 
     expect(documentToReactComponents(document)).toMatchSnapshot();
+  });
+
+  it('renders embedded assets inside of table cells with a custom asset renderer', () => {
+    const options: Options = {
+      renderNode: {
+        [BLOCKS.EMBEDDED_ASSET]: (node) => <figure>{node.data.target.sys.id}</figure>,
+      },
+    };
+
+    expect(renderToStaticMarkup(<>{documentToReactComponents(tableWithAssetDoc, options)}</>)).toBe(
+      '<table><tbody>' +
+        '<tr><th><p>Photo</p></th><th><p>Caption</p></th></tr>' +
+        '<tr><td><figure>asset-id</figure></td><td><p>Sunset</p></td></tr>' +
+        '</tbody></table>',
+    );
+  });
+
+  it('renders an empty node for embedded assets inside of table cells without an asset renderer', () => {
+    expect(renderToStaticMarkup(<>{documentToReactComponents(tableWithAssetDoc)}</>)).toBe(
+      '<table><tbody>' +
+        '<tr><th><p>Photo</p></th><th><p>Caption</p></th></tr>' +
+        '<tr><td></td><td><p>Sunset</p></td></tr>' +
+        '</tbody></table>',
+    );
   });
 
   it('renders tables with header', () => {

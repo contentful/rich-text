@@ -1,4 +1,4 @@
-import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
+import { Block, Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
 
 import { documentToPlainTextString } from '../index';
 
@@ -179,6 +179,57 @@ describe('documentToPlainTextString', () => {
         ].join('\n\n'),
       );
     });
+  });
+});
+
+describe('tables with embedded assets in cells', () => {
+  const asset: Block = {
+    nodeType: BLOCKS.EMBEDDED_ASSET,
+    data: { target: { sys: { id: 'asset-id', type: 'Link', linkType: 'Asset' } } },
+    content: [],
+  };
+  const cell = (nodeType: BLOCKS, content: Block[]): Block => ({ nodeType, data: {}, content });
+  const paragraph = (value: string): Block => ({
+    nodeType: BLOCKS.PARAGRAPH,
+    data: {},
+    content: [{ nodeType: 'text', value, data: {}, marks: [] }],
+  });
+
+  const document = {
+    nodeType: BLOCKS.DOCUMENT,
+    data: {},
+    content: [
+      {
+        nodeType: BLOCKS.TABLE,
+        data: {},
+        content: [
+          {
+            nodeType: BLOCKS.TABLE_ROW,
+            data: {},
+            content: [
+              cell(BLOCKS.TABLE_HEADER_CELL, [paragraph('Photo')]),
+              cell(BLOCKS.TABLE_HEADER_CELL, [paragraph('Caption')]),
+            ],
+          },
+          {
+            nodeType: BLOCKS.TABLE_ROW,
+            data: {},
+            content: [
+              cell(BLOCKS.TABLE_CELL, [asset]),
+              cell(BLOCKS.TABLE_CELL, [paragraph('Sunset'), asset, paragraph('Evening')]),
+            ],
+          },
+        ],
+      },
+    ],
+  } as Document;
+
+  it('skips embedded assets and keeps the text of the surrounding cells', () => {
+    expect(documentToPlainTextString(document)).toEqual('Photo Caption Sunset Evening');
+  });
+
+  it('defers to the user-supplied block divisor', () => {
+    expect(documentToPlainTextString(document, '\n')).toEqual('Photo\nCaption\nSunset\nEvening');
   });
 });
 

@@ -5,7 +5,12 @@ import toContentfulDocument from '../slatejs-to-contentful-adapter';
 import { SlateNode } from '../types';
 import * as contentful from './contentful-helpers';
 
-const schema = { blocks: { [Contentful.BLOCKS.EMBEDDED_ENTRY]: { isVoid: true } } };
+const schema = {
+  blocks: {
+    [Contentful.BLOCKS.EMBEDDED_ENTRY]: { isVoid: true },
+    [Contentful.BLOCKS.EMBEDDED_ASSET]: { isVoid: true },
+  },
+};
 
 describe('both adapters (roundtrippable cases)', () => {
   const testAdapters = (
@@ -417,6 +422,72 @@ describe('both adapters (roundtrippable cases)', () => {
               data: { a: 2 },
               isVoid: false,
               children: [],
+            },
+          ],
+        },
+      ],
+    );
+
+    testAdapters(
+      'embedded asset block in a table cell',
+      {
+        nodeType: Contentful.BLOCKS.DOCUMENT,
+        data: {},
+        content: [
+          {
+            nodeType: Contentful.BLOCKS.TABLE,
+            data: {},
+            content: [
+              {
+                nodeType: Contentful.BLOCKS.TABLE_ROW,
+                data: {},
+                content: [
+                  {
+                    nodeType: Contentful.BLOCKS.TABLE_CELL,
+                    data: {},
+                    content: [
+                      {
+                        nodeType: Contentful.BLOCKS.EMBEDDED_ASSET,
+                        data: {
+                          target: { sys: { id: 'asset-id', type: 'Link', linkType: 'Asset' } },
+                        },
+                        content: [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      } as Contentful.Document,
+      [
+        {
+          type: Contentful.BLOCKS.TABLE,
+          data: {},
+          isVoid: false,
+          children: [
+            {
+              type: Contentful.BLOCKS.TABLE_ROW,
+              data: {},
+              isVoid: false,
+              children: [
+                {
+                  type: Contentful.BLOCKS.TABLE_CELL,
+                  data: {},
+                  isVoid: false,
+                  children: [
+                    {
+                      type: Contentful.BLOCKS.EMBEDDED_ASSET,
+                      data: {
+                        target: { sys: { id: 'asset-id', type: 'Link', linkType: 'Asset' } },
+                      },
+                      isVoid: true,
+                      children: [],
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },

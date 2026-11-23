@@ -16,6 +16,7 @@ import {
   quoteDoc,
   ulDoc,
   tableWithHeaderDoc,
+  tableWithAssetDoc,
   embeddedResourceDoc,
 } from './documents';
 import inlineEntity from './documents/inline-entity';
@@ -256,6 +257,31 @@ describe('documentToHtmlString', () => {
       '</table>';
 
     expect(documentToHtmlString(document)).toEqual(expected);
+  });
+
+  it('renders embedded assets inside of table cells with the default asset renderer', () => {
+    const expected =
+      '<table>' +
+      '<tr><th><p>Photo</p></th><th><p>Caption</p></th></tr>' +
+      '<tr><td><img src="https://images.ctfassets.net/space/asset.jpg" alt="A mountain at sunset" loading="lazy" /></td><td><p>Sunset</p></td></tr>' +
+      '</table>';
+
+    expect(documentToHtmlString(tableWithAssetDoc)).toEqual(expected);
+  });
+
+  it('renders embedded assets inside of table cells with a custom asset renderer', () => {
+    const options: Options = {
+      renderNode: {
+        [BLOCKS.EMBEDDED_ASSET]: (node) => `<figure>${node.data.target.sys.id}</figure>`,
+      },
+    };
+    const expected =
+      '<table>' +
+      '<tr><th><p>Photo</p></th><th><p>Caption</p></th></tr>' +
+      '<tr><td><figure>asset-id</figure></td><td><p>Sunset</p></td></tr>' +
+      '</table>';
+
+    expect(documentToHtmlString(tableWithAssetDoc, options)).toEqual(expected);
   });
 
   it('renders tables with header', () => {
