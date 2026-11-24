@@ -222,6 +222,27 @@ describe('documentToReactComponents', () => {
     );
   });
 
+  it.each([
+    ['an attribute-breaking string', '2" onclick="x'],
+    ['a numeric string', '2'],
+    ['zero', 0],
+    ['a negative number', -1],
+    ['a non-integer', 1.5],
+    ['NaN', NaN],
+    ['Infinity', Infinity],
+    ['null', null],
+    ['an object', { toString: () => '2' }],
+  ])('renders no colspan or rowspan when the value is %s', (_, value) => {
+    const document: Document = JSON.parse(JSON.stringify(tableWithHeaderDoc));
+    const [headerRow, bodyRow] = document.content[0].content as any[];
+    headerRow.content[0].data = { colspan: value, rowspan: value };
+    bodyRow.content[1].data = { colspan: value };
+
+    expect(renderToStaticMarkup(<>{documentToReactComponents(document)}</>)).toEqual(
+      renderToStaticMarkup(<>{documentToReactComponents(tableWithHeaderDoc)}</>),
+    );
+  });
+
   it('does not crash with inline elements (e.g. hyperlink)', () => {
     const document: Document = hyperlinkDoc;
 
