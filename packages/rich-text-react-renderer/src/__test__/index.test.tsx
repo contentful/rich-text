@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 import { BLOCKS, Document, INLINES, MARKS, ResourceLink } from '@contentful/rich-text-types';
 
@@ -24,6 +25,7 @@ import {
   quoteDoc,
   tableDoc,
   tableWithHeaderDoc,
+  tableWithSpansDoc,
   ulDoc,
 } from './documents';
 import embeddedResource from './documents/embedded-resource';
@@ -190,6 +192,55 @@ describe('documentToReactComponents', () => {
 
   it('renders tables with header', () => {
     expect(documentToReactComponents(tableWithHeaderDoc)).toMatchSnapshot();
+  });
+
+  it('renders tables with colspan and rowspan', () => {
+    expect(documentToReactComponents(tableWithSpansDoc)).toMatchSnapshot();
+  });
+
+  it('renders colspan and rowspan attributes on table cells and header cells', () => {
+    const markup = renderToStaticMarkup(<>{documentToReactComponents(tableWithSpansDoc)}</>);
+
+    expect(markup).toEqual(
+      '<table><tbody>' +
+        '<tr><th colSpan="2"><p>H 1</p></th><th rowSpan="2"><p>H 2</p></th></tr>' +
+        '<tr><th><p>H 3</p></th><th><p>H 4</p></th></tr>' +
+        '<tr><td rowSpan="2"><p>A</p></td><td colSpan="2"><p>B</p></td></tr>' +
+        '<tr><td><p>C</p></td><td><p>D</p></td></tr>' +
+        '<tr><td colSpan="2" rowSpan="2"><p>E</p></td><td><p>F</p></td></tr>' +
+        '<tr><td><p>G</p></td></tr>' +
+        '</tbody></table>',
+    );
+  });
+
+  it('renders no span attributes for tables without spans', () => {
+    expect(renderToStaticMarkup(<>{documentToReactComponents(tableWithHeaderDoc)}</>)).toEqual(
+      '<table><tbody>' +
+        '<tr><th><p>A 1</p></th><th><p>B 1</p></th></tr>' +
+        '<tr><td><p>A 2</p></td><td><p>B 2</p></td></tr>' +
+        '</tbody></table>',
+    );
+  });
+
+  it.each([
+    ['an attribute-breaking string', '2" onclick="x'],
+    ['a numeric string', '2'],
+    ['zero', 0],
+    ['a negative number', -1],
+    ['a non-integer', 1.5],
+    ['NaN', NaN],
+    ['Infinity', Infinity],
+    ['null', null],
+    ['an object', { toString: () => '2' }],
+  ])('renders no colspan or rowspan when the value is %s', (_, value) => {
+    const document: Document = JSON.parse(JSON.stringify(tableWithHeaderDoc));
+    const [headerRow, bodyRow] = document.content[0].content as any[];
+    headerRow.content[0].data = { colspan: value, rowspan: value };
+    bodyRow.content[1].data = { colspan: value };
+
+    expect(renderToStaticMarkup(<>{documentToReactComponents(document)}</>)).toEqual(
+      renderToStaticMarkup(<>{documentToReactComponents(tableWithHeaderDoc)}</>),
+    );
   });
 
   it('does not crash with inline elements (e.g. hyperlink)', () => {

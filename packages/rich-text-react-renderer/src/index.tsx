@@ -13,6 +13,13 @@ import {
 
 import { nodeToReactComponent } from './util/nodeListToReactComponents';
 
+/**
+ * A table cell span, or undefined (no attribute) unless it is a positive
+ * integer. Matches the HTML renderer, which also ignores any other value.
+ */
+const spanValue = (value: unknown): number | undefined =>
+  typeof value === 'number' && Number.isInteger(value) && value > 0 ? value : undefined;
+
 const defaultNodeRenderers: RenderNode = {
   [BLOCKS.DOCUMENT]: (node, children) => children,
   [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
@@ -35,8 +42,16 @@ const defaultNodeRenderers: RenderNode = {
     </table>
   ),
   [BLOCKS.TABLE_ROW]: (node, children) => <tr>{children}</tr>,
-  [BLOCKS.TABLE_HEADER_CELL]: (node, children) => <th>{children}</th>,
-  [BLOCKS.TABLE_CELL]: (node, children) => <td>{children}</td>,
+  [BLOCKS.TABLE_HEADER_CELL]: (node, children) => (
+    <th colSpan={spanValue(node.data.colspan)} rowSpan={spanValue(node.data.rowspan)}>
+      {children}
+    </th>
+  ),
+  [BLOCKS.TABLE_CELL]: (node, children) => (
+    <td colSpan={spanValue(node.data.colspan)} rowSpan={spanValue(node.data.rowspan)}>
+      {children}
+    </td>
+  ),
   [INLINES.ASSET_HYPERLINK]: (node) => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
   [INLINES.ENTRY_HYPERLINK]: (node) => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
   [INLINES.RESOURCE_HYPERLINK]: (node) =>

@@ -14,6 +14,20 @@ import { escapeHtml } from './escapeHtml';
 
 const attributeValue = (value: string) => `"${value.replace(/"/g, '&quot;')}"`;
 
+/**
+ * Builds the ` colspan="N"` / ` rowspan="N"` attributes for a table cell.
+ * Only positive integers are written; anything else is dropped so that
+ * arbitrary `data` values can never reach the markup. Returns an empty
+ * string for cells without spans, keeping their output unchanged.
+ */
+const tableCellSpanAttributes = (data: Block['data']) =>
+  (['colspan', 'rowspan'] as const)
+    .map((name) => {
+      const value = data?.[name];
+      return Number.isInteger(value) && value > 0 ? ` ${name}="${value}"` : '';
+    })
+    .join('');
+
 const defaultNodeRenderers: RenderNode = {
   [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
   [BLOCKS.HEADING_1]: (node, next) => `<h1>${next(node.content)}</h1>`,
@@ -32,8 +46,10 @@ const defaultNodeRenderers: RenderNode = {
   [BLOCKS.HR]: () => '<hr/>',
   [BLOCKS.TABLE]: (node, next) => `<table>${next(node.content)}</table>`,
   [BLOCKS.TABLE_ROW]: (node, next) => `<tr>${next(node.content)}</tr>`,
-  [BLOCKS.TABLE_HEADER_CELL]: (node, next) => `<th>${next(node.content)}</th>`,
-  [BLOCKS.TABLE_CELL]: (node, next) => `<td>${next(node.content)}</td>`,
+  [BLOCKS.TABLE_HEADER_CELL]: (node, next) =>
+    `<th${tableCellSpanAttributes(node.data)}>${next(node.content)}</th>`,
+  [BLOCKS.TABLE_CELL]: (node, next) =>
+    `<td${tableCellSpanAttributes(node.data)}>${next(node.content)}</td>`,
   [INLINES.ASSET_HYPERLINK]: (node) => defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
   [INLINES.ENTRY_HYPERLINK]: (node) => defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
   [INLINES.RESOURCE_HYPERLINK]: (node) =>

@@ -340,6 +340,93 @@ exports[`documentToReactComponents renders tables 1`] = `
 ]
 `;
 
+exports[`documentToReactComponents renders tables with colspan and rowspan 1`] = `
+[
+  <table>
+    <tbody>
+      <tr>
+        <th
+          colSpan={2}
+        >
+          <p>
+            H 1
+          </p>
+        </th>
+        <th
+          rowSpan={2}
+        >
+          <p>
+            H 2
+          </p>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <p>
+            H 3
+          </p>
+        </th>
+        <th>
+          <p>
+            H 4
+          </p>
+        </th>
+      </tr>
+      <tr>
+        <td
+          rowSpan={2}
+        >
+          <p>
+            A
+          </p>
+        </td>
+        <td
+          colSpan={2}
+        >
+          <p>
+            B
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>
+            C
+          </p>
+        </td>
+        <td>
+          <p>
+            D
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td
+          colSpan={2}
+          rowSpan={2}
+        >
+          <p>
+            E
+          </p>
+        </td>
+        <td>
+          <p>
+            F
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>
+            G
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>,
+]
+`;
+
 exports[`documentToReactComponents renders tables with header 1`] = `
 [
   <table>
