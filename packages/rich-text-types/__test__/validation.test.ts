@@ -1,6 +1,6 @@
 import { BLOCKS } from '../src/blocks';
 import { INLINES } from '../src/inlines';
-import type { Document } from '../src/types';
+import type { Block, Document } from '../src/types';
 import { validateRichTextDocument } from '../src/validator/index';
 
 describe('validation', () => {
@@ -649,7 +649,10 @@ describe('validation', () => {
       expect(validateRichTextDocument(document)).toEqual([
         {
           details: 'Value must be one of expected values',
-          expected: [BLOCKS.PARAGRAPH],
+          expected:
+            nodeType === BLOCKS.TABLE_CELL
+              ? [BLOCKS.EMBEDDED_ASSET, BLOCKS.PARAGRAPH]
+              : [BLOCKS.PARAGRAPH],
           name: 'in',
           path: ['content', 0, 'content', 0, 'content', 0, 'content', 0, 'nodeType'],
           value: 'text',
@@ -657,6 +660,173 @@ describe('validation', () => {
       ]);
     },
   );
+
+  describe('embedded assets inside of table cells', () => {
+    const paragraph: Block = {
+      nodeType: BLOCKS.PARAGRAPH,
+      content: [{ nodeType: 'text', value: 'Hello Table', data: {}, marks: [] }],
+      data: {},
+    };
+    const asset: Block = {
+      nodeType: BLOCKS.EMBEDDED_ASSET,
+      content: [],
+      data: { target: { sys: { id: 'asset-id', type: 'Link', linkType: 'Asset' } } },
+    };
+    const cellPath = ['content', 0, 'content', 0, 'content', 0];
+
+    const documentWithCell = (nodeType: string, content: unknown[], data = {}) =>
+      ({
+        nodeType: BLOCKS.DOCUMENT,
+        content: [
+          {
+            nodeType: BLOCKS.TABLE,
+            content: [
+              {
+                nodeType: BLOCKS.TABLE_ROW,
+                content: [{ nodeType, content, data }],
+                data: {},
+              },
+            ],
+            data: {},
+          },
+        ],
+        data: {},
+      }) as unknown as Document;
+
+    it('accepts an embedded asset as the only child of a table cell', () => {
+      expect(validateRichTextDocument(documentWithCell(BLOCKS.TABLE_CELL, [asset]))).toEqual([]);
+    });
+
+    it('accepts embedded assets mixed with paragraphs in a table cell', () => {
+      expect(
+        validateRichTextDocument(
+          documentWithCell(BLOCKS.TABLE_CELL, [paragraph, asset, asset, paragraph]),
+        ),
+      ).toEqual([]);
+    });
+
+    it('fails on an embedded asset inside of a table header cell', () => {
+      expect(validateRichTextDocument(documentWithCell(BLOCKS.TABLE_HEADER_CELL, [asset]))).toEqual(
+        [
+          {
+            details: 'Value must be one of expected values',
+            expected: [BLOCKS.PARAGRAPH],
+            name: 'in',
+            path: [...cellPath, 'content', 0, 'nodeType'],
+            value: BLOCKS.EMBEDDED_ASSET,
+          },
+        ],
+      );
+    });
+
+    it.each([
+      [BLOCKS.EMBEDDED_ENTRY, { target: { sys: { id: 'id', type: 'Link', linkType: 'Entry' } } }],
+      [
+        BLOCKS.EMBEDDED_RESOURCE,
+        {
+          target: {
+            sys: {
+              urn: 'crn:contentful:::content:spaces/space-id/entries/entry-id',
+              type: 'ResourceLink',
+              linkType: 'Contentful:Entry',
+            },
+          },
+        },
+      ],
+      [BLOCKS.HEADING_1, {}],
+      [BLOCKS.QUOTE, {}],
+      [BLOCKS.UL_LIST, {}],
+      [BLOCKS.OL_LIST, {}],
+      [BLOCKS.HR, {}],
+    ])('still fails on a %s inside of a table cell', (nodeType, data) => {
+      const errors = validateRichTextDocument(
+        documentWithCell(BLOCKS.TABLE_CELL, [{ nodeType, content: [], data }]),
+      );
+
+      expect(errors).toEqual([
+        {
+          details: 'Value must be one of expected values',
+          expected: [BLOCKS.EMBEDDED_ASSET, BLOCKS.PARAGRAPH],
+          name: 'in',
+          path: [...cellPath, 'content', 0, 'nodeType'],
+          value: nodeType,
+        },
+      ]);
+    });
+
+    it('fails when the embedded asset has a target with the wrong linkType', () => {
+      const errors = validateRichTextDocument(
+        documentWithCell(BLOCKS.TABLE_CELL, [
+          {
+            ...asset,
+            data: { target: { sys: { id: 'id', type: 'Link', linkType: 'Entry' } } },
+          },
+        ]),
+      );
+
+      expect(errors).toHaveLength(1);
+      expect(errors[0]).toMatchObject({
+        name: 'in',
+        path: [...cellPath, 'content', 0, 'data', 'target', 'sys', 'linkType'],
+        value: 'Entry',
+      });
+    });
+
+    it('fails when the embedded asset has a target without sys', () => {
+      const errors = validateRichTextDocument(
+        documentWithCell(BLOCKS.TABLE_CELL, [{ ...asset, data: { target: {} } }]),
+      );
+
+      expect(errors).toHaveLength(1);
+      expect(errors[0]).toMatchObject({
+        name: 'type',
+        path: [...cellPath, 'content', 0, 'data', 'target', 'sys'],
+      });
+    });
+
+    it('fails when the embedded asset has children', () => {
+      const errors = validateRichTextDocument(
+        documentWithCell(BLOCKS.TABLE_CELL, [{ ...asset, content: [paragraph] }]),
+      );
+
+      expect(errors).toHaveLength(1);
+      expect(errors[0]).toMatchObject({
+        name: 'size',
+        path: [...cellPath, 'content', 0, 'content'],
+      });
+    });
+
+    it('still validates colspan/rowspan on a table cell that contains an embedded asset', () => {
+      expect(
+        validateRichTextDocument(
+          documentWithCell(BLOCKS.TABLE_CELL, [asset], { colspan: 'x', rowspan: 'y' }),
+        ),
+      ).toEqual([
+        {
+          details: 'The type of "colspan" is incorrect, expected type: Number',
+          name: 'type',
+          path: [...cellPath, 'data', 'colspan'],
+          type: 'Number',
+          value: 'x',
+        },
+        {
+          details: 'The type of "rowspan" is incorrect, expected type: Number',
+          name: 'type',
+          path: [...cellPath, 'data', 'rowspan'],
+          type: 'Number',
+          value: 'y',
+        },
+      ]);
+    });
+
+    it('accepts colspan/rowspan on a table cell that contains an embedded asset', () => {
+      expect(
+        validateRichTextDocument(
+          documentWithCell(BLOCKS.TABLE_CELL, [asset], { colspan: 2, rowspan: 1 }),
+        ),
+      ).toEqual([]);
+    });
+  });
 
   it('fails if a table node has not at least one table row', () => {
     const document: Document = {
