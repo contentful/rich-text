@@ -619,44 +619,44 @@ describe('validation', () => {
     ]);
   });
 
-  it.each([BLOCKS.TABLE_CELL, BLOCKS.TABLE_HEADER_CELL] as const)(
-    'fails on invalid node inside of %s',
-    (nodeType) => {
-      const document: Document = {
-        nodeType: BLOCKS.DOCUMENT,
-        content: [
-          {
-            nodeType: BLOCKS.TABLE,
-            content: [
-              {
-                nodeType: BLOCKS.TABLE_ROW,
-                content: [
-                  {
-                    nodeType,
-                    content: [{ nodeType: 'text', data: {}, marks: [], value: 'Hello World' }],
-                    data: {},
-                  },
-                ],
-                data: {},
-              },
-            ],
-            data: {},
-          },
-        ],
-        data: {},
-      };
-
-      expect(validateRichTextDocument(document)).toEqual([
+  it.each([
+    [BLOCKS.TABLE_CELL, [BLOCKS.OL_LIST, BLOCKS.PARAGRAPH, BLOCKS.UL_LIST]],
+    [BLOCKS.TABLE_HEADER_CELL, [BLOCKS.PARAGRAPH]],
+  ] as const)('fails on invalid node inside of %s', (nodeType, expected) => {
+    const document: Document = {
+      nodeType: BLOCKS.DOCUMENT,
+      content: [
         {
-          details: 'Value must be one of expected values',
-          expected: [BLOCKS.PARAGRAPH],
-          name: 'in',
-          path: ['content', 0, 'content', 0, 'content', 0, 'content', 0, 'nodeType'],
-          value: 'text',
+          nodeType: BLOCKS.TABLE,
+          content: [
+            {
+              nodeType: BLOCKS.TABLE_ROW,
+              content: [
+                {
+                  nodeType,
+                  content: [{ nodeType: 'text', data: {}, marks: [], value: 'Hello World' }],
+                  data: {},
+                },
+              ],
+              data: {},
+            },
+          ],
+          data: {},
         },
-      ]);
-    },
-  );
+      ],
+      data: {},
+    };
+
+    expect(validateRichTextDocument(document)).toEqual([
+      {
+        details: 'Value must be one of expected values',
+        expected,
+        name: 'in',
+        path: ['content', 0, 'content', 0, 'content', 0, 'content', 0, 'nodeType'],
+        value: 'text',
+      },
+    ]);
+  });
 
   it('fails if a table node has not at least one table row', () => {
     const document: Document = {
@@ -1082,5 +1082,158 @@ describe('validation', () => {
     };
 
     expect(validateRichTextDocument(document)).toEqual([]);
+  });
+
+  describe('lists inside table cells', () => {
+    const text = (value: string) => ({ nodeType: 'text', value, data: {}, marks: [] });
+    const paragraph = (value: string) => ({
+      nodeType: BLOCKS.PARAGRAPH,
+      content: [text(value)],
+      data: {},
+    });
+    const listItem = (...content: unknown[]) => ({
+      nodeType: BLOCKS.LIST_ITEM,
+      content,
+      data: {},
+    });
+    const list = (nodeType: BLOCKS.UL_LIST | BLOCKS.OL_LIST, ...content: unknown[]) => ({
+      nodeType,
+      content,
+      data: {},
+    });
+
+    // The public `TableCell` type still declares `content: Paragraph[]`, so
+    // documents with lists in cells have to be cast.
+    const tableDocument = (
+      cellType: BLOCKS.TABLE_CELL | BLOCKS.TABLE_HEADER_CELL,
+      cellContent: unknown[],
+      cellData: Record<string, unknown> = { colspan: 1, rowspan: 1 },
+    ): Document =>
+      ({
+        nodeType: BLOCKS.DOCUMENT,
+        content: [
+          {
+            nodeType: BLOCKS.TABLE,
+            content: [
+              {
+                nodeType: BLOCKS.TABLE_ROW,
+                content: [
+                  {
+                    nodeType: cellType,
+                    content: cellContent,
+                    data: cellData,
+                  },
+                ],
+                data: {},
+              },
+            ],
+            data: {},
+          },
+        ],
+        data: {},
+      }) as unknown as Document;
+
+    const cellChildPath = (index: number) => [
+      'content',
+      0,
+      'content',
+      0,
+      'content',
+      0,
+      'content',
+      index,
+      'nodeType',
+    ];
+
+    it('accepts an unordered list in a table cell', () => {
+      const document = tableDocument(BLOCKS.TABLE_CELL, [
+        list(BLOCKS.UL_LIST, listItem(paragraph('one')), listItem(paragraph('two'))),
+      ]);
+
+      expect(validateRichTextDocument(document)).toEqual([]);
+    });
+
+    it('accepts an ordered list with a nested list in a table cell, alongside a paragraph', () => {
+      const document = tableDocument(BLOCKS.TABLE_CELL, [
+        paragraph('intro'),
+        list(
+          BLOCKS.OL_LIST,
+          listItem(
+            paragraph('one'),
+            list(BLOCKS.UL_LIST, listItem(paragraph('one.a')), listItem(paragraph('one.b'))),
+          ),
+          listItem(paragraph('two'), list(BLOCKS.OL_LIST, listItem(paragraph('two.a')))),
+        ),
+      ]);
+
+      expect(validateRichTextDocument(document)).toEqual([]);
+    });
+
+    it('still validates the contents of a list inside a table cell', () => {
+      const document = tableDocument(BLOCKS.TABLE_CELL, [
+        list(BLOCKS.UL_LIST, paragraph('not wrapped in a list item')),
+      ]);
+
+      expect(validateRichTextDocument(document)).toEqual([
+        {
+          details: 'Value must be one of expected values',
+          expected: [BLOCKS.LIST_ITEM],
+          name: 'in',
+          path: ['content', 0, 'content', 0, 'content', 0, 'content', 0, 'content', 0, 'nodeType'],
+          value: BLOCKS.PARAGRAPH,
+        },
+      ]);
+    });
+
+    it.each([BLOCKS.UL_LIST, BLOCKS.OL_LIST] as const)(
+      'rejects %s in a table header cell',
+      (listType) => {
+        const document = tableDocument(BLOCKS.TABLE_HEADER_CELL, [
+          list(listType, listItem(paragraph('one'))),
+        ]);
+
+        expect(validateRichTextDocument(document)).toEqual([
+          {
+            details: 'Value must be one of expected values',
+            expected: [BLOCKS.PARAGRAPH],
+            name: 'in',
+            path: cellChildPath(0),
+            value: listType,
+          },
+        ]);
+      },
+    );
+
+    it.each([BLOCKS.QUOTE, BLOCKS.HEADING_1] as const)('rejects %s in a table cell', (nodeType) => {
+      const document = tableDocument(BLOCKS.TABLE_CELL, [
+        { nodeType, content: [paragraph('nope')], data: {} },
+      ]);
+
+      expect(validateRichTextDocument(document)).toEqual([
+        {
+          details: 'Value must be one of expected values',
+          expected: [BLOCKS.OL_LIST, BLOCKS.PARAGRAPH, BLOCKS.UL_LIST],
+          name: 'in',
+          path: cellChildPath(0),
+          value: nodeType,
+        },
+      ]);
+    });
+
+    it('still validates colspan/rowspan on a table cell containing a list', () => {
+      const document = tableDocument(
+        BLOCKS.TABLE_CELL,
+        [list(BLOCKS.UL_LIST, listItem(paragraph('one')))],
+        { colspan: '2', foo: 1 },
+      );
+
+      const errors = validateRichTextDocument(document);
+      expect(errors.map((e) => e.path)).toEqual(
+        expect.arrayContaining([
+          ['content', 0, 'content', 0, 'content', 0, 'data', 'foo'],
+          ['content', 0, 'content', 0, 'content', 0, 'data', 'colspan'],
+        ]),
+      );
+    });
   });
 });
